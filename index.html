@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>function 개발새발(){...}</title>
+    <meta name="description" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="/atom.xml">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <article class="post">
+  <header>
+    <a href="/articles/2011/a-successful-git-branching-model.html">
+      <h1>A successful git branching model</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 06 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/a-successful-git-branching-model.html#disqus_thread" data-disqus-identifier="/articles/2011/a-successful-git-branching-model.html"></a></span>
+  </footer>
+<p><em>
+<a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 &#39;<a href="https://github.com/nvie/gitflow">git-flow</a>&#39;로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.
+</em></p>
+
+<p>내가 지난 일 년간 프로젝트를 할 때 사용한 개발 모델을 소개하고자 한다. 나는 이 모델을 업무에서도 사용했고 개인 프로젝트에서도 사용했다. 결과는 매우 성공적이었다. 진작부터 이 글을 쓰려고 벼르고 있었지만, 시간이 부족해 완성할 수 없었다. 나는 프로젝트를 진행하는 데 필요한 것을 하나하나 설명하기보다 순수하게 branching 전략과 배포 관리에 대해서 설명하고자 한다. </p>
+
+<p><img alt="Git은 버전 관리용" src="/articles/2011/a-successful-git-branching-model/git-branching-model.png"></img></p>
+
+<p>이 그림은 <a href="http://git-scm.com/">Git</a>으로 버전 관리하는 것을 한눈에 보여준다.</p>
+
+  <p>
+    <a class="btn" href="/articles/2011/a-successful-git-branching-model.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/git-refs.html">
+      <h1>Git:refs</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 02 2011</span>
+ | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-refs.html#disqus_thread" data-disqus-identifier="/articles/2011/git-refs.html"></a></span>
+  </footer>
+<p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
+
+<p><img alt="heading images" src="/articles/2011/git.png"></img></p>
+
+<p>git은 항상 Snapshot단위로 저장한다. 커밋하면 Snapshot을 저장하는 것이고 이 때 SHA 키가 발급된다. SHA가 Snapshot을 식별하는 유일한 식별자다. branch나 태그처럼 Snapshot을 식별하는 방법은 결국 SHA 값을 이용하는 것이다. Branch나 태그는 단순히 SHA 값을 가리키는 것 뿐이다.</p>
+
+<p>SHA값은 40자나 되고 이런 암호를 인간이 인식하고 식별하기란 어렵다. git은 인간이 인식할 수 있도록 몇가지 방법 제공한다. 이 글은 각 Snapshot을 식별하는 방법을 설명한다. 아직 git에 대한 공부를 시작하지 않았다면 당장 <a href="/articles/2011/progit.html">progit</a>를 읽기 시작하라</p>
+
+<p>이 글에서는 SHA값을 가리키는 방법 그리고 이 방법들로 어떤 일들을 할 수 있는지 살펴본다.</p>
+
+  <p>
+    <a class="btn" href="/articles/2011/git-refs.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/bash-it.html">
+      <h1>Bash-it</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 01 2011</span>
+ | <a href="/site/tagmap.html#bash-it">Bash-it</a>, <a href="/site/tagmap.html#nvm">NVM</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/bash-it.html#disqus_thread" data-disqus-identifier="/articles/2011/bash-it.html"></a></span>
+  </footer>
+<p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+
+<p><img alt="bash-it" src="/articles/2011/bash-it.sean-shell.png"></img></p>
+
+<p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다. </p>
+
+<ul><li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li><li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li><li>plugin : bash 명령어를 확장해준다(그러니까 명령어에 해당하는 함수들이다).</li><li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li><li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li></ul>
+
+<p>각 요소들은 apache2 설정처럼 available/enabled 디렉토리 구조로 관리하기 때문에 관리하기 편하다.</p>
+
+<p>나는 bash-it에 들어 있는 것을 대부분 안쓰지만 그냥 다 켜놓고 쓴다. 그리고 혹시 필요한 게 생기면 bash-it 관례에 내가 맞추어 쓴다.</p>
+
+<p>이 것은 다시 말해서 revans님이 정리하고 관리하는 convention이다. bash-it에 익숙해지면 꽤 편리하다.</p>
+
+  <p>
+    <a class="btn" href="/articles/2011/bash-it.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/git-helpers.html">
+      <h1>Git:git-helpers</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 01 2011</span>
+ | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-helpers.html#disqus_thread" data-disqus-identifier="/articles/2011/git-helpers.html"></a></span>
+  </footer>
+<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
+
+  <p>
+    <a class="btn" href="/articles/2011/git-helpers.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/progit.html">
+      <h1>progit</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 30 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#progit">progit</a> | <span><a href="/articles/2011/progit.html#disqus_thread" data-disqus-identifier="/articles/2011/progit.html"></a></span>
+  </footer>
+<p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다.
+시작한지 꽤 됐는데 진도가 느립니다. <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에 6장까지 번역을 완료했습니다.
+계획과 많은 차이가 있지만 이제야 좀 정리가 돼서 일부라도 공개합니다.</p>
+
+<p><img alt="progit" src="/articles/2011/progit/progit.book-big.jpg"></img></p>
+
+<p>6장까지 번역한 것을 빌드해서 올려 두었습니다.
+<a href="http://dogfeet.github.com/progit/progit.ko.epub">epub</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.mobi">mobi</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.pdf">pdf</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.html">html</a> 
+포멧으로 올려 두었으니 필요하신 것으로 받아서 보세요.</p>
+
+<p><code>Git</code>을 구글 번역기에 집어넣으면 <code>힘내</code>라고 번역해 줍니다. 
+번역하는 동안에 구글 번역기의 도움으로 힘내고 있습니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바랍니다.</p>
+
+  <p>
+    <a class="btn" href="/articles/2011/progit.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/docpad.html">
+      <h1>Docpad</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 26 2011</span>
+ | <a href="/site/tagmap.html#docpad">Docpad</a>, <a href="/site/tagmap.html#prettify">Prettify</a>, <a href="/site/tagmap.html#markdown">Markdown</a>, <a href="/site/tagmap.html#coffeekup">CoffeeKup</a> | <span><a href="/articles/2011/docpad.html#disqus_thread" data-disqus-identifier="/articles/2011/docpad.html"></a></span>
+  </footer>
+<p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
+
+<p><img alt="Docpad" src="/articles/2011/docpad.png"></img></p>
+
+  <p>
+    <a class="btn" href="/articles/2011/docpad.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/coffee-kup.html">
+      <h1>CoffeeKup &lt;☕/&gt;</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 22 2011</span>
+ | <a href="/site/tagmap.html#coffeekup">CoffeeKup</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/coffee-kup.html#disqus_thread" data-disqus-identifier="/articles/2011/coffee-kup.html"></a></span>
+  </footer>
+<p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+
+<p><img alt="CoffeeScript" src="/articles/2011/coffeekup.png"></img></p>
+
+  <p>
+    <a class="btn" href="/articles/2011/coffee-kup.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2011/cake.html">
+      <h1>Cake</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 22 2011</span>
+ | <a href="/site/tagmap.html#cake">Cake</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/cake.html#disqus_thread" data-disqus-identifier="/articles/2011/cake.html"></a></span>
+  </footer>
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img alt="Cake" src="/articles/2011/cake.png"></img></p>
+
+  <p>
+    <a class="btn" href="/articles/2011/cake.html">Read more &raquo;</a>
+  </p>
+</article>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

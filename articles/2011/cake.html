@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cake</title>
+    <meta name="description" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="/atom.xml">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/cake.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Cake</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 22 2011</span>
+ | <a href="/site/tagmap.html#cake">Cake</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/cake.html#disqus_thread" data-disqus-identifier="/articles/2011/cake.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/cake.html" data-count="horizontal">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/cake.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/cake.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img alt="Cake" src="/articles/2011/cake.png"></img></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task &#39;say:hello&#39;, &#39;Description of task&#39;, -&gt;
+  console.log &#39;Hello World!&#39;</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option &#39;-e&#39;, &#39;--environment [ENVIRONMENT_NAME]&#39;, &#39;set the environment for `task:withDefaults`&#39;
+task &#39;task:withDefaults&#39;, &#39;Description of task&#39;, (options) -&gt;
+  options.environment or= &#39;production&#39;</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e &quot;development&quot; task:withDefaults</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require &#39;child_process&#39;
+task &#39;build&#39;, &#39;Build project from src/*.coffee to lib/*.js&#39;, -&gt;
+  exec &#39;coffee --compile --output lib/ src/&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr</code></pre>
+
+<p><code>{exec} = require &#39;child_process&#39;</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require(&#39;child_process&#39;).exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require &#39;fs&#39;
+{exec} = require &#39;child_process&#39;
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  &#39;content/scripts/statusbar&#39;
+  &#39;content/scripts/command/quickMacro&#39;
+  &#39;content/scripts/command/selectionTools/general&#39;
+]
+
+task &#39;build&#39;, &#39;Build single application file from source files&#39;, -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile &quot;src/#{file}.coffee&quot;, &#39;utf8&#39;, (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile &#39;lib/app.coffee&#39;, appContents.join(&#39;\n\n&#39;), &#39;utf8&#39;, (err) -&gt;
+      throw err if err
+      exec &#39;coffee --compile lib/app.coffee&#39;, (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink &#39;lib/app.coffee&#39;, (err) -&gt;
+          throw err if err
+          console.log &#39;Done.&#39;</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task &#39;minify&#39;, &#39;Minify the resulting application file after build&#39;, -&gt;
+  exec &#39;java -jar &quot;/home/stan/public/compiler.jar&quot; --js lib/app.js --js_output_file lib/app.production.js&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr</code></pre>
+
+<h2>참고</h2>
+
+<ul><li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li></ul>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Nov 22 2011</span>
+&raquo;      <a herf="/articles/2011/coffee-kup.html">CoffeeKup &lt;☕/&gt;</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2011/cake.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+.DS_store
+node_modules
+out
+*.log
+*.swp
+_docpad

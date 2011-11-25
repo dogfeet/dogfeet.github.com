@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>function 개발새발(){...}</title>
+  <link href="http://dogfeet.github.com/atom.xml" rel="self" />
+  <link href="http://dogfeet.github.com" />
+  <updated>2011-12-07T17:41:32Z</updated>
+  <id>http://dogfeet.github.com</id>
+  <author>
+    <name>Changwoo Park</name>
+    <email>pismute@gmail.com</email>
+  </author>
+  <entry>
+    <title>A successful git branching model</title>
+    <link href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html" />
+    <updated>Tue Dec 06 2011 09:00:00 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html</id>
+    <content type="html">
+      <p><em>
+<a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 &#39;<a href="https://github.com/nvie/gitflow">git-flow</a>&#39;로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.
+</em></p>
+
+<p>내가 지난 일 년간 프로젝트를 할 때 사용한 개발 모델을 소개하고자 한다. 나는 이 모델을 업무에서도 사용했고 개인 프로젝트에서도 사용했다. 결과는 매우 성공적이었다. 진작부터 이 글을 쓰려고 벼르고 있었지만, 시간이 부족해 완성할 수 없었다. 나는 프로젝트를 진행하는 데 필요한 것을 하나하나 설명하기보다 순수하게 branching 전략과 배포 관리에 대해서 설명하고자 한다. </p>
+
+<p><img alt="Git은 버전 관리용" src="/articles/2011/a-successful-git-branching-model/git-branching-model.png"></img></p>
+
+<p>이 그림은 <a href="http://git-scm.com/">Git</a>으로 버전 관리하는 것을 한눈에 보여준다.</p>
+
+<h3>왜 Git인가?</h3>
+
+<p>다른 중앙집중식 버전 관리 시스템과 Git을 비교해보고 싶으면 <a href="http://whygitisbetterthanx.com/">웹에서</a> 찾아라. <a href="http://www.looble.com/git-vs-svn-which-is-better/">거기는</a> 지금 <a href="http://git.or.cz/gitwiki/GitSvnComparsion">전쟁</a> 중이다. 나는 개발자이고 다른 것보다 Git을 선호한다. Git은 merging/branching에 대해 신세계를 열어 줬다. 예전에는 CSV/Subversion을 썼었는데 항상 merging/branching이 두려웠고(&quot;주의: merge conficts라는 미친개가 물을 수도 있어요!&quot;) 사실 잘 사용하지 않았다.</p>
+
+<p>그런데 Git에서는 merging/branching이 매우 간단하다. merging/branching은 매일 한다. CVS/Subversoin <a href="http://svnbook.red-bean.com/">책</a>에서는 merging/branching과 관련된 내용이 마지막 장에 있어서 고급 사용자들이나 읽지만, <a href="http://book.git-scm.com/">Git</a> <a href="http://pragprog.com/book/tsgit/pragmatic-version-control-using-git">책</a>은 <a href="http://progit.org">모두</a> 3장 이전에 다룬다.</p>
+
+<p>Git에서 merging/branching은 단순하고 자주 쓰기 때문에 더는 쫄지 않아도 된다. 버전 관리도구는 무엇보다 merging/branching이 쉬워야 한다.</p>
+
+<p>도구에 대한 얘긴 그만 접고 개발 모델에 대한 얘기를 시작하자. 내가 여기서 말하고자 하는 모델은 단순히 소프트웨어 개발 프로세스를 관리하려고 팀원 모두가 따라야 하는 치짐일 뿐이다.</p>
+
+<h3>분산이지만 중앙집중식처럼</h3>
+
+<p>이 브랜치 모델에는 중앙 저장소가 하나 필요하다. 사람들이 중앙에 두고 공유하는, 의미상으로 &quot;진짜&quot; 중앙 저장소 말이다. Git은 DVCS라서 본질적으로 모든 저장소가 같다. 중앙 저장소라고 해서 금칠 돼 있는 것이 아니다. 이 중앙 저장소를 origin으로 추가한다. Git을 사용하는 사람에게는 origin이라는 이름이 매우 친근하다.</p>
+
+<p><img alt="Decentralized but centralized" src="/articles/2011/a-successful-git-branching-model/centr-decentr.png"></img></p>
+
+<p>개발자 모두 origin에 push/pull할 수 있지만, 중앙집중식에서는 모든 개발자가 다른 모듈 팀에서 수정한 것까지도 pull해야 한다. 예를 들어 혼자 하기 어려운 기능은 둘, 셋이서 함께 개발하고 나서 origin에 push해야 한다. 개발 중인 것을 origin에 push하지 않는다. 이 그림에서 Alice와 Bob, Alice와 David, Clair와 David은 각각 팀을 만들었다:</p>
+
+<p>이것을 Git 언어로 풀어보면 Alice는 자신의 저장소에 Bob의 저장소를 bob이라는 이름으로 추가한다는 것을 말한다. 나머지 팀원과 팀도 모두 똑같이 한다.</p>
+
+<h3>주요 브랜치</h3>
+
+<p><img alt="branches" src="/articles/2011/a-successful-git-branching-model/main-branches.png"></img></p>
+
+<p>이 개발 모델은 전혀 새롭지 않다. 핵심은 기존에 있던 개념들이다. 주요 브랜치 두 개는 중앙 저장소에 영원히 유지한다:</p>
+
+<ul><li>master</li><li>develop</li></ul>
+
+<p>Git 사용자라면 누구나 익숙한 master 브랜치와 develop 브랜치를 병행으로 유지한다.</p>
+
+<p>먼저 배포했거나 곧 배포할(production-ready) 코드는 origin/master에 두고 관리한다.</p>
+
+<p>그리고 다음에 배포할 것을 개발하는 코드는 origin/develop에 두고 관리한다. 혹자는 이 브랜치를 &quot;통합 브랜치(integration branch)&quot;라고 부르기도 하는데, 이 브랜치를 자동으로 매일 빌드하는데 사용한다.</p>
+
+<p>develop branch의 코드가 안정되고 배포할 준비가 되면 곧 master로 merge하고 배포 버전으로 태그를 단다. 이것을 어떻게 하는지 이 글에서 자세히 설명한다.</p>
+
+<p>즉, 정의한 대로 master로 merge하는 것은 새 버전을 배포하는 것을 의미한다. 우리는 이것을 매우 엄격하게 지킬 것이다. 그래서 master 브랜치에 커밋될 때마다 Git hook 스크립트로 자동으로 빌드하고 말아서 운영 서버로 배포할 수 있다.</p>
+
+<h3>보조 브랜치</h3>
+
+<p>master와 develop 브랜치말고 다른 브랜치도 필요하다. 기능을 구현하고, 배포를 준비하고, 이미 배포한 제품이나 서비스의 버그를 빠르게 해결해야 한다. 이 모든 것을 동시에 진행해야 하기 때문에 다양한 브랜치가 필요하다.</p>
+
+<p>우리가 사용할 브랜치의 종류는 다음과 같다:</p>
+
+<ul><li>feature 브랜치</li><li>release 브랜치</li><li>hotfix 브랜치</li></ul>
+
+<p>각 브랜치마다 만든 목적이 있고 어떤 브랜치에서 갈라져 나왔는지, 어떤 브랜치에 merge할 지에 따라 꼭 지켜야 규칙도 있다. 이제 이 얘기를 하려고 한다.</p>
+
+<p>이 분류는 어떻게 사용할지에 따라 나누었다. 하지만 기술적으로는(technically) 모두 같은 브랜치다. Git의 다른 브랜치와도 똑같다.</p>
+
+<h4>feature 브랜치</h4>
+
+<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
+다시 merge할 브랜치: develop
+브랜치 이름 규칙: master, develop, release-*, hotfix-*를 제외한 것</code></pre>
+
+<p>feature 브랜치(토픽 브랜치라고도 부른다)는 다음, 아니면 다다음, 어쨌든 조만간에 배포할 기능을 개발하는 브랜치다. 기능을 개발하기 시작할 때에는 사실 언제 배포할 수 있는지 알 수 없다. feature 브랜치는 그 기능을 다 완성할 때까지 유지하고 다 완성되면 develop 브랜치로 merge한다. 다음 배포에 확실히 넣을 거라고 판단될 때 merge하고 결과가 실망스러우면 아예 버린다.</p>
+
+<p>feature 브랜치는 보통 개발자 저장소에만 있는 브랜치고 origin에는 push하지 않는다.</p>
+
+<h5>feature 브랜치 만들기</h5>
+
+<p>feature 브랜치를 develop 브랜치에서(base) 새로 만든다.</p>
+
+<pre class="prettyprint"><code>$ git checkout -b myfeature develop
+Switched to a new branch &quot;myfeature&quot;</code></pre>
+
+<h5>완성된 기능을 develop에 합치기</h5>
+
+<p>어떤 기능이 다 완성돼 다음 배포에 넣기로 했다면 develop 브랜치에 merge한다:</p>
+
+<pre class="prettyprint"><code>$ git checkout develop
+Switched to branch &#39;develop&#39;
+$ git merge --no-ff myfeature
+Updating ea1b82a..05e9557
+(Summary of changes)
+$ git branch -d myfeature
+Deleted branch myfeature (was 05e9557).
+$ git push origin develop</code></pre>
+
+<p>&#39;--no-ff&#39; 옵션을 주면 항상 merge 커밋을 만들어 merge한다. fast-forward로 merge할 수 있어도 fast-forward하지 않는다. 그러면 feature 브랜치에 추가된 모든 커밋이 merge되고 feature 브랜치에서 merge했다는 기록이 커밋 히스토리에 남는다. 그 둘을 비교해보자:</p>
+
+<p><img alt="branches" src="/articles/2011/a-successful-git-branching-model/merge-without-ff.png"></img></p>
+
+<p>후자처럼 fast-forward merge하면 나중에 커밋 히스토리를 다시 확인할 때 어떤 커밋이 어떤 기능(feature)을 구현한 것인지 확인하기 어렵다. 그래서 히스토리에 있는 커밋 메시지를 하나하나 눈으로 찾아야 한다. 추가한 feature를 되돌려야(revert) 할 때 feature와 관련된 모든 커밋을 되돌려야 하는데 merge 커밋이 없으면 욕이 절로 나올 것이다. --no-ff 옵션을 주고 merge했다면 되돌리기 쉽다.</p>
+
+<p>물론 아무것도 없는 텅 빈 커밋 개체가 하나 추가로 만들어지긴 하지만 이득이 더 많다.</p>
+
+<p>나는 --no-ff 옵션을 기본 옵션으로 설정하는 방법을 찾지 못했다. 나는 꼭 기본 옵션이 돼야 한다고 생각한다.</p>
+
+<h4>release 브랜치</h4>
+
+<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
+다시 merge할 브랜치: develop, master
+브랜치 이름 규칙: release-*</code></pre>
+
+<p>release 브랜치는 제품 배포를 준비하는 브랜치이다. 이 브랜치가 화룡이 승천할 수 있도록 점정하는 곳이다. 배포하는 데 필요한 버전 넘버, 빌드 일정 등의 메타데이터를 준비하고 사소한 버그도 잡는다. 이런 일을 release 브랜치에서 함으로써 develop 브랜치는 다음에 배포할 때 추가할 기능에 집중할 수 있다.</p>
+
+<p>develop 브랜치가 배포할 수 있는 상태에 다다랐을 때 release 브랜치를 만드는 것이 중요하다. 이때, 배포해야 하는 기능이 모두 develop 브랜치에 merge돼 있어야 하고 이번에 배포하지 않을 기능은 release 브랜치를 만들 때까지 기다려야 한다.</p>
+
+<p>release 브랜치를 만든다는 것은 이제 배포 버전을 부여하겠다는 것을 의미한다. 그때까지 develop 브랜치가 다음 배포가 어떤 모습일지 보여주지만, 아직 깨끗하게 정리된 상태가 아니다. 최종적으로 release 브랜치를 만들어 &#39;0.1&#39;, &#39;0.3&#39; 같은 버전 넘버 붙을 때까지는 &quot;진짜&quot; 배포라고 할 수 없다. 그러니까 release 브랜치를 만들기로 하는 것이 버전 넘버를 새로 부여하기로 하는 것을 의미한다. 이것은 규칙이다.</p>
+
+<h5>release 브랜치 만들기</h5>
+
+<p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 &#39;1.1.5&#39;이고 새 버전은 &#39;1.1.6&#39;이나 &#39;2.0&#39;이 아니라 &#39;1.2&#39; 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:</p>
+
+<pre class="prettyprint"><code>$ git checkout -b release-1.2 develop
+Switched to a new branch &quot;release-1.2&quot;
+$ ./bump-version.sh 1.2
+Files modified successfully, version bumped to 1.2.
+$ git commit -a -m &quot;Bumped version number to 1.2&quot;
+[release-1.2 74d9424] Bumped version number to 1.2
+1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
+
+<p>브랜치를 새로 만들고 버전 넘버를 생성했다. <code>bump-version.sh</code>는 버전 넘버가 들어 있는 파일을 전부 수정하는 가상의 쉘 스크립트다. 손으로 직접 수정해도 된다. 중요한 것은 이 시점에 파일을 수정한다는 점이다. 그리고 수정한 파일을 커밋한다.</p>
+
+<p>새로 만든 release 브랜치는 잘 말아서 진짜로 배포할 때까지 유지한다. 그동안 발견한 버그는 develop 브랜치가 아니라 이 브랜치에서 해결하고 새 기능은 이 브랜치에 추가하지 않는다. 그런 기능은 develop 브랜치에 merge하고 다음 배포로 미뤄야 한다.</p>
+
+<h5>release 브랜치 마치기</h5>
+
+<p>release 브랜치가 진짜 배포할 상태가 되면 배포한다. master 브랜치에 있는 것을 배포하는 것으로 정의했으므로 먼저 release 브랜치를 master로 merge한다. 그리고 나중에 이 버전을 찾기 쉽도록 태그를 만들어 지금 master가 가리키는 커밋을 가리키게 한다. 그리고 release 브랜치를 develop 브랜치에 merge하고 다음에 배포할 때 release 브랜치에서 해결한 버그가 적용되도록 한다.</p>
+
+<p>먼저 처음 두 단계, master에 merge하고 tag를 단다:</p>
+
+<pre class="prettyprint"><code>$ git checkout master
+Switched to branch &#39;master&#39;
+$ git merge --no-ff release-1.2
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2</code></pre>
+
+<p>release 브랜치로 해야 할 일을 끝냈고 미래를 위해 tag도 달았다. tag를 달 때 <code>-s</code>나 <code>-u</code> 옵션을 주고 암호화 알고리즘을 이용해서 서명할 수도 있다.</p>
+
+<p>그리고 develop 브랜치에 다시 merge해서 release 브랜치에서 수정한 것이 앞으로도 계속 유지되게 한다:</p>
+
+<pre class="prettyprint"><code>$ git checkout develop
+Switched to branch &#39;develop&#39;
+$ git merge --no-ff release-1.2
+Merge made by recursive.
+(Summary of changes)</code></pre>
+
+<p>버전 넘버를 수정했기 때문에 여기서 merge할 때에는 충돌이 날 확률이 높다. 충돌이 나면 수정해서 커밋한다.</p>
+
+<p>이제 진짜로 배포했기 때문에 release 브랜치는 더는 필요 없다. 삭제한다:</p>
+
+<pre class="prettyprint"><code>$ git branch -d release-1.2
+Deleted branch release-1.2 (was ff452fe).</code></pre>
+
+<h4>hotfix 브랜치</h4>
+
+<pre class="prettyprint"><code>갈라져 나온 브랜치: master
+다시 merge할 브랜치: develop, master
+브랜치 이름 규칙: hotfix-*</code></pre>
+
+<p><img alt="hotfix branches" src="/articles/2011/a-successful-git-branching-model/hotfix-branches.png"></img></p>
+
+<p>미리 계획을 세워두지 않는다는 점만 빼면 hotfix 브랜치도 새로운 배포를 준비하는 것이기 때문에 release 브랜치와 비슷하다. 이것은 이미 배포한 운영 버전에 생긴 문제를 해결하기 위해 만든다. 운영 버전에 생긴 치명적인 버그는 즉시 해결해야 하기 때문에 문제가 생기면 master 브랜치에 만들어 둔 tag로부터 hotfix 브랜치를 만든다.</p>
+
+<p>그리고 버그를 잡는 사람이 일하는 동안에도 다른 사람들은 develop 브랜치에서 하던 일을 계속 할 수 있다.</p>
+
+<h5>hotfix 브랜치 만들기</h5>
+
+<p>hotfix 브랜치는 master 브랜치에서 만든다. 예를 들어 현재 운영 버전이 1.2이고 심각한 버그가 발견됐다. develop 브랜치는 아직 불안정하기 때문에 hotfix 브랜치를 만들고 거기서 버그를 잡는다:</p>
+
+<pre class="prettyprint"><code>$ git checkout -b hotfix-1.2.1 master
+Switched to a new branch &quot;hotfix-1.2.1&quot;
+$ ./bump-version.sh 1.2.1
+Files modified successfully, version bumped to 1.2.1.
+$ git commit -a -m &quot;Bumped version number to 1.2.1&quot;
+[hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
+1 files changed, 1 insertions(+), 1 deletions(-)</code></pre>
+
+<p>브랜치를 만들고 버전 넘버를 바꾸는 것을 잊으면 안 된다!</p>
+
+<p>버그를 해결하고 나서 커밋한다. 한두 개의 커밋으로 해결한다:</p>
+
+<pre class="prettyprint"><code>$ git commit -m &quot;Fixed severe production problem&quot;
+[hotfix-1.2.1 abbe5d6] Fixed severe production problem
+5 files changed, 32 insertions(+), 17 deletions(-)</code></pre>
+
+<h5>hotfix 브랜치 마치기</h5>
+
+<p>버그를 잡았으면 다시 master에 merge하고 다시 develop 브랜치에도 merge해야 한다. 그래야 다음에 배포할 때도 포함된다. release 브랜치를 마치는 방법과 같다.</p>
+
+<p>먼저 master에 merge하고 tag를 단다:</p>
+
+<pre class="prettyprint"><code>$ git checkout master
+Switched to branch &#39;master&#39;
+$ git merge --no-ff hotfix-1.2.1
+Merge made by recursive.
+(Summary of changes)
+$ git tag -a 1.2.1</code></pre>
+
+<p>이때에도 <code>-s</code>나 <code>-u</code> 옵션으로 tag에 서명할 수 있다.</p>
+
+<p>그리고 develop에도 merge한다:</p>
+
+<pre class="prettyprint"><code>$ git checkout develop
+Switched to branch &#39;develop&#39;
+$ git merge --no-ff hotfix-1.2.1
+erge made by recursive.
+(Summary of changes)</code></pre>
+
+<p>만약 아직 release 브랜치가 삭제되지 않고 있다면 develop 브랜치가 아니라 release 브랜치에 merge한다. release 브랜치가 완료되면 결국 develop 브랜치에 merge될 것이다. 그런데 develop 브랜치도 즉시 해결해야 하면 release 브랜치가 끝날 때까지 기다리지 말고 develop 브랜치에 즉시 merge한다. 문제가 생기지 않도록 조심스럽게 merge한다. </p>
+
+<p>이제 이 임시 브랜치를 삭제한다:</p>
+
+<pre class="prettyprint"><code>$ git branch -d hotfix-1.2.1
+Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
+
+<h2>결론</h2>
+
+<p>이 모델은 전혀 새로운 게 아니다. 이 모델이 제시하는 그림은 내가 프로젝트를 할 때 정말 유용했다. 팀원 모두 머릿속에 같은 그림을 그리고 일할 수 있다. 이 모델은 팀이 브랜치와 배포 프로세스를 이해하고 공유 개발할 수 있도록 도와준다.</p>
+
+<p><a href="http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf">고품질 PDF 버전</a>도 올려 두었으니 언제든지 볼 수 있도록 벽에 붙여두면 좋다. </p>
+
+<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:refs</title>
+    <link href="http://dogfeet.github.com/articles/2011/git-refs.html" />
+    <updated>Fri Dec 02 2011 09:00:00 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/git-refs.html</id>
+    <content type="html">
+      <p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
+
+<p><img alt="heading images" src="/articles/2011/git.png"></img></p>
+
+<p>git은 항상 Snapshot단위로 저장한다. 커밋하면 Snapshot을 저장하는 것이고 이 때 SHA 키가 발급된다. SHA가 Snapshot을 식별하는 유일한 식별자다. branch나 태그처럼 Snapshot을 식별하는 방법은 결국 SHA 값을 이용하는 것이다. Branch나 태그는 단순히 SHA 값을 가리키는 것 뿐이다.</p>
+
+<p>SHA값은 40자나 되고 이런 암호를 인간이 인식하고 식별하기란 어렵다. git은 인간이 인식할 수 있도록 몇가지 방법 제공한다. 이 글은 각 Snapshot을 식별하는 방법을 설명한다. 아직 git에 대한 공부를 시작하지 않았다면 당장 <a href="/articles/2011/progit.html">progit</a>를 읽기 시작하라</p>
+
+<p>이 글에서는 SHA값을 가리키는 방법 그리고 이 방법들로 어떤 일들을 할 수 있는지 살펴본다.</p>
+
+<h2>Single Commit</h2>
+
+<p>먼저 하나의 커밋을 표현하는 방법들을 알아보자. 커밋 하나를 질의하는 것인지 커밋 여러개를 질의하는 것인지는 명령어마다 다르다. 먼저 커밋 하나를 질의하는 방법을 살펴보자.</p>
+
+<p>커밋하나를 질의하는 명령어로 <code>git show</code> 명령을 사용한다.</p>
+
+<h3>full SHA</h3>
+
+<p><code>1c3618887afb5fbcbea25b7c013f4e2114448b8d</code>, 생성된 SHA 값은 이렇게 생겼다. 이 값이 기본이고 다른 refs는 모두 이 SHA 값을 가리키는 것 뿐이다.</p>
+
+<h3>short SHA</h3>
+
+<p>기본적으로 7자가 사용된다. 위 SHA 값에 적용하면 <code>1c36188</code>이다:</p>
+
+<pre class="prettyprint"><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d</code></pre>
+
+<p>라고 해도 되지만:</p>
+
+<pre class="prettyprint"><code>git show 1c36188</code></pre>
+
+<p>이렇게 해도 결과는 같다. short SHA는 저장소에서 식별할 수 있는 만큼 사용되며 거대한 리눅스 커널 프로젝트도 겨우 12자를 사용한다.</p>
+
+<h3>Branch</h3>
+
+<p>Branch도 결국 특정 커밋을 가리키는 것이다. master Branch가 <code>1c36188</code> 커밋을 가리키고 있다면 <code>git show master</code>와 <code>git show 1c36188</code>는 똑 같다.</p>
+
+<h3>HEAD</h3>
+
+<p>HEAD도 마찬가지다. <code>git show HEAD</code>하면 HEAD가 가리키는 snapshot 정보를 볼 수 있다.</p>
+
+<h3>Tag</h3>
+
+<p>이미 만들어진 tag는 다음과 같이 확인할 수 있다.</p>
+
+<pre class="prettyprint"><code>$ git tag
+v0.1
+v1.3</code></pre>
+
+<p>이름으로 검색하려면 다음과 같이 확인할 수 있다.</p>
+
+<pre class="prettyprint"><code>$ git tag -l &#39;v1.4.2.*&#39;
+v1.4.2.1
+v1.4.2.2
+v1.4.2.3
+v1.4.2.4</code></pre>
+
+<h4>Lightweight Tag</h4>
+
+<p>Lightweight Tag는 순수하게 특정 커밋을 가리키는 것 뿐이다. <code>git tag mytag</code>이라고 실행하면 현재 HEAD가 가리키는 커밋을 가리키는 mytag라는 Tag가 만들어진다. <code>git show mytag</code>명령으로 언제 어디서든지 mytag가 가리키는 커밋 정보를 확인할 수 있다.</p>
+
+<h4>Annotated Tag</h4>
+
+<p>Lightweight Tag처럼 특정 커밋을 가리키는 데다가 추가 정보를 더해 저장하는 것이다. Tag를 만든 사람의 이름과 email, Tag를 만든 날짜, Tag 메시지 그리고 GPG 서명도 할 수 있다. tag를 만들 때 <code>-a, -s, -m</code>을 사용하여 만드는데 여기서는 생략한다.</p>
+
+<h3>계통</h3>
+
+<p>특정 커밋을 기준으로 계통관계를 표시할 수 있다.</p>
+
+<p>커밋 히스토리가 다음과 같을 때:</p>
+
+<pre class="prettyprint"><code class="language-text">*   4f2b862 - (HEAD, dev) Merge branch &#39;issue2&#39; into dev
+|\
+| * 3a6714f - (issue2) It sucks again
+|/
+* 41947a1 - It sucks
+*   3b0b17d - Merge branch &#39;issue1&#39; into dev
+|\
+| * 3b1bfc5 - (issue1) Add issue1
+|/
+* 40b4870 - (master) Initial Commit</code></pre>
+
+<h4>&#39;~&#39;</h4>
+
+<p>HEAD를 기준으로 이전 커밋을 보려면 <code>HEAD~</code>를 사용한다. 예를 들어 <code>git show HEAD~</code>라고 실행하면 <code>41947a1</code>에 대한 정보를 보여준다.</p>
+
+<p><code>~1</code>이나 <code>~2</code>처럼 숫자를 명시하여 이전 커밋이나 이전의 이전 커밋을 나타낼 수 있다. 예를 들어 <code>git show HEAD~2</code>는 <code>3b0b17d</code>에 대한 정보를 보여준다. <code>git show HEAD~1</code>은 <code>git show HEAD~</code>의 결과와 똑같다.</p>
+
+<p>HEAD에만 사용할 수 있는 것이 아니다. git은 기본적으로 SHA값을 인식하는 것이지 Branch 이름이나 HEAD같은 포인터를 다루는 것이 아니다. 이 예제에서 HEAD와 dev가 같은 커밋을 가리키기 때문에 <code>HEAD~</code>와 <code>dev~</code>의 결과는 같고 심지어 <code>4f2b862~</code>의 결과도 같다. </p>
+
+<h4>&#39;^&#39;</h4>
+
+<p>계통을 표시하는 다른 방법으로 <code>^</code>도 있다. 이 것은 <code>~</code>과 다르게 수평적 조상을 표현하는 방법이다. 사실 <code>HEAD~</code>와 <code>HEAD^</code>의 결과는 같다. 수직적 조상을 표현하는 <code>~</code>와 수평적 조상을 표시하는 <code>^</code>는 똑같이 이전 커밋을 나타낸다.</p>
+
+<p>하지만 <code>HEAD~2</code>과 <code>HEAD^2</code>는 다르다. <code>HEAD~2</code>는 <code>3b0b17d</code>를 나타내지만 <code>HEAD^2</code>는 <code>3a6714f</code>를 가리킨다. <code>^</code>는 이전 커밋이 두 개 이상인 merge 커밋에만 사용하는 것이 좋다.</p>
+
+<p><code>~</code>과 <code>^</code>을 조합하여 복잡한 표현도 가능하다. 이 예제에서 <code>HEAD~^</code>는 <code>HEAD~2</code>가 가리키는 <code>3b0b17d</code>를 가리킨다. 이와 같은 방법으로 <code>HEAD~2^2</code>는 <code>3b1bfc5</code>를 가리킨다.</p>
+
+<p><code>^</code>는 이전 커밋이 두 개 이상일 때에만 의미있기 때문에 merge 커밋에만 사용한다.</p>
+
+<h3>reflog</h3>
+
+<p>reflog로그는 일반적인 커밋 히스토리와 다르다. reflog는 로컬에만 남는 log이고 push해서 다른 사람과 공유할 수 없다. 즉, 이제 막 클론한 저장소라면 현재 HEAD가 가리키고 있는 단 하나의 reflog만 존재할 것이기 때문에 reflog는 클론하고 시간이 흐른 경우에만 유용하다.</p>
+
+<p>reflog는 단순히 HEAD가 가리켰던 히스토리이다. 위에서 사용한 히스토리에서 <code>git reflog</code>를 실행하면 다음과 같이 나온다:</p>
+
+<pre class="prettyprint"><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
+41947a1 HEAD@{1}: checkout: moving from issue2 to dev
+3a6714f HEAD@{2}: commit: It sucks again
+41947a1 HEAD@{3}: checkout: moving from dev to issue2
+41947a1 HEAD@{4}: commit: It sucks
+3b0b17d HEAD@{5}: merge issue1: Merge made by recursive.
+40b4870 HEAD@{6}: checkout: moving from master to dev
+40b4870 HEAD@{7}: checkout: moving from issue1 to master
+3b1bfc5 HEAD@{8}: commit: Add issue1
+40b4870 HEAD@{9}: checkout: moving from master to issue1
+40b4870 HEAD@{10}: commit (initial): Initial Commit</code></pre>
+
+<p>reflog는 HEAD나 브랜치가 가리키는 커밋이 바뀔때마다 기록된다. 특정 커밋을 Checkout하면 HEAD가 가리키는 커밋이 바뀌기 때문에 reflog가 남는다. </p>
+
+<p><code>git show HEAD@{4}</code>는 <code>41947a1</code>에 대한 정보를 보여준다. HEAD뿐만 아니라 Branch에도 사용할 수 있다. <code>git reflog --all</code> 명령을 실행하면 같은 형식으로 branch 기준으로 보여준다:</p>
+
+<pre class="prettyprint"><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
+3a6714f refs/heads/issue2@{0}: commit: It sucks again
+41947a1 refs/heads/dev@{1}: commit: It sucks
+3b0b17d refs/heads/dev@{2}: merge issue1: Merge made by recursive.
+3b1bfc5 refs/heads/issue1@{0}: commit: Add issue1
+40b4870 refs/heads/dev@{3}: branch: Created from HEAD</code></pre>
+
+<p>HEAD와 마찬가지로 <code>git show master@{0}</code> 명령을 사용할 수 있다.</p>
+
+<p>만약 <code>git reset --hard HEAD~1</code>라고 명령을 실행해서 브랜치가 HEAD~1을 가리키도록 했다. 그럼 다음과 같이 reflog가 남는다:</p>
+
+<pre class="prettyprint"><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
+41947a1 refs/heads/dev@{0}: HEAD~1: updating HEAD
+4f2b862 refs/heads/dev@{1}: merge issue2: Merge made by recursive.
+41947a1 refs/heads/dev@{2}: commit: It sucks
+3b0b17d refs/heads/dev@{3}: merge issue1: Merge made by recursive.
+3b1bfc5 refs/heads/issue1@{0}: commit: Add issue1
+40b4870 refs/heads/dev@{4}: branch: Created from HEAD</code></pre>
+
+<p>이전 커밋으로 reset했기 때문에 <code>4f2b862</code>에 서 수정한 내용은 없어진다. 이 예제에서는 merge한 것이 취소된다. 그런데 잘못한 행동이라고 깨달았다. SHA 값을 어디 적어두고 다니는 것도 아니고 다시 돌릴 방법이 없다. 이 예제는 merge를 돌린 것이라 다시 merge해도 되지만 수정사항이 담긴 커밋이면 잃어 버리게 된다. </p>
+
+<p>이 때 <code>git reflog --all</code> 명령을 실행시켜서 dev 브랜치가 이전에 가르키던 SHA 값을 찾아서 다시 <code>git reset --hard 4f2b862</code>라고 실행해서 복원할 수 있다.</p>
+
+<p>즉, reflog는 로컬 저장소에서 무슨 짓을 했는지 추적해서 문제를 해결하는데 도움이 된다. <code>git log</code>는 커밋 히스토리를 보여주지만 <code>git reflog</code>는 각 포인터들이 가리켰던 커밋들을 보여준다.</p>
+
+<p>reflog가 특이한점은 SHA 값을 인식하는 것이 아니라는 것이다. 그래서 <code>git show ca53436@{0}</code>은 에러가 난다. 꼭 HEAD와 branch 이름만 사용할 수 있다.</p>
+
+<p><code>HEAD@{yesterday}</code> 식으로 순서가 아니라 시간을 명시할 수도 있는데 시간에 관한 용법은 나중에 추가하겠다.</p>
+
+<h2>Range</h2>
+
+<p><code>git show</code> 명령처럼 인자로 넘긴 커밋을 single 커밋으로 취급하는 명령어들도 있지만 <code>git log</code>처럼 집합으로 취급하는 명령어들도 있다. <code>git log master</code>와 같이 명령어를 실행하면 master 브랜치와 그 히스토리를 순서대로 모두 보여준다. 하지면 <code>git show</code>는 해당 커밋에 대한 정보만 보여준다.</p>
+
+<p><code>git log</code> 명령이 인식하는 것도 결국 SHA 값이라는 것을 기억해야 한다. master, HEAD, tag등의 포인터를 인자로 넘겨도 결국 git이 인식하는 것은 그 포인터가 가리키는 SHA 값이다. 그래서 SHA값을 직접 사용해도 된다.</p>
+
+<p><img alt="예제" src="http://progit.org/figures/ch6/18333fig0601-tn.png"></img></p>
+
+<p>progit의 예제</p>
+
+<h3>Double Dot</h3>
+
+<p>&#39;Double Dot&#39;은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
+
+<pre class="prettyprint"><code>$ git log master..experiment
+D
+C
+
+$ git log experiment..master
+F
+E</code></pre>
+
+<p>한쪽을 생략하면 HEAD가 사용된다. 즉, <code>master..</code>는 <code>master..HEAD</code>와 같다.</p>
+
+<h3>Tripple Dot</h3>
+
+<p>Tripple Dot은 서로 다른 커밋만을 보여준다. 다음 예제를 보자:</p>
+
+<pre class="prettyprint"><code>$ git log master...experiment
+F
+E
+D
+C</code></pre>
+
+<p><code>--left-right</code> 옵션을 추가하면 어느쪽에 속하는 것인지도 보여준다.</p>
+
+<pre class="prettyprint"><code>$ git log --left-right master...experiment
+&lt;F
+&lt;E
+&gt;D
+&gt;C</code></pre>
+
+<h3>-not or <code>^</code></h3>
+
+<p>이 옵션은 세 개 이상의 브랜치를 서로 비교해볼 때 유용하다. <code>git log refA refB -not refC</code>는 <code>git log refA refB ^refC</code>와 같고 refA와 refB에는 있지만 refC에는 없는 커밋들을 보여준다.</p>
+
+<h2>참고</h2>
+
+<ul><li><a href="/articles/2011/progit.html">progit</a></li></ul>
+    </content>
+  </entry>
+  <entry>
+    <title>Bash-it</title>
+    <link href="http://dogfeet.github.com/articles/2011/bash-it.html" />
+    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/bash-it.html</id>
+    <content type="html">
+      <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+
+<p><img alt="bash-it" src="/articles/2011/bash-it.sean-shell.png"></img></p>
+
+<p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다. </p>
+
+<ul><li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li><li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li><li>plugin : bash 명령어를 확장해준다(그러니까 명령어에 해당하는 함수들이다).</li><li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li><li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li></ul>
+
+<p>각 요소들은 apache2 설정처럼 available/enabled 디렉토리 구조로 관리하기 때문에 관리하기 편하다.</p>
+
+<p>나는 bash-it에 들어 있는 것을 대부분 안쓰지만 그냥 다 켜놓고 쓴다. 그리고 혹시 필요한 게 생기면 bash-it 관례에 내가 맞추어 쓴다.</p>
+
+<p>이 것은 다시 말해서 revans님이 정리하고 관리하는 convention이다. bash-it에 익숙해지면 꽤 편리하다.</p>
+
+<h2>completion</h2>
+
+<p>다음과 같은 completion 코드가 들어 있다. 해당 도구를 사용한다면 한번쯤은 들어봤을 만한 그 completion 코드다. 장점은 한번에 설치된다는 것:</p>
+
+<pre class="prettyprint"><code>brew.completion.bash
+gem.completion.bash
+git.completion.bash
+git_flow.completion.bash
+rake.completion.bash
+ssh.completion.bash</code></pre>
+
+<h2>alias</h2>
+
+<p>다음과 같은 도구에 대한 alias들이 define 돼있다:</p>
+
+<pre class="prettyprint"><code>bundler.aliases.bash
+emacs.aliases.bash
+general.aliases.bash
+git.aliases.bash
+heroku.aliases.bash
+hg.aliases.bash
+homebrew.aliases.bash
+osx.aliases.bash
+rails.aliases.bash
+textmate.aliases.bash
+vim.aliases.bash</code></pre>
+
+<h3>theme</h3>
+
+<p>이 테마 기능도 굉장히 유용하다. 여러가지 테마가 있는데 내가 사용하고 있는 <code>zork</code> 테마의 경우 다음과 같이 보여준다:</p>
+
+<pre class="prettyprint"><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
+$ git st ...</code></pre>
+
+<ul><li>±  - 이 것은 git을 나타내는 기호다. 왜 Git icon인지 mySysGit을 설치해보면 안다. HG는 <code>☿</code>, SVN은 <code>⑆</code>, 그 외는 <code>○</code>을 보여준다.</li><li>✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li></ul>
+
+<h2>plugin</h2>
+
+<h3>nvm</h3>
+
+<p>creationix님의 <a href="https://github.com/creationix/nvm">nvm</a>이 .bash-it에 포함돼 있다. 그러니까 .bash-it만 설치하면 nvm을 별도로 설치할 필요 없다. </p>
+
+<p>게다가 추가된 기능도 있다. original nvm에는 없는 명령 sync가 추가됐고 마지막 안정버전과 개발버전을 가르키는 stable과 latest가 기본 alias로 추가됐다.</p>
+
+<p><code>nvm sync</code> 명령을 실행하면 nodejs.org의 디렉토리 목록을 가져와서 어떤 버전이 있는지 로컬에 목록을 만들고 각 0.5 같은 0.홀수 버전은 latest로 0.짝수 버전은 stable로 가르킨다. 그리고 <code>nvm ls</code>를 실행할 때마다 로컬에 캐시된 결과와 현재 상태를 보여준다. </p>
+
+<p>내 컴퓨터에서 실행한 <code>nvm ls</code>의 결과:</p>
+
+<pre class="prettyprint"><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
+v0.1.101  v0.1.17   v0.1.24   v0.1.31   v0.1.94   v0.2.1    v0.3.1    v0.3.8    v0.4.2    v0.4.8-rc v0.5.4    v0.6.1
+v0.1.102  v0.1.18   v0.1.25   v0.1.32   v0.1.95   v0.2.2    v0.3.2    v0.4      v0.4.3    v0.4.9    v0.5.5
+v0.1.103  v0.1.19   v0.1.26   v0.1.33   v0.1.96   v0.2.3    v0.3.3    v0.4.0    v0.4.4    v0.5.0    v0.5.6
+v0.1.104  v0.1.20   v0.1.27   v0.1.90   v0.1.97   v0.2.4    v0.3.4    v0.4.1    v0.4.5    v0.5.1    v0.5.7
+v0.1.14   v0.1.21   v0.1.28   v0.1.91   v0.1.98   v0.2.5    v0.3.5    v0.4.10   v0.4.6    v0.5.10   v0.5.8
+v0.1.15   v0.1.22   v0.1.29   v0.1.92   v0.1.99   v0.2.6    v0.3.6    v0.4.11   v0.4.7    v0.5.2    v0.5.9
+stable:     v0.6.1
+latest:     v0.6.1
+current:    v0.6.1
+# use &#39;nvm sync&#39; to update from nodejs.org</code></pre>
+
+<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:git-helpers</title>
+    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
+    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
+    <content type="html">
+      <p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
+
+<h2>git alias</h2>
+
+<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+
+<h3>단순 약어</h3>
+
+<pre class="prettyprint"><code># Abbreviations
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.unstage &#39;reset HEAD --&#39;
+git config --global alias.cs &quot;commit -s&quot;</code></pre>
+
+<p><code>commit -s</code>은 signed commit인데 </p>
+
+<h3>git log</h3>
+
+<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+
+<pre class="prettyprint"><code># Pimp-out log:
+# From: http://www.jukie.net/bart/blog/pimping-out-git-log
+git config --global alias.lg &quot;log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39;&quot;</code></pre>
+    </content>
+  </entry>
+  <entry>
+    <title>progit</title>
+    <link href="http://dogfeet.github.com/articles/2011/progit.html" />
+    <updated>Wed Nov 30 2011 09:00:00 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/progit.html</id>
+    <content type="html">
+      <p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다.
+시작한지 꽤 됐는데 진도가 느립니다. <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에 6장까지 번역을 완료했습니다.
+계획과 많은 차이가 있지만 이제야 좀 정리가 돼서 일부라도 공개합니다.</p>
+
+<p><img alt="progit" src="/articles/2011/progit/progit.book-big.jpg"></img></p>
+
+<p>6장까지 번역한 것을 빌드해서 올려 두었습니다.
+<a href="http://dogfeet.github.com/progit/progit.ko.epub">epub</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.mobi">mobi</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.pdf">pdf</a>, 
+<a href="http://dogfeet.github.com/progit/progit.ko.html">html</a> 
+포멧으로 올려 두었으니 필요하신 것으로 받아서 보세요.</p>
+
+<p><code>Git</code>을 구글 번역기에 집어넣으면 <code>힘내</code>라고 번역해 줍니다. 
+번역하는 동안에 구글 번역기의 도움으로 힘내고 있습니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바랍니다.</p>
+
+<h3>힘내</h3>
+
+<p><img alt="힘내" src="/articles/2011/progit/git-.png"></img></p>
+    </content>
+  </entry>
+  <entry>
+    <title>Docpad</title>
+    <link href="http://dogfeet.github.com/articles/2011/docpad.html" />
+    <updated>Sat Nov 26 2011 01:06:05 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/docpad.html</id>
+    <content type="html">
+      <p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
+
+<p><img alt="Docpad" src="/articles/2011/docpad.png"></img></p>
+
+<h2>Skeleton</h2>
+
+<p>docpad는 일종의 사이트 템플릿을 제공하는데 그걸 skeleton이라고 부른다. docpad에서 만든 skeleton은 다음의 세 개다.</p>
+
+<ul><li><a href="https://github.com/balupton/kitchensink.docpad">Kitchensink Skeleton</a> - docpad 2부터 기본 skeleton. bootstrap ui로 된 예제</li><li><a href="https://github.com/balupton/canvas.docpad">Canvas Skeleton</a> - 어제 배포된 따끈한 empty skeleton이다. </li><li><a href="https://github.com/balupton/balupton.docpad">Balupton Skeleton</a> - docpad 1때의 기본 skeleton balupton님의 blog 소스</li></ul>
+
+<h3>Kitchensink Skeleton</h3>
+
+<p>balupton님이 docpad v2.0를 배포하면서 kitchensink.docpad라는 예제를 배포한다. 이 걸 띄우는 법은 간단하다.</p>
+
+<p>일단 coffee script를 설치하고:</p>
+
+<pre class="prettyprint"><code>$ npm install -g coffee-script </code></pre>
+
+<p>docpad를 설치한다. -g는 global 영역에 설치하는 것으로 -g 옵션을 줘야 명령으로 실행할 수 있다:</p>
+
+<pre class="prettyprint"><code>$ npm install -g docpad</code></pre>
+
+<p><code>kitchensink.docpad</code>를 클론한다:</p>
+
+<p>그리고 해당 디렉토리로 이동하고 나서 <code>docpad run</code>을 실행하고 브라우저로 들어간다. 다른 예제들은 사용법이 같으므로 생략한다.</p>
+
+<h2>Custom Plugin</h2>
+
+<p>Docpad는 blog generator가 아니기 때문에 blog처럼 사용하려면 관련된 기능을 직접 만들어 사용해야 한다.</p>
+
+<p>Plugin에서 require를 통해 underscore나 moment같은 다른 모듈을 사용하는 경우에는 package.json을 꼭 작성해야 한다. package.json의 dependencies 블럭에 의존 모듈을 추가하지 않으면 모듈을 매번 수동으로 설치해야 한다.  package.json이 있으면 docpad는 자동을 모듈을 설치한다.</p>
+
+<h3>markdown-prettify Plugin</h3>
+
+<p>markdown에 첨부한 코드가 highlight되도록 plugin을 만들었다. 원래 markdown 규약상 다음과 같이 html로 변환된다:</p>
+
+<pre class="prettyprint"><code class="language-html">&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p>이 것을 다음과 같이 변환한다:</p>
+
+<pre class="prettyprint"><code class="language-html">&lt;pre class=&quot;prittyprint&quot;&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p>google prettify는 특별히 언어를 명시하지 않아도 자동으로 찾는다. 완벽하지는 않지만 편리하다.</p>
+
+<p>명시할 수도 있다. 코드 블럭 첫줄에 <code>:::java</code>라고 작성하면 <code>:::java</code>은 없애고 다음과 같이 렌더링한다:</p>
+
+<pre class="prettyprint"><code class="language-html">&lt;pre class=&quot;prittyprint&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p>이 모습 낮설어 보여도 <a href="http://dev.w3.org/html5/spec-author-view/the-code-element.html">w3c 권장사항</a>이다. html5에서 syntax highlight는 이렇게 해야 한다. 지원하는 언어는 <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">prettify 페이지</a>에서 확인한다.</p>
+
+<p>&#39;:::&#39;말고 쉘 스크립트들을 위해서 &#39;#!&#39;도 추가했다. <code>#!/usr/bin/env bash</code>을 첫줄로 시작하면 다음과 같이 랜더링한다. 이건 삭제하지 않는다:</p>
+
+<pre class="prettyprint"><code class="language-html">&lt;pre class=&quot;prittyprint&quot;&gt;&lt;code class=&quot;language-bsh&quot;&gt;#!/usr/bin/env bash...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p><code>#!/bin/bash</code>라고 써도 되고 <code>#!/usr/bin/bash</code>라고 써도 된다.</p>
+
+<p>그리고 prettify하지 않은 코드를 위해 &#39;text&#39;와 &#39;plain&#39;도 추가했다. <code>:::text</code>나 <code>:::plain</code>을 첫줄에 넣어주면 다음과 같이 원래대로 렌더링한다.</p>
+
+<pre class="prettyprint"><code class="language-html">&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<h3>Tool Plugin</h3>
+
+<p>기본적으로 Template Engine이기 때문에 다양한 function을 사용할 수 없다. nodejs의 다양한 api들을 template에서 사용하고 싶은 것이다. 나는 CoffeeKup이외의 지식이 빈약하기 때문에 다른 Template Engine에 관한 예제는 올리지 않는다.</p>
+
+<h4>@tool.moment</h4>
+
+<p>CoffeeKup의 경우에 Tempate Data에 함수를 담아 넘기고 그 함수를 사용할 수 있다. Plugin으로 Template Data에 momentjs를 넘기고 그 것을 사용하는 예제를 보자.</p>
+
+<p>다음은 ToolPlugin 소스다. 나는 docpad Plugin이 아닌 docpad site plugin으로 넣었다. 기본적으로 DocpadPlugin 클래스를 상속받아 사용한다는 점에서 구조는 똑같다. 다만 위치가 docpad site/plugins/ 밑에 들어가는 것만 다르다.</p>
+
+<pre class="prettyprint"><code># Requires
+DocpadPlugin = require &#39;docpad/lib/plugin.coffee&#39;
+moment = require &#39;moment&#39;
+
+# Define Plugin
+class ToolPlugin extends DocpadPlugin
+  # Plugin Name
+  name: &#39;totaldocuments&#39;
+
+  # Ammend our Template Data
+  renderBefore: ({documents, templateData}, next) -&gt;
+    templateData[ &#39;tool&#39; ] = tool =
+      moment: moment
+
+    # Continue onto the next plugin
+    next()
+
+# Export Plugin
+module.exports = ToolPlugin</code></pre>
+
+<p>Template 페이지에서 이 것을 이용한 소스를 만들면 다음과 같다.</p>
+
+<pre class="prettyprint"><code>dateWrapper = @tool.moment document.date
+dateWrapper.format &#39;MMM DD&#39; #ex) JAN 01</code></pre>
+
+<h4>@tool.summary</h4>
+
+<p>index 페이지에서는 글들의 summary만 보여주고 싶었다. docpad는 부가기능이 별로 없기 때문에 고민이 좀 됐는데 의외로 간단히 해결했다.</p>
+
+<p>summary부터 정의해보자. 이 걸 생각해내는데 오래걸렸다. 좋은 아이디어가 없었는데 의외로 가까운데 있었다. 각 글의 첫 heading tag(/h[123456]/)까지가 summary로 사용된다. 그러니까 글을 쓸때 첫 heading tag가 summary이고 heading tag가 아예 존재하지 않으면 문서 전체를 summary로 사용한다:</p>
+
+<pre class="prettyprint"><code class="language-markdown">
+Here is summary
+
+## My heading</code></pre>
+
+<p>index 페이지에서 summary를 추출한다. 다음 예제는 CoffeeKup이다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">@tool.summary document.contentRendered</code></pre>
+
+<p>html을 잘라내는 것이기 때문에 content가 아니라 contentRendered 값을 가져다 사용해야 한다.</p>
+
+<h3>authors Plugin</h3>
+
+<p>authors Plugin인 저자를 소개하는 페이지를 만들고 다른 문서의 author 프로퍼티에 저자 이름을 명시하면 자동으로 그 페이지로 링크해주는 것이다. <code>/src/documents/authors/</code>안에 소개 페이지를 다음과 같이 만든다.</p>
+
+<pre class="prettyprint"><code>--- yaml
+name= &#39;ahmooge&#39;
+---
+
+blahblah</code></pre>
+
+<p>docpad는 이 문서를 처리해서 <code>{name:&#39;ahmooge&#39;, url:&#39;/authors/ahmooge.html&#39;, content: &#39;blahblah..&#39;, contentRendered: &#39;&lt;span&gt;blahblah&lt;/span&gt;&#39;}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 @authors.data 객체에 담아준다. &#39;Kim&#39;라는 document1와 &#39;Park&#39;라는 document2가 있으면 @authors.data에는 <code>{&quot;Kim&quot;: document1, &quot;Park&quot;:document2}</code>라는 객체가 들어가게 된다. </p>
+
+<p>그럼 CoffeeKup template에서 사용해보자:</p>
+
+<pre class="prettyprint"><code> a href: @authors.data[ @document.author ].url</code></pre>
+
+<p>예외처리는 생략함.</p>
+
+<p>CoffeeKup은 <code>with</code> 구문을 이용해서 scope variable을 확장할 수 있는 파라미터 locals와 hardcoded를 지원하지만 아직 docpad는 지원하지 않기 때문에 template data scope을 이용했다.</p>
+
+<h2>TroubleShooting</h2>
+
+<h3>ENOENT</h3>
+
+<p>docpad를 실행했는데 다음과 같은 에러가 발생하면:</p>
+
+<pre class="prettyprint"><code>Error: Command failed: npm ERR! error installing coffee-script@1.1.3 Error: ENOENT, no such file or directory &#39;/Users/pismute/dogfeet/dogfeet.github.com/node_modules/coffee-script/package.json&#39;</code></pre>
+
+<p>수동으로 패키지를 설치한다. 원래 docpad는 자동으로 설치하고 update해줄 수 있다고 하는데 뭔가 잘 안될 때가 있다:</p>
+
+<pre class="prettyprint"><code>npm install docpad
+npm install coffee-script</code></pre>
+
+<p>이미 docpad랑 coffee-script 설치한 것 같은데 왜 또 설치해야하지? 라는 생각이 들 수 있다. 이유는 먼저 설치한 것은 npm global 영역에 설치한 것이고 이것은 local에서 설치하는 것이다. global 영역에 설치해야 command로 실행할 수 있다.</p>
+
+<p>global 영역에서 설치한 버전을 local에서 사용하게 할 수도 있다. <code>npm link</code> 명령어를 살펴봐라. </p>
+
+<p>npm은 블로그를 이전하고 나서 파볼 계획이다. </p>
+    </content>
+  </entry>
+  <entry>
+    <title>CoffeeKup &lt;☕/&gt;</title>
+    <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
+    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/coffee-kup.html</id>
+    <content type="html">
+      <p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+
+<p><img alt="CoffeeScript" src="/articles/2011/coffeekup.png"></img></p>
+
+<h2>CoffeeKup</h2>
+
+<p>CoffeeKup을 이해하기 위해서 먼저 준비해야 할 것은 JavaScript와 CoffeeScript이다. CoffeeKup은 CoffeeScript 문법과 거의 똑같다. Jade가 Haml과 유사하게 만들면서 JavaScript가 아닌 것이 돼버렸지만 CoffeeKup은 coffeescript 문법과 정말 똑같다.</p>
+
+<p>먼저 JavaScript 공부하고 JavaScript에 익숙하다면 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>만 읽고 시작해도 된다.</p>
+
+<p>이제 일주일밖에 되지 않았지만 내가 생각하는 장단점은 다음과 같다.</p>
+
+<ul><li>장점: tag library 작성이 쉽다.</li><li>장점: templateData에 함수를 넣을 수 있기 때문에 plugin을 통해서 기능 확장이 쉽다. 물론 templateData이외 context도 필요할 것 같다.</li><li>단점: tag가 hierarchical하지 않은 dom구조를 작성하기 쉽지 않다. 물론 이렇게 작성하면 코드가 지저분해지기 때문에 안하는 것이 좋다.</li></ul>
+
+<h2>Hello World</h2>
+
+<p>우선 다음과 같이 coffeekup을 설치하고:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ npm install coffeekup -g</code></pre>
+
+<p>콘솔에 설치하는 것이 귀찮으면 그냥 <a href="http://coffeekup.org/">CoffeeKup</a>에서 실행해보는 것도 좋고 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>을 공부했다면 어렵지 않다.</p>
+
+<h2>함수</h2>
+
+<p>CoffeeKup의 Markup은 단순히 함수를 호출하는 것이기 때문에 정의되지 않은 함수는 호출할 수 없다. 이미 대부분의 html tag는 정의돼 있는 것 같지만 그 외의 것을 사용하는 경우에는 에러가 난다. 예를 들어, 다음과 같이 코드를 만들면 say를 정의하지 않았다고 에러가 난다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">say &#39;Hello World&#39;</code></pre>
+
+<p>say 함수를 만들면 더이상 에러가 나지 않는다:</p>
+
+<pre class="prettyprint"><code>say = (args) -&gt;
+  tag &#39;say&#39;, args
+
+say &#39;Hello World&#39;</code></pre>
+
+<p>여기서 <code>say &#39;Hello World&#39;</code>은 <code>tag &#39;say&#39;, &#39;Hello World&#39;</code>과 같다. tag는 정의되지 않은 xml tag가 필요할 때 사용할 수 있다. 예를 들어, <code>p &#39;Hello World&#39;</code>과 똑같은 표현을 tag로 하면 <code>tag &#39;p&#39;, &#39;Hello World&#39;</code>이다. 함수를 호출하는 것이라는 걸 기억해야 한다.</p>
+
+<p>함수라는 것은 배웠고 이제 그럼 인자는 어떻게 매핑되는 거지?라는 것이 궁금하다. 다음 예제를 보자:</p>
+
+<pre class="prettyprint"><code>say id: &#39;first&#39;, class: &#39;example&#39;, &#39;Hello World&#39;</code></pre>
+
+<p>say 함수의 args[0]에는 <code>{id: &#39;first&#39;, class: &#39;example&#39;}</code>라는 객체가 넘어가고 args[1]에는 &#39;Hello World&#39;가 넘어간다. 이를 이용해서 자신만의 함수를 작성해 사용할 수 있다.</p>
+
+<h3>Tag body</h3>
+
+<p>Tag body는 두 가지 방법으로 정의할 수 있다. 먼저 <code>title &#39;Hello World&#39;</code>은 다음과 같이 해석된다:</p>
+
+<pre class="prettyprint"><code>&lt;title&gt;Hello World&lt;/title&gt;</code></pre>
+
+<p>하지만 <code>title -&gt; &#39;Hello World&#39;</code>는 다음과 같이 해석된다:</p>
+
+<pre class="prettyprint"><code>&lt;title&gt;
+  Hello World
+&lt;/title&gt;</code></pre>
+
+<p>이 두 가지는 구현이 조금 다르다. 문법에서 보이듯이 전자는 &#39;Hello World&#39;라는 스트링이 인자로 넘어가는 거고 후자는 &#39;Hello World&#39;라는 스트링을 반환하는 함수가 넘어간다. JavaScript로 표현하면 <code>function(){return &#39;Hello World&#39;;}</code>같은 함수가 넘어가는 것이다. CoffeeKup은 다르게 해석해 주기 때문에 필요에 따라 선택해 사용한다.</p>
+
+<h3>#id.class</h3>
+
+<p>id와 class를 표현하는 방법은 두가지다 하나는 이미 설명대로 attribute를 기술하는 방법이 있고:</p>
+
+<pre class="prettyprint"><code>title id: &#39;myid&#39;, class: &#39;myclass&#39;</code></pre>
+
+<p>다른 하나는 css selector를 이용한 방법도 있다:</p>
+
+<pre class="prettyprint"><code>title &#39;#myid.myclass&#39;</code></pre>
+
+<p>단, 이 css selector는 첫 argument로 넘겨야한다. 다른 attribute가 더 있으면 &#39;,&#39; 뒤에 위의 방법대로 계속 추가할 수 있다:</p>
+
+<pre class="prettyprint"><code>title &#39;#myid.myclass&#39;, lang: &#39;ko&#39;</code></pre>
+
+<h2>Atom.xml</h2>
+
+<p>html5을 templating 예제는 <a href="http://coffeekup.org/">CoffeeKup</a>페이지에도 나온다 xml 예제를 보자 </p>
+
+<pre class="prettyprint"><code>homeUrl=&#39;http://dogfeet.github.com&#39;
+
+anEntry = (document) -&gt;
+  tag &#39;entry&#39;, -&gt;
+    tag &#39;title&#39;, document.title
+    tag &#39;link&#39;, href: &quot;#{homeUrl}#{document.url}&quot;
+    tag &#39;updated&#39;, document.date.toString()
+    tag &#39;id&#39;, &quot;#{homeUrl}#{document.url}&quot;
+    tag &#39;content&#39;, type: &#39;html&#39;, -&gt; document.contentRendered
+
+text &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;\n&#39;
+tag &#39;feed&#39;, xmlns: &#39;http://www.w3.org/2005/Atom&#39;, -&gt;
+  title &#39;dogfeet.github.com&#39;
+  tag &#39;link&#39;, href: &quot;#{homeUrl}/atom.xml&quot;, rel: &#39;self&#39;
+  tag &#39;link&#39;, href: homeUrl
+  tag &#39;updated&#39;, @site.date.toIsoDateString()
+  tag &#39;id&#39;, homeUrl
+  tag &#39;author&#39;, -&gt;
+    tag &#39;name&#39;, &#39;Changwoo Park&#39;
+    tag &#39;email&#39;, &#39;my@email&#39;
+
+  for document in @documents
+    anEntry document if 0 is document.url.indexOf &#39;/posts&#39;</code></pre>
+
+<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>
+    </content>
+  </entry>
+  <entry>
+    <title>Cake</title>
+    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
+    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
+    <content type="html">
+      <p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img alt="Cake" src="/articles/2011/cake.png"></img></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task &#39;say:hello&#39;, &#39;Description of task&#39;, -&gt;
+  console.log &#39;Hello World!&#39;</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option &#39;-e&#39;, &#39;--environment [ENVIRONMENT_NAME]&#39;, &#39;set the environment for `task:withDefaults`&#39;
+task &#39;task:withDefaults&#39;, &#39;Description of task&#39;, (options) -&gt;
+  options.environment or= &#39;production&#39;</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e &quot;development&quot; task:withDefaults</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require &#39;child_process&#39;
+task &#39;build&#39;, &#39;Build project from src/*.coffee to lib/*.js&#39;, -&gt;
+  exec &#39;coffee --compile --output lib/ src/&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr</code></pre>
+
+<p><code>{exec} = require &#39;child_process&#39;</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require(&#39;child_process&#39;).exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require &#39;fs&#39;
+{exec} = require &#39;child_process&#39;
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  &#39;content/scripts/statusbar&#39;
+  &#39;content/scripts/command/quickMacro&#39;
+  &#39;content/scripts/command/selectionTools/general&#39;
+]
+
+task &#39;build&#39;, &#39;Build single application file from source files&#39;, -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile &quot;src/#{file}.coffee&quot;, &#39;utf8&#39;, (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile &#39;lib/app.coffee&#39;, appContents.join(&#39;\n\n&#39;), &#39;utf8&#39;, (err) -&gt;
+      throw err if err
+      exec &#39;coffee --compile lib/app.coffee&#39;, (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink &#39;lib/app.coffee&#39;, (err) -&gt;
+          throw err if err
+          console.log &#39;Done.&#39;</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task &#39;minify&#39;, &#39;Minify the resulting application file after build&#39;, -&gt;
+  exec &#39;java -jar &quot;/home/stan/public/compiler.jar&quot; --js lib/app.js --js_output_file lib/app.production.js&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr</code></pre>
+
+<h2>참고</h2>
+
+<ul><li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li></ul>
+    </content>
+  </entry>
+</feed>
