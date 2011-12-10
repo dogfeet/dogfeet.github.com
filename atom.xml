@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>function 개발새발(){...}</title>
-  <link href="http://dogfeet.github.com/atom.xml" rel="self" />
-  <link href="http://dogfeet.github.com" />
-  <updated>2011-12-07T17:41:32Z</updated>
-  <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Changwoo Park</name>
-    <email>pismute@gmail.com</email>
-  </author>
-  <entry>
-    <title>A successful git branching model</title>
-    <link href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html" />
-    <updated>Tue Dec 06 2011 09:00:00 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html</id>
-    <content type="html">
-      <p><em>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>function 개발새발(){...}</title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2011-12-10T08:05:22Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><entry><title>A successful git branching model</title><link href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html" /><updated>Tue Dec 06 2011 09:00:00 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html</id><content type="html"><p><em>
 <a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 &#39;<a href="https://github.com/nvie/gitflow">git-flow</a>&#39;로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.
 </em></p>
 
@@ -241,16 +225,7 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
 
 <p><a href="http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf">고품질 PDF 버전</a>도 올려 두었으니 언제든지 볼 수 있도록 벽에 붙여두면 좋다. </p>
 
-<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p>
-    </content>
-  </entry>
-  <entry>
-    <title>Git:refs</title>
-    <link href="http://dogfeet.github.com/articles/2011/git-refs.html" />
-    <updated>Fri Dec 02 2011 09:00:00 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/git-refs.html</id>
-    <content type="html">
-      <p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
+<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p></content></entry><entry><title>Git:refs</title><link href="http://dogfeet.github.com/articles/2011/git-refs.html" /><updated>Fri Dec 02 2011 09:00:00 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/git-refs.html</id><content type="html"><p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
 
 <p><img alt="heading images" src="/articles/2011/git.png"></img></p>
 
@@ -448,16 +423,33 @@ C</code></pre>
 
 <h2>참고</h2>
 
-<ul><li><a href="/articles/2011/progit.html">progit</a></li></ul>
-    </content>
-  </entry>
-  <entry>
-    <title>Bash-it</title>
-    <link href="http://dogfeet.github.com/articles/2011/bash-it.html" />
-    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/bash-it.html</id>
-    <content type="html">
-      <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+<ul><li><a href="/articles/2011/progit.html">progit</a></li></ul></content></entry><entry><title>Git:git-helpers</title><link href="http://dogfeet.github.com/articles/2011/git-helpers.html" /><updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/git-helpers.html</id><content type="html"><p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
+
+<h2>git alias</h2>
+
+<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+
+<h3>단순 약어</h3>
+
+<pre class="prettyprint"><code># Abbreviations
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.unstage &#39;reset HEAD --&#39;
+git config --global alias.cs &quot;commit -s&quot;</code></pre>
+
+<p><code>commit -s</code>은 signed commit인데 </p>
+
+<h3>git log</h3>
+
+<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+
+<pre class="prettyprint"><code># Pimp-out log:
+# From: http://www.jukie.net/bart/blog/pimping-out-git-log
+git config --global alias.lg &quot;log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39;&quot;</code></pre></content></entry><entry><title>Bash-it</title><link href="http://dogfeet.github.com/articles/2011/bash-it.html" /><updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/bash-it.html</id><content type="html"><p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
 
 <p><img alt="bash-it" src="/articles/2011/bash-it.sean-shell.png"></img></p>
 
@@ -531,51 +523,7 @@ latest:     v0.6.1
 current:    v0.6.1
 # use &#39;nvm sync&#39; to update from nodejs.org</code></pre>
 
-<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
-    </content>
-  </entry>
-  <entry>
-    <title>Git:git-helpers</title>
-    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
-    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
-    <content type="html">
-      <p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
-
-<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
-
-<h2>git alias</h2>
-
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
-
-<h3>단순 약어</h3>
-
-<pre class="prettyprint"><code># Abbreviations
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.br branch
-git config --global alias.unstage &#39;reset HEAD --&#39;
-git config --global alias.cs &quot;commit -s&quot;</code></pre>
-
-<p><code>commit -s</code>은 signed commit인데 </p>
-
-<h3>git log</h3>
-
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
-
-<pre class="prettyprint"><code># Pimp-out log:
-# From: http://www.jukie.net/bart/blog/pimping-out-git-log
-git config --global alias.lg &quot;log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39;&quot;</code></pre>
-    </content>
-  </entry>
-  <entry>
-    <title>progit</title>
-    <link href="http://dogfeet.github.com/articles/2011/progit.html" />
-    <updated>Wed Nov 30 2011 09:00:00 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/progit.html</id>
-    <content type="html">
-      <p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다.
+<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p></content></entry><entry><title>progit</title><link href="http://dogfeet.github.com/articles/2011/progit.html" /><updated>Wed Nov 30 2011 09:00:00 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/progit.html</id><content type="html"><p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다.
 시작한지 꽤 됐는데 진도가 느립니다. <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에 6장까지 번역을 완료했습니다.
 계획과 많은 차이가 있지만 이제야 좀 정리가 돼서 일부라도 공개합니다.</p>
 
@@ -593,16 +541,7 @@ git config --global alias.lg &quot;log --name-status --color --abbrev-commit --d
 
 <h3>힘내</h3>
 
-<p><img alt="힘내" src="/articles/2011/progit/git-.png"></img></p>
-    </content>
-  </entry>
-  <entry>
-    <title>Docpad</title>
-    <link href="http://dogfeet.github.com/articles/2011/docpad.html" />
-    <updated>Sat Nov 26 2011 01:06:05 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/docpad.html</id>
-    <content type="html">
-      <p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
+<p><img alt="힘내" src="/articles/2011/progit/git-.png"></img></p></content></entry><entry><title>Docpad</title><link href="http://dogfeet.github.com/articles/2011/docpad.html" /><updated>Sat Nov 26 2011 01:06:05 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/docpad.html</id><content type="html"><p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
 
 <p><img alt="Docpad" src="/articles/2011/docpad.png"></img></p>
 
@@ -751,16 +690,7 @@ npm install coffee-script</code></pre>
 
 <p>global 영역에서 설치한 버전을 local에서 사용하게 할 수도 있다. <code>npm link</code> 명령어를 살펴봐라. </p>
 
-<p>npm은 블로그를 이전하고 나서 파볼 계획이다. </p>
-    </content>
-  </entry>
-  <entry>
-    <title>CoffeeKup &lt;☕/&gt;</title>
-    <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
-    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/coffee-kup.html</id>
-    <content type="html">
-      <p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+<p>npm은 블로그를 이전하고 나서 파볼 계획이다. </p></content></entry><entry><title>CoffeeKup &lt;☕/&gt;</title><link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" /><updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/coffee-kup.html</id><content type="html"><p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
 
 <p><img alt="CoffeeScript" src="/articles/2011/coffeekup.png"></img></p>
 
@@ -859,16 +789,7 @@ tag &#39;feed&#39;, xmlns: &#39;http://www.w3.org/2005/Atom&#39;, -&gt;
   for document in @documents
     anEntry document if 0 is document.url.indexOf &#39;/posts&#39;</code></pre>
 
-<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>
-    </content>
-  </entry>
-  <entry>
-    <title>Cake</title>
-    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
-    <content type="html">
-      <p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p></content></entry><entry><title>Cake</title><link href="http://dogfeet.github.com/articles/2011/cake.html" /><updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated><id>http://dogfeet.github.com/articles/2011/cake.html</id><content type="html"><p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
 
 <p><img alt="Cake" src="/articles/2011/cake.png"></img></p>
 
@@ -964,7 +885,4 @@ task &#39;build&#39;, &#39;Build single application file from source files&#39;,
 
 <h2>참고</h2>
 
-<ul><li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li></ul>
-    </content>
-  </entry>
-</feed>
+<ul><li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li></ul></content></entry></feed>
