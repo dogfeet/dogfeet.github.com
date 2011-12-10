@@ -81,7 +81,7 @@
 
 <h4>feature 브랜치</h4>
 
-<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
+<pre><code>갈라져 나온 브랜치: develop
 다시 merge할 브랜치: develop
 브랜치 이름 규칙: master, develop, release-*, hotfix-*를 제외한 것</code></pre>
 
@@ -93,14 +93,14 @@
 
 <p>feature 브랜치를 develop 브랜치에서(base) 새로 만든다.</p>
 
-<pre class="prettyprint"><code>$ git checkout -b myfeature develop
+<pre><code>$ git checkout -b myfeature develop
 Switched to a new branch &quot;myfeature&quot;</code></pre>
 
 <h5>완성된 기능을 develop에 합치기</h5>
 
 <p>어떤 기능이 다 완성돼 다음 배포에 넣기로 했다면 develop 브랜치에 merge한다:</p>
 
-<pre class="prettyprint"><code>$ git checkout develop
+<pre><code>$ git checkout develop
 Switched to branch &#39;develop&#39;
 $ git merge --no-ff myfeature
 Updating ea1b82a..05e9557
@@ -121,7 +121,7 @@ $ git push origin develop</code></pre>
 
 <h4>release 브랜치</h4>
 
-<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
+<pre><code>갈라져 나온 브랜치: develop
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: release-*</code></pre>
 
@@ -135,7 +135,7 @@ $ git push origin develop</code></pre>
 
 <p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 &#39;1.1.5&#39;이고 새 버전은 &#39;1.1.6&#39;이나 &#39;2.0&#39;이 아니라 &#39;1.2&#39; 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:</p>
 
-<pre class="prettyprint"><code>$ git checkout -b release-1.2 develop
+<pre><code>$ git checkout -b release-1.2 develop
 Switched to a new branch &quot;release-1.2&quot;
 $ ./bump-version.sh 1.2
 Files modified successfully, version bumped to 1.2.
@@ -153,7 +153,7 @@ $ git commit -a -m &quot;Bumped version number to 1.2&quot;
 
 <p>먼저 처음 두 단계, master에 merge하고 tag를 단다:</p>
 
-<pre class="prettyprint"><code>$ git checkout master
+<pre><code>$ git checkout master
 Switched to branch &#39;master&#39;
 $ git merge --no-ff release-1.2
 Merge made by recursive.
@@ -164,7 +164,7 @@ $ git tag -a 1.2</code></pre>
 
 <p>그리고 develop 브랜치에 다시 merge해서 release 브랜치에서 수정한 것이 앞으로도 계속 유지되게 한다:</p>
 
-<pre class="prettyprint"><code>$ git checkout develop
+<pre><code>$ git checkout develop
 Switched to branch &#39;develop&#39;
 $ git merge --no-ff release-1.2
 Merge made by recursive.
@@ -174,12 +174,12 @@ Merge made by recursive.
 
 <p>이제 진짜로 배포했기 때문에 release 브랜치는 더는 필요 없다. 삭제한다:</p>
 
-<pre class="prettyprint"><code>$ git branch -d release-1.2
+<pre><code>$ git branch -d release-1.2
 Deleted branch release-1.2 (was ff452fe).</code></pre>
 
 <h4>hotfix 브랜치</h4>
 
-<pre class="prettyprint"><code>갈라져 나온 브랜치: master
+<pre><code>갈라져 나온 브랜치: master
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: hotfix-*</code></pre>
 
@@ -193,7 +193,7 @@ Deleted branch release-1.2 (was ff452fe).</code></pre>
 
 <p>hotfix 브랜치는 master 브랜치에서 만든다. 예를 들어 현재 운영 버전이 1.2이고 심각한 버그가 발견됐다. develop 브랜치는 아직 불안정하기 때문에 hotfix 브랜치를 만들고 거기서 버그를 잡는다:</p>
 
-<pre class="prettyprint"><code>$ git checkout -b hotfix-1.2.1 master
+<pre><code>$ git checkout -b hotfix-1.2.1 master
 Switched to a new branch &quot;hotfix-1.2.1&quot;
 $ ./bump-version.sh 1.2.1
 Files modified successfully, version bumped to 1.2.1.
@@ -205,7 +205,7 @@ $ git commit -a -m &quot;Bumped version number to 1.2.1&quot;
 
 <p>버그를 해결하고 나서 커밋한다. 한두 개의 커밋으로 해결한다:</p>
 
-<pre class="prettyprint"><code>$ git commit -m &quot;Fixed severe production problem&quot;
+<pre><code>$ git commit -m &quot;Fixed severe production problem&quot;
 [hotfix-1.2.1 abbe5d6] Fixed severe production problem
 5 files changed, 32 insertions(+), 17 deletions(-)</code></pre>
 
@@ -215,7 +215,7 @@ $ git commit -a -m &quot;Bumped version number to 1.2.1&quot;
 
 <p>먼저 master에 merge하고 tag를 단다:</p>
 
-<pre class="prettyprint"><code>$ git checkout master
+<pre><code>$ git checkout master
 Switched to branch &#39;master&#39;
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
@@ -226,7 +226,7 @@ $ git tag -a 1.2.1</code></pre>
 
 <p>그리고 develop에도 merge한다:</p>
 
-<pre class="prettyprint"><code>$ git checkout develop
+<pre><code>$ git checkout develop
 Switched to branch &#39;develop&#39;
 $ git merge --no-ff hotfix-1.2.1
 erge made by recursive.
@@ -236,7 +236,7 @@ erge made by recursive.
 
 <p>이제 이 임시 브랜치를 삭제한다:</p>
 
-<pre class="prettyprint"><code>$ git branch -d hotfix-1.2.1
+<pre><code>$ git branch -d hotfix-1.2.1
 Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
 
 <h2>결론</h2>
@@ -245,7 +245,7 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).</code></pre>
 
 <p><a href="http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf">고품질 PDF 버전</a>도 올려 두었으니 언제든지 볼 수 있도록 벽에 붙여두면 좋다. </p>
 
-<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p></div></article><section id="comments"><h3>Feedback</h3><div id="disqus_thread"></div>
+<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p></div></article><section id="related"><h3>Related Posts</h3><ul><li><span>Dec 02 2011</span>&raquo;<a herf="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a herf="/articles/2011/git-helpers.html">Git:git-helpers</a></li><li><span>Nov 30 2011</span>&raquo;<a herf="/articles/2011/progit.html">progit</a></li><li><span>Dec 01 2011</span>&raquo;<a herf="/articles/2011/bash-it.html">Bash-it</a></li></ul></section><section id="comments"><h3>Feedback</h3><div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/a-successful-git-branching-model.html';
