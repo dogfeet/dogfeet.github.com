@@ -1,6 +1,38 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>function 개발새발(){...}</title><meta name="description" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>function 개발새발(){...}</title><meta name="description" /><meta name="author" content="Sean Lee, Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="/vendor/prettify.js"></script><script src="/vendor/lang-apollo.js"></script><script src="/vendor/lang-clj.js"></script><script src="/vendor/lang-css.js"></script><script src="/vendor/lang-go.js"></script><script src="/vendor/lang-hs.js"></script><script src="/vendor/lang-lisp.js"></script><script src="/vendor/lang-lua.js"></script><script src="/vendor/lang-ml.js"></script><script src="/vendor/lang-n.js"></script><script src="/vendor/lang-proto.js"></script><script src="/vendor/lang-scala.js"></script><script src="/vendor/lang-sql.js"></script><script src="/vendor/lang-tex.js"></script><script src="/vendor/lang-vhdl.js"></script><script src="/vendor/lang-wiki.js"></script><script src="/vendor/lang-xq.js"></script><script src="/vendor/lang-yaml.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="topbar"><div class="topbar-inner"><div class="container-fluid"><a class="brand" href="/">dogfeet</a><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="/atom.xml"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form class="pull-right" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" /></form></div></div></div><!--Markup--><div class="container-fluid"><section class="content"><article class="post"><header><a href="/articles/2011/a-successful-git-branching-model.html"><h1>A successful git branching model</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+    <![endif]--><!--Styles--><link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="/vendor/prettify.js"></script><script src="/vendor/lang-apollo.js"></script><script src="/vendor/lang-clj.js"></script><script src="/vendor/lang-css.js"></script><script src="/vendor/lang-go.js"></script><script src="/vendor/lang-hs.js"></script><script src="/vendor/lang-lisp.js"></script><script src="/vendor/lang-lua.js"></script><script src="/vendor/lang-ml.js"></script><script src="/vendor/lang-n.js"></script><script src="/vendor/lang-proto.js"></script><script src="/vendor/lang-scala.js"></script><script src="/vendor/lang-sql.js"></script><script src="/vendor/lang-tex.js"></script><script src="/vendor/lang-vhdl.js"></script><script src="/vendor/lang-wiki.js"></script><script src="/vendor/lang-xq.js"></script><script src="/vendor/lang-yaml.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="topbar"><div class="topbar-inner"><div class="container-fluid"><a class="brand" href="/">dogfeet</a><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form class="pull-right" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" /></form></div></div></div><!--Markup--><div class="container-fluid"><section class="content"><article class="post"><header><a href="/articles/2011/git-merge.html"><h1>Git:merge</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 10 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#merge">merge</a> | <span><a href="/articles/2011/git-merge.html#disqus_thread" data-disqus-identifier="/articles/2011/git-merge.html"></a></span>
+</footer><p>커밋 히스토리는 굉장히 잘 관리해야 한다. 이 글은 merge를 잘해서 히스토리를 잘 관리하는 방법을 설명한다.</p>
+
+<p>git의 최고의 장점은 모든 것을 나중으로 미룰 수 있다는 것이다. 이 말의 의미는 언제나 히스토리를 원하는 데로 편집할 수 있다는 것을 의미한다. 기존의 커밋 여러 개를 하나로 합치거나 커밋 하나를 여러 개로 쪼갤 수 있다. 이미 커밋된 개체에 들어 있는 committer나 author 정보를 수정할 수도 있다. 이런 git의 막강한 기능을 이용해서 모든 참여자가 쉽게 이해할 수 있고 쉽게 관리할 수 있는 히스토리를 만들어 나아가야 한다. 히스토리를 단장하는 방법도 굉장히 흥미로운 주제지만 내용이 많아서 이 글에서 다루지 않는다. 나중에 다시 다루기로 하겠다.</p>
+
+<p>히스토리를 단장하기 위해 다음과 같은 몇 가지 사항을 꼭 기억해야 한다.</p>
+
+<ul><li>Fast-forward merge와 merge 커밋을 구분해야 한다.</li><li>merge, rebase, cherry pick을 이해해야 한다.</li></ul>
+
+<p><img alt="힘내" src="/articles/2011/git-merge/thousand_sunny_ship.jpg"></img></p>
+
+<p>싸우전드 써니 호는 밀짚모자 해적단의 안전한 항해를 책임진다. 그러니 잘 관리해야 한다.</p>
+
+<p>보통 master, develop, pu(proposed updates), next 등으로 이름 짓는 브랜치가 긴 호흡 브랜치(long-runing branch)이다. 이 브랜치는 굉장히 오랫동안 유지하고 사실 거의 저장소에 항상 존재한다. 필요에 따라 삭제하기도 하지만 바로 다시 만들어야 하기 때문에 항상 필요하다. 각 브랜치는 브랜치 고유의 목적이 있다. 여기서 각 브랜치의 의미를 설명하지 않는다.</p>
+
+<p>이 글에서는 긴 호흡 브랜치로 ship 브랜치를 사용한다.</p>
+
+<p><a class="btn" href="/articles/2011/git-merge.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/git-flow.html"><h1>Git:git-flow</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 09 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/git-flow.html#disqus_thread" data-disqus-identifier="/articles/2011/git-flow.html"></a></span>
+</footer><p><a href="https://github.com/nvie/gitflow">git-flow</a>를 설명하는 글, <a href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>을 먼저 읽어 보는 게 좋다. 저 글에 설명된 것을 쉽게 할 수 있도록 구현한 게 git-flow다.</p>
+
+<p>이 글에서는 git-flow 명령어가 어떤 것인지 살펴본다.</p>
+
+<p><img alt="그림" src="/articles/2011/git-flow/branching_flow.png"></img></p>
+
+<p>git-flow의 branching flow를 요약한 그림.</p>
+
+<p>support 브랜치는 git-flow에 추가된 브랜치다. 아직 실험중인(experimental) 기능이다. support 브랜치는 이 글 끝 부분에 설명한다.</p>
+
+<p><a class="btn" href="/articles/2011/git-flow.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/a-successful-git-branching-model.html"><h1>A successful git branching model</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Dec 06 2011</span>
  | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/a-successful-git-branching-model.html#disqus_thread" data-disqus-identifier="/articles/2011/a-successful-git-branching-model.html"></a></span>
 </footer><p><em>
@@ -26,14 +58,7 @@
 
 <p>이 글에서는 SHA값을 가리키는 방법 그리고 이 방법들로 어떤 일들을 할 수 있는지 살펴본다.</p>
 
-<p><a class="btn" href="/articles/2011/git-refs.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/git-helpers.html"><h1>Git:git-helpers</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 01 2011</span>
- | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-helpers.html#disqus_thread" data-disqus-identifier="/articles/2011/git-helpers.html"></a></span>
-</footer><p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
-
-<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
-
-<p><a class="btn" href="/articles/2011/git-helpers.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/bash-it.html"><h1>Bash-it</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+<p><a class="btn" href="/articles/2011/git-refs.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/bash-it.html"><h1>Bash-it</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Dec 01 2011</span>
  | <a href="/site/tagmap.html#bash-it">Bash-it</a>, <a href="/site/tagmap.html#nvm">NVM</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/bash-it.html#disqus_thread" data-disqus-identifier="/articles/2011/bash-it.html"></a></span>
 </footer><p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
@@ -50,7 +75,14 @@
 
 <p>이 것은 다시 말해서 revans님이 정리하고 관리하는 convention이다. bash-it에 익숙해지면 꽤 편리하다.</p>
 
-<p><a class="btn" href="/articles/2011/bash-it.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/progit.html"><h1>progit</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+<p><a class="btn" href="/articles/2011/bash-it.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/git-helpers.html"><h1>Git:git-helpers</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Dec 01 2011</span>
+ | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-helpers.html#disqus_thread" data-disqus-identifier="/articles/2011/git-helpers.html"></a></span>
+</footer><p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img alt="heading image" src="/articles/2011/git.png"></img></p>
+
+<p><a class="btn" href="/articles/2011/git-helpers.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/progit.html"><h1>progit</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Nov 30 2011</span>
  | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#progit">progit</a> | <span><a href="/articles/2011/progit.html#disqus_thread" data-disqus-identifier="/articles/2011/progit.html"></a></span>
 </footer><p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다.
@@ -76,21 +108,21 @@
 
 <p><img alt="Docpad" src="/articles/2011/docpad.png"></img></p>
 
-<p><a class="btn" href="/articles/2011/docpad.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/coffee-kup.html"><h1>CoffeeKup &lt;☕/&gt;</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Nov 22 2011</span>
- | <a href="/site/tagmap.html#coffeekup">CoffeeKup</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/coffee-kup.html#disqus_thread" data-disqus-identifier="/articles/2011/coffee-kup.html"></a></span>
-</footer><p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
-
-<p><img alt="CoffeeScript" src="/articles/2011/coffeekup.png"></img></p>
-
-<p><a class="btn" href="/articles/2011/coffee-kup.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/cake.html"><h1>Cake</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+<p><a class="btn" href="/articles/2011/docpad.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/cake.html"><h1>Cake</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Nov 22 2011</span>
  | <a href="/site/tagmap.html#cake">Cake</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/cake.html#disqus_thread" data-disqus-identifier="/articles/2011/cake.html"></a></span>
 </footer><p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
 
 <p><img alt="Cake" src="/articles/2011/cake.png"></img></p>
 
-<p><a class="btn" href="/articles/2011/cake.html">Read more &raquo;</a></p></article></section><aside class="sidebar"></aside><footer><span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+<p><a class="btn" href="/articles/2011/cake.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2011/coffee-kup.html"><h1>CoffeeKup &lt;☕/&gt;</h1></a></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Nov 22 2011</span>
+ | <a href="/site/tagmap.html#coffeekup">CoffeeKup</a>, <a href="/site/tagmap.html#coffeescript">CoffeeScript</a> | <span><a href="/articles/2011/coffee-kup.html#disqus_thread" data-disqus-identifier="/articles/2011/coffee-kup.html"></a></span>
+</footer><p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+
+<p><img alt="CoffeeScript" src="/articles/2011/coffeekup.png"></img></p>
+
+<p><a class="btn" href="/articles/2011/coffee-kup.html">Read more &raquo;</a></p></article></section><aside class="sidebar"></aside><footer><span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
