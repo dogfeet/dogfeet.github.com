@@ -3,7 +3,7 @@
   <title>function 개발새발(){...}</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2011-12-18T15:59:13Z</updated>
+  <updated>2011-12-18T22:57:18Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -75,7 +75,7 @@ git config --global mergetool.diffmerge.trustExitCode true
 <li><code>mergetool.*.trustExitCode</code>은 해당 Merge 도구의 Exit 코드가 Merge의 성공여부를 나타내면 true로 설정한다.</li>
 </ul>
 
-<p>이렇게 설정된 <code>~/.gitconfig/</code> 파일내용은 다음과 같다:</p>
+<p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
 
 <pre class="prettyprint"><code>[merge]
     tool = diffmerge
@@ -105,10 +105,16 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <ul>
 <li><code>diff.tool</code>은 diff 도구를 새로 정의하는 것이다.</li>
-<li><p><code>difftool.*.cmd</code>가 실제로 실행되는 명령어다.</p>
-
-<p>[diff]<br />    tool = diffmerge<br />[difftool "diffmerge"]<br />    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE</p></li>
+<li><code>difftool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
 </ul>
+
+<p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
+
+<pre class="prettyprint"><code>[diff]
+    tool = diffmerge
+[difftool "diffmerge"]
+    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
+</code></pre>
 
 <p><code>git difftool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
 
