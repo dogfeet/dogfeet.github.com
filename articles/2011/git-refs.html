@@ -1,6 +1,87 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Git:refs</title><meta name="description" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git:refs</title>
+    <meta name="description" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="/vendor/prettify.js"></script><script src="/vendor/lang-apollo.js"></script><script src="/vendor/lang-clj.js"></script><script src="/vendor/lang-css.js"></script><script src="/vendor/lang-go.js"></script><script src="/vendor/lang-hs.js"></script><script src="/vendor/lang-lisp.js"></script><script src="/vendor/lang-lua.js"></script><script src="/vendor/lang-ml.js"></script><script src="/vendor/lang-n.js"></script><script src="/vendor/lang-proto.js"></script><script src="/vendor/lang-scala.js"></script><script src="/vendor/lang-sql.js"></script><script src="/vendor/lang-tex.js"></script><script src="/vendor/lang-vhdl.js"></script><script src="/vendor/lang-wiki.js"></script><script src="/vendor/lang-xq.js"></script><script src="/vendor/lang-yaml.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="topbar"><div class="topbar-inner"><div class="container-fluid"><a class="brand" href="/">dogfeet</a><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form class="pull-right" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" /></form></div></div></div><!--Markup--><div class="container-fluid"><section class="content"><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -14,14 +95,39 @@
   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();</script><article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-refs.html" lang="ko-kr"><header><h1 property="dcterms:title">Git:refs</h1></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+})();
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-refs.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Git:refs</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Dec 02 2011</span>
  | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-refs.html#disqus_thread" data-disqus-identifier="/articles/2011/git-refs.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-refs.html" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-refs.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-refs.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-refs.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-refs.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-refs.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
 
-<p><img alt="heading images" src="/articles/2011/git.png"></img></p>
+<p><img src="/articles/2011/git.png" alt="heading images" title="" /></p>
 
 <p>git은 항상 Snapshot단위로 저장한다. 커밋하면 Snapshot을 저장하는 것이고 이 때 SHA 키가 발급된다. SHA가 Snapshot을 식별하는 유일한 식별자다. branch나 태그처럼 Snapshot을 식별하는 방법은 결국 SHA 값을 이용하는 것이다. Branch나 태그는 단순히 SHA 값을 가리키는 것 뿐이다.</p>
 
@@ -43,11 +149,13 @@
 
 <p>기본적으로 7자가 사용된다. 위 SHA 값에 적용하면 <code>1c36188</code>이다:</p>
 
-<pre><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d</code></pre>
+<pre class="prettyprint"><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d
+</code></pre>
 
 <p>라고 해도 되지만:</p>
 
-<pre><code>git show 1c36188</code></pre>
+<pre class="prettyprint"><code>git show 1c36188
+</code></pre>
 
 <p>이렇게 해도 결과는 같다. short SHA는 저장소에서 식별할 수 있는 만큼 사용되며 거대한 리눅스 커널 프로젝트도 겨우 12자를 사용한다.</p>
 
@@ -63,17 +171,19 @@
 
 <p>이미 만들어진 tag는 다음과 같이 확인할 수 있다.</p>
 
-<pre><code>$ git tag
+<pre class="prettyprint"><code>$ git tag
 v0.1
-v1.3</code></pre>
+v1.3
+</code></pre>
 
 <p>이름으로 검색하려면 다음과 같이 확인할 수 있다.</p>
 
-<pre><code>$ git tag -l &#39;v1.4.2.*&#39;
+<pre class="prettyprint"><code>$ git tag -l 'v1.4.2.*'
 v1.4.2.1
 v1.4.2.2
 v1.4.2.3
-v1.4.2.4</code></pre>
+v1.4.2.4
+</code></pre>
 
 <h4>Lightweight Tag</h4>
 
@@ -89,19 +199,19 @@ v1.4.2.4</code></pre>
 
 <p>커밋 히스토리가 다음과 같을 때:</p>
 
-<pre><code>:::text
-*   4f2b862 - (HEAD, dev) Merge branch &#39;issue2&#39; into dev
+<pre class="prettyprint"><code class="language-text">*   4f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
 |\
 | * 3a6714f - (issue2) It sucks again
 |/
 * 41947a1 - It sucks
-*   3b0b17d - Merge branch &#39;issue1&#39; into dev
+*   3b0b17d - Merge branch 'issue1' into dev
 |\
 | * 3b1bfc5 - (issue1) Add issue1
 |/
-* 40b4870 - (master) Initial Commit</code></pre>
+* 40b4870 - (master) Initial Commit
+</code></pre>
 
-<h4>&#39;~&#39;</h4>
+<h4>'~'</h4>
 
 <p>HEAD를 기준으로 이전 커밋을 보려면 <code>HEAD~</code>를 사용한다. 예를 들어 <code>git show HEAD~</code>라고 실행하면 <code>41947a1</code>에 대한 정보를 보여준다.</p>
 
@@ -109,7 +219,7 @@ v1.4.2.4</code></pre>
 
 <p>HEAD에만 사용할 수 있는 것이 아니다. git은 기본적으로 SHA값을 인식하는 것이지 Branch 이름이나 HEAD같은 포인터를 다루는 것이 아니다. 이 예제에서 HEAD와 dev가 같은 커밋을 가리키기 때문에 <code>HEAD~</code>와 <code>dev~</code>의 결과는 같고 심지어 <code>4f2b862~</code>의 결과도 같다. </p>
 
-<h4>&#39;^&#39;</h4>
+<h4>'^'</h4>
 
 <p>계통을 표시하는 다른 방법으로 <code>^</code>도 있다. 이 것은 <code>~</code>과 다르게 수평적 조상을 표현하는 방법이다. 사실 <code>HEAD~</code>와 <code>HEAD^</code>의 결과는 같다. 수직적 조상을 표현하는 <code>~</code>와 수평적 조상을 표시하는 <code>^</code>는 똑같이 이전 커밋을 나타낸다.</p>
 
@@ -125,7 +235,7 @@ v1.4.2.4</code></pre>
 
 <p>reflog는 단순히 HEAD가 가리켰던 히스토리이다. 위에서 사용한 히스토리에서 <code>git reflog</code>를 실행하면 다음과 같이 나온다:</p>
 
-<pre><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
+<pre class="prettyprint"><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
 41947a1 HEAD@{1}: checkout: moving from issue2 to dev
 3a6714f HEAD@{2}: commit: It sucks again
 41947a1 HEAD@{3}: checkout: moving from dev to issue2
@@ -135,30 +245,33 @@ v1.4.2.4</code></pre>
 40b4870 HEAD@{7}: checkout: moving from issue1 to master
 3b1bfc5 HEAD@{8}: commit: Add issue1
 40b4870 HEAD@{9}: checkout: moving from master to issue1
-40b4870 HEAD@{10}: commit (initial): Initial Commit</code></pre>
+40b4870 HEAD@{10}: commit (initial): Initial Commit
+</code></pre>
 
 <p>reflog는 HEAD나 브랜치가 가리키는 커밋이 바뀔때마다 기록된다. 특정 커밋을 Checkout하면 HEAD가 가리키는 커밋이 바뀌기 때문에 reflog가 남는다. </p>
 
 <p><code>git show HEAD@{4}</code>는 <code>41947a1</code>에 대한 정보를 보여준다. HEAD뿐만 아니라 Branch에도 사용할 수 있다. <code>git reflog --all</code> 명령을 실행하면 같은 형식으로 branch 기준으로 보여준다:</p>
 
-<pre><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
+<pre class="prettyprint"><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
 3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{1}: commit: It sucks
 3b0b17d refs/heads/dev@{2}: merge issue1: Merge made by recursive.
 3b1bfc5 refs/heads/issue1@{0}: commit: Add issue1
-40b4870 refs/heads/dev@{3}: branch: Created from HEAD</code></pre>
+40b4870 refs/heads/dev@{3}: branch: Created from HEAD
+</code></pre>
 
 <p>HEAD와 마찬가지로 <code>git show master@{0}</code> 명령을 사용할 수 있다.</p>
 
 <p>만약 <code>git reset --hard HEAD~1</code>라고 명령을 실행해서 브랜치가 HEAD~1을 가리키도록 했다. 그럼 다음과 같이 reflog가 남는다:</p>
 
-<pre><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
+<pre class="prettyprint"><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{0}: HEAD~1: updating HEAD
 4f2b862 refs/heads/dev@{1}: merge issue2: Merge made by recursive.
 41947a1 refs/heads/dev@{2}: commit: It sucks
 3b0b17d refs/heads/dev@{3}: merge issue1: Merge made by recursive.
 3b1bfc5 refs/heads/issue1@{0}: commit: Add issue1
-40b4870 refs/heads/dev@{4}: branch: Created from HEAD</code></pre>
+40b4870 refs/heads/dev@{4}: branch: Created from HEAD
+</code></pre>
 
 <p>이전 커밋으로 reset했기 때문에 <code>4f2b862</code>에 서 수정한 내용은 없어진다. 이 예제에서는 merge한 것이 취소된다. 그런데 잘못한 행동이라고 깨달았다. SHA 값을 어디 적어두고 다니는 것도 아니고 다시 돌릴 방법이 없다. 이 예제는 merge를 돌린 것이라 다시 merge해도 되지만 수정사항이 담긴 커밋이면 잃어 버리게 된다. </p>
 
@@ -176,21 +289,22 @@ v1.4.2.4</code></pre>
 
 <p><code>git log</code> 명령이 인식하는 것도 결국 SHA 값이라는 것을 기억해야 한다. master, HEAD, tag등의 포인터를 인자로 넘겨도 결국 git이 인식하는 것은 그 포인터가 가리키는 SHA 값이다. 그래서 SHA값을 직접 사용해도 된다.</p>
 
-<p><img alt="예제" src="http://progit.org/figures/ch6/18333fig0601-tn.png"></img></p>
+<p><img src="http://progit.org/figures/ch6/18333fig0601-tn.png" alt="예제" title="" /></p>
 
 <p>progit의 예제</p>
 
 <h3>Double Dot</h3>
 
-<p>&#39;Double Dot&#39;은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
+<p>'Double Dot'은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
 
-<pre><code>$ git log master..experiment
+<pre class="prettyprint"><code>$ git log master..experiment
 D
 C
 
 $ git log experiment..master
 F
-E</code></pre>
+E
+</code></pre>
 
 <p>한쪽을 생략하면 HEAD가 사용된다. 즉, <code>master..</code>는 <code>master..HEAD</code>와 같다.</p>
 
@@ -198,19 +312,21 @@ E</code></pre>
 
 <p>Tripple Dot은 서로 다른 커밋만을 보여준다. 다음 예제를 보자:</p>
 
-<pre><code>$ git log master...experiment
+<pre class="prettyprint"><code>$ git log master...experiment
 F
 E
 D
-C</code></pre>
+C
+</code></pre>
 
 <p><code>--left-right</code> 옵션을 추가하면 어느쪽에 속하는 것인지도 보여준다.</p>
 
-<pre><code>$ git log --left-right master...experiment
+<pre class="prettyprint"><code>$ git log --left-right master...experiment
 &lt;F
 &lt;E
 &gt;D
-&gt;C</code></pre>
+&gt;C
+</code></pre>
 
 <h3>-not or <code>^</code></h3>
 
@@ -218,7 +334,47 @@ C</code></pre>
 
 <h2>참고</h2>
 
-<ul><li><a href="/articles/2011/progit.html">progit</a></li></ul></div></article><section id="related"><h3>Related Posts</h3><ul><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git-helpers</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li></ul></section><section id="comments"><h3>Feedback</h3><div id="disqus_thread"></div>
+<ul>
+<li><a href="/articles/2011/progit.html">progit</a></li>
+</ul>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Dec 06 2011</span>
+&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+    </li>
+    <li>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
+    </li>
+    <li>
+      <span>Dec 10 2011</span>
+&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
+    </li>
+    <li>
+      <span>Dec 17 2011</span>
+&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+    </li>
+    <li>
+      <span>Nov 30 2011</span>
+&raquo;      <a href="/articles/2011/progit.html">progit</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-refs.html';
@@ -228,13 +384,29 @@ C</code></pre>
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></section><aside class="sidebar"></aside><footer><span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2011 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27493298-1']);
   _gaq.push(['_trackPageview']);
@@ -244,4 +416,7 @@ C</code></pre>
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-}</script></body></html>
+}
+    </script>
+  </body>
+</html>

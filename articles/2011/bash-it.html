@@ -1,6 +1,87 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Bash-it</title><meta name="description" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bash-it</title>
+    <meta name="description" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="/vendor/prettify.js"></script><script src="/vendor/lang-apollo.js"></script><script src="/vendor/lang-clj.js"></script><script src="/vendor/lang-css.js"></script><script src="/vendor/lang-go.js"></script><script src="/vendor/lang-hs.js"></script><script src="/vendor/lang-lisp.js"></script><script src="/vendor/lang-lua.js"></script><script src="/vendor/lang-ml.js"></script><script src="/vendor/lang-n.js"></script><script src="/vendor/lang-proto.js"></script><script src="/vendor/lang-scala.js"></script><script src="/vendor/lang-sql.js"></script><script src="/vendor/lang-tex.js"></script><script src="/vendor/lang-vhdl.js"></script><script src="/vendor/lang-wiki.js"></script><script src="/vendor/lang-xq.js"></script><script src="/vendor/lang-yaml.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="topbar"><div class="topbar-inner"><div class="container-fluid"><a class="brand" href="/">dogfeet</a><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form class="pull-right" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" /></form></div></div></div><!--Markup--><div class="container-fluid"><section class="content"><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -14,18 +95,49 @@
   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();</script><article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/bash-it.html" lang="ko-kr"><header><h1 property="dcterms:title">Bash-it</h1></header><footer><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+})();
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/bash-it.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Bash-it</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Dec 01 2011</span>
  | <a href="/site/tagmap.html#bash-it">Bash-it</a>, <a href="/site/tagmap.html#nvm">NVM</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/bash-it.html#disqus_thread" data-disqus-identifier="/articles/2011/bash-it.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/bash-it.html" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/bash-it.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/bash-it.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/bash-it.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/bash-it.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/bash-it.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
 
-<p><img alt="bash-it" src="/articles/2011/bash-it.sean-shell.png"></img></p>
+<p><img src="/articles/2011/bash-it.sean-shell.png" alt="bash-it" title="" /></p>
 
 <p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다. </p>
 
-<ul><li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li><li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li><li>plugin : bash 명령어를 확장해준다(그러니까 명령어에 해당하는 함수들이다).</li><li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li><li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li></ul>
+<ul>
+<li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li>
+<li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li>
+<li>plugin : bash 명령어를 확장해준다(그러니까 명령어에 해당하는 함수들이다).</li>
+<li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li>
+<li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li>
+</ul>
 
 <p>각 요소들은 apache2 설정처럼 available/enabled 디렉토리 구조로 관리하기 때문에 관리하기 편하다.</p>
 
@@ -37,18 +149,19 @@
 
 <p>다음과 같은 completion 코드가 들어 있다. 해당 도구를 사용한다면 한번쯤은 들어봤을 만한 그 completion 코드다. 장점은 한번에 설치된다는 것:</p>
 
-<pre><code>brew.completion.bash
+<pre class="prettyprint"><code>brew.completion.bash
 gem.completion.bash
 git.completion.bash
 git_flow.completion.bash
 rake.completion.bash
-ssh.completion.bash</code></pre>
+ssh.completion.bash
+</code></pre>
 
 <h2>alias</h2>
 
 <p>다음과 같은 도구에 대한 alias들이 define 돼있다:</p>
 
-<pre><code>bundler.aliases.bash
+<pre class="prettyprint"><code>bundler.aliases.bash
 emacs.aliases.bash
 general.aliases.bash
 git.aliases.bash
@@ -58,16 +171,21 @@ homebrew.aliases.bash
 osx.aliases.bash
 rails.aliases.bash
 textmate.aliases.bash
-vim.aliases.bash</code></pre>
+vim.aliases.bash
+</code></pre>
 
 <h3>theme</h3>
 
 <p>이 테마 기능도 굉장히 유용하다. 여러가지 테마가 있는데 내가 사용하고 있는 <code>zork</code> 테마의 경우 다음과 같이 보여준다:</p>
 
-<pre><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
-$ git st ...</code></pre>
+<pre class="prettyprint"><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
+$ git st ...
+</code></pre>
 
-<ul><li>±  - 이 것은 git을 나타내는 기호다. 왜 Git icon인지 mySysGit을 설치해보면 안다. HG는 <code>☿</code>, SVN은 <code>⑆</code>, 그 외는 <code>○</code>을 보여준다.</li><li>✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li></ul>
+<ul>
+<li>±  - 이 것은 git을 나타내는 기호다. 왜 Git icon인지 mySysGit을 설치해보면 안다. HG는 <code>☿</code>, SVN은 <code>⑆</code>, 그 외는 <code>○</code>을 보여준다.</li>
+<li>✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li>
+</ul>
 
 <h2>plugin</h2>
 
@@ -81,7 +199,7 @@ $ git st ...</code></pre>
 
 <p>내 컴퓨터에서 실행한 <code>nvm ls</code>의 결과:</p>
 
-<pre><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
+<pre class="prettyprint"><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
 v0.1.101  v0.1.17   v0.1.24   v0.1.31   v0.1.94   v0.2.1    v0.3.1    v0.3.8    v0.4.2    v0.4.8-rc v0.5.4    v0.6.1
 v0.1.102  v0.1.18   v0.1.25   v0.1.32   v0.1.95   v0.2.2    v0.3.2    v0.4      v0.4.3    v0.4.9    v0.5.5
 v0.1.103  v0.1.19   v0.1.26   v0.1.33   v0.1.96   v0.2.3    v0.3.3    v0.4.0    v0.4.4    v0.5.0    v0.5.6
@@ -91,9 +209,48 @@ v0.1.15   v0.1.22   v0.1.29   v0.1.92   v0.1.99   v0.2.6    v0.3.6    v0.4.11   
 stable:     v0.6.1
 latest:     v0.6.1
 current:    v0.6.1
-# use &#39;nvm sync&#39; to update from nodejs.org</code></pre>
+# use 'nvm sync' to update from nodejs.org
+</code></pre>
 
-<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p></div></article><section id="related"><h3>Related Posts</h3><ul><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git-helpers</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li></ul></section><section id="comments"><h3>Feedback</h3><div id="disqus_thread"></div>
+<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Dec 06 2011</span>
+&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+    </li>
+    <li>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
+    </li>
+    <li>
+      <span>Dec 10 2011</span>
+&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
+    </li>
+    <li>
+      <span>Dec 17 2011</span>
+&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+    </li>
+    <li>
+      <span>Dec 02 2011</span>
+&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
+    </li>
+    <li>
+      <span>Nov 30 2011</span>
+&raquo;      <a href="/articles/2011/progit.html">progit</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/bash-it.html';
@@ -103,13 +260,29 @@ current:    v0.6.1
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></section><aside class="sidebar"></aside><footer><span>&copy; dogfeet 2011, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2011 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27493298-1']);
   _gaq.push(['_trackPageview']);
@@ -119,4 +292,7 @@ current:    v0.6.1
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-}</script></body></html>
+}
+    </script>
+  </body>
+</html>
