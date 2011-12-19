@@ -3,7 +3,7 @@
   <title>function 개발새발(){...}</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2011-12-19T02:06:28Z</updated>
+  <updated>2011-12-19T04:44:05Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -19,7 +19,8 @@
     <updated>Sun Dec 18 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/kinde-fire.html</id>
     <content type="html">
-      <p>Kindle Fire가 도착했는데 아무것도 할 수 있는 게 없습니다.</p>
+<![CDATA[
+<p>Kindle Fire가 도착했는데 아무것도 할 수 있는 게 없습니다.</p>
 
 <p>Amazon을 전혀 안 쓰는 제가 Kindle Fire를 산 것은 'ebook 읽기 좋은 싼 Tablet이 필요하다.'라는 생각 때문이었습니다. 가카가 내곡동을 사신 것처럼 순수했습니다. 가격이 착했고 ebook 읽기에 나쁘지 않을 것으로 생각했습니다. 그리고 사실 넥서스원에서 사용하는 앱은 쓸 수 있을 거라고 기대했습니다. Amazon이니까요.</p>
 
@@ -43,7 +44,7 @@
 
 <h2>결론</h2>
 
-<p>Kindle Fire의 장점은 가격과 Biscuit이라고 할 수 있겠습니다. 지금 Kindle Fire로 '닥치고 정치'를 읽고 있습니다. 물론 인터파크에서 구입하고 Biscuit로 보고 있습니다. Rooting하는 것이 좀 귀찮지만 Tablet으로 ebook만 보실 분이라면 Kindle Fire도 괜찮은 것 같아요.</p>
+<p>Kindle Fire의 장점은 가격과 Biscuit이라고 할 수 있겠습니다. 지금 Kindle Fire로 '닥치고 정치'를 읽고 있습니다. 물론 인터파크에서 구입하고 Biscuit로 보고 있습니다. Rooting하는 것이 좀 귀찮지만 Tablet으로 ebook만 보실 분이라면 Kindle Fire도 괜찮은 것 같아요.</p>]]>
     </content>
   </entry>
   <entry>
@@ -52,7 +53,8 @@
     <updated>Sat Dec 17 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/git-mergediff.html</id>
     <content type="html">
-      <p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.</p>
+<![CDATA[
+<p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.</p>
 
 <p>먼저 <a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a>를 보고 도구를 골라보자. 이 리뷰는 정말 훌륭하다. 나는 무료이고 Mac, Linux, Window를 지원하는 <a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a>를 골랐다. 이 글은 DiffMerge를 기준으로 설명한다. </p>
 
@@ -62,7 +64,7 @@
 
 <p>다음과 같이 설정한다:</p>
 
-<pre><code>git config --global merge.tool diffmerge
+<pre class="prettyprint"><code>git config --global merge.tool diffmerge
 git config --global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"
 git config --global mergetool.diffmerge.trustExitCode true
 </code></pre>
@@ -77,7 +79,7 @@ git config --global mergetool.diffmerge.trustExitCode true
 
 <p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
 
-<pre><code>[merge]
+<pre class="prettyprint"><code>[merge]
     tool = diffmerge
 [mergetool "diffmerge"]
     cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
@@ -90,14 +92,14 @@ git config --global mergetool.diffmerge.trustExitCode true
 
 <p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:</p>
 
-<pre><code>git config --global mergetool.keepBackup false
+<pre class="prettyprint"><code>git config --global mergetool.keepBackup false
 </code></pre>
 
 <h2>difftool</h2>
 
 <p>difftool은 다음과 같이 설정한다:</p>
 
-<pre><code>git config --global diff.tool diffmerge
+<pre class="prettyprint"><code>git config --global diff.tool diffmerge
 git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"
 </code></pre>
 
@@ -110,7 +112,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
 
-<pre><code>[diff]
+<pre class="prettyprint"><code>[diff]
     tool = diffmerge
 [difftool "diffmerge"]
     cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
@@ -124,20 +126,20 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:</p>
 
-<pre><code>#!/usr/bin/env bash
+<pre class="prettyprint"><code class="language-bsh">#!/usr/bin/env bash
 [ $# -eq 7 ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge "$2" "$5"
 </code></pre>
 
 <p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:</p>
 
-<pre><code>path old-file old-hex old-mode new-file new-hex new-mode
+<pre class="prettyprint"><code>path old-file old-hex old-mode new-file new-hex new-mode
 </code></pre>
 
 <p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.</p>
 
 <p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:</p>
 
-<pre><code>git config --global diff.external mydiff
+<pre class="prettyprint"><code>git config --global diff.external mydiff
 </code></pre>
 
 <p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. </p>
@@ -148,7 +150,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:</p>
 
-<pre><code>git config --global merge.tool vimdiff
+<pre class="prettyprint"><code>git config --global merge.tool vimdiff
 </code></pre>
 
 <h2>그외</h2>
@@ -165,7 +167,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 <li><a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a></li>
 <li><a href="http://adventuresincoding.com/2010/04/how-to-setup-git-to-use-diffmerge">How to setup git to use diffmerge</a></li>
 <li><a href="http://progit.org">progit</a></li>
-</ul>
+</ul>]]>
     </content>
   </entry>
   <entry>
@@ -174,7 +176,8 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
     <updated>Sat Dec 10 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/git-merge.html</id>
     <content type="html">
-      <p>커밋 히스토리는 굉장히 잘 관리해야 한다. 이 글은 merge를 잘해서 히스토리를 잘 관리하는 방법을 설명한다.</p>
+<![CDATA[
+<p>커밋 히스토리는 굉장히 잘 관리해야 한다. 이 글은 merge를 잘해서 히스토리를 잘 관리하는 방법을 설명한다.</p>
 
 <p>git의 최고의 장점은 모든 것을 나중으로 미룰 수 있다는 것이다. 이 말의 의미는 언제나 히스토리를 원하는 대로 편집할 수 있다는 것을 의미한다. 기존의 커밋 여러 개를 하나로 합치거나 커밋 하나를 여러 개로 쪼갤 수 있다. 이미 커밋된 개체에 들어 있는 committer나 author 정보를 수정할 수도 있다. 이런 git의 막강한 기능을 이용해서 모든 참여자가 쉽게 이해할 수 있고 쉽게 관리할 수 있는 히스토리를 만들어 나아가야 한다. 히스토리를 단장하는 방법도 굉장히 흥미로운 주제지만 내용이 많아서 이 글에서 다루지 않는다. 나중에 다시 다루기로 하겠다.</p>
 
@@ -207,7 +210,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>merge하기 전에 뭐가 다른지 확인해보는 것이 좋다. feature/sample이라는 토픽 브랜치를 ship 브랜치에 merge하는 경우에 다음과 같이 뭐가 다른지 살펴보자.</p>
 
-<pre><code>git log ship..feature/sample
+<pre class="prettyprint"><code>git log ship..feature/sample
 </code></pre>
 
 <p>이 명령은 ship에는 없고 feature/sample에만 있는 커밋을 모두 보여준다. 그리고 나서 <code>git show</code> 명령으로 해당 커밋에서 도데체 무엇이 변경됐는지 확인할 수 있다.</p>
@@ -220,15 +223,13 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>ship 브랜치 히스토리가 다음과 같다고 하자:</p>
 
-<pre><code>:::text
-* 23a973a - (ship) Add feature/sample
+<pre class="prettyprint"><code class="language-text">* 23a973a - (ship) Add feature/sample
 * 1934594 - Add ship
 </code></pre>
 
 <p>이 상태에서 '프랑키'는 feature/guns 브랜치를 만들어 대포를 두 번에 나눠서 달았다. 배를 고친 후 feature/guns 브랜치는 다음과 같다:</p>
 
-<pre><code>:::text
-* f296244 - (feature/guns) Add gun2
+<pre class="prettyprint"><code class="language-text">* f296244 - (feature/guns) Add gun2
 * 084ebfa - Add new A gun
 * 23a973a - (ship) Add feature/sample
 * 1934594 - Add ship
@@ -236,7 +237,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>이것을 ship 브랜치에 merge하면 feature/guns는 ship을 base로 하고 있기 때문에 Fast-forward된다. ship 브랜치의 히스토리는 다음과 같아진다:</p>
 
-<pre><code>* f296244 - (ship, feature/guns) Add gun2
+<pre class="prettyprint"><code>* f296244 - (ship, feature/guns) Add gun2
 * 084ebfa - Add new A gun
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
@@ -246,8 +247,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p><code>git merge --no-commit --squash</code> 명령으로 두 커밋을 합쳐서 merge하면 다음과 같아진다:</p>
 
-<pre><code>:::text
-* 99f108e - (ship) Add new guns
+<pre class="prettyprint"><code class="language-text">* 99f108e - (ship) Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
 </code></pre>
@@ -258,31 +258,27 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>'프랑키'가 대포를 추가하는 사이에 '나미'는 'feature/tangerine' 브랜치를 만들고 귤 나무를 하나 심었다:</p>
 
-<pre><code>:::text
-* 945381e - (feature/tangerine) Plant new tangerine
+<pre class="prettyprint"><code class="language-text">* 945381e - (feature/tangerine) Plant new tangerine
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
 </code></pre>
 
 <p>'나미'는 자신의 결과물을 push하기 위해서 먼저 pull한다. 그럼 ‘나미’의 ship 브랜치는 다음과 같다:</p>
 
-<pre><code>:::text
-* 99f108e - (ship) Add new guns
+<pre class="prettyprint"><code class="language-text">* 99f108e - (ship) Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
 </code></pre>
 
 <p>merge하기 전에 여기서도 두 브랜치에 어떤 차이가 있는 지 확인한다. 이때는 <code>git log --left-right ship...feature/tangerine</code> 명령으로 두 브랜치 사이에 뭐가 다른지 확인한다. <code>...</code>은 서로 다른 커밋을 모두 보여준다.</p>
 
-<pre><code>:::text
-&gt; 945381e - (feature/tangerine) Plant new tangerine
+<pre class="prettyprint"><code class="language-text">&gt; 945381e - (feature/tangerine) Plant new tangerine
 &lt; 99f108e - (ship) Add new guns
 </code></pre>
 
 <p><code>&gt;</code>는 파라미터로 넘긴 오른쪽 브랜치에만 있는 커밋이고 <code>&lt;</code>는 왼쪽 브랜치에만 있는 커밋이다. 여기서 feature/tangerine를 merge하면 ship 브랜치는 다음과 같아진다:</p>
 
-<pre><code>:::text
-*   2cc0cb8 - (dev) Merge branch 'feature/tangerine' into dev
+<pre class="prettyprint"><code class="language-text">*   2cc0cb8 - (dev) Merge branch 'feature/tangerine' into dev
 |\
 | * 945381e - (feature/tangerine) Plant new tangerine
 * | 99f108e - Add new guns
@@ -293,7 +289,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>ship 브랜치에 merge 커밋이 들어갔기 때문에 히스토리가 선형적이지 않다. 곧 사라질 브랜치인 'feature/tangerine' 브랜치의 잔재가 커밋 히스토리에 남는다. 이럴 때는 rebase가 필요하다. 다음과 같이 feature/tangerine 브랜치를 checkout하고 rebase한다:</p>
 
-<pre><code>$ git checkout feature/tangerine
+<pre class="prettyprint"><code>$ git checkout feature/tangerine
 $ git rebase ship
 First, rewinding head to replay your work on top of it...
 Applying: Plant new tangerine
@@ -301,8 +297,7 @@ Applying: Plant new tangerine
 
 <p>그럼 feature/tangerine의 히스토리는 다음과 같아진다:</p>
 
-<pre><code>:::text
-* 0c8c128 - (feature/tangerine) Plant new tangerine
+<pre class="prettyprint"><code class="language-text">* 0c8c128 - (feature/tangerine) Plant new tangerine
 * 99f108e - (ship) Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
@@ -312,8 +307,7 @@ Applying: Plant new tangerine
 
 <p>그리고 나서 ship 브랜치에 feature/tangerine을 merge한다. 이때 feature/tangerine 브랜치는 ship 브랜치를 base로 하기 때문에 Fast-forward된다. merge하면 ship 브랜치의 히스토리는 다음과 같아진다:</p>
 
-<pre><code>:::text
-* 0c8c128 - (ship, feature/tangerine) Plant new tangerine
+<pre class="prettyprint"><code class="language-text">* 0c8c128 - (ship, feature/tangerine) Plant new tangerine
 * 99f108e - Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
@@ -323,8 +317,7 @@ Applying: Plant new tangerine
 
 <p>'루피'는 고기와 과일을 가지고 돌아왔다. '루피'의 브랜치, feature/food는 다음과 같다:</p>
 
-<pre><code>:::text
-* df19672 - (feature/food) Add fruits
+<pre class="prettyprint"><code class="language-text">* df19672 - (feature/food) Add fruits
 * 663ced1 - Add meats
 * 0c8c128 - (ship) Plant new tangerine
 * 99f108e - Add new guns
@@ -336,8 +329,7 @@ Applying: Plant new tangerine
 
 <p>ship 브랜치로 이동해서 <code>git cherry-pick 663ced1</code> 명령을 실행하면 ship 브랜치 히스토리는 다음과 같아진다:</p>
 
-<pre><code>:::text
-* 271fa93 - (ship, feature/food) Add meats
+<pre class="prettyprint"><code class="language-text">* 271fa93 - (ship, feature/food) Add meats
 * 0c8c128 - Plant new tangerine
 * 99f108e - Add new guns
 * 23a973a - Add feature/sample
@@ -354,7 +346,7 @@ Applying: Plant new tangerine
 
 <p>fast-forward merge하는 방법을 살펴보자. '프랑키'는 feature/fix-ship 브랜치를 만들어 뱃머리와 닻을 수리했다:</p>
 
-<pre><code>* 52f084e - (HEAD, feature/fix-ship) Fix anchor
+<pre class="prettyprint"><code>* 52f084e - (HEAD, feature/fix-ship) Fix anchor
 * eb1db0d - Fix sunny bow
 * 271fa93 - (ship) Add meats
 * 0c8c128 - Plant new tangerine
@@ -365,14 +357,14 @@ Applying: Plant new tangerine
 
 <p>이 브랜치를 ship 브랜치에 merge한다. 먼저, <code>...</code>으로 fast-forward merge될 수 있는지 확인한다.</p>
 
-<pre><code>$ git log --left-right ship...feature/fix-ship
+<pre class="prettyprint"><code>$ git log --left-right ship...feature/fix-ship
 &gt; 52f084e - (feature/fix-ship) Fix anchor
 &gt; eb1db0d - Fix sunny bow
 </code></pre>
 
 <p>feature/fix-ship 브랜치는 ship 브랜치를 base로 하기 때문에 fast-forward merge될 수 있다. <code>merge-base</code> 명령으로도 확인할 수 있다. 이 명령은 두 브랜치가 공통으로 하는 공통 커밋을 알려준다:</p>
 
-<pre><code>$ git merge-base ship feature/fix-ship
+<pre class="prettyprint"><code>$ git merge-base ship feature/fix-ship
 271fa933f42c7d6b0fa1e967c7d73801e83936b3
 </code></pre>
 
@@ -380,7 +372,7 @@ Applying: Plant new tangerine
 
 <p><code>--no-ff</code> 옵션을 사용하지 않고 merge하면 fast-forward merge된다.</p>
 
-<pre><code>$ git checkout ship
+<pre class="prettyprint"><code>$ git checkout ship
 $ git merge feature/fix-ship 
 Updating 271fa93..52f084e
 Fast-forward
@@ -397,7 +389,7 @@ Fast-forward
 
 <p>위에서 merge 했던 것을 다시 원상태로 돌린다(revert):</p>
 
-<pre><code>$ git reset --hard HEAD~2
+<pre class="prettyprint"><code>$ git reset --hard HEAD~2
 HEAD is now at 271fa93 Add meats
 </code></pre>
 
@@ -405,7 +397,7 @@ HEAD is now at 271fa93 Add meats
 
 <p>이제 <code>--no-ff</code>을 주고 merge 커밋을 만든다.</p>
 
-<pre><code>$ git checkout ship
+<pre class="prettyprint"><code>$ git checkout ship
 $ git merge --no-ff feature/fix-ship
 Merge made by recursive.
  0 files changed, 0 insertions(+), 0 deletions(-)
@@ -415,7 +407,7 @@ Merge made by recursive.
 
 <p>이제 ship 브랜치의 히스토리를 살펴보자:</p>
 
-<pre><code>*   65f14bd - (HEAD, ship) Merge branch 'feature/fix-ship' into ship
+<pre class="prettyprint"><code>*   65f14bd - (HEAD, ship) Merge branch 'feature/fix-ship' into ship
 |\  
 | * 52f084e - (feature/fix-ship) Fix anchor
 | * eb1db0d - Fix sunny bow
@@ -429,13 +421,13 @@ Merge made by recursive.
 
 <p>어떤 feature를 merge했고 그 feature에 해당하는 커밋이 무엇인지 히스토리에 남는다. 만약 이 merge를 취소하고 싶을 때는 다음과 같이 실행하면 된다.</p>
 
-<pre><code>$ git reset --hard HEAD~1
+<pre class="prettyprint"><code>$ git reset --hard HEAD~1
 HEAD is now at 271fa93 Add meats
 </code></pre>
 
 <p>merge 커밋이 있기 때문에 'HEAD~1' 만으로도 feature/fix-ship에 해당하는 커밋이 모두 reset된다:</p>
 
-<pre><code>* 271fa93 - (HEAD, ship) Add meats
+<pre class="prettyprint"><code>* 271fa93 - (HEAD, ship) Add meats
 * 0c8c128 - Plant new tangerine
 * 99f108e - Add new guns
 * 23a973a - Add feature/sample
@@ -446,7 +438,7 @@ HEAD is now at 271fa93 Add meats
 
 <p>Vincent Driessen는 <a href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html">A successful Git branching model</a>에서 --no-ff를 기본 옵션으로 해야 한다고 했지만, 꼭 그렇지 않다. 히스토리를 어떻게 관리할지에 따라 선택해야 하고 fast-forward merge해야 하는 경우도 매우 많다.</p>
 
-<p>실제로 Driessen이 저 글의 내용을 구현한 <a href="https://github.com/nvie/gitflow">git-flow</a>에서도 feature 브랜치에 commit이 하나만 있으면 develop 브랜치에 fast-forward로 merge한다.</p>
+<p>실제로 Driessen이 저 글의 내용을 구현한 <a href="https://github.com/nvie/gitflow">git-flow</a>에서도 feature 브랜치에 commit이 하나만 있으면 develop 브랜치에 fast-forward로 merge한다.</p>]]>
     </content>
   </entry>
   <entry>
@@ -455,7 +447,8 @@ HEAD is now at 271fa93 Add meats
     <updated>Fri Dec 09 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/git-flow.html</id>
     <content type="html">
-      <p><a href="https://github.com/nvie/gitflow">git-flow</a>를 설명하는 글, <a href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>을 먼저 읽어 보는 게 좋다. 저 글에 설명된 것을 쉽게 할 수 있도록 구현한 게 git-flow다.</p>
+<![CDATA[
+<p><a href="https://github.com/nvie/gitflow">git-flow</a>를 설명하는 글, <a href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>을 먼저 읽어 보는 게 좋다. 저 글에 설명된 것을 쉽게 할 수 있도록 구현한 게 git-flow다.</p>
 
 <p>이 글에서는 git-flow 명령어가 어떤 것인지 살펴본다.</p>
 
@@ -469,7 +462,7 @@ HEAD is now at 271fa93 Add meats
 
 <p>git-flow 설치하고 <code>git flow</code>라고 실행하면 어떤 명령어들이 있는지 볼 수 있다:</p>
 
-<pre><code>$ git flow
+<pre class="prettyprint"><code>$ git flow
 usage: git flow &lt;subcommand&gt;
 
 Available subcommands are:
@@ -489,7 +482,7 @@ Try 'git flow &lt;subcommand&gt; help' for details.
 
 <p>설정은 <code>.git/config</code> 파일에 다음과 같이 저장된다. <code>git config -l</code>로도 확인할 수 있다.</p>
 
-<pre><code>gitflow.branch.master=master
+<pre class="prettyprint"><code>gitflow.branch.master=master
 gitflow.branch.develop=develop
 gitflow.prefix.feature=feature/
 gitflow.prefix.release=release/
@@ -504,7 +497,7 @@ gitflow.prefix.versiontag=0.1
 
 <p>feature 명령어는 다음과 같다.</p>
 
-<pre><code>$ git flow feature start
+<pre class="prettyprint"><code>$ git flow feature start
 Missing argument &lt;name&gt;
 usage: git flow feature [list] [-v]
        git flow feature start [-F] &lt;name&gt; [&lt;base&gt;]
@@ -529,7 +522,7 @@ usage: git flow feature [list] [-v]
 
 <p><code>git flow feature start my-feature</code>라고 실행하면 develop 브랜치를 base로 <code>feature/my-feature</code>라는 브랜치가 만들어 진다. 이 명령은 다음과 같은 명령의 shortcut 이다:</p>
 
-<pre><code>git checkout -b feature/my-feature develop
+<pre class="prettyprint"><code>git checkout -b feature/my-feature develop
 </code></pre>
 
 <p>실제로 코드를 열어보면 몇 가지 점검하는 코드가 더 들어 있지만 핵심은 이렇다.</p>
@@ -538,7 +531,7 @@ usage: git flow feature [list] [-v]
 
 <p><code>git flow feature finish my-feature</code>라고 실행하면 my-feature 브랜치가 develop 브랜치에 merge된다. 이 명령은 다음과 같은 명령이다:</p>
 
-<pre><code>git checkout develop
+<pre class="prettyprint"><code>git checkout develop
 git merge --no-ff feature/my-feature
 git branch -d feature/my-feature
 </code></pre>
@@ -551,7 +544,7 @@ git branch -d feature/my-feature
 
 <p>해당 브랜치를 push한다. <code>git flow feature publish my-feature</code>라고 실행하면 <code>origin/feature/my-feature</code>로 push하는 것이고 실행되는 git 명령을 풀어보면 다음과 같다:</p>
 
-<pre><code>git push origin feature/my-feature
+<pre class="prettyprint"><code>git push origin feature/my-feature
 
 # configure remote tracking
 git config branch.feature/my-feature.remote origin
@@ -563,14 +556,14 @@ git checkout feature/my-feature
 
 <p>remote tracking branch를 새로 만든다. <code>git flow feature track my-feature</code>라는 것은 다음과 같이 실행한 것과 같다:</p>
 
-<pre><code>git checkout -b feature/my-feature origin/feature/my-feature
+<pre class="prettyprint"><code>git checkout -b feature/my-feature origin/feature/my-feature
 </code></pre>
 
 <h4>git flow feature diff</h4>
 
 <p>develop 브랜치와의 merge-base 커밋을 찾아 그 차이를 비교한다. <code>git flow feature diff my-feature</code>라는 건 다음의 명령을 실행한 것과 같다:</p>
 
-<pre><code>git diff $(git merge-base develop feature/my-feature)..feature/my-feature
+<pre class="prettyprint"><code>git diff $(git merge-base develop feature/my-feature)..feature/my-feature
 </code></pre>
 
 <p>merge-base는 두 브랜치의 공통 조상을 찾아 준다. merge할 때 어떤 브랜치를 기준으로 merge할지 보여주는 것이다. 예를 들어 히스토리가 다음과 같다고 하자:</p>
@@ -579,14 +572,14 @@ git checkout feature/my-feature
 
 <p><code>git merge-base develop feature/1</code> 명령을 실행하면 4ae3845 커밋을 찾아 준다. 그리고 그 커밋을 기준으로 diff한다. 그러니까 이 예제에서 <code>git flow feature diff 1</code>이라고 실행하면 결국 다음과 같은 명령이 실행되는 것이다.</p>
 
-<pre><code>git diff 4ae3845..feature/1
+<pre class="prettyprint"><code>git diff 4ae3845..feature/1
 </code></pre>
 
 <h4>git flow feature rebase</h4>
 
 <p><code>git flow feature rebase my-feature</code>라는 명령은 다음과 같다:</p>
 
-<pre><code>git checkout feature/my-feature
+<pre class="prettyprint"><code>git checkout feature/my-feature
 git rebase develop
 </code></pre>
 
@@ -594,14 +587,14 @@ git rebase develop
 
 <p><code>git flow feature checkout my-feature</code>는 다음과 같다:</p>
 
-<pre><code>git checkout feature/my-feature
+<pre class="prettyprint"><code>git checkout feature/my-feature
 </code></pre>
 
 <h4>git flow feature pull</h4>
 
 <p><code>git flow feature pull my-feature</code>는 다음과 같다:</p>
 
-<pre><code>git pull feature/my-feature
+<pre class="prettyprint"><code>git pull feature/my-feature
 </code></pre>
 
 <h3>release, hotfix</h3>
@@ -631,7 +624,7 @@ git rebase develop
 <li><a href="https://github.com/nvie/gitflow">git-flow</a></li>
 <li><a href="http://yakiloo.com/getting-started-git-flow/">Getting started git-flow</a></li>
 <li><a href="http://yakiloo.com/getting-started-git-flow/">Setting up git flow remote</a></li>
-</ul>
+</ul>]]>
     </content>
   </entry>
   <entry>
@@ -640,7 +633,8 @@ git rebase develop
     <updated>Tue Dec 06 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html</id>
     <content type="html">
-      <p>_<br /><a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 '<a href="https://github.com/nvie/gitflow">git-flow</a>'로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.<br />_</p>
+<![CDATA[
+<p>_<br /><a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 '<a href="https://github.com/nvie/gitflow">git-flow</a>'로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.<br />_</p>
 
 <p>내가 지난 일 년간 프로젝트를 할 때 사용한 개발 모델을 소개하고자 한다. 나는 이 모델을 업무에서도 사용했고 개인 프로젝트에서도 사용했다. 결과는 매우 성공적이었다. 진작부터 이 글을 쓰려고 벼르고 있었지만, 시간이 부족해 완성할 수 없었다. 나는 프로젝트를 진행하는 데 필요한 것을 하나하나 설명하기보다 순수하게 branching 전략과 배포 관리에 대해서 설명하고자 한다. </p>
 
@@ -707,7 +701,7 @@ git rebase develop
 
 <h4>feature 브랜치</h4>
 
-<pre><code>갈라져 나온 브랜치: develop
+<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
 다시 merge할 브랜치: develop
 브랜치 이름 규칙: master, develop, release-*, hotfix-*를 제외한 것
 </code></pre>
@@ -720,7 +714,7 @@ git rebase develop
 
 <p>feature 브랜치를 develop 브랜치에서(base) 새로 만든다.</p>
 
-<pre><code>$ git checkout -b myfeature develop
+<pre class="prettyprint"><code>$ git checkout -b myfeature develop
 Switched to a new branch "myfeature"
 </code></pre>
 
@@ -728,7 +722,7 @@ Switched to a new branch "myfeature"
 
 <p>어떤 기능이 다 완성돼 다음 배포에 넣기로 했다면 develop 브랜치에 merge한다:</p>
 
-<pre><code>$ git checkout develop
+<pre class="prettyprint"><code>$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff myfeature
 Updating ea1b82a..05e9557
@@ -750,7 +744,7 @@ $ git push origin develop
 
 <h4>release 브랜치</h4>
 
-<pre><code>갈라져 나온 브랜치: develop
+<pre class="prettyprint"><code>갈라져 나온 브랜치: develop
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: release-*
 </code></pre>
@@ -765,7 +759,7 @@ $ git push origin develop
 
 <p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 '1.1.5'이고 새 버전은 '1.1.6'이나 '2.0'이 아니라 '1.2' 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:</p>
 
-<pre><code>$ git checkout -b release-1.2 develop
+<pre class="prettyprint"><code>$ git checkout -b release-1.2 develop
 Switched to a new branch "release-1.2"
 $ ./bump-version.sh 1.2
 Files modified successfully, version bumped to 1.2.
@@ -784,7 +778,7 @@ $ git commit -a -m "Bumped version number to 1.2"
 
 <p>먼저 처음 두 단계, master에 merge하고 tag를 단다:</p>
 
-<pre><code>$ git checkout master
+<pre class="prettyprint"><code>$ git checkout master
 Switched to branch 'master'
 $ git merge --no-ff release-1.2
 Merge made by recursive.
@@ -796,7 +790,7 @@ $ git tag -a 1.2
 
 <p>그리고 develop 브랜치에 다시 merge해서 release 브랜치에서 수정한 것이 앞으로도 계속 유지되게 한다:</p>
 
-<pre><code>$ git checkout develop
+<pre class="prettyprint"><code>$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff release-1.2
 Merge made by recursive.
@@ -807,13 +801,13 @@ Merge made by recursive.
 
 <p>이제 진짜로 배포했기 때문에 release 브랜치는 더는 필요 없다. 삭제한다:</p>
 
-<pre><code>$ git branch -d release-1.2
+<pre class="prettyprint"><code>$ git branch -d release-1.2
 Deleted branch release-1.2 (was ff452fe).
 </code></pre>
 
 <h4>hotfix 브랜치</h4>
 
-<pre><code>갈라져 나온 브랜치: master
+<pre class="prettyprint"><code>갈라져 나온 브랜치: master
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: hotfix-*
 </code></pre>
@@ -828,7 +822,7 @@ Deleted branch release-1.2 (was ff452fe).
 
 <p>hotfix 브랜치는 master 브랜치에서 만든다. 예를 들어 현재 운영 버전이 1.2이고 심각한 버그가 발견됐다. develop 브랜치는 아직 불안정하기 때문에 hotfix 브랜치를 만들고 거기서 버그를 잡는다:</p>
 
-<pre><code>$ git checkout -b hotfix-1.2.1 master
+<pre class="prettyprint"><code>$ git checkout -b hotfix-1.2.1 master
 Switched to a new branch "hotfix-1.2.1"
 $ ./bump-version.sh 1.2.1
 Files modified successfully, version bumped to 1.2.1.
@@ -841,7 +835,7 @@ $ git commit -a -m "Bumped version number to 1.2.1"
 
 <p>버그를 해결하고 나서 커밋한다. 한두 개의 커밋으로 해결한다:</p>
 
-<pre><code>$ git commit -m "Fixed severe production problem"
+<pre class="prettyprint"><code>$ git commit -m "Fixed severe production problem"
 [hotfix-1.2.1 abbe5d6] Fixed severe production problem
 5 files changed, 32 insertions(+), 17 deletions(-)
 </code></pre>
@@ -852,7 +846,7 @@ $ git commit -a -m "Bumped version number to 1.2.1"
 
 <p>먼저 master에 merge하고 tag를 단다:</p>
 
-<pre><code>$ git checkout master
+<pre class="prettyprint"><code>$ git checkout master
 Switched to branch 'master'
 $ git merge --no-ff hotfix-1.2.1
 Merge made by recursive.
@@ -864,7 +858,7 @@ $ git tag -a 1.2.1
 
 <p>그리고 develop에도 merge한다:</p>
 
-<pre><code>$ git checkout develop
+<pre class="prettyprint"><code>$ git checkout develop
 Switched to branch 'develop'
 $ git merge --no-ff hotfix-1.2.1
 erge made by recursive.
@@ -875,7 +869,7 @@ erge made by recursive.
 
 <p>이제 이 임시 브랜치를 삭제한다:</p>
 
-<pre><code>$ git branch -d hotfix-1.2.1
+<pre class="prettyprint"><code>$ git branch -d hotfix-1.2.1
 Deleted branch hotfix-1.2.1 (was abbe5d6).
 </code></pre>
 
@@ -885,7 +879,7 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
 
 <p><a href="http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf">고품질 PDF 버전</a>도 올려 두었으니 언제든지 볼 수 있도록 벽에 붙여두면 좋다. </p>
 
-<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p>
+<p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p>]]>
     </content>
   </entry>
   <entry>
@@ -894,7 +888,8 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
     <updated>Fri Dec 02 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/git-refs.html</id>
     <content type="html">
-      <p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
+<![CDATA[
+<p>이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading images" title="" /></p>
 
@@ -918,12 +913,12 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
 
 <p>기본적으로 7자가 사용된다. 위 SHA 값에 적용하면 <code>1c36188</code>이다:</p>
 
-<pre><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d
+<pre class="prettyprint"><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d
 </code></pre>
 
 <p>라고 해도 되지만:</p>
 
-<pre><code>git show 1c36188
+<pre class="prettyprint"><code>git show 1c36188
 </code></pre>
 
 <p>이렇게 해도 결과는 같다. short SHA는 저장소에서 식별할 수 있는 만큼 사용되며 거대한 리눅스 커널 프로젝트도 겨우 12자를 사용한다.</p>
@@ -940,14 +935,14 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
 
 <p>이미 만들어진 tag는 다음과 같이 확인할 수 있다.</p>
 
-<pre><code>$ git tag
+<pre class="prettyprint"><code>$ git tag
 v0.1
 v1.3
 </code></pre>
 
 <p>이름으로 검색하려면 다음과 같이 확인할 수 있다.</p>
 
-<pre><code>$ git tag -l 'v1.4.2.*'
+<pre class="prettyprint"><code>$ git tag -l 'v1.4.2.*'
 v1.4.2.1
 v1.4.2.2
 v1.4.2.3
@@ -968,8 +963,7 @@ v1.4.2.4
 
 <p>커밋 히스토리가 다음과 같을 때:</p>
 
-<pre><code>:::text
-*   4f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
+<pre class="prettyprint"><code class="language-text">*   4f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
 |\
 | * 3a6714f - (issue2) It sucks again
 |/
@@ -1005,7 +999,7 @@ v1.4.2.4
 
 <p>reflog는 단순히 HEAD가 가리켰던 히스토리이다. 위에서 사용한 히스토리에서 <code>git reflog</code>를 실행하면 다음과 같이 나온다:</p>
 
-<pre><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
+<pre class="prettyprint"><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
 41947a1 HEAD@{1}: checkout: moving from issue2 to dev
 3a6714f HEAD@{2}: commit: It sucks again
 41947a1 HEAD@{3}: checkout: moving from dev to issue2
@@ -1022,7 +1016,7 @@ v1.4.2.4
 
 <p><code>git show HEAD@{4}</code>는 <code>41947a1</code>에 대한 정보를 보여준다. HEAD뿐만 아니라 Branch에도 사용할 수 있다. <code>git reflog --all</code> 명령을 실행하면 같은 형식으로 branch 기준으로 보여준다:</p>
 
-<pre><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
+<pre class="prettyprint"><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
 3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{1}: commit: It sucks
 3b0b17d refs/heads/dev@{2}: merge issue1: Merge made by recursive.
@@ -1034,7 +1028,7 @@ v1.4.2.4
 
 <p>만약 <code>git reset --hard HEAD~1</code>라고 명령을 실행해서 브랜치가 HEAD~1을 가리키도록 했다. 그럼 다음과 같이 reflog가 남는다:</p>
 
-<pre><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
+<pre class="prettyprint"><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{0}: HEAD~1: updating HEAD
 4f2b862 refs/heads/dev@{1}: merge issue2: Merge made by recursive.
 41947a1 refs/heads/dev@{2}: commit: It sucks
@@ -1067,7 +1061,7 @@ v1.4.2.4
 
 <p>'Double Dot'은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
 
-<pre><code>$ git log master..experiment
+<pre class="prettyprint"><code>$ git log master..experiment
 D
 C
 
@@ -1082,7 +1076,7 @@ E
 
 <p>Tripple Dot은 서로 다른 커밋만을 보여준다. 다음 예제를 보자:</p>
 
-<pre><code>$ git log master...experiment
+<pre class="prettyprint"><code>$ git log master...experiment
 F
 E
 D
@@ -1091,7 +1085,7 @@ C
 
 <p><code>--left-right</code> 옵션을 추가하면 어느쪽에 속하는 것인지도 보여준다.</p>
 
-<pre><code>$ git log --left-right master...experiment
+<pre class="prettyprint"><code>$ git log --left-right master...experiment
 &lt;F
 &lt;E
 &gt;D
@@ -1106,7 +1100,7 @@ C
 
 <ul>
 <li><a href="/articles/2011/progit.html">progit</a></li>
-</ul>
+</ul>]]>
     </content>
   </entry>
   <entry>
@@ -1115,7 +1109,8 @@ C
     <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
     <content type="html">
-      <p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+<![CDATA[
+<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
 
@@ -1125,7 +1120,7 @@ C
 
 <h3>단순 약어</h3>
 
-<pre><code># Abbreviations
+<pre class="prettyprint"><code># Abbreviations
 git config --global alias.st status
 git config --global alias.co checkout
 git config --global alias.ci commit
@@ -1140,13 +1135,13 @@ git config --global alias.cs "commit -s"
 
 <p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
 
-<pre><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
+<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
 </code></pre>
 
 <p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
 
-<pre><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-</code></pre>
+<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+</code></pre>]]>
     </content>
   </entry>
   <entry>
@@ -1155,7 +1150,8 @@ git config --global alias.cs "commit -s"
     <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/bash-it.html</id>
     <content type="html">
-      <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+<![CDATA[
+<p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/bash-it.sean-shell.png" alt="bash-it" title="" /></p>
 
@@ -1179,7 +1175,7 @@ git config --global alias.cs "commit -s"
 
 <p>다음과 같은 completion 코드가 들어 있다. 해당 도구를 사용한다면 한번쯤은 들어봤을 만한 그 completion 코드다. 장점은 한번에 설치된다는 것:</p>
 
-<pre><code>brew.completion.bash
+<pre class="prettyprint"><code>brew.completion.bash
 gem.completion.bash
 git.completion.bash
 git_flow.completion.bash
@@ -1191,7 +1187,7 @@ ssh.completion.bash
 
 <p>다음과 같은 도구에 대한 alias들이 define 돼있다:</p>
 
-<pre><code>bundler.aliases.bash
+<pre class="prettyprint"><code>bundler.aliases.bash
 emacs.aliases.bash
 general.aliases.bash
 git.aliases.bash
@@ -1208,7 +1204,7 @@ vim.aliases.bash
 
 <p>이 테마 기능도 굉장히 유용하다. 여러가지 테마가 있는데 내가 사용하고 있는 <code>zork</code> 테마의 경우 다음과 같이 보여준다:</p>
 
-<pre><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
+<pre class="prettyprint"><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
 $ git st ...
 </code></pre>
 
@@ -1229,7 +1225,7 @@ $ git st ...
 
 <p>내 컴퓨터에서 실행한 <code>nvm ls</code>의 결과:</p>
 
-<pre><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
+<pre class="prettyprint"><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
 v0.1.101  v0.1.17   v0.1.24   v0.1.31   v0.1.94   v0.2.1    v0.3.1    v0.3.8    v0.4.2    v0.4.8-rc v0.5.4    v0.6.1
 v0.1.102  v0.1.18   v0.1.25   v0.1.32   v0.1.95   v0.2.2    v0.3.2    v0.4      v0.4.3    v0.4.9    v0.5.5
 v0.1.103  v0.1.19   v0.1.26   v0.1.33   v0.1.96   v0.2.3    v0.3.3    v0.4.0    v0.4.4    v0.5.0    v0.5.6
@@ -1242,7 +1238,7 @@ current:    v0.6.1
 # use 'nvm sync' to update from nodejs.org
 </code></pre>
 
-<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
+<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>]]>
     </content>
   </entry>
   <entry>
@@ -1251,7 +1247,8 @@ current:    v0.6.1
     <updated>Wed Nov 30 2011 09:00:00 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/progit.html</id>
     <content type="html">
-      <p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다. 시작한지 꽤 됐는데 진도가 느립니다. <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에 6장까지 번역을 완료했습니다. 계획과 많은 차이가 있지만 이제야 좀 정리가 돼서 일부라도 공개합니다.</p>
+<![CDATA[
+<p>github의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 progit을 번역하고 있습니다. 시작한지 꽤 됐는데 진도가 느립니다. <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에 6장까지 번역을 완료했습니다. 계획과 많은 차이가 있지만 이제야 좀 정리가 돼서 일부라도 공개합니다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
 
@@ -1261,7 +1258,7 @@ current:    v0.6.1
 
 <h3>힘내</h3>
 
-<p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>
+<p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>]]>
     </content>
   </entry>
   <entry>
@@ -1270,7 +1267,8 @@ current:    v0.6.1
     <updated>Sat Nov 26 2011 01:06:05 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/docpad.html</id>
     <content type="html">
-      <p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
+<![CDATA[
+<p>Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/docpad.png" alt="Docpad" title="" /></p>
 
@@ -1290,12 +1288,12 @@ current:    v0.6.1
 
 <p>일단 coffee script를 설치하고:</p>
 
-<pre><code>$ npm install -g coffee-script 
+<pre class="prettyprint"><code>$ npm install -g coffee-script 
 </code></pre>
 
 <p>docpad를 설치한다. -g는 global 영역에 설치하는 것으로 -g 옵션을 줘야 명령으로 실행할 수 있다:</p>
 
-<pre><code>$ npm install -g docpad
+<pre class="prettyprint"><code>$ npm install -g docpad
 </code></pre>
 
 <p><code>kitchensink.docpad</code>를 클론한다:</p>
@@ -1312,38 +1310,33 @@ current:    v0.6.1
 
 <p>markdown에 첨부한 코드가 highlight되도록 plugin을 만들었다. 원래 markdown 규약상 다음과 같이 html로 변환된다:</p>
 
-<pre><code>:::html
-&lt;pre class="prettyprint"&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
+<pre class="prettyprint"><code class="language-html">&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
 <p>이 것을 다음과 같이 변환한다:</p>
 
-<pre><code>:::html
-&lt;pre class="prittyprint"&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
+<pre class="prettyprint"><code class="language-html">&lt;pre class="prittyprint"&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
 <p>google prettify는 특별히 언어를 명시하지 않아도 자동으로 찾는다. 완벽하지는 않지만 편리하다.</p>
 
 <p>명시할 수도 있다. 코드 블럭 첫줄에 <code>:::java</code>라고 작성하면 <code>:::java</code>은 없애고 다음과 같이 렌더링한다:</p>
 
-<pre><code>:::html
-&lt;pre class="prittyprint"&gt;&lt;code class="language-java"&gt;...&lt;/code&gt;&lt;/pre&gt;
+<pre class="prettyprint"><code class="language-html">&lt;pre class="prittyprint"&gt;&lt;code class="language-java"&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
 <p>이 모습 낮설어 보여도 <a href="http://dev.w3.org/html5/spec-author-view/the-code-element.html">w3c 권장사항</a>이다. html5에서 syntax highlight는 이렇게 해야 한다. 지원하는 언어는 <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">prettify 페이지</a>에서 확인한다.</p>
 
 <p>':::'말고 쉘 스크립트들을 위해서 '#!'도 추가했다. <code>#!/usr/bin/env bash</code>을 첫줄로 시작하면 다음과 같이 랜더링한다. 이건 삭제하지 않는다:</p>
 
-<pre><code>:::html
-&lt;pre class="prittyprint"&gt;&lt;code class="language-bsh"&gt;#!/usr/bin/env bash...&lt;/code&gt;&lt;/pre&gt;
+<pre class="prettyprint"><code class="language-html">&lt;pre class="prittyprint"&gt;&lt;code class="language-bsh"&gt;#!/usr/bin/env bash...&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
 <p><code>#!/bin/bash</code>라고 써도 되고 <code>#!/usr/bin/bash</code>라고 써도 된다.</p>
 
 <p>그리고 prettify하지 않은 코드를 위해 'text'와 'plain'도 추가했다. <code>:::text</code>나 <code>:::plain</code>을 첫줄에 넣어주면 다음과 같이 원래대로 렌더링한다.</p>
 
-<pre><code>:::html
-&lt;pre class="prettyprint"&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
+<pre class="prettyprint"><code class="language-html">&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
 <h3>Tool Plugin</h3>
@@ -1356,7 +1349,7 @@ current:    v0.6.1
 
 <p>다음은 ToolPlugin 소스다. 나는 docpad Plugin이 아닌 docpad site plugin으로 넣었다. 기본적으로 DocpadPlugin 클래스를 상속받아 사용한다는 점에서 구조는 똑같다. 다만 위치가 docpad site/plugins/ 밑에 들어가는 것만 다르다.</p>
 
-<pre><code># Requires
+<pre class="prettyprint"><code># Requires
 DocpadPlugin = require 'docpad/lib/plugin.coffee'
 moment = require 'moment'
 
@@ -1379,7 +1372,7 @@ module.exports = ToolPlugin
 
 <p>Template 페이지에서 이 것을 이용한 소스를 만들면 다음과 같다.</p>
 
-<pre><code>dateWrapper = @tool.moment document.date
+<pre class="prettyprint"><code>dateWrapper = @tool.moment document.date
 dateWrapper.format 'MMM DD' #ex) JAN 01
 </code></pre>
 
@@ -1389,8 +1382,7 @@ dateWrapper.format 'MMM DD' #ex) JAN 01
 
 <p>summary부터 정의해보자. 이 걸 생각해내는데 오래걸렸다. 좋은 아이디어가 없었는데 의외로 가까운데 있었다. 각 글의 첫 heading tag(/h[123456]/)까지가 summary로 사용된다. 그러니까 글을 쓸때 첫 heading tag가 summary이고 heading tag가 아예 존재하지 않으면 문서 전체를 summary로 사용한다:</p>
 
-<pre><code>:::markdown
-
+<pre class="prettyprint"><code class="language-markdown">
 Here is summary
 
 ## My heading
@@ -1398,8 +1390,7 @@ Here is summary
 
 <p>index 페이지에서 summary를 추출한다. 다음 예제는 CoffeeKup이다:</p>
 
-<pre><code>:::coffee
-@tool.summary document.contentRendered
+<pre class="prettyprint"><code class="language-coffee">@tool.summary document.contentRendered
 </code></pre>
 
 <p>html을 잘라내는 것이기 때문에 content가 아니라 contentRendered 값을 가져다 사용해야 한다.</p>
@@ -1408,7 +1399,7 @@ Here is summary
 
 <p>authors Plugin인 저자를 소개하는 페이지를 만들고 다른 문서의 author 프로퍼티에 저자 이름을 명시하면 자동으로 그 페이지로 링크해주는 것이다. <code>/src/documents/authors/</code>안에 소개 페이지를 다음과 같이 만든다.</p>
 
-<pre><code>--- yaml
+<pre class="prettyprint"><code>--- yaml
 name= 'ahmooge'
 ---
 
@@ -1419,7 +1410,7 @@ blahblah
 
 <p>그럼 CoffeeKup template에서 사용해보자:</p>
 
-<pre><code> a href: @authors.data[ @document.author ].url
+<pre class="prettyprint"><code> a href: @authors.data[ @document.author ].url
 </code></pre>
 
 <p>예외처리는 생략함.</p>
@@ -1432,12 +1423,12 @@ blahblah
 
 <p>docpad를 실행했는데 다음과 같은 에러가 발생하면:</p>
 
-<pre><code>Error: Command failed: npm ERR! error installing <a href='mailto:coffee-script@1.1.3'>coffee-script@1.1.3</a> Error: ENOENT, no such file or directory '/Users/pismute/dogfeet/dogfeet.github.com/node_modules/coffee-script/package.json'
+<pre class="prettyprint"><code>Error: Command failed: npm ERR! error installing <a href='mailto:coffee-script@1.1.3'>coffee-script@1.1.3</a> Error: ENOENT, no such file or directory '/Users/pismute/dogfeet/dogfeet.github.com/node_modules/coffee-script/package.json'
 </code></pre>
 
 <p>수동으로 패키지를 설치한다. 원래 docpad는 자동으로 설치하고 update해줄 수 있다고 하는데 뭔가 잘 안될 때가 있다:</p>
 
-<pre><code>npm install docpad
+<pre class="prettyprint"><code>npm install docpad
 npm install coffee-script
 </code></pre>
 
@@ -1445,7 +1436,7 @@ npm install coffee-script
 
 <p>global 영역에서 설치한 버전을 local에서 사용하게 할 수도 있다. <code>npm link</code> 명령어를 살펴봐라. </p>
 
-<p>npm은 블로그를 이전하고 나서 파볼 계획이다. </p>
+<p>npm은 블로그를 이전하고 나서 파볼 계획이다. </p>]]>
     </content>
   </entry>
   <entry>
@@ -1454,7 +1445,8 @@ npm install coffee-script
     <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/coffee-kup.html</id>
     <content type="html">
-      <p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+<![CDATA[
+<p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/coffeekup.png" alt="CoffeeScript" title="" /></p>
 
@@ -1476,8 +1468,7 @@ npm install coffee-script
 
 <p>우선 다음과 같이 coffeekup을 설치하고:</p>
 
-<pre><code>:::bash
-$ npm install coffeekup -g
+<pre class="prettyprint"><code class="language-bsh">$ npm install coffeekup -g
 </code></pre>
 
 <p>콘솔에 설치하는 것이 귀찮으면 그냥 <a href="http://coffeekup.org/">CoffeeKup</a>에서 실행해보는 것도 좋고 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>을 공부했다면 어렵지 않다.</p>
@@ -1486,13 +1477,12 @@ $ npm install coffeekup -g
 
 <p>CoffeeKup의 Markup은 단순히 함수를 호출하는 것이기 때문에 정의되지 않은 함수는 호출할 수 없다. 이미 대부분의 html tag는 정의돼 있는 것 같지만 그 외의 것을 사용하는 경우에는 에러가 난다. 예를 들어, 다음과 같이 코드를 만들면 say를 정의하지 않았다고 에러가 난다:</p>
 
-<pre><code>:::coffee
-say 'Hello World'
+<pre class="prettyprint"><code class="language-coffee">say 'Hello World'
 </code></pre>
 
 <p>say 함수를 만들면 더이상 에러가 나지 않는다:</p>
 
-<pre><code>say = (args) -&gt;
+<pre class="prettyprint"><code>say = (args) -&gt;
   tag 'say', args
 
 say 'Hello World'
@@ -1502,7 +1492,7 @@ say 'Hello World'
 
 <p>함수라는 것은 배웠고 이제 그럼 인자는 어떻게 매핑되는 거지?라는 것이 궁금하다. 다음 예제를 보자:</p>
 
-<pre><code>say id: 'first', class: 'example', 'Hello World'
+<pre class="prettyprint"><code>say id: 'first', class: 'example', 'Hello World'
 </code></pre>
 
 <p>say 함수의 args[0]에는 <code>{id: 'first', class: 'example'}</code>라는 객체가 넘어가고 args[1]에는 'Hello World'가 넘어간다. 이를 이용해서 자신만의 함수를 작성해 사용할 수 있다.</p>
@@ -1511,12 +1501,12 @@ say 'Hello World'
 
 <p>Tag body는 두 가지 방법으로 정의할 수 있다. 먼저 <code>title 'Hello World'</code>은 다음과 같이 해석된다:</p>
 
-<pre><code>&lt;title&gt;Hello World&lt;/title&gt;
+<pre class="prettyprint"><code>&lt;title&gt;Hello World&lt;/title&gt;
 </code></pre>
 
 <p>하지만 <code>title -&gt; 'Hello World'</code>는 다음과 같이 해석된다:</p>
 
-<pre><code>&lt;title&gt;
+<pre class="prettyprint"><code>&lt;title&gt;
   Hello World
 &lt;/title&gt;
 </code></pre>
@@ -1527,24 +1517,24 @@ say 'Hello World'
 
 <p>id와 class를 표현하는 방법은 두가지다 하나는 이미 설명대로 attribute를 기술하는 방법이 있고:</p>
 
-<pre><code>title id: 'myid', class: 'myclass'
+<pre class="prettyprint"><code>title id: 'myid', class: 'myclass'
 </code></pre>
 
 <p>다른 하나는 css selector를 이용한 방법도 있다:</p>
 
-<pre><code>title '#myid.myclass'
+<pre class="prettyprint"><code>title '#myid.myclass'
 </code></pre>
 
 <p>단, 이 css selector는 첫 argument로 넘겨야한다. 다른 attribute가 더 있으면 ',' 뒤에 위의 방법대로 계속 추가할 수 있다:</p>
 
-<pre><code>title '#myid.myclass', lang: 'ko'
+<pre class="prettyprint"><code>title '#myid.myclass', lang: 'ko'
 </code></pre>
 
 <h2>Atom.xml</h2>
 
 <p>html5을 templating 예제는 <a href="http://coffeekup.org/">CoffeeKup</a>페이지에도 나온다 xml 예제를 보자 </p>
 
-<pre><code>homeUrl='<a href='http://dogfeet.github.com'>http://dogfeet.github.com</a>'
+<pre class="prettyprint"><code>homeUrl='<a href='http://dogfeet.github.com'>http://dogfeet.github.com</a>'
 
 anEntry = (document) -&gt;
   tag 'entry', -&gt;
@@ -1569,7 +1559,7 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
     anEntry document if 0 is document.url.indexOf '/posts'
 </code></pre>
 
-<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>
+<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>]]>
     </content>
   </entry>
   <entry>
@@ -1578,7 +1568,8 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
     <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
     <id>http://dogfeet.github.com/articles/2011/cake.html</id>
     <content type="html">
-      <p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+<![CDATA[
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
 
@@ -1586,21 +1577,19 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
 
 <p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
 
-<pre><code>:::coffee
-task 'say:hello', 'Description of task', -&gt;
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
   console.log 'Hello World!'
 </code></pre>
 
 <p>그리고 <code>task say:hello</code>라고 실행하면:</p>
 
-<pre><code>:::bash
-$ cake say:hello
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
 Hello World!
 </code></pre>
 
 <p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
 
-<pre><code>$ cake
+<pre class="prettyprint"><code>$ cake
 
 cake say:hello             # Description of task
 </code></pre>
@@ -1609,16 +1598,14 @@ cake say:hello             # Description of task
 
 <p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
 
-<pre><code>:::coffee
-option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
 task 'task:withDefaults', 'Description of task', (options) -&gt;
   options.environment or= 'production'
 </code></pre>
 
 <p>이 코드는 다음과 같이 실행한다.</p>
 
-<pre><code>:::bash
-$ cake -e "development" task:withDefaults
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
 </code></pre>
 
 <h2>Use Case</h2>
@@ -1627,13 +1614,12 @@ $ cake -e "development" task:withDefaults
 
 <p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
 
-<pre><code>$ coffee --compile --output lib/ src/
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
 </code></pre>
 
 <p>이 cake로 하려면 다음과 같이 한다.</p>
 
-<pre><code>:::coffee
-{exec} = require 'child_process'
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
 task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
   exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
     throw err if err
@@ -1648,7 +1634,7 @@ task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
 
 <p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
 
-<pre><code>fs     = require 'fs'
+<pre class="prettyprint"><code>fs     = require 'fs'
 {exec} = require 'child_process'
 
 appFiles  = [
@@ -1680,7 +1666,7 @@ task 'build', 'Build single application file from source files', -&gt;
 
 <p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
 
-<pre><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
   exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
     throw err if err
     console.log stdout + stderr
@@ -1690,7 +1676,7 @@ task 'build', 'Build single application file from source files', -&gt;
 
 <ul>
 <li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
-</ul>
+</ul>]]>
     </content>
   </entry>
 </feed>

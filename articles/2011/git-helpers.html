@@ -135,7 +135,7 @@
 
 <h3>단순 약어</h3>
 
-<pre><code># Abbreviations
+<pre class="prettyprint"><code># Abbreviations
 git config --global alias.st status
 git config --global alias.co checkout
 git config --global alias.ci commit
@@ -150,15 +150,48 @@ git config --global alias.cs "commit -s"
 
 <p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
 
-<pre><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
+<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
 </code></pre>
 
 <p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
 
-<pre><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 </code></pre>
   </div>
 </article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Dec 06 2011</span>
+&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+    </li>
+    <li>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+    </li>
+    <li>
+      <span>Dec 10 2011</span>
+&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
+    </li>
+    <li>
+      <span>Dec 17 2011</span>
+&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+    </li>
+    <li>
+      <span>Dec 02 2011</span>
+&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
+    </li>
+    <li>
+      <span>Nov 30 2011</span>
+&raquo;      <a href="/articles/2011/progit.html">progit</a>
+    </li>
+  </ul>
+</section>
 <section id="comments">
   <h3>Feedback</h3>
 <div id="disqus_thread"></div>

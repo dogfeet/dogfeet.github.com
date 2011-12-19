@@ -133,21 +133,19 @@
 
 <p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
 
-<pre><code>:::coffee
-task 'say:hello', 'Description of task', -&gt;
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
   console.log 'Hello World!'
 </code></pre>
 
 <p>그리고 <code>task say:hello</code>라고 실행하면:</p>
 
-<pre><code>:::bash
-$ cake say:hello
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
 Hello World!
 </code></pre>
 
 <p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
 
-<pre><code>$ cake
+<pre class="prettyprint"><code>$ cake
 
 cake say:hello             # Description of task
 </code></pre>
@@ -156,16 +154,14 @@ cake say:hello             # Description of task
 
 <p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
 
-<pre><code>:::coffee
-option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
 task 'task:withDefaults', 'Description of task', (options) -&gt;
   options.environment or= 'production'
 </code></pre>
 
 <p>이 코드는 다음과 같이 실행한다.</p>
 
-<pre><code>:::bash
-$ cake -e "development" task:withDefaults
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
 </code></pre>
 
 <h2>Use Case</h2>
@@ -174,13 +170,12 @@ $ cake -e "development" task:withDefaults
 
 <p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
 
-<pre><code>$ coffee --compile --output lib/ src/
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
 </code></pre>
 
 <p>이 cake로 하려면 다음과 같이 한다.</p>
 
-<pre><code>:::coffee
-{exec} = require 'child_process'
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
 task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
   exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
     throw err if err
@@ -195,7 +190,7 @@ task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
 
 <p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
 
-<pre><code>fs     = require 'fs'
+<pre class="prettyprint"><code>fs     = require 'fs'
 {exec} = require 'child_process'
 
 appFiles  = [
@@ -227,7 +222,7 @@ task 'build', 'Build single application file from source files', -&gt;
 
 <p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
 
-<pre><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
   exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
     throw err if err
     console.log stdout + stderr
@@ -240,6 +235,15 @@ task 'build', 'Build single application file from source files', -&gt;
 </ul>
   </div>
 </article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Nov 22 2011</span>
+&raquo;      <a href="/articles/2011/coffee-kup.html">CoffeeKup &lt;☕/&gt;</a>
+    </li>
+  </ul>
+</section>
 <section id="comments">
   <h3>Feedback</h3>
 <div id="disqus_thread"></div>
