@@ -149,12 +149,12 @@
 
 <p>기본적으로 7자가 사용된다. 위 SHA 값에 적용하면 <code>1c36188</code>이다:</p>
 
-<pre class="prettyprint"><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d
+<pre><code>git show 1c3618887afb5fbcbea25b7c013f4e2114448b8d
 </code></pre>
 
 <p>라고 해도 되지만:</p>
 
-<pre class="prettyprint"><code>git show 1c36188
+<pre><code>git show 1c36188
 </code></pre>
 
 <p>이렇게 해도 결과는 같다. short SHA는 저장소에서 식별할 수 있는 만큼 사용되며 거대한 리눅스 커널 프로젝트도 겨우 12자를 사용한다.</p>
@@ -171,14 +171,14 @@
 
 <p>이미 만들어진 tag는 다음과 같이 확인할 수 있다.</p>
 
-<pre class="prettyprint"><code>$ git tag
+<pre><code>$ git tag
 v0.1
 v1.3
 </code></pre>
 
 <p>이름으로 검색하려면 다음과 같이 확인할 수 있다.</p>
 
-<pre class="prettyprint"><code>$ git tag -l 'v1.4.2.*'
+<pre><code>$ git tag -l 'v1.4.2.*'
 v1.4.2.1
 v1.4.2.2
 v1.4.2.3
@@ -199,7 +199,8 @@ v1.4.2.4
 
 <p>커밋 히스토리가 다음과 같을 때:</p>
 
-<pre class="prettyprint"><code class="language-text">*   4f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
+<pre><code>:::text
+*   4f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
 |\
 | * 3a6714f - (issue2) It sucks again
 |/
@@ -235,7 +236,7 @@ v1.4.2.4
 
 <p>reflog는 단순히 HEAD가 가리켰던 히스토리이다. 위에서 사용한 히스토리에서 <code>git reflog</code>를 실행하면 다음과 같이 나온다:</p>
 
-<pre class="prettyprint"><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
+<pre><code>4f2b862 HEAD@{0}: merge issue2: Merge made by recursive.
 41947a1 HEAD@{1}: checkout: moving from issue2 to dev
 3a6714f HEAD@{2}: commit: It sucks again
 41947a1 HEAD@{3}: checkout: moving from dev to issue2
@@ -252,7 +253,7 @@ v1.4.2.4
 
 <p><code>git show HEAD@{4}</code>는 <code>41947a1</code>에 대한 정보를 보여준다. HEAD뿐만 아니라 Branch에도 사용할 수 있다. <code>git reflog --all</code> 명령을 실행하면 같은 형식으로 branch 기준으로 보여준다:</p>
 
-<pre class="prettyprint"><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
+<pre><code>4f2b862 refs/heads/dev@{0}: merge issue2: Merge made by recursive.
 3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{1}: commit: It sucks
 3b0b17d refs/heads/dev@{2}: merge issue1: Merge made by recursive.
@@ -264,7 +265,7 @@ v1.4.2.4
 
 <p>만약 <code>git reset --hard HEAD~1</code>라고 명령을 실행해서 브랜치가 HEAD~1을 가리키도록 했다. 그럼 다음과 같이 reflog가 남는다:</p>
 
-<pre class="prettyprint"><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
+<pre><code>3a6714f refs/heads/issue2@{0}: commit: It sucks again
 41947a1 refs/heads/dev@{0}: HEAD~1: updating HEAD
 4f2b862 refs/heads/dev@{1}: merge issue2: Merge made by recursive.
 41947a1 refs/heads/dev@{2}: commit: It sucks
@@ -297,7 +298,7 @@ v1.4.2.4
 
 <p>'Double Dot'은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
 
-<pre class="prettyprint"><code>$ git log master..experiment
+<pre><code>$ git log master..experiment
 D
 C
 
@@ -312,7 +313,7 @@ E
 
 <p>Tripple Dot은 서로 다른 커밋만을 보여준다. 다음 예제를 보자:</p>
 
-<pre class="prettyprint"><code>$ git log master...experiment
+<pre><code>$ git log master...experiment
 F
 E
 D
@@ -321,7 +322,7 @@ C
 
 <p><code>--left-right</code> 옵션을 추가하면 어느쪽에 속하는 것인지도 보여준다.</p>
 
-<pre class="prettyprint"><code>$ git log --left-right master...experiment
+<pre><code>$ git log --left-right master...experiment
 &lt;F
 &lt;E
 &gt;D
@@ -339,39 +340,6 @@ C
 </ul>
   </div>
 </article>
-<section id="related">
-  <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
-    </li>
-    <li>
-      <span>Dec 10 2011</span>
-&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
-    </li>
-    <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-    </li>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-  </ul>
-</section>
 <section id="comments">
   <h3>Feedback</h3>
 <div id="disqus_thread"></div>
