@@ -145,78 +145,78 @@
 
 <p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
 
-<pre><code>git diff
+<pre class="prettyprint"><code>git diff
 </code></pre>
 
 <p>특정 파일만 비교할 수도 있다:</p>
 
-<pre><code>git diff my-file
+<pre class="prettyprint"><code>git diff my-file
 </code></pre>
 
 <p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
 
-<pre><code>git diff --staged/--cached
+<pre class="prettyprint"><code>git diff --staged/--cached
 </code></pre>
 
 <p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
 
-<pre><code>git diff --staged my-file
+<pre class="prettyprint"><code>git diff --staged my-file
 </code></pre>
 
 <h3>Revision 비교</h3>
 
 <p>리비전 두 개를 골라 비교할 수도 있다:</p>
 
-<pre><code>git diff bd976f4 59d60f9
+<pre class="prettyprint"><code>git diff bd976f4 59d60f9
 </code></pre>
 
 <p>그중 파일 하나만 비교할 수 있다:</p>
 
-<pre><code>git diff bd976f4 59d60f9 my-file
+<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
 </code></pre>
 
 <p>다음처럼도 비교할 수도 있다:</p>
 
-<pre><code>git diff bd976f4:my-file 59d60f9:my-file
+<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
 </code></pre>
 
 <h3>Modified, Staged와 Revision 비교</h3>
 
 <p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
 
-<pre><code>git diff HEAD~18
+<pre class="prettyprint"><code>git diff HEAD~18
 </code></pre>
 
 <p>특정 파일만 비교할 수 있다:</p>
 
-<pre><code>git diff HEAD~18 my-file
+<pre class="prettyprint"><code>git diff HEAD~18 my-file
 </code></pre>
 
 <p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
 
-<pre><code>git diff --staged HEAD~18
+<pre class="prettyprint"><code>git diff --staged HEAD~18
 </code></pre>
 
 <p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
 
-<pre><code>git diff --staged HEAD~18 my-file
+<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
 </code></pre>
 
 <h3>파일 이름만 보기</h3>
 
 <p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
 
-<pre><code>git show --name-only HEAD~4
+<pre class="prettyprint"><code>git show --name-only HEAD~4
 </code></pre>
 
 <p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
 
-<pre><code>git diff --name-only HEAD~4
+<pre class="prettyprint"><code>git diff --name-only HEAD~4
 </code></pre>
 
 <p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
 
-<pre><code>git log --name-only
+<pre class="prettyprint"><code>git log --name-only
 </code></pre>
   </div>
 </article>
@@ -229,11 +229,15 @@
     </li>
     <li>
       <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
     </li>
     <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">Git:GitHub Flow</a>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
     </li>
     <li>
       <span>Dec 10 2011</span>
@@ -244,20 +248,16 @@
 &raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
     </li>
     <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-    </li>
-    <li>
       <span>Dec 02 2011</span>
 &raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
     </li>
     <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
+      <span>Dec 22 2011</span>
+&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
     </li>
     <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+      <span>Nov 30 2011</span>
+&raquo;      <a href="/articles/2011/progit.html">progit</a>
     </li>
   </ul>
 </section>

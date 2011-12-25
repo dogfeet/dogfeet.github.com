@@ -139,7 +139,7 @@
 
 <p>git-flow 설치하고 <code>git flow</code>라고 실행하면 어떤 명령어들이 있는지 볼 수 있다:</p>
 
-<pre><code>$ git flow
+<pre class="prettyprint"><code>$ git flow
 usage: git flow &lt;subcommand&gt;
 
 Available subcommands are:
@@ -159,7 +159,7 @@ Try 'git flow &lt;subcommand&gt; help' for details.
 
 <p>설정은 <code>.git/config</code> 파일에 다음과 같이 저장된다. <code>git config -l</code>로도 확인할 수 있다.</p>
 
-<pre><code>gitflow.branch.master=master
+<pre class="prettyprint"><code>gitflow.branch.master=master
 gitflow.branch.develop=develop
 gitflow.prefix.feature=feature/
 gitflow.prefix.release=release/
@@ -174,7 +174,7 @@ gitflow.prefix.versiontag=0.1
 
 <p>feature 명령어는 다음과 같다.</p>
 
-<pre><code>$ git flow feature start
+<pre class="prettyprint"><code>$ git flow feature start
 Missing argument &lt;name&gt;
 usage: git flow feature [list] [-v]
        git flow feature start [-F] &lt;name&gt; [&lt;base&gt;]
@@ -199,7 +199,7 @@ usage: git flow feature [list] [-v]
 
 <p><code>git flow feature start my-feature</code>라고 실행하면 develop 브랜치를 base로 <code>feature/my-feature</code>라는 브랜치가 만들어 진다. 이 명령은 다음과 같은 명령의 shortcut 이다:</p>
 
-<pre><code>git checkout -b feature/my-feature develop
+<pre class="prettyprint"><code>git checkout -b feature/my-feature develop
 </code></pre>
 
 <p>실제로 코드를 열어보면 몇 가지 점검하는 코드가 더 들어 있지만 핵심은 이렇다.</p>
@@ -208,7 +208,7 @@ usage: git flow feature [list] [-v]
 
 <p><code>git flow feature finish my-feature</code>라고 실행하면 my-feature 브랜치가 develop 브랜치에 merge된다. 이 명령은 다음과 같은 명령이다:</p>
 
-<pre><code>git checkout develop
+<pre class="prettyprint"><code>git checkout develop
 git merge --no-ff feature/my-feature
 git branch -d feature/my-feature
 </code></pre>
@@ -221,7 +221,7 @@ git branch -d feature/my-feature
 
 <p>해당 브랜치를 push한다. <code>git flow feature publish my-feature</code>라고 실행하면 <code>origin/feature/my-feature</code>로 push하는 것이고 실행되는 git 명령을 풀어보면 다음과 같다:</p>
 
-<pre><code>git push origin feature/my-feature
+<pre class="prettyprint"><code>git push origin feature/my-feature
 
 # configure remote tracking
 git config branch.feature/my-feature.remote origin
@@ -233,14 +233,14 @@ git checkout feature/my-feature
 
 <p>remote tracking branch를 새로 만든다. <code>git flow feature track my-feature</code>라는 것은 다음과 같이 실행한 것과 같다:</p>
 
-<pre><code>git checkout -b feature/my-feature origin/feature/my-feature
+<pre class="prettyprint"><code>git checkout -b feature/my-feature origin/feature/my-feature
 </code></pre>
 
 <h4>git flow feature diff</h4>
 
 <p>develop 브랜치와의 merge-base 커밋을 찾아 그 차이를 비교한다. <code>git flow feature diff my-feature</code>라는 건 다음의 명령을 실행한 것과 같다:</p>
 
-<pre><code>git diff $(git merge-base develop feature/my-feature)..feature/my-feature
+<pre class="prettyprint"><code>git diff $(git merge-base develop feature/my-feature)..feature/my-feature
 </code></pre>
 
 <p>merge-base는 두 브랜치의 공통 조상을 찾아 준다. merge할 때 어떤 브랜치를 기준으로 merge할지 보여주는 것이다. 예를 들어 히스토리가 다음과 같다고 하자:</p>
@@ -249,14 +249,14 @@ git checkout feature/my-feature
 
 <p><code>git merge-base develop feature/1</code> 명령을 실행하면 4ae3845 커밋을 찾아 준다. 그리고 그 커밋을 기준으로 diff한다. 그러니까 이 예제에서 <code>git flow feature diff 1</code>이라고 실행하면 결국 다음과 같은 명령이 실행되는 것이다.</p>
 
-<pre><code>git diff 4ae3845..feature/1
+<pre class="prettyprint"><code>git diff 4ae3845..feature/1
 </code></pre>
 
 <h4>git flow feature rebase</h4>
 
 <p><code>git flow feature rebase my-feature</code>라는 명령은 다음과 같다:</p>
 
-<pre><code>git checkout feature/my-feature
+<pre class="prettyprint"><code>git checkout feature/my-feature
 git rebase develop
 </code></pre>
 
@@ -264,14 +264,14 @@ git rebase develop
 
 <p><code>git flow feature checkout my-feature</code>는 다음과 같다:</p>
 
-<pre><code>git checkout feature/my-feature
+<pre class="prettyprint"><code>git checkout feature/my-feature
 </code></pre>
 
 <h4>git flow feature pull</h4>
 
 <p><code>git flow feature pull my-feature</code>는 다음과 같다:</p>
 
-<pre><code>git pull feature/my-feature
+<pre class="prettyprint"><code>git pull feature/my-feature
 </code></pre>
 
 <h3>release, hotfix</h3>
@@ -308,20 +308,20 @@ git rebase develop
   <h3>Related Posts</h3>
   <ul>
     <li>
-      <span>Dec 24 2011</span>
-&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
-    </li>
-    <li>
       <span>Dec 06 2011</span>
 &raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
     </li>
     <li>
       <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
     </li>
     <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">Git:GitHub Flow</a>
+      <span>Dec 24 2011</span>
+&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
     </li>
     <li>
       <span>Dec 10 2011</span>
@@ -336,12 +336,12 @@ git rebase develop
 &raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
     </li>
     <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
+      <span>Dec 22 2011</span>
+&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
     </li>
     <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+      <span>Nov 30 2011</span>
+&raquo;      <a href="/articles/2011/progit.html">progit</a>
     </li>
   </ul>
 </section>
