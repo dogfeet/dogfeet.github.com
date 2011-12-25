@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Git:git-helpers</title>
+    <title>Git:diff</title>
     <meta name="description" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
@@ -97,14 +97,14 @@
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-helpers.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:git-helpers</h1>
+    <h1 property="dcterms:title">Git:diff</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 01 2011</span>
- | <a href="/site/tagmap.html#git">git</a> | <span><a href="/articles/2011/git-helpers.html#disqus_thread" data-disqus-identifier="/articles/2011/git-helpers.html"></a></span>
+ | <span property="dc:created">Dec 24 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diff">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -113,49 +113,110 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-helpers.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-diff.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-helpers.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-diff.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-helpers.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+    <p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
 
-<p><img src="/articles/2011/git.png" alt="heading image" title="" /></p>
+<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
 
-<h2>git alias</h2>
+<p><img src="/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
 
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
 
-<h3>단순 약어</h3>
+<h2>Unified Format</h2>
 
-<pre><code># Abbreviations
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.br branch
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.cs "commit -s"
+<p><code>git diff</code>는 결과를 <a href="http://dogfeet.tumblr.com/post/10629323570/diff-unified-format">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+
+<h2>git diff</h2>
+
+<p>diff를 잘 활용하자.</p>
+
+<h3>Modified, Staged, Unmodified 사이 비교</h3>
+
+<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
+
+<pre><code>git diff
 </code></pre>
 
-<p><code>commit -s</code>은 signed commit인데 </p>
+<p>특정 파일만 비교할 수도 있다:</p>
 
-<h3>git log</h3>
-
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
-
-<pre><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
+<pre><code>git diff my-file
 </code></pre>
 
-<p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
+<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
 
-<pre><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+<pre><code>git diff --staged/--cached
+</code></pre>
+
+<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
+
+<pre><code>git diff --staged my-file
+</code></pre>
+
+<h3>Revision 비교</h3>
+
+<p>리비전 두 개를 골라 비교할 수도 있다:</p>
+
+<pre><code>git diff bd976f4 59d60f9
+</code></pre>
+
+<p>그중 파일 하나만 비교할 수 있다:</p>
+
+<pre><code>git diff bd976f4 59d60f9 my-file
+</code></pre>
+
+<p>다음처럼도 비교할 수도 있다:</p>
+
+<pre><code>git diff bd976f4:my-file 59d60f9:my-file
+</code></pre>
+
+<h3>Modified, Staged와 Revision 비교</h3>
+
+<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
+
+<pre><code>git diff HEAD~18
+</code></pre>
+
+<p>특정 파일만 비교할 수 있다:</p>
+
+<pre><code>git diff HEAD~18 my-file
+</code></pre>
+
+<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
+
+<pre><code>git diff --staged HEAD~18
+</code></pre>
+
+<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
+
+<pre><code>git diff --staged HEAD~18 my-file
+</code></pre>
+
+<h3>파일 이름만 보기</h3>
+
+<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
+
+<pre><code>git show --name-only HEAD~4
+</code></pre>
+
+<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
+
+<pre><code>git diff --name-only HEAD~4
+</code></pre>
+
+<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
+
+<pre><code>git log --name-only
 </code></pre>
   </div>
 </article>
@@ -163,12 +224,12 @@ git config --global alias.cs "commit -s"
   <h3>Related Posts</h3>
   <ul>
     <li>
-      <span>Dec 24 2011</span>
-&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
-    </li>
-    <li>
       <span>Dec 06 2011</span>
 &raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
     </li>
     <li>
       <span>Dec 22 2011</span>
@@ -205,7 +266,7 @@ git config --global alias.cs "commit -s"
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-helpers.html';
+    var disqus_identifier = '/articles/2011/git-diff.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

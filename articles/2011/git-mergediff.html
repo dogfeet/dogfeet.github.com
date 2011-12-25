@@ -135,7 +135,7 @@
 
 <p>다음과 같이 설정한다:</p>
 
-<pre class="prettyprint"><code>git config --global merge.tool diffmerge
+<pre><code>git config --global merge.tool diffmerge
 git config --global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"
 git config --global mergetool.diffmerge.trustExitCode true
 </code></pre>
@@ -150,7 +150,7 @@ git config --global mergetool.diffmerge.trustExitCode true
 
 <p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
 
-<pre class="prettyprint"><code>[merge]
+<pre><code>[merge]
     tool = diffmerge
 [mergetool "diffmerge"]
     cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
@@ -163,14 +163,14 @@ git config --global mergetool.diffmerge.trustExitCode true
 
 <p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:</p>
 
-<pre class="prettyprint"><code>git config --global mergetool.keepBackup false
+<pre><code>git config --global mergetool.keepBackup false
 </code></pre>
 
 <h2>difftool</h2>
 
 <p>difftool은 다음과 같이 설정한다:</p>
 
-<pre class="prettyprint"><code>git config --global diff.tool diffmerge
+<pre><code>git config --global diff.tool diffmerge
 git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"
 </code></pre>
 
@@ -183,7 +183,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
 
-<pre class="prettyprint"><code>[diff]
+<pre><code>[diff]
     tool = diffmerge
 [difftool "diffmerge"]
     cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
@@ -197,20 +197,20 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:</p>
 
-<pre class="prettyprint"><code class="language-bsh">#!/usr/bin/env bash
+<pre><code>#!/usr/bin/env bash
 [ $# -eq 7 ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge "$2" "$5"
 </code></pre>
 
 <p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:</p>
 
-<pre class="prettyprint"><code>path old-file old-hex old-mode new-file new-hex new-mode
+<pre><code>path old-file old-hex old-mode new-file new-hex new-mode
 </code></pre>
 
 <p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.</p>
 
 <p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:</p>
 
-<pre class="prettyprint"><code>git config --global diff.external mydiff
+<pre><code>git config --global diff.external mydiff
 </code></pre>
 
 <p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. </p>
@@ -221,7 +221,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 
 <p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:</p>
 
-<pre class="prettyprint"><code>git config --global merge.tool vimdiff
+<pre><code>git config --global merge.tool vimdiff
 </code></pre>
 
 <h2>그외</h2>
@@ -245,24 +245,28 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
   <h3>Related Posts</h3>
   <ul>
     <li>
+      <span>Dec 24 2011</span>
+&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
+    </li>
+    <li>
       <span>Dec 06 2011</span>
 &raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
     </li>
     <li>
       <span>Dec 01 2011</span>
 &raquo;      <a href="/articles/2011/git-helpers.html">Git:git-helpers</a>
     </li>
     <li>
+      <span>Dec 22 2011</span>
+&raquo;      <a href="/articles/2011/github-flow.html">Git:GitHub Flow</a>
+    </li>
+    <li>
       <span>Dec 10 2011</span>
 &raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
+    </li>
+    <li>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
     </li>
     <li>
       <span>Dec 02 2011</span>
@@ -271,6 +275,10 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
     <li>
       <span>Nov 30 2011</span>
 &raquo;      <a href="/articles/2011/progit.html">progit</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
     </li>
   </ul>
 </section>
