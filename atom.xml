@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>function 개발새발(){...}</title>
+  <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-01T11:20:42Z</updated>
+  <updated>2012-01-03T15:34:58Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Changwoo Park</name>
@@ -1733,123 +1733,6 @@ npm install coffee-script
     </content>
   </entry>
   <entry>
-    <title>Cake</title>
-    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
-    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
-    <content type="html">
-<![CDATA[
-<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
-
-<h3>Hello World!</h3>
-
-<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
-  console.log 'Hello World!'
-</code></pre>
-
-<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
-Hello World!
-</code></pre>
-
-<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
-
-<pre class="prettyprint"><code>$ cake
-
-cake say:hello             # Description of task
-</code></pre>
-
-<h3>Option</h3>
-
-<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
-task 'task:withDefaults', 'Description of task', (options) -&gt;
-  options.environment or= 'production'
-</code></pre>
-
-<p>이 코드는 다음과 같이 실행한다.</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
-</code></pre>
-
-<h2>Use Case</h2>
-
-<h3>Compile</h3>
-
-<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
-
-<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
-</code></pre>
-
-<p>이 cake로 하려면 다음과 같이 한다.</p>
-
-<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
-task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
-  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
-
-<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
-
-<h3>Concatenating Files</h3>
-
-<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
-
-<pre class="prettyprint"><code>fs     = require 'fs'
-{exec} = require 'child_process'
-
-appFiles  = [
-  # omit src/ and .coffee to make the below lines a little shorter
-  'content/scripts/statusbar'
-  'content/scripts/command/quickMacro'
-  'content/scripts/command/selectionTools/general'
-]
-
-task 'build', 'Build single application file from source files', -&gt;
-  appContents = new Array remaining = appFiles.length
-  for file, index in appFiles then do (file, index) -&gt;
-    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
-      throw err if err
-      appContents[index] = fileContents
-      process() if --remaining is 0
-  process = -&gt;
-    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
-      throw err if err
-      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
-        throw err if err
-        console.log stdout + stderr
-        fs.unlink 'lib/app.coffee', (err) -&gt;
-          throw err if err
-          console.log 'Done.'
-</code></pre>
-
-<h3>Minify/Compress Your Files</h3>
-
-<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
-
-<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
-  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
-</ul>]]>
-    </content>
-  </entry>
-  <entry>
     <title>CoffeeKup &lt;☕/&gt;</title>
     <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
     <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
@@ -1970,6 +1853,123 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
 </code></pre>
 
 <p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Cake</title>
+    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
+    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
+    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
+    <content type="html">
+<![CDATA[
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
+  console.log 'Hello World!'
+</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!
+</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task
+</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+task 'task:withDefaults', 'Description of task', (options) -&gt;
+  options.environment or= 'production'
+</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
+</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
+</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
+task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
+  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require 'fs'
+{exec} = require 'child_process'
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  'content/scripts/statusbar'
+  'content/scripts/command/quickMacro'
+  'content/scripts/command/selectionTools/general'
+]
+
+task 'build', 'Build single application file from source files', -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
+      throw err if err
+      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink 'lib/app.coffee', (err) -&gt;
+          throw err if err
+          console.log 'Done.'
+</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<h2>참고</h2>
+
+<ul>
+<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
+</ul>]]>
     </content>
   </entry>
 </feed>
