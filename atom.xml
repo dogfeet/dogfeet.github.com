@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-04T01:46:15Z</updated>
+  <updated>2012-01-04T04:50:03Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Changwoo Park</name>
@@ -16,7 +16,7 @@
   <entry>
     <title>Git:conflict</title>
     <link href="http://dogfeet.github.com/articles/2012/git-conflict.html" />
-    <updated>Sun Jan 01 2012 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2012-01-01T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2012/git-conflict.html</id>
     <content type="html">
 <![CDATA[
@@ -133,7 +133,7 @@ ours
   <entry>
     <title>Git:diff</title>
     <link href="http://dogfeet.github.com/articles/2011/git-diff.html" />
-    <updated>Sat Dec 24 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-24T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-diff.html</id>
     <content type="html">
 <![CDATA[
@@ -235,7 +235,7 @@ ours
   <entry>
     <title>GitHub Flow</title>
     <link href="http://dogfeet.github.com/articles/2011/github-flow.html" />
-    <updated>Thu Dec 22 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-22T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/github-flow.html</id>
     <content type="html">
 <![CDATA[
@@ -299,7 +299,7 @@ ours
   <entry>
     <title>심심한 Kindle Fire</title>
     <link href="http://dogfeet.github.com/articles/2011/kinde-fire.html" />
-    <updated>Sun Dec 18 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-18T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/kinde-fire.html</id>
     <content type="html">
 <![CDATA[
@@ -343,7 +343,7 @@ ours
   <entry>
     <title>Git:mergetool, difftool</title>
     <link href="http://dogfeet.github.com/articles/2011/git-mergediff.html" />
-    <updated>Sat Dec 17 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-17T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-mergediff.html</id>
     <content type="html">
 <![CDATA[
@@ -466,7 +466,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
   <entry>
     <title>Git:merge</title>
     <link href="http://dogfeet.github.com/articles/2011/git-merge.html" />
-    <updated>Sat Dec 10 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-10T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-merge.html</id>
     <content type="html">
 <![CDATA[
@@ -737,7 +737,7 @@ HEAD is now at 271fa93 Add meats
   <entry>
     <title>Git:git-flow</title>
     <link href="http://dogfeet.github.com/articles/2011/git-flow.html" />
-    <updated>Fri Dec 09 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-09T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-flow.html</id>
     <content type="html">
 <![CDATA[
@@ -923,7 +923,7 @@ git rebase develop
   <entry>
     <title>A successful git branching model</title>
     <link href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html" />
-    <updated>Tue Dec 06 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-06T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html</id>
     <content type="html">
 <![CDATA[
@@ -1178,7 +1178,7 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
   <entry>
     <title>Git:refs</title>
     <link href="http://dogfeet.github.com/articles/2011/git-refs.html" />
-    <updated>Fri Dec 02 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-02T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-refs.html</id>
     <content type="html">
 <![CDATA[
@@ -1399,7 +1399,7 @@ C
   <entry>
     <title>Git:git-helpers</title>
     <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
-    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-01T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
     <content type="html">
 <![CDATA[
@@ -1440,7 +1440,7 @@ git config --global alias.cs "commit -s"
   <entry>
     <title>Bash-it</title>
     <link href="http://dogfeet.github.com/articles/2011/bash-it.html" />
-    <updated>Thu Dec 01 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-12-01T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/bash-it.html</id>
     <content type="html">
 <![CDATA[
@@ -1537,7 +1537,7 @@ current:    v0.6.1
   <entry>
     <title>progit</title>
     <link href="http://dogfeet.github.com/articles/2011/progit.html" />
-    <updated>Wed Nov 30 2011 09:00:00 GMT+0900 (KST)</updated>
+    <updated>2011-11-30T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/progit.html</id>
     <content type="html">
 <![CDATA[
@@ -1557,7 +1557,7 @@ current:    v0.6.1
   <entry>
     <title>Docpad</title>
     <link href="http://dogfeet.github.com/articles/2011/docpad.html" />
-    <updated>Sat Nov 26 2011 01:06:05 GMT+0900 (KST)</updated>
+    <updated>2011-11-25T16:06:05Z</updated>
     <id>http://dogfeet.github.com/articles/2011/docpad.html</id>
     <content type="html">
 <![CDATA[
@@ -1735,7 +1735,7 @@ npm install coffee-script
   <entry>
     <title>CoffeeKup &lt;☕/&gt;</title>
     <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
-    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
+    <updated>2011-11-21T16:06:05Z</updated>
     <id>http://dogfeet.github.com/articles/2011/coffee-kup.html</id>
     <content type="html">
 <![CDATA[
@@ -1858,7 +1858,7 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
   <entry>
     <title>Cake</title>
     <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>Tue Nov 22 2011 01:06:05 GMT+0900 (KST)</updated>
+    <updated>2011-11-21T16:06:05Z</updated>
     <id>http://dogfeet.github.com/articles/2011/cake.html</id>
     <content type="html">
 <![CDATA[
