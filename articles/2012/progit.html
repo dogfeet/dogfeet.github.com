@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Bash-it</title>
-    <meta name="description" content="이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다." />
-    <meta name="keywords" content="Bash-it,NVM,git,git-flow" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - progit</title>
+    <meta name="description" content="GitHub의 CIO인 schacon님이 쓰신 progit 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어 졌습니다.--;" />
+    <meta name="keywords" content="git,progit,번역" />
+    <meta name="author" content="Changwoo Park, Sean Lee" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/bash-it.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2012/progit.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Bash-it</h1>
+    <h1 property="dcterms:title">progit</h1>
   </header>
   <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 01 2011</span>
- | <a href="/site/tagmap.html#bash-it">Bash-it</a>, <a href="/site/tagmap.html#nvm">NVM</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> | <span><a href="/articles/2011/bash-it.html#disqus_thread" data-disqus-identifier="/articles/2011/bash-it.html"></a></span>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a>, <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">Jan 08 2012</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#progit">progit</a>, <a href="/site/tagmap.html#번역">번역</a> | <span><a href="/articles/2012/progit.html#disqus_thread" data-disqus-identifier="/articles/2012/progit.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,106 +115,44 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/bash-it.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/progit.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/bash-it.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/progit.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/bash-it.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/progit.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+    <p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어 졌습니다.--;</p>
 
-<p><img src="/articles/2011/bash-it.sean-shell.png" alt="bash-it" title="" /></p>
+<p><img src="/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
 
-<p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다. </p>
+<h2>progit</h2>
 
-<ul>
-<li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li>
-<li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li>
-<li>plugin : bash 명령어를 확장해준다(그러니까 명령어에 해당하는 함수들이다).</li>
-<li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li>
-<li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li>
-</ul>
-
-<p>각 요소들은 apache2 설정처럼 available/enabled 디렉토리 구조로 관리하기 때문에 관리하기 편하다.</p>
-
-<p>나는 bash-it에 들어 있는 것을 대부분 안쓰지만 그냥 다 켜놓고 쓴다. 그리고 혹시 필요한 게 생기면 bash-it 관례에 내가 맞추어 쓴다.</p>
-
-<p>이 것은 다시 말해서 revans님이 정리하고 관리하는 convention이다. bash-it에 익숙해지면 꽤 편리하다.</p>
-
-<h2>completion</h2>
-
-<p>다음과 같은 completion 코드가 들어 있다. 해당 도구를 사용한다면 한번쯤은 들어봤을 만한 그 completion 코드다. 장점은 한번에 설치된다는 것:</p>
-
-<pre class="prettyprint"><code>brew.completion.bash
-gem.completion.bash
-git.completion.bash
-git_flow.completion.bash
-rake.completion.bash
-ssh.completion.bash
-</code></pre>
-
-<h2>alias</h2>
-
-<p>다음과 같은 도구에 대한 alias들이 define 돼있다:</p>
-
-<pre class="prettyprint"><code>bundler.aliases.bash
-emacs.aliases.bash
-general.aliases.bash
-git.aliases.bash
-heroku.aliases.bash
-hg.aliases.bash
-homebrew.aliases.bash
-osx.aliases.bash
-rails.aliases.bash
-textmate.aliases.bash
-vim.aliases.bash
-</code></pre>
-
-<h3>theme</h3>
-
-<p>이 테마 기능도 굉장히 유용하다. 여러가지 테마가 있는데 내가 사용하고 있는 <code>zork</code> 테마의 경우 다음과 같이 보여준다:</p>
-
-<pre class="prettyprint"><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
-$ git st ...
-</code></pre>
+<p>다음의 포멧의 파일로 배포하고 있습니다. 다운 받아서 읽으실 수 있습니다:</p>
 
 <ul>
-<li>±  - 이 것은 git을 나타내는 기호다. 왜 Git icon인지 mySysGit을 설치해보면 안다. HG는 <code>☿</code>, SVN은 <code>⑆</code>, 그 외는 <code>○</code>을 보여준다.</li>
-<li>✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.mobi">progit.ko.mobi</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.pdf">progit.ko.pdf</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.html">progit.ko.html</a></li>
 </ul>
 
-<h2>plugin</h2>
+<p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. Calibre에서 열어보면 잘 되는데 Kindle App에서는 안됩니다.</p>
 
-<h3>nvm</h3>
+<p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트레커</a>에 신고해주세요.</p>
 
-<p>creationix님의 <a href="https://github.com/creationix/nvm">nvm</a>이 .bash-it에 포함돼 있다. 그러니까 .bash-it만 설치하면 nvm을 별도로 설치할 필요 없다. </p>
+<p>동료의 힘을 다시 몸소 체험한 프로젝트 였습니다. 혼자였다면 결코 완주하지 못했을 겁니다.</p>
 
-<p>게다가 추가된 기능도 있다. original nvm에는 없는 명령 sync가 추가됐고 마지막 안정버전과 개발버전을 가르키는 stable과 latest가 기본 alias로 추가됐다.</p>
+<h2>힘내</h2>
 
-<p><code>nvm sync</code> 명령을 실행하면 nodejs.org의 디렉토리 목록을 가져와서 어떤 버전이 있는지 로컬에 목록을 만들고 각 0.5 같은 0.홀수 버전은 latest로 0.짝수 버전은 stable로 가르킨다. 그리고 <code>nvm ls</code>를 실행할 때마다 로컬에 캐시된 결과와 현재 상태를 보여준다. </p>
+<p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바랍니다.</p>
 
-<p>내 컴퓨터에서 실행한 <code>nvm ls</code>의 결과:</p>
-
-<pre class="prettyprint"><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
-v0.1.101  v0.1.17   v0.1.24   v0.1.31   v0.1.94   v0.2.1    v0.3.1    v0.3.8    v0.4.2    v0.4.8-rc v0.5.4    v0.6.1
-v0.1.102  v0.1.18   v0.1.25   v0.1.32   v0.1.95   v0.2.2    v0.3.2    v0.4      v0.4.3    v0.4.9    v0.5.5
-v0.1.103  v0.1.19   v0.1.26   v0.1.33   v0.1.96   v0.2.3    v0.3.3    v0.4.0    v0.4.4    v0.5.0    v0.5.6
-v0.1.104  v0.1.20   v0.1.27   v0.1.90   v0.1.97   v0.2.4    v0.3.4    v0.4.1    v0.4.5    v0.5.1    v0.5.7
-v0.1.14   v0.1.21   v0.1.28   v0.1.91   v0.1.98   v0.2.5    v0.3.5    v0.4.10   v0.4.6    v0.5.10   v0.5.8
-v0.1.15   v0.1.22   v0.1.29   v0.1.92   v0.1.99   v0.2.6    v0.3.6    v0.4.11   v0.4.7    v0.5.2    v0.5.9
-stable:     v0.6.1
-latest:     v0.6.1
-current:    v0.6.1
-# use 'nvm sync' to update from nodejs.org
-</code></pre>
-
-<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
+<p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>
   </div>
 </article>
 <section id="related">
@@ -223,6 +161,10 @@ current:    v0.6.1
     <li>
       <span>Dec 06 2011</span>
 &raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+    </li>
+    <li>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
     </li>
     <li>
       <span>Dec 24 2011</span>
@@ -260,10 +202,6 @@ current:    v0.6.1
       <span>Jan 01 2012</span>
 &raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
     </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
-    </li>
   </ul>
 </section>
 <section id="comments">
@@ -271,7 +209,7 @@ current:    v0.6.1
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/bash-it.html';
+    var disqus_identifier = '/articles/2012/progit.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

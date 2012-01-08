@@ -3,16 +3,51 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-04T12:40:39Z</updated>
+  <updated>2012-01-08T14:24:02Z</updated>
   <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Changwoo Park</name>
-    <email>pismute@gmail.com</email>
-  </author>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
+  <author>
+    <name>Changwoo Park</name>
+    <email>pismute@gmail.com</email>
+  </author>
+  <entry>
+    <title>progit</title>
+    <link href="http://dogfeet.github.com/articles/2012/progit.html" />
+    <updated>2012-01-07T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/progit.html</id>
+    <content type="html">
+<![CDATA[
+<p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어 졌습니다.--;</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
+
+<h2>progit</h2>
+
+<p>다음의 포멧의 파일로 배포하고 있습니다. 다운 받아서 읽으실 수 있습니다:</p>
+
+<ul>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.mobi">progit.ko.mobi</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.pdf">progit.ko.pdf</a></li>
+<li><a href="http://dogfeet.github.com/progit/progit.ko.html">progit.ko.html</a></li>
+</ul>
+
+<p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. Calibre에서 열어보면 잘 되는데 Kindle App에서는 안됩니다.</p>
+
+<p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트레커</a>에 신고해주세요.</p>
+
+<p>동료의 힘을 다시 몸소 체험한 프로젝트 였습니다. 혼자였다면 결코 완주하지 못했을 겁니다.</p>
+
+<h2>힘내</h2>
+
+<p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바랍니다.</p>
+
+<p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>]]>
+    </content>
+  </entry>
   <entry>
     <title>Git:conflict</title>
     <link href="http://dogfeet.github.com/articles/2012/git-conflict.html" />
