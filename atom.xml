@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-08T14:24:02Z</updated>
+  <updated>2012-01-09T08:30:27Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -20,13 +20,13 @@
     <id>http://dogfeet.github.com/articles/2012/progit.html</id>
     <content type="html">
 <![CDATA[
-<p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓰신 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어 졌습니다.--;</p>
+<p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>님이 쓴 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어 졌습니다.--;</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
 
 <h2>progit</h2>
 
-<p>다음의 포멧의 파일로 배포하고 있습니다. 다운 받아서 읽으실 수 있습니다:</p>
+<p>다음의 포멧의 파일로 배포하고 있고 다운 받아서 읽으실 수 있어요:</p>
 
 <ul>
 <li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
@@ -35,15 +35,15 @@
 <li><a href="http://dogfeet.github.com/progit/progit.ko.html">progit.ko.html</a></li>
 </ul>
 
-<p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. Calibre에서 열어보면 잘 되는데 Kindle App에서는 안됩니다.</p>
+<p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. Calibre에서 열어보면 잘 되는데 Kindle App에서는 안되는 군요.</p>
 
-<p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트레커</a>에 신고해주세요.</p>
+<p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트래커</a>에 신고해주세요.</p>
 
-<p>동료의 힘을 다시 몸소 체험한 프로젝트 였습니다. 혼자였다면 결코 완주하지 못했을 겁니다.</p>
+<p>다시 한번 동료의 힘을 몸소 체험한 프로젝트 였습니다. 혼자였다면 결코 완주하지 못했을 겁니다.</p>
 
 <h2>힘내</h2>
 
-<p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바랍니다.</p>
+<p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바래요.</p>
 
 <p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>]]>
     </content>
@@ -1432,47 +1432,6 @@ C
     </content>
   </entry>
   <entry>
-    <title>Git:git-helpers</title>
-    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
-    <updated>2011-12-01T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
-    <content type="html">
-<![CDATA[
-<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
-
-<h2>git alias</h2>
-
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
-
-<h3>단순 약어</h3>
-
-<pre class="prettyprint"><code># Abbreviations
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.br branch
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.cs "commit -s"
-</code></pre>
-
-<p><code>commit -s</code>은 signed commit인데 </p>
-
-<h3>git log</h3>
-
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
-
-<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
-</code></pre>
-
-<p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
-
-<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-</code></pre>]]>
-    </content>
-  </entry>
-  <entry>
     <title>Bash-it</title>
     <link href="http://dogfeet.github.com/articles/2011/bash-it.html" />
     <updated>2011-12-01T00:00:00Z</updated>
@@ -1567,6 +1526,47 @@ current:    v0.6.1
 </code></pre>
 
 <p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:git-helpers</title>
+    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
+    <updated>2011-12-01T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
+    <content type="html">
+<![CDATA[
+<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
+
+<h2>git alias</h2>
+
+<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+
+<h3>단순 약어</h3>
+
+<pre class="prettyprint"><code># Abbreviations
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.cs "commit -s"
+</code></pre>
+
+<p><code>commit -s</code>은 signed commit인데 </p>
+
+<h3>git log</h3>
+
+<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+
+<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
+</code></pre>
+
+<p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
+
+<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+</code></pre>]]>
     </content>
   </entry>
   <entry>
@@ -1768,6 +1768,123 @@ npm install coffee-script
     </content>
   </entry>
   <entry>
+    <title>Cake</title>
+    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
+    <updated>2011-11-21T16:06:05Z</updated>
+    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
+    <content type="html">
+<![CDATA[
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
+  console.log 'Hello World!'
+</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!
+</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task
+</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+task 'task:withDefaults', 'Description of task', (options) -&gt;
+  options.environment or= 'production'
+</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
+</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
+</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
+task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
+  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require 'fs'
+{exec} = require 'child_process'
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  'content/scripts/statusbar'
+  'content/scripts/command/quickMacro'
+  'content/scripts/command/selectionTools/general'
+]
+
+task 'build', 'Build single application file from source files', -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
+      throw err if err
+      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink 'lib/app.coffee', (err) -&gt;
+          throw err if err
+          console.log 'Done.'
+</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<h2>참고</h2>
+
+<ul>
+<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
+</ul>]]>
+    </content>
+  </entry>
+  <entry>
     <title>CoffeeKup &lt;☕/&gt;</title>
     <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
     <updated>2011-11-21T16:06:05Z</updated>
@@ -1888,123 +2005,6 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
 </code></pre>
 
 <p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>Cake</title>
-    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>2011-11-21T16:06:05Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
-    <content type="html">
-<![CDATA[
-<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
-
-<h3>Hello World!</h3>
-
-<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
-  console.log 'Hello World!'
-</code></pre>
-
-<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
-Hello World!
-</code></pre>
-
-<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
-
-<pre class="prettyprint"><code>$ cake
-
-cake say:hello             # Description of task
-</code></pre>
-
-<h3>Option</h3>
-
-<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
-task 'task:withDefaults', 'Description of task', (options) -&gt;
-  options.environment or= 'production'
-</code></pre>
-
-<p>이 코드는 다음과 같이 실행한다.</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
-</code></pre>
-
-<h2>Use Case</h2>
-
-<h3>Compile</h3>
-
-<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
-
-<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
-</code></pre>
-
-<p>이 cake로 하려면 다음과 같이 한다.</p>
-
-<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
-task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
-  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
-
-<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
-
-<h3>Concatenating Files</h3>
-
-<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
-
-<pre class="prettyprint"><code>fs     = require 'fs'
-{exec} = require 'child_process'
-
-appFiles  = [
-  # omit src/ and .coffee to make the below lines a little shorter
-  'content/scripts/statusbar'
-  'content/scripts/command/quickMacro'
-  'content/scripts/command/selectionTools/general'
-]
-
-task 'build', 'Build single application file from source files', -&gt;
-  appContents = new Array remaining = appFiles.length
-  for file, index in appFiles then do (file, index) -&gt;
-    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
-      throw err if err
-      appContents[index] = fileContents
-      process() if --remaining is 0
-  process = -&gt;
-    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
-      throw err if err
-      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
-        throw err if err
-        console.log stdout + stderr
-        fs.unlink 'lib/app.coffee', (err) -&gt;
-          throw err if err
-          console.log 'Done.'
-</code></pre>
-
-<h3>Minify/Compress Your Files</h3>
-
-<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
-
-<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
-  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
-</ul>]]>
     </content>
   </entry>
 </feed>
