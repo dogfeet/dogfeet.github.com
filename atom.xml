@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-09T15:12:10Z</updated>
+  <updated>2012-01-15T15:40:34Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -13,6 +13,221 @@
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
+  <entry>
+    <title>Pro Git 번역 회고</title>
+    <link href="http://dogfeet.github.com/articles/2012/progit-retro.html" />
+    <updated>2012-01-14T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/progit-retro.html</id>
+    <content type="html">
+<![CDATA[
+<p>허접하게 나마 <a href="http://progit.org">Pro Git</a>을 번역했다. 시간도 부족하고 경험도 부족했다. 부족한 점을 극복하기 위해 번역관련 책도 사서 읽고 새로운 도구와 방법도 찾아서 익혔다. 이 포스트에서는 어떻게 번역을 했는지 그리고 무엇을 배웠는지 얘기하고자 한다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
+
+<h2>힘들구나 번역. 알면서도 왜 했었나?</h2>
+
+<p><strong>Lee</strong> &raquo; 번역은 그 길이가 짧든 길든 간에 쉽지 않은 작업이다. 짧으면 짧은 대로 길면 긴 대로…. Pro Git 번역 프로젝트는 적지 않은 양이었다. 전에도 함께 했었던 <a href="http://dogfeet.github.com/grails-doc/guide/">Grails User Manual 번역</a>이나, 시작했다가 포기한 과거 번역 작업을 생각해 봤을 때 스스로에 대한 큰 보상 없이 시작하기가 쉽지는 않았다.</p>
+
+<p><strong>Lee</strong> &raquo; Pro Git은 Git에 대한 다른 좋은 Article들도 수없이 많지만, Git을 사용하는 데 있어서 정말 정리가 잘 되어 있는 책이라고 함께 번역을 한 창우형이 매우 칭찬을 했다. 읽어보니 확실히 궁금한 부분, 몰랐던 부분에 대한 빠짐없는 정리가 잘 되어 있다. 게다가 알아야 할 부분에 대한 내용이 깊지만 쉬운 글로 잘 풀어져 있다. 게다가 감사하게도 무료!</p>
+
+<p><strong>Lee</strong> &raquo; 또한 Pro Git의 출력물도 한 번 짚어볼 만하다. 앞서 책을 번역했던 프로젝트에서는 각 프로젝트에 맞게 한 가지 형태 즉 HTML로만 혹은 epub으로만, pdf로만 출력을 뽑아냈었다. Pro Git은 하나의 Source로 한 번에 여러 형태로 출력물을 뽑아내는 재밌는 프로젝트이다. 배워두면 쓸 일 있지 않을까?</p>
+
+<p><strong>Park</strong> &raquo; 2010년에 SVN 쓰면서 브랜치 관리로 골머리를 앓았었다. Spring+Maven으로 나름 갖은 트릭은 다 부렸는데도 잘 안되더라. 사실 그때도 Git이 좋다는 것은 알고 있었다. 그런데 위험요소를 회피하느라 피했지만 후회했다. SVN으로 브랜치 여러 개를 동시에 관리하는 게 더 힘들다.</p>
+
+<p><strong>Park</strong> &raquo; Git은 정말 기능도 많고 설명도 많다. 일단 사다리를 그려줄 자료가 필요했다. 그래서 몇 가지를 검토하고 나서 progit을 읽었다. Chapter 순으로 읽으면 결국 이해되도록 잘 쓴 책이라 꼭 번역해야겠다고 생각했다.</p>
+
+<h2>뭘 가지고 어디에서 작업했나?</h2>
+
+<p><strong>Lee</strong> &raquo; 무엇부터 이야기해야 하나…. 우선 나는 작은 13인치 MBP와 iMac을 주로 사용하였다. 집이나 카페(주로 스타벅스)에서는 MBP를 사용했으며 일터에서는 틈틈이 iMac을 사용하였다. MBP의 사용이 4/5 이상일 것이다. </p>
+
+<p><img alt="MBP" width="500" src="/articles/2012/progit/mbp.jpg" /></p>
+
+<p><strong>Park</strong> &raquo; 나도 주로 집과 카페에서 했다. 특히 죽치고 않고 있기엔 스타벅스가 커피가 싸다. '싱글 벤티 드립'을 시키면 4~5시간은 버틸 수 있다. 다른 카페에서는 양이 적어서 두 잔 마셔야 한다.</p>
+
+<p><strong>Park</strong> &raquo; 2007년형 white MacBook으로 작업했다. Mac을 사용할 수 없을 때도 잦아서 원격으로 접속해서 Ubuntu에서 작업하기도 했다.</p>
+
+<p><img alt="MBP Cafe" height="500" src="/articles/2012/progit/mbp-cafe.jpg" /></p>
+
+<p><strong>Lee</strong> &raquo; epub와 mobi 포맷을 확인하기 위해서 아이폰과 아이패드의 iBooks, Kindle 앱을 사용했다.</p>
+
+<p><img alt="iBooks" height="500" src="/articles/2012/progit/ibooks.jpg" /></p>
+
+<p><strong>Lee</strong> &raquo; 글쓰기를 위해서 <a href="http://www.hogbaysoftware.com/products/writeroom">WriteRoom</a>을 사용하였다. 창우형은 작업 대부분을 터미널에서 vim을 사용했다고 한다. 둘 다 모두 글쓰기에서는 고정 폭 글꼴을 사용하기 위해 <a href="http://dev.naver.com/projects/nanumfont">나눔고딕코딩폰트</a>를 사용했다.</p>
+
+<p><img alt="Writeroom" width="500" src="/articles/2012/progit/writeroom.png" /></p>
+
+<p><strong>Park</strong> &raquo; 터미널에서 vim으로 작업했다. vim은 익숙하기도 했고 언제 어디서는 인터넷만 연결되면 되기 때문에 좋다.</p>
+
+<p><strong>Lee</strong> &raquo; 번역을 도와줄 사전으로는 맥 기본 사전, 아이폰에서 <a href="http://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">Dictionary Universal</a>, <a href="http://wiktionary.org">Wiktionary</a>를 이용하였다. 맥이나 아이폰에서는 사용자 사전을 추가할 수 있어서 한영/영한사전 및 시소러스 사전을 유용하게 사용했다. 온라인 한글 맞춤법 검사기와 워드프로세서 한글을 종종 사용하기도 했다.</p>
+
+<p><img alt="Universal Dictionary" height="500" src="/articles/2012/progit/ubdic.jpg" /></p>
+
+<p><strong>Park</strong> &raquo; 나보다 구글 번역기가 나을 때도 많더라.</p>
+
+<p><strong>Park</strong> &raquo; <a href="http://urimal.cs.pusan.ac.kr/urimal_new/">우리말 배움터</a>에 감사드린다. 오래전부터 사용해왔지만, 이번에는 정말 고마웠다.</p>
+
+<p><strong>Lee</strong> &raquo; 번역 소스 관리를 위해서 윈래 Pro Git이 호스팅되고 있는 <a href="http://github.com">GitHub</a>에서 프로젝트를 dogfeet/progit로 Fork하여 작업했다. 개인적으로 iMac과 MBP를 옮겨다닐 때는 BitBucket의 Private 저장소를 사용했다. GitHub가 좋긴 하지만 결재하지 않아서 Private 저장소가 없었다. 소스의 Branch와 Commit을 관리하기 위해 GitX를 사용했다. 번역 소스를 관리하기 위해 전에는 Subversion을 사용했는데 Git은 번역을 위한 프로젝트에서도 정말 괜찮았다! 아니 Git이 유일한 도구처럼 느껴졌다. 번역하면서 사용한 Git-Flow Pattern를 따로 정리할 예정이다.</p>
+
+<p><strong>Park</strong> &raquo; GitHub만 사용했다. BitBucket도 써보고 싶지만, 아직 GitHub도 다 모른다. 나는 Git 때문에 GitHub을 사용하는 것인지 GitHub 때문에 Git을 사용하는 것인지 모를 정도로 GitHub가 맘에 든다.</p>
+
+<p><img src="/articles/2012/progit/gitx-progit.png" alt="GitX" width="500" /></p>
+
+<p><strong>Lee</strong> &raquo; HTML, ePub, Mobi, PDF 출력물을 빌드하기 위해 따로 Ubuntu 서버를 하나 사용했다. x-server를 사용하지 않고 빌드하기 위해 약간의 빌드 스크립트를 수정해서 사용하였으며 주로 pandoc과 xelatex 관련 패키지와 한글 폰트 패키지를 설치하고, <a href="http://jenkins-ci.org">Jenkins</a>(구 Hudson)에 빌드 스크립트를 등록하여 원격으로 빌드하곤 했다.</p>
+
+<p><strong>Park</strong> &raquo; 나는 Mac에서 빌드했다. 처음에는 무척이나 골치 아팠지만 결국 방법을 찾아내고 버그도 수정했다. schacon님이 이 fix도 accept해주었다. GitHub로 번역을 진행하면서 이런 소소한 즐거움도 알게 됐다.</p>
+
+<p><img alt="Jenkins" width="500" src="/articles/2012/progit/jenkins-progit.png" /></p>
+
+<p><strong>Lee</strong> &raquo; 번역을 함께 진행하기 위해서 커뮤니케이션 도구로 <a href="http://yammer.com">Yammer</a>를, 서로 출력물을 항상 최신 것으로 공유하고자 <a href="http://dropbox.com">Dropbox</a>를 사용하였다. 업무용 커뮤니케이션 도구로 메신저도 좋고 메일도 좋지만, Yammer를 강추하는 바이다!</p>
+
+<p><strong>Park</strong> &raquo; yammer는 정말 좋은 도구다. 4년 정도 같이 공부해오면서 2011년과 같이 알찬 해는 없었다. 거기에는 yammer에 힘이 컸다고 생각한다. 위키도 사용해보고 이슈 트레커도 사용해봤지만 모두 실패하고 지금은 그냥 yammer로 토론하고 yammer에 메모한다.</p>
+
+<p><img alt="Yammer" width="500" src="/articles/2012/progit/yammer-progit.png" /></p>
+
+<h2>닥치고 번역에 중요한 거</h2>
+
+<p><strong>Lee</strong> &raquo; 우선 배가 항해를 하는데 좋든 좀 모자라든 선장이나 항해사 없이 제대로 된 길을 가는 것은 불가능하다. 이번 프로젝트는 일꾼 두 명이 땀을 뻘뻘 흘리면서 열심히 노를 젓는 일만 할 줄 알기에 자주 방향을 잃어가며 작업할 수밖에. 틈틈이 Yammer로 대화하며 방향을 잡아갔지만 적당한 경험 있는 편집자가 틀을 잡아줄 수 있었다면 좀 더 좋은 번역을 할 수 있지 않았을까.</p>
+
+<p><strong>Park</strong> &raquo; 특히 중요하게 생각한 점은 최종 결정은 마지막에 수정하는 사람이 결정하기로 했다. 그래서 아쉬운 사람이 한 번 더 검토했다.</p>
+
+<p><strong>Park</strong> &raquo; 번역도 일종의 모험이다. 훌륭한 선장과 항해사를 갖추고 출발했었으면 더 좋았겠지만 그렇지 못했다. 그래서 애초에 목표를 크게 잡지도 않았다. 영어로 읽는 것보다는 쉽게 읽을 수 있게 하자는 것. Git은 내용이 많아서 어차피 영문으로 또 읽어볼 필요도 있으니 처음 사다리를 그릴 때 한글로 좀 더 쉽게 그릴 수 있게 하자는 것 정도였다. 한글판을 읽었으면 영문으로도 한 번 더 읽거나 영문으로 된 다른 자료를 더 읽기를 권한다.</p>
+
+<p><img alt="Translation" width="500" src="/articles/2012/progit/tran.jpg" /></p>
+
+<p style="text-align: center; font-size: 80%">출처: [casaubon](<a href='http://casaubon.tv'>http://casaubon.tv</a>)</p>
+
+<p><strong>Lee</strong> &raquo; 영어의 표현을 틀리지 않게 이해하는 것도 어려웠지만, 한글로 옮겨적는 것이 더 어려웠다. 용어번역표를 제대로 정리하지 못해서 전체적으로 어휘 일관성을 지키지 못한 점도 많이 부끄럽다.</p>
+
+<p><strong>Park</strong> &raquo; 국어 실력이 제일 중요한 것 같다. 자신 있게 문장을 만들어야 한다. 틀릴 때는 그냥 확실히 틀려주는 것이 결국은 더 빠르다. 초반에 이렇게 신경 쓰지 못해서 나중에 다 다시 리뷰해야 했다. 그리고 그 질도 떨어진 것 같다. 시간도 더 들고 질도 떨어진다.</p>
+
+<p><strong>Park</strong> &raquo; 공부가 제일이다. 이렇게 긴 글을 번역할 기회가 적은데 번역에 대한 공부를 더 못한 것이 아쉽다.</p>
+
+<h2>나는 뭘 얻었나</h2>
+
+<p><strong>Lee</strong> &raquo; 물론 제대로 출력된 책은 Amazon에서 돈을 받고 팔기도 하지만 Pro Git 책은 기본적으로 무료다. 저자인 schacon님은 Git 에반젤리스트이기도 하고 GitHub의 CIO이기도 하다. 사람들이 Git을 많이 써서 GitHub를 많이 사용하게 된다면 좋은 일 아닌가 ^^ 하지만 우리 역자들은 ... ^^</p>
+
+<p><strong>Lee</strong> &raquo; 적지않은 노력과 부끄러움을 드러내며 읽고 또 읽는 과정에서 Git에 대해서 그리고 번역에 대해서 경험(이라고 쓰고 삽질)과 노하우를 얻은 것은 나름의 성과라고 할 수 있겠다. 행여나 같은 업종의 동지분들께 아까운 삽질로 시간을 낭비하지 않고 조금이라도 한숨 돌릴 수 있는 여유시간을 만들어 줄 수 있다면 보람 있겠다(윗사람은 Git 같은 거 몰라도 되지 싶다 ^^).</p>
+
+<p><strong>Park</strong> &raquo; 국어, 정말 한글 공부를 열심히 했다.</p>
+
+<p><strong>Park</strong> &raquo; 완주하려면 동료가 꼭 필요하다는 것을 배웠다. 혼자 했으면 분명히 포기했을 것이다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:branch-a-v</title>
+    <link href="http://dogfeet.github.com/articles/2012/git-branch-a-v.html" />
+    <updated>2012-01-14T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-branch-a-v.html</id>
+    <content type="html">
+<![CDATA[
+<p>Git을 사용하면서 규모가 작은 프로젝트를 많이 만들게 됐다. 예제를 만들거나, 간단한 도구를 만들거나 버전관리가 필요하면 언제든지 Git 저장소를 만들어 사용한다. 몇 일만 잊었다가 다시 돌아오면 어디까지 작업했는지 헷갈린다. 이 때 <code>git branch -a -v</code> 명령은 현 저장소 상태를 알아 보는데 좋다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/git-todo/todoly.png" alt="todo.ly" title="" /></p>
+
+<p>(todo.ly은 본 글과 아무 상관없다.)</p>
+
+<h2>git branch -a -v</h2>
+
+<p>Git을 사용하면서 가장 많이 사용하는 명령어 중 하나가 <code>git branch -a -v</code>이다. Fetch한 원격 브랜치를 포함해서 모든 브랜치 목록을 볼 수 있을 뿐만 아니라 각 브랜치의 마지막 커밋 정보도 보여준다. 그뿐만 아니라 해당 브랜치가 Remote Tracking 브랜치이면 Tracking 브랜치에서 얼마나 멀어졌는지도 보여준다.</p>
+
+<p>merge를 설명할 때 사용했던 ship 저장소를 다시 살펴보자. 이 저장소를 clone하고 <code>git branch -a -v</code>를 실행한다:</p>
+
+<pre class="prettyprint"><code>$ git branch -a -v
+ship                             3f129b5 Fix anchor
+remotes/origin/ship              3f129b5 Fix anchor
+</code></pre>
+
+<p><code>-a</code>의 는 원격 브랜치를 포함한 모든 브랜치를 보여준다. 그리고 <code>-v</code>는 해당 브랜치의 마지막 커밋을 보여준다.</p>
+
+<p>'origin/ship'을 Tracking하는 'feature/kitchen'라는 브랜치를 만들고 싱크대를 추가한다:</p>
+
+<pre class="prettyprint"><code>$ git co -b feature/kitchen origin/ship
+$ touch sink_unit
+$ git add sink_unit
+$ git commit
+[feature/kitchen e054c7e] Add sink unit
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 sink_unit
+</code></pre>
+
+<p>그리고 누군가 ship 브랜치에 커밋을 추가했다. 그래서 다시 Fetch를 하고 나서 <code>git branch -a -v</code>를 실행한다:</p>
+
+<pre class="prettyprint"><code>feature/kitchen                  e054c7e [ahead 1, behind 1] Add sink unit
+ship                             3f129b5 [behind 1] Fix anchor
+remotes/origin/ship              3f129b5 Fix anchor
+</code></pre>
+
+<p>'feature/kitchen' 의 커밋 메시지에 'ahead 1'를 주목하자. 'ahead 1'은 이 브랜치가 Tracking하는 브랜치에서 커밋 1개만큼 멀어져 있다는 것을 보여준다. 'feature/kitchen'은 <code>git co -b feature/kitchen origin/ship</code> 명령으로 만들었다. 이렇게 만들면 'feature/kitchen'가 'origin/ship'을 Tracking하게 된다.</p>
+
+<p>마찬가지로 'behind 1'은 'origin/sink' 브랜치가 'feature/kitchen' 브랜치보다 커밋을 하나 더 가졌다는 것이다. <code>git log feature/kitchen...origin/ship --left-right</code>을 실행하면 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ git lg feature/kitchen...origin/ship --left-right
+&gt; 2d45d4c - (origin/ship) Add test
+&lt; e054c7e - (feature/kitchen) Add sink unit
+</code></pre>
+
+<p><code>git branch</code>의 <code>-v</code> 옵션은 Remote Tracking 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.</p>
+
+<h2>Remote Tracking 브랜치</h2>
+
+<p>Remote Tracking 브랜치의 경우 '[ahead 1, behind 1]' 처럼 얼마나 멀어졌는지 알려준다고 했는데 Remote Tracking 브랜치는 대체 뭐야?</p>
+
+<p>Remote Tracking 브랜치는 브랜치가 특정 Remote 브랜치와 연결된 것을 말한다. 그 연결 정보가 있으면 명령어를 실행할때 정보를 생략할 수 있다. 그리고 주로 push/pull 명령과 관련돼 있다.</p>
+
+<p>이 글에서는 push/pull과 관련된 방법을 알아보지 않을 거다. 난 자동으로 해주는 것보다 확인하고 Merge하는 것을 더 선호하기에 pull 명령 자체를 잘 쓰지 않는다. 그리고 push는 항상 명시적인 것이 좋다.</p>
+
+<h3>무엇이 Remote Tracking 브랜치일까?</h3>
+
+<p>이 정보는 config 파일에 저장하며(보통 .git/config에) 다음과 같이 생겼다.</p>
+
+<pre class="prettyprint"><code>branch.feature/kitchen.remote=origin
+branch.feature/kitchen.merge=refs/heads/ship
+</code></pre>
+
+<p>'feature/kitchen'이 'origin/ship' 브랜치를 Tracking한다는 의미다.</p>
+
+<p>그래서 <code>git config -l</code>로도 확인할 수 있지만, 별도의 명령이 있다. <code>git branch --track</code> 명령으로 Remote Tracking 브랜치가 무엇인지 확인할 수 있다.</p>
+
+<pre class="prettyprint"><code>$ git branch --track
+feature/kitchen
+ship
+</code></pre>
+
+<h3>Remote Tracking 브랜치를 만들기</h3>
+
+<p>Remote Tracking 브랜치를 만드는 것은 간단하다. <code>git branch [new] [old]</code> 명령이나 <code>git co -b [new] [old]</code> 명령으로 만들 수 있다. 단 <code>[old]</code> 브랜치에 Remote 브랜치를 넣으면 된다.</p>
+
+<p>이미 만든 브랜치를 Remote Tracking 브랜치로 만들 수도 있다. 기본적으로 설정을 '.git/config' 파일에 저장하기 때문에 'git config' 명령으로 지정해 줄 수 있다. 하지만, 전용 명령어가 있다:</p>
+
+<pre class="prettyprint"><code>git branch --set-upstream [local] [remote]
+</code></pre>
+
+<h3>어디에 좋나?</h3>
+
+<p>사실 잘 모르겠다. 잘 안 쓴다. Remote Tracking 브랜치를 만들긴 하지만 의도하고 만들어 본적 없다. 굳이 평하자면 'branch -a -v'에 좋다:)</p>
+
+<h4>git pull</h4>
+
+<p><code>git pull</code>명령은 Remote Tracking 브랜치에만 사용할 수 있다. <code>git pull [remote] [branch]</code> 명령을 실행하면 [remote]/[branch]를 Fetch하고 자동으로 Merge한다.</p>
+
+<p><code>[remote]</code>와 <code>[branch]</code>를 생략할 수도 있는데 생략하면 현 브랜치의 정보를 사용한다.</p>
+
+<h2>todo</h2>
+
+<p>나는 해당 프로젝트의 'todo' 목록을 별도로 관리하지 않고 그냥 토픽 브랜치로 만든다. 그리고 <code>git branch -a -v</code> 명령으로 관리한다. 나는 편의를 위해서 <code>todo</code>라는 alias를 만들어 사용한다:</p>
+
+<pre class="prettyprint"><code>git config --global alias.todo "branch -a -v"
+</code></pre>
+
+<h2>결론</h2>
+
+<p><code>git branch -a -v</code> 명령은 하던 일을 뭔지 기억하는데 도움이 된다. 간단하게만 관리할 수 있다면 일을 하는 것과 계획을 관리하는 것을 한 몸으로 할 수 있다.</p>
+
+<p>그리고 커밋 메시지가 정말 중요하다. 시간이 지나서 좀 잊어버리게 된다고 해도 다시 보면 바로 알 수 있어야 한다.</p>
+
+<p>좀 더 개선된 형태가 필요하다. 왜 꼭 Remote 브랜치만 Tracking해야 하는 걸까? 사실 Local 브랜치를 Tracking하게 하고 싶다. 관련 브랜치도 함께 보여줄 수 없을까? 다른 색으로 보여줄 수는 없을까? 좀 더 인식하기 쉬운 형태였으면 좋겠다. 틈틈이 Git 플러그인을 만들자!</p>]]>
+    </content>
+  </entry>
   <entry>
     <title>progit</title>
     <link href="http://dogfeet.github.com/articles/2012/progit.html" />
@@ -26,7 +241,7 @@
 
 <h2>progit</h2>
 
-<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다:</p>
+<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-13</code> 빌드한 파일입니다:</p>
 
 <ul>
 <li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
@@ -36,6 +251,8 @@
 </ul>
 
 <p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. <a href="http://calibre-ebook.com/download">Calibre</a>에서 열어보면 잘 되는데 Kindle App에서는 안되네요.</p>
+
+<p><strong>UPDATE:</strong> Kindle Touch에서는 띄어쓰기가 된다고 합니다(ryan003님 제보).</p>
 
 <p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트래커</a>에 신고해주세요.</p>
 
@@ -1432,47 +1649,6 @@ C
     </content>
   </entry>
   <entry>
-    <title>Git:git-helpers</title>
-    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
-    <updated>2011-12-01T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
-    <content type="html">
-<![CDATA[
-<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
-
-<h2>git alias</h2>
-
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
-
-<h3>단순 약어</h3>
-
-<pre class="prettyprint"><code># Abbreviations
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.br branch
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.cs "commit -s"
-</code></pre>
-
-<p><code>commit -s</code>은 signed commit인데 </p>
-
-<h3>git log</h3>
-
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
-
-<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
-</code></pre>
-
-<p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
-
-<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-</code></pre>]]>
-    </content>
-  </entry>
-  <entry>
     <title>Bash-it</title>
     <link href="http://dogfeet.github.com/articles/2011/bash-it.html" />
     <updated>2011-12-01T00:00:00Z</updated>
@@ -1567,6 +1743,47 @@ current:    v0.6.1
 </code></pre>
 
 <p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:git-helpers</title>
+    <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
+    <updated>2011-12-01T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
+    <content type="html">
+<![CDATA[
+<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
+
+<h2>git alias</h2>
+
+<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+
+<h3>단순 약어</h3>
+
+<pre class="prettyprint"><code># Abbreviations
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.cs "commit -s"
+</code></pre>
+
+<p><code>commit -s</code>은 signed commit인데 </p>
+
+<h3>git log</h3>
+
+<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+
+<pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
+</code></pre>
+
+<p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
+
+<pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+</code></pre>]]>
     </content>
   </entry>
   <entry>
@@ -1768,6 +1985,123 @@ npm install coffee-script
     </content>
   </entry>
   <entry>
+    <title>Cake</title>
+    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
+    <updated>2011-11-21T16:06:05Z</updated>
+    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
+    <content type="html">
+<![CDATA[
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
+  console.log 'Hello World!'
+</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!
+</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task
+</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+task 'task:withDefaults', 'Description of task', (options) -&gt;
+  options.environment or= 'production'
+</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
+</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
+</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
+task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
+  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require 'fs'
+{exec} = require 'child_process'
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  'content/scripts/statusbar'
+  'content/scripts/command/quickMacro'
+  'content/scripts/command/selectionTools/general'
+]
+
+task 'build', 'Build single application file from source files', -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
+      throw err if err
+      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink 'lib/app.coffee', (err) -&gt;
+          throw err if err
+          console.log 'Done.'
+</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<h2>참고</h2>
+
+<ul>
+<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
+</ul>]]>
+    </content>
+  </entry>
+  <entry>
     <title>CoffeeKup &lt;☕/&gt;</title>
     <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
     <updated>2011-11-21T16:06:05Z</updated>
@@ -1888,123 +2222,6 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
 </code></pre>
 
 <p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>Cake</title>
-    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>2011-11-21T16:06:05Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
-    <content type="html">
-<![CDATA[
-<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
-
-<h3>Hello World!</h3>
-
-<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
-  console.log 'Hello World!'
-</code></pre>
-
-<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
-Hello World!
-</code></pre>
-
-<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
-
-<pre class="prettyprint"><code>$ cake
-
-cake say:hello             # Description of task
-</code></pre>
-
-<h3>Option</h3>
-
-<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
-task 'task:withDefaults', 'Description of task', (options) -&gt;
-  options.environment or= 'production'
-</code></pre>
-
-<p>이 코드는 다음과 같이 실행한다.</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
-</code></pre>
-
-<h2>Use Case</h2>
-
-<h3>Compile</h3>
-
-<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
-
-<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
-</code></pre>
-
-<p>이 cake로 하려면 다음과 같이 한다.</p>
-
-<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
-task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
-  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
-
-<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
-
-<h3>Concatenating Files</h3>
-
-<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
-
-<pre class="prettyprint"><code>fs     = require 'fs'
-{exec} = require 'child_process'
-
-appFiles  = [
-  # omit src/ and .coffee to make the below lines a little shorter
-  'content/scripts/statusbar'
-  'content/scripts/command/quickMacro'
-  'content/scripts/command/selectionTools/general'
-]
-
-task 'build', 'Build single application file from source files', -&gt;
-  appContents = new Array remaining = appFiles.length
-  for file, index in appFiles then do (file, index) -&gt;
-    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
-      throw err if err
-      appContents[index] = fileContents
-      process() if --remaining is 0
-  process = -&gt;
-    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
-      throw err if err
-      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
-        throw err if err
-        console.log stdout + stderr
-        fs.unlink 'lib/app.coffee', (err) -&gt;
-          throw err if err
-          console.log 'Done.'
-</code></pre>
-
-<h3>Minify/Compress Your Files</h3>
-
-<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
-
-<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
-  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
-</ul>]]>
     </content>
   </entry>
 </feed>
