@@ -82,6 +82,31 @@
       <section class="content">
         <article class="post">
   <header>
+    <a href="/articles/2012/git-todo.html">
+      <h1>Git:Todo Plugin</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Jan 21 2012</span>
+ | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#remote tracking branch">Remote Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> | <span><a href="/articles/2012/git-todo.html#disqus_thread" data-disqus-identifier="/articles/2012/git-todo.html"></a></span>
+  </footer>
+<p>branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다.</p>
+
+<p><a href="/articles/2012/git-branch-a-v.html"><code>git branch -a -v</code> 명령에 대한 글</a>을 썼었는데 그 글에 설명한 것을 발전시켜 구현했다. <code>git-todo</code> 같이 규모가 작은 프로젝트에서는 별도로 Issue를 관리하고 싶지 않아서 만들었다. </p>
+
+<p>브랜치 이름과 커밋 메시지를 잘 다듬으면 브랜치 정보를 요약해 보는 것만으로도 해야 할 일이 무엇이고 최근 어디까지 진행했는지 알 수 있다.</p>
+
+<p>Pro Git 저장소를 예제로 사용하여 설명한다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo.png" alt="git-todo" title="" /></p>
+
+  <p>
+    <a class="btn" href="/articles/2012/git-todo.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
     <a href="/articles/2012/progit-retro.html">
       <h1>Pro Git 번역 회고</h1>
     </a>
@@ -252,40 +277,6 @@
 
   <p>
     <a class="btn" href="/articles/2011/git-mergediff.html">Read more &raquo;</a>
-  </p>
-</article>
-<article class="post">
-  <header>
-    <a href="/articles/2011/git-merge.html">
-      <h1>Git:merge</h1>
-    </a>
-  </header>
-  <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 10 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#merge">merge</a> | <span><a href="/articles/2011/git-merge.html#disqus_thread" data-disqus-identifier="/articles/2011/git-merge.html"></a></span>
-  </footer>
-<p>커밋 히스토리는 굉장히 잘 관리해야 한다. 이 글은 merge를 잘해서 히스토리를 잘 관리하는 방법을 설명한다.</p>
-
-<p>git의 최고의 장점은 모든 것을 나중으로 미룰 수 있다는 것이다. 이 말의 의미는 언제나 히스토리를 원하는 대로 편집할 수 있다는 것을 의미한다. 기존의 커밋 여러 개를 하나로 합치거나 커밋 하나를 여러 개로 쪼갤 수 있다. 이미 커밋된 개체에 들어 있는 committer나 author 정보를 수정할 수도 있다. 이런 git의 막강한 기능을 이용해서 모든 참여자가 쉽게 이해할 수 있고 쉽게 관리할 수 있는 히스토리를 만들어 나아가야 한다. 히스토리를 단장하는 방법도 굉장히 흥미로운 주제지만 내용이 많아서 이 글에서 다루지 않는다. 나중에 다시 다루기로 하겠다.</p>
-
-<p>히스토리를 단장하기 위해 다음과 같은 몇 가지 사항을 꼭 기억해야 한다.</p>
-
-<ul>
-<li>Fast-forward merge와 merge 커밋을 구분해야 한다.</li>
-<li>merge, rebase, cherry pick을 이해해야 한다.</li>
-</ul>
-
-<p><img src="/articles/2011/git-merge/thousand_sunny_ship.jpg" alt="힘내" title="" /></p>
-
-<p>예를 들어 '싸우전드 써니' 호는 밀짚모자 해적단의 안전한 항해를 책임지고 있기 때문에 아주 잘 관리해야 한다.</p>
-
-<p>보통 master, develop, pu(proposed updates), next 등으로 이름 짓는 브랜치가 긴 호흡 브랜치(long-runing branch)이다. 이 브랜치는 굉장히 오랫동안 유지하고 사실 거의 저장소에 내내 존재한다. 필요에 따라 삭제하기도 하지만 바로 다시 만들어야 하기 때문에 항상 필요하다. 각 브랜치는 브랜치 고유의 목적이 있다. 여기서 각 브랜치의 의미를 설명하지는 않는다.</p>
-
-<p>이 글에서는 긴 호흡 브랜치로 ship 브랜치를 사용한다.</p>
-
-  <p>
-    <a class="btn" href="/articles/2011/git-merge.html">Read more &raquo;</a>
   </p>
 </article>
 <p>

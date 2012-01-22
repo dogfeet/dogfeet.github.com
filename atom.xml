@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-15T15:40:34Z</updated>
+  <updated>2012-01-22T06:04:30Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -13,6 +13,80 @@
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
+  <entry>
+    <title>Git:Todo Plugin</title>
+    <link href="http://dogfeet.github.com/articles/2012/git-todo.html" />
+    <updated>2012-01-21T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-todo.html</id>
+    <content type="html">
+<![CDATA[
+<p>branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다.</p>
+
+<p><a href="/articles/2012/git-branch-a-v.html"><code>git branch -a -v</code> 명령에 대한 글</a>을 썼었는데 그 글에 설명한 것을 발전시켜 구현했다. <code>git-todo</code> 같이 규모가 작은 프로젝트에서는 별도로 Issue를 관리하고 싶지 않아서 만들었다. </p>
+
+<p>브랜치 이름과 커밋 메시지를 잘 다듬으면 브랜치 정보를 요약해 보는 것만으로도 해야 할 일이 무엇이고 최근 어디까지 진행했는지 알 수 있다.</p>
+
+<p>Pro Git 저장소를 예제로 사용하여 설명한다:</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/git-todo/git-todo.png" alt="git-todo" title="" /></p>
+
+<h2>Usage</h2>
+
+<ul>
+<li><img src="/articles/2012/git-todo/checkouted.png" alt="checkouted" title="" />가 표기된 ko 브랜치가 Checkcout한 브랜치다.</li>
+<li><img src="/articles/2012/git-todo/base_branch.png" alt="base_branch" title="" />가 표기된 ko 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 <img src="/articles/2012/git-todo/ahead.png" alt="ahead" title="" />이나 <img src="/articles/2012/git-todo/behind.png" alt="behind" title="" />을 계산한다.</li>
+<li><img src="/articles/2012/git-todo/ahead.png" alt="ahead" title="" />가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 없는 커밋이 3개 있다는 것을 의미한다.</li>
+<li><img src="/articles/2012/git-todo/behind.png" alt="behind" title="" />가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 있는 커밋이 23개 없다는 것을 의미한다.</li>
+</ul>
+
+<p>기본적으로 로컬 브랜치만 보여준다.</p>
+
+<h3>기준 브랜치</h3>
+
+<p>이 기준 브랜치가 <code>git branch -a -v</code>를 쓰지 않고 Plugin을 만든 진짜 이유다. 원하는 브랜치를 기준으로 두고 토픽 브랜치를 만들어 작업할 수 있다.</p>
+
+<p>설정하지 않으면 master 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 거리를 계산한다. 이 브랜치는 다음과 같이 설정한다:</p>
+
+<pre class="prettyprint"><code>git config todo.base ko
+</code></pre>
+
+<p>여기서 보여주는 예제는 Pro Git 저장소를 캡처한 것이기 때문에 기준 브랜치가 ko이다.</p>
+
+<h3>옵션</h3>
+
+<p>기본적으로 로컬 브랜치만 보여주지만, 리모트 브랜치와 tag도 보여준다</p>
+
+<h4>git todo -r</h4>
+
+<p>리모트 브랜치는 노란(똥)색으로 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-r.png" alt="git-todo-r" title="" /></p>
+
+<h4>git todo -t</h4>
+
+<p>Tag는 흰색으로 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-t.png" alt="git-todo-t" title="" /></p>
+
+<h4>git todo -a</h4>
+
+<p>로컬 브랜치, 리모트 브랜치, Tag를 모두 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-a.png" alt="git-todo-a" title="" /></p>
+
+<h2>설치</h2>
+
+<p><a href="https://github.com/pismute/git-todo">git-todo 저장소</a>를 적당한데다 클론하고 git-todo 파일을 실행 경로에 넣는다:</p>
+
+<pre class="prettyprint"><code>cd ~
+git clone <a href='https://github.com/pismute/git-todo'>https://github.com/pismute/git-todo</a>
+echo "export PATH=~/bin:$PATH" &gt;&gt; ~/.bash_profile
+mkdir ~/bin
+cd ~/bin
+ln -s ~/git-todo/git-todo git-todo
+</code></pre>]]>
+    </content>
+  </entry>
   <entry>
     <title>Pro Git 번역 회고</title>
     <link href="http://dogfeet.github.com/articles/2012/progit-retro.html" />
@@ -241,7 +315,7 @@ ship
 
 <h2>progit</h2>
 
-<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-13</code> 빌드한 파일입니다:</p>
+<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-13</code>에 빌드한 파일입니다:</p>
 
 <ul>
 <li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
@@ -1746,19 +1820,19 @@ current:    v0.6.1
     </content>
   </entry>
   <entry>
-    <title>Git:git-helpers</title>
+    <title>Git:git 도우미</title>
     <link href="http://dogfeet.github.com/articles/2011/git-helpers.html" />
     <updated>2011-12-01T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2011/git-helpers.html</id>
     <content type="html">
 <![CDATA[
-<p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+<p>git에 좋은 설정, 도구, 읽을 거리등 git에 관한 잡다한 정보를 정리한다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="heading image" title="" /></p>
 
 <h2>git alias</h2>
 
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+<p>만들어 쓰면 편리한 git alias를 정리한다.</p>
 
 <h3>단순 약어</h3>
 
@@ -1775,7 +1849,7 @@ git config --global alias.cs "commit -s"
 
 <h3>git log</h3>
 
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+<p>이건 좀 많이 편리하다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리하다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여준다. 게다가 각각의 요소를 다른 색으로 칠해주기까지...</p>
 
 <pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
 </code></pre>
@@ -1783,7 +1857,24 @@ git config --global alias.cs "commit -s"
 <p>브랜치를 중심으로 히스토리를 보고 싶으면 다음과 같이 사용하는 게 좋다.</p>
 
 <pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-</code></pre>]]>
+</code></pre>
+
+<h2>읽을 거리</h2>
+
+<ul>
+<li><a href="/articles/2012/progit.html">progit</a> - git 학생용</li>
+<li><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">A Visual Git Reference</a> - git의 핵심 용어를 이해하는데 유용함.</li>
+<li><a href="http://cbx33.github.com/gitt/">Git In The Trenches</a> - git 선생용</li>
+</ul>
+
+<h2>github</h2>
+
+<h3>widget</h3>
+
+<ul>
+<li><a href="http://gitview.logicalcognition.com/">gitview</a> - github 저장소를 보여주는 widget</li>
+<li><a href="http://githubbadge.appspot.com/">githubbadge</a> - github 계정 요약을 보여주는 widget</li>
+</ul>]]>
     </content>
   </entry>
   <entry>
@@ -1985,123 +2076,6 @@ npm install coffee-script
     </content>
   </entry>
   <entry>
-    <title>Cake</title>
-    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
-    <updated>2011-11-21T16:06:05Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
-    <content type="html">
-<![CDATA[
-<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
-
-<h3>Hello World!</h3>
-
-<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
-  console.log 'Hello World!'
-</code></pre>
-
-<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
-Hello World!
-</code></pre>
-
-<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
-
-<pre class="prettyprint"><code>$ cake
-
-cake say:hello             # Description of task
-</code></pre>
-
-<h3>Option</h3>
-
-<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
-
-<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
-task 'task:withDefaults', 'Description of task', (options) -&gt;
-  options.environment or= 'production'
-</code></pre>
-
-<p>이 코드는 다음과 같이 실행한다.</p>
-
-<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
-</code></pre>
-
-<h2>Use Case</h2>
-
-<h3>Compile</h3>
-
-<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
-
-<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
-</code></pre>
-
-<p>이 cake로 하려면 다음과 같이 한다.</p>
-
-<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
-task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
-  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
-
-<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
-
-<h3>Concatenating Files</h3>
-
-<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
-
-<pre class="prettyprint"><code>fs     = require 'fs'
-{exec} = require 'child_process'
-
-appFiles  = [
-  # omit src/ and .coffee to make the below lines a little shorter
-  'content/scripts/statusbar'
-  'content/scripts/command/quickMacro'
-  'content/scripts/command/selectionTools/general'
-]
-
-task 'build', 'Build single application file from source files', -&gt;
-  appContents = new Array remaining = appFiles.length
-  for file, index in appFiles then do (file, index) -&gt;
-    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
-      throw err if err
-      appContents[index] = fileContents
-      process() if --remaining is 0
-  process = -&gt;
-    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
-      throw err if err
-      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
-        throw err if err
-        console.log stdout + stderr
-        fs.unlink 'lib/app.coffee', (err) -&gt;
-          throw err if err
-          console.log 'Done.'
-</code></pre>
-
-<h3>Minify/Compress Your Files</h3>
-
-<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
-
-<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
-  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
-    throw err if err
-    console.log stdout + stderr
-</code></pre>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
-</ul>]]>
-    </content>
-  </entry>
-  <entry>
     <title>CoffeeKup &lt;☕/&gt;</title>
     <link href="http://dogfeet.github.com/articles/2011/coffee-kup.html" />
     <updated>2011-11-21T16:06:05Z</updated>
@@ -2222,6 +2196,123 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005
 </code></pre>
 
 <p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Cake</title>
+    <link href="http://dogfeet.github.com/articles/2011/cake.html" />
+    <updated>2011-11-21T16:06:05Z</updated>
+    <id>http://dogfeet.github.com/articles/2011/cake.html</id>
+    <content type="html">
+<![CDATA[
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/cake.png" alt="Cake" title="" /></p>
+
+<h3>Hello World!</h3>
+
+<p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">task 'say:hello', 'Description of task', -&gt;
+  console.log 'Hello World!'
+</code></pre>
+
+<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake say:hello
+Hello World!
+</code></pre>
+
+<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>$ cake
+
+cake say:hello             # Description of task
+</code></pre>
+
+<h3>Option</h3>
+
+<p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
+
+<pre class="prettyprint"><code class="language-coffee">option '-e', '--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'
+task 'task:withDefaults', 'Description of task', (options) -&gt;
+  options.environment or= 'production'
+</code></pre>
+
+<p>이 코드는 다음과 같이 실행한다.</p>
+
+<pre class="prettyprint"><code class="language-bsh">$ cake -e "development" task:withDefaults
+</code></pre>
+
+<h2>Use Case</h2>
+
+<h3>Compile</h3>
+
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ coffee --compile --output lib/ src/
+</code></pre>
+
+<p>이 cake로 하려면 다음과 같이 한다.</p>
+
+<pre class="prettyprint"><code class="language-coffee">{exec} = require 'child_process'
+task 'build', 'Build project from src/*.coffee to lib/*.js', -&gt;
+  exec 'coffee --compile --output lib/ src/', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<p><code>{exec} = require 'child_process'</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require('child_process').exec</code>와 같다.</p>
+
+<p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
+
+<h3>Concatenating Files</h3>
+
+<p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
+
+<pre class="prettyprint"><code>fs     = require 'fs'
+{exec} = require 'child_process'
+
+appFiles  = [
+  # omit src/ and .coffee to make the below lines a little shorter
+  'content/scripts/statusbar'
+  'content/scripts/command/quickMacro'
+  'content/scripts/command/selectionTools/general'
+]
+
+task 'build', 'Build single application file from source files', -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile "src/#{file}.coffee", 'utf8', (err, fileContents) -&gt;
+      throw err if err
+      appContents[index] = fileContents
+      process() if --remaining is 0
+  process = -&gt;
+    fs.writeFile 'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;
+      throw err if err
+      exec 'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink 'lib/app.coffee', (err) -&gt;
+          throw err if err
+          console.log 'Done.'
+</code></pre>
+
+<h3>Minify/Compress Your Files</h3>
+
+<p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
+
+<pre class="prettyprint"><code>task 'minify', 'Minify the resulting application file after build', -&gt;
+  exec 'java -jar "/home/stan/public/compiler.jar" --js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre>
+
+<h2>참고</h2>
+
+<ul>
+<li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
+</ul>]]>
     </content>
   </entry>
 </feed>

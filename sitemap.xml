@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.com</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/atelier.html</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/about.html</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo.html</loc>
+    <lastmod>2012-01-21T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/archive.html</loc>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/atelier.html</loc>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/sitemap.xml</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/site/archive.html</loc>
-    <lastmod>2012-01-15T15:40:34Z</lastmod>
+    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
+    <lastmod>2012-01-22T06:04:30Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -111,12 +116,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:git-helpers</title>
-    <meta name="description" content="git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다." />
+    <title>dogfeet - Git:git 도우미</title>
+    <meta name="description" content="git에 좋은 설정, 도구, 읽을 거리등 git에 관한 잡다한 정보를 정리한다." />
     <meta name="keywords" content="git" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
@@ -101,7 +101,7 @@
 </script>
 <article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-helpers.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:git-helpers</h1>
+    <h1 property="dcterms:title">Git:git 도우미</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
@@ -127,13 +127,13 @@
     </div>
   </footer>
   <div property="sioc:content">
-    <p>git을 사용할 때 유용한 설정, 도구등을 모아 정리해보려고 합니다.</p>
+    <p>git에 좋은 설정, 도구, 읽을 거리등 git에 관한 잡다한 정보를 정리한다.</p>
 
 <p><img src="/articles/2011/git.png" alt="heading image" title="" /></p>
 
 <h2>git alias</h2>
 
-<p>만들어 쓰면 편리한 git alias를 정리합니다.</p>
+<p>만들어 쓰면 편리한 git alias를 정리한다.</p>
 
 <h3>단순 약어</h3>
 
@@ -150,7 +150,7 @@ git config --global alias.cs "commit -s"
 
 <h3>git log</h3>
 
-<p>이건 좀 많이 편리합니다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리합니다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여줍니다. 각각의 요소를 다른 색으로 칠해줍니다.</p>
+<p>이건 좀 많이 편리하다. 우연히 인터넷에서 줍은( ? ) 건데 너무 편리하다. 현 브랜치의 히스토리를 short SHA값, author 정보, 커밋 트리 그리고 히스토리에서 특정 커밋을 가르키는 refs(브랜치, 태그 등)가 있는지도 보여준다. 게다가 각각의 요소를 다른 색으로 칠해주기까지...</p>
 
 <pre class="prettyprint"><code>git config --global alias.lg "log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'"
 </code></pre>
@@ -159,6 +159,23 @@ git config --global alias.cs "commit -s"
 
 <pre class="prettyprint"><code>git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 </code></pre>
+
+<h2>읽을 거리</h2>
+
+<ul>
+<li><a href="/articles/2012/progit.html">progit</a> - git 학생용</li>
+<li><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">A Visual Git Reference</a> - git의 핵심 용어를 이해하는데 유용함.</li>
+<li><a href="http://cbx33.github.com/gitt/">Git In The Trenches</a> - git 선생용</li>
+</ul>
+
+<h2>github</h2>
+
+<h3>widget</h3>
+
+<ul>
+<li><a href="http://gitview.logicalcognition.com/">gitview</a> - github 저장소를 보여주는 widget</li>
+<li><a href="http://githubbadge.appspot.com/">githubbadge</a> - github 계정 요약을 보여주는 widget</li>
+</ul>
   </div>
 </article>
 <section id="related">
@@ -169,16 +186,12 @@ git config --global alias.cs "commit -s"
 &raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
     </li>
     <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+      <span>Dec 09 2011</span>
+&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
     </li>
     <li>
       <span>Dec 24 2011</span>
 &raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
     </li>
     <li>
       <span>Dec 10 2011</span>
@@ -189,24 +202,28 @@ git config --global alias.cs "commit -s"
 &raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
     </li>
     <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
+      <span>Dec 01 2011</span>
+&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
     </li>
     <li>
       <span>Dec 22 2011</span>
 &raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
     </li>
     <li>
+      <span>Dec 02 2011</span>
+&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
+    </li>
+    <li>
       <span>Nov 30 2011</span>
 &raquo;      <a href="/articles/2011/progit.html">progit</a>
     </li>
     <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-    </li>
-    <li>
       <span>Jan 08 2012</span>
 &raquo;      <a href="/articles/2012/progit.html">progit</a>
+    </li>
+    <li>
+      <span>Jan 01 2012</span>
+&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
     </li>
   </ul>
 </section>

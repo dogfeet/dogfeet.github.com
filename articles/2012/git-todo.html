@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - progit</title>
-    <meta name="description" content="GitHub의 CIO인 schacon이 쓴 progit 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.--;" />
-    <meta name="keywords" content="git,progit,번역" />
-    <meta name="author" content="Changwoo Park, Sean Lee" />
+    <title>dogfeet - Git:Todo Plugin</title>
+    <meta name="description" content="branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다." />
+    <meta name="keywords" content="Git,Todo,Remote Tracking Branch,Branch" />
+    <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2012/progit.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2012/git-todo.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">progit</h1>
+    <h1 property="dcterms:title">Git:Todo Plugin</h1>
   </header>
   <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a>, <a href="/authors/sean-lee.html">Sean Lee</a></span>
- | <span property="dc:created">Jan 08 2012</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#progit">progit</a>, <a href="/site/tagmap.html#번역">번역</a> | <span><a href="/articles/2012/progit.html#disqus_thread" data-disqus-identifier="/articles/2012/progit.html"></a></span>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Jan 21 2012</span>
+ | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#remote tracking branch">Remote Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> | <span><a href="/articles/2012/git-todo.html#disqus_thread" data-disqus-identifier="/articles/2012/git-todo.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,98 +115,91 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/progit.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-todo.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/progit.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-todo.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/progit.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-todo.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>이 쓴 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.--;</p>
+    <p>branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다.</p>
 
-<p><img src="/articles/2011/progit/progit.book-big.jpg" alt="progit" title="" /></p>
+<p><a href="/articles/2012/git-branch-a-v.html"><code>git branch -a -v</code> 명령에 대한 글</a>을 썼었는데 그 글에 설명한 것을 발전시켜 구현했다. <code>git-todo</code> 같이 규모가 작은 프로젝트에서는 별도로 Issue를 관리하고 싶지 않아서 만들었다. </p>
 
-<h2>progit</h2>
+<p>브랜치 이름과 커밋 메시지를 잘 다듬으면 브랜치 정보를 요약해 보는 것만으로도 해야 할 일이 무엇이고 최근 어디까지 진행했는지 알 수 있다.</p>
 
-<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-13</code>에 빌드한 파일입니다:</p>
+<p>Pro Git 저장소를 예제로 사용하여 설명한다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo.png" alt="git-todo" title="" /></p>
+
+<h2>Usage</h2>
 
 <ul>
-<li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
-<li><a href="http://dogfeet.github.com/progit/progit.ko.mobi">progit.ko.mobi</a></li>
-<li><a href="http://dogfeet.github.com/progit/progit.ko.pdf">progit.ko.pdf</a></li>
-<li><a href="http://dogfeet.github.com/progit/progit.ko.html">progit.ko.html</a></li>
+<li><img src="/articles/2012/git-todo/checkouted.png" alt="checkouted" title="" />가 표기된 ko 브랜치가 Checkcout한 브랜치다.</li>
+<li><img src="/articles/2012/git-todo/base_branch.png" alt="base_branch" title="" />가 표기된 ko 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 <img src="/articles/2012/git-todo/ahead.png" alt="ahead" title="" />이나 <img src="/articles/2012/git-todo/behind.png" alt="behind" title="" />을 계산한다.</li>
+<li><img src="/articles/2012/git-todo/ahead.png" alt="ahead" title="" />가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 없는 커밋이 3개 있다는 것을 의미한다.</li>
+<li><img src="/articles/2012/git-todo/behind.png" alt="behind" title="" />가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 있는 커밋이 23개 없다는 것을 의미한다.</li>
 </ul>
 
-<p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. <a href="http://calibre-ebook.com/download">Calibre</a>에서 열어보면 잘 되는데 Kindle App에서는 안되네요.</p>
+<p>기본적으로 로컬 브랜치만 보여준다.</p>
 
-<p><strong>UPDATE:</strong> Kindle Touch에서는 띄어쓰기가 된다고 합니다(ryan003님 제보).</p>
+<h3>기준 브랜치</h3>
 
-<p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트래커</a>에 신고해주세요.</p>
+<p>이 기준 브랜치가 <code>git branch -a -v</code>를 쓰지 않고 Plugin을 만든 진짜 이유다. 원하는 브랜치를 기준으로 두고 토픽 브랜치를 만들어 작업할 수 있다.</p>
 
-<p>다시 한번 동료의 힘을 몸소 체험한 프로젝트 였습니다. <a href="https://twitter.com/#!/lethee">@lethee</a>와 함께 하지 않고 혼자했다면 결코 완주하지 못했을 겁니다.</p>
+<p>설정하지 않으면 master 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 거리를 계산한다. 이 브랜치는 다음과 같이 설정한다:</p>
 
-<h2>힘내</h2>
+<pre class="prettyprint"><code>git config todo.base ko
+</code></pre>
 
-<p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바래요.</p>
+<p>여기서 보여주는 예제는 Pro Git 저장소를 캡처한 것이기 때문에 기준 브랜치가 ko이다.</p>
 
-<p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>
+<h3>옵션</h3>
+
+<p>기본적으로 로컬 브랜치만 보여주지만, 리모트 브랜치와 tag도 보여준다</p>
+
+<h4>git todo -r</h4>
+
+<p>리모트 브랜치는 노란(똥)색으로 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-r.png" alt="git-todo-r" title="" /></p>
+
+<h4>git todo -t</h4>
+
+<p>Tag는 흰색으로 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-t.png" alt="git-todo-t" title="" /></p>
+
+<h4>git todo -a</h4>
+
+<p>로컬 브랜치, 리모트 브랜치, Tag를 모두 보여준다:</p>
+
+<p><img src="/articles/2012/git-todo/git-todo-a.png" alt="git-todo-a" title="" /></p>
+
+<h2>설치</h2>
+
+<p><a href="https://github.com/pismute/git-todo">git-todo 저장소</a>를 적당한데다 클론하고 git-todo 파일을 실행 경로에 넣는다:</p>
+
+<pre class="prettyprint"><code>cd ~
+git clone <a href='https://github.com/pismute/git-todo'>https://github.com/pismute/git-todo</a>
+echo "export PATH=~/bin:$PATH" &gt;&gt; ~/.bash_profile
+mkdir ~/bin
+cd ~/bin
+ln -s ~/git-todo/git-todo git-todo
+</code></pre>
   </div>
 </article>
 <section id="related">
   <h3>Related Posts</h3>
   <ul>
     <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
-    </li>
-    <li>
-      <span>Dec 24 2011</span>
-&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
-    </li>
-    <li>
-      <span>Dec 10 2011</span>
-&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
-    </li>
-    <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-    </li>
-    <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
-    </li>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Jan 15 2012</span>
-&raquo;      <a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a>
-    </li>
-    <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
+      <span>Jan 14 2012</span>
+&raquo;      <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
     </li>
   </ul>
 </section>
@@ -215,7 +208,7 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2012/progit.html';
+    var disqus_identifier = '/articles/2012/git-todo.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
