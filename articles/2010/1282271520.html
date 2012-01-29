@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - 한 줄 구구단 in scheme</title>
+    <meta name="description" content="구구단 scheme" />
+    <meta name="keywords" content="Iterator,scheme,구구단" />
+    <meta name="author" content="Sean Lee" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2010/1282271520.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">한 줄 구구단 in scheme</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">Aug 20 2010</span>
+ | <a href="/site/tagmap.html#iterator">Iterator</a>, <a href="/site/tagmap.html#scheme">scheme</a>, <a href="/site/tagmap.html#구구단">구구단</a> | <span><a href="/articles/2010/1282271520.html#disqus_thread" data-disqus-identifier="/articles/2010/1282271520.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1282271520.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1282271520.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1282271520.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <h2>구구단 scheme</h2>
+
+<pre class="prettyprint"><code>#lang scheme (do ([i 1 (+ i 1)]) [(= i 10)] (do ([j 1 (+ j 1)]) [(= j 10)] (printf "~ax~a=~a~n" i j (* i j)))) 
+</code></pre>
+
+<p>iterator를 쉽게 배워보는 계기가 됨. 발단은 <a href="http://me2day.net/darjeeling/2010/<a href='http://github.com/08/19/issues/#issue/21'>08/19#21</a>:40:53">이곳 다즐링님 포스팅</a></p>
+  </div>
+</article>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2010/1282271520.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

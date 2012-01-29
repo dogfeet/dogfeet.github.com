@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - Grails 1.2 M4</title>
+    <meta name="description" content="Grails 1.2 Milestone 4 Release 노트 요약" />
+    <meta name="keywords" content="Java,Grails" />
+    <meta name="author" content="Sean Lee" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2009/1257832500.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Grails 1.2 M4</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">Nov 10 2009</span>
+ | <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#grails">Grails</a> | <span><a href="/articles/2009/1257832500.html#disqus_thread" data-disqus-identifier="/articles/2009/1257832500.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1257832500.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1257832500.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1257832500.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p><a href="http://www.grails.org/1.2-M4+Release+Notes">Grails 1.2 Milestone 4 Release 노트 요약</a></p>
+
+<h2>요약</h2>
+
+<ul>
+<li><p>의존성 지원 DSL</p></li>
+<li><p>획기적인 성능 개선</p></li>
+<li><p>BootStrap에서의 환경 지원</p></li>
+<li><p>Spring 3 지원</p></li>
+<li><p>URI 리라이팅</p></li>
+<li><p>@Transactional 이용한 메소드 단위의 트랜잭션 지원</p></li>
+<li><p>DataSource 프로퍼티를 사용한 저장소 제어</p></li>
+<li><p>GORM 기본값의 전역 설정 지원</p></li>
+<li><p>Bool 프로퍼티에 대한 동적 파인더 개선</p></li>
+<li><p>도메인에서의 Named Query 지원</p></li>
+<li><p>hasOne 매핑 지원</p></li>
+<li><p>save() 메소드에서 validation지원</p></li>
+<li><p>GSP의 war 배포에서 precompilation 지원</p></li>
+<li><p>i18n 클래스와 프로퍼티의 지원 개선</p></li>
+<li><p>multiple embedded containers 지원</p></li>
+<li><p>web flow 플러그인 지원</p></li>
+<li><p>web flow 새로운 이벤트 지원</p></li>
+<li><p>named url 매핑 지원</p></li>
+<li><p>JSONBuiler 개선</p></li>
+<li><p>Data 파싱 개선</p></li>
+<li><p>rest 지원 개선</p></li>
+<li><p>프로젝트 문서화 엔진 지원</p></li>
+<li><p>zip-only 플러그인 지원</p></li>
+<li><p>플러그인 메타데이터 생성기 지원</p></li>
+<li><p>formatNumber, formatData 태그 개선</p></li>
+</ul>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Jan 02 2009</span>
+&raquo;      <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+    </li>
+    <li>
+      <span>Apr 01 2009</span>
+&raquo;      <a href="/articles/2009/1238601780.html">Building Grails Documentation for Korean</a>
+    </li>
+    <li>
+      <span>Apr 03 2009</span>
+&raquo;      <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+    </li>
+    <li>
+      <span>Sep 20 2009</span>
+&raquo;      <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+    </li>
+    <li>
+      <span>Sep 20 2009</span>
+&raquo;      <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+    </li>
+    <li>
+      <span>Sep 23 2009</span>
+&raquo;      <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+    </li>
+    <li>
+      <span>Nov 10 2009</span>
+&raquo;      <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+    </li>
+    <li>
+      <span>Dec 27 2009</span>
+&raquo;      <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+    </li>
+    <li>
+      <span>Jan 14 2010</span>
+&raquo;      <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+    </li>
+    <li>
+      <span>Jan 17 2010</span>
+&raquo;      <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
+    </li>
+    <li>
+      <span>Apr 19 2010</span>
+&raquo;      <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+    </li>
+    <li>
+      <span>Apr 19 2010</span>
+&raquo;      <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
+    </li>
+    <li>
+      <span>Apr 20 2010</span>
+&raquo;      <a href="/articles/2010/1271743080.html">Spring Finance</a>
+    </li>
+    <li>
+      <span>Apr 27 2010</span>
+&raquo;      <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+    </li>
+    <li>
+      <span>May 04 2010</span>
+&raquo;      <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+    </li>
+    <li>
+      <span>May 11 2010</span>
+&raquo;      <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+    </li>
+    <li>
+      <span>Jul 29 2010</span>
+&raquo;      <a href="/articles/2010/1280382600.html">와우 war overlay</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2009/1257832500.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

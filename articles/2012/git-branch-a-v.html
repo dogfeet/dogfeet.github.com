@@ -173,51 +173,9 @@ remotes/origin/ship              3f129b5 Fix anchor
 &lt; e054c7e - (feature/kitchen) Add sink unit
 </code></pre>
 
-<p><code>git branch</code>의 <code>-v</code> 옵션은 Remote Tracking 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.</p>
+<p><code>git branch</code>의 <code>-v</code> 옵션은 리모트 브랜치를 Tracking하는 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.</p>
 
-<h2>Remote Tracking 브랜치</h2>
-
-<p>Remote Tracking 브랜치의 경우 '[ahead 1, behind 1]' 처럼 얼마나 멀어졌는지 알려준다고 했는데 Remote Tracking 브랜치는 대체 뭐야?</p>
-
-<p>Remote Tracking 브랜치는 브랜치가 특정 Remote 브랜치와 연결된 것을 말한다. 그 연결 정보가 있으면 명령어를 실행할때 정보를 생략할 수 있다. 그리고 주로 push/pull 명령과 관련돼 있다.</p>
-
-<p>이 글에서는 push/pull과 관련된 방법을 알아보지 않을 거다. 난 자동으로 해주는 것보다 확인하고 Merge하는 것을 더 선호하기에 pull 명령 자체를 잘 쓰지 않는다. 그리고 push는 항상 명시적인 것이 좋다.</p>
-
-<h3>무엇이 Remote Tracking 브랜치일까?</h3>
-
-<p>이 정보는 config 파일에 저장하며(보통 .git/config에) 다음과 같이 생겼다.</p>
-
-<pre class="prettyprint"><code>branch.feature/kitchen.remote=origin
-branch.feature/kitchen.merge=refs/heads/ship
-</code></pre>
-
-<p>'feature/kitchen'이 'origin/ship' 브랜치를 Tracking한다는 의미다.</p>
-
-<p>그래서 <code>git config -l</code>로도 확인할 수 있지만, 별도의 명령이 있다. <code>git branch --track</code> 명령으로 Remote Tracking 브랜치가 무엇인지 확인할 수 있다.</p>
-
-<pre class="prettyprint"><code>$ git branch --track
-feature/kitchen
-ship
-</code></pre>
-
-<h3>Remote Tracking 브랜치를 만들기</h3>
-
-<p>Remote Tracking 브랜치를 만드는 것은 간단하다. <code>git branch [new] [old]</code> 명령이나 <code>git co -b [new] [old]</code> 명령으로 만들 수 있다. 단 <code>[old]</code> 브랜치에 Remote 브랜치를 넣으면 된다.</p>
-
-<p>이미 만든 브랜치를 Remote Tracking 브랜치로 만들 수도 있다. 기본적으로 설정을 '.git/config' 파일에 저장하기 때문에 'git config' 명령으로 지정해 줄 수 있다. 하지만, 전용 명령어가 있다:</p>
-
-<pre class="prettyprint"><code>git branch --set-upstream [local] [remote]
-</code></pre>
-
-<h3>어디에 좋나?</h3>
-
-<p>사실 잘 모르겠다. 잘 안 쓴다. Remote Tracking 브랜치를 만들긴 하지만 의도하고 만들어 본적 없다. 굳이 평하자면 'branch -a -v'에 좋다:)</p>
-
-<h4>git pull</h4>
-
-<p><code>git pull</code>명령은 Remote Tracking 브랜치에만 사용할 수 있다. <code>git pull [remote] [branch]</code> 명령을 실행하면 [remote]/[branch]를 Fetch하고 자동으로 Merge한다.</p>
-
-<p><code>[remote]</code>와 <code>[branch]</code>를 생략할 수도 있는데 생략하면 현 브랜치의 정보를 사용한다.</p>
+<p><strong>UPDATE:</strong> Remote Tracking 브랜치에 대한 내용은 잘못 정리한 것이라서 삭제했다. 나중에 따로 정리하기로 했다.</p>
 
 <h2>todo</h2>
 
@@ -238,6 +196,10 @@ ship
 <section id="related">
   <h3>Related Posts</h3>
   <ul>
+    <li>
+      <span>Dec 10 2011</span>
+&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
+    </li>
     <li>
       <span>Jan 21 2012</span>
 &raquo;      <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>

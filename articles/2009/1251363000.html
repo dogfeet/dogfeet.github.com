@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - 절차지향 언어와 객체지향 언어</title>
+    <meta name="description" content="얼마 전, 반 IF(Anti-If) 코드쓰기 유행(?) 이 있었다." />
+    <meta name="keywords" content="OOP" />
+    <meta name="author" content="Sean Lee" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2009/1251363000.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">절차지향 언어와 객체지향 언어</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">Aug 27 2009</span>
+ | <a href="/site/tagmap.html#oop">OOP</a> | <span><a href="/articles/2009/1251363000.html#disqus_thread" data-disqus-identifier="/articles/2009/1251363000.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1251363000.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1251363000.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1251363000.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>얼마 전, 반 IF(Anti-If) 코드쓰기 유행(?) 이 있었다.</p>
+
+<ul>
+<li><a href="http://alankang.tistory.com/249">OOP란 조건문(if)를 줄이는 것</a></li>
+<li><a href="http://www.antiifcampaign.com/">Anti-If Campaign</a></li>
+</ul>
+
+<p>줄여서 이야기하면 객체지향으로 프로그래밍을 할 때 선택-IF문을 사용해서 분기-하는 것을 다형성(서브타입다형성)을 통해 객체지향적으로 프로그래밍 해야 한다는 것이다. 그렇게 되면 해당 객체를 이용하는 부분에서는 선택을 하지 않고 쉽게 객체의 액션을 처리할 수 있다.</p>
+
+<p>이렇게 되면 호출해서 사용하는 쪽에서 서브타입이 추가되더라도 변경 없이 코드를 유지할 수 있다는 장점이 있다. 덧붙여 서브타입 객체의 생성을 팩토리로 만들어서 쓰거나, 직접적으로 서브타입 인스턴스를 생성하지 않도록 하면 코드는 더욱 더 유지하기 쉬워진다.</p>
+
+<p>물론 이를 위해 설계를 잘 해야 한다는 단점이 있다.</p>
+
+<p>오늘은 Data객체와 이를 View에서 나타내는 간단한 2-tier를 작성할 때 위 기법을 사용해 봤다. View Package는 Data Package에 의존한다. Data 안에서는 팩토리와 서브타입 다형성을 사용하고 View와 Data를 연결하기 위해서 C#의 Reflection을 사용하였다.</p>
+
+<p>이는 Data-View가 1:1 매칭일 때 사용가능한데, M-N 매칭으로 넘어가려면 어떻게 할까 하다가, Data쪽에 View가 받아서 처리할 수 있도록 그냥 ViewType 프로퍼티를 하나 정의해서 사용했다.</p>
+  </div>
+</article>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2009/1251363000.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>
