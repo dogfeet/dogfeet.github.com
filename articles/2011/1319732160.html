@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:diff</title>
-    <meta name="description" content="Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.(아무리 그래도 너무 많다.--;)" />
-    <meta name="keywords" content="git,diff" />
+    <title>dogfeet - bash-it-a-day, custom plugin.</title>
+    <meta name="description" content="bash-it을 fork해서 나만의 저장소를 github에 만들고, 각 서버의 계정마다 clone해서 사용하고 있다. 손으로 fetch하는 일이 너무 귀찮아서 만들었다." />
+    <meta name="keywords" content="bash-it" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1319732160.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:diff</h1>
+    <h1 property="dcterms:title">bash-it-a-day, custom plugin.</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 24 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diff">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
+ | <span property="dc:created">Oct 27 2011</span>
+ | <a href="/site/tagmap.html#bash-it">bash-it</a> | <span><a href="/articles/2011/1319732160.html#disqus_thread" data-disqus-identifier="/articles/2011/1319732160.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,163 +115,70 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-diff.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1319732160.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-diff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1319732160.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1319732160.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
+    <p>bash-it을 fork해서 나만의 저장소를 github에 만들고, 각 서버의 계정마다 clone해서 사용하고 있다. 손으로 fetch하는 일이 너무 귀찮아서 만들었다.</p>
 
-<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
+<h2>bash-it plugin</h2>
 
-<p><img src="/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
+<p>그래서 로그인 할 때 하루에 한번 fetch/merge를 수행하는 plugin을 만들었다:</p>
 
-<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
+<pre class="prettyprint"><code>function bash_it_a_day(){
+  local today=`date +%Y%m%d`
+  local file="/tmp/bash_it_a_day_$USER"
+  local truncated=""
 
-<h2>Unified Format</h2>
+  if [ -f $file ]; then
+    local uname=`uname`
 
-<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+    [ $uname = "Linux" ] &amp;&amp; truncated=`date +%Y%m%d --reference=$file`
 
-<h2>git diff</h2>
+    [ $uname = "Darwin" ] &amp;&amp; truncated=`stat -t %Y%m%d -f %Sm $file`
 
-<p>diff를 잘 활용하자.</p>
+  fi
 
-<h3>Modified, Staged, Unmodified 사이 비교</h3>
+  if [ "$truncated" != "$today" ]; then
+    cd $BASH
 
-<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
+    local git_pid=`ps -U $USER | grep git | grep -v grep  | awk '{print $1}' | xargs`
 
-<pre class="prettyprint"><code>git diff
+    if [ $git_pid = "" ]; then
+      git checkout mine
+      git fetch origin
+      git merge origin/mine
+    fi
+
+    &gt; $file #truncate file
+
+    cd ~
+  fi
+
+}
+
+bash_it_a_day
 </code></pre>
 
-<p>특정 파일만 비교할 수도 있다:</p>
+<p>이렇게 파일을 만들어서 $BASH/custom/bash-it-a-day.bash로 넣는다.</p>
 
-<pre class="prettyprint"><code>git diff my-file
-</code></pre>
-
-<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged/--cached
-</code></pre>
-
-<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff --staged my-file
-</code></pre>
-
-<h3>Revision 비교</h3>
-
-<p>리비전 두 개를 골라 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9
-</code></pre>
-
-<p>그중 파일 하나만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
-</code></pre>
-
-<p>다음처럼도 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
-</code></pre>
-
-<h3>Modified, Staged와 Revision 비교</h3>
-
-<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18
-</code></pre>
-
-<p>특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18 my-file
-</code></pre>
-
-<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18
-</code></pre>
-
-<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
-</code></pre>
-
-<h3>파일 이름만 보기</h3>
-
-<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
-
-<pre class="prettyprint"><code>git show --name-only HEAD~4
-</code></pre>
-
-<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
-
-<pre class="prettyprint"><code>git diff --name-only HEAD~4
-</code></pre>
-
-<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
-
-<pre class="prettyprint"><code>git log --name-only
-</code></pre>
+<p>그러면 로그인할 때마다 fetch/merge를 하는데 하루에 한번만 한다.</p>
   </div>
 </article>
 <section id="related">
   <h3>Related Posts</h3>
   <ul>
     <li>
-      <span>Sep 25 2011</span>
-&raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-    </li>
-    <li>
-      <span>Oct 12 2011</span>
-&raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-    </li>
-    <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
-    </li>
-    <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-    </li>
-    <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
-    </li>
-    <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-    </li>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-    </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
+      <span>Oct 13 2011</span>
+&raquo;      <a href="/articles/2011/1318481700.html">ssh-agent, bash-it plugin</a>
     </li>
   </ul>
 </section>
@@ -280,7 +187,7 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-diff.html';
+    var disqus_identifier = '/articles/2011/1319732160.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

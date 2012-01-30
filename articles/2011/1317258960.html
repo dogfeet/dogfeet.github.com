@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - New in JavaScript 1.8</title>
+    <meta name="description" content="이 글은 Mozila의 'New in JavaScript 1.8'을 정리한 것이다." />
+    <meta name="keywords" content="JavaScript,New In JavaScript,JavaScript Standard" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang-apollo.js"></script>
+    <script src="/vendor/lang-clj.js"></script>
+    <script src="/vendor/lang-css.js"></script>
+    <script src="/vendor/lang-go.js"></script>
+    <script src="/vendor/lang-hs.js"></script>
+    <script src="/vendor/lang-lisp.js"></script>
+    <script src="/vendor/lang-lua.js"></script>
+    <script src="/vendor/lang-ml.js"></script>
+    <script src="/vendor/lang-n.js"></script>
+    <script src="/vendor/lang-proto.js"></script>
+    <script src="/vendor/lang-scala.js"></script>
+    <script src="/vendor/lang-sql.js"></script>
+    <script src="/vendor/lang-tex.js"></script>
+    <script src="/vendor/lang-vhdl.js"></script>
+    <script src="/vendor/lang-wiki.js"></script>
+    <script src="/vendor/lang-xq.js"></script>
+    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="/">dogfeet</a>
+          <ul class="nav">
+            <li>
+              <a href="/site/tagmap.html">Tagmap</a>
+            </li>
+            <li>
+              <a href="/site/archive.html">Archive</a>
+            </li>
+            <li>
+              <a href="/site/atelier.html">Atelier</a>
+            </li>
+            <li>
+              <a href="http://feeds.feedburner.com/github/dogfeet">
+                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+              </a>
+            </li>
+          </ul>
+          <form class="pull-right" action="http://google.com/search" method="get">
+            <input type="hidden" name="q" value="site:dogfeet.github.com" />
+            <input type="text" name="q" results="0" placeholder="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <section class="content">
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1317258960.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">New in JavaScript 1.8</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Sep 29 2011</span>
+ | <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#new in javascript">New In JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a> | <span><a href="/articles/2011/1317258960.html#disqus_thread" data-disqus-identifier="/articles/2011/1317258960.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317258960.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317258960.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317258960.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>이 글은 Mozila의 '<a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8">New in JavaScript 1.8</a>'을 정리한 것이다.</p>
+
+<p>JavaScript 1.8을 사용하려면 script 엘리먼트를 다음과같이 정의해야 한다:</p>
+
+<pre class="prettyprint"><code>&lt;script type="application/JavaScript;version=1.8"&gt; ... your code ... &lt;/script&gt;
+</code></pre>
+
+<h2>Expression closures</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Lambda_calculus#Lambda_calculus_and_programming_languages">Lambda notation</a>처럼 함수를 정의할 수 있다.</p>
+
+<p>다음과 같은 코드는:</p>
+
+<pre class="prettyprint"><code>function(x) { return x * x; }
+</code></pre>
+
+<p>다음과 같이 작성할 수 있다:</p>
+
+<pre class="prettyprint"><code>function(x) x * x
+</code></pre>
+
+<p>event listeners는 다음 처럼 할 수 있고:</p>
+
+<pre class="prettyprint"><code>document.addEventListener("click", function() false, true);
+</code></pre>
+
+<p>Array closure로도 사용할 수 있다:</p>
+
+<pre class="prettyprint"><code>elems.some(function(elem) elem.type == "text");
+</code></pre>
+
+<h2>Generator expressions</h2>
+
+<p>Array comprehension의 치명적인 결함은 메모리를 많이 쓴다는 것이다. 모든 결과를 새 Array의 담기 때문에 발생한다. 크기가 작은 Array를 입력받는 다면 상관없지만 크기가 크면 문제가 된다.</p>
+
+<p>만면 Generator는 lazy하게 그때그때 값을 계산해 낸다. Generator expression이 Array comprehension과 다른 점은 <code>[]</code> 블럭안에 <code>for each...in</code>대신 <code>for...in</code>을 쓴다는 것이다. 그리고 Array를 반환하는 것이 아니라 Generator를 반환하고 lazy하게 값을 뽑아 쓴다.</p>
+
+<p>다음의 예에서 it가 거대한 Iterator라고 가정하면 다음과 같이 새로운 Iterator를 만들 수 있다:</p>
+
+<pre class="prettyprint"><code>var it2 = (i * 2 for (i in it));
+print(it2.next()); // The first value from it, doubled
+print(it2.next()); // The second value from it, double
+</code></pre>
+
+<p>함수 인자에도 사용할 수 있는데 이 때에는 <code>[]</code> 블럭을 생략해도 된다:</p>
+
+<pre class="prettyprint"><code>var result = doSomething(i * 2 for (i in it));
+</code></pre>
+
+<h2>More Array extras</h2>
+
+<p>이것은 ECMAScript 5에 포함된 내용이고 아직 지원하지 않는 browser를 위한 fallback은 다음과 같다:</p>
+
+<pre class="prettyprint"><code>if ( !Array.prototype.reduce ) {
+  Array.prototype.reduce = function reduce(accumulator){
+        var i, l = this.length, curr;
+
+        if(typeof accumulator !== "function") // ES5 : "If IsCallable(callbackfn) is false, throw a TypeError exception."
+          throw new TypeError("First argument is not callable");
+
+        if((l == 0 || l === null) &amp;&amp; (arguments.length &lt;= 1))// == on purpose to test 0 and false.
+          throw new TypeError("Array length is 0 and no second argument");
+
+        if(arguments.length &lt;= 1){
+          curr = this[0]; // Increase i to start searching the secondly defined element in the array
+          i = 1; // start accumulating at the second element
+        }
+        else{
+          curr = arguments[1];
+        }
+
+        for(i = i || 0 ; i &lt; l ; ++i){
+          if(i in this)
+            curr = accumulator.call(undefined, curr, this[i], i, this);
+        }
+
+        return curr;
+      };
+  }
+</code></pre>
+
+<h3>reduce()</h3>
+
+<p>이해를 돕기 위해 다음과 같은 함수를 보자:</p>
+
+<pre class="prettyprint"><code>[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+});
+</code></pre>
+
+<p>callback이 호출될때마다 상태는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |             0 |            1 |     1 | [0,1,2,3,4] |            1 |
+| second call |             1 |            2 |     2 | [0,1,2,3,4] |            3 |
+| third call  |             3 |            3 |     3 | [0,1,2,3,4] |            6 |
+| fourth call |             6 |            4 |     4 | [0,1,2,3,4] |           10 |
+-----------------------------------------------------------------------------------
+</code></pre>
+
+<p>reduce()가 최종적으로 반환하는 값은 마지막 값인 10이다.</p>
+
+<p>reduce()에 초기값을 넘겨줄 수 도 있다:</p>
+
+<pre class="prettyprint"><code>[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+}, 10);
+</code></pre>
+
+<p>callback마다 상태는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |            10 |            0 |     0 | [0,1,2,3,4] |           10 |
+| second call |            10 |            1 |     1 | [0,1,2,3,4] |           11 |
+| third call  |            11 |            2 |     2 | [0,1,2,3,4] |           13 |
+| fourth call |            13 |            3 |     3 | [0,1,2,3,4] |           16 |
+| fifth call  |            16 |            4 |     4 | [0,1,2,3,4] |           20 |
+-----------------------------------------------------------------------------------
+</code></pre>
+
+<p>똑같이 reduce()함수는 20을 반환한다.</p>
+
+<p>reduce()를 이용해 Array의 합을 구하는 법은 다음과 같다:</p>
+
+<pre class="prettyprint"><code>var total = [0, 1, 2, 3].reduce(function(a, b){ return a + b; });
+// total == 6
+</code></pre>
+
+<p>2차원 Array를 펼 수도 있다:</p>
+
+<pre class="prettyprint"><code>var flattened = [[0,1], [2,3], [4,5]].reduce(function(a,b) {
+  return a.concat(b);
+});
+// flattened is [0, 1, 2, 3, 4, 5]
+</code></pre>
+
+<h3>reduceRight()</h3>
+
+<p>reduceRight()는 순서가 반대라는 것을 빼고 reduce()와 동일하다. 예제를 보자:</p>
+
+<pre class="prettyprint"><code>[0,1,2,3,4].reduceRight(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+});
+</code></pre>
+
+<p>결과는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |             4 |            3 |     3 | [0,1,2,3,4] |            7 |
+| second call |             7 |            2 |     2 | [0,1,2,3,4] |            9 |
+| third call  |             9 |            1 |     1 | [0,1,2,3,4] |           10 |
+| fourth call |            10 |            0 |     0 | [0,1,2,3,4] |           10 |
+-----------------------------------------------------------------------------------
+</code></pre>
+
+<p>reduce()와 마찬가지로 reduceRight()는 10을 반환한다.</p>
+
+<h2>JavaScript 1.8 compatibility</h2>
+
+<p>브라우저 호환 테이블은 <a href="http://robertnyman.com/javascript/#javascript-1-8-compatibility">여기</a></p>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Sep 27 2011</span>
+&raquo;      <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
+    </li>
+    <li>
+      <span>Sep 27 2011</span>
+&raquo;      <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+    </li>
+    <li>
+      <span>Sep 28 2011</span>
+&raquo;      <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+    </li>
+    <li>
+      <span>Sep 30 2011</span>
+&raquo;      <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+    </li>
+    <li>
+      <span>Sep 30 2011</span>
+&raquo;      <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
+    </li>
+    <li>
+      <span>Oct 04 2011</span>
+&raquo;      <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+    </li>
+    <li>
+      <span>Oct 05 2011</span>
+&raquo;      <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
+    </li>
+    <li>
+      <span>Oct 06 2011</span>
+&raquo;      <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+    </li>
+    <li>
+      <span>Oct 06 2011</span>
+&raquo;      <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+    </li>
+    <li>
+      <span>Oct 22 2011</span>
+&raquo;      <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2011/1317258960.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+      </section>
+      <aside class="sidebar">
+        
+      </aside>
+      <footer>
+        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

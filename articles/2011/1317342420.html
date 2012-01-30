@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:diff</title>
-    <meta name="description" content="Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.(아무리 그래도 너무 많다.--;)" />
-    <meta name="keywords" content="git,diff" />
+    <title>dogfeet - 광고등을 막아서 집중력 높이기</title>
+    <meta name="description" content="네이버, 다음, 네이트등의 포털은 원래 사용하지 않지만 그래도 자꾸 인터넷만 들어가면 딴짓을 하게 된다. 그래서 몇 가지 집중도를 높이기 위한 방법을 소개한다." />
+    <meta name="keywords" content="chrome" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1317342420.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:diff</h1>
+    <h1 property="dcterms:title">광고등을 막아서 집중력 높이기</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 24 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diff">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
+ | <span property="dc:created">Sep 30 2011</span>
+ | <a href="/site/tagmap.html#chrome">chrome</a> | <span><a href="/articles/2011/1317342420.html#disqus_thread" data-disqus-identifier="/articles/2011/1317342420.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,172 +115,69 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-diff.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317342420.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-diff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317342420.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317342420.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
+    <p>네이버, 다음, 네이트등의 포털은 원래 사용하지 않지만 그래도 자꾸 인터넷만 들어가면 딴짓을 하게 된다. 그래서 몇 가지 집중도를 높이기 위한 방법을 소개한다.</p>
 
-<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
+<h2>css로 막기 방법</h2>
 
-<p><img src="/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
+<h3>Chrome</h3>
 
-<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
+<p>주로 크롬을 사용하니까 일단 크롬만 정리한다. 굳이 확인해봐야 하는 경우는 다른 브라우저를 사용하면 되니까 문제 없다. 그리고 구글이 Custom css &amp; javascript에 대한 Cloud서비스도 제공해주면 좋을 텐데, 이걸 하려면 chome extension을 하나 만들어 정식으로 store에 등록해야 한다.</p>
 
-<h2>Unified Format</h2>
+<ul>
+<li>css::window - <code>${HOME}\AppData\Local\Google\Chrome\User Data\Default\User StyleSheets\Custom.css</code>를 편집한다.</li>
+<li>css::mac - <code>${HOME}/Library/Application Support/Google/Chrome/Default/User StyleSheets/Custom.css</code>를 편집한다.</li>
+<li>extension::Temporary Site Blocker - 무의식적으로 입력하는 사이트를 아예 막아버릴 수 있다. 쉽게 onoff할 수 있어 편리하다.</li>
+<li>extension::FlashBlock - 플래시 막기</li>
+<li>extionsion::adsweep - 악질 광고는 막아주는 것 같다. 그러나 한국 사이트들에는 그닥....</li>
+</ul>
 
-<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+<h2>막을 것</h2>
 
-<h2>git diff</h2>
+<p>무언가 하려고 브라우저를 띄우면 한겨례를 읽거나 Facebook을 하고 있어서 Temporary Site Blocker로 차단한다:</p>
 
-<p>diff를 잘 활용하자.</p>
+<h3>Google</h3>
 
-<h3>Modified, Staged, Unmodified 사이 비교</h3>
+<p>관련 검색은 사실 관련 떡밥이다. 구굴이 관련검색과 HOT 토픽을 왜 검색 페이지에 추가했는지 아직도 이해할 수 없다. </p>
 
-<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
+<p>구글 검색시 나오는 관련검색, HOT 토픽을 제거한다:</p>
 
-<pre class="prettyprint"><code>git diff
+<pre class="prettyprint"><code>/* google search */
+#rcnt &gt; #rhscol &gt; #rhs { 
+    display: none !important;
+}
 </code></pre>
 
-<p>특정 파일만 비교할 수도 있다:</p>
+<p><code>#rcnt &gt; #rhscol &gt; #rhs</code>는 어디 까지나 다른 사이트에서는 이런 dom 구조를 갖지 않을 거라고 가정한다. 설마 같은 이름을 쓰진 않길...</p>
 
-<pre class="prettyprint"><code>git diff my-file
-</code></pre>
+<h3>Daum</h3>
 
-<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
+<p>다음 Mail은 일관련으로 gmail이 안되도록 blacklist에 추가되는 업체들 때문에 사용한다. 로그인 화면에서 너무 많은 정보를 보여줘서 삼천포로 빠지게 만든다. 다음 것도 막어보자:</p>
 
-<pre class="prettyprint"><code>git diff --staged/--cached
-</code></pre>
-
-<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff --staged my-file
-</code></pre>
-
-<h3>Revision 비교</h3>
-
-<p>리비전 두 개를 골라 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9
-</code></pre>
-
-<p>그중 파일 하나만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
-</code></pre>
-
-<p>다음처럼도 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
-</code></pre>
-
-<h3>Modified, Staged와 Revision 비교</h3>
-
-<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18
-</code></pre>
-
-<p>특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18 my-file
-</code></pre>
-
-<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18
-</code></pre>
-
-<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
-</code></pre>
-
-<h3>파일 이름만 보기</h3>
-
-<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
-
-<pre class="prettyprint"><code>git show --name-only HEAD~4
-</code></pre>
-
-<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
-
-<pre class="prettyprint"><code>git diff --name-only HEAD~4
-</code></pre>
-
-<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
-
-<pre class="prettyprint"><code>git log --name-only
+<pre class="prettyprint"><code>/* daum portal */
+#wrap &gt; #content &gt; :not(#my), #wrap &gt; #content &gt; #my &gt; :not(#logon) { 
+    display: none !important;
+}
 </code></pre>
   </div>
 </article>
-<section id="related">
-  <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Sep 25 2011</span>
-&raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-    </li>
-    <li>
-      <span>Oct 12 2011</span>
-&raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-    </li>
-    <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
-    </li>
-    <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-    </li>
-    <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
-    </li>
-    <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-    </li>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-    </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
-    </li>
-  </ul>
-</section>
 <section id="comments">
   <h3>Feedback</h3>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-diff.html';
+    var disqus_identifier = '/articles/2011/1317342420.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

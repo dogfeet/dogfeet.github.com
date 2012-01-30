@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:mergetool, difftool</title>
-    <meta name="description" content="보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다." />
-    <meta name="keywords" content="git,diffmerge" />
+    <title>dogfeet - diff::Unified format</title>
+    <meta name="description" content="이 글은 Wikipedia의 diff 설명 중에서 unified format 절만 번역한 것이다. git은 기본 format으로 diff format을 사용한다." />
+    <meta name="keywords" content="git,unified format,diff,patch" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1316924580.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:mergetool, difftool</h1>
+    <h1 property="dcterms:title">diff::Unified format</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 17 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diffmerge">diffmerge</a> | <span><a href="/articles/2011/git-mergediff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-mergediff.html"></a></span>
+ | <span property="dc:created">Sep 25 2011</span>
+ | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#unified format">unified format</a>, <a href="/site/tagmap.html#diff">diff</a>, <a href="/site/tagmap.html#patch">patch</a> | <span><a href="/articles/2011/1316924580.html#disqus_thread" data-disqus-identifier="/articles/2011/1316924580.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,141 +115,92 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1316924580.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1316924580.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1316924580.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.</p>
+    <p>이 글은 Wikipedia의 <a href="http://en.wikipedia.org/wiki/Diff">diff</a> 설명 중에서 unified format 절만 번역한 것이다. git은 기본 format으로 diff format을 사용한다.</p>
 
-<p>먼저 <a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a>를 보고 도구를 골라보자. 이 리뷰는 정말 훌륭하다. 나는 무료이고 Mac, Linux, Window를 지원하는 <a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a>를 골랐다. 이 글은 DiffMerge를 기준으로 설명한다. </p>
+<h2>Wikipedia의 unified format</h2>
 
-<p><img src="/articles/2011/git-mergediff/savage-chikens-catoon.jpg" alt="diff" title="" /></p>
+<p>Unified format은(unidiff라고도 부름) 기술적으로 Context format을 개선한 것이지만 원래 텍스트와 새로운 텍스트를 붙여서 보여주기 때문에 diff의 크기가 더 작다. Unified format은 diff에 '-u' 옵션을 주면 만들 수 있고 결과는 patch 프로그램에서도 사용한다. 많은 프로젝트들은 'diff'의 형식으로 이 format을 요구하고 있어서 개발자들 끼리 diff를 주고 받을 때 가장 널리 사용되는 format이다.</p>
 
-<h2>mergetool</h2>
+<p>Unified format은 원래 Wayne davison이 1990년 8월에 만들었다(comp.sources.misc Volume 14의 unidiff). 한달 후에 Richard Stallman이 GNU 프로젝트의 diff가 unified diff를 지원하도록 만들어서 1991년 1월에 배포된 GNU diff 1.15부터 이 기능이 포함됐다. GNU diff는 context format를 일반화 시켰기 때문에 diff를 다양한 포멧으로 생성할 수 있다.</p>
 
-<p>다음과 같이 설정한다:</p>
+<p>context format처럼 이 format도 '—-'와 '+++' 라인 헤더를 가지고 있다. '—-'는 원래 파일을 말하고'+++'는 새파일을 말한다. 파일에서 실제로 차이가 있는 부분(이하 hunk)을 나타내는 헤더도 있고 같은 부분은 스페이스 문자 하나를, 추가된 부분은 '+'를, 삭제된 부분은 '-'를 헤더로 사용한다.</p>
 
-<pre class="prettyprint"><code>git config --global merge.tool diffmerge
-git config --global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"
-git config --global mergetool.diffmerge.trustExitCode true
+<p>Hunk는 줄 단위의 범위 정보가 들어 있는 라인으로 시작하고 계속해서 어떤 라인인지 추가되는지, 어떤 라인이 삭제되는지, 그리고 그냥 놔둘 라인은 어떤 것인지를 보여준다. 범위 정보는 '@@'사이에 표현한다:</p>
+
+<pre class="prettyprint"><code>@@ -l,s +l,s @@
 </code></pre>
 
-<p>각 설정의 의미는 다음과 같다:</p>
+<p>Hunk에 대한 범위 정보는 사실 두 가지 정보를 포함한다. 원래 Hunk에 대한 것은 '-'뒤에 나오고 새로운 파일의 범위정보는 '+'뒤에 나온다. 범위는 <code>l,s</code>형식으로 표현하는데 l은 Hunk가 시작되는 라인의 번호이고 s는 Hunk의 라인 수다. GNU diff는 콤마와 s를 생략하는 경우도 있는데 이 때에는 s값이 1인 것을 의미한다. Hunk가 시작되는 라인 번호인 l값만 있어도 나머지 값들은 diff가 계산해 낸다.</p>
 
-<ul>
-<li><code>merge.tool</code>은 Merge 도구를 새로 정의하는 것이다.</li>
-<li><code>mergetool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
-<li><code>mergetool.*.trustExitCode</code>은 해당 Merge 도구의 Exit 코드가 Merge의 성공여부를 나타내면 true로 설정한다.</li>
-</ul>
+<p><em>(역주 - 그러니까 <code>@@ -(원래 Hunk의 시작 줄 번호),(원래 Hunk의 라인 수) +(변경된 Hunk가 시작하는 줄 번호),(변경된 Hunk의 라인 수) @@</code>라는 것)</em></p>
 
-<p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
+<p>원래 Hunk의 범위는 변경되지 않은 것과 삭제된 것을 더한 것이고 새로운 Hunk의 범위는 변경하지 않은 것과 추가되는 것을 합한 것이다. 실제 Hunk의 라인 수와 '@@' 표현되는 Hunk 헤더의 값이 다르면 diff는 diff파일이 깨진 것으로 판단한다.</p>
 
-<pre class="prettyprint"><code>[merge]
-    tool = diffmerge
-[mergetool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-    trustExitCode = true
+<p>어떤 라인이 수정되면 삭제하고 다시 추가된 것으로 표현한다. 원래 파일과 새 파일의 다른 부분은 하나의 Hunk에 표현되고 실제로 차이가 나는 라인이 바로 이어진다. 한 라인만 다른 경우는 다음과 같다:</p>
+
+<pre class="prettyprint"><code>-check this dokument. On
++check this document. On
 </code></pre>
 
-<p>이제 <code>git mergetool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
+<p>diff 명령에 '-u' 옵션을 주고 실행하면 다음과 같은 결과가 생성된다:</p>
 
-<h3>mergetool.keepBackup</h3>
+<pre class="prettyprint"><code>--- /path/to/original ''timestamp''
++++ /path/to/new      ''timestamp''
+@@ -1,3 +1,9 @@
++This is an important
++notice! It should
++therefore be located at
++the beginning of this
++document!
++
+ This part of the
+ document has stayed the
+ same from version to
+@@ -5,16 +11,10 @@
+ be shown if it doesn't
+ change.  Otherwise, that
+ would not be helping to
+-compress the size of the
+-changes.
+-
+-This paragraph contains
+-text that is outdated.
+-It will be deleted in the
+-near future.
++compress anything.
 
-<p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global mergetool.keepBackup false
+ It is important to spell
+-check this dokument. On
++check this document. On
+ the other hand, a
+ misspelled word isn't
+ the end of the world.
+@@ -22,3 +22,7 @@
+ this paragraph needs to
+ be changed. Things can
+ be added after it.
++
++This paragraph contains
++important new additions
++to this document.
 </code></pre>
-
-<h2>difftool</h2>
-
-<p>difftool은 다음과 같이 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global diff.tool diffmerge
-git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"
-</code></pre>
-
-<p>각 설정의 의미는 다음과 같다:</p>
-
-<ul>
-<li><code>diff.tool</code>은 diff 도구를 새로 정의하는 것이다.</li>
-<li><code>difftool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
-</ul>
-
-<p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
-
-<pre class="prettyprint"><code>[diff]
-    tool = diffmerge
-[difftool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
-</code></pre>
-
-<p><code>git difftool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
-
-<h3>diff.external</h3>
-
-<p>difftool을 설정했지만 <code>git diff</code> 명령은 여전히 Git에 들어 있는 diff 툴을 사용한다. </p>
-
-<p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:</p>
-
-<pre class="prettyprint"><code class="language-bsh">#!/usr/bin/env bash
-[ $# -eq 7 ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge "$2" "$5"
-</code></pre>
-
-<p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:</p>
-
-<pre class="prettyprint"><code>path old-file old-hex old-mode new-file new-hex new-mode
-</code></pre>
-
-<p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.</p>
-
-<p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global diff.external mydiff
-</code></pre>
-
-<p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. </p>
-
-<p>하지만 나는 <code>difftool</code> 명령과 <code>diff</code> 명령을 구분해 두는 게 좋다. 터미널에서 밖에 작업할 수 없는 환경도 많다. 그래서 나는 diff.external 옵션은 사용하지 않는다.</p>
-
-<h2>preset</h2>
-
-<p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:</p>
-
-<pre class="prettyprint"><code>git config --global merge.tool vimdiff
-</code></pre>
-
-<h2>그외</h2>
-
-<ul>
-<li>diff 할때 공백 문자 어떻게 다룰지 설정할 수 있다. </li>
-<li>diff할 수 있도록 바이너리 파일에서 텍스트를 추출할 수 있으면 바이너리 파일도 diff할 수 있다.</li>
-</ul>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a></li>
-<li><a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a></li>
-<li><a href="http://adventuresincoding.com/2010/04/how-to-setup-git-to-use-diffmerge">How to setup git to use diffmerge</a></li>
-<li><a href="http://progit.org">progit</a></li>
-</ul>
   </div>
 </article>
 <section id="related">
   <h3>Related Posts</h3>
   <ul>
-    <li>
-      <span>Sep 25 2011</span>
-&raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-    </li>
     <li>
       <span>Oct 12 2011</span>
 &raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
@@ -273,6 +224,10 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
     <li>
       <span>Dec 01 2011</span>
 &raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+    </li>
+    <li>
+      <span>Dec 17 2011</span>
+&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
     </li>
     <li>
       <span>Dec 02 2011</span>
@@ -301,7 +256,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-mergediff.html';
+    var disqus_identifier = '/articles/2011/1316924580.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:mergetool, difftool</title>
-    <meta name="description" content="보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다." />
-    <meta name="keywords" content="git,diffmerge" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - Build distfile using Ant with Git revision</title>
+    <meta name="description" content="배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다." />
+    <meta name="keywords" content="ant,git,revision,os" />
+    <meta name="author" content="Sean Lee" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1318386790.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:mergetool, difftool</h1>
+    <h1 property="dcterms:title">Build distfile using Ant with Git revision</h1>
   </header>
   <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 17 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diffmerge">diffmerge</a> | <span><a href="/articles/2011/git-mergediff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-mergediff.html"></a></span>
+<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">Oct 12 2011</span>
+ | <a href="/site/tagmap.html#ant">ant</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#revision">revision</a>, <a href="/site/tagmap.html#os">os</a> | <span><a href="/articles/2011/1318386790.html#disqus_thread" data-disqus-identifier="/articles/2011/1318386790.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,132 +115,94 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1318386790.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1318386790.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1318386790.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.</p>
+    <p>배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다.</p>
 
-<p>먼저 <a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a>를 보고 도구를 골라보자. 이 리뷰는 정말 훌륭하다. 나는 무료이고 Mac, Linux, Window를 지원하는 <a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a>를 골랐다. 이 글은 DiffMerge를 기준으로 설명한다. </p>
+<h2>Build distfile using Ant with Git revision</h2>
 
-<p><img src="/articles/2011/git-mergediff/savage-chikens-catoon.jpg" alt="diff" title="" /></p>
+<p>우선 Git의 Revision정보를 얻기 위해서는 적어도 Annotated Tag가 하나는 있어야 Revision 정보를 만들 수<br />있다. 이 Tag를 기준으로 얼마나 수정되었는가를 Count하여 Revision 숫자를 만들기 때문이다.</p>
 
-<h2>mergetool</h2>
+<p>굳이 Tag를 기준으로 Revision을 Count하지 않아도 날짜정보나 기타 정보를 활용하여 Revision 정보를 만들수도<br />있다.</p>
 
-<p>다음과 같이 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global merge.tool diffmerge
-git config --global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"
-git config --global mergetool.diffmerge.trustExitCode true
+<pre class="prettyprint"><code>project-dir $ git tag
+build
+project-dir $ git describe
+build-138-geba356c
+project-dir $ git describe --contains --all HEAD
+branchA
 </code></pre>
 
-<p>각 설정의 의미는 다음과 같다:</p>
+<p>각 명령을 살펴보면:</p>
 
 <ul>
-<li><code>merge.tool</code>은 Merge 도구를 새로 정의하는 것이다.</li>
-<li><code>mergetool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
-<li><code>mergetool.*.trustExitCode</code>은 해당 Merge 도구의 Exit 코드가 Merge의 성공여부를 나타내면 true로 설정한다.</li>
+<li>git tag : 현재 설정된 tag의 목록 확인</li>
+<li>git describe : 가장 최근 tag로부터 revision count랑 현재 commit의 앞부분 hash값 확인</li>
+<li>git describe --contains --all HEAD : 현재 작업중인 branch의 이름 확인</li>
 </ul>
 
-<p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
+<p>자 이제 이 값들을 이용해서 배포 파일을 만들면 된다.</p>
 
-<pre class="prettyprint"><code>[merge]
-    tool = diffmerge
-[mergetool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-    trustExitCode = true
+<pre class="prettyprint"><code>....
+&lt;target name="dist"&gt;
+  &lt;exec executable="git" outputproperty="rev"&gt;
+    &lt;arg value="describe"/&gt;
+  &lt;/exec&gt;
+  &lt;exec executable="git" outputproperty="branch"&gt;
+    &lt;arg value="describe"/&gt;
+    &lt;arg value="--contains"/&gt;
+    &lt;arg value="--all"/&gt;
+    &lt;arg value="HEAD"/&gt;
+  &lt;/exec&gt;
+  &lt;script language="javascript"&gt;&lt;![CDATA[
+    rev = project.getProperty("rev");
+    index = rev.lastIndexOf("-");
+    counter = rev.substring(0, index);
+    project.setProperty("rev",counter);
+  ]]&gt;&lt;/script&gt;
+
+  &lt;echo&gt;Git Branch: ${branch}&lt;/echo&gt;
+  &lt;echo&gt;Git Rev.  : ${rev}&lt;/echo&gt;
+
+  &lt;condition property="dist.path" value="z:"&gt;
+    &lt;os family="windows" /&gt;
+  &lt;/condition&gt;
+  &lt;condition property="dist.path" value="/NetworkDirectory/dist-file-server"&gt;
+    &lt;os family="mac" /&gt;
+  &lt;/condition&gt;
+  &lt;fail unless="dist.path"&gt;No dist.path set for this OS!&lt;/fail&gt;
+
+  &lt;echo&gt;FileSrv Path: ${dist.path}&lt;/echo&gt;
+
+  &lt;copy todir="${dist.path}/distfiles/Project-${rev}.${branch}" overwrite="true"&gt;
+    &lt;fileset dir="."&gt;
+      &lt;include name="*.war"/&gt;
+    &lt;/fileset&gt;
+  &lt;/copy&gt;
+  &lt;copy todir="${dist.path}/distfiles/Project-last" overwrite="true"&gt;
+    &lt;fileset dir="."&gt;
+      &lt;include name="*.war"/&gt;
+    &lt;/fileset&gt;
+  &lt;/copy&gt;
+&lt;/target&gt;
+....
 </code></pre>
 
-<p>이제 <code>git mergetool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
+<p>위의 스크립트에서 rev 변수의 경우 'build-138-geba356c' 값에서 hash 부분은 잘라내고 'build-138' 값만 이용하도록 Javascript로 수정하였다.</p>
 
-<h3>mergetool.keepBackup</h3>
+<p>condition 스크립트로 os별 현재 mount되어있는 배포 파일 서버의 위치를 지정해주었다.</p>
 
-<p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global mergetool.keepBackup false
-</code></pre>
-
-<h2>difftool</h2>
-
-<p>difftool은 다음과 같이 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global diff.tool diffmerge
-git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"
-</code></pre>
-
-<p>각 설정의 의미는 다음과 같다:</p>
-
-<ul>
-<li><code>diff.tool</code>은 diff 도구를 새로 정의하는 것이다.</li>
-<li><code>difftool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
-</ul>
-
-<p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
-
-<pre class="prettyprint"><code>[diff]
-    tool = diffmerge
-[difftool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
-</code></pre>
-
-<p><code>git difftool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
-
-<h3>diff.external</h3>
-
-<p>difftool을 설정했지만 <code>git diff</code> 명령은 여전히 Git에 들어 있는 diff 툴을 사용한다. </p>
-
-<p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:</p>
-
-<pre class="prettyprint"><code class="language-bsh">#!/usr/bin/env bash
-[ $# -eq 7 ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge "$2" "$5"
-</code></pre>
-
-<p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:</p>
-
-<pre class="prettyprint"><code>path old-file old-hex old-mode new-file new-hex new-mode
-</code></pre>
-
-<p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.</p>
-
-<p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:</p>
-
-<pre class="prettyprint"><code>git config --global diff.external mydiff
-</code></pre>
-
-<p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. </p>
-
-<p>하지만 나는 <code>difftool</code> 명령과 <code>diff</code> 명령을 구분해 두는 게 좋다. 터미널에서 밖에 작업할 수 없는 환경도 많다. 그래서 나는 diff.external 옵션은 사용하지 않는다.</p>
-
-<h2>preset</h2>
-
-<p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:</p>
-
-<pre class="prettyprint"><code>git config --global merge.tool vimdiff
-</code></pre>
-
-<h2>그외</h2>
-
-<ul>
-<li>diff 할때 공백 문자 어떻게 다룰지 설정할 수 있다. </li>
-<li>diff할 수 있도록 바이너리 파일에서 텍스트를 추출할 수 있으면 바이너리 파일도 diff할 수 있다.</li>
-</ul>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a></li>
-<li><a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a></li>
-<li><a href="http://adventuresincoding.com/2010/04/how-to-setup-git-to-use-diffmerge">How to setup git to use diffmerge</a></li>
-<li><a href="http://progit.org">progit</a></li>
-</ul>
+<p>마지막으로 배포하는 지점에 위에서 가져온 프로젝트의 revision 정보를 가지고 디렉토리를 만들고 배포파일을 복사하는 작업까지 마치도록 한다.</p>
   </div>
 </article>
 <section id="related">
@@ -249,10 +211,6 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
     <li>
       <span>Sep 25 2011</span>
 &raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-    </li>
-    <li>
-      <span>Oct 12 2011</span>
-&raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
     </li>
     <li>
       <span>Dec 06 2011</span>
@@ -273,6 +231,10 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
     <li>
       <span>Dec 01 2011</span>
 &raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+    </li>
+    <li>
+      <span>Dec 17 2011</span>
+&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
     </li>
     <li>
       <span>Dec 02 2011</span>
@@ -301,7 +263,7 @@ git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-mergediff.html';
+    var disqus_identifier = '/articles/2011/1318386790.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

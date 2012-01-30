@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:diff</title>
-    <meta name="description" content="Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.(아무리 그래도 너무 많다.--;)" />
-    <meta name="keywords" content="git,diff" />
+    <title>dogfeet - New In JavaScript 1.6</title>
+    <meta name="description" content="이 글은 Mozilla의 'New In JavaScript 1.6'을 정리한 것입니다. " />
+    <meta name="keywords" content="JavaScript,New In JavaScript,JavaScript Standard" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -99,14 +99,14 @@
 })();
 
 </script>
-<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr">
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2011/1317086700.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:diff</h1>
+    <h1 property="dcterms:title">New In JavaScript 1.6</h1>
   </header>
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 24 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#diff">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
+ | <span property="dc:created">Sep 27 2011</span>
+ | <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#new in javascript">New In JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a> | <span><a href="/articles/2011/1317086700.html#disqus_thread" data-disqus-identifier="/articles/2011/1317086700.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -115,163 +115,189 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-diff.html" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317086700.html" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-diff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317086700.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317086700.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
+    <p>이 글은 Mozilla의 '<a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.6">New In JavaScript 1.6</a>'을 정리한 것입니다. </p>
 
-<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
+<h2>E4X</h2>
 
-<p><img src="/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
+<p>ECMAScript for XML의 약자인데 간단하게 말해서 <a href="https://developer.mozilla.org/En/E4X/Processing_XML_with_E4X">JavaScript에서 XML을 다루는 법</a>입니다. JavaScript로 XML을 다룰 일은 별로 없으므로 생략합니다.</p>
 
-<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
+<h3>Array extras</h3>
 
-<h2>Unified Format</h2>
+<p>JavaScript 1.6에 추가된 Array 메소드.</p>
 
-<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+<h3>indexof()</h3>
 
-<h2>git diff</h2>
+<p>indexOf(searchElement[, fromIndex]) searchElement가 해당 Array에서 처음 발견되는 위치를 반환한다.</p>
 
-<p>diff를 잘 활용하자.</p>
-
-<h3>Modified, Staged, Unmodified 사이 비교</h3>
-
-<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
-
-<pre class="prettyprint"><code>git diff
+<pre class="prettyprint"><code>var a = ['a', 'b', 'a', 'b', 'a'];
+alert(a.indexOf('b')); // Alerts 1
+// Now try again, starting from after the last match
+alert(a.indexOf('b', 2)); // Alerts 3
+alert(a.indexOf('z')); // Alerts -1, because 'z' was not found 
 </code></pre>
 
-<p>특정 파일만 비교할 수도 있다:</p>
+<h3>lastIndexOf()</h3>
 
-<pre class="prettyprint"><code>git diff my-file
+<p>lastIndexOf(searchElement[, fromIndex]) indexOf()와 비슷한데 역순으로 검색한다.</p>
+
+<pre class="prettyprint"><code>var a = ['a', 'b', 'c', 'd', 'a', 'b'];
+alert(a.lastIndexOf('b')); // Alerts 5
+// Now try again, starting from before the last match
+alert(a.lastIndexOf('b', 4)); // Alerts 1
+alert(a.lastIndexOf('z')); // Alerts -1
 </code></pre>
 
-<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
+<h3>every()</h3>
 
-<pre class="prettyprint"><code>git diff --staged/--cached
+<p>every(callback[, thisObject]) callback이 모든 item에 적용되는데, 모든 callback이 true를 반환하면 true를 반환한다.</p>
+
+<pre class="prettyprint"><code>function isNumber(value){
+  return typeof value == 'number';
+}
+var a1 = [1, 2, 3];
+alert(a1.every(isNumber)); // Alerts true
+var a2 = [1, '2', 3];
+alert(a2.every(isNumber)); // Alerts false
 </code></pre>
 
-<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
+<h3>filter()</h3>
 
-<pre class="prettyprint"><code>git diff --staged my-file
+<p>filter(callback[, thisObject]) callback이 true를 반환하는 item을 새 Array에 담아 반환한다.</p>
+
+<pre class="prettyprint"><code>var a1 = ['a', 10, 'b', 20, 'c', 30];
+var a2 = a1.filter(function(item) { return typeof item == 'number'; });
+alert(a2); // Alerts 10,20,30
 </code></pre>
 
-<h3>Revision 비교</h3>
+<h3>forEach()</h3>
 
-<p>리비전 두 개를 골라 비교할 수도 있다:</p>
+<p>forEach(callback[, thisObject]) 모든 아이템에 callback을 실행한다.</p>
 
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9
+<pre class="prettyprint"><code>var a = ['a', 'b', 'c'];
+a.forEach(alert); // Alerts each item in turn 
 </code></pre>
 
-<p>그중 파일 하나만 비교할 수 있다:</p>
+<h3>map()</h3>
 
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
+<p>map(callback[, thisObject]) item마다 callback를 실행하고 callback이 반환하는 item을 새로운 Array에 담아 반환한다.</p>
+
+<pre class="prettyprint"><code>var a1 = ['a', 'b', 'c'];
+var a2 = a1.map(function(item) { return item.toUpperCase(); });
+alert(a2); // Alerts A,B,C
 </code></pre>
 
-<p>다음처럼도 비교할 수도 있다:</p>
+<h3>some()</h3>
 
-<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
+<p>some(callback[, thisObject]) item마다 callback을 실행하고 callback이 적어도 하나 true를 반환하면 true를 반환한다.</p>
+
+<pre class="prettyprint"><code>function isNumber(value){
+  return typeof value == 'number';
+}
+var a1 = [1, 2, 3];
+alert(a1.some(isNumber)); // Alerts true
+var a2 = [1, '2', 3];
+alert(a2.some(isNumber)); // Alerts true
+var a3 = ['1', '2', '3'];
+alert(a3.some(isNumber)); // Alerts false
 </code></pre>
 
-<h3>Modified, Staged와 Revision 비교</h3>
+<h2>Array and String generics</h2>
 
-<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
+<p>Array 메소드를 String에도 사용할 수 있다. String을 각 Character의 Array로 취급한다.</p>
 
-<pre class="prettyprint"><code>git diff HEAD~18
+<p>원래는 String이 전부 소문자인지 검사하는 함수를 다음과 같이 해야 했다:</p>
+
+<pre class="prettyprint"><code>function isLetter(character) {
+  return (character &gt;= "a" &amp;&amp; character &lt;= "z");
+}
+
+if (Array.prototype.every.call(str, isLetter))  
+  alert("The string '" + str + "' contains only letters!");
 </code></pre>
 
-<p>특정 파일만 비교할 수 있다:</p>
+<p>JavaScript 1.6부터 다음과 같은 Generic도 지원한다:</p>
 
-<pre class="prettyprint"><code>git diff HEAD~18 my-file
+<pre class="prettyprint"><code>if (Array.every(str, isLetter))
+  alert("The string '" + str + "' contains only letters!");
 </code></pre>
 
-<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
+<p>마찬가지로 String 메소드를 다른 객체에 사용할 수도 있다:</p>
 
-<pre class="prettyprint"><code>git diff --staged HEAD~18
+<pre class="prettyprint"><code>var num = 15;
+alert(String.replace(num, /5/, '2'));
 </code></pre>
 
-<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
+<h2>For each … in</h2>
 
-<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
+<p>그냥 쓰고 있었는데 이 구문도 JavaScript 1.6부터 지원되는 것임. Obejct의 Property의 값을 iterate한다:</p>
+
+<pre class="prettyprint"><code>var sum = 0;
+var obj = {prop1: 5, prop2: 13, prop3: 8};
+for each (var item in obj) {
+  sum += item;
+}
+print(sum); // prints "26", which is 5+13+8
 </code></pre>
 
-<h3>파일 이름만 보기</h3>
+<h2>JavaScript 1.6 compatibility</h2>
 
-<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
-
-<pre class="prettyprint"><code>git show --name-only HEAD~4
-</code></pre>
-
-<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
-
-<pre class="prettyprint"><code>git diff --name-only HEAD~4
-</code></pre>
-
-<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
-
-<pre class="prettyprint"><code>git log --name-only
-</code></pre>
+<p>브라우저 호환 테이블은 <a href="http://robertnyman.com/javascript/#javascript-1-6-compatibility">여기</a></p>
   </div>
 </article>
 <section id="related">
   <h3>Related Posts</h3>
   <ul>
     <li>
-      <span>Sep 25 2011</span>
-&raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
+      <span>Sep 27 2011</span>
+&raquo;      <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
     </li>
     <li>
-      <span>Oct 12 2011</span>
-&raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
+      <span>Sep 28 2011</span>
+&raquo;      <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
     </li>
     <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+      <span>Sep 29 2011</span>
+&raquo;      <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
     </li>
     <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
+      <span>Sep 30 2011</span>
+&raquo;      <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
     </li>
     <li>
-      <span>Dec 09 2011</span>
-&raquo;      <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+      <span>Sep 30 2011</span>
+&raquo;      <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
     </li>
     <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+      <span>Oct 04 2011</span>
+&raquo;      <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
     </li>
     <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+      <span>Oct 05 2011</span>
+&raquo;      <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
     </li>
     <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
+      <span>Oct 06 2011</span>
+&raquo;      <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
     </li>
     <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+      <span>Oct 06 2011</span>
+&raquo;      <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
     </li>
     <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-    </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
+      <span>Oct 22 2011</span>
+&raquo;      <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
     </li>
   </ul>
 </section>
@@ -280,7 +306,7 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-diff.html';
+    var disqus_identifier = '/articles/2011/1317086700.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

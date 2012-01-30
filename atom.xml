@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-29T17:15:06Z</updated>
+  <updated>2012-01-30T14:56:47Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
@@ -220,14 +220,14 @@
 
 <h2>설치</h2>
 
-<p><a href="https://github.com/pismute/git-todo">git-todo 저장소</a>를 적당한데다 클론하고 git-todo 파일을 실행 경로에 넣는다:</p>
+<p><a href="https://github.com/pismute/git-tles">git-todo 저장소</a>를 적당한데다 클론하고 git-todo 파일을 실행 경로에 넣는다:</p>
 
 <pre class="prettyprint"><code>cd ~
-git clone <a href='https://github.com/pismute/git-todo'>https://github.com/pismute/git-todo</a>
+git clone <a href='https://github.com/pismute/git-tles'>https://github.com/pismute/git-tles</a>
 echo "export PATH=~/bin:$PATH" &gt;&gt; ~/.bash_profile
 mkdir ~/bin
 cd ~/bin
-ln -s ~/git-todo/git-todo git-todo
+ln -s ~/git-tles/git-todo git-todo
 </code></pre>]]>
     </content>
   </entry>
@@ -575,7 +575,7 @@ ours
 
 <h2>Unified Format</h2>
 
-<p><code>git diff</code>는 결과를 <a href="http://dogfeet.tumblr.com/post/10629323570/diff-unified-format">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
 
 <h2>git diff</h2>
 
