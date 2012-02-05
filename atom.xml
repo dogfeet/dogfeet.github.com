@@ -3,16 +3,586 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-01-30T14:56:47Z</updated>
+  <updated>2012-02-05T07:00:15Z</updated>
   <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Sean Lee</name>
-    <email>sean@weaveus.com</email>
-  </author>
   <author>
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
+  <author>
+    <name>Sean Lee</name>
+    <email>sean@weaveus.com</email>
+  </author>
+  <entry>
+    <title>SMACSS: Brief Notes - Part 1</title>
+    <link href="http://dogfeet.github.com/articles/2012/smacss.html" />
+    <updated>2012-02-03T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/smacss.html</id>
+    <content type="html">
+<![CDATA[
+<p><a href="http://smacss.com/">SMACSS</a>('smacks', 아마도 '스맥스'로 읽는다)에는 '<a href="http://snook.ca/">Jonathan Snook</a>'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
+
+<p><em>Back-End 출신이라 CSS를 사용할 때마다 '이 많은 스타일은 어떻게 관리해야 할까?'라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
+
+<p>이 책은 두 번으로 나눠서 정리할 것인데 Part 1은 CSS Rule에 대하여, Part 2는 SMACSS의 나머지 부분을 다룰 예정이다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/smacss/smacss.png" alt="SMACSS" title="" /></p>
+
+<h2>Introduction</h2>
+
+<p>저자인 Snook가 경험했던 Best Practice를 SMACSS라는 책으로 정리했다. 이 방법은 규모에 상관없이 효과적이라서 프로젝트 초반부터 성장하는 내내 유용하다고 설명한다.</p>
+
+<p>Snook도 말하고 있지만 SMACSS는 프레임워크가 아니라 스타일 가이드다. 그래서 어떤 라이브러리나 도구도 제공하지 않는다. SMACSS는 CSS를 어떻게 구성하고 사용해야 하는가를 설명한다.</p>
+
+<p>SMACSS은 다음과 같은 주제를 다룬다:</p>
+
+<ul>
+<li>Four Types of CSS Rules - SMACSS의 핵심, CSS를 네 가지로 분류하고 어떻게 구분해 사용하는지 설명</li>
+<li>Themes and Typography - Theme와 Font에 대해 설명</li>
+<li>Depth of Applicability - Selector를 길게 만드는 것이 좋은지 짧게 만드는 것이 좋은지 설명. 즉, tradeoff에 대한 설명.</li>
+<li>Selector Performance - 브라우저가 Selector를 어떻게 찾는지 설명</li>
+<li>State Representation - 상태에 대한 표현 기법</li>
+<li>HTML5 and SMACSS - HTML5와 함께 사용하는 법</li>
+<li>Prototyping - 만들어놓은 CSS를 실제 사용하기 전에 테스트해 보는 과정</li>
+<li>Formatting Code - CSS 코드 형식을 정리하는 법</li>
+</ul>
+
+<p>이 중 <code>Four Types of CSS Rules</code>이 핵심인데 이 규칙은 다음과 같다:</p>
+
+<ul>
+<li>Base Rule</li>
+<li>Layout Rule</li>
+<li>Module Rule</li>
+<li>State Rule</li>
+</ul>
+
+<p><a href="http://mondaybynoon.com/20120109/book-review-smacss/">SMACSS Review</a>를 작성한 'Jonathan Christopher'는 몇 시간이면 다 읽는다고 했는데 난 며칠 걸렸다. 영어인데다가 분명히 흥미로운 내용인데도 이상하게 읽어도 읽어도 머릿속에 잘 들어오지 않았다.</p>
+
+<p>이 책은 CSS를 관리하는 법에 대해서 설명한다. 표현에 대해서 다루는 CSS 책은 무수히 많지만 이런 책은 드물다.</p>
+
+<p>SMACSS는 유료 컨텐츠도 있지만, 기본적으로 무료다. 만약 ebook 포멧으로 읽거나 숨겨진 컨텐츠를 읽고 싶으면 결제해야 하지만 책의 내용 대부분을 웹에서 무료로 읽을 수 있다. 하지만, 구매하길 바란다. 무료로도 읽을 수 있지만 그만한 가치가 있다. 지금 유료 컨텐츠는 'The Icon Module', 'Screencast: Applying the Principles' 둘뿐이지만 저자는 계속 추가한다고 한다.</p>
+
+<p>다음은 공부한 내용을 정리한 것이다. 읽고 해석한 대로 정리한 것이니 원문과 다를 수도 있다. </p>
+
+<h2>Four Types of CSS Rules</h2>
+
+<p>SMACSS는 CSS Rule을 네 가지로 나눈다.</p>
+
+<ul>
+<li>Base - 기본 스타일</li>
+<li>Layout - 엘리먼트를 나열하는 것과 관련된 스타일</li>
+<li>Module - 재사용 위해 하나로 묶는 스타일</li>
+<li>State - Hidden/Expand나 Active/Inactive 같은 스타일</li>
+</ul>
+
+<p>그 외 Theme와 Font Rule에 대해서 거론하지만, 특별히 분류하지는 않았다. 대신 위 네 가지 Rule을 이용해서 Theme와 Font Rule을 만든다.</p>
+
+<h3>Base</h3>
+
+<p>Base Rule을 쉽게 말하자면 id, class가 없는 스타일들을 말한다. 다음과 같은 것들이 Base Rule이다:</p>
+
+<pre class="prettyprint"><code>html, body, form { margin: 0; padding: 0; }
+input[type=text] { boarder: 1px solid #999; }
+a { color: #039; }
+a:hover { color: #03C; }
+</code></pre>
+
+<p>Base Rule은 직접 이름 지을 수 없는 element, attribute, psedo 셀렉터 등으로만 만든다.</p>
+
+<h4>CSS Reset</h4>
+
+<p>기본 margin, padding 등의 것을 규정하는 Base Rule을 CSS Reset이라고 부른다. 사실 Base Rule을 사용할 만한 데가 CSS Reset밖에 없어 보인다. SMACSS는 element 셀렉터를 권장하지 않아서 element 셀렉터를 사용해도 된다고 허용하는 부분은 Base Rule로 CSS Reset을 만들 때와 <code>.mod &gt; input</code>처럼 child 셀렉터를 함께 쓸 때뿐이다.</p>
+
+<h3>Module</h3>
+
+<p>Module 스타일이 필요한 이유는 스타일을 Module 단위로 묶어서 재사용하기 위함이다. 사이드바나 제품 목록 등의 반복적으로 재사용하는 것들이 이에 해당된다. </p>
+
+<p>Module 스타일 이름은 3자로 제한해 사용한다. 하지만, 스타일 가이드이니까 4자도 되고 글자제한이 없어도 된다:</p>
+
+<pre class="prettyprint"><code>/* Example Module */
+.exm { }
+
+/* Callout Module */
+.cli { }
+
+/* Form field module */
+.fld { }
+</code></pre>
+
+<p>Exmaple Module에서 하위 스타일을 하나 만든다면 다음과 같이 하면 된다:</p>
+
+<pre class="prettyprint"><code>.exm-caption { }
+</code></pre>
+
+<p>Module은 재사용할 수 있어야 하기 때문에 id 셀렉터를 사용하지 않는다. 그리고 element 셀렉터도 사용하지 않는다. 다음과 같은 스타일과 html을 보자:</p>
+
+<pre class="prettyprint"><code>&lt;div class="fld"&gt;
+    &lt;span&gt;Folder Name&lt;/span&gt;
+&lt;/div&gt;
+
+.fld &gt; span {
+    padding-left: 20px;
+    background: url(icon.png);
+}
+</code></pre>
+
+<p>이렇게 사용해도 무방하지만, 프로젝트 규모가 커질수록 다른 element로 바꿔야 할 수도 있고 element 본연의 특징을 유지하기 어려울 수 있다. <code>span</code>을 제거하고 다음과 같이 변경한다:</p>
+
+<pre class="prettyprint"><code>&lt;div class="fld"&gt;
+    &lt;span class="fld-name"&gt;Folder Name&lt;/span&gt;
+&lt;/div&gt;
+
+.fld &gt; .fld-name {
+    padding-left: 20px;
+    background: url(icon.png);
+}
+</code></pre>
+
+<p>그래도 element 셀렉터를 꼭 사용해야겠다면 <code>.fld &gt; span</code>처럼 child 셀렉터를 꼭 함께 사용하라.</p>
+
+<h3>Layout</h3>
+
+<p>Layout Rule이 엘리먼트를 어떻게 나열하는지 결정한다. 로그인 폼, 내비게이터 등부터 header, footer 같은 부분을 구분하는 것이 모두 Layout Rule이다.</p>
+
+<p><code>.l-fixed</code> 유무에 따라 가변 폭으로 할지 고정 폭으로 할지 결정하는 Layout은 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code>#article {
+    width: 80%;
+    float: left;
+}
+
+#sidebar {
+    width: 20%;
+    float: right;
+}
+
+.l-fixed #article {
+    width: 600px;
+}
+
+.l-fixed #sidebar {
+    width: 200px;
+}
+</code></pre>
+
+<p>id 셀렉터에는 'l'을 붙이지 않고 class 셀렉터에만 'l'을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.</p>
+
+<p>성능 등을 이유로 class 셀럭터 없이 전부 id 셀렉터로 만들어도 되지만 꼭 그래야 할 이유는 없다. CSS에서는 id 셀렉터와 class 셀렉터 이 둘의 성능은 거의 같다. id 셀렉터가 Javascript에서 빠를지 모르겠지만, CSS는 아니다. </p>
+
+<p>그리고 Layout Rule만 id 셀렉터를 사용한다. 다른 스타일은 id 셀렉터 사용하지 않는다.</p>
+
+<p>id 셀렉터에 tag 셀렉터와 함께 사용하지 않는다. 자식이면 child 셀렉터(>)를 꼭 사용한다.</p>
+
+<h3>State</h3>
+
+<p>상태와 관련된 스타일을 말하고 이름을 지을 때 's'를 붙인다. 예를 들면 이런 거다:</p>
+
+<pre class="prettyprint"><code>.s-hidden { display: none; }
+</code></pre>
+
+<p><code>!important</code>를 사용해도 되는 Rule은 State Rule뿐이다. 다른 Rule에는 <code>!important</code>를 사용해서는 절대 안된다. 하지만, State Rule에서도 권장하지 않는다. 되도록 안 쓰는 것이 좋다. 뭥미:) 그냥 사용하지 말자.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Git:번역 Workflow</title>
+    <link href="http://dogfeet.github.com/articles/2012/git-translate-flow.html" />
+    <updated>2012-02-01T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-translate-flow.html</id>
+    <content type="html">
+<![CDATA[
+<p>Git으로 번역한다는 것은 아마도 CCL을 따르는 영문 자료를 우리말로 번역하는 것을 의미할 것이다. Pro Git 번역도 그랬다. Pro Git을 번역하면서 정리한 Workflow를 소개한다. 다른 번역 프로젝트에 도움을 줄 수 있으면 좋겠다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/translation-flow/translation-flow.png" alt="image" title="" /></p>
+
+<h2>번역</h2>
+
+<p>Git을 사용하는 데 있어서 번역 프로젝트는 개발 프로젝트와 다르다. 훨씬 더 정적이다. 만들어야 하는 브랜치 수도 적고 버그를 발견해도 좀 더 느슨하게 대처해도 된다. 며칠 늦었다고 해서 수갑을 차는 것도 아니고 경찰이 출동하지도 않는다.</p>
+
+<p>Git은 번역 작업을 관리하는데도 좋다. 특히 원문 자체가 계속 수정되는 진행 중인 자료들이기 때문에 번역도 완성된 상태라고 볼 수 없고 항상 진행 중이라고 봐야 한다. Git은 이 상태를 추적하고 관리하는데 최상의 도구다.</p>
+
+<p>Pro Git을 번역할 때 Git을 어떻게 사용해야 할지 몰랐기 때문에 헤매고 시간을 낭비했었다. 번역할 때는 어떤 브랜치가 필요한지 그리고 어떻게 사용하는 것이 좋은지 그동안 고민한 Workflow를 공개한다.</p>
+
+<h2>브랜치</h2>
+
+<p>몇 번의 삽질을 거쳐서 지금과 같은 번역 Workflow를 만들었다.</p>
+
+<p>여기서는 사용한 브랜치는 다음과 같다:</p>
+
+<ul>
+<li>master - progit/master를 Tracking하는 브랜치</li>
+<li>topic - 작업 브랜치들</li>
+<li>ko - 번역이 완료되면 이 브랜치에 Merge하고 Pull Request를 보낸다.</li>
+<li>ko-base - 원문, 어느 시점을 기준으로 번역했는지 기록하는 브랜치</li>
+<li>private - 절대 Pull Request를 보내지 않을 브랜치들</li>
+</ul>
+
+<h3>master</h3>
+
+<p>progit/master를 Tracking하는 브랜치이다. master 브랜치를 직접 수정하지 않는다.</p>
+
+<p>이 브랜치를 progit/master를 Tracking하도록 한 이유는 별로 쓸모가 없어서다. Pull Request하는 브랜치를 ko 브랜치로 해야 했고 원문의 master 브랜치가 가리키는 커밋을 가리키는 로컬 브랜치가 하나 있는 게 편하기도 했다.</p>
+
+<p>이 브랜치는 항상 progit/master를 따라가는 것이니까 항상 Fast-forward Merge된다.</p>
+
+<p><img src="translation-flow/progit-master--master.png" alt="progit/master-master" title="" /></p>
+
+<h3>토픽들</h3>
+
+<p>Pro Git을 번역할 때는 Chapter 별로 브랜치를 만들었다. 01, 02, ..., 09 브랜치를 만들고 번역했다. 이 브랜치를 그대로 Push해서 다른 사람에게 리뷰를 요청했다. 책에 Chapter가 없어도 섹션 별로 만들 수도 있다.</p>
+
+<p>책 내용뿐만 아니라 보통 ebook을 빌드하는 구조를 가진 책들은 설정 파일과 빌드 스크립트도 수정해야 한다. 이것을 위한 토픽 브랜치도 만든다. 이때는 꼭 브랜치 이름이 ko-build로 시작하게 했다.</p>
+
+<p><img src="translation-flow/topics--ko.png" alt="topics-ko" title="" /></p>
+
+<h3>ko</h3>
+
+<p>이 브랜치가 핵심 브랜치다. Git-flow에 비교하자면 develop 브랜치에 해당한다고 할 수 있다. 토픽 브랜치에서 작업을 완료하면 커밋과 커밋 메시지를 정리하고 ko 브랜치에 Merge했다. </p>
+
+<p>곧 Pull Request를 보낼 브랜치이기 때문에 토픽 브랜치를 Merge할 때 커밋을 잘 정리해서 Merge한다.</p>
+
+<p>브랜치 이름을 <code>ko</code>라고 해야 하는 이유는 Merge 커밋에 브랜치 이름이 기록되기 때문이다. 보통 Git의 Merge 커밋은 다음과 같다:</p>
+
+<pre class="prettyprint"><code>Merge branch 'ko' into master
+</code></pre>
+
+<p>Github에서 Pull Request를 Merge했을 때의 커밋 메시지는 거의 같지만 다르게 생겼다:</p>
+
+<pre class="prettyprint"><code>Merge pull request #158 from dogfeet/ko
+</code></pre>
+
+<p>해당 Pull Request의 이슈 번호와 저장소 이름/브랜치 이름이 기록된다. 그래서 한국어를 나타낼 수 있도록 ko라는 이름으로 만든다.</p>
+
+<p>Pull Request를 보내고 나서 원문 저장소에 Merge되면 다시 히스토리를 맞춰 주어야 한다. 원문 저장소는 한글뿐만 아니라 스페인어, 불어, 독어 등등의 커밋이 계속 업데이트된다. ko 브랜치를 삭제하고 다시 만들어도 되지만 reset 명령으로 ko 브랜치 포인터를 옮길 수 있다:</p>
+
+<pre class="prettyprint"><code>$ git checkout master
+$ git merge progit/master #Fast-forward Merge
+$ git checkout ko
+$ git reset --hard master
+</code></pre>
+
+<p>원문 저장소의 리모트 이름이 progit라고 가정한다:</p>
+
+<p><img src="translation-flow/progit-master--ko.png" alt="progit/master-ko" title="" /></p>
+
+<h4>ko-build</h4>
+
+<p>어떤 커밋은 확실히 메인 저장소에 Push해야 하지만 어떤 커밋은 Dictator(원문 저장소 관리자)가 검토하고 Merge해 주길 바랄 것이다. 그런데 번역은 언어 문제로 Dictator가 검토할 수 없다. 빌드 스크립트 로직 문제를 제외하고는 원문 Dictator가 해줄 수 있는 게 없다.</p>
+
+<p>빌드 스크립트나 관련 설정을 Pull Request로 보낼 때에도 <code>ko</code> 브랜치에 Merge해서 보냈다. 하지만, 빌드 스크립트 로직을 수정해야 한다면 Merge하는 것이 옳은지 Dictator가 검토해주길 바랄 테니까 본문과 별도로 보냈다. Pull Request는 브랜치 단위로 요청하는 것이니까 본문을 위한 브랜치 'ko'말고 다른 브랜치가 필요하다.</p>
+
+<p><strong>Note:</strong> 하지만 Dictator가 검토하는지 알 수 없다. 영어 폰트를 임의로 수정해서 Pull Request를 보냈는데 Dictator인 <a href="https://github.com/schacon">schacon</a>은 그대로 Merge했다.</p>
+
+<p>Dictator가 검토해주길 바라는 내용은 ko-build 브랜치를 만들어 Pull Request를 보낸다. 스크립트는 한번 고치면 다시 고쳐야 할 일은 거의 없다.</p>
+
+<p><img src="translation-flow/progit-master--ko-build.png" alt="progit/master-ko-build" title="" /></p>
+
+<h3>ko-base</h3>
+
+<p>ko-base 브랜치가 가리키는 시점이 번역한 원문 시점을 나타낸다. 원본이 수정되면 이 브랜치를 이용해서 살펴보고 추가 번역해서 ko 브랜치에 반영하고 ko-base 브랜치는 최신으로 옮겨 놓는다. 그래서 master 브랜치처럼 항상 Fast-forward Merge된다.</p>
+
+<p>master가 있는데 ko-base가 필요할까? 이 부분은 논쟁이 될 수 있다. ko-base 없이 master를 이용해도 된다. 분명한 근거를 제시할 수는 없지만, 목적을 스스로 설명하는 이름으로 된 브랜치를 사용하는 것이 옳다고 판단했고 확실히 구분해 사용했다.</p>
+
+<p>이 브랜치도 항상 progit/master를 따라가는 것이니까 항상 Fast-forward Merge된다.</p>
+
+<p>ko-base를 브랜치가 아닌 Tag로 만들어도 된다. 하지만, Tag는 가리키는 커밋을 옮길 수 없다. 삭제하고 다시 만들어야 한다. 시점이 옮기는 것이니까 Fast-forward Merge가 적당하다고 생각한다.</p>
+
+<p><img src="translation-flow/progit-master--ko-base.png" alt="progit/master-ko-base" title="" /></p>
+
+<h3>private</h3>
+
+<p>중앙 저장소에 Merge하지 않을 커밋을 담아둘 브랜치도 필요하다. 확신이 없거나 중앙 저장소에 Merge했을 때 구조적으로 문제가 생길 수도 있는 것을 이 브랜치에 넣는다. 즉, 절대 Pull Request를 보내지 않을 커밋은 private으로 시작하는 브랜치에 넣는다.</p>
+
+<p>dogfeet/progit에서는 'private-ko-build-ebook', 'private-ko-build-ubuntu'라는 브랜치를 만들어 사용했다. 'private-ko-build-ubuntu'는 Jenkins가 설치된 ubuntu 환경에 맞춘 코드를 넣었고, 원문에는 없는 오타와 오역 신고를 부탁한다는 글은 'private-ko-build-ebook'에 넣어 두었다.</p>
+
+<p>private으로 시작하는 브랜치 규칙을 만든 이유는 실제로 실수를 저질렀기 때문이다. @lethee가 빌드 스크립트와 설정을 수정했다. 그리고 그 수정한 것을 내가 다시 정리해서 Pull Request를 보냈는데, 커뮤니케이션이 미숙해서 @lethee의 의도대로 Pull Request하지 않았다. 그래서 영어 폰트를 수정한 커밋이 progit 저장소에 들어가 버렸다. 그래서 이런 규칙을 만들었다.</p>
+
+<h4>요약</h4>
+
+<p>Pull Request를 보내는 브랜치:</p>
+
+<ul>
+<li><strong>ko</strong> - 번역 브랜치, 각 토픽 브랜치 별로 Pull Request를 보낼 수도 있지만, Dictator가 Merge하기 편리하도록 정리해서 보낸다.</li>
+<li><strong>ko-build</strong> - 빌드 스크립트용 브랜치. Dictator가 검토해주길 바라는 내용.</li>
+</ul>
+
+<p>Tracking 브랜치:</p>
+
+<ul>
+<li><strong>master</strong> - progit/master를 Tracking하는 브랜치</li>
+<li><strong>ko-base</strong> - 어느 시점을 기준으로 번역했는지 기록해 두는 브랜치</li>
+</ul>
+
+<p>Pull Request를 보내지 않을 브랜치:</p>
+
+<ul>
+<li>'<strong>private</strong>'으로 시작하는 브랜치.</li>
+</ul>
+
+<p>그 외:</p>
+
+<ul>
+<li>토픽 브랜치 – 브랜치 대부분은 실제 번역을 하는 토픽 브랜치다. 깔끔하게 작업하는 것은 ko 브랜치에 Merge할 때까지 미뤄도 된다.</li>
+</ul>
+
+<h2>커밋 메시지</h2>
+
+<p>번역을 시작하면서 기존의 커밋 메시지를 훑어 봤는데 대부분 사람은 일정 규칙을 지키고 있었다. 물론 규칙을 지키지 않는 커밋들도 계속 올라왔고 강제하는 것처럼 보이진 않았다.</p>
+
+<p>커밋 메시지는 첫 줄은 다음과 같은 형식을 따른다.</p>
+
+<pre class="prettyprint"><code>[ko] Chapter 1: 오타 수정
+
+본문...
+</code></pre>
+
+<h2>GitHub 저장소의 기본 브랜치.</h2>
+
+<p>Pull Request를 보낼 때 Request마다 어느 브랜치에 Merge해야 하는지 선택해서 보낼 수 있다. 하지만, 기본 값은 저장소의 기본 브랜치이다.</p>
+
+<p>그러니 GitHub의 번역 저장소의 기본 브랜치를 <code>ko</code>로 해야 다른 사람이 번역본에 기여할 때 <code>ko</code> 브랜치로 Pull Request를 보내기 쉬워진다:</p>
+
+<h2>예제</h2>
+
+<p>수정된 원문을 번역에 적용하는 예제를 살펴보자. 여기서 설명하는 예제는 <a href="/articles/2012/progit.html">Pro Git</a>이 아니라 <a href="http://bonsaiden.github.com/JavaScript-Garden/">JavaScript-Garden</a>의 예이다. 이 글을 쓰는 동안에 마침 BonsaiDen이 원문을 수정해줬다. 그동안 변경된 원문을 찾아 번역도 수정하는 것을 설명한다.</p>
+
+<h3>브랜치 확인</h3>
+
+<p>원문 저장소의 리모트 이름은 owner고 번역 저장소의 리모트 이름은 origin이다.</p>
+
+<h4>로컬 저장소</h4>
+
+<p><code>git todo</code>를 실행해서 브랜치 상태를 확인한다. <a href="/articles/2012/git-todo.html">git-todo</a> 사용법은 따로 설명해 놓았다:</p>
+
+<pre class="prettyprint"><code>$ git todo
+      [@] ko - 09b4f9c - ...
+[-1] ko-base - e7c00d8 - ...
+ [-1] master * e7c00d8 - ...
+</code></pre>
+
+<p>다시 설명하지만 <code>master</code>는 <code>owner/master</code>를 Tracking한다. 그리고 ko-base는 마지막으로 번역할 때 기준으로 삼은 시점을 기록해 둔 것이다. 그리고 ko는 새로 번역을 수정해 놓은 브랜치다.</p>
+
+<p><code>[-1]</code>은 <code>[@]</code> 표시가 있는 브랜치 보다 커밋이 하나 적다는 것을 말한다. ko 브랜치에 JavaScript-Garden 한글 버전을 퇴고해서 Pull Request를 보냈다. 그래서 master보다 커밋이 하나 더 많다. BonsaiDen은 이 Pull Request를 Merge했다. 이제 owner 저장소를 확인하자.</p>
+
+<h4>owner 저장소</h4>
+
+<p>owner 저장소를 fetch한다:</p>
+
+<pre class="prettyprint"><code>$git fetch owner
+remote: Counting objects: 164, done.
+remote: Compressing objects: 100% (44/44), done.
+remote: Total 101 (delta 65), reused 80 (delta 45)
+Receiving objects: 100% (101/101), 41.53 KiB | 42 KiB/s, done.
+Resolving deltas: 100% (65/65), completed with 32 local objects.
+From <a href='https://github.com/BonsaiDen/JavaScript-Garden'>https://github.com/BonsaiDen/JavaScript-Garden</a>
+   962617e..67775b0  gh-pages   -&gt; owner/gh-pages
+   e7c00d8..01fe309  master     -&gt; owner/master
+</code></pre>
+
+<p>그리고 나서 브랜치 상태를 확인한다:</p>
+
+<pre class="prettyprint"><code>$ git todo -r
+                    [@] ko - 09b4f9c - ...
+              [-1] ko-base - e7c00d8 - ...
+               [-1] master * e7c00d8 - ...
+                 origin/ko - 09b4f9c - ...
+       [-1] origin/ko-base - e7c00d8 - ...
+        [-1] origin/master - e7c00d8 - ...
+        [-388] origin/next - c204a58 - ...
+[+84][-143] owner/gh-pages - 67775b0 - ...
+        [+14] owner/master - 01fe309 - ...
+         [-388] owner/next - c204a58 - ...
+</code></pre>
+
+<p><code>owner/master</code>에 새로운 커밋이 생겼다. master는 단순히 <code>owner/master</code>를 Tracking하는 브랜치니까 master에 Merge한다:</p>
+
+<pre class="prettyprint"><code>$ git co master
+$ git merge owner/master
+</code></pre>
+
+<p>ko 브랜치가 Merge됐는지 확인한다. 히스토리를 보면 다음과 같은 커밋이 들어 있다:</p>
+
+<pre class="prettyprint"><code>34c3271 Merge pull request #121 from pismute/ko
+09b4f9c [ko] proofreading
+</code></pre>
+
+<p>Merge됐으므로 ko 브랜치가 owner/master를 가리키게 한다:</p>
+
+<pre class="prettyprint"><code>$ git co ko
+$ git reset --hard owner/master
+</code></pre>
+
+<p>그리고 나서 브랜치 상태를 확인해보자:</p>
+
+<pre class="prettyprint"><code>$ git todo -r
+                    [@] ko * 01fe309 - ...
+             [-15] ko-base - e7c00d8 - ...
+                    master - 01fe309 - ...
+           [-14] origin/ko - 09b4f9c - ...
+      [-15] origin/ko-base - e7c00d8 - ...
+       [-15] origin/master - e7c00d8 - ...
+        [-402] origin/next - c204a58 - ...
+[+84][-157] owner/gh-pages - 67775b0 - ...
+              owner/master - 01fe309 - ...
+         [-402] owner/next - c204a58 - ...
+</code></pre>
+
+<p><code>owner/master</code>에 맞추어 브랜치를 정리했다. <code>owner/master</code>, <code>master</code>, <code>ko</code> 브랜치는 이제 같은 커밋을 가리킨다.</p>
+
+<p>원문에서 무엇이 변경됐는지 살펴보고 번역을 수정해보자</p>
+
+<h3>무엇이 변경됐는지 찾아 번역한다.</h3>
+
+<p>먼저 변경된 커밋 중에서 어떤 파일들이 변경됐는지 확인해보자. ko-base 브랜치가 이미 번역한 번역본의 기준이므로 master와 ko-base 브랜치를 비교한다. 이때 브랜치 순서가 중요하다. <code>ko-base...master</code> 같이 <code>ko-base</code>를 먼저 사용한다. 순서를 반대로 쓰면 diff 명령에서 헷갈리기 쉽다.</p>
+
+<pre class="prettyprint"><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master
+&gt; 01fe309 Finally get around and start fixing some issues
+doc/en/core/undefined.md
+doc/en/function/constructors.md
+doc/en/function/scopes.md
+doc/en/object/hasownproperty.md
+&gt; 98a1f31 Merge pull request #114 from krawaller/master
+&gt; 65f0d9e Merge pull request #77 from xavierm02/master
+&gt; 27b4b2f Merge pull request #117 from oozcitak/tr
+&gt; 666edda Merge pull request #116 from szTheory/patch-1
+&gt; 34c3271 Merge pull request #121 from pismute/ko
+&gt; 09b4f9c [ko] proofreading
+doc/ko/array/constructor.md
+doc/ko/array/general.md
+doc/ko/core/delete.md
+doc/ko/core/eval.md
+doc/ko/core/semicolon.md
+doc/ko/core/undefined.md
+doc/ko/function/arguments.md
+doc/ko/function/closures.md
+doc/ko/function/constructors.md
+doc/ko/function/general.md
+doc/ko/function/scopes.md
+doc/ko/function/this.md
+doc/ko/intro/index.md
+doc/ko/object/forinloop.md
+doc/ko/object/general.md
+doc/ko/object/hasownproperty.md
+doc/ko/object/prototype.md
+doc/ko/other/timeouts.md
+doc/ko/types/casting.md
+doc/ko/types/equality.md
+doc/ko/types/typeof.md
+&gt; 919b581 [tr] Fixed typo
+doc/tr/core/delete.md
+&gt; 753fd78 Added delete to index
+doc/tr/index.json
+&gt; c8258d1 [tr] Translated delete
+doc/tr/core/delete.md
+&gt; cd06184 [tr] Fixed type
+doc/tr/function/scopes.md
+&gt; be27b01 grammar
+doc/en/function/this.md
+&gt; 103ca5d removed trailing whitespace in comment on line 55 which caused line to spill outside code container
+doc/fi/function/arguments.md
+&gt; 0a894c1 Stored the biggest timeout ID to avoid infinite loop.
+doc/en/other/timeouts.md
+&gt; 53decce Added another way to clear "all" timeouts and replaced the "is is" by "it is".
+doc/en/other/timeouts.md
+</code></pre>
+
+<p>그동안 수정된 커밋이 좀 있다. 영어로 된 것을 번역한 것이니 이 중에서 <code>doc/en</code> 파일이 수정된 것만 확인한다. <code>doc/en</code> 디렉토리에 있는 파일만 조회하자:</p>
+
+<pre class="prettyprint"><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master doc/en
+&gt; 01fe309 Finally get around and start fixing some issues
+doc/en/core/undefined.md
+doc/en/function/constructors.md
+doc/en/function/scopes.md
+doc/en/object/hasownproperty.md
+&gt; 65f0d9e Merge pull request #77 from xavierm02/master
+&gt; 666edda Merge pull request #116 from szTheory/patch-1
+&gt; be27b01 grammar
+doc/en/function/this.md
+&gt; 0a894c1 Stored the biggest timeout ID to avoid infinite loop.
+doc/en/other/timeouts.md
+&gt; 53decce Added another way to clear "all" timeouts and replaced the "is is" by "it is".
+doc/en/other/timeouts.md
+</code></pre>
+
+<p>커밋 정보 없이 수정된 파일만 볼 수도 있다:</p>
+
+<pre class="prettyprint"><code>$ git diff --name-only ko-base..master doc/en
+doc/en/core/undefined.md
+doc/en/function/constructors.md
+doc/en/function/scopes.md
+doc/en/function/this.md
+doc/en/object/hasownproperty.md
+doc/en/other/timeouts.md
+</code></pre>
+
+<p>파일 내용까지 보려면 <code>--name-only</code> 옵션을 빼면 된다. 그러면 diff 내역을 모두 보여준다. 한 번에 보면 너무 많으니 하나씩 diff를 확인해 볼 수 있다. <code>doc/en/core/undefined.md</code> 파일의 diff 내용을 살펴보자:</p>
+
+<pre class="prettyprint"><code>$ git diff ko-base..master doc/en/core/undefined.md
+diff --git a/doc/en/core/undefined.md b/doc/en/core/undefined.md
+index d27761f..c819920 100644
+--- a/doc/en/core/undefined.md
++++ b/doc/en/core/undefined.md
+@@ -19,11 +19,13 @@ overwritten.
+ Some examples for when the value `undefined` is returned:
+
+  - Accessing the (unmodified) global variable `undefined`.
++ - Accessing a declared *but not* yet initialized variable
+  - Implicit returns of functions due to missing `return` statements.
+  - `return` statements which do not explicitly return anything.
+  - Lookups of non-existent properties.
+  - Function parameters which do not had any explicit value passed.
+  - Anything that has been set to the value of `undefined`.
++ - Any expression in the form of `void(expression)`
+
+ ### Handling Changes to the Value of `undefined`
+</code></pre>
+
+<p>파일을 하나씩 diff해보면서 번역을 수정한다. 수정하고 커밋한 후에 브랜치를 살펴보자.</p>
+
+<pre class="prettyprint"><code>$ git todo -r
+                    [@] ko * c712143 - ...
+             [-16] ko-base - e7c00d8 - ...
+               [-1] master - 01fe309 - ...
+           [-15] origin/ko - 09b4f9c - ...
+      [-16] origin/ko-base - e7c00d8 - ...
+       [-16] origin/master - e7c00d8 - ...
+        [-403] origin/next - c204a58 - ...
+[+84][-158] owner/gh-pages - 67775b0 - ...
+         [-1] owner/master - 01fe309 - ...
+         [-403] owner/next - c204a58 - ...
+</code></pre>
+
+<p><code>ko</code> 브랜치에 번역을 수정하고 커밋했기 때문에 <code>owner/master</code>보다 커밋이 한 개 많다.</p>
+
+<h3>ko-base 옮겨 놓고 Pull Request 보내기</h3>
+
+<p>다음에 원문이 수정됐을 때 다시 참고 할 수 있도록 ko-base가 owner/master를 가리키도록 한다.</p>
+
+<pre class="prettyprint"><code>$ git checkout ko-base
+$ git reset --hard owner/master
+</code></pre>
+
+<p>그리고 저장소를 origin에 Push한다. Push하고 나면 브랜치 상태는 다음과 같아진다:</p>
+
+<pre class="prettyprint"><code>$ git todo -r
+                    [@] ko - c712143 - ...
+              [-1] ko-base * 01fe309 - ...
+               [-1] master - 01fe309 - ...
+                 origin/ko - c712143 - ...
+       [-1] origin/ko-base - 01fe309 - ...
+        [-1] origin/master - 01fe309 - ...
+        [-403] origin/next - c204a58 - ...
+[+84][-158] owner/gh-pages - 67775b0 - ...
+         [-1] owner/master - 01fe309 - ...
+         [-403] owner/next - c204a58 - ...
+</code></pre>
+
+<p>이제 원문이 수정된 만큼 번역도 수정했으니 Pull Request를 보내면 된다. 그리고 다음에 추가로 수정된 부분이 있으면 이어서 다시 번역할 수 있다.</p>
+
+<h2>결론</h2>
+
+<p>번역 작업에도 Git은 매우 훌륭하다. 번역은 개발과 달라서 다른 Workflow가 필요하다. <a href="/articles/2011/a-successful-git-branching-model.html">git-flow</a>처럼 번역 시 참고할 만한 자료가 있으면 좋을 것 같아서 정리했다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title>Optimize browser rendering</title>
     <link href="http://dogfeet.github.com/articles/2012/optimize-browser-rendering.html" />
@@ -384,9 +954,9 @@ remotes/origin/ship              3f129b5 Fix anchor
 &lt; e054c7e - (feature/kitchen) Add sink unit
 </code></pre>
 
-<p><code>git branch</code>의 <code>-v</code> 옵션은 리모트 브랜치를 Tracking하는 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.</p>
+<p><code>git branch</code>의 <code>-v</code> 옵션은 Tracking 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.</p>
 
-<p><strong>UPDATE:</strong> Remote Tracking 브랜치에 대한 내용은 잘못 정리한 것이라서 삭제했다. 나중에 따로 정리하기로 했다.</p>
+<p><strong>UPDATE:</strong> Tracking 브랜치에 대한 내용은 잘못 정리한 것이라서 삭제했다. 나중에 따로 정리하기로 했다.</p>
 
 <h2>todo</h2>
 
@@ -417,7 +987,7 @@ remotes/origin/ship              3f129b5 Fix anchor
 
 <h2>progit</h2>
 
-<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-13</code>에 빌드한 파일입니다:</p>
+<p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2012-01-31</code>에 빌드한 파일입니다:</p>
 
 <ul>
 <li><a href="http://dogfeet.github.com/progit/progit.ko.epub">progit.ko.epub</a></li>
@@ -658,114 +1228,6 @@ ours
 
 <pre class="prettyprint"><code>git log --name-only
 </code></pre>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>GitHub Flow</title>
-    <link href="http://dogfeet.github.com/articles/2011/github-flow.html" />
-    <updated>2011-12-22T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/github-flow.html</id>
-    <content type="html">
-<![CDATA[
-<p><em>이 글은 GitHub의 CIO인 <a href="https://github.com/schacon">Scott Chacon</a>님의 <a href="http://scottchacon.com/2011/08/31/github-flow.html">github-flow</a>를 정리한 글입니다. Chacon님은 [git-flow][]가 정리한 것처럼 github를 개발하는 데 사용하는 flow를 정했습니다.</em></p>
-
-<p>Chacon님은 git-flow도 좋지만 Github는 명확히 Release라고 부를 만한 시점이 없어서 git-flow를 사용하지 않는다고 한다. 그 외 세세한 차이점도 거론하긴 했지만 생략한다. Release가 분명하지 않은 경우엔 확실히 git-flow를 적용하기 어렵다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/github-flow/contact-github.png" alt="love github" title="" /></p>
-
-<p>이 글은 그냥 요약한 것이다. 그림이 첨부된 자세한 설명은 <a href="http://scottchacon.com/2011/08/31/github-flow.html">원문</a>를 참고하라.</p>
-
-<h2>GitHub Flow</h2>
-
-<p>이 Flow는 간단하지만, 꽤 큰 규모의 팀(Github 직원이 35명, 그중 15-20 명이 같은 프로젝트를 진행함)에서도 굉장히 좋다.</p>
-
-<h3>master 브랜치에만 정해진 규칙이 있다.</h3>
-
-<p>반드시 규칙을 지켜야 하는 브랜치는 master뿐이다. 다른 브랜치는 임기응변식으로 운영하는 것 같다. </p>
-
-<p>master 브랜치에 Merge하면 이미 deploy했거나 곧 deploy된다는 의미다.</p>
-
-<p>master 브랜치는 안정 버전을 의미하므로 Merge하기 전에 충분히 테스트해야 한다.</p>
-
-<p>테스트는 로컬에서 하는 것이 아니라 브랜치를 Push하고 Jenkins로 테스트한다.</p>
-
-<p>deployed 같은 브랜치를 만들어 deploy한 커밋을 관리할 수도 있지만 GitHub는 해당 SHA 값을 직접 관리하고(webapp이나 curl로) 나중에 비교할 때 사용한다.</p>
-
-<h3>브랜치는 항상 master 브랜치에서 만든다.</h3>
-
-<p><code>git checkout -b mine master</code> 처럼 master 브랜치에서 만든다. </p>
-
-<h3>이름을 잘 짓는다.</h3>
-
-<p>이름은 무슨 브랜치인지 나타나도록 브랜치 이름을 잘 짓는다(예) new-oauth2-scopes, redis2-transition). 그래서 브랜치 목록만 보더라도 곧 어떤 feature가 추가될지 알 수 있다.</p>
-
-<h3>named 브랜치는 자주 Push한다.</h3>
-
-<p>git-flow의 feature 브랜치 쯤 되는 거라고 보면 된다. 위에서 얘기했듯이 브랜치 이름을 잘 짓고 자주 Push한다.</p>
-
-<p>자주 Push해야 하는 이유는 자신이 무엇을 하고 있는지 동료들과 공유하는 것이고 누군가 <code>git fetch</code>를 실행하면 백업도 된다.</p>
-
-<h3>언제든지 Pull Request한다.</h3>
-
-<p>Merge할 때만 하는 것이 아니라 도움이나 피드백이 필요할 때에도 Pull Request를 사용한다. 제목에 '도움이 필요해요', '검토 좀 해주세요.', '머지해도 됩니다'라고 구분한다.</p>
-
-<p><code>@metion</code>으로 쉽게 다른 사람에게 검토를 요청할 수도 있다. 특히 Pull Request는 브랜치를 두고 토론하는 것으로 브랜치 히스토리가 업데이트되면 그 최신정보도 자동으로 포함된다. </p>
-
-<p>나는 이 글을 읽기 전에 Pull Request로 피드백을 요청한다는 것은 상상도 못했다.</p>
-
-<h3>Pull Request로 리뷰한 후에만 Merge한다.</h3>
-
-<p>사람들이 '좋다' 등으로 리뷰해주면 그때 가서 Merge한다. 물론 CI도 통과해야 한다. Push하면 자동으로 Pull Request가 닫힌다.</p>
-
-<h3>일단 <code>master</code>에 Merge하면 바로 deploy한다.</h3>
-
-<p>hubot으로 deploy한다. </p>
-
-<p>GitHub는 최근 Kenkins + Hubot + Github를 묶은 <a href="https://github.com/blog/1013-janky">Janky</a>를 공개했다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>심심한 Kindle Fire</title>
-    <link href="http://dogfeet.github.com/articles/2011/kinde-fire.html" />
-    <updated>2011-12-18T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/kinde-fire.html</id>
-    <content type="html">
-<![CDATA[
-<p>Kindle Fire가 도착했는데 아무것도 할 수 있는 게 없습니다.</p>
-
-<p>Amazon을 전혀 안 쓰는 제가 Kindle Fire를 산 것은 'ebook 읽기 좋은 싼 Tablet이 필요하다.'라는 생각 때문이었습니다. 가카가 내곡동을 사신 것처럼 순수했습니다. 가격이 착했고 ebook 읽기에 나쁘지 않을 것으로 생각했습니다. 그리고 사실 넥서스원에서 사용하는 앱은 쓸 수 있을 거라고 기대했습니다. Amazon이니까요.</p>
-
-<p>인터넷에서 워낙 욕을 많이 먹어서 예상은 하고 있었지만 이렇게나 할 수 있는 게 없을 지는 몰랐습니다. Amazon이 아니면 할 수 있는게 없습니다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/kindle-fire/kindle-fire-price.png" alt="Kindle Fire Price" title="" /></p>
-
-<p>가지고 있던 Ipad2를 팔고 Kindle를 샀습니다. Ipad2로 고작 책밖에 읽지 않더군요. Dropbox도 Daum 클라우드도 잘되고, 영화도 보기 좋고, 음악도 듣기 좋고, 무려 32G나 되는 모델을 샀는데 OS 포함해서 3G도 못 채우고 ebook만 봤습니다….</p>
-
-<h2>Rooting</h2>
-
-<p>Rooting에 관심 없어 보이는 Jeff Bezos의 문구를 보고(어디서 봤는지 다시 찾을 수가 없어요) 지금도 Rooting이 쉽지만, 앞으로도 쉬울 것으로 생각했습니다.</p>
-
-<p>일단 Android Market이 필요하기 때문에 그래서 1. <a href="http://rootkindlefire.com/kindle-fire-root/how-to-root-kindle-fire-for-mac-osx-or-linux/">rootkindlefile.com</a>의 설명대로 루팅을 하고, 2. <a href="http://luckydanny.blogspot.com/2011/12/blog-post.html">Happy Danny</a>님 설명에 따라 market을 설치했습니다. 폰트를 나눔폰트로 바꾸고 그리고 이것저것 설치해보다가 Android가 아니라는 결론을 내렸습니다. 다른 거 하지 말고 그냥 ebook만 읽기로 했습니다. Google 앱도, 한글 IME도 설치하지 않았습니다.</p>
-
-<p>Ipad와 비교해서 ebook을 보는 데는 불편하지 않습니다. 그리고 생각보다 Market에서 설치할 만한 앱이 많지 않습니다. 아마도 앱마다 설치 가능한 기기가 정해져 있는 것 같습니다. 넥서스원에서 사용하던 앱들을 Kindle Fire에서는 쓸 수 없습니다. Kindle Fire문제는 아닙니다만, 가장 아쉬운건 instapaper입니다.</p>
-
-<p>Kindle Fire는 Tablet이 아닌 것 같아요. Rooting하면 Tablet처럼 쓸 수는 있지만, 여전히 Android라고 할 수 없습니다. 그래도 Rooting하면 인터파크 ebook 리더인 biscuit은 설치할 수 있습니다. 다른 Kindle 제품에서는 한글 ebook이 없어서 읽을 수 없지만, Kindle Fire에서는 biscuit으로 읽을 수 있습니다.</p>
-
-<p><a href="http://blog.naver.com/PostView.nhn?blogId=dicagallery&amp;logNo=140143217330&amp;categoryNo=278&amp;viewDate=&amp;currentPage=1&amp;listtype=0">아이뮤즈의 TX72</a>같은 것도 좋아 보입니다만 일단 활자를 읽어야 하니 패널이 좋아야 합니다. TX72은 PMP 시장을 노린 것 같아요. PMP 장비로는 훌륭한 스펙입니다.</p>
-
-<h2>결론</h2>
-
-<p>Kindle Fire의 장점은 가격과 Biscuit이라고 할 수 있겠습니다. 지금 Kindle Fire로 '닥치고 정치'를 읽고 있습니다. 물론 인터파크에서 구입하고 Biscuit로 보고 있습니다. Rooting하는 것이 좀 귀찮지만 Tablet으로 ebook만 보실 분이라면 Kindle Fire도 괜찮은 것 같아요.</p>
-
-<h2>update</h2>
-
-<h3>2012-12-21</h3>
-
-<p>Kindle Fire가 6.2.1로 업데이트 되면서 기존 rooting 방법을 막아 버렸습니다. Kindle Fire는 묻지도 따지지도 않는 잠수함 패치를 하는데, 그럼 그냥 막혀 버려요. 이번에는 아예 기존 rooting 프로그램을 쓸 수 없게 만들었습니다. <a href="http://rootkindlefire.com/kindle-fire-root/how-to-root-kindle-fire-for-mac-osx-or-linux/">rootkindlefile.com</a>에서 해결해 주길 기다리고 있습니다.</p>
-
-<p>앞으로도 rooting이 쉬울거라는 건 취소합니다.</p>
-
-<p>ebook 프로그램으로 yes24 app도 실치할 수 있더군요. 찾아 보면 대개는 가능할 것 같습니다. yes24, aladdin은 5번 다운로드 하는 방식이고 interpark는 동시에 5대만 등록해서 언제든지 다운로드 받는 방식입니다.</p>]]>
     </content>
   </entry>
 </feed>

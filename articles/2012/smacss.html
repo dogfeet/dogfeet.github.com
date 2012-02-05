@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - SMACSS: Brief Notes - Part 1</title>
+    <meta name="description" content="SMACSS('smacks', 아마도 '스맥스'로 읽는다)에는 'Jonathan Snook'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다." />
+    <meta name="keywords" content="CSS,SMACSS,Jonathan Snook,Review" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang.min.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <section class="content span10">
+          <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2012/smacss.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">SMACSS: Brief Notes - Part 1</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Feb 04 2012</span>
+ | <a href="/site/tagmap.html#css">CSS</a>, <a href="/site/tagmap.html#smacss">SMACSS</a>, <a href="/site/tagmap.html#jonathan snook">Jonathan Snook</a>, <a href="/site/tagmap.html#review">Review</a> | <span><a href="/articles/2012/smacss.html#disqus_thread" data-disqus-identifier="/articles/2012/smacss.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/smacss.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/smacss.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/smacss.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p><a href="http://smacss.com/">SMACSS</a>('smacks', 아마도 '스맥스'로 읽는다)에는 '<a href="http://snook.ca/">Jonathan Snook</a>'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
+
+<p><em>Back-End 출신이라 CSS를 사용할 때마다 '이 많은 스타일은 어떻게 관리해야 할까?'라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
+
+<p>이 책은 두 번으로 나눠서 정리할 것인데 Part 1은 CSS Rule에 대하여, Part 2는 SMACSS의 나머지 부분을 다룰 예정이다.</p>
+
+<p><img src="/articles/2012/smacss/smacss.png" alt="SMACSS" title="" /></p>
+
+<h2>Introduction</h2>
+
+<p>저자인 Snook가 경험했던 Best Practice를 SMACSS라는 책으로 정리했다. 이 방법은 규모에 상관없이 효과적이라서 프로젝트 초반부터 성장하는 내내 유용하다고 설명한다.</p>
+
+<p>Snook도 말하고 있지만 SMACSS는 프레임워크가 아니라 스타일 가이드다. 그래서 어떤 라이브러리나 도구도 제공하지 않는다. SMACSS는 CSS를 어떻게 구성하고 사용해야 하는가를 설명한다.</p>
+
+<p>SMACSS은 다음과 같은 주제를 다룬다:</p>
+
+<ul>
+<li>Four Types of CSS Rules - SMACSS의 핵심, CSS를 네 가지로 분류하고 어떻게 구분해 사용하는지 설명</li>
+<li>Themes and Typography - Theme와 Font에 대해 설명</li>
+<li>Depth of Applicability - Selector를 길게 만드는 것이 좋은지 짧게 만드는 것이 좋은지 설명. 즉, tradeoff에 대한 설명.</li>
+<li>Selector Performance - 브라우저가 Selector를 어떻게 찾는지 설명</li>
+<li>State Representation - 상태에 대한 표현 기법</li>
+<li>HTML5 and SMACSS - HTML5와 함께 사용하는 법</li>
+<li>Prototyping - 만들어놓은 CSS를 실제 사용하기 전에 테스트해 보는 과정</li>
+<li>Formatting Code - CSS 코드 형식을 정리하는 법</li>
+</ul>
+
+<p>이 중 <code>Four Types of CSS Rules</code>이 핵심인데 이 규칙은 다음과 같다:</p>
+
+<ul>
+<li>Base Rule</li>
+<li>Layout Rule</li>
+<li>Module Rule</li>
+<li>State Rule</li>
+</ul>
+
+<p><a href="http://mondaybynoon.com/20120109/book-review-smacss/">SMACSS Review</a>를 작성한 'Jonathan Christopher'는 몇 시간이면 다 읽는다고 했는데 난 며칠 걸렸다. 영어인데다가 분명히 흥미로운 내용인데도 이상하게 읽어도 읽어도 머릿속에 잘 들어오지 않았다.</p>
+
+<p>이 책은 CSS를 관리하는 법에 대해서 설명한다. 표현에 대해서 다루는 CSS 책은 무수히 많지만 이런 책은 드물다.</p>
+
+<p>SMACSS는 유료 컨텐츠도 있지만, 기본적으로 무료다. 만약 ebook 포멧으로 읽거나 숨겨진 컨텐츠를 읽고 싶으면 결제해야 하지만 책의 내용 대부분을 웹에서 무료로 읽을 수 있다. 하지만, 구매하길 바란다. 무료로도 읽을 수 있지만 그만한 가치가 있다. 지금 유료 컨텐츠는 'The Icon Module', 'Screencast: Applying the Principles' 둘뿐이지만 저자는 계속 추가한다고 한다.</p>
+
+<p>다음은 공부한 내용을 정리한 것이다. 읽고 해석한 대로 정리한 것이니 원문과 다를 수도 있다. </p>
+
+<h2>Four Types of CSS Rules</h2>
+
+<p>SMACSS는 CSS Rule을 네 가지로 나눈다.</p>
+
+<ul>
+<li>Base - 기본 스타일</li>
+<li>Layout - 엘리먼트를 나열하는 것과 관련된 스타일</li>
+<li>Module - 재사용 위해 하나로 묶는 스타일</li>
+<li>State - Hidden/Expand나 Active/Inactive 같은 스타일</li>
+</ul>
+
+<p>그 외 Theme와 Font Rule에 대해서 거론하지만, 특별히 분류하지는 않았다. 대신 위 네 가지 Rule을 이용해서 Theme와 Font Rule을 만든다.</p>
+
+<h3>Base</h3>
+
+<p>Base Rule을 쉽게 말하자면 id, class가 없는 스타일들을 말한다. 다음과 같은 것들이 Base Rule이다:</p>
+
+<pre class="prettyprint"><code>html, body, form { margin: 0; padding: 0; }
+input[type=text] { boarder: 1px solid #999; }
+a { color: #039; }
+a:hover { color: #03C; }
+</code></pre>
+
+<p>Base Rule은 직접 이름 지을 수 없는 element, attribute, psedo 셀렉터 등으로만 만든다.</p>
+
+<h4>CSS Reset</h4>
+
+<p>기본 margin, padding 등의 것을 규정하는 Base Rule을 CSS Reset이라고 부른다. 사실 Base Rule을 사용할 만한 데가 CSS Reset밖에 없어 보인다. SMACSS는 element 셀렉터를 권장하지 않아서 element 셀렉터를 사용해도 된다고 허용하는 부분은 Base Rule로 CSS Reset을 만들 때와 <code>.mod &gt; input</code>처럼 child 셀렉터를 함께 쓸 때뿐이다.</p>
+
+<h3>Module</h3>
+
+<p>Module 스타일이 필요한 이유는 스타일을 Module 단위로 묶어서 재사용하기 위함이다. 사이드바나 제품 목록 등의 반복적으로 재사용하는 것들이 이에 해당된다. </p>
+
+<p>Module 스타일 이름은 3자로 제한해 사용한다. 하지만, 스타일 가이드이니까 4자도 되고 글자제한이 없어도 된다:</p>
+
+<pre class="prettyprint"><code>/* Example Module */
+.exm { }
+
+/* Callout Module */
+.cli { }
+
+/* Form field module */
+.fld { }
+</code></pre>
+
+<p>Exmaple Module에서 하위 스타일을 하나 만든다면 다음과 같이 하면 된다:</p>
+
+<pre class="prettyprint"><code>.exm-caption { }
+</code></pre>
+
+<p>Module은 재사용할 수 있어야 하기 때문에 id 셀렉터를 사용하지 않는다. 그리고 element 셀렉터도 사용하지 않는다. 다음과 같은 스타일과 html을 보자:</p>
+
+<pre class="prettyprint"><code>&lt;div class="fld"&gt;
+    &lt;span&gt;Folder Name&lt;/span&gt;
+&lt;/div&gt;
+
+.fld &gt; span {
+    padding-left: 20px;
+    background: url(icon.png);
+}
+</code></pre>
+
+<p>이렇게 사용해도 무방하지만, 프로젝트 규모가 커질수록 다른 element로 바꿔야 할 수도 있고 element 본연의 특징을 유지하기 어려울 수 있다. <code>span</code>을 제거하고 다음과 같이 변경한다:</p>
+
+<pre class="prettyprint"><code>&lt;div class="fld"&gt;
+    &lt;span class="fld-name"&gt;Folder Name&lt;/span&gt;
+&lt;/div&gt;
+
+.fld &gt; .fld-name {
+    padding-left: 20px;
+    background: url(icon.png);
+}
+</code></pre>
+
+<p>그래도 element 셀렉터를 꼭 사용해야겠다면 <code>.fld &gt; span</code>처럼 child 셀렉터를 꼭 함께 사용하라.</p>
+
+<h3>Layout</h3>
+
+<p>Layout Rule이 엘리먼트를 어떻게 나열하는지 결정한다. 로그인 폼, 내비게이터 등부터 header, footer 같은 부분을 구분하는 것이 모두 Layout Rule이다.</p>
+
+<p><code>.l-fixed</code> 유무에 따라 가변 폭으로 할지 고정 폭으로 할지 결정하는 Layout은 다음과 같이 만든다:</p>
+
+<pre class="prettyprint"><code>#article {
+    width: 80%;
+    float: left;
+}
+
+#sidebar {
+    width: 20%;
+    float: right;
+}
+
+.l-fixed #article {
+    width: 600px;
+}
+
+.l-fixed #sidebar {
+    width: 200px;
+}
+</code></pre>
+
+<p>id 셀렉터에는 'l'을 붙이지 않고 class 셀렉터에만 'l'을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.</p>
+
+<p>성능 등을 이유로 class 셀럭터 없이 전부 id 셀렉터로 만들어도 되지만 꼭 그래야 할 이유는 없다. CSS에서는 id 셀렉터와 class 셀렉터 이 둘의 성능은 거의 같다. id 셀렉터가 Javascript에서 빠를지 모르겠지만, CSS는 아니다. </p>
+
+<p>그리고 Layout Rule만 id 셀렉터를 사용한다. 다른 스타일은 id 셀렉터 사용하지 않는다.</p>
+
+<p>id 셀렉터에 tag 셀렉터와 함께 사용하지 않는다. 자식이면 child 셀렉터(>)를 꼭 사용한다.</p>
+
+<h3>State</h3>
+
+<p>상태와 관련된 스타일을 말하고 이름을 지을 때 's'를 붙인다. 예를 들면 이런 거다:</p>
+
+<pre class="prettyprint"><code>.s-hidden { display: none; }
+</code></pre>
+
+<p><code>!important</code>를 사용해도 되는 Rule은 State Rule뿐이다. 다른 Rule에는 <code>!important</code>를 사용해서는 절대 안된다. 하지만, State Rule에서도 권장하지 않는다. 되도록 안 쓰는 것이 좋다. 뭥미:) 그냥 사용하지 말자.</p>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <ul>
+    <li>
+      <span>Jan 27 2012</span>
+&raquo;      <a href="/articles/2012/optimize-browser-rendering.html">Optimize browser rendering</a>
+    </li>
+  </ul>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2012/smacss.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

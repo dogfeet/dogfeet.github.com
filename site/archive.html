@@ -9,78 +9,72 @@
     <title>dogfeet - 개발새발</title>
     <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
     <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,개발새발,dogfeet" />
-    <meta name="author" content="Sean Lee, Changwoo Park" />
+    <meta name="author" content="Changwoo Park, Sean Lee" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
 <!--Shims: IE6-8 support of HTML5 elements-->
 <!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <!--Styles-->
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang-apollo.js"></script>
-    <script src="/vendor/lang-clj.js"></script>
-    <script src="/vendor/lang-css.js"></script>
-    <script src="/vendor/lang-go.js"></script>
-    <script src="/vendor/lang-hs.js"></script>
-    <script src="/vendor/lang-lisp.js"></script>
-    <script src="/vendor/lang-lua.js"></script>
-    <script src="/vendor/lang-ml.js"></script>
-    <script src="/vendor/lang-n.js"></script>
-    <script src="/vendor/lang-proto.js"></script>
-    <script src="/vendor/lang-scala.js"></script>
-    <script src="/vendor/lang-sql.js"></script>
-    <script src="/vendor/lang-tex.js"></script>
-    <script src="/vendor/lang-vhdl.js"></script>
-    <script src="/vendor/lang-wiki.js"></script>
-    <script src="/vendor/lang-xq.js"></script>
-    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
 <!--Topbar-->
-    <div class="topbar">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <a class="brand" href="/">dogfeet</a>
-          <ul class="nav">
-            <li>
-              <a href="/site/tagmap.html">Tagmap</a>
-            </li>
-            <li>
-              <a href="/site/archive.html">Archive</a>
-            </li>
-            <li>
-              <a href="/site/atelier.html">Atelier</a>
-            </li>
-            <li>
-              <a href="http://feeds.feedburner.com/github/dogfeet">
-                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-              </a>
-            </li>
-          </ul>
-          <form class="pull-right" action="http://google.com/search" method="get">
-            <input type="hidden" name="q" value="site:dogfeet.github.com" />
-            <input type="text" name="q" results="0" placeholder="Search" />
-          </form>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
         </div>
       </div>
     </div>
 <!--Markup-->
     <div class="container-fluid">
-      <section class="content">
-        <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      <div class="row-fluid">
+        <section class="content span10">
+          <style rel="stylesheet" media="screen, projection" scoped="scoped">
   .article_footer {
   margin-left: 10px;
 }
@@ -88,6 +82,30 @@
 <header>
   <h2>Archives</h2>
 </header>
+<div class="row">
+  <span class="span2">2012 Feb 04</span>
+  <div class="span9">
+    <a href="/articles/2012/smacss.html" property="dc:title">
+      <strong>SMACSS: Brief Notes - Part 1</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#css">CSS</a>, <a href="/site/tagmap.html#smacss">SMACSS</a>, <a href="/site/tagmap.html#jonathan snook">Jonathan Snook</a>, <a href="/site/tagmap.html#review">Review</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2012 Feb 02</span>
+  <div class="span9">
+    <a href="/articles/2012/git-translate-flow.html" property="dc:title">
+      <strong>Git:번역 Workflow</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#번역">번역</a>, <a href="/site/tagmap.html#workflow">Workflow</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+    </div>
+  </div>
+</div>
 <div class="row">
   <span class="span2">2012 Jan 27</span>
   <div class="span9">
@@ -132,7 +150,7 @@
     </a>
     <div class="article_footer">
       <small>
- posted in <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#remote tracking branch">Remote Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+ posted in <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#tracking branch">Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
     </div>
   </div>
 </div>
@@ -259,24 +277,24 @@
 <div class="row">
   <span class="span2">2011 Dec 01</span>
   <div class="span9">
-    <a href="/articles/2011/git-helpers.html" property="dc:title">
-      <strong>Git:git 도우미</strong>
-    </a>
-    <div class="article_footer">
-      <small>
- posted in <a href="/site/tagmap.html#git">git</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <span class="span2">2011 Dec 01</span>
-  <div class="span9">
     <a href="/articles/2011/bash-it.html" property="dc:title">
       <strong>Bash-it</strong>
     </a>
     <div class="article_footer">
       <small>
  posted in <a href="/site/tagmap.html#bash-it">Bash-it</a>, <a href="/site/tagmap.html#nvm">NVM</a>, <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2011 Dec 01</span>
+  <div class="span9">
+    <a href="/articles/2011/git-helpers.html" property="dc:title">
+      <strong>Git:git 도우미</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#git">git</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
     </div>
   </div>
 </div>
@@ -403,24 +421,24 @@
 <div class="row">
   <span class="span2">2011 Oct 06</span>
   <div class="span9">
-    <a href="/articles/2011/1317888540.html" property="dc:title">
-      <strong>JavaScript Standard</strong>
-    </a>
-    <div class="article_footer">
-      <small>
- posted in <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a>, <a href="/site/tagmap.html#ecmascript">ECMAScript</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <span class="span2">2011 Oct 06</span>
-  <div class="span9">
     <a href="/articles/2011/1317873491.html" property="dc:title">
       <strong>ECMAScript 5 Strict Mode, JSON, and More</strong>
     </a>
     <div class="article_footer">
       <small>
  posted in <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a>, <a href="/site/tagmap.html#ecmascript">ECMAScript</a>, <a href="/site/tagmap.html#es5">ES5</a>, <a href="/site/tagmap.html#john resig">John Resig</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2011 Oct 06</span>
+  <div class="span9">
+    <a href="/articles/2011/1317888540.html" property="dc:title">
+      <strong>JavaScript Standard</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a>, <a href="/site/tagmap.html#ecmascript">ECMAScript</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
     </div>
   </div>
 </div>
@@ -451,18 +469,6 @@
 <div class="row">
   <span class="span2">2011 Sep 30</span>
   <div class="span9">
-    <a href="/articles/2011/1317370500.html" property="dc:title">
-      <strong>JavaScript How Prototypal Inheritance really works</strong>
-    </a>
-    <div class="article_footer">
-      <small>
- posted in <a href="/site/tagmap.html#prototypal">Prototypal</a>, <a href="/site/tagmap.html#inheritance">inheritance</a>, <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#john resig">John Resig</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <span class="span2">2011 Sep 30</span>
-  <div class="span9">
     <a href="/articles/2011/1317342420.html" property="dc:title">
       <strong>광고등을 막아서 집중력 높이기</strong>
     </a>
@@ -481,6 +487,18 @@
     <div class="article_footer">
       <small>
  posted in <a href="/site/tagmap.html#new in javascript">New In JavaScript</a>, <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2011 Sep 30</span>
+  <div class="span9">
+    <a href="/articles/2011/1317370500.html" property="dc:title">
+      <strong>JavaScript How Prototypal Inheritance really works</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#prototypal">Prototypal</a>, <a href="/site/tagmap.html#inheritance">inheritance</a>, <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#john resig">John Resig</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
     </div>
   </div>
 </div>
@@ -763,24 +781,24 @@
 <div class="row">
   <span class="span2">2010 Apr 20</span>
   <div class="span9">
-    <a href="/articles/2010/1271743080.html" property="dc:title">
-      <strong>Spring Finance</strong>
-    </a>
-    <div class="article_footer">
-      <small>
- posted in <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#spring">Spring</a>, <a href="/site/tagmap.html#spring finance">Spring Finance</a>, <a href="/site/tagmap.html#stefan schmidt">Stefan Schmidt</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <span class="span2">2010 Apr 20</span>
-  <div class="span9">
     <a href="/articles/2010/1271748360.html" property="dc:title">
       <strong>iPhone SDK 4, contains project error.</strong>
     </a>
     <div class="article_footer">
       <small>
  posted in <a href="/site/tagmap.html#cocoa">Cocoa</a>, <a href="/site/tagmap.html#iphone">iPhone</a>, <a href="/site/tagmap.html#iphone sdk4">iphone sdk4</a> by <a href="/authors/sean-lee.html">Sean Lee</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2010 Apr 20</span>
+  <div class="span9">
+    <a href="/articles/2010/1271743080.html" property="dc:title">
+      <strong>Spring Finance</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#spring">Spring</a>, <a href="/site/tagmap.html#spring finance">Spring Finance</a>, <a href="/site/tagmap.html#stefan schmidt">Stefan Schmidt</a> by <a href="/authors/changwoo-park.html">Changwoo Park</a>      </small>
     </div>
   </div>
 </div>
@@ -907,24 +925,24 @@
 <div class="row">
   <span class="span2">2009 Nov 10</span>
   <div class="span9">
-    <a href="/articles/2009/1257843480.html" property="dc:title">
-      <strong>Simplest Spring 3 Application, 초간단 Spring 3 어플</strong>
-    </a>
-    <div class="article_footer">
-      <small>
- posted in <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#spring">Spring</a> by <a href="/authors/sean-lee.html">Sean Lee</a>      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <span class="span2">2009 Nov 10</span>
-  <div class="span9">
     <a href="/articles/2009/1257832500.html" property="dc:title">
       <strong>Grails 1.2 M4</strong>
     </a>
     <div class="article_footer">
       <small>
  posted in <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#grails">Grails</a> by <a href="/authors/sean-lee.html">Sean Lee</a>      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="span2">2009 Nov 10</span>
+  <div class="span9">
+    <a href="/articles/2009/1257843480.html" property="dc:title">
+      <strong>Simplest Spring 3 Application, 초간단 Spring 3 어플</strong>
+    </a>
+    <div class="article_footer">
+      <small>
+ posted in <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#spring">Spring</a> by <a href="/authors/sean-lee.html">Sean Lee</a>      </small>
     </div>
   </div>
 </div>
@@ -1109,12 +1127,13 @@
   </div>
 </div>
 
-      </section>
-      <aside class="sidebar">
-        
-      </aside>
-      <footer>
-        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
       </footer>
     </div>
 <!--DISQUS-->

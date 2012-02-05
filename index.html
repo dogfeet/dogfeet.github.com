@@ -9,78 +9,114 @@
     <title>dogfeet - 개발새발</title>
     <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
     <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,개발새발,dogfeet" />
-    <meta name="author" content="Sean Lee, Changwoo Park" />
+    <meta name="author" content="Changwoo Park, Sean Lee" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="@site.title &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
 <!--Shims: IE6-8 support of HTML5 elements-->
 <!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <!--Styles-->
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang-apollo.js"></script>
-    <script src="/vendor/lang-clj.js"></script>
-    <script src="/vendor/lang-css.js"></script>
-    <script src="/vendor/lang-go.js"></script>
-    <script src="/vendor/lang-hs.js"></script>
-    <script src="/vendor/lang-lisp.js"></script>
-    <script src="/vendor/lang-lua.js"></script>
-    <script src="/vendor/lang-ml.js"></script>
-    <script src="/vendor/lang-n.js"></script>
-    <script src="/vendor/lang-proto.js"></script>
-    <script src="/vendor/lang-scala.js"></script>
-    <script src="/vendor/lang-sql.js"></script>
-    <script src="/vendor/lang-tex.js"></script>
-    <script src="/vendor/lang-vhdl.js"></script>
-    <script src="/vendor/lang-wiki.js"></script>
-    <script src="/vendor/lang-xq.js"></script>
-    <script src="/vendor/lang-yaml.js"></script>
+    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
 <!--Topbar-->
-    <div class="topbar">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <a class="brand" href="/">dogfeet</a>
-          <ul class="nav">
-            <li>
-              <a href="/site/tagmap.html">Tagmap</a>
-            </li>
-            <li>
-              <a href="/site/archive.html">Archive</a>
-            </li>
-            <li>
-              <a href="/site/atelier.html">Atelier</a>
-            </li>
-            <li>
-              <a href="http://feeds.feedburner.com/github/dogfeet">
-                <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-              </a>
-            </li>
-          </ul>
-          <form class="pull-right" action="http://google.com/search" method="get">
-            <input type="hidden" name="q" value="site:dogfeet.github.com" />
-            <input type="text" name="q" results="0" placeholder="Search" />
-          </form>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
         </div>
       </div>
     </div>
 <!--Markup-->
     <div class="container-fluid">
-      <section class="content">
-        <article class="post">
+      <div class="row-fluid">
+        <section class="content span10">
+          <article class="post">
+  <header>
+    <a href="/articles/2012/smacss.html">
+      <h1>SMACSS: Brief Notes - Part 1</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Feb 04 2012</span>
+ | <a href="/site/tagmap.html#css">CSS</a>, <a href="/site/tagmap.html#smacss">SMACSS</a>, <a href="/site/tagmap.html#jonathan snook">Jonathan Snook</a>, <a href="/site/tagmap.html#review">Review</a> | <span><a href="/articles/2012/smacss.html#disqus_thread" data-disqus-identifier="/articles/2012/smacss.html"></a></span>
+  </footer>
+<p><a href="http://smacss.com/">SMACSS</a>('smacks', 아마도 '스맥스'로 읽는다)에는 '<a href="http://snook.ca/">Jonathan Snook</a>'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
+
+<p><em>Back-End 출신이라 CSS를 사용할 때마다 '이 많은 스타일은 어떻게 관리해야 할까?'라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
+
+<p>이 책은 두 번으로 나눠서 정리할 것인데 Part 1은 CSS Rule에 대하여, Part 2는 SMACSS의 나머지 부분을 다룰 예정이다.</p>
+
+<p><img src="/articles/2012/smacss/smacss.png" alt="SMACSS" title="" /></p>
+
+  <p>
+    <a class="btn" href="/articles/2012/smacss.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
+  <header>
+    <a href="/articles/2012/git-translate-flow.html">
+      <h1>Git:번역 Workflow</h1>
+    </a>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Feb 02 2012</span>
+ | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#번역">번역</a>, <a href="/site/tagmap.html#workflow">Workflow</a> | <span><a href="/articles/2012/git-translate-flow.html#disqus_thread" data-disqus-identifier="/articles/2012/git-translate-flow.html"></a></span>
+  </footer>
+<p>Git으로 번역한다는 것은 아마도 CCL을 따르는 영문 자료를 우리말로 번역하는 것을 의미할 것이다. Pro Git 번역도 그랬다. Pro Git을 번역하면서 정리한 Workflow를 소개한다. 다른 번역 프로젝트에 도움을 줄 수 있으면 좋겠다.</p>
+
+<p><img src="/articles/2012/translation-flow/translation-flow.png" alt="image" title="" /></p>
+
+  <p>
+    <a class="btn" href="/articles/2012/git-translate-flow.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
   <header>
     <a href="/articles/2012/optimize-browser-rendering.html">
       <h1>Optimize browser rendering</h1>
@@ -162,7 +198,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Jan 14 2012</span>
- | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#remote tracking branch">Remote Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> | <span><a href="/articles/2012/git-branch-a-v.html#disqus_thread" data-disqus-identifier="/articles/2012/git-branch-a-v.html"></a></span>
+ | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#tracking branch">Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> | <span><a href="/articles/2012/git-branch-a-v.html#disqus_thread" data-disqus-identifier="/articles/2012/git-branch-a-v.html"></a></span>
   </footer>
 <p>Git을 사용하면서 규모가 작은 프로젝트를 많이 만들게 됐다. 예제를 만들거나, 간단한 도구를 만들거나 버전관리가 필요하면 언제든지 Git 저장소를 만들어 사용한다. 몇 일만 잊었다가 다시 돌아오면 어디까지 작업했는지 헷갈린다. 이 때 <code>git branch -a -v</code> 명령은 현 저장소 상태를 알아 보는데 좋다.</p>
 
@@ -239,64 +275,17 @@
     <a class="btn" href="/articles/2011/git-diff.html">Read more &raquo;</a>
   </p>
 </article>
-<article class="post">
-  <header>
-    <a href="/articles/2011/github-flow.html">
-      <h1>GitHub Flow</h1>
-    </a>
-  </header>
-  <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 22 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#github">github</a>, <a href="/site/tagmap.html#scott chacon">scott chacon</a> | <span><a href="/articles/2011/github-flow.html#disqus_thread" data-disqus-identifier="/articles/2011/github-flow.html"></a></span>
-  </footer>
-<p><em>이 글은 GitHub의 CIO인 <a href="https://github.com/schacon">Scott Chacon</a>님의 <a href="http://scottchacon.com/2011/08/31/github-flow.html">github-flow</a>를 정리한 글입니다. Chacon님은 [git-flow][]가 정리한 것처럼 github를 개발하는 데 사용하는 flow를 정했습니다.</em></p>
-
-<p>Chacon님은 git-flow도 좋지만 Github는 명확히 Release라고 부를 만한 시점이 없어서 git-flow를 사용하지 않는다고 한다. 그 외 세세한 차이점도 거론하긴 했지만 생략한다. Release가 분명하지 않은 경우엔 확실히 git-flow를 적용하기 어렵다.</p>
-
-<p><img src="/articles/2011/github-flow/contact-github.png" alt="love github" title="" /></p>
-
-<p>이 글은 그냥 요약한 것이다. 그림이 첨부된 자세한 설명은 <a href="http://scottchacon.com/2011/08/31/github-flow.html">원문</a>를 참고하라.</p>
-
-  <p>
-    <a class="btn" href="/articles/2011/github-flow.html">Read more &raquo;</a>
-  </p>
-</article>
-<article class="post">
-  <header>
-    <a href="/articles/2011/kinde-fire.html">
-      <h1>심심한 Kindle Fire</h1>
-    </a>
-  </header>
-  <footer>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">Dec 18 2011</span>
- | <a href="/site/tagmap.html#kindle">kindle</a>, <a href="/site/tagmap.html#kindle-fire">kindle-fire</a>, <a href="/site/tagmap.html#review">review</a> | <span><a href="/articles/2011/kinde-fire.html#disqus_thread" data-disqus-identifier="/articles/2011/kinde-fire.html"></a></span>
-  </footer>
-<p>Kindle Fire가 도착했는데 아무것도 할 수 있는 게 없습니다.</p>
-
-<p>Amazon을 전혀 안 쓰는 제가 Kindle Fire를 산 것은 'ebook 읽기 좋은 싼 Tablet이 필요하다.'라는 생각 때문이었습니다. 가카가 내곡동을 사신 것처럼 순수했습니다. 가격이 착했고 ebook 읽기에 나쁘지 않을 것으로 생각했습니다. 그리고 사실 넥서스원에서 사용하는 앱은 쓸 수 있을 거라고 기대했습니다. Amazon이니까요.</p>
-
-<p>인터넷에서 워낙 욕을 많이 먹어서 예상은 하고 있었지만 이렇게나 할 수 있는 게 없을 지는 몰랐습니다. Amazon이 아니면 할 수 있는게 없습니다.</p>
-
-<p><img src="/articles/2011/kindle-fire/kindle-fire-price.png" alt="Kindle Fire Price" title="" /></p>
-
-<p>가지고 있던 Ipad2를 팔고 Kindle를 샀습니다. Ipad2로 고작 책밖에 읽지 않더군요. Dropbox도 Daum 클라우드도 잘되고, 영화도 보기 좋고, 음악도 듣기 좋고, 무려 32G나 되는 모델을 샀는데 OS 포함해서 3G도 못 채우고 ebook만 봤습니다….</p>
-
-  <p>
-    <a class="btn" href="/articles/2011/kinde-fire.html">Read more &raquo;</a>
-  </p>
-</article>
 <p>
   <a class="btn info right" href="/site/archive.html">go to Archive &raquo;</a>
 </p>
 
-      </section>
-      <aside class="sidebar">
-        
-      </aside>
-      <footer>
-        <span>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></span>
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
       </footer>
     </div>
 <!--DISQUS-->
