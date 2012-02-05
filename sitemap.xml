@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.com</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/atelier.html</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -22,22 +22,22 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/sitemap.xml</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/about.html</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/tagmap.html</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/archive.html</loc>
-    <lastmod>2012-02-05T07:00:15Z</lastmod>
+    <lastmod>2012-02-05T07:28:17Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -171,12 +171,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
