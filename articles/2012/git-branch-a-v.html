@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Jan 14 2012</span>
- | <a href="/site/tagmap.html#git">Git</a>, <a href="/site/tagmap.html#todo">Todo</a>, <a href="/site/tagmap.html#tracking branch">Tracking Branch</a>, <a href="/site/tagmap.html#branch">Branch</a> | <span><a href="/articles/2012/git-branch-a-v.html#disqus_thread" data-disqus-identifier="/articles/2012/git-branch-a-v.html"></a></span>
+ | <a href="/site/tagmap.html#git" class="btn btn-tag btn-info">Git</a> <a href="/site/tagmap.html#todo" class="btn btn-tag btn-info">Todo</a> <a href="/site/tagmap.html#tracking branch" class="btn btn-tag btn-info">Tracking Branch</a> <a href="/site/tagmap.html#branch" class="btn btn-tag btn-info">Branch</a> | <span><a href="/articles/2012/git-branch-a-v.html#disqus_thread" data-disqus-identifier="/articles/2012/git-branch-a-v.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -189,24 +190,31 @@ remotes/origin/ship              3f129b5 Fix anchor
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Dec 10 2011</span>
-&raquo;      <a href="/articles/2011/git-merge.html">Git:merge</a>
-    </li>
-    <li>
-      <span>Jan 21 2012</span>
-&raquo;      <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
-    </li>
-    <li>
-      <span>Feb 02 2012</span>
-&raquo;      <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Dec 10 2011</span>
+&raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
+      </li>
+      <li>
+        <span>Feb 10 2012</span>
+&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
+      </li>
+      <li>
+        <span>Jan 21 2012</span>
+&raquo;        <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+      </li>
+      <li>
+        <span>Feb 02 2012</span>
+&raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-branch-a-v.html';
@@ -216,7 +224,11 @@ remotes/origin/ship              3f129b5 Fix anchor
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-branch-a-v.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/git-branch-a-v.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

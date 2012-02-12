@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Oct 06 2011</span>
- | <a href="/site/tagmap.html#javascript">JavaScript</a>, <a href="/site/tagmap.html#javascript standard">JavaScript Standard</a>, <a href="/site/tagmap.html#ecmascript">ECMAScript</a>, <a href="/site/tagmap.html#es5">ES5</a>, <a href="/site/tagmap.html#john resig">John Resig</a> | <span><a href="/articles/2011/1317873491.html#disqus_thread" data-disqus-identifier="/articles/2011/1317873491.html"></a></span>
+ | <a href="/site/tagmap.html#javascript" class="btn btn-tag btn-info">JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="btn btn-tag btn-info">JavaScript Standard</a> <a href="/site/tagmap.html#ecmascript" class="btn btn-tag btn-info">ECMAScript</a> <a href="/site/tagmap.html#es5" class="btn btn-tag btn-info">ES5</a> <a href="/site/tagmap.html#john resig" class="btn btn-tag btn-info">John Resig</a> | <span><a href="/articles/2011/1317873491.html#disqus_thread" data-disqus-identifier="/articles/2011/1317873491.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -419,52 +420,55 @@ print( date.toISOString() );
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Sep 27 2011</span>
-&raquo;      <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
-    </li>
-    <li>
-      <span>Sep 27 2011</span>
-&raquo;      <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
-    </li>
-    <li>
-      <span>Sep 28 2011</span>
-&raquo;      <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-    </li>
-    <li>
-      <span>Sep 29 2011</span>
-&raquo;      <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
-    </li>
-    <li>
-      <span>Sep 30 2011</span>
-&raquo;      <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-    </li>
-    <li>
-      <span>Sep 30 2011</span>
-&raquo;      <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-    </li>
-    <li>
-      <span>Oct 04 2011</span>
-&raquo;      <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-    </li>
-    <li>
-      <span>Oct 05 2011</span>
-&raquo;      <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
-    </li>
-    <li>
-      <span>Oct 06 2011</span>
-&raquo;      <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-    </li>
-    <li>
-      <span>Oct 22 2011</span>
-&raquo;      <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
+      </li>
+      <li>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+      </li>
+      <li>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+      </li>
+      <li>
+        <span>Sep 29 2011</span>
+&raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+      </li>
+      <li>
+        <span>Oct 05 2011</span>
+&raquo;        <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/1317873491.html';
@@ -474,7 +478,11 @@ print( date.toISOString() );
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317873491.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/1317873491.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

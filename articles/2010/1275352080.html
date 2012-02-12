@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
  | <span property="dc:created">Jun 01 2010</span>
- | <a href="/site/tagmap.html#cocoa">Cocoa</a>, <a href="/site/tagmap.html#iphone">iPhone</a>, <a href="/site/tagmap.html#debug">Debug</a>, <a href="/site/tagmap.html#test">test</a> | <span><a href="/articles/2010/1275352080.html#disqus_thread" data-disqus-identifier="/articles/2010/1275352080.html"></a></span>
+ | <a href="/site/tagmap.html#cocoa" class="btn btn-tag btn-info">Cocoa</a> <a href="/site/tagmap.html#iphone" class="btn btn-tag btn-info">iPhone</a> <a href="/site/tagmap.html#debug" class="btn btn-tag btn-info">Debug</a> <a href="/site/tagmap.html#test" class="btn btn-tag btn-info">test</a> | <span><a href="/articles/2010/1275352080.html#disqus_thread" data-disqus-identifier="/articles/2010/1275352080.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -131,32 +132,35 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Feb 05 2010</span>
-&raquo;      <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
-    </li>
-    <li>
-      <span>Apr 20 2010</span>
-&raquo;      <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
-    </li>
-    <li>
-      <span>May 04 2010</span>
-&raquo;      <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
-    </li>
-    <li>
-      <span>May 31 2010</span>
-&raquo;      <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
-    </li>
-    <li>
-      <span>Jul 08 2010</span>
-&raquo;      <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Feb 05 2010</span>
+&raquo;        <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
+      </li>
+      <li>
+        <span>May 04 2010</span>
+&raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+      </li>
+      <li>
+        <span>May 31 2010</span>
+&raquo;        <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
+      </li>
+      <li>
+        <span>Jul 08 2010</span>
+&raquo;        <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2010/1275352080.html';
@@ -166,7 +170,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1275352080.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1275352080.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

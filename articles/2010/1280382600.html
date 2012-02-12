@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Jul 29 2010</span>
- | <a href="/site/tagmap.html#java">Java</a>, <a href="/site/tagmap.html#spring">Spring</a> | <span><a href="/articles/2010/1280382600.html#disqus_thread" data-disqus-identifier="/articles/2010/1280382600.html"></a></span>
+ | <a href="/site/tagmap.html#java" class="btn btn-tag btn-info">Java</a> <a href="/site/tagmap.html#spring" class="btn btn-tag btn-info">Spring</a> | <span><a href="/articles/2010/1280382600.html#disqus_thread" data-disqus-identifier="/articles/2010/1280382600.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -165,76 +166,83 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Jan 14 2010</span>
-&raquo;      <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-    </li>
-    <li>
-      <span>Jan 17 2010</span>
-&raquo;      <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
-    </li>
-    <li>
-      <span>Apr 19 2010</span>
-&raquo;      <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
-    </li>
-    <li>
-      <span>Apr 19 2010</span>
-&raquo;      <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-    </li>
-    <li>
-      <span>Apr 20 2010</span>
-&raquo;      <a href="/articles/2010/1271743080.html">Spring Finance</a>
-    </li>
-    <li>
-      <span>Apr 27 2010</span>
-&raquo;      <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-    </li>
-    <li>
-      <span>May 04 2010</span>
-&raquo;      <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
-    </li>
-    <li>
-      <span>May 11 2010</span>
-&raquo;      <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-    </li>
-    <li>
-      <span>Jan 02 2009</span>
-&raquo;      <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
-    </li>
-    <li>
-      <span>Apr 03 2009</span>
-&raquo;      <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
-    </li>
-    <li>
-      <span>Sep 20 2009</span>
-&raquo;      <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-    </li>
-    <li>
-      <span>Sep 20 2009</span>
-&raquo;      <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-    </li>
-    <li>
-      <span>Sep 23 2009</span>
-&raquo;      <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-    </li>
-    <li>
-      <span>Nov 10 2009</span>
-&raquo;      <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
-    </li>
-    <li>
-      <span>Nov 10 2009</span>
-&raquo;      <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-    </li>
-    <li>
-      <span>Dec 27 2009</span>
-&raquo;      <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Aug 19 2008</span>
+&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
+      </li>
+      <li>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+      </li>
+      <li>
+        <span>Apr 03 2009</span>
+&raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Dec 27 2009</span>
+&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+      </li>
+      <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
+        <span>Jan 17 2010</span>
+&raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
+      </li>
+      <li>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+      </li>
+      <li>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+      </li>
+      <li>
+        <span>Apr 27 2010</span>
+&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+      </li>
+      <li>
+        <span>May 04 2010</span>
+&raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+      </li>
+      <li>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2010/1280382600.html';
@@ -244,7 +252,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1280382600.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1280382600.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

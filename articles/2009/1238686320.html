@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Apr 02 2009</span>
- | <a href="/site/tagmap.html#독서">독서</a>, <a href="/site/tagmap.html#번갈아읽기">번갈아읽기</a>, <a href="/site/tagmap.html#책읽기">책읽기</a> | <span><a href="/articles/2009/1238686320.html#disqus_thread" data-disqus-identifier="/articles/2009/1238686320.html"></a></span>
+ | <a href="/site/tagmap.html#독서" class="btn btn-tag btn-info">독서</a> <a href="/site/tagmap.html#번갈아읽기" class="btn btn-tag btn-info">번갈아읽기</a> <a href="/site/tagmap.html#책읽기" class="btn btn-tag btn-info">책읽기</a> | <span><a href="/articles/2009/1238686320.html#disqus_thread" data-disqus-identifier="/articles/2009/1238686320.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -138,7 +139,8 @@
 </article>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2009/1238686320.html';
@@ -148,7 +150,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1238686320.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2009/1238686320.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

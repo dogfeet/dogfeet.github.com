@@ -2,13 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.com</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/atelier.html</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/archive.html</loc>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-global-ignore.html</loc>
+    <lastmod>2012-02-09T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/ladybucks.html</loc>
+    <lastmod>2012-02-08T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/smacss.html</loc>
@@ -22,22 +37,17 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/sitemap.xml</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/about.html</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/tagmap.html</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/archive.html</loc>
-    <lastmod>2012-02-05T07:28:17Z</lastmod>
+    <lastmod>2012-02-12T12:52:07Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -111,12 +121,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -191,7 +201,7 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -201,7 +211,7 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -216,12 +226,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317086700.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317088260.html</loc>
     <lastmod>2011-09-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317088260.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317086700.html</loc>
     <lastmod>2011-09-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -321,22 +331,22 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271748360.html</loc>
-    <lastmod>2010-04-20T00:00:00Z</lastmod>
-    <changefreq>never</changefreq>
-  </url>
-  <url>
     <loc>http://dogfeet.github.com/articles/2010/1271743080.html</loc>
     <lastmod>2010-04-20T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271653140.html</loc>
-    <lastmod>2010-04-19T00:00:00Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2010/1271748360.html</loc>
+    <lastmod>2010-04-20T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2010/1271648700.html</loc>
+    <lastmod>2010-04-19T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2010/1271653140.html</loc>
     <lastmod>2010-04-19T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -381,12 +391,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1257832500.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1257843480.html</loc>
     <lastmod>2009-11-10T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1257843480.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1257832500.html</loc>
     <lastmod>2009-11-10T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -463,6 +473,26 @@
   <url>
     <loc>http://dogfeet.github.com/articles/2009/1230888060.html</loc>
     <lastmod>2009-01-02T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2008/1225019880.html</loc>
+    <lastmod>2008-10-26T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2008/1220695860.html</loc>
+    <lastmod>2008-09-06T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2008/1219754880.html</loc>
+    <lastmod>2008-08-26T00:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2008/1219110060.html</loc>
+    <lastmod>2008-08-19T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
 </urlset>

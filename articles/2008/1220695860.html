@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - Enum을 JSP 페이지에 노출 시키기</title>
+    <meta name="description" content="개요" />
+    <meta name="keywords" content="Enum,Jsp" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/vendor/prettify.js"></script>
+    <script src="/vendor/lang.min.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <section class="content span10">
+          <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post" class="undefined" typeof="sioc:post" about="/articles/2008/1220695860.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Enum을 JSP 페이지에 노출 시키기</h1>
+  </header>
+  <footer>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">Sep 06 2008</span>
+ | <a href="/site/tagmap.html#enum" class="btn btn-tag btn-info">Enum</a> <a href="/site/tagmap.html#jsp" class="btn btn-tag btn-info">Jsp</a> | <span><a href="/articles/2008/1220695860.html#disqus_thread" data-disqus-identifier="/articles/2008/1220695860.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2008/1220695860.html" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2008/1220695860.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2008/1220695860.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <h2>개요</h2>
+
+<p>scriptlet은 독이다. scriptlet을 잘쓰고 있는 지인에게 ‘scriptlet은 독이이야’라고 말했다가 미움받았다. 어쨌든 scriptlet을 안쓰고 jsp짜려니까 좀 골때려지는 부분들도 있다. 먼가 방법이 있을까 찾아보니 Spring Interceptor를 이용해서 Enum을 request 스콥에 노출시켜주는 글을 찾았다.</p>
+
+<p>request 스콥에 노출시키는 방법은 다음과 같은 방법이 있을 수 있다.</p>
+
+<ul>
+<li>ServletFilter</li>
+<li>Spring Interceptor</li>
+<li>Controller</li>
+</ul>
+
+<p>하지만 Enum을 요청마다 매번 request에 넣어주는게 좀 후져 보였다. 저장소를 application 스콥으로 잡고 WAS가 기동할 때 넣어줄 수 있도록 ContextListener로 구현하기로 했다.</p>
+
+<h2>예제</h2>
+
+<p>다음과 같은 enum 클래스가 있다고 하면:</p>
+
+<pre class="prettyprint"><code>package kr.pismute
+
+public enum Week {
+  MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+} 
+</code></pre>
+
+<p>jsp에서 다음과 같이 사용할 수 있다. 사실 applicationSope이란 내장객체라는게 참 촌스럽다. 그냥 application으로 하지 못할 이유라도 있었는지…</p>
+
+<pre class="prettyprint"><code>${applicationScope.week.MONDAY}
+</code></pre>
+
+<p>Week라는 클래스 이름은 자바 네이밍 컨벤션에 따라 week으로 바꿔서 넣는다. GoldenWeek였다면 goldenWeek로 바뀐다.</p>
+
+<p>이제 web.xml에 이 ContextListner를 넣는다:</p>
+
+<pre class="prettyprint"><code>&lt;context-param&gt;
+    &lt;param-name&gt;enumServletContextConfig&lt;/param-name&gt;
+    &lt;param-value&gt;kr.pismute.Week&lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;listener&gt;
+    &lt;listener-class&gt;kr.pismute.EnumContextListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</code></pre>
+
+<p>Enum에 빈을 추가해서 사용할 수도 있다. Week에 다음과 같이 추가하고:</p>
+
+<pre class="prettyprint"><code>private Integer day;
+
+  public Integer getDay(){
+    return day;
+  }
+</code></pre>
+
+<p>jsp에서 다음과 같이 day 프로퍼티를 사용할 수 있다.</p>
+
+<pre class="prettyprint"><code>${applicationScope.week.MONDAY.day}
+</code></pre>
+
+<h2>Code</h2>
+
+<pre class="prettyprint"><code>pacakge kr.pismute
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+/**
+ * JSP에서 ENUM 클래스에 접근할 수 있도록 ServletContext에 넣어줍니다.
+ * 
+ * @author pismute
+ *
+ */
+public class EnumContextListener implements ServletContextListener {
+    public void contextDestroyed(ServletContextEvent sce) {
+    }
+
+    public void contextInitialized(ServletContextEvent sce) {
+        String param = sce.getServletContext().getInitParameter("enumServletContextConfig");
+        String[] params = param.split(",");
+
+        for(String className : params) {
+            className = className.trim();
+            this.loadEnum(className, sce.getServletContext());
+        }
+    }
+
+    /**
+     * Enum 인스턴스를 찾아서 Map&lt;name, Enum&lt;?&gt;&gt; 맵으로 변환하고
+     * ServletContext에 넣습니다.
+     * 
+     * @param className
+     */
+    @SuppressWarnings("unchecked")
+    private void loadEnum(String className, ServletContext context) {
+        Map&lt;String, Enum&lt;?&gt;&gt; ret = null;
+
+        try {
+            Class&lt;Enum&gt; clazz = (Class&lt;Enum&gt;)Class.forName(className);
+            Enum[] enums = clazz.getEnumConstants();
+
+            ret = new HashMap&lt;String, Enum&lt;?&gt;&gt;(enums.length);
+            for(Enum e : enums) {
+                ret.put(e.name(), e);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        ret = Collections.unmodifiableMap(ret);
+        context.setAttribute(this.getAlias(className), ret);
+    }
+
+    /**
+     * 클래스 첫 문자를 소문자로 바꿔서 alias를 만듭니다.
+     * 
+     * @param className
+     * @return
+     */
+    private String getAlias(String className) {
+        String[] token = className.split("\\.");
+        String alias = token[token.length - 1].trim();
+        String initial = alias.substring(0, 1);
+        String suffix = alias.substring(1);
+
+        initial = initial.toLowerCase();
+        alias = initial + suffix;
+
+        return alias;
+    }
+}
+</code></pre>
+  </div>
+</article>
+<section id="comments">
+  <h3>Feedback</h3>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2008/1220695860.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2008/1220695860.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2008/1220695860.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
+
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>

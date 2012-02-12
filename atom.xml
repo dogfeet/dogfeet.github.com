@@ -3,7 +3,7 @@
   <title>개발새발</title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-02-05T07:28:17Z</updated>
+  <updated>2012-02-12T12:52:07Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Changwoo Park</name>
@@ -13,6 +13,87 @@
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
+  <entry>
+    <title>Git: Global Ignore</title>
+    <link href="http://dogfeet.github.com/articles/2012/git-global-ignore.html" />
+    <updated>2012-02-09T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-global-ignore.html</id>
+    <content type="html">
+<![CDATA[
+<p>GitHub에서 관리하는 <code>.gitignore</code> 패턴 템플릿이 있어 소개한다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/git-global-ignore/ignorelo.png" alt="무시로" title="" /></p>
+
+<h2>gitignore</h2>
+
+<p>파일을 무시하는 패턴을 설정하는 방법은 세 가지이다:</p>
+
+<ol>
+<li><code>.git/info/exclude</code>는 해당 저장소에만 적용되고 전송되지 않는다. 그러니까 Clone되지 않고 Push할 수 없다.</li>
+<li><code>.gitignore</code>는 해당 저장소에만 적용되지만 전송된다.</li>
+<li><code>core.exlcudesfile</code> 설정</li>
+</ol>
+
+<p>파일 형식은 모두 같고, 세 파일은 있는 대로 동시에 적용될 수 있다. 우선순위는 나열한 순서대로다.</p>
+
+<p><code>core.exlcudesfile</code> 설정은 다음과 같다:</p>
+
+<pre class="prettyprint"><code>$ git config --global core.excludesfile ~/.global_ignore
+</code></pre>
+
+<h2>gitignore 프로젝트</h2>
+
+<p>Github는 친절하게도 '언어 및 환경'마다 권장 gitignore 파일 템플릿을 모아 두었다. GitHub의 <a href="https://github.com/github/gitignore">gitignore 저장소</a>에 가서 Clone하고 필요한 템플릿을 사용해보자.</p>
+
+<p>저장소에는 루트 디렉토리에 있는 것과 <code>Global/</code> 디렉토리에 있는 것으로 나누어져 있는데 Global/ 디렉토리에 있는 것은 'OS-specific, editor-specific'인 것이다.</p>
+
+<p>예를 들어 자바라면 다음과 같이 한다:</p>
+
+<pre class="prettyprint"><code>$ cat Maven.gitignore &gt;&gt; ~/.global_ignore
+$ cat Java.gitignore &gt;&gt; ~/.global_ignore
+$ cat Global/Eclipse.gitignore &gt;&gt; ~/.global_ignore
+$ cat Global/vim.gitignore &gt;&gt; ~/.global_ignore
+$ cat Global/OSX.gitignore &gt;&gt; ~/.global_ignore
+$ git config --global core.excludesfile ~/.global_ignore
+</code></pre>]]>
+    </content>
+  </entry>
+  <entry>
+    <title>Ladybucks: A Chrome extension for Starbucks WI-FI</title>
+    <link href="http://dogfeet.github.com/articles/2012/ladybucks.html" />
+    <updated>2012-02-08T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/ladybucks.html</id>
+    <content type="html">
+<![CDATA[
+<p>Ladybucks는 Chrome extension으로 스타벅스에서 WI-FI를 편하게 사용하기 위해 만들었다. 단순히 스타벅스에서 요구하는 정보를 저장했다가 해당 페이지가 뜨면 정해진 페이지 흐름대로 자동으로 입력하고 처리해준다.</p>
+
+<p>이 프로그램은 실제로 한국 Starbucks 매장에서 사용할 수 있지만 JavaScript Example로 만들고 싶었다. 그래서 <code>Chrome Extension</code>에서 <code>BootStrap</code>과 <code>Backbone.js</code>를 사용하는 예제로 참고할 수 있도록 만들었다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/ladybucks/intro.png" alt="logo" title="" /></p>
+
+<p>Ladybucks는 원래 <a href="https://twitter.com/#!/lethee">@lethee</a>가 Safari 버전으로 만들었고 <a href="https://twitter.com/#!/lnyarl">@lnyarl</a>가 Chrome 버전으로 포팅하였다. 그걸 <a href="http://uniquenoun.tumblr.com">@uniquenoun</a>이 디자인하고 <a href="https://twitter.com/#!/pismute">@pismute</a>가 다시 패키징했다.</p>
+
+<h2>설치하기</h2>
+
+<p>소스는 <a href="https://github.com/pismute/ladybucks">저장소</a>에서 확인할 수 있고 <a href="https://pismute.github.com/ladybucks/ladybucks.cpk">ladybucks.cpk</a>를 내려받는다.</p>
+
+<p>패키지 파일을 Chrome에서 열면 설치할 수 있다.</p>
+
+<h3>사용하기</h3>
+
+<p>'tools/extensions' 메뉴를 클릭해서 extensions 페이지(<code>chrome://settings/extensions</code>)를 열고 Ladybucks Extension의 options을 클릭해서 option 페이지를 연다.</p>
+
+<p><img src="/articles/2012/ladybucks/extensions.png" alt="extentions" title="" /></p>
+
+<p>이 페이지에서 Starbucks Wi-Fi 이용 시 사용할 신상정보(이름, 주민번호)를 입력한다.</p>
+
+<p><img src="/articles/2012/ladybucks/option.png" alt="option" title="" /></p>
+
+<p>그리고 Starbucks에서 Wi-Fi 접속 페이지가 열리면 자동으로 신상정보를 입력하고 클릭해서 Wi-Fi에 연결해 준다.</p>
+
+<p><img src="/articles/2012/ladybucks/success.png" alt="success" title="" /></p>]]>
+    </content>
+  </entry>
   <entry>
     <title>SMACSS: Brief Notes - Part 1</title>
     <link href="http://dogfeet.github.com/articles/2012/smacss.html" />
@@ -1009,225 +1090,6 @@ remotes/origin/ship              3f129b5 Fix anchor
 <p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바래요.</p>
 
 <p><img src="/articles/2011/progit/git-.png" alt="힘내" title="" /></p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>Git:conflict</title>
-    <link href="http://dogfeet.github.com/articles/2012/git-conflict.html" />
-    <updated>2012-01-01T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/git-conflict.html</id>
-    <content type="html">
-<![CDATA[
-<p>충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 <code>git add</code> 명령으로 Staging Area에 추가하고 나서 <code>git commit</code>으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다.</p>
-
-<p>Git 명령어를 사용하다 보면 'ours', 'theirs'라는 옵션을 자주 보게 된다. 이 옵션은 충돌을 위해 만들어진 옵션이다. 이 글은 이 옵션에 대해 설명한다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/git-conflict/creation-of-adam.jpg" alt="creation of adam" title="" /></p>
-
-<p>새해 복 많이 받으세요!!</p>
-
-<h2>Config</h2>
-
-<p>기본적으로 <code>git diff</code>와 같은 형식으로 보여주지만 충돌 결과를 보여주는 스타일을 변경할 수 있다:</p>
-
-<pre class="prettyprint"><code>$ git config merge.conflictstyle diff3
-</code></pre>
-
-<h2>Checkout</h2>
-
-<p>Checkout 명령에 <code>--ours</code>와 <code>--theirs</code> 옵션이 있다. 이 옵션은 충돌 났을 때 사용한다. <code>ours</code> 브랜치에 conflict 파일은 다음과 같다고 하자:</p>
-
-<pre class="prettyprint"><code>$ cat conflict
-ours
-</code></pre>
-
-<p><code>theirs</code> 브랜치의 conflict 파일은 다음과 같다:</p>
-
-<pre class="prettyprint"><code>$ cat conflict
-theirs
-</code></pre>
-
-<p><code>theirs</code> 브랜치를 <code>ours</code> 브랜치에 Merge하면 충돌 난다:</p>
-
-<pre class="prettyprint"><code>$ git merge theirs
-Auto-merging conflict
-CONFLICT (content): Merge conflict in conflict
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
-
-<p>diff 명령으로 어디서 충돌 났는지 확인한다:</p>
-
-<pre class="prettyprint"><code>$ git diff
-diff --cc conflict
-index 1b9074b,f853c8d..0000000
---- a/conflict
-+++ b/conflict
-@@@ -1,1 -1,1 +1,5 @@@
-++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
- +ours
-++=======
-+ theirs
-++&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs
-</code></pre>
-
-<p>편집기로 conflict 파일을 손으로 수정해도 되지만 그냥 ours에 있는 파일을 사용할 수 있다:</p>
-
-<pre class="prettyprint"><code>$ git checkout --ours -- conflict
-</code></pre>
-
-<p>theirs의 파일을 선택할 수도 있다:</p>
-
-<pre class="prettyprint"><code>$ git checkout --theirs -- conflict
-</code></pre>
-
-<p>충돌을 해결했으면 <code>git add</code>로 추가하고 커밋한다.</p>
-
-<h2>Diff</h2>
-
-<p><code>git diff</code> 명령에도 <code>--ours</code>, <code>--theirs</code> 옵션이 있다. 이 옵션을 주면 <code>git diff</code> 명령은 다른 색으로 표시해준다. 예를 들어 다음과 같이 실행한다.</p>
-
-<pre class="prettyprint"><code>$ git diff --ours --color=auto
-</code></pre>
-
-<p>그러면 ours 브랜치의 내용만 다른 색으로 표시해준다. <code>--theirs</code>도 같은 방법으로 확인할 수 있다.</p>
-
-<p>diff 명령은 <code>--base</code> 옵션이 있어서 이 옵션을 주면 두 브랜치의 base 커밋에 있는 내용도 같이 보여준다:</p>
-
-<pre class="prettyprint"><code># git diff --base
-</code></pre>
-
-<h2>Merge</h2>
-
-<p>Merge할 때 아예 어느 것을 선택할지 정해줄 수 있다. ours 브랜치의 것을 선택하는 merge를 해보자.</p>
-
-<pre class="prettyprint"><code>$ git merge -s ours theirs
-Merge made by ours.
-</code></pre>
-
-<p>그리고 파일 내용을 보면 ours 브랜치의 파일로 Merge 돼 있다.</p>
-
-<pre class="prettyprint"><code>$ cat conflict
-ours
-</code></pre>
-
-<p>theirs를 선택하면 충돌 내지 않고 theirs 브랜치의 파일로 Merge된다.</p>
-
-<h2>Attribute</h2>
-
-<p>Attribute로 Blob 패턴마다 ours를 사용할지 their를 사용할지 설정할 수 있다.</p>
-
-<p>Git Attribute는 Blob 패턴마다 다른 설정을 하는 것을 말하며 <code>.gitattributes</code> 파일을 만들고 거기에 작성하면 된다. </p>
-
-<p>이 설정은 브랜치의 목적이 환경일 때 유용하다. 예를 들어 prod, test, dev라는 브랜치를 만들어 사용한다고 가정하자. prod는 실제 운영환경을 목적으로 설정돼 있고 test는 CI 등 테스트 자동화를 위해 만들었고, dev는 로컬 개발 환경을 위한 설정을 담고 있다고 하자. 그리고 환경정보는 <code>src/main/resources/env.properties</code>에 기술한다고 가정하자. 실제로 프로젝트를 해본 결과 prod, test, dev 프로파일을 만들고 개발하는 것이 <code>Maven + Spring</code> 환경에서는 꽤 유용했다. 분명히 환경을 위한 브랜치가 필요할 때가 올 것이다. </p>
-
-<p><code>.gitattributes</code> 파일을 프로젝트 루트 디렉토리에 다음과 같이 만들고:</p>
-
-<pre class="prettyprint"><code>src/main/resoruces/env.properties merge=ours
-</code></pre>
-
-<p><code>git merge</code> 명령을 실행하면 이 파일은 항상 ours의 파일로 Merge한다. 그래서 환경 설정이 Merge될 걱정 없이 사용할 수 있다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title>Git:diff</title>
-    <link href="http://dogfeet.github.com/articles/2011/git-diff.html" />
-    <updated>2011-12-24T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2011/git-diff.html</id>
-    <content type="html">
-<![CDATA[
-<p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
-
-<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
-
-<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
-
-<h2>Unified Format</h2>
-
-<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
-
-<h2>git diff</h2>
-
-<p>diff를 잘 활용하자.</p>
-
-<h3>Modified, Staged, Unmodified 사이 비교</h3>
-
-<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
-
-<pre class="prettyprint"><code>git diff
-</code></pre>
-
-<p>특정 파일만 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff my-file
-</code></pre>
-
-<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged/--cached
-</code></pre>
-
-<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff --staged my-file
-</code></pre>
-
-<h3>Revision 비교</h3>
-
-<p>리비전 두 개를 골라 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9
-</code></pre>
-
-<p>그중 파일 하나만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
-</code></pre>
-
-<p>다음처럼도 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
-</code></pre>
-
-<h3>Modified, Staged와 Revision 비교</h3>
-
-<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18
-</code></pre>
-
-<p>특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18 my-file
-</code></pre>
-
-<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18
-</code></pre>
-
-<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
-</code></pre>
-
-<h3>파일 이름만 보기</h3>
-
-<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
-
-<pre class="prettyprint"><code>git show --name-only HEAD~4
-</code></pre>
-
-<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
-
-<pre class="prettyprint"><code>git diff --name-only HEAD~4
-</code></pre>
-
-<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
-
-<pre class="prettyprint"><code>git log --name-only
-</code></pre>]]>
     </content>
   </entry>
 </feed>

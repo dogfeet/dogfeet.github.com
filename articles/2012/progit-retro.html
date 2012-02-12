@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a>, <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Jan 15 2012</span>
- | <a href="/site/tagmap.html#회고">회고</a>, <a href="/site/tagmap.html#retrospection">retrospection</a>, <a href="/site/tagmap.html#progit">progit</a>, <a href="/site/tagmap.html#번역">번역</a> | <span><a href="/articles/2012/progit-retro.html#disqus_thread" data-disqus-identifier="/articles/2012/progit-retro.html"></a></span>
+ | <a href="/site/tagmap.html#회고" class="btn btn-tag btn-info">회고</a> <a href="/site/tagmap.html#retrospection" class="btn btn-tag btn-info">retrospection</a> <a href="/site/tagmap.html#progit" class="btn btn-tag btn-info">progit</a> <a href="/site/tagmap.html#번역" class="btn btn-tag btn-info">번역</a> | <span><a href="/articles/2012/progit-retro.html#disqus_thread" data-disqus-identifier="/articles/2012/progit-retro.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -216,24 +217,27 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Feb 02 2012</span>
-&raquo;      <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
-    </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
+      </li>
+      <li>
+        <span>Feb 02 2012</span>
+&raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/progit-retro.html';
@@ -243,7 +247,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/progit-retro.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/progit-retro.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Jun 09 2010</span>
- | <a href="/site/tagmap.html#ssma">SSMA</a>, <a href="/site/tagmap.html#groovy">Groovy</a>, <a href="/site/tagmap.html#gsql">gsql</a>, <a href="/site/tagmap.html#oracle">Oracle</a>, <a href="/site/tagmap.html#sqlserver">SQLServer</a> | <span><a href="/articles/2010/1276068720.html#disqus_thread" data-disqus-identifier="/articles/2010/1276068720.html"></a></span>
+ | <a href="/site/tagmap.html#ssma" class="btn btn-tag btn-info">SSMA</a> <a href="/site/tagmap.html#groovy" class="btn btn-tag btn-info">Groovy</a> <a href="/site/tagmap.html#gsql" class="btn btn-tag btn-info">gsql</a> <a href="/site/tagmap.html#oracle" class="btn btn-tag btn-info">Oracle</a> <a href="/site/tagmap.html#sqlserver" class="btn btn-tag btn-info">SQLServer</a> | <span><a href="/articles/2010/1276068720.html#disqus_thread" data-disqus-identifier="/articles/2010/1276068720.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -166,28 +167,35 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>May 11 2010</span>
-&raquo;      <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-    </li>
-    <li>
-      <span>Jan 02 2009</span>
-&raquo;      <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
-    </li>
-    <li>
-      <span>Dec 02 2009</span>
-&raquo;      <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
-    </li>
-    <li>
-      <span>Dec 27 2009</span>
-&raquo;      <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Aug 19 2008</span>
+&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
+      </li>
+      <li>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+      </li>
+      <li>
+        <span>Dec 02 2009</span>
+&raquo;        <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
+      </li>
+      <li>
+        <span>Dec 27 2009</span>
+&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+      </li>
+      <li>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2010/1276068720.html';
@@ -197,7 +205,11 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1276068720.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1276068720.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">

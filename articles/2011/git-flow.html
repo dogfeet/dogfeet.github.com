@@ -29,6 +29,7 @@
 <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/vendor/prettify.js"></script>
     <script src="/vendor/lang.min.js"></script>
@@ -100,7 +101,7 @@
   <footer>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">Dec 09 2011</span>
- | <a href="/site/tagmap.html#git">git</a>, <a href="/site/tagmap.html#git-flow">git-flow</a>, <a href="/site/tagmap.html#workflow">Workflow</a> | <span><a href="/articles/2011/git-flow.html#disqus_thread" data-disqus-identifier="/articles/2011/git-flow.html"></a></span>
+ | <a href="/site/tagmap.html#git" class="btn btn-tag btn-info">git</a> <a href="/site/tagmap.html#git-flow" class="btn btn-tag btn-info">git-flow</a> <a href="/site/tagmap.html#workflow" class="btn btn-tag btn-info">Workflow</a> | <span><a href="/articles/2011/git-flow.html#disqus_thread" data-disqus-identifier="/articles/2011/git-flow.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -302,64 +303,67 @@ git rebase develop
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <ul>
-    <li>
-      <span>Sep 25 2011</span>
-&raquo;      <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-    </li>
-    <li>
-      <span>Oct 12 2011</span>
-&raquo;      <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-    </li>
-    <li>
-      <span>Dec 06 2011</span>
-&raquo;      <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/bash-it.html">Bash-it</a>
-    </li>
-    <li>
-      <span>Dec 24 2011</span>
-&raquo;      <a href="/articles/2011/git-diff.html">Git:diff</a>
-    </li>
-    <li>
-      <span>Dec 01 2011</span>
-&raquo;      <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
-    </li>
-    <li>
-      <span>Dec 17 2011</span>
-&raquo;      <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-    </li>
-    <li>
-      <span>Dec 02 2011</span>
-&raquo;      <a href="/articles/2011/git-refs.html">Git:refs</a>
-    </li>
-    <li>
-      <span>Dec 22 2011</span>
-&raquo;      <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-    </li>
-    <li>
-      <span>Nov 30 2011</span>
-&raquo;      <a href="/articles/2011/progit.html">progit</a>
-    </li>
-    <li>
-      <span>Jan 01 2012</span>
-&raquo;      <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-    </li>
-    <li>
-      <span>Feb 02 2012</span>
-&raquo;      <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
-    </li>
-    <li>
-      <span>Jan 08 2012</span>
-&raquo;      <a href="/articles/2012/progit.html">progit</a>
-    </li>
-  </ul>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Sep 25 2011</span>
+&raquo;        <a href="/articles/2011/1316924580.html">diff::Unified format</a>
+      </li>
+      <li>
+        <span>Oct 12 2011</span>
+&raquo;        <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
+      </li>
+      <li>
+        <span>Dec 06 2011</span>
+&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+      </li>
+      <li>
+        <span>Dec 01 2011</span>
+&raquo;        <a href="/articles/2011/bash-it.html">Bash-it</a>
+      </li>
+      <li>
+        <span>Dec 24 2011</span>
+&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
+      </li>
+      <li>
+        <span>Dec 01 2011</span>
+&raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+      </li>
+      <li>
+        <span>Dec 17 2011</span>
+&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+      </li>
+      <li>
+        <span>Dec 02 2011</span>
+&raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
+      </li>
+      <li>
+        <span>Dec 22 2011</span>
+&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+      </li>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
+      </li>
+      <li>
+        <span>Jan 01 2012</span>
+&raquo;        <a href="/articles/2012/git-conflict.html">Git:conflict</a>
+      </li>
+      <li>
+        <span>Feb 02 2012</span>
+&raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <section id="comments">
   <h3>Feedback</h3>
-<div id="disqus_thread"></div>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-flow.html';
@@ -369,7 +373,11 @@ git rebase develop
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-flow.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/git-flow.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
 
         </section>
         <aside class="sidebar span2">
