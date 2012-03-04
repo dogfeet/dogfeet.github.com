@@ -3,20 +3,134 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-02-28T06:14:41Z</updated>
+  <updated>2012-03-04T11:18:59Z</updated>
   <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Yongjae Choi</name>
-    <email>mage@weaveus.com</email>
-  </author>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
   <author>
+    <name>Yongjae Choi</name>
+    <email>mage@weaveus.com</email>
+  </author>
+  <author>
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
+  <entry>
+    <title><![CDATA[ Git: Remote Tracking Branch vs Tracking Branch ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" />
+    <updated>2012-03-02T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html</id>
+    <content type="html">
+<![CDATA[
+<p>Tracking 브랜치와 Remote Tracking 브랜치는 조금 애매하다. <code>Tracking 브랜치</code> 개념은 잘 이용하지 않기 때문에 돌아서면 잊어버린다. 그래서 정리했다. 구분하고 있지 않아도 Git을 사용하는데 불편할 거라고는 생각하지 않지만, 그래도 궁금하다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg" alt="stalker" title="" /></p>
+
+<p>(절망선생)</p>
+
+<h2>Remote Tracking 브랜치</h2>
+
+<p>Remote Tracking 브랜치는 <code>origin/master</code>와 같은 브랜치를 말한다. 이 브랜치는 origin 저장소에 있는 master 브랜치가 가리키는 커밋을 그대로 가리키는 브랜치이다. 리모트 저장소의 브랜치를 Fetch해 오면 이 브랜치가 업데이트된다.</p>
+
+<p>Remote Tracking 브랜치는 다음과 같은 특징이 있다.</p>
+
+<ul>
+<li>이 브랜치는 사용자가 임의로 수정할 수 없다.</li>
+<li><code>git fetch</code>, <code>git pull</code> 명령으로만 업데이트할 수 있다.</li>
+</ul>
+
+<h2>Tracking 브랜치</h2>
+
+<p>Tracking 브랜치는 Remote Tracking 브랜치(이하 리모트 브랜치)보다 복잡하지만 그렇다고 어려운 것도 아니다.</p>
+
+<p>Tracking 브랜치는 로컬 브랜치이다. 로컬 브랜치 중에서 리모트 브랜치를 Tracking하는 브랜치다.</p>
+
+<p>Tracking 특징 다음과 같다:</p>
+
+<ul>
+<li>이 브랜치는 사용자가 임의로 수정할 수 있다.</li>
+<li><code>git fetch</code>로 정보가 업데이트되지 않는다. <code>git fetch</code>는 단지 리모트 저장소의 브랜치를 Tracking하는 Remote Tracking 브랜치만 만든다.</li>
+</ul>
+
+<p>Tracking 브랜치는 도우미 같은 것으로 생각하면 된다. 몰라도 크게 불편하지 않다.</p>
+
+<h3>Tracking 브랜치 확인</h3>
+
+<p><code>git clone</code> 명령은 리모트 저장소를 Fetch하고 나서 master 브랜치를 만들고 Checkout 해준다. 이때 master 브랜치를 origin/master 브랜치를 Tracking하도록 만든다.</p>
+
+<p><code>git clone</code> 명령으로 저장소를 만들고 <code>git config -l</code> 명령을 실행하면 다음과 같은 설정이 들어가 있다:</p>
+
+<pre class="prettyprint"><code>branch.master.remote=origin
+branch.master.merge=refs/heads/master
+</code></pre>
+
+<h3>Tracking 브랜치 만들기</h3>
+
+<p>Tracking 브랜치는 설정에 이런 정보를 가지고 있다. Tracking 브랜치는 만드는 게 간단하다. 리모트 브랜치에서 브랜치를 만들면 된다.</p>
+
+<pre class="prettyprint"><code>git br tracking origin/master
+git co -b tracking origin/master
+</code></pre>
+
+<p>하지만, 로컬 브랜치에서 만들면 Tracking 브랜치가 되지 않는다:</p>
+
+<pre class="prettyprint"><code>git br tracking master
+git co -b tracking master
+</code></pre>
+
+<p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:</p>
+
+<pre class="prettyprint"><code>git branch --set-upstream master origin/master
+</code></pre>
+
+<h3>쓰임새</h3>
+
+<p>Tracking 브랜치 정보는 로컬 브랜치와 리모트 브랜치 사이의 연결 정보이고 설정에 저장된다. Git은 이 정보를 이용해서 몇 가지 정보를 제공한다.</p>
+
+<h4>git branch -v</h4>
+
+<p>Tracking 브랜치의 경우 리모트 브랜치와 거리가 얼마나 되는지(다른 커밋 개수를) 보여준다:</p>
+
+<pre class="prettyprint"><code>$ git branch -v
+feature/kitchen e054c7e [ahead 1, behind 1] Add sink unit
+* ship            2d45d4c Add test
+</code></pre>
+
+<p><code>[ahead 1]</code>은 feature/kitchen은 origin/feature/kitchen에 없는 커밋이 하나 있다는 것이고 [behind 1]은 feature/kitchen은 origin/feature/kitchen에 있는 커밋 하나가 없다는 것이다.</p>
+
+<h4>git checkout</h4>
+
+<p><code>git checkout</code>도 브랜치가 Tracking 브랜치이면 얼마나 다른지 보여준다.</p>
+
+<pre class="prettyprint"><code>$ git checkout feature/kitchen 
+Switched to branch 'feature/kitchen'
+Your branch and 'origin/ship' have diverged,
+and have 1 and 1 different commit(s) each, respectively.
+</code></pre>
+
+<h4>git pull</h4>
+
+<p>Tracking 브랜치를 Checkout한 상태에서 <code>git pull</code> 명령을 실행하면 현재 Checkout과 연결된 리모트 저장소와 브랜치를 설정에서 찾아서 Fetch하고 현 브랜치에 Merge한다.</p>
+
+<p>Tracking 브랜치가 아니면 <code>git pull</code>을 할 수 없다. 그러니까 <code>git pull</code>을 하려면 Tracking 브랜치를 Checkout하고 있어야 한다.</p>
+
+<h4>git push</h4>
+
+<p><code>git push</code>라고 실행하면 Checkout한 브랜치와 상관없이 Tracking 브랜치를 모두 Push한다. <code>git push origin master</code>는 Tracking 브랜치와 상관없이 master 브랜치를 origin/master로 Push한다.</p>
+
+<h2>끝으로...</h2>
+
+<p>자동으로 Merge하는 방식은 아름다운 히스토리를 해칠 수 있다. 히스토리는 가능한 평평하게 펴줘야 하고 여러 커밋을 묶어서 관리할 필요가 있을 때만 Merge 커밋을 히스토리에 남기는 것이 좋다.</p>
+
+<p>물론 <code>git pull</code> 명령도 --rebase, --ff, --no-ff, --ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.</p>
+
+<p><code>git pull</code> 명령은 어떨 때 유용한 걸까?</p>
+
+<p>저장소와 모든 브랜치를 동기화하는 기능이 필요하긴 하다. 복잡하게 Tracking 브랜치에 따른 것이 아니라 걍 이름으로 했으면 좋겠는데..</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ Login Popup & Captive Network ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" />
@@ -1637,150 +1751,6 @@ $ git reset --hard owner/master
 <h2>결론</h2>
 
 <p>번역 작업에도 Git은 매우 훌륭하다. 번역은 개발과 달라서 다른 Workflow가 필요하다. <a href="/articles/2011/a-successful-git-branching-model.html">git-flow</a>처럼 번역 시 참고할 만한 자료가 있으면 좋을 것 같아서 정리했다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Optimize browser rendering ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/optimize-browser-rendering.html" />
-    <updated>2012-01-27T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/optimize-browser-rendering.html</id>
-    <content type="html">
-<![CDATA[
-<p>이글은 <a href="http://code.google.com/speed/page-speed/">Google Page Speed</a>에 있는 <a href="http://code.google.com/speed/page-speed/docs/rendering.html">Optimize browser rendering</a>를 정리한 것이다. 이 글과 이 글에 주렁주렁 달린 글을 모두 독파하면 '한 브라우저 렌더링'한다고 말할 수 있을 것 같다.</p>
-
-<p>브라우저의 특징을 잘 살려서 코딩하면 성능이 빨라진다. 이 글은 다음과 같은 주제에 대해 설명한다:</p>
-
-<ul>
-<li>효율적인 CSS 셀렉터</li>
-<li>CSS Expression 안 쓰기</li>
-<li>CSS는 Document head에 넣기</li>
-<li>이미지 크기 명시하기</li>
-<li>Charset 명시하기</li>
-</ul>
-
-<p><img src="http://dogfeet.github.com/articles/2012/optimize-browser-rendering/google-page-speed.png" alt="google-page-speed" title="" /></p>
-
-<h2>효율적인 CSS 셀렉터</h2>
-
-<p>찾아볼 엘리먼트가 많은 셀렉터만 사용치 않아도 렌더링 성능이 대폭 향상된다.</p>
-
-<p>브라우저는 HTML을 파싱하는 대로 화면에 표시할 엘리먼트를 모두 생성하면서 내부에 도큐먼트 트리를 만든다. 브라우저의 CSS 엔진은 정해진 규칙에 따라 엘리먼트마다 맞는 스타일이 있는지 찾는다. 그 규칙은 표준 CSS cascade, 상속, 정열 규칙에 따른다. "셀렉터"는 어떤 엘리먼트에 스타일을 적용할지를 나타내는 것인데 CSS 엔진은 제일 오른쪽에 있는 셀렉터부터 찾는다. 가장 오른쪽에 있는 셀렉터를 "Key 셀렉터"라고 부르고 필요한 스타일을 찾거나 못 찾을 때까지 계속 Evaluate한다.</p>
-
-<p>이런 시스템이라서 Rule이 적을수록 성능이 좋다. 그러니까 <a href="http://code.google.com/speed/page-speed/docs/payload.html#RemoveUnusedCSS">사용하지 않는 CSS</a>를 삭제하는 것만으로도 성능이 대폭 향상된다. 일단 안 쓰는 CSS를 모두 삭제하고 나서 엘리먼트나 CSS Rule이 많은 페이지를 최적화한다. CSS Rule을 손보는 것만으로도 성능을 향상시킬 수 있다. Rule을 가능한 정확하게 만들고 불필요한 군더더기를 제거하는 게 최적화의 핵심이다. 그래서 스타일 엔진이 사용하지도 않을 Rule까지도 일일이 검사하지 않게끔 해야 한다.</p>
-
-<h4>Descendant 셀렉터</h4>
-
-<pre class="prettyprint"><code>ul li a {...}
-</code></pre>
-
-<p>Descendant 셀렉터는 비효율적이다. 브라우저는 Key를 찾고 나서 정확히 일치하는 것을 찾거나 더는 찾을 수 없을 때까지 그 상위 DOM 트리를 전부 뒤진다. Key가 덜 구체적일수록 Evaluate해 봐야 하는 엘리먼트의 수는 많아진다.</p>
-
-<h4>Child 셀렉터</h4>
-
-<pre class="prettyprint"><code>ul &gt; li &gt; a {...}
-</code></pre>
-
-<p>Child 셀렉터도 비효율적이다. 브라우저가 엘리먼트를 Evaluate할 때마다 노드를 하나 더 Evaluate해야 한다. 다시 말해서 Child 셀렉터를 사용한 Rule은 비용이 두 배 더 든다. 게다가 Key 셀렉터가 가리키는 엘리먼트가 많을수록 더 많은 엘리먼트를 Evaluate해야 한다. 비효율적이지만 Descendant 셀렉터 보다는 훨씬 빨라서 꽤 사용되는 편이다.</p>
-
-<h4>쓸데없이 셀렉터를 더 사용할 때</h4>
-
-<pre class="prettyprint"><code>ul#top_blue_nav {...}
-</code></pre>
-
-<p>정의에 따르면 ID 셀렉터는 중복될 수 없다. 그래서 class나 tag 셀렉터와 함께 사용하면 필요 없는 Evaluate을 추가로 하게 만든다. 노파심을 달래줄 뿐 하지 않아도 될 Evaluate만 더 하는 것이다.</p>
-
-<h4>Pseudo 셀렉터 <code>:hover</code>를 링크가 아닌 엘리먼트에 사용할 때</h4>
-
-<pre class="prettyprint"><code>.foo:hover {...}
-</code></pre>
-
-<p><code>:hover</code> 셀렉터를 Non-anchor 엘리먼트에 사용하면 <a href="http://connect.microsoft.com/IE/feedback/ViewFeedback.aspx?FeedbackID=391387">IE7, IE8는 느려질 때가 있다</a>고 알려졌다. Strict Doctype을 사용하지 않을 때 IE7, IE8은 Non-Anchor 엘리먼트에 사용된 <code>:hover</code>를 무시한다. 하지만, Strict Doctype이 사용할 때 Non-Anchor 엘리먼트에 <code>:hover</code>를 사용하면 성능을 저하된다.</p>
-
-<h3>기억할 것.</h3>
-
-<ul>
-<li><p>Universal 셀렉터를 Key로 사용하지 말 것.</p>
-
-<ul><li>여러 가지 엘리먼트에 적용해야 할 때는 Class 셀렉터를 사용하자.</li></ul></li>
-<li><p>가능한 구체적으로 사용하라.</p>
-
-<ul><li>Tag 셀렉터 보다는 ID나 Class 셀렉터를 사용하라.</li></ul></li>
-<li><p>Redundant Qualifier를 제거할 것.</p>
-
-<ul><li>ID 셀렉터와 Tag, Class 셀렉터를 사용하지 말 것.</li>
-<li>Class 셀렉터에 추가로 Tag 셀렉터를 사용하지 말 것.</li></ul></li>
-<li><p>Descendant 셀렉터를 사용하지 말 것 - 특히 Redundant 때문에 Ancestor를 명시하지 말 것.</p>
-
-<ul><li><code>body ul li a</code> 같은 Rule에서 body는 Redundant 때문에 사용한 것인데 아무 의미 없다.</li></ul></li>
-<li><p>Descendant 셀렉터 대신 Class 셀렉터를 사용하라.</p>
-
-<ul><li><code>ul li {color: blue;}</code> 이런 스타일은 <code>.unordered-list-item {color: blue;}</code>으로 바꾼다.</li>
-<li><code>ol li {color: red;}</code> 이런 스타일은 <code>.ordered-list-item {color: red;}</code>으로 바꾼다.</li></ul></li>
-<li><p>Descendant 셀렉터를 사용할 바에는 Child 셀렉터를 사용해라.</p>
-
-<ul><li>여러 단계를 다 Evaluate하는 것보다 한 단계만 더 Evaluate하는 게 낫다.</li></ul></li>
-<li><p>IE를 위해 <code>:hover</code>를 Non-Anchor(non-link) 엘리먼트에 사용하지 말 것.</p>
-
-<ul><li>Non-Anchor 엘리먼트에 <code>:hover</code>를 사용하면 IE7, IE8에서 꼭 해당 페이지를 테스트해야 한다. <code>:hover</code> 때문에 성능에 문제가 생기면 IE에서는 JavaScript의 onmouseover 이벤트 핸들러를 사용하라.</li></ul></li>
-</ul>
-
-<h2>CSS expression 안 쓰기.</h2>
-
-<p>CSS expression은 렌더링 성능을 떨어트린다. CSS expression은 IE5, IE6, IE7만 지원하는 것이고 IE 8부터는 deprecated 됐다. 게다가 다른 브라우저는 아예 지원하지 않는다. 정리하지 않음.</p>
-
-<h2>CSS는 document head에 두기</h2>
-
-<p>브라우저는 <code>&lt;link&gt;</code> 엘리먼트의 CSS 파일을 모두 내려받을 때까지 웹 페이지를 렌더링하지 않기 때문에 <code>&lt;link&gt;</code> 엘리먼트를 도큐먼트 헤드에 넣어서 무엇보다 CSS 파일을 먼저 내려받을 수 있도록 해줘야 한다.</p>
-
-<p>브라우저는 도큐먼트를 스트림처럼 다루기 때문에 내려받은 만큼 먼저 렌더링한다. 렌더링하고 나서 스타일이 바뀌면 다시 해야 하기 때문에 인라인 스타일 블럭(<code>&lt;style&gt;</code> 엘리먼트)도 도큐먼트 헤드에 넣어줘야 한다.</p>
-
-<h3>기억할 것</h3>
-
-<ul>
-<li><code>&lt;link&gt;</code> 엘리먼트는 항상 <code>&lt;head&gt;</code>에 넣어라.</li>
-<li><a href="http://www.clearboth.org/css-link-vs-import/"><code>@import</code>는 사용하지 마라</a></li>
-<li><code>&lt;style&gt;</code> 블럭도 <code>&lt;head&gt;</code>에 넣어라.</li>
-</ul>
-
-<h2>이미지 크기 명시하기</h2>
-
-<p>이미지 크기를 명시하면 이미지 파일을 다 내려받고 나서 다시 그리지(reflow와 repaint) 않는다. 크기를 명시하지 않았거나 명시한 크기가 실제 이미지 크기와 다르면 브라우저는 내려받고서 다시 그린다.</p>
-
-<h3>기억할 것</h3>
-
-<ul>
-<li>실제 이미지 크기로 명시하라.</li>
-<li>img 엘리먼트나 그 부모 중에서 block 엘리먼트에 크기를 명시해야 한다. block 엘리먼트가 아니면 명시한 크기 값은 무시된다.</li>
-</ul>
-
-<h2>Charset 명시하기</h2>
-
-<p>HTML 문서의 HTTP Response 헤더에 캐릭터 셋을 항상 넣어주면 브라우저는 바로 HTML 파싱하고 스크립트를 실행한다. </p>
-
-<p>Charset을 명시하지 않으면 브라우저는 일정 크기만큼 버퍼링하고 그 버퍼에서 charset 정보를 찾는다. </p>
-
-<p>브라우저마다 버퍼링하는 바이트 수와 Charset을 명시하지 않았을 때 사용하는 기본 Encoding이 다르다. 하지만, 일단 버퍼링하면 바로 렌더링한다. 그리고 만약 기본 Encoding과 버퍼링하고 나서 찾아낸 Charset이 서로 다르면 다시 파싱하고 페이지를 다시 그린다.</p>
-
-<h3>기억할 것</h3>
-
-<ul>
-<li>Content Type을 빠트리지 마라. - HTTP 헤더나 HTML meta tag 두 곳에 모두 적어 준다. 브라우저는 Content Type을 "sniff"하는데 알고리즘이 여러 가지 사용된다. 그래서 추가적인 Delay도 생기고 보안에 구멍도 생긴다. 'text/html'이라고 할지라도 반드시 적어준다.</li>
-<li>제대로 된 Charset을 명시한다.  - HTTP 헤더와 HTML meta tag 두 곳에 모두 명시한다.</li>
-</ul>
-
-<p>HTTP 헤더에 명시하는 예제:</p>
-
-<pre class="prettyprint"><code>Content-Type: text/html; charset=utf-8
-</code></pre>
-
-<p>HTML meta tag에 명시하는 예제:</p>
-
-<pre class="prettyprint"><code>&lt;meta http-equiv="content-type" content="text/html;charset=UTF-8" /&gt;
-</code></pre>
-
-<h2>결론</h2>
-
-<p><a href="http://code.google.com/speed/page-speed/">Google Page Speed</a>를 한번 돌려보자. 굉장히 잘 만들었다. 문제가 무엇인지 알려주고 어떻게 해결해야 하는지도 알려준다.</p>]]>
     </content>
   </entry>
 </feed>
