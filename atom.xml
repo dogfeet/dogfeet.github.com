@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-03-11T21:17:07Z</updated>
+  <updated>2012-03-18T14:16:54Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Yongjae Choi</name>
@@ -17,6 +17,314 @@
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
+  <entry>
+    <title><![CDATA[ Bash: 자동완성 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/bash-completion.html" />
+    <updated>2012-03-17T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/bash-completion.html</id>
+    <content type="html">
+<![CDATA[
+<p><em>이 글은 'An introduction to bash completion'(<a href="http://www.debian-administration.org/articles/316">part 1</a>, <a href="http://www.debian-administration.org/articles/317">part 2</a>)을 정리한 것이다. DocPad에 Completion이 있으면 좀 편할 것 같아서 시작했다.</em></p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/bash-completion/tab-key.jpeg" alt="tab-key" title="" /></p>
+
+<p>Bash Completion은 간단한 메커니즘으로 구현하는 것 같은데 막상 원하는 대로 조작하긴 쉽지 않다.</p>
+
+<h2>Part 1</h2>
+
+<p>Completion 덕에 명령어와 인자를 좀 더 쉽게 사용할 수 있다. 자주 사용하는 명령어에 Completion을 구현하려면 이 글을 읽는 것이 좋다.</p>
+
+<p>보통 셸에서 TAB 키를 누르면 파일 이름, 디렉토리 이름, 실행경로($PATH)에 있는 명령어를 자동으로 완성해준다:</p>
+
+<pre class="prettyprint"><code>ls /bo[TAB]
+</code></pre>
+
+<p><code>/bo</code> 다음에 TAB 키를 누르면 <code>/bo</code>가 <code>/boot</code>로 대체된다.</p>
+
+<p><a href="http://packages.debian.org/bash">Debian bash package</a>는 <code>/etc/bash_completion</code>이라는 Completion 파일이 있고 이 파일에는 일반적인 명령어에 대한 Completion이 정의돼 있다. 아직 사용하고 있지 않으면 ". /etc/bash_completion"라고 실행해서 바로 사용하자:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion
+skx@lappy:~$ 
+</code></pre>
+
+<p>이걸 한 번만 해주면 다양한 명령어에 Completion을 이용할 수 있다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ apt-get upd[TAB]
+skx@lappy:~$ apt-get upg[TAB]
+</code></pre>
+
+<p>그런데, 어떻게 만들지? 직접 만들고 싶은데. Completion 루틴은 'complete' 같은 bash 내부 명령어 몇 개를 조합해서 만든다. 이 루틴을 만들어 .bash_profile에 넣거나 별도의 파일로 만들어 /etc/bash_completion.d/에 넣을 수 있다.</p>
+
+<p>/etc/bash_completion 파일을 로드하면(sourced) /etc/bash_completion.d 디렉토리에 있는 모든 파일이 같이 로드된다. 편리하다.</p>
+
+<p>개중에는 호스트 이름을 완성해주는 것도 있다. 이 게 유용한 명령어도 있고 아닌 명령어도 있지만 하나 살펴보자.</p>
+
+<p>저자인 <a href="http://www.debian-administration.org/users/Steve">Steve</a>는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
+
+<p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
+</code></pre>
+
+<p>이 complete 명령을 한번 실행하고 [TAB]을 입력하면 다음과 같이 보여 줄 거다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ xvncviewer s[TAB]
+savannah.gnu.org            ssh.tardis.ed.ac.uk
+scratchy                    steve.org.uk
+security.debian.org         security-master.debian.org
+sun
+skx@lappy:~$ xvncviewer sc[TAB]
+</code></pre>
+
+<p>이 호스트들은 나한테만 이렇게 보인다.</p>
+
+<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "compete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ complete -p
+....
+complete -F _known_hosts tracepath
+complete -F _known_hosts host
+...
+</code></pre>
+
+<h2>Part 2</h2>
+
+<p>이제 직접 Completion 함수를 작성해 보자.</p>
+
+<p>'part 1'에서 아무 명령에나 hostname을 완성하는 것을 만들어 봤다:</p>
+
+<pre class="prettyprint"><code>complete -F _known_hosts xvncviewer
+</code></pre>
+
+<p>이 명령은 xvncviewer의 인자를 Completion할 때 _known_hosts 함수를 사용하라고 알리는 것이다.</p>
+
+<p>이제는 이미 만들어진 함수를 사용하는 것이 아니라 직접 만들어 사용하는 것을 알아보자.</p>
+
+<h3>A Basic Example</h3>
+
+<p>먼저 <code>foo</code>라는 명령어의 인자를 Completion하는 예제를 만들어보자. <code>foo</code>는 다음과 같은 인자를 가진 가짜 명령어다:</p>
+
+<ul>
+<li>--help
+<ul><li>Shows the help options for foo, and exits.</li></ul></li>
+<li>--version
+<ul><li>Shows the version of the foo command, and exits.</li></ul></li>
+<li>--verbose
+<ul><li>Runs foo with extra verbosity</li></ul></li>
+</ul>
+
+<p>/etc/bash_comletion을 로드할 때 자동으로 로드되도록 /etc/bash_completeion.d/foo 파일을 만든다. </p>
+
+<p>파일에 다음과 같은 내용을 넣고 저장한다:</p>
+
+<pre class="prettyprint"><code>_foo() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--help --verbose --version"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _foo foo
+</code></pre>
+
+<p>그리고 나서 이 파일만 읽어들여 테스트해본다: </p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion.d/foo
+skx@lappy:~$ foo --[TAB]
+--help     --verbose  --version  
+</code></pre>
+
+<p>한번 해보면 인자가 자동으로 완성되는 것을 볼 수 있다. 그리고 예를 들어, "foo --h[TAB]"라고 입력하면 '--help' 옵션을 자동으로 완성해준다</p>
+
+<p>이제 실제로 동작하는 것을 만들어 봤고 어떻게 동작하는 것인지 뜯어보자!</p>
+
+<h3>How Completion Works</h3>
+
+<p>Completion에 사용할 함수를 간단하게 구현해봤다.</p>
+
+<p>이 함수는 cur, prev, opts 옵션을 정의하면서 시작한다. cur는 '현재 입력된 단어(word)'에 사용하고, prev는 '이전에 입력된 단어'에, opts는 Completion할 옵션에 사용한다.</p>
+
+<p>그리고 실제로 옵션을 Completion하는 것은 compgen이라는 명령어를 통해서다:</p>
+
+<pre class="prettyprint"><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+</code></pre>
+
+<p>compgen 명령의 결과를 $COMPREPLY에 할당한다:</p>
+
+<pre class="prettyprint"><code>compgen -W "${opts}" -- ${cur}
+</code></pre>
+
+<p>여기서 변수 대신 실제 값을 넣어보면 이 명령이 실제로 어떻게 동작하는지 이해하기 쉬울 것이다:</p>
+
+<pre class="prettyprint"><code>compgen -W "--help --verbose --version" -- "userinput"
+</code></pre>
+
+<p>compgen은 "--help --verbose --version" 중에서 "${cur}"와 일치하는 것을 찾아 리턴한다. 잘 이해가 안되면 바로 셸에서 이 명령을 직접 실행해 보면 알 수 있다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
+--help
+--verbose
+--version
+skx@lappy:~$ compgen -W "--help --verbose --version" -- --h
+--help
+</code></pre>
+
+<p>"--"라고 입력하면 세 옵션 모두 일치하므로 전부 반환된다. 하지만 "--h"만 입력하면 "--help"만 일치하므로 --help만 반환한다.</p>
+
+<p>그래서 이 결과를 "COMPREPLY" 변수에 할당하면 bash가 입력 중인 부분의 글자를 대체시킨다. bash에서 COMPREPLY는 Completion 루틴에서 결과를 반환하는 방법이라서 특별한 의미가 있는 변수다.</p>
+
+<p><a href="http://www.gnu.org/software/bash/manual/bash.html">the bash reference manual</a>에 있는 COMPREPLY에 대한 설명을 살펴보자:</p>
+
+<h4>COMPREPLY</h4>
+
+<p>Completion 함수가 반환한 결과를 배열 형태로 반환하고 Bash가 이 변수를 읽는다.</p>
+
+<p>그리고 사용자가 입력하는 단어가 무엇인지 COMP_WORDS라는 배열로 알 수 있다. 그리고 현재 단어와 이전 단어가 무엇인지도 알 수 있다.</p>
+
+<h4>COMP_WORDS</h4>
+
+<p>지금 Command line에 있는 각 단어가 담긴 배열이다. 이 변수는 Completion을 만들 때 사용하는 명령어를 통해 호출한 함수에서만 사용할 수 있다.</p>
+
+<h4>COMP_CWORD</h4>
+
+<p>${COMP_WORDS} 배열에서 현 단어를 가리키는 인덱스다. 이것도 Completion 명령어가 호출한 함수에서만 사용할 수 있다.</p>
+
+<h3>A Complex Example</h3>
+
+<p>옵션이 굉장히 복잡한 명령어도 많다. 이런 명령어는 상당히 정교한 작업이 필요하다.</p>
+
+<p>Xen에 있는 xm 명령어의 예를 살펴보자(<a href="http://www.ibm.com/developerworks/kr/library/l-xen/">developerworks의 Xen 소개</a>):</p>
+
+<ul>
+<li>xm list
+<ul><li>List all running Xen instances</li></ul></li>
+<li>xm create ConfigName
+<ul><li>Create a new Xen instances using the configuration file in /etc/xen called ConfigName.</li></ul></li>
+<li>xm console Name
+<ul><li>Connect to the console of the running machine named "Name".</li></ul></li>
+</ul>
+
+<p>예를 들어, "xm operation args" 라는 명령어에서 "args"는 앞에 "operation"이 무엇이냐에 따라 다르다.</p>
+
+<p>먼저 "operation"의 Completion을 구현하는 것은 앞에서 설명했던 것과 방법이 같다. "--" 없이 구현하고 사용하면 된다. 하지만, 후속 인자를 Completion하는 것은 특별한 처리가 필요하다.</p>
+
+<p>Completion할 때 이전 토큰을 알아야 해서 명령어마다 다르게 처리한다. 예를 들자면:</p>
+
+<pre class="prettyprint"><code>_xm() 
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  The basic options we'll complete.
+    #
+    opts="console create list"
+
+
+    #
+    #  Complete the arguments to some of the basic commands.
+    #
+    case "${prev}" in
+        console)
+            local running=$(for x in `xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)`; do echo ${x} ; done )
+
+            COMPREPLY=( $(compgen -W "${running}" -- ${cur}) )
+            return 0
+            ;;
+        create)
+            local names=$(for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done )
+
+            COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+            return 0
+            ;;
+        *)
+            ;;
+    esac
+
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))  
+    return 0
+}
+complete -F _xm xm
+</code></pre>
+
+<p>이 코드는 "operation"을 Completion하는 것이고 "create"와 "console"이라는 "operation"에 대해서는 추가적인 코드를 더 했다. <br />사용자가 입력하는 값을 Completion하기 위해 compgen을 사용하는 것까지는 같지만, 상황에 따라 다른 목록을 사용한다.</p>
+
+<p>"console" operation에 사용하는 목록은 다음과 같은 명령으로 만든다:</p>
+
+<pre class="prettyprint"><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
+</code></pre>
+
+<p>이 명령은 지금 도는 Xen 시스템의 목록을 반환한다.</p>
+
+<p>"creation" operation에 사용하는 목록은 다음 명령으로 만든다:</p>
+
+<pre class="prettyprint"><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
+</code></pre>
+
+<p>이 명령은 /etc/xen 디렉토리에 있는 '*.cfg' 파일을 모두 반환한다. 예를 들면 다음과 같다:</p>
+
+<pre class="prettyprint"><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
+etch.cfg
+root.cfg
+sarge.cfg
+steve.cfg
+x.cfg
+skx@lappy:~$ 
+</code></pre>
+
+<h3>Other Completion</h3>
+
+<p>지금까지 compgen을 사용해서 사용자가 입력한 값과 일치하는 스트링을 찾았다. 찾을 스트링은 하드 코딩한 목록이거나 명령어가 반환하는 결과에서 찾았다. 디렉토리 이름이나 프로세스 이름등 다른 것에서 찾을 수도 있다. 자세한 내용은 "man bash"를 실행해서 살펴볼 수 있다.</p>
+
+<p>다음은 파일과 호스트이름을 Completion하는 방법을 설명하는 예제다:</p>
+
+<pre class="prettyprint"><code>#
+#  Completion for foo:
+#
+#  foo file [filename]
+#  foo hostname [hostname]
+#
+_foo() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="file hostname"
+
+    case "${prev}" in
+        file)
+        COMPREPLY=( $(compgen -f ${cur}) )
+            return 0
+            ;;
+        hostname)
+        COMPREPLY=( $(compgen -A hostname ${cur}) )
+            return 0
+            ;;
+        *)
+        ;;
+    esac
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+}
+complete -F _foo foo
+</code></pre>
+
+<p>이 예제를 활용하면 직접 Completion 함수를 만들 수 있다. 사실 Completion 함수를 만드는데 시간이 많이 들고 나머지는 매우 간단하다.</p>
+
+<p><a href="http://www.debian-administration.org/users/Steve">Steve</a>가 작성한 <a href="http://www.cvsrepository.org/cgi-bin/trac/xen-tools/dir?d=xen-tools/misc">xm Completion 코드</a>를 읽어 볼 수 있다.</p>
+
+<p>@pismute가 만든 <a href="https://github.com/dogfeet/docpad/blob/dogfeet/contrib/docpad-completion.bash">docpad-completion.bash</a>도 읽어 볼 수 있다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ SMACSS:The Icon Module ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/smacss-icon-module.html" />
@@ -1290,176 +1598,6 @@ $ git config --global core.excludesfile ~/.global_ignore
 <p>그리고 Starbucks에서 Wi-Fi 접속 페이지가 열리면 자동으로 신상정보를 입력하고 클릭해서 Wi-Fi에 연결해 준다.</p>
 
 <p><img src="/articles/2012/ladybucks/success.png" alt="success" title="" /></p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ SMACSS: Brief Notes - Part 1 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/smacss.html" />
-    <updated>2012-02-03T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/smacss.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://smacss.com/">SMACSS</a>('smacks', 아마도 '스맥스'로 읽는다)에는 '<a href="http://snook.ca/">Jonathan Snook</a>'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
-
-<p><em>Back-End 출신이라 CSS를 사용할 때마다 '이 많은 스타일은 어떻게 관리해야 할까?'라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
-
-<p>이 책은 두 번으로 나눠서 정리할 것인데 Part 1은 CSS Rule에 대하여, Part 2는 SMACSS의 나머지 부분을 다룰 예정이다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/smacss/smacss.png" alt="SMACSS" title="" /></p>
-
-<h2>Introduction</h2>
-
-<p>저자인 Snook가 경험했던 Best Practice를 SMACSS라는 책으로 정리했다. 이 방법은 규모에 상관없이 효과적이라서 프로젝트 초반부터 성장하는 내내 유용하다고 설명한다.</p>
-
-<p>Snook도 말하고 있지만 SMACSS는 프레임워크가 아니라 스타일 가이드다. 그래서 어떤 라이브러리나 도구도 제공하지 않는다. SMACSS는 CSS를 어떻게 구성하고 사용해야 하는가를 설명한다.</p>
-
-<p>SMACSS은 다음과 같은 주제를 다룬다:</p>
-
-<ul>
-<li>Four Types of CSS Rules - SMACSS의 핵심, CSS를 네 가지로 분류하고 어떻게 구분해 사용하는지 설명</li>
-<li>Themes and Typography - Theme와 Font에 대해 설명</li>
-<li>Depth of Applicability - Selector를 길게 만드는 것이 좋은지 짧게 만드는 것이 좋은지 설명. 즉, tradeoff에 대한 설명.</li>
-<li>Selector Performance - 브라우저가 Selector를 어떻게 찾는지 설명</li>
-<li>State Representation - 상태에 대한 표현 기법</li>
-<li>HTML5 and SMACSS - HTML5와 함께 사용하는 법</li>
-<li>Prototyping - 만들어놓은 CSS를 실제 사용하기 전에 테스트해 보는 과정</li>
-<li>Formatting Code - CSS 코드 형식을 정리하는 법</li>
-</ul>
-
-<p>이 중 <code>Four Types of CSS Rules</code>이 핵심인데 이 규칙은 다음과 같다:</p>
-
-<ul>
-<li>Base Rule</li>
-<li>Layout Rule</li>
-<li>Module Rule</li>
-<li>State Rule</li>
-</ul>
-
-<p><a href="http://mondaybynoon.com/20120109/book-review-smacss/">SMACSS Review</a>를 작성한 'Jonathan Christopher'는 몇 시간이면 다 읽는다고 했는데 난 며칠 걸렸다. 영어인데다가 분명히 흥미로운 내용인데도 이상하게 읽어도 읽어도 머릿속에 잘 들어오지 않았다.</p>
-
-<p>이 책은 CSS를 관리하는 법에 대해서 설명한다. 표현에 대해서 다루는 CSS 책은 무수히 많지만 이런 책은 드물다.</p>
-
-<p>SMACSS는 유료 컨텐츠도 있지만, 기본적으로 무료다. 만약 ebook 포멧으로 읽거나 숨겨진 컨텐츠를 읽고 싶으면 결제해야 하지만 책의 내용 대부분을 웹에서 무료로 읽을 수 있다. 하지만, 구매하길 바란다. 무료로도 읽을 수 있지만 그만한 가치가 있다. 지금 유료 컨텐츠는 'The Icon Module', 'Screencast: Applying the Principles' 둘뿐이지만 저자는 계속 추가한다고 한다.</p>
-
-<p>다음은 공부한 내용을 정리한 것이다. 읽고 해석한 대로 정리한 것이니 원문과 다를 수도 있다. </p>
-
-<h2>Four Types of CSS Rules</h2>
-
-<p>SMACSS는 CSS Rule을 네 가지로 나눈다.</p>
-
-<ul>
-<li>Base - 기본 스타일</li>
-<li>Layout - 엘리먼트를 나열하는 것과 관련된 스타일</li>
-<li>Module - 재사용 위해 하나로 묶는 스타일</li>
-<li>State - Hidden/Expand나 Active/Inactive 같은 스타일</li>
-</ul>
-
-<p>그 외 Theme와 Font Rule에 대해서 거론하지만, 특별히 분류하지는 않았다. 대신 위 네 가지 Rule을 이용해서 Theme와 Font Rule을 만든다.</p>
-
-<h3>Base</h3>
-
-<p>Base Rule을 쉽게 말하자면 id, class가 없는 스타일들을 말한다. 다음과 같은 것들이 Base Rule이다:</p>
-
-<pre class="prettyprint"><code>html, body, form { margin: 0; padding: 0; }
-input[type=text] { boarder: 1px solid #999; }
-a { color: #039; }
-a:hover { color: #03C; }
-</code></pre>
-
-<p>Base Rule은 직접 이름 지을 수 없는 element, attribute, psedo 셀렉터 등으로만 만든다.</p>
-
-<h4>CSS Reset</h4>
-
-<p>기본 margin, padding 등의 것을 규정하는 Base Rule을 CSS Reset이라고 부른다. 사실 Base Rule을 사용할 만한 데가 CSS Reset밖에 없어 보인다. SMACSS는 element 셀렉터를 권장하지 않아서 element 셀렉터를 사용해도 된다고 허용하는 부분은 Base Rule로 CSS Reset을 만들 때와 <code>.mod &gt; input</code>처럼 child 셀렉터를 함께 쓸 때뿐이다.</p>
-
-<h3>Module</h3>
-
-<p>Module 스타일이 필요한 이유는 스타일을 Module 단위로 묶어서 재사용하기 위함이다. 사이드바나 제품 목록 등의 반복적으로 재사용하는 것들이 이에 해당된다. </p>
-
-<p>Module 스타일 이름은 3자로 제한해 사용한다. 하지만, 스타일 가이드이니까 4자도 되고 글자제한이 없어도 된다:</p>
-
-<pre class="prettyprint"><code>/* Example Module */
-.exm { }
-
-/* Callout Module */
-.cli { }
-
-/* Form field module */
-.fld { }
-</code></pre>
-
-<p>Exmaple Module에서 하위 스타일을 하나 만든다면 다음과 같이 하면 된다:</p>
-
-<pre class="prettyprint"><code>.exm-caption { }
-</code></pre>
-
-<p>Module은 재사용할 수 있어야 하기 때문에 id 셀렉터를 사용하지 않는다. 그리고 element 셀렉터도 사용하지 않는다. 다음과 같은 스타일과 html을 보자:</p>
-
-<pre class="prettyprint"><code>&lt;div class="fld"&gt;
-    &lt;span&gt;Folder Name&lt;/span&gt;
-&lt;/div&gt;
-
-.fld &gt; span {
-    padding-left: 20px;
-    background: url(icon.png);
-}
-</code></pre>
-
-<p>이렇게 사용해도 무방하지만, 프로젝트 규모가 커질수록 다른 element로 바꿔야 할 수도 있고 element 본연의 특징을 유지하기 어려울 수 있다. <code>span</code>을 제거하고 다음과 같이 변경한다:</p>
-
-<pre class="prettyprint"><code>&lt;div class="fld"&gt;
-    &lt;span class="fld-name"&gt;Folder Name&lt;/span&gt;
-&lt;/div&gt;
-
-.fld &gt; .fld-name {
-    padding-left: 20px;
-    background: url(icon.png);
-}
-</code></pre>
-
-<p>그래도 element 셀렉터를 꼭 사용해야겠다면 <code>.fld &gt; span</code>처럼 child 셀렉터를 꼭 함께 사용하라.</p>
-
-<h3>Layout</h3>
-
-<p>Layout Rule이 엘리먼트를 어떻게 나열하는지 결정한다. 로그인 폼, 내비게이터 등부터 header, footer 같은 부분을 구분하는 것이 모두 Layout Rule이다.</p>
-
-<p><code>.l-fixed</code> 유무에 따라 가변 폭으로 할지 고정 폭으로 할지 결정하는 Layout은 다음과 같이 만든다:</p>
-
-<pre class="prettyprint"><code>#article {
-    width: 80%;
-    float: left;
-}
-
-#sidebar {
-    width: 20%;
-    float: right;
-}
-
-.l-fixed #article {
-    width: 600px;
-}
-
-.l-fixed #sidebar {
-    width: 200px;
-}
-</code></pre>
-
-<p>id 셀렉터에는 'l'을 붙이지 않고 class 셀렉터에만 'l'을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.</p>
-
-<p>성능 등을 이유로 class 셀럭터 없이 전부 id 셀렉터로 만들어도 되지만 꼭 그래야 할 이유는 없다. CSS에서는 id 셀렉터와 class 셀렉터 이 둘의 성능은 거의 같다. id 셀렉터가 Javascript에서 빠를지 모르겠지만, CSS는 아니다. </p>
-
-<p>그리고 Layout Rule만 id 셀렉터를 사용한다. 다른 스타일은 id 셀렉터 사용하지 않는다.</p>
-
-<p>id 셀렉터에 tag 셀렉터와 함께 사용하지 않는다. 자식이면 child 셀렉터(>)를 꼭 사용한다.</p>
-
-<h3>State</h3>
-
-<p>상태와 관련된 스타일을 말하고 이름을 지을 때 's'를 붙인다. 예를 들면 이런 거다:</p>
-
-<pre class="prettyprint"><code>.s-hidden { display: none; }
-</code></pre>
-
-<p><code>!important</code>를 사용해도 되는 Rule은 State Rule뿐이다. 다른 Rule에는 <code>!important</code>를 사용해서는 절대 안된다. 하지만, State Rule에서도 권장하지 않는다. 되도록 안 쓰는 것이 좋다. 뭥미:) 그냥 사용하지 말자.</p>]]>
     </content>
   </entry>
 </feed>
