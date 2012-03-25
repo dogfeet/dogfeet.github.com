@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>dogfeet - Bash: 자동완성</title>
     <meta name="description" content="이 글은 'An introduction to bash completion'(part 1, part 2)을 정리한 것이다. DocPad에 Completion이 있으면 좀 편할 것 같아서 시작했다." />
-    <meta name="keywords" content="bash,completion,Completion" />
+    <meta name="keywords" content="bash,Completion" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -101,7 +101,7 @@
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Mar 18</span>
- | <a href="/site/tagmap.html#bash" class="tag">bash</a> <a href="/site/tagmap.html#completion" class="tag">completion</a> <a href="/site/tagmap.html#completion" class="tag">Completion</a> | <span><a href="/articles/2012/bash-completion.html#disqus_thread" data-disqus-identifier="/articles/2012/bash-completion.html"></a></span>
+ | <a href="/site/tagmap.html#bash" class="tag">bash</a> <a href="/site/tagmap.html#completion" class="tag">Completion</a> | <span><a href="/articles/2012/bash-completion.html#disqus_thread" data-disqus-identifier="/articles/2012/bash-completion.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -157,7 +157,7 @@ skx@lappy:~$ apt-get upg[TAB]
 
 <p>개중에는 호스트 이름을 완성해주는 것도 있다. 이 게 유용한 명령어도 있고 아닌 명령어도 있지만 하나 살펴보자.</p>
 
-<p>저자인 <a href="http://www.debian-administration.org/users/Steve">Steve</a>는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
+<p>저자인 [Steve][]는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
 
 <p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
 
@@ -176,7 +176,7 @@ skx@lappy:~$ xvncviewer sc[TAB]
 
 <p>이 호스트들은 나한테만 이렇게 보인다.</p>
 
-<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "compete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
+<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "complete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
 
 <pre class="prettyprint"><code>skx@lappy:~$ complete -p
 ....
@@ -417,8 +417,6 @@ complete -F _foo foo
 </code></pre>
 
 <p>이 예제를 활용하면 직접 Completion 함수를 만들 수 있다. 사실 Completion 함수를 만드는데 시간이 많이 들고 나머지는 매우 간단하다.</p>
-
-<p><a href="http://www.debian-administration.org/users/Steve">Steve</a>가 작성한 <a href="http://www.cvsrepository.org/cgi-bin/trac/xen-tools/dir?d=xen-tools/misc">xm Completion 코드</a>를 읽어 볼 수 있다.</p>
 
 <p>@pismute가 만든 <a href="https://github.com/dogfeet/docpad/blob/dogfeet/contrib/docpad-completion.bash">docpad-completion.bash</a>도 읽어 볼 수 있다.</p>
   </div>

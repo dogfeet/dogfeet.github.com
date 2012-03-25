@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Git:diff</title>
-    <meta name="description" content="Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.(아무리 그래도 너무 많다.--;)" />
-    <meta name="keywords" content="git,diff" />
+    <title>dogfeet - Git: git-ff</title>
+    <meta name="description" content="리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? 'git pull'은 별로 맘에 들지 않는다. 전 쓴 'Git: Remote Tracking Branch vs Tracking Branch'에서도 말했지만, Tracking 브랜치는 불편하다." />
+    <meta name="keywords" content="git,‘git-tles’" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -94,14 +94,14 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr">
+<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/git-ff.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Git:diff</h1>
+    <h1 property="dcterms:title">Git: git-ff</h1>
   </header>
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">2011 Dec 24</span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#diff" class="tag">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
+ | <span property="dc:created">2012 Mar 25</span>
+ | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#‘git-tles’" class="tag">‘git-tles’</a> | <span><a href="/articles/2012/git-ff.html#disqus_thread" data-disqus-identifier="/articles/2012/git-ff.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -110,111 +110,66 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-diff.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-ff.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-diff.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-ff.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-ff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Git은 명령어가 엄청나게 많지만, 알면 알수록 일관적인 명령어에 감탄하게 된다.<br />(아무리 그래도 너무 많다.--;)</p>
+    <p>리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? 'git pull'은 별로 맘에 들지 않는다. 전 쓴 '<a href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>'에서도 말했지만, Tracking 브랜치는 불편하다.</p>
 
-<p>이 글에서는 <code>git diff</code> 명령어의 사용법을 간단히 정리한다.</p>
+<p>그래서 'git pull' 대신 사용할 수 있는 '<a href="https://github.com/pismute/git-tles/blob/master/git-ff">git ff</a>'를 만들었다.</p>
 
-<p><img src="/articles/2011/git-diff/christmas-in-jelly-village.jpg" alt="heading image" title="" /></p>
+<p><img src="/articles/2011/git.png" alt="git-ff-result" title="" /></p>
 
-<p>산타와 함께 하는 틀린 그림 찾기 "Christmas In Jelly Village". <a href="http://blog.daum.net/_blog/BlogTypeView.do?blogid=0TE6a&amp;articleno=429&amp;categoryId=0&amp;regdt=20100512215001#ajax_history_home">출처</a></p>
+<h2>git-ff 특징</h2>
 
-<h2>Unified Format</h2>
+<h3>Dirty 체크</h3>
 
-<p><code>git diff</code>는 결과를 <a href="/articles/2011/1316924580.html">Unified Format</a>으로 보여준다. 이 형식에 익숙하지 않으면 링크를 따라가 읽어보는 것이 도움될 것이다. </p>
+<p>Working Directory의 상태가 Dirty가 아닐 때만 동작한다.</p>
 
-<h2>git diff</h2>
+<h3>'git fetch --prune'</h3>
 
-<p>diff를 잘 활용하자.</p>
+<p>Fetch시 --prune 옵션을 주기 때문에 리모트에서 삭제된 브랜치가 있으면 로컬의 Remote Tracking Branch도 삭제한다.</p>
 
-<h3>Modified, Staged, Unmodified 사이 비교</h3>
+<h3>이름으로 매칭하기.</h3>
 
-<p>Modified(Working Directory에 있는)와 Staged(Staging Area에 있는)는 다음과 같이 비교한다:</p>
+<p>원격 브랜치와 로컬 브랜치를 시스템이 연결해주는 것이 Tracking 브랜치인 건데, 이게 유용한 때도 있겠다. 아직은 모르겠지만….</p>
 
-<pre class="prettyprint"><code>git diff
+<p>그냥 이름으로 하는 게 알아보기도 쉽고 기억하기도 쉽다. 그래서 <code>origin/master</code>에 대응되는 로컬 브랜치는 <code>master</code>라고 간주한다.</p>
+
+<h3>Fast-Foward Merge</h3>
+
+<p>리모트 저장소를 Fetch하고 로컬 브랜치가 있는지 확인한 다음에 Fast-Forward Merge가 가능한 브랜치가 있으면 자동으로 Merge한다.</p>
+
+<h3>Rebase</h3>
+
+<p>리모트 브랜치가 수정됐지만, 로컬 브랜치도 수정됐다면 얘기가 달라진다. 그냥 Merge 하면 Merge Commit이 생긴다. 그래서 Rebase하고 나서 Fast-Forward Merge를 해야 한</p>
+
+<p>이 기능도 넣고서 1달 정도 사용해봤는데, 큰 문제는 없었지만 영 찜찜해서 빼버렸다.</p>
+
+<p>이 기능을 넣으려면 마음의 두려움부터 극복해야겠다.</p>
+
+<h2>git-ff 사용법</h2>
+
+<p>'git ff'라고 실행하면 origin에서 Fetch한다:</p>
+
+<pre class="prettyprint"><code>git ff [remote]
 </code></pre>
 
-<p>특정 파일만 비교할 수도 있다:</p>
+<p>하지만, origin이 아니라 다른 저장소로도 작업해야 할 때도 왕왕 있다. 특히 origin이 메인 저장소가 아닐 때가 그렇다. 'git ff managers'라고 실행하면 managers 저장소에서 Fetch한다.</p>
 
-<pre class="prettyprint"><code>git diff my-file
-</code></pre>
+<p>실행결과는 다음과 같다:</p>
 
-<p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:</p>
+<p><img src="/articles/2012/git-ff/git-ff-result.png" alt="git-ff-result" title="" /></p>
 
-<pre class="prettyprint"><code>git diff --staged/--cached
-</code></pre>
-
-<p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff --staged my-file
-</code></pre>
-
-<h3>Revision 비교</h3>
-
-<p>리비전 두 개를 골라 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9
-</code></pre>
-
-<p>그중 파일 하나만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4 59d60f9 my-file
-</code></pre>
-
-<p>다음처럼도 비교할 수도 있다:</p>
-
-<pre class="prettyprint"><code>git diff bd976f4:my-file 59d60f9:my-file
-</code></pre>
-
-<h3>Modified, Staged와 Revision 비교</h3>
-
-<p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18
-</code></pre>
-
-<p>특정 파일만 비교할 수 있다:</p>
-
-<pre class="prettyprint"><code>git diff HEAD~18 my-file
-</code></pre>
-
-<p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18
-</code></pre>
-
-<p>이때도 특정 파일만 비교하려면 다음과 같다:</p>
-
-<pre class="prettyprint"><code>git diff --staged HEAD~18 my-file
-</code></pre>
-
-<h3>파일 이름만 보기</h3>
-
-<p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:</p>
-
-<pre class="prettyprint"><code>git show --name-only HEAD~4
-</code></pre>
-
-<p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.</p>
-
-<pre class="prettyprint"><code>git diff --name-only HEAD~4
-</code></pre>
-
-<p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.</p>
-
-<pre class="prettyprint"><code>git log --name-only
-</code></pre>
+<p>Fast-Forward Merge도 하지만 해당 저장소랑 Delta가 얼마나 되는지 한눈에 알 수 있다.</p>
   </div>
 </article>
 <section id="related">
@@ -236,6 +191,10 @@
       <li>
         <span>Dec 06 2011</span>
 &raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+      </li>
+      <li>
+        <span>Dec 24 2011</span>
+&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
       </li>
       <li>
         <span>Dec 09 2011</span>
@@ -266,10 +225,6 @@
 &raquo;        <a href="/articles/2012/git-conflict.html">Git:conflict</a>
       </li>
       <li>
-        <span>Mar 25 2012</span>
-&raquo;        <a href="/articles/2012/git-ff.html">Git: git-ff</a>
-      </li>
-      <li>
         <span>Jan 08 2012</span>
 &raquo;        <a href="/articles/2012/progit.html">progit</a>
       </li>
@@ -282,7 +237,7 @@
 <div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/git-diff.html';
+    var disqus_identifier = '/articles/2012/git-ff.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -290,8 +245,8 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
-  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/git-diff.html" data-num-posts="1"></div>
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-ff.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/git-ff.html" data-num-posts="1"></div>
   </div>  </div>
 </section>
 

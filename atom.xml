@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-03-18T14:16:54Z</updated>
+  <updated>2012-03-25T08:32:04Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Yongjae Choi</name>
@@ -17,6 +17,63 @@
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
+  <entry>
+    <title><![CDATA[ Git: git-ff ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/git-ff.html" />
+    <updated>2012-03-24T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/git-ff.html</id>
+    <content type="html">
+<![CDATA[
+<p>리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? 'git pull'은 별로 맘에 들지 않는다. 전 쓴 '<a href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>'에서도 말했지만, Tracking 브랜치는 불편하다.</p>
+
+<p>그래서 'git pull' 대신 사용할 수 있는 '<a href="https://github.com/pismute/git-tles/blob/master/git-ff">git ff</a>'를 만들었다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2011/git.png" alt="git-ff-result" title="" /></p>
+
+<h2>git-ff 특징</h2>
+
+<h3>Dirty 체크</h3>
+
+<p>Working Directory의 상태가 Dirty가 아닐 때만 동작한다.</p>
+
+<h3>'git fetch --prune'</h3>
+
+<p>Fetch시 --prune 옵션을 주기 때문에 리모트에서 삭제된 브랜치가 있으면 로컬의 Remote Tracking Branch도 삭제한다.</p>
+
+<h3>이름으로 매칭하기.</h3>
+
+<p>원격 브랜치와 로컬 브랜치를 시스템이 연결해주는 것이 Tracking 브랜치인 건데, 이게 유용한 때도 있겠다. 아직은 모르겠지만….</p>
+
+<p>그냥 이름으로 하는 게 알아보기도 쉽고 기억하기도 쉽다. 그래서 <code>origin/master</code>에 대응되는 로컬 브랜치는 <code>master</code>라고 간주한다.</p>
+
+<h3>Fast-Foward Merge</h3>
+
+<p>리모트 저장소를 Fetch하고 로컬 브랜치가 있는지 확인한 다음에 Fast-Forward Merge가 가능한 브랜치가 있으면 자동으로 Merge한다.</p>
+
+<h3>Rebase</h3>
+
+<p>리모트 브랜치가 수정됐지만, 로컬 브랜치도 수정됐다면 얘기가 달라진다. 그냥 Merge 하면 Merge Commit이 생긴다. 그래서 Rebase하고 나서 Fast-Forward Merge를 해야 한</p>
+
+<p>이 기능도 넣고서 1달 정도 사용해봤는데, 큰 문제는 없었지만 영 찜찜해서 빼버렸다.</p>
+
+<p>이 기능을 넣으려면 마음의 두려움부터 극복해야겠다.</p>
+
+<h2>git-ff 사용법</h2>
+
+<p>'git ff'라고 실행하면 origin에서 Fetch한다:</p>
+
+<pre class="prettyprint"><code>git ff [remote]
+</code></pre>
+
+<p>하지만, origin이 아니라 다른 저장소로도 작업해야 할 때도 왕왕 있다. 특히 origin이 메인 저장소가 아닐 때가 그렇다. 'git ff managers'라고 실행하면 managers 저장소에서 Fetch한다.</p>
+
+<p>실행결과는 다음과 같다:</p>
+
+<p><img src="/articles/2012/git-ff/git-ff-result.png" alt="git-ff-result" title="" /></p>
+
+<p>Fast-Forward Merge도 하지만 해당 저장소랑 Delta가 얼마나 되는지 한눈에 알 수 있다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ Bash: 자동완성 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/bash-completion.html" />
@@ -59,7 +116,7 @@ skx@lappy:~$ apt-get upg[TAB]
 
 <p>개중에는 호스트 이름을 완성해주는 것도 있다. 이 게 유용한 명령어도 있고 아닌 명령어도 있지만 하나 살펴보자.</p>
 
-<p>저자인 <a href="http://www.debian-administration.org/users/Steve">Steve</a>는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
+<p>저자인 [Steve][]는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
 
 <p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
 
@@ -78,7 +135,7 @@ skx@lappy:~$ xvncviewer sc[TAB]
 
 <p>이 호스트들은 나한테만 이렇게 보인다.</p>
 
-<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "compete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
+<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "complete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
 
 <pre class="prettyprint"><code>skx@lappy:~$ complete -p
 ....
@@ -319,8 +376,6 @@ complete -F _foo foo
 </code></pre>
 
 <p>이 예제를 활용하면 직접 Completion 함수를 만들 수 있다. 사실 Completion 함수를 만드는데 시간이 많이 들고 나머지는 매우 간단하다.</p>
-
-<p><a href="http://www.debian-administration.org/users/Steve">Steve</a>가 작성한 <a href="http://www.cvsrepository.org/cgi-bin/trac/xen-tools/dir?d=xen-tools/misc">xm Completion 코드</a>를 읽어 볼 수 있다.</p>
 
 <p>@pismute가 만든 <a href="https://github.com/dogfeet/docpad/blob/dogfeet/contrib/docpad-completion.bash">docpad-completion.bash</a>도 읽어 볼 수 있다.</p>]]>
     </content>
@@ -1562,42 +1617,6 @@ $ cat Global/vim.gitignore &gt;&gt; ~/.global_ignore
 $ cat Global/OSX.gitignore &gt;&gt; ~/.global_ignore
 $ git config --global core.excludesfile ~/.global_ignore
 </code></pre>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Ladybucks: A Chrome extension for Starbucks WI-FI ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/ladybucks.html" />
-    <updated>2012-02-08T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/ladybucks.html</id>
-    <content type="html">
-<![CDATA[
-<p>Ladybucks는 Chrome extension으로 스타벅스에서 WI-FI를 편하게 사용하기 위해 만들었다. 단순히 스타벅스에서 요구하는 정보를 저장했다가 해당 페이지가 뜨면 정해진 페이지 흐름대로 자동으로 입력하고 처리해준다.</p>
-
-<p>이 프로그램은 실제로 한국 Starbucks 매장에서 사용할 수 있지만 JavaScript Example로 만들고 싶었다. 그래서 <code>Chrome Extension</code>에서 <code>BootStrap</code>과 <code>Backbone.js</code>를 사용하는 예제로 참고할 수 있도록 만들었다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/ladybucks/intro.png" alt="logo" title="" /></p>
-
-<p>Ladybucks는 원래 <a href="https://twitter.com/#!/lethee">@lethee</a>가 Safari 버전으로 만들었고 <a href="https://twitter.com/#!/lnyarl">@lnyarl</a>가 Chrome 버전으로 포팅하였다. 그걸 <a href="http://uniquenoun.tumblr.com">@uniquenoun</a>이 디자인하고 <a href="https://twitter.com/#!/pismute">@pismute</a>가 다시 패키징했다.</p>
-
-<h2>설치하기</h2>
-
-<p>소스는 <a href="https://github.com/pismute/ladybucks">저장소</a>에서 확인할 수 있고 <a href="https://pismute.github.com/ladybucks/ladybucks.cpk">ladybucks.cpk</a>를 내려받는다.</p>
-
-<p>패키지 파일을 Chrome에서 열면 설치할 수 있다.</p>
-
-<h3>사용하기</h3>
-
-<p>'tools/extensions' 메뉴를 클릭해서 extensions 페이지(<code>chrome://settings/extensions</code>)를 열고 Ladybucks Extension의 options을 클릭해서 option 페이지를 연다.</p>
-
-<p><img src="/articles/2012/ladybucks/extensions.png" alt="extentions" title="" /></p>
-
-<p>이 페이지에서 Starbucks Wi-Fi 이용 시 사용할 신상정보(이름, 주민번호)를 입력한다.</p>
-
-<p><img src="/articles/2012/ladybucks/option.png" alt="option" title="" /></p>
-
-<p>그리고 Starbucks에서 Wi-Fi 접속 페이지가 열리면 자동으로 신상정보를 입력하고 클릭해서 Wi-Fi에 연결해 준다.</p>
-
-<p><img src="/articles/2012/ladybucks/success.png" alt="success" title="" /></p>]]>
     </content>
   </entry>
 </feed>
