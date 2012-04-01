@@ -2,28 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.com</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/smacss-part2.html</loc>
+    <lastmod>2012-03-31T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github.html</loc>
+    <lastmod>2012-03-31T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/first-speach.html</loc>
+    <lastmod>2012-03-29T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/atelier.html</loc>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/archive.html</loc>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/about.html</loc>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/sitemap.xml</loc>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
+    <lastmod>2012-04-01T23:49:49Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/git-ff.html</loc>
     <lastmod>2012-03-24T15:00:00Z</lastmod>
     <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/archive.html</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/atelier.html</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/bash-completion.html</loc>
@@ -79,16 +104,6 @@
     <loc>http://dogfeet.github.com/articles/2012/git-translate-flow.html</loc>
     <lastmod>2012-02-01T15:00:00Z</lastmod>
     <changefreq>never</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/sitemap.xml</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/about.html</loc>
-    <lastmod>2012-03-25T08:32:04Z</lastmod>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/optimize-browser-rendering.html</loc>
@@ -161,12 +176,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -181,12 +196,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -221,12 +236,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -241,7 +256,7 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -251,7 +266,7 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -266,12 +281,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317086700.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317088260.html</loc>
     <lastmod>2011-09-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317088260.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317086700.html</loc>
     <lastmod>2011-09-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -381,12 +396,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271648700.html</loc>
+    <loc>http://dogfeet.github.com/articles/2010/1271653140.html</loc>
     <lastmod>2010-04-19T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271653140.html</loc>
+    <loc>http://dogfeet.github.com/articles/2010/1271648700.html</loc>
     <lastmod>2010-04-19T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -446,12 +461,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1253429760.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1253428440.html</loc>
     <lastmod>2009-09-20T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1253428440.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1253429760.html</loc>
     <lastmod>2009-09-20T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -461,12 +476,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1251363780.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1251363000.html</loc>
     <lastmod>2009-08-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2009/1251363000.html</loc>
+    <loc>http://dogfeet.github.com/articles/2009/1251363780.html</loc>
     <lastmod>2009-08-27T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
