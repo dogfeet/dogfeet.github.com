@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -184,7 +181,7 @@
 
 <p>깊이는 쉽게 말해 CSS 셀렉터의 길이를 의미한다. CSS 깊이 문제는 이미 만들어놓은 HTML 구조에 관련있는 것이고 HTML 구조를 그대로 CSS 셀렉터에 표현하면 너무 길어진다. 예를 들어 다음과 같은 CSS Rule이 있으면:</p>
 
-<pre class="prettyprint"><code>#sidebar div, #footer div {
+<pre><code>#sidebar div, #footer div {
     border: 1px solid #333;
 }
 
@@ -199,7 +196,7 @@
 
 <p>div 엘레멘트를 기본으로 하여 다음과 같이 바꿀 수 있다.</p>
 
-<pre class="prettyprint"><code>.pod {
+<pre><code>.pod {
     border: 1px solid #333;
 }
 
@@ -216,7 +213,7 @@
 
 <p>이렇게 얕은 깊이의 CSS은 템플릿 엔진을 사용할 때 효과적이다. 이 CSS를 따르는 <a href="http://mustache.github.com/">Mushache</a>의 템플릿 코드를 살펴보자:</p>
 
-<pre class="prettyprint"><code>&lt;div class="pod"&gt;
+<pre><code>&lt;div class="pod"&gt;
     &lt;h3&gt;{{heading}}&lt;/h3&gt;
     &lt;ul&gt;
         {{#items}}
@@ -230,7 +227,7 @@
 
 <p>Container는 보통 Header, Body, Footer 영역으로 나눈다. 이 것은 일종의 디자인 패턴이라고 할 수 있다. 그래서 <code>.pod &gt; ul</code>을 다음과 같은 CSS Rule을 만들고 HTML에 적용시면:</p>
 
-<pre class="prettyprint"><code>.pod-body {
+<pre><code>.pod-body {
     margin-bottom: 5px;
 }
 </code></pre>
@@ -245,7 +242,7 @@
 
 <p>우선 스타일은 HTML의 엘리먼트가가 생성되는 시점에 적용이 된다. 브라우저는 HTML문서를 일종의 Stream으로 다룬다. 그러니까 먼저 들어온 엘리먼트를 먼저 생성한다. 다음 예제를 보면:</p>
 
-<pre class="prettyprint"><code>&lt;body&gt;
+<pre><code>&lt;body&gt;
     &lt;div id="content"&gt;
         &lt;div class="module intro"&gt;
             &lt;p&gt;Lorem Ipsum&lt;/p&gt;
@@ -293,7 +290,7 @@
 
 <p>특히 HTML5에서 새로 추가된 의미 태그는 1번 항목을 도와준다. 하지만 HTML5라고 해서 충분히 모든 의미를 포함할수는 없다. 클래스 속성을 통해서 아주 구체적인 의미를 밝힐 수 있다. 아래의 두 <code>&lt;nav&gt;</code> 엘리먼트는 클래스로 그 의미를 밝혀두고 있다. 클래스 속성에 따라 <code>nav-primary</code> 클래스는 가로 메뉴로, <code>nav-secondary</code> 세로메뉴로 만들수도 있다.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="nav-primary"&gt;
+<pre><code>&lt;nav class="nav-primary"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;…&lt;/ul&gt;
 &lt;/nav&gt;
@@ -308,7 +305,7 @@
 
 <p>SMACSS의 목표는 최대한 얕은 깊이의 셀렉터를 사용하는 것이다. 만약 아래와 같은 마크업이 있을 때 2단계를 어떻게 다르게 처리할 수 있을까.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="nav-primary"&gt;
+<pre><code>&lt;nav class="nav-primary"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;
         &lt;li&gt;About Us
@@ -323,7 +320,7 @@
 
 <p>CSS 셀렉터를 중첩해서 쓰면 아래와 같다:</p>
 
-<pre class="prettyprint"><code>nav.nav-primary li { 
+<pre><code>nav.nav-primary li { 
     display: inline-block; 
 }
 
@@ -335,7 +332,7 @@ nav.nav-primary li li {
 
 <p>자 여기서 엘리먼트를 제한하는 <code>nav</code>를 제거하고 셀렉터의 깊이도 더 얕게 만들어보면:</p>
 
-<pre class="prettyprint"><code>.l-inline &gt; * { 
+<pre><code>.l-inline &gt; * { 
     display: inline-block;
 }
 
@@ -346,7 +343,7 @@ nav.nav-primary li li {
 
 <p>요렇게 만들어볼 수 있다. 마크업은 아래와 같이 수정되어야 한다.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="l-inline"&gt;
+<pre><code>&lt;nav class="l-inline"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;
         &lt;li&gt;About Us
@@ -355,7 +352,7 @@ nav.nav-primary li li {
                 &lt;li&gt;Location&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/li&gt;
-    &lt;/ul&gt;
+&lt;/ul&gt;
 &lt;/nav&gt;
 </code></pre>
 

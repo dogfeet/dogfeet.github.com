@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -142,7 +139,7 @@
 
 <p>Menu HTML:</p>
 
-<pre class="prettyprint"><code>&lt;ul class="menu"&gt;
+<pre><code>&lt;ul class="menu"&gt;
     &lt;li class="menu-inbox"&gt;Inbox&lt;/li&gt;
     &lt;li class="menu-drafts"&gt;Drafts&lt;/li&gt;
 &lt;/ul&gt;
@@ -150,7 +147,7 @@
 
 <p>Menu CSS:</p>
 
-<pre class="prettyprint"><code>.menu li {
+<pre><code>.menu li {
     background: url(/img/sprite.png) no-repeat 0 0;
     padding-left: 20px;
 }
@@ -179,7 +176,7 @@
 
 <p>Icon Module을 사용하도록 HTML을 바꾼다:</p>
 
-<pre class="prettyprint"><code>&lt;li&gt;&lt;i class="ico ico-16 ico-inbox"&gt;&lt;/i&gt; Inbox&lt;/li&gt;
+<pre><code>&lt;li&gt;&lt;i class="ico ico-16 ico-inbox"&gt;&lt;/i&gt; Inbox&lt;/li&gt;
 </code></pre>
 
 <p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
@@ -190,7 +187,7 @@
 
 <p>Icon Module CSS:</p>
 
-<pre class="prettyprint"><code>.ico {
+<pre><code>.ico {
     display: inline-block;
     background: url(/img/sprite.png) no-repeat;
     line-height: 0;

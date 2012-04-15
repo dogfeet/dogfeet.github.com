@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -128,7 +125,7 @@
 
 <p>아마도 이전의 분석글에서 실행한 jPetStore에서 대부분의 메뉴가 동작하지 않았을 것이다. 에러 메시지를 살펴보면 'Could not open JDBC Connection'이 보인다. 즉 DB설정이 제대로 되지 않았다는 것이다. Database를 설정하기 위해서 web.xml 설정파일부터 다시 살펴본다:</p>
 
-<pre class="prettyprint"><code>&lt;!--
+<pre><code>&lt;!--
 - Location of the XML file that defines the root application context.
 - Applied by ContextLoaderServlet.
 -
@@ -146,7 +143,7 @@
 
 <p>대충 훓어보다보며 'dataAccessContext' 이 부분이 보인다. 옳거니 여기구나. 'context-param'은 일종의 환경변수 등록이다. 즉 다음과 같이 서블릿이 실행되기 전에 변수를 등록해 놓는 것이다.</p>
 
-<pre class="prettyprint"><code>contextConfigLocation = /WEB-INF/dataAccessContext-local.xml /WEB-INF/applicationContext.xml 
+<pre><code>contextConfigLocation = /WEB-INF/dataAccessContext-local.xml /WEB-INF/applicationContext.xml 
 </code></pre>
 
 <p><a href="http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/web/context/ContextLoader.html">contextConfigLocation</a>에 지정된 Context파일은 Spring Framework 초기화 작업이 읽고 사용한다. 변수 값으로는 dataAccessContext-local.xml, applicationContext.xml 두 파일의 경로를 설정하였다.</p>
@@ -174,7 +171,7 @@
 
 <p>다시 dataSource Bean으로 돌아와서, dataSource에서 사용하는 값이 정의된 /war/WEB-INF/jdbc.properties 파일을 열어보면 jdbc 연결에 필요한 파라미터들이 정의되어있다. 이 샘플은 기본적으로 HSQLDB를 사용한다. 따라서 HSQLDB의 구동이 필요한데, 이것을 위한 파일들은 /db/hsqldb에 위치한다. 샘플을 돌려보는 운영체제에 따라 server.bat나 server.sh파일을 실행한다. 나의 경우, server.sh파일을 'sh server.sh'나 chmod로 권한을 줘서 실행하면 잘 실행이 되지 않았다(실행은 되는데 샘플 데이터 구축이 잘 안됌). 'cat server.sh'하여 그 내용을 똑같이 따라 입력하였더니 HSQLDB가 실행이 되는 것을 볼 수 있었다. manager.sh(manager.bat)파일은 현재 실행중인 HSQLDB에 접속해서 Query를 실행해 볼 수 있는 간단한 클라이언트다.</p>
 
-<pre class="prettyprint"><code>SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/samples/jpetstore/db/hsqldb$ java -classpath ../../../../lib/hsqldb/hsqldb.jar org.hsqldb.Server -database jpetstore
+<pre><code>SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/samples/jpetstore/db/hsqldb$ java -classpath ../../../../lib/hsqldb/hsqldb.jar org.hsqldb.Server -database jpetstore
 [Server@5d173]: [Thread[main,5,main]]: checkRunning(false) entered
 [Server@5d173]: [Thread[main,5,main]]: checkRunning(false) exited
 [Server@5d173]: Startup sequence initiated from main() method
@@ -199,12 +196,40 @@
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
         <span>May 04 2010</span>
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
+        <span>Apr 27 2010</span>
+&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+      </li>
+      <li>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
@@ -215,32 +240,12 @@
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Apr 27 2010</span>
-&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Apr 20 2010</span>
-&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
 &raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
       </li>
       <li>
         <span>Nov 10 2009</span>
@@ -251,16 +256,8 @@
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
       </li>
       <li>
         <span>Aug 19 2008</span>

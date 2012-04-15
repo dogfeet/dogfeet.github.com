@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -150,12 +147,12 @@
 
 <p>전역에 적용하고 싶으면 맨 첫 줄에 다음과 같이 넣으면 된다:</p>
 
-<pre class="prettyprint"><code>"use strict";
+<pre><code>"use strict";
 </code></pre>
 
 <p>함수같이 특별한 context에서만 켜고 싶으면 다음과 같이 넣는다:</p>
 
-<pre class="prettyprint"><code>function imStrict(){
+<pre><code>function imStrict(){
   "use strict";
   // ... your code ...
 }
@@ -167,7 +164,7 @@
 
 <p>함수에만 'Strict Mode'를 적용할 수 있기 때문에 다른 코드에 대한 걱정없이 JavaScript 라이브러리에 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>// Non-strict code...
+<pre><code>// Non-strict code...
 (function(){
   "use strict";
 
@@ -189,7 +186,7 @@
 
 <p>변수, 함수, 인자를 해제(delete)하면 에러가 난다:</p>
 
-<pre class="prettyprint"><code>var foo = "test";
+<pre><code>var foo = "test";
 function test(){}
 delete foo; // Error
 delete test; // Error
@@ -201,7 +198,7 @@ function test2(arg) {
 
 <p>객체에 같은 프로퍼티를 여러개 정의하면 에러가 난다:</p>
 
-<pre class="prettyprint"><code>// Error
+<pre><code>// Error
 { foo: true, foo: false }
 </code></pre>
 
@@ -209,7 +206,7 @@ function test2(arg) {
 
 <p>'eval'이라는 이름으로 무언가 만들 수 없다:</p>
 
-<pre class="prettyprint"><code>// All generate errors...
+<pre><code>// All generate errors...
 obj.eval = ...
 obj.foo = eval;
 var eval = ...;
@@ -222,7 +219,7 @@ new Function("eval")
 
 <p>그리고 eval() 함수로 변수를 정의하는 것도 안된다.</p>
 
-<pre class="prettyprint"><code>eval("var a = false;");
+<pre><code>eval("var a = false;");
 print( typeof a ); // undefined 
 </code></pre>
 
@@ -230,14 +227,14 @@ print( typeof a ); // undefined
 
 <p>arguments 객체에 뭔가 할당할 수 없다:</p>
 
-<pre class="prettyprint"><code>arguments = [...]; // not allowed
+<pre><code>arguments = [...]; // not allowed
 </code></pre>
 
 <p><code>function( foo, foo ) {}</code>처럼 동일한 인자를 두 개 만들 수 없다:</p>
 
 <p>arguments.caller와 arguments.callee에 접근하면 에러가 발생한다. 그래서 anonymous 함수를 재사용 하고 싶으면 named 함수로 정의해야 한다:</p>
 
-<pre class="prettyprint"><code>setTimeout(function later(){
+<pre><code>setTimeout(function later(){
   // do stuff...
   setTimeout( later, 1000 );
 }, 1000 );
@@ -245,7 +242,7 @@ print( typeof a ); // undefined
 
 <p>특정 함수의 arguments와 caller 프로퍼티에 접근할 수 없다. 이 프로퍼티를 만들지 못 하도록 금지됐다:</p>
 
-<pre class="prettyprint"><code>function test(){
+<pre><code>function test(){
   function inner(){
     // Don't exist, either
     test.arguments = ...; // Error
@@ -256,7 +253,7 @@ print( typeof a ); // undefined
 
 <p>마지막으로 그토록 우리를 괴롭혔던 버그가 해결됐다. null이나 undefined가 global 객체 처럼 사용되면 예외가 난다. 'Strict Mode'에서는 이렇게 사용하지 못한다:</p>
 
-<pre class="prettyprint"><code>(function(){ ... }).call( null ); // Exception 
+<pre><code>(function(){ ... }).call( null ); // Exception 
 </code></pre>
 
 <h3>with(){}</h3>
@@ -283,7 +280,7 @@ print( typeof a ); // undefined
 
 <p>JSON 스트링을 JavaScript 객체로 바꿔준다:</p>
 
-<pre class="prettyprint"><code>var obj = JSON.parse('{"name":"John"}');
+<pre><code>var obj = JSON.parse('{"name":"John"}');
 // Prints 'John'
 print( obj.name );
 </code></pre>
@@ -292,7 +289,7 @@ print( obj.name );
 
 <p>변환할 때 적당히 가공할 수 있다:</p>
 
-<pre class="prettyprint"><code>function translate(key, value) {
+<pre><code>function translate(key, value) {
   if ( key === "name" ) {
     return value + " Resig";
   }
@@ -309,7 +306,7 @@ print( obj.last );
 
 <p>객체를 JSON 스트링으로 바꾼다:</p>
 
-<pre class="prettyprint"><code>var str = JSON.stringify({ name: "John" });
+<pre><code>var str = JSON.stringify({ name: "John" });
 // Prints {"name":"John"}
 print( str );
 </code></pre>
@@ -318,7 +315,7 @@ print( str );
 
 <p>바꿀 프로퍼티를 고를 수 있다:</p>
 
-<pre class="prettyprint"><code>var list = ["name"];
+<pre><code>var list = ["name"];
 var str = JSON.stringify({name: "John", last: "Resig"}, list);
 // Prints {"name":"John"}
 print( str );
@@ -328,7 +325,7 @@ print( str );
 
 <p>prase처럼 translate 함수를 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>function translate(key, value) {
+<pre><code>function translate(key, value) {
   if ( key === "name" ) {
     return value + " Resig";
   }
@@ -342,7 +339,7 @@ print( str );
 
 <p>결과물이 예쁘도록 space 문자를 넣을 수 있다:</p>
 
-<pre class="prettyprint"><code>var str = JSON.stringify({ name: "John" }, null, 2);
+<pre><code>var str = JSON.stringify({ name: "John" }, null, 2);
 // Prints:
 // {
 //   "name": "John"
@@ -354,7 +351,7 @@ print( str );
 
 <p>space 문자 대신 그냥 원하는 스트링을 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>var str = JSON.stringify({ name: "John" }, null, "\t");
+<pre><code>var str = JSON.stringify({ name: "John" }, null, "\t");
 // Prints:
 // {\n\t"name": "John"\n}
 print( str );
@@ -362,7 +359,7 @@ print( str );
 
 <p>기본 객체들에 몇 가지 추가된 메소드들도 있는데 별로 새롭진 않다. String, Boolean, Number의 .valueOf()와 같고 Date는 .toISOString()과 같다.</p>
 
-<pre class="prettyprint"><code>// Yawn...
+<pre><code>// Yawn...
 String.prototype.toJSON
 Boolean.prototype.toJSON
 Number.prototype.toJSON
@@ -377,7 +374,7 @@ Date.prototype.toJSON
 
 <p>function context를 가리키는 this에 특정 객체를 고정하고 필요한 인자를 채워서 호출하면 된다:</p>
 
-<pre class="prettyprint"><code>var obj = {
+<pre><code>var obj = {
   method: function(name){
     this.name = name;
   }
@@ -393,7 +390,7 @@ setTimeout( obj.method.bind(obj, "John"), 100 );
 
 <p>Date 생성자에 ISO 형식의 날자가 입력되면 파싱하여 그 날자로 객체를 초기화한다. 그리고 .toISOString()이라는 메소드도 생겨서 date 객체를 ISO 형식의 스트링으로 변환할 수 있다:</p>
 
-<pre class="prettyprint"><code>var date = new Date("2009-05-21T16:06:05.000Z");
+<pre><code>var date = new Date("2009-05-21T16:06:05.000Z");
 // Prints 2009-05-21T16:06:05.000Z
 print( date.toISOString() );
 </code></pre>
@@ -410,7 +407,7 @@ print( date.toISOString() );
 
 <p>그리고 isArray 메소드도 추가 됐다:</p>
 
-<pre class="prettyprint"><code>Array.isArray = function( array ) {
+<pre><code>Array.isArray = function( array ) {
   return Object.prototype.toString.call( array ) === "[object Array]";
 };
 </code></pre>
@@ -423,44 +420,44 @@ print( date.toISOString() );
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+      </li>
+      <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
       </li>
       <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+      </li>
+      <li>
         <span>Oct 05 2011</span>
 &raquo;        <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

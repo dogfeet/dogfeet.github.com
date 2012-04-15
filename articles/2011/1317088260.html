@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -128,7 +125,7 @@
 
 <p>함수를 부분적으로 apply하는 방법은 굉장히 중요하다. 이 기법은 함수가 실행되기 전에 인자들 중에서 몇 개를 미리 결정하는 것을 말하고 사실상 부분적으로 apply하는 함수는 호출 가능한 새 함수를 반환한다. 이 말의 예를 코드로 만들면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>String.prototype.csv = String.prototype.split.partial(/,\s*/);
+<pre><code>String.prototype.csv = String.prototype.split.partial(/,\s*/);
 
 var results = "John, Resig, Boston".csv();
 
@@ -137,7 +134,7 @@ alert( (results[1] == "Resig") + " The text values were split properly" );
 
 <p>partial()은 함수를 반환하는 데, 정규표현식이 인자로 미리 채워진 .split() 메소드를 반환한다. 반환된 함수 .csv()는 comma-separated values를 list로 변환하는 함수다. 함수의 인자 몇 개를 순서대로 채워서 함수를 만드는(반환하는 것) 것을 보통 curry라고 부른다. 어떻게 curry하는지 Prototype 라이브러리에 구현된 것을 살펴보자(역주 - 보통 이런 함수를 curry function이라고 부른다).</p>
 
-<pre class="prettyprint"><code>Function.prototype.curry = function() {
+<pre><code>Function.prototype.curry = function() {
   var fn = this, args = Array.prototype.slice.call(arguments);
   return function() {
     return fn.apply(this, args.concat(
@@ -150,7 +147,7 @@ alert( (results[1] == "Resig") + " The text values were split properly" );
 
 <p>이제 부분적으로 apply하는 기법을 개선하여 완벽하게 만들어보자. 단순히 처음 몇 개의 인자를 저장해두는 것이 아니라 위치에 상관없이 동작하도록 할 수 있다. 부분적으로 apply하는 기법은 다른 언어에 있던 아이디어이지만 Oliver Steele는 자신의 <a href="http://osteele.com/sources/JavaScript/functional/">Functional.js</a>에서 구현했고 그가 JavaScript에서 처음으로 구현한 사람중 하나다. 다음의 예를 살펴보자:</p>
 
-<pre class="prettyprint"><code>Function.prototype.partial = function(){
+<pre><code>Function.prototype.partial = function(){
   var fn = this, args = Array.prototype.slice.call(arguments);
   return function(){
     var arg = 0;
@@ -166,7 +163,7 @@ alert( (results[1] == "Resig") + " The text values were split properly" );
 
 <p>String을 split하는 예제는 이미 위에서 살펴봤으니 이 함수가 사용될 만한 다른 것에도 적용해보자. 쉽게 delay시킬 수 있는 함수를 만든다:</p>
 
-<pre class="prettyprint"><code>var delay = setTimeout.partial(undefined, 10);
+<pre><code>var delay = setTimeout.partial(undefined, 10);
 
 delay(function(){
   alert( "A call to this function will be temporarily delayed." );
@@ -177,7 +174,7 @@ delay(function(){
 
 <p>event를 바인딩하는 데에도 적용해 보자:</p>
 
-<pre class="prettyprint"><code>var bindClick = document.body.addEventListener
+<pre><code>var bindClick = document.body.addEventListener
   .partial("click", undefined, false);
 
 bindClick(function(){
@@ -197,36 +194,28 @@ bindClick(function(){
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+      </li>
+      <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
       </li>
       <li>
         <span>Oct 05 2011</span>
@@ -235,6 +224,14 @@ bindClick(function(){
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

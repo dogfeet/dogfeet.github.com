@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -140,7 +137,7 @@
 
 <p>다음과 같은 enum 클래스가 있다고 하면:</p>
 
-<pre class="prettyprint"><code>package kr.pismute
+<pre><code>package kr.pismute
 
 public enum Week {
   MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
@@ -149,14 +146,14 @@ public enum Week {
 
 <p>jsp에서 다음과 같이 사용할 수 있다. 사실 applicationSope이란 내장객체라는게 참 촌스럽다. 그냥 application으로 하지 못할 이유라도 있었는지…</p>
 
-<pre class="prettyprint"><code>${applicationScope.week.MONDAY}
+<pre><code>${applicationScope.week.MONDAY}
 </code></pre>
 
 <p>Week라는 클래스 이름은 자바 네이밍 컨벤션에 따라 week으로 바꿔서 넣는다. GoldenWeek였다면 goldenWeek로 바뀐다.</p>
 
 <p>이제 web.xml에 이 ContextListner를 넣는다:</p>
 
-<pre class="prettyprint"><code>&lt;context-param&gt;
+<pre><code>&lt;context-param&gt;
     &lt;param-name&gt;enumServletContextConfig&lt;/param-name&gt;
     &lt;param-value&gt;kr.pismute.Week&lt;/param-value&gt;
 &lt;/context-param&gt;
@@ -168,7 +165,7 @@ public enum Week {
 
 <p>Enum에 빈을 추가해서 사용할 수도 있다. Week에 다음과 같이 추가하고:</p>
 
-<pre class="prettyprint"><code>private Integer day;
+<pre><code>private Integer day;
 
   public Integer getDay(){
     return day;
@@ -177,12 +174,12 @@ public enum Week {
 
 <p>jsp에서 다음과 같이 day 프로퍼티를 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>${applicationScope.week.MONDAY.day}
+<pre><code>${applicationScope.week.MONDAY.day}
 </code></pre>
 
 <h2>Code</h2>
 
-<pre class="prettyprint"><code>pacakge kr.pismute
+<pre><code>pacakge kr.pismute
 
 import java.util.Collections;
 import java.util.HashMap;

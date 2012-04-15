@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -132,7 +129,7 @@
 
 <p>이 그래픽 편집기는 파일을 3개로 구성한다. 파일은 editor.js, editor.css, editor.html 인 데 아직 editor.js, edtior.css는 빈 파일이다. 먼저 editor.html 파일을 보자:</p>
 
-<pre class="prettyprint"><code>&lt;!doctype html&gt;
+<pre><code>&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;link rel="stylesheet" type="text/css" href="editor.css"&gt;
@@ -157,7 +154,7 @@
 
 <p>간단한 도형을 나타내는 Model인 Shape 클래스를 만든다:</p>
 
-<pre class="prettyprint"><code>var Shape = Backbone.Model.extend({
+<pre><code>var Shape = Backbone.Model.extend({
     defaults: { x:50, y:50, width:150, height:150, color:'black' },
     setTopLeft: function(x,y) {
         this.set({ x:x, y:y });
@@ -177,7 +174,7 @@
 
 <p>Model 클래스는 정의했으니 이제, 인스턴스를 만들고 프로퍼티에 이벤트를 바인딩하는 예제를 살펴보자(<a href="http://jsfiddle.net/nakhli/td6Eg/1/">jsfiddle</a>):</p>
 
-<pre class="prettyprint"><code>var shape = new Shape();
+<pre><code>var shape = new Shape();
 
 shape.bind('change', function() { alert('changed!'); });
 shape.bind('change:width', function() { alert('width changed! ' + shape.get('width')); });
@@ -192,12 +189,12 @@ shape.setTopLeft(100, 100);
 
 <p>Model을 정의하고 Change 이벤트 리스너를 등록하는 방법을 살펴봤다. 이제, 이 이벤트를 활용하는 방법을 살펴보자. html 페이지에 div 엘리먼트를 정의한다:</p>
 
-<pre class="prettyprint"><code>&lt;div class='shape' /&gt;
+<pre><code>&lt;div class='shape' /&gt;
 </code></pre>
 
 <p>Model이 바뀌면 엘리먼트도 바뀌게 묶는다(jQuery로 DOM 정보를 바꾼다).</p>
 
-<pre class="prettyprint"><code>shape.bind('change', function() {
+<pre><code>shape.bind('change', function() {
     $('.shape').css({ left:       shape.get('x'),
                       top:        shape.get('y'),
                       width:      shape.get('width'),
@@ -208,7 +205,7 @@ shape.setTopLeft(100, 100);
 
 <p>매우 쉽다! Model을 수정하면 DOM도 바뀐다. Firebug 같은 브라우저 콘솔을 열어서 다음과 같이 실행해 본다:</p>
 
-<pre class="prettyprint"><code>shape.setTopLeft(10, 10);
+<pre><code>shape.setTopLeft(10, 10);
 shape.setDim(500, 500);
 </code></pre>
 
@@ -220,7 +217,7 @@ shape.setDim(500, 500);
 
 <p>이 절에서는 사용자가 Shape 객체를 드래그할 수 있게 한다. mousedown, mouseup, mousemove 이벤트를 지켜보다가 Model을 업데이트하는 코드를 살펴보자(<a href="http://jsfiddle.net/nakhli/td6Eg/2/">jsfiddle</a>):</p>
 
-<pre class="prettyprint"><code>var dragging = false;
+<pre><code>var dragging = false;
 
 $('.shape').mousedown(function (e) {
     dragging = true;
@@ -253,12 +250,12 @@ $('#page').mousemove(function(e) {
 
 <p>Model 컬렉션을 사용한다. Shape 객체를 담는 Collection인 'Document' Model를 만들자:</p>
 
-<pre class="prettyprint"><code>var Document = Backbone.Collection.extend({ model: Shape });
+<pre><code>var Document = Backbone.Collection.extend({ model: Shape });
 </code></pre>
 
 <p>Document 객체를 만들고 add, remote 이벤트 리스너를 등록한다:</p>
 
-<pre class="prettyprint"><code>var document = new Document();
+<pre><code>var document = new Document();
 
 document.bind('add', function(model) { alert('added'); });
 document.bind('remove', function(model) { alert('removed'); });
@@ -282,7 +279,7 @@ document.remove(shape); // fires remove event
 
 <p>Shape Model을 사용하는 Shape View 코드를 살펴보자. 이 View는 Shape을 표현하는 Html 엘리먼트와 그 Html 엘리먼트를 감싸는(Decorate) 'control' 엘리먼트를 관리한다. 'control' 엘리먼트는 사용자가 Shape을 드레그하고, Shape의 크기를 바꾸고, Shape을 삭제하고, Shape의 색을 바꿀 수 있게 해준다.</p>
 
-<pre class="prettyprint"><code>var ShapeView = Backbone.View.extend({
+<pre><code>var ShapeView = Backbone.View.extend({
     initialize: function() {
         this.model.bind('change', this.updateView, this);
     },
@@ -364,7 +361,7 @@ document.remove(shape); // fires remove event
 
 <p>먼저 만들었던 Document Model를 위한 DocumentView도 만들어야 한다. 그래야 Shape View를 관리할 수 있다:</p>
 
-<pre class="prettyprint"><code>var DocumentView =  Backbone.View.extend({
+<pre><code>var DocumentView =  Backbone.View.extend({
     id: 'page',
     views: {},
     initialize: function() {

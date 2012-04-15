@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -138,7 +135,7 @@
 
 <p>다음 코드는 JavaScript 엔진이 property를 어떻게 찾는지 보여주는 코드다(설명용):</p>
 
-<pre class="prettyprint"><code>function getProperty(obj, prop) {
+<pre><code>function getProperty(obj, prop) {
   if (obj.hasOwnProperty(prop))
     return obj[prop]
 
@@ -152,7 +149,7 @@
 
 <p>2차원 Point 객체의 예를 보자. 이 Point 객체는 x,y 좌표와 print method를 가진다. 위에서 설명한 prototypal inheritance의 정의에 따라서 x, y, print property를 만든다. Point를 만들기 위해서 객체를 새로 만들고 <code>__proto__</code>에 Point를 할당한다:</p>
 
-<pre class="prettyprint"><code>var Point = {
+<pre><code>var Point = {
   x: 0,
   y: 0,
   print: function () { console.log(this.x, this.y); }
@@ -166,7 +163,7 @@ p.print(); // 10 20
 
 <p>바로 위와 같은 코드는 보여주지도 않고 prototypal inheritance를 가르치는 것이 문제다. 사람들은 위와 같은 코드 대신 다음과 같은 코드로 설명한다:</p>
 
-<pre class="prettyprint"><code>function Point(x, y) {
+<pre><code>function Point(x, y) {
   this.x = x;
   this.y = y;
 }
@@ -199,7 +196,7 @@ p.print(); // 10 20
 
 <p>new가 무엇을 하는지 설명했다. JavaScript코드로 이 내용을 구현해보자:</p>
 
-<pre class="prettyprint"><code>function New (f) {
+<pre><code>function New (f) {
   var n = { '__proto__': f.prototype }; /*1*/
   return function () {
     f.apply(n, arguments);              /*2*/
@@ -210,7 +207,7 @@ p.print(); // 10 20
 
 <p>그리고 이게 잘되나 한번 테스트 해보자:</p>
 
-<pre class="prettyprint"><code>function Point(x, y) {
+<pre><code>function Point(x, y) {
   this.x = x;
   this.y = y;
 }
@@ -231,7 +228,7 @@ console.log(p2 instanceof Point); // true
 
 <p>new가 어떤 것인지 <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">JavaScript specifications</a>에<br />설명돼 있지만 Douglas Crockford는 real Prototypal Inheritance를 하는 new를 만들었다. 그는 <a href="http://JavaScript.crockford.com/prototypal.html">Object.create</a>를 다음과 같이 구현했다:</p>
 
-<pre class="prettyprint"><code>Object.create = function (parent) {
+<pre><code>Object.create = function (parent) {
   function F() {}
   F.prototype = parent;
   return new F();
@@ -240,14 +237,14 @@ console.log(p2 instanceof Point); // true
 
 <p>이 것은 믿기 어려울 정도로 단순하다. 쉽게 객체를 만들고 prototype에 원하는 parent를 할당할 수 있게 돼있다. 만약 <code>__proto__</code>를 직접 사용한다고 가정하면 더 단순하다:</p>
 
-<pre class="prettyprint"><code>Object.create = function (parent) {
+<pre><code>Object.create = function (parent) {
   return { '__proto__': parent };
 };
 </code></pre>
 
 <p>다음 real prototypal inheritance를 사용한 예이다:</p>
 
-<pre class="prettyprint"><code>var Point = {
+<pre><code>var Point = {
   x: 0,
   y: 0,
   print: function () { console.log(this.x, this.y); }
@@ -290,36 +287,28 @@ p.print(); // 10 20
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
         <span>Sep 28 2011</span>
 &raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
       </li>
       <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
-      </li>
-      <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
-      </li>
-      <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
       </li>
       <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+      </li>
+      <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
       </li>
       <li>
         <span>Oct 05 2011</span>
@@ -328,6 +317,14 @@ p.print(); // 10 20
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

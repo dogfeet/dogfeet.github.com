@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>dogfeet - PAC: proxy auto-config</title>
     <meta name="description" content="Proxy을 통해 우회하고 싶을 때가 왕왕 있다." />
-    <meta name="keywords" content="PAC,proxy,auto-config,'freegate" />
+    <meta name="keywords" content="PAC,proxy,auto-config,freegate" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -101,7 +98,7 @@
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Apr 08</span>
- | <a href="/site/tagmap.html#pac" class="tag">PAC</a> <a href="/site/tagmap.html#proxy" class="tag">proxy</a> <a href="/site/tagmap.html#auto-config" class="tag">auto-config</a> <a href="/site/tagmap.html#'freegate" class="tag">'freegate</a> | <span><a href="/articles/2012/proxy-auto-config.html#disqus_thread" data-disqus-identifier="/articles/2012/proxy-auto-config.html"></a></span>
+ | <a href="/site/tagmap.html#pac" class="tag">PAC</a> <a href="/site/tagmap.html#proxy" class="tag">proxy</a> <a href="/site/tagmap.html#auto-config" class="tag">auto-config</a> <a href="/site/tagmap.html#freegate" class="tag">freegate</a> | <span><a href="/articles/2012/proxy-auto-config.html#disqus_thread" data-disqus-identifier="/articles/2012/proxy-auto-config.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -140,7 +137,7 @@
 
 <p>PAC는 아주 간단한 파일이다:</p>
 
-<pre class="prettyprint"><code>function FindProxyForURL(url, host) {
+<pre><code>function FindProxyForURL(url, host) {
 
     url = url.toLowerCase();
     host = host.toLowerCase();

@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -148,7 +145,7 @@
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>#!js
+<pre><code>#!js
 var obj = {};
 obj.name = "John";
 print( obj.name );
@@ -189,7 +186,7 @@ print( Object.isExtensible( obj ) );
 
 <p>여기서 설명한 것들이 모두 프로퍼티 descriptor의 구성요소다. 이 descriptor는 다음과 같이 생겼다:</p>
 
-<pre class="prettyprint"><code>{
+<pre><code>{
   value: "test",
   writable: true,
   enumerable: true,
@@ -207,7 +204,7 @@ print( Object.isExtensible( obj ) );
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>var obj = { foo: "test" };
+<pre><code>var obj = { foo: "test" };
 print(JSON.stringify( 
   Object.getOwnPropertyDescriptor( obj, "foo" )
 ));
@@ -221,7 +218,7 @@ print(JSON.stringify(
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>var obj = {};
+<pre><code>var obj = {};
 Object.defineProperty( obj, "value", {
   value: true,
   writable: false,
@@ -276,7 +273,7 @@ delete obj.value; // Exception
 
 <p>Example Implementation:</p>
 
-<pre class="prettyprint"><code>Object.defineProperties = function( obj, props ) {
+<pre><code>Object.defineProperties = function( obj, props ) {
   for ( var prop in props ) {
     Object.defineProperty( obj, prop, props[prop] );
   }
@@ -285,7 +282,7 @@ delete obj.value; // Exception
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>var obj = {};
+<pre><code>var obj = {};
 Object.defineProperties(obj, {
   "value": {
     value: true,
@@ -312,7 +309,7 @@ Object.defineProperties(obj, {
 
 <p>Example Implementation:</p>
 
-<pre class="prettyprint"><code>Object.keys = function( obj ) {
+<pre><code>Object.keys = function( obj ) {
   var array = new Array();
   for ( var prop in obj ) {
     if ( obj.hasOwnProperty( prop ) ) {
@@ -325,7 +322,7 @@ Object.defineProperties(obj, {
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>var obj = { name: "John", url: "<a href='http://ejohn.org/'>http://ejohn.org/</a>" };
+<pre><code>var obj = { name: "John", url: "<a href='http://ejohn.org/'>http://ejohn.org/</a>" };
 print( Object.keys(obj).join(", ") );
 // name, url 
 </code></pre>
@@ -344,7 +341,7 @@ print( Object.keys(obj).join(", ") );
 
 <p>Example Implementation: (by Ben Newman)</p>
 
-<pre class="prettyprint"><code>Object.create = function( proto, props ) {
+<pre><code>Object.create = function( proto, props ) {
   var ctor = function( ps ) {
     if ( ps )
       Object.defineProperties( this, ps );
@@ -356,7 +353,7 @@ print( Object.keys(obj).join(", ") );
 
 <p>Other implementation:</p>
 
-<pre class="prettyprint"><code>Object.create = function( proto, props ) {
+<pre><code>Object.create = function( proto, props ) {
   var obj = new Object();
   obj.__proto__ = proto;
   if ( typeof props !== "undefined" ) {
@@ -373,7 +370,7 @@ print( Object.keys(obj).join(", ") );
 
 <p>Example Usage:</p>
 
-<pre class="prettyprint"><code>function User(){}
+<pre><code>function User(){}
 User.prototype.name = "Anonymous";
 User.prototype.url = "<a href='http://google.com/'>http://google.com/</a>";
 var john = Object.create(new User(), {
@@ -394,7 +391,7 @@ Object.isSealed( obj )
 
 <p>Example Implementation:</p>
 
-<pre class="prettyprint"><code>Object.seal = function( obj ) {
+<pre><code>Object.seal = function( obj ) {
   var props = Object.getOwnPropertyNames( obj );
 
   for ( var i = 0; i &lt; props.length; i++ ) {
@@ -416,7 +413,7 @@ Object.isSealed( obj )
 
 <p>Example Implementation:</p>
 
-<pre class="prettyprint"><code>Object.freeze = function( obj ) {
+<pre><code>Object.freeze = function( obj ) {
   var props = Object.getOwnPropertyNames( obj );
 
   for ( var i = 0; i &lt; props.length; i++ ) {
@@ -444,44 +441,44 @@ Object.isSealed( obj )
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+      </li>
+      <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
       </li>
       <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+      </li>
+      <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

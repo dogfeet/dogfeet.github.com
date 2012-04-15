@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -146,28 +143,28 @@
 
 <h4>Descendant 셀렉터</h4>
 
-<pre class="prettyprint"><code>ul li a {...}
+<pre><code>ul li a {...}
 </code></pre>
 
 <p>Descendant 셀렉터는 비효율적이다. 브라우저는 Key를 찾고 나서 정확히 일치하는 것을 찾거나 더는 찾을 수 없을 때까지 그 상위 DOM 트리를 전부 뒤진다. Key가 덜 구체적일수록 Evaluate해 봐야 하는 엘리먼트의 수는 많아진다.</p>
 
 <h4>Child 셀렉터</h4>
 
-<pre class="prettyprint"><code>ul &gt; li &gt; a {...}
+<pre><code>ul &gt; li &gt; a {...}
 </code></pre>
 
 <p>Child 셀렉터도 비효율적이다. 브라우저가 엘리먼트를 Evaluate할 때마다 노드를 하나 더 Evaluate해야 한다. 다시 말해서 Child 셀렉터를 사용한 Rule은 비용이 두 배 더 든다. 게다가 Key 셀렉터가 가리키는 엘리먼트가 많을수록 더 많은 엘리먼트를 Evaluate해야 한다. 비효율적이지만 Descendant 셀렉터 보다는 훨씬 빨라서 꽤 사용되는 편이다.</p>
 
 <h4>쓸데없이 셀렉터를 더 사용할 때</h4>
 
-<pre class="prettyprint"><code>ul#top_blue_nav {...}
+<pre><code>ul#top_blue_nav {...}
 </code></pre>
 
 <p>정의에 따르면 ID 셀렉터는 중복될 수 없다. 그래서 class나 tag 셀렉터와 함께 사용하면 필요 없는 Evaluate을 추가로 하게 만든다. 노파심을 달래줄 뿐 하지 않아도 될 Evaluate만 더 하는 것이다.</p>
 
 <h4>Pseudo 셀렉터 <code>:hover</code>를 링크가 아닌 엘리먼트에 사용할 때</h4>
 
-<pre class="prettyprint"><code>.foo:hover {...}
+<pre><code>.foo:hover {...}
 </code></pre>
 
 <p><code>:hover</code> 셀렉터를 Non-anchor 엘리먼트에 사용하면 <a href="http://connect.microsoft.com/IE/feedback/ViewFeedback.aspx?FeedbackID=391387">IE7, IE8는 느려질 때가 있다</a>고 알려졌다. Strict Doctype을 사용하지 않을 때 IE7, IE8은 Non-Anchor 엘리먼트에 사용된 <code>:hover</code>를 무시한다. 하지만, Strict Doctype이 사용할 때 Non-Anchor 엘리먼트에 <code>:hover</code>를 사용하면 성능을 저하된다.</p>
@@ -246,12 +243,12 @@
 
 <p>HTTP 헤더에 명시하는 예제:</p>
 
-<pre class="prettyprint"><code>Content-Type: text/html; charset=utf-8
+<pre><code>Content-Type: text/html; charset=utf-8
 </code></pre>
 
 <p>HTML meta tag에 명시하는 예제:</p>
 
-<pre class="prettyprint"><code>&lt;meta http-equiv="content-type" content="text/html;charset=UTF-8" /&gt;
+<pre><code>&lt;meta http-equiv="content-type" content="text/html;charset=UTF-8" /&gt;
 </code></pre>
 
 <h2>결론</h2>
@@ -264,16 +261,16 @@
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Mar 08 2012</span>
+&raquo;        <a href="/articles/2012/smacss-icon-module.html">SMACSS:The Icon Module</a>
+      </li>
+      <li>
         <span>Apr 01 2012</span>
 &raquo;        <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
       </li>
       <li>
         <span>Feb 04 2012</span>
 &raquo;        <a href="/articles/2012/smacss.html">SMACSS: Brief Notes - Part 1</a>
-      </li>
-      <li>
-        <span>Mar 08 2012</span>
-&raquo;        <a href="/articles/2012/smacss-icon-module.html">SMACSS:The Icon Module</a>
       </li>
     </ul>
   </div>

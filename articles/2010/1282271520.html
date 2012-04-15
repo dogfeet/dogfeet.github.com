@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -124,7 +121,7 @@
   <div property="sioc:content">
     <h2>구구단 scheme</h2>
 
-<pre class="prettyprint"><code>#lang scheme (do ([i 1 (+ i 1)]) [(= i 10)] (do ([j 1 (+ j 1)]) [(= j 10)] (printf "~ax~a=~a~n" i j (* i j)))) 
+<pre><code>#lang scheme (do ([i 1 (+ i 1)]) [(= i 10)] (do ([j 1 (+ j 1)]) [(= j 10)] (printf "~ax~a=~a~n" i j (* i j)))) 
 </code></pre>
 
 <p>iterator를 쉽게 배워보는 계기가 됨. 발단은 <a href="http://me2day.net/darjeeling/2010/<a href='http://github.com/08/19/issues/#issue/21'>08/19#21</a>:40:53">이곳 다즐링님 포스팅</a></p>

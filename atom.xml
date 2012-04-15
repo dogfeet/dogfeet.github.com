@@ -3,20 +3,245 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-04-09T00:16:44Z</updated>
+  <updated>2012-04-15T17:01:59Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
   <author>
-    <name>Changwoo Park</name>
-    <email>pismute@gmail.com</email>
-  </author>
-  <author>
     <name>Yongjae Choi</name>
     <email>mage@weaveus.com</email>
   </author>
+  <author>
+    <name>Changwoo Park</name>
+    <email>pismute@gmail.com</email>
+  </author>
+  <entry>
+    <title><![CDATA[ nodejs: Mocha ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" />
+    <updated>2012-04-14T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/nodejs-mocha.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 '<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>'을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test" title="" /></p>
+
+<p><a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>를 읽고 Mocha 메뉴얼을 읽으니 훨씬 눈에 잘 들어온다.</p>
+
+<h2>Mocha</h2>
+
+<p><a href="http://visionmedia.github.com/mocha/">Mocha</a>는 TJ Holowaychuk이 만든 <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> 프레임워크이다. </p>
+
+<p>이 글에서는 그냥 Mocha로 BDD하는 법에 대해서만 설명한다. 원래 글은 TDD를 하는 법에 대해서 다뤘지만, 다시 정리하면서 BDD로 수정했다. 다른 방법, 다른 프레임워크와의 비교는 @outsider님이 잘 정리해 주었다. @outsider님 <a href="http://blog.outsider.ne.kr/770">블로그 글</a>을 읽어보자. </p>
+
+<h2>package.json</h2>
+
+<p>먼저 package.json 파일을 다음과 같이 만든다.</p>
+
+<pre><code>{
+    "name": "async-testing-tutorial"
+    , "version": "0.0.1"
+    , "description": "A tutorial for Mocha"
+    , "keywords": ["test", "tutorial"]
+    , "author": "Alex R. Young &lt;<a href='mailto:info@dailyjs.com'>info@dailyjs.com</a>&gt;"
+    , "main": "index"
+    , "engines": { "node": "&gt;= 0.4.x &lt; 0.7.0" }
+    , "scripts": {
+        "test": "make test"
+    }
+    , "devDependencies": {
+        "mocha": "1.0.x"
+        , "should": "0.6.x"
+    }
+}
+</code></pre>
+
+<p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.</p>
+
+<p>이를 위해 의존성을 추가한다.: </p>
+
+<pre><code>, "devDependencies": {
+    "mocha": "1.0.x"
+    , "should": "0.6.x"
+}
+</code></pre>
+
+<p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.</p>
+
+<h2>Makefile</h2>
+
+<p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다. </p>
+
+<pre><code>test:
+    @./node_modules/.bin/mocha --require should
+
+.PHONY: test
+</code></pre>
+
+<ul>
+<li><code>--require should</code> - 테스트 코드에서 should 모듈을 끼워 넣어 준다. 생략하면 테스트 코드에 <code>require('should')</code>를 직접 넣어 줘야 한다.</li>
+<li><code>--reporter dot</code> - 테스트 결과를 어떻게 보여줄지 reporter를 고를 수 있다. 생략 시 기본 값은 <code>dot</code>.</li>
+<li><code>--u bdd</code> - 테스트 스타일을 고를 수 있는데. 생략 시 기본 값은 <code>bdd</code>.</li>
+</ul>
+
+<p>자세한 옵션은 <a href="http://visionmedia.github.com/mocha/">Mocha</a> 페이지에서 확인한다.</p>
+
+<h2>prime Module</h2>
+
+<p><a href="http://alexyoung.org/">Alex Young</a>님이 작성한 모듈 코드:</p>
+
+<pre><code>function nextPrime(n) {
+    var smaller;
+    n = Math.floor(n);
+
+    if (n &gt;= 2) {
+        smaller = 1;
+        while (smaller * smaller &lt;= n) {
+            n++;
+            smaller = 2;
+            while ((n % smaller &gt; 0) &amp;&amp; (smaller * smaller &lt;= n)) {
+                smaller++;
+            }   
+        }   
+        return n;
+    } else {
+        return 2;
+    }   
+}
+
+function asyncPrime(n, fn) {
+    setTimeout(function() {
+        fn( nextPrime(n) );
+    }, 10);
+}
+
+module.exports.nextPrime = nextPrime;
+module.exports.asyncPrime = asyncPrime;
+</code></pre>
+
+<h2>Test</h2>
+
+<p>BDD 스타일로 작성한 테스트는 다음과 같다.</p>
+
+<pre><code>var nextPrime = require('./../index').nextPrime
+var asyncPrime = require('./../index').asyncPrime;
+
+describe('prime', function() {
+
+    describe('nextPrime', function() {
+
+        it('nextPrime should return the next prime number', function() {
+            nextPrime(7).should.equal(11);
+        }); 
+
+        it('zero and one are not prime numbers', function() {
+            nextPrime(0).should.equal(2);
+            nextPrime(1).should.equal(2);
+        }); 
+    }); 
+
+    describe('asyncPrime', function() {
+
+        it('asyncPrime should return the next prime number', function(done) {
+            asyncPrime(128, function(n) {
+                n.should.equal(131);
+                done();
+            });
+        });
+    });
+});
+</code></pre>
+
+<p>비동기 테스트 예제인 'asyncPrime'은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
+
+<h2>hooks</h2>
+
+<ul>
+<li>before() - describe()를 시작하기 전에 한번</li>
+<li>after() - describe()를 끝내고 나서 한번</li>
+<li>beforeEach() - describe() 안에 있는 it()이 시작할 때마다 한번</li>
+<li>afterEach() - describe() 안에 있는 it() 이 끝날 때마다 한번</li>
+</ul>
+
+<p>위 테스트코드에 hooks을 추가해보고:</p>
+
+<pre><code>var nextPrime = require('./../index').nextPrime
+var asyncPrime = require('./../index').asyncPrime;
+
+describe('prime', function() {
+
+    before(function(){
+        console.log('before');
+    }); 
+
+    after(function(){
+        console.log('after');
+    }); 
+
+    beforeEach(function(){
+        console.log('beforeEach');
+    }); 
+
+    afterEach(function(){
+        console.log('afterEach');
+    }); 
+
+    describe('nextPrime', function() {
+        before(function(){
+            console.log('new before');
+        }); 
+
+        it('nextPrime should return the next prime number', function() {
+            nextPrime(7).should.equal(11);
+        }); 
+
+        it('zero and one are not prime numbers', function() {
+            nextPrime(0).should.equal(2);
+            nextPrime(1).should.equal(2);
+        }); 
+    }); 
+
+    describe('asyncPrime', function() {
+        afterEach(function(){
+            console.log('new afterEach');
+        });
+
+        it('asyncPrime should return the next prime number', function(done) {
+            asyncPrime(128, function(n) {
+                n.should.equal(131);
+                done();
+            });
+        });
+    });
+});
+</code></pre>
+
+<p>결과는 다음과 같다:</p>
+
+<pre><code>  before
+new before
+beforeEach
+.afterEach
+beforeEach
+.afterEach
+beforeEach
+.new afterEach
+afterEach
+after
+
+
+  ✔ 3 tests complete (25ms)
+</code></pre>
+
+<p>'new afterEach'나 'new before' 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
+
+<p><a href="http://alexyoung.org/">Alex Young</a> 만든 코드는 <a href="https://github.com/alexyoung/async-testing-tutorial">async-testing-tutorial</a>이고 내가 수정한 코드는 <a href="https://github.com/pismute/async-testing-tutorial">async-testing-tutorial-pismute</a>이다.</p>
+
+<p>TDD 스타일로 테스트를 작성하고 assert방식의 expecting을 선호한다면 <a href="http://alexyoung.org/">Alex Young</a>만든 코드를 보는 것이 낫다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ PAC: proxy auto-config ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/proxy-auto-config.html" />
@@ -42,7 +267,7 @@
 
 <p>PAC는 아주 간단한 파일이다:</p>
 
-<pre class="prettyprint"><code>function FindProxyForURL(url, host) {
+<pre><code>function FindProxyForURL(url, host) {
 
     url = url.toLowerCase();
     host = host.toLowerCase();
@@ -106,17 +331,17 @@
     </content>
   </entry>
   <entry>
-    <title><![CDATA[ Learning J - Chapter 1. Basic ]]></title>
+    <title><![CDATA[ J언어를 배워보자 - 제 1장. 기본기 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/learning-j-chapter1.html" />
     <updated>2012-04-06T00:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2012/learning-j-chapter1.html</id>
     <content type="html">
 <![CDATA[
-<p>Roger Stokes이 쓴 <a href=""http://www.jsoftware.com/docs/help701/learning/contents.htm"">Learning J</a>의 chapter 1:Basics를 번역/정리했다.</p>
+<p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 chapter 1:Basics를 번역/정리했다.</p>
 
 <p>요즘 J를 배워보려 하는데 관련된 한국어 자료가 거의 없었다. 그래서 공부하는 겸 Learning J를 읽고 간단히 정리했다. 원문을 그대로 옮기진 않았고, 필요하면 표현을 바꿨다.</p>
 
-<p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
+<p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="http://www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2012/learning-j-chapter1/j-code.png" alt="j-code" title="" /></p>
 
@@ -124,7 +349,7 @@
 
 <p>J의 개발환경은 사용자가 한 줄 입력하면, 그게 곧바로 해석되어 아랫줄에 출력된다. 사용자의 입력하는 것은 들여쓰기가 된 것으로 보이고, 아래 줄에 출력되는 결과는 들여쓰기가 없다.</p>
 
-<pre class="prettyprint"><code>   2+2
+<pre><code>   2+2
 4
 </code></pre>
 
@@ -134,13 +359,13 @@
 
 <p>곱셈을 위한 심볼은 <code>*</code>(asterisk)이다.</p>
 
-<pre class="prettyprint"><code>   2*3
+<pre><code>   2*3
 6
 </code></pre>
 
 <p>물론 아래와 같이 빈칸을 집어넣을 수도 있다.</p>
 
-<pre class="prettyprint"><code>   2 * 3
+<pre><code>   2 * 3
 6
 </code></pre>
 
@@ -148,37 +373,37 @@
 
 <p>나눗셈을 위한 심볼은 <code>%</code>(percent)이다.</p>
 
-<pre class="prettyprint"><code>   3 % 4
+<pre><code>   3 % 4
 0.75
 </code></pre>
 
 <p>뺄셈을 위해서는 <code>-</code>를 쓴다.</p>
 
-<pre class="prettyprint"><code>   3 - 2
+<pre><code>   3 - 2
 1
 </code></pre>
 
 <p>다음 예제는 음수에 대한 것이다. 음수는 숫자 앞에 <code>_</code>부호가 붙는다. 숫자와 <code>_</code>사이에는 빈칸이 있어선 안 된다. <code>_</code>는 산수 할 때 쓰는 연산자가 아니라 숫자의 표현 중 하나이다. 마치 부동소수점을 표현할 때 수 중간에 <code>.</code>을 찍는 것과 같다.</p>
 
-<pre class="prettyprint"><code>   2 - 3
+<pre><code>   2 - 3
 _1
 </code></pre>
 
 <p><code>-</code>또한 음수를 만들어내기는 한다. 하지만 음수를 '만들어낸다'고 한 것에 주의해야 한다. <code>_</code>는 숫자를 표현하는 방식 중 하나이지만 <code>-</code>는 연산자라는 뜻이다.</p>
 
-<pre class="prettyprint"><code>   - 3
+<pre><code>   - 3
 _3
 </code></pre>
 
 <p>거듭제곱을 위해서는 <code>^</code>(caret)을 쓴다. 2의 3 제곱을 계산하면 아래와 같다.</p>
 
-<pre class="prettyprint"><code>   2 ^ 3
+<pre><code>   2 ^ 3
 8
 </code></pre>
 
 <p>그냥 제곱을 위한 연산자는 <code>*:</code>(asterisk colon)이다.</p>
 
-<pre class="prettyprint"><code>   *: 4
+<pre><code>   *: 4
 16
 </code></pre>
 
@@ -190,19 +415,19 @@ _3
 
 <p>리스트는 <code>1 2 3 4</code>와 같이 쓸 수 있다. 숫자 사이에 빈칸이 들어있음에 주의하자. 리스트에 있는 각 숫자의 제곱을 알고 싶으면 다음과 같이 쓴다.</p>
 
-<pre class="prettyprint"><code>   *: 1 2 3 4
+<pre><code>   *: 1 2 3 4
 1 4 9 16
 </code></pre>
 
 <p>위 예제에서 "Square" 함수(<code>*:</code>)가 리스트의 각 아이템에 적용되었음을 알 수 있다. 리스트로 이루어진 두 개의 인자와 <code>+</code>같은 함수가 주어지면 그 함수는 두 리스트에서 서로 대응되는 아이템에 적용된다.</p>
 
-<pre class="prettyprint"><code>   1 2 3 + 10 20 30
+<pre><code>   1 2 3 + 10 20 30
 11 22 33
 </code></pre>
 
 <p>만약 한 인자는 리스트이고 다른 인자는 숫자 하나 라면, 숫자 하나는 리스트의 각 아이템에 대응된다.</p>
 
-<pre class="prettyprint"><code>   1 + 10 20 30
+<pre><code>   1 + 10 20 30
 11 21 31
 
    1 2 3 + 10
@@ -213,7 +438,7 @@ _3
 
 <p>예를 들어서 7을 2로 나누면, 몫이 3이고 나머지가 1이다. 나머지를 계산하는 J의 내장 함수는 <code>|</code>(vertical bar)이다. <code>|</code>의 이름은 "Residue"이다. 여러 패턴이 들어왔을 때 아래와 같은 결과가 나온다.</p>
 
-<pre class="prettyprint"><code>   2 | 0 1 2 3 4 5 6 7
+<pre><code>   2 | 0 1 2 3 4 5 6 7
 0 1 0 1 0 1 0 1
 
    3 | 0 1 2 3 4 5 6 7
@@ -226,13 +451,13 @@ _3
 
 <p>필요하다면 표현식은 괄호를 포함할 수 있다. 괄호 안의 표현식은 따로 계산된다.</p>
 
-<pre class="prettyprint"><code>   (2+1)*(2+2)
+<pre><code>   (2+1)*(2+2)
 12
 </code></pre>
 
 <p>괄호는 항상 필요하지는 않다. <code>3*2+1</code>이라는 표현식을 보자. 이 식이 <code>(3*2)+1</code>로 해석되어 7이 될까, 아니면 <code>3*(2+1)</code>이 되어 9가 될까?</p>
 
-<pre class="prettyprint"><code>   3 * 2 + 1
+<pre><code>   3 * 2 + 1
 9
 </code></pre>
 
@@ -240,7 +465,7 @@ _3
 
 <p>J에는 그런 규칙이 없다. 먼저 따로 계산해야 할 부분이 필요하다면 괄호를 쓰면 된다. 하지만 괄호가 없다면 뒤부터(오른쪽부터) 계산된다. 다시 말하자면 자연스레 읽었을 때에 연산자의 오른쪽 인자부터 계산된다. 따라서 <code>3*2+1</code>의 경우에는 <code>*</code>의 오른쪽 인자인 <code>2+1</code>부터 계산된다. 다른 예제를 보자.</p>
 
-<pre class="prettyprint"><code>   1 + 3 % 4 
+<pre><code>   1 + 3 % 4 
 1.75
 </code></pre>
 
@@ -254,31 +479,31 @@ _3
 
 <p>영어 표현으로 'let <code>x</code> be <code>100</code>'라는 문장은 J로</p>
 
-<pre class="prettyprint"><code>   x =: 100
+<pre><code>   x =: 100
 </code></pre>
 
 <p>로 나타낼 수 있다.</p>
 
 <p>우리가 할당문이라고 불리는 이 표현식은 <code>100</code>이라는 값을 <code>x</code>라는 이름에 할당한다. 이 말은 즉 <code>x</code>라는 이름의 변수가 생성되고 이 변수에 <code>100</code>이라는 값을 넣었다고 할 수 있다. 만약 사용자가 입력한 한 라인에 할당문만 있다면 그 아래 결과가 출력되는 줄에는 아무런 값도 출력되지 않는다.</p>
 
-<pre class="prettyprint"><code>   x - 1
+<pre><code>   x - 1
 99
 </code></pre>
 
 <p>값이 할당된 변수는 다른 표현식에서 가져다 쓸 수 있다.</p>
 
-<pre class="prettyprint"><code>   y =: x - 1
+<pre><code>   y =: x - 1
 </code></pre>
 
 <p>여기서 <code>y</code>는 <code>x-1</code>의 결과 값을 저장하는 데에 쓰였다. 변수에 저장된 값을 살펴보고 싶다면 그냥 변수의 이름을 입력하면 된다. 그것만으로도 다른 표현식처럼 하나의 표현식이 된다. </p>
 
-<pre class="prettyprint"><code>   y
+<pre><code>   y
 99
 </code></pre>
 
 <p>같은 변수에 반복해서 할당이 가능하다. 마지막에 할당한 것이 변수에 담긴다.</p>
 
-<pre class="prettyprint"><code>   z =: 6
+<pre><code>   z =: 6
    z =: 8
    z
 8
@@ -286,14 +511,14 @@ _3
 
 <p>변수는 그 변수에 할당된 값을 이용해서 자기 자신에게 새로운 값을 할당할 때에도 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>   z =: z + 1
+<pre><code>   z =: z + 1
    z
 9
 </code></pre>
 
 <p>위의 예제는 한 라인이 할당문으로만 이루어졌을 때에 결과 줄에 아무것도 출력되지 않음을 보여준다. 그럼에도 할당문 역시 하나의 표현식이다. 할당문이 어떤 표현식의 부분에 쓰였을 때에는 값으로 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>   1 + (u =: 99)
+<pre><code>   1 + (u =: 99)
 100
    u
 99
@@ -301,7 +526,7 @@ _3
 
 <p>아래는 어떤 이름을 변수명으로 사용할 수 있는지에 대한 예제이다.</p>
 
-<pre class="prettyprint"><code>   x                       =: 0
+<pre><code>   x                       =: 0
    X                       =: 1
    K9                      =: 2
    finaltotal              =: 3
@@ -311,7 +536,7 @@ _3
 
 <p>변수명은 반드시 알파벳으로 시작해야 한다. 그리고 변수명은 알파벳(대문자, 소문자), 숫자(0-9), 밑줄(_)로 이루어진다. 그리고 대소문자를 가린다. 즉, <code>x</code>와 <code>X</code>는 다른 변수이다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 0
    X
 1
@@ -323,7 +548,7 @@ _3
 
 <p>"Subtraction"(빼기) 함수와 "negation"(부정)함수는 같은 심볼(<code>-</code>)로 두가지 다른 기능을 하는 함수 중 하나이다. 다른 말로, <code>-</code>는 모나딕으로도 다이아딕으로도 사용할 수 있다는 것이다. 사실 J의 거의 모든 내장 함수가 모나딕과 다이아딕으로 사용될 수 있다. 아까 배웠던 나누기 함수, <code>%</code>도 그렇다. <code>%</code>는 다이아딕으로는 나누기이지만 모나딕으로 사용될 때는 역수 함수가 된다.</p>
 
-<pre class="prettyprint"><code>   % 4
+<pre><code>   % 4
 0.25
 </code></pre>
 
@@ -333,41 +558,41 @@ _3
 
 <p>영어로 "add together the numbers  2, 3, and 4, or more"말을 살펴보자. 이건 더 간단하게 다음과 같이 표현할 수 있다.</p>
 
-<pre class="prettyprint"><code>add together 2 3 4
+<pre><code>add together 2 3 4
 </code></pre>
 
 <p>이걸 계산하면 9이다. 이걸 J로 표현하면 다음과 같다.</p>
 
-<pre class="prettyprint"><code>   + / 2 3 4
+<pre><code>   + / 2 3 4
 9
 </code></pre>
 
 <p>영어 표현과 J의 표현을 비교해보자. "add"는 <code>+</code>에 대응되고 "together"는 <code>/</code>에 대응된다. 비슷하게 다음 표현을 생각해보자.</p>
 
-<pre class="prettyprint"><code>multiply together 2 3 4
+<pre><code>multiply together 2 3 4
 </code></pre>
 
 <p>이걸 계산하면 24이다. 이건 J로 다음과 같이 표현한다.</p>
 
-<pre class="prettyprint"><code>   * / 2 3 4
+<pre><code>   * / 2 3 4
 24
 </code></pre>
 
 <p><code>+/2 3 4</code>는 <code>2+3+4</code>와 같은 의미이고 <code>*/2 3 4</code>는 <code>2*3*4</code>와 같은 의미임을 알 수 있다. <code>/</code>는 "Insert"라고 한다. 이 녀석은 왼쪽에 있는 함수를 오른쪽의 리스트의 각 아이템 사이에 끼워 넣는 역할을 하기 때문이다. 일반화하여 말하자면, F가 임의의 다이아딕 함수이고, L이 숫자로 이루어진 리스트 a, b, c, .... y, z 라면</p>
 
-<pre class="prettyprint"><code>F / L    은   a F b F .... F y F z   이다.
+<pre><code>F / L    은   a F b F .... F y F z   이다.
 </code></pre>
 
 <p>또 다른 함수를 더 알아보자. <br />아래에 세 가지 명제가 있다.</p>
 
-<pre class="prettyprint"><code>2 는 1보다 크다     (명백히 참이다)
+<pre><code>2 는 1보다 크다     (명백히 참이다)
 2 는 1과 같다          (거짓)
 2 는 1보다 작다        (거짓)
 </code></pre>
 
 <p>J에서 "참"은 1로 표현하고, "거짓"은 0으로 표현한다. 그래서 위의 세 명제는 다음과 같이 쓸 수 있다.</p>
 
-<pre class="prettyprint"><code>   2 &gt; 1
+<pre><code>   2 &gt; 1
 1
 
    2 = 1
@@ -379,30 +604,30 @@ _3
 
 <p>만약 x가 수열이라면,</p>
 
-<pre class="prettyprint"><code>   x =: 5 4 1 9
+<pre><code>   x =: 5 4 1 9
 </code></pre>
 
 <p>'x의 어떤 수가 2보다 큰가?' 라고 J에게 물어볼 수 있다.</p>
 
-<pre class="prettyprint"><code>   x &gt; 2
+<pre><code>   x &gt; 2
 1 1 0 1
 </code></pre>
 
 <p>위에서 보면, '어떤 게 2보다 큰가?'라는 물음에 첫 번째, 두 번째, 네 번째가 1로 표현되었다. x에서 2보다 더 큰 숫자가 존재하는지 알려면 이렇게 쓰면 될까?</p>
 
-<pre class="prettyprint"><code>   * / x &gt; 2
+<pre><code>   * / x &gt; 2
 0
 </code></pre>
 
 <p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1<em>1</em>0*1) 0("거짓")이 들어있으면 죽어도 1이 될 수 없다.<br />x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <code>x&gt;2</code>의 결과를 전부 더하면 된다!</p>
 
-<pre class="prettyprint"><code>   + / x &gt; 2
+<pre><code>   + / x &gt; 2
 3
 </code></pre>
 
 <p>x에 숫자가 몇 개 있는지 알려면? <code>x=x</code>의 결과를 모두 더하면 된다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 5 4 1 9
 
    x = x
@@ -414,7 +639,7 @@ _3
 
 <p>그런데 이미 리스트의 길이를 반환하는 <code>#</code>이라는 내장 함수가 있다. </p>
 
-<pre class="prettyprint"><code>   # x
+<pre><code>   # x
 4
 </code></pre>
 
@@ -422,7 +647,7 @@ _3
 
 <p>우리가 컴퓨터에 J를 입력할 때, 입력한 문장과 결과 값은 아래로 주욱 내려가면서 붙어 표시된다. 아까 입력했던 몇 줄을 보면 알 수 있다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 5 4 1 9
    x = x
 1 1 1 1
@@ -492,7 +717,7 @@ _3
 
 <p>J에서 <code>NB.</code>심볼은 주석을 나타낸다. <code>NB.</code>심볼 부터 그 라인의 끝까지는 평가되지 않는다. 예를 들자면 아래와 같다.</p>
 
-<pre class="prettyprint"><code>   NB.   여기는 라인 전체가 주석입니다.
+<pre><code>   NB.   여기는 라인 전체가 주석입니다.
 
    6 + 6   NB. 12가 출력돼야 합니다.
 12
@@ -514,19 +739,19 @@ _3
 
 <p>모나딕 '<code>&gt;.</code>'은 올림 연산을 한다. 올림은 자기 자신보다 큰 정수 중 가장 가까운 수이다. 이것의 이름은 "Ceiling"이다.</p>
 
-<pre class="prettyprint"><code>   &gt;. _1.7 1 1.7
+<pre><code>   &gt;. _1.7 1 1.7
 _1 1 2
 </code></pre>
 
 <p>다이아딕 '<code>&gt;.</code>'은 두 인자 중 큰 녀석을 선택한다. ("Larger Of")</p>
 
-<pre class="prettyprint"><code>   3 &gt;. 1 3 5 
+<pre><code>   3 &gt;. 1 3 5 
 3 3 5
 </code></pre>
 
 <p><code>/</code>를 이용해서 "Larger Of"를 리스트의 아이템 사이에 끼워 넣으면, 리스트에서 가장 큰 수를 뽑아낼 수 있다. 예를 들어서 리스트 <code>1 6 5</code>에서 가장 큰 수를 알아내려면 <code>&gt;. / 1 6 5</code>를 입력하면 된다. 아래 예제를 통해 어떻게 해서 <code>6</code>이 나오는지 확인할 수 있다. 주석은 왜 이전 입력과 같은 결과가 나오는지 이유를 설명한다.</p>
 
-<pre class="prettyprint"><code>   &gt;. / 1 6 5
+<pre><code>   &gt;. / 1 6 5
 6
    1 &gt;. 6 &gt;. 5      NB. /의 의미에 따라서
 6
@@ -542,176 +767,17 @@ _1 1 2
 
 <p>모나딕 '<code>&gt;:</code>'은 비공식적으로 "Increment"라고 부른다. 인자의 값에 1을 더한다.</p>
 
-<pre class="prettyprint"><code>   &gt;: _2 3 5 6.3
+<pre><code>   &gt;: _2 3 5 6.3
 _1 4 6 7.3
 </code></pre>
 
 <p>다이아딕 '<code>&gt;:</code>'은 "Larger or Equal"이다.</p>
 
-<pre class="prettyprint"><code>   3 &gt;: 1 3 5 
+<pre><code>   3 &gt;: 1 3 5 
 1 1 0
 </code></pre>
 
 <p>이 책의 1장을 마친다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ GitHub로 남의 프로젝트에 감놓고 배놓기 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/how-to-github.html" />
-    <updated>2012-03-31T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/how-to-github.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://github.com/">GitHub</a>를 사용하여 오픈소스 프로젝트에 어떻게 참여할 수 있는 방법을 정리한다. GitHub에 계정이 있어야 하고 <a href="http://git-scm.org/">Git</a>을 어느정도 써 본 사람이어야 한다. </p>
-
-<p><em>원문은 <a href="http://gun.io/">Rich Jones</a>의 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">How to GitHub: Fork, Branch, Track, Squash and Pull Request</a> 이다.</em></p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png" alt="gun.io" title="" /></p>
-
-<h2>저자 공지사항</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 활동하는 개발자 중 저자의 <a href="http://gun.io/contracts/new/">구인구직 사이트</a>에 등록하면 구직하는 사람과 연결해준다고 한다. 관심있는 사람은 둘러보시길!</p>
-
-<h2>자 시작!</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 저장소를 새로 하나 만들면 아래와 같은 설명을 보여준다.</p>
-
-<p><img src="/articles/2012/how-to-github/LiEI3.png" alt="GitHub" title="" /></p>
-
-<p>GitHub은 새로운 프로젝트와 새로운 저장소를 만들었을 경우에 대한 설명은 친절하게 해주고 있다. 하지만 다른 프로젝트를 개선하고 참여하는 방법에 대해서는 그다지 좋은 설명을 해주고 있지 않다. 이 글은 그러한 점에서 도움이 될 것이다.</p>
-
-<p>우선 시작하기 전에 고쳐보고 싶은 프로젝트를 하나 골라보자. GitHub에서 프로젝트를 찾아서 코드도 둘러보고 익숙한 개발방식을 갖고 있는지 확인도 해보고 커밋 로그도 살펴보고 참여하는 사람이 어떤 사람인지도 살펴들 보자.</p>
-
-<h2>네트워크</h2>
-
-<p><img src="/articles/2012/how-to-github/naZ6I.png" alt="GitHub Network" title="" /></p>
-
-<p>네트워크 그림이다. 'mobile' 이라는 브랜치에서 누군가 열심히 작업을 하고 있기 때문에 'mobile'에 대한 일을 하는 수고는 하지 않는것이 좋을듯 하다.</p>
-
-<p>우선 해야할 일은 프로젝트의 네트워크를 확인해보는 것이다. 네트워크를 확인함으로서 누가 어떤일을 하고 있는지를 살펴볼 수 있다. 네트워크를 한참 들여다보면 고쳐보고자 하던 부분도 이미 다른이가 하고 있는지 알수도 있다. 프로젝트 활동상황도 알 수 있으며 고친 부분이 어떻게 프로젝트에 Merge되는지도 알 수 있다.</p>
-
-<h2>이슈 등록</h2>
-
-<p><img src="/articles/2012/how-to-github/oksQI.png" alt="GitHub Issue" title="" /><br /><em>이슈가 왔어요!</em></p>
-
-<p>프로젝트 화면에서 이슈메뉴로 가 봅시다. 얼마나 많은 이슈가 있는지 그리고 내가 고쳐보고픈 부분이 이미 이슈로 등록이 되어있는지 알 수 있다.</p>
-
-<p>많은 사람들이 잊기 쉬운 이 과정이 왜 중요하냐면 고친점을 보내는 사람들은 보통 프로젝트의 관리자 즉 메인테이너가 같은 문제로 고민중이라는 점을 전혀 고려하지 않기 때문이다.</p>
-
-<p>고쳐볼 부분이 아직 이슈로 등록이 안되어있다면 새로 하나 등록하자. 이슈를 등록할때는 메인테이너에게 공손히 프로젝트에 감사하다는 마음을 갖고 고쳐보고자 하는 버그나 개선사항을 적는거다.</p>
-
-<p>메인테이너가 만들어진 이슈에 대한 댓글로 도움이 될 만한 점을 달아줄지도 모른다.</p>
-
-<h2>Fork로 저장소 분리</h2>
-
-<p><img src="/articles/2012/how-to-github/VWFCB.png" alt="Hardcore Fork" title="" /></p>
-
-<p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
-
-<pre class="prettyprint"><code>git clone **your ssh/git url**
-</code></pre>
-
-<h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
-
-<p><img src="/articles/2012/how-to-github/bbNRs.png" alt="Fork" title="" /><br /><em>Fork가 이거냥!</em></p>
-
-<p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
-
-<pre class="prettyprint"><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
-</code></pre>
-
-<p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
-
-<pre class="prettyprint"><code>git fetch upstream
-</code></pre>
-
-<p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
-
-<pre class="prettyprint"><code>git merge upstream/master
-</code></pre>
-
-<p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
-
-<h2>개발용 브랜치</h2>
-
-<p><img src="/articles/2012/how-to-github/fI9qT.gif" alt="Old Internet" title="" /><br /><em>그 옛날의 인터넷이 생각나지 않나요들?</em></p>
-
-<p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
-
-<pre class="prettyprint"><code>git branch newfeature
-</code></pre>
-
-<p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
-
-<pre class="prettyprint"><code>git checkout newfeature
-</code></pre>
-
-<p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
-
-<h2>Hack!</h2>
-
-<p>이제 실제 고치는 작업을 하자. 계획했던 고칠점이 맘에 들 때 까지 될대로 코드를 고쳐보고 테스트해보고 행복의 경지에 이르러보자. 음하하하~</p>
-
-<h2>커밋 하나로 합치기</h2>
-
-<p><img src="/articles/2012/how-to-github/FgOPu.png" alt="Squash" title="" /><br /><em>이게 '스쿼시'냥!</em></p>
-
-<p>여러분도 나처럼 엄청나게 커밋을 해댄다면 커밋 메시지는 안봐도 거지같을게('동작함!', '안돌아감', '열여덟', '후아~', 등등) 뻔하다. 사실 이런 습관은 좋지 않지만 고치고 싶은 생각도 없고 이런 습관을 가진 사람도 많이 봤다.</p>
-
-<p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
-
-<pre class="prettyprint"><code>git rebase -i HEAD~3
-</code></pre>
-
-<p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
-
-<pre class="prettyprint"><code>pick df94881 Allow install to SD 
-pick a7323e5 README Junkyism 
-pick 3ead26f rm classpath from git 
-</code></pre>
-
-<p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
-
-<pre class="prettyprint"><code>pick df94881 Allow install to SD 
-squash a7323e5 README Junkyism 
-squash 3ead26f rm classpath from git 
-</code></pre>
-
-<p>내용을 저장하고 편집기를 종료하면, 새로운 내용으로 편집기가 다시 뜰텐데 그때는 새로 하나로 만들어진 커밋 메시지를 입력하는 것이다. 거지같은 커밋이 깔끔하게 정리된 새 커밋으로 재탄생했다. 만쉐이~ 이제 Pull Request를 해도 부끄럽지 않겠다.</p>
-
-<h2>Pull Request 보내기</h2>
-
-<p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
-
-<pre class="prettyprint"><code>git push origin newfeature
-</code></pre>
-
-<p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
-
-<p><img src="/articles/2012/how-to-github/aAd2v.png" alt="Pull Request" title="" /><br /><em>Pull Request를 보내자</em></p>
-
-<p>브랜치로 이동한 것을 확인하고 'Pull Request' 버튼을 누르자. 다음과 같은 화면이 나오는데 브랜치에서 변경한 내용에 대한 설명을 적어주고 'Submit Pull Request' 버튼을 눌러준다.</p>
-
-<p><img src="/articles/2012/how-to-github/5Euiy.png" alt="Pull Request" title="" /><br /><em>Pull Request 설명 달기</em></p>
-
-<p>룰루랄라~ 끝났다. 사실 완전히 다 끝난건 아니다. 'Pull Request' 보낸 커밋에 고칠점이 있다면 메인테이너는 'Pull Request'를 바로 받아주지 않고 해당사항을 고쳐달라고 할 것이다. 메인테이너가 'Pull Request'를 닫지(Clone) 않는 한 해당 브랜치로 커밋을 Push하면 다행히도 'Pull Request' 속으로 들어간다.</p>
-
-<h2>Pull Request 받아서 Merge하기</h2>
-
-<p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
-
-<pre class="prettyprint"><code>git checkout master
-git remote add contributor git://github.com/contributor/project
-git fetch contributor
-git merge contributor/newfeature
-git push origin master
-</code></pre>
-
-<p>이렇게 하면 다른사람이 수정한 내용을 메인 master 브랜치로 merge하게 된다.</p>
-
-<h2>Pull Request를 받아주지 않는 이유</h2>
-
-<p>이 부분은 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">원본 페이지</a>를 확인하시라!</p>]]>
     </content>
   </entry>
   <entry>
@@ -783,7 +849,7 @@ git push origin master
 
 <p>깊이는 쉽게 말해 CSS 셀렉터의 길이를 의미한다. CSS 깊이 문제는 이미 만들어놓은 HTML 구조에 관련있는 것이고 HTML 구조를 그대로 CSS 셀렉터에 표현하면 너무 길어진다. 예를 들어 다음과 같은 CSS Rule이 있으면:</p>
 
-<pre class="prettyprint"><code>#sidebar div, #footer div {
+<pre><code>#sidebar div, #footer div {
     border: 1px solid #333;
 }
 
@@ -798,7 +864,7 @@ git push origin master
 
 <p>div 엘레멘트를 기본으로 하여 다음과 같이 바꿀 수 있다.</p>
 
-<pre class="prettyprint"><code>.pod {
+<pre><code>.pod {
     border: 1px solid #333;
 }
 
@@ -815,7 +881,7 @@ git push origin master
 
 <p>이렇게 얕은 깊이의 CSS은 템플릿 엔진을 사용할 때 효과적이다. 이 CSS를 따르는 <a href="http://mustache.github.com/">Mushache</a>의 템플릿 코드를 살펴보자:</p>
 
-<pre class="prettyprint"><code>&lt;div class="pod"&gt;
+<pre><code>&lt;div class="pod"&gt;
     &lt;h3&gt;{{heading}}&lt;/h3&gt;
     &lt;ul&gt;
         {{#items}}
@@ -829,7 +895,7 @@ git push origin master
 
 <p>Container는 보통 Header, Body, Footer 영역으로 나눈다. 이 것은 일종의 디자인 패턴이라고 할 수 있다. 그래서 <code>.pod &gt; ul</code>을 다음과 같은 CSS Rule을 만들고 HTML에 적용시면:</p>
 
-<pre class="prettyprint"><code>.pod-body {
+<pre><code>.pod-body {
     margin-bottom: 5px;
 }
 </code></pre>
@@ -844,7 +910,7 @@ git push origin master
 
 <p>우선 스타일은 HTML의 엘리먼트가가 생성되는 시점에 적용이 된다. 브라우저는 HTML문서를 일종의 Stream으로 다룬다. 그러니까 먼저 들어온 엘리먼트를 먼저 생성한다. 다음 예제를 보면:</p>
 
-<pre class="prettyprint"><code>&lt;body&gt;
+<pre><code>&lt;body&gt;
     &lt;div id="content"&gt;
         &lt;div class="module intro"&gt;
             &lt;p&gt;Lorem Ipsum&lt;/p&gt;
@@ -892,7 +958,7 @@ git push origin master
 
 <p>특히 HTML5에서 새로 추가된 의미 태그는 1번 항목을 도와준다. 하지만 HTML5라고 해서 충분히 모든 의미를 포함할수는 없다. 클래스 속성을 통해서 아주 구체적인 의미를 밝힐 수 있다. 아래의 두 <code>&lt;nav&gt;</code> 엘리먼트는 클래스로 그 의미를 밝혀두고 있다. 클래스 속성에 따라 <code>nav-primary</code> 클래스는 가로 메뉴로, <code>nav-secondary</code> 세로메뉴로 만들수도 있다.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="nav-primary"&gt;
+<pre><code>&lt;nav class="nav-primary"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;…&lt;/ul&gt;
 &lt;/nav&gt;
@@ -907,7 +973,7 @@ git push origin master
 
 <p>SMACSS의 목표는 최대한 얕은 깊이의 셀렉터를 사용하는 것이다. 만약 아래와 같은 마크업이 있을 때 2단계를 어떻게 다르게 처리할 수 있을까.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="nav-primary"&gt;
+<pre><code>&lt;nav class="nav-primary"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;
         &lt;li&gt;About Us
@@ -922,7 +988,7 @@ git push origin master
 
 <p>CSS 셀렉터를 중첩해서 쓰면 아래와 같다:</p>
 
-<pre class="prettyprint"><code>nav.nav-primary li { 
+<pre><code>nav.nav-primary li { 
     display: inline-block; 
 }
 
@@ -934,7 +1000,7 @@ nav.nav-primary li li {
 
 <p>자 여기서 엘리먼트를 제한하는 <code>nav</code>를 제거하고 셀렉터의 깊이도 더 얕게 만들어보면:</p>
 
-<pre class="prettyprint"><code>.l-inline &gt; * { 
+<pre><code>.l-inline &gt; * { 
     display: inline-block;
 }
 
@@ -945,7 +1011,7 @@ nav.nav-primary li li {
 
 <p>요렇게 만들어볼 수 있다. 마크업은 아래와 같이 수정되어야 한다.</p>
 
-<pre class="prettyprint"><code>&lt;nav class="l-inline"&gt;
+<pre><code>&lt;nav class="l-inline"&gt;
     &lt;h1&gt;Primary Navigation&lt;/h1&gt;
     &lt;ul&gt;
         &lt;li&gt;About Us
@@ -954,7 +1020,7 @@ nav.nav-primary li li {
                 &lt;li&gt;Location&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/li&gt;
-    &lt;/ul&gt;
+&lt;/ul&gt;
 &lt;/nav&gt;
 </code></pre>
 
@@ -990,6 +1056,165 @@ nav.nav-primary li li {
     </content>
   </entry>
   <entry>
+    <title><![CDATA[ GitHub로 남의 프로젝트에 감놓고 배놓기 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/how-to-github.html" />
+    <updated>2012-03-31T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/how-to-github.html</id>
+    <content type="html">
+<![CDATA[
+<p><a href="http://github.com/">GitHub</a>를 사용하여 오픈소스 프로젝트에 어떻게 참여할 수 있는 방법을 정리한다. GitHub에 계정이 있어야 하고 <a href="http://git-scm.org/">Git</a>을 어느정도 써 본 사람이어야 한다. </p>
+
+<p><em>원문은 <a href="http://gun.io/">Rich Jones</a>의 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">How to GitHub: Fork, Branch, Track, Squash and Pull Request</a> 이다.</em></p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png" alt="gun.io" title="" /></p>
+
+<h2>저자 공지사항</h2>
+
+<p><a href="http://github.com/">GitHub</a>에서 활동하는 개발자 중 저자의 <a href="http://gun.io/contracts/new/">구인구직 사이트</a>에 등록하면 구직하는 사람과 연결해준다고 한다. 관심있는 사람은 둘러보시길!</p>
+
+<h2>자 시작!</h2>
+
+<p><a href="http://github.com/">GitHub</a>에서 저장소를 새로 하나 만들면 아래와 같은 설명을 보여준다.</p>
+
+<p><img src="/articles/2012/how-to-github/LiEI3.png" alt="GitHub" title="" /></p>
+
+<p>GitHub은 새로운 프로젝트와 새로운 저장소를 만들었을 경우에 대한 설명은 친절하게 해주고 있다. 하지만 다른 프로젝트를 개선하고 참여하는 방법에 대해서는 그다지 좋은 설명을 해주고 있지 않다. 이 글은 그러한 점에서 도움이 될 것이다.</p>
+
+<p>우선 시작하기 전에 고쳐보고 싶은 프로젝트를 하나 골라보자. GitHub에서 프로젝트를 찾아서 코드도 둘러보고 익숙한 개발방식을 갖고 있는지 확인도 해보고 커밋 로그도 살펴보고 참여하는 사람이 어떤 사람인지도 살펴들 보자.</p>
+
+<h2>네트워크</h2>
+
+<p><img src="/articles/2012/how-to-github/naZ6I.png" alt="GitHub Network" title="" /></p>
+
+<p>네트워크 그림이다. 'mobile' 이라는 브랜치에서 누군가 열심히 작업을 하고 있기 때문에 'mobile'에 대한 일을 하는 수고는 하지 않는것이 좋을듯 하다.</p>
+
+<p>우선 해야할 일은 프로젝트의 네트워크를 확인해보는 것이다. 네트워크를 확인함으로서 누가 어떤일을 하고 있는지를 살펴볼 수 있다. 네트워크를 한참 들여다보면 고쳐보고자 하던 부분도 이미 다른이가 하고 있는지 알수도 있다. 프로젝트 활동상황도 알 수 있으며 고친 부분이 어떻게 프로젝트에 Merge되는지도 알 수 있다.</p>
+
+<h2>이슈 등록</h2>
+
+<p><img src="/articles/2012/how-to-github/oksQI.png" alt="GitHub Issue" title="" /><br /><em>이슈가 왔어요!</em></p>
+
+<p>프로젝트 화면에서 이슈메뉴로 가 봅시다. 얼마나 많은 이슈가 있는지 그리고 내가 고쳐보고픈 부분이 이미 이슈로 등록이 되어있는지 알 수 있다.</p>
+
+<p>많은 사람들이 잊기 쉬운 이 과정이 왜 중요하냐면 고친점을 보내는 사람들은 보통 프로젝트의 관리자 즉 메인테이너가 같은 문제로 고민중이라는 점을 전혀 고려하지 않기 때문이다.</p>
+
+<p>고쳐볼 부분이 아직 이슈로 등록이 안되어있다면 새로 하나 등록하자. 이슈를 등록할때는 메인테이너에게 공손히 프로젝트에 감사하다는 마음을 갖고 고쳐보고자 하는 버그나 개선사항을 적는거다.</p>
+
+<p>메인테이너가 만들어진 이슈에 대한 댓글로 도움이 될 만한 점을 달아줄지도 모른다.</p>
+
+<h2>Fork로 저장소 분리</h2>
+
+<p><img src="/articles/2012/how-to-github/VWFCB.png" alt="Hardcore Fork" title="" /></p>
+
+<p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
+
+<pre><code>git clone **your ssh/git url**
+</code></pre>
+
+<h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
+
+<p><img src="/articles/2012/how-to-github/bbNRs.png" alt="Fork" title="" /><br /><em>Fork가 이거냥!</em></p>
+
+<p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
+
+<pre><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
+</code></pre>
+
+<p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
+
+<pre><code>git fetch upstream
+</code></pre>
+
+<p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
+
+<pre><code>git merge upstream/master
+</code></pre>
+
+<p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
+
+<h2>개발용 브랜치</h2>
+
+<p><img src="/articles/2012/how-to-github/fI9qT.gif" alt="Old Internet" title="" /><br /><em>그 옛날의 인터넷이 생각나지 않나요들?</em></p>
+
+<p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
+
+<pre><code>git branch newfeature
+</code></pre>
+
+<p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
+
+<pre><code>git checkout newfeature
+</code></pre>
+
+<p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
+
+<h2>Hack!</h2>
+
+<p>이제 실제 고치는 작업을 하자. 계획했던 고칠점이 맘에 들 때 까지 될대로 코드를 고쳐보고 테스트해보고 행복의 경지에 이르러보자. 음하하하~</p>
+
+<h2>커밋 하나로 합치기</h2>
+
+<p><img src="/articles/2012/how-to-github/FgOPu.png" alt="Squash" title="" /><br /><em>이게 '스쿼시'냥!</em></p>
+
+<p>여러분도 나처럼 엄청나게 커밋을 해댄다면 커밋 메시지는 안봐도 거지같을게('동작함!', '안돌아감', '열여덟', '후아~', 등등) 뻔하다. 사실 이런 습관은 좋지 않지만 고치고 싶은 생각도 없고 이런 습관을 가진 사람도 많이 봤다.</p>
+
+<p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
+
+<pre><code>git rebase -i HEAD~3
+</code></pre>
+
+<p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
+
+<pre><code>pick df94881 Allow install to SD 
+pick a7323e5 README Junkyism 
+pick 3ead26f rm classpath from git 
+</code></pre>
+
+<p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
+
+<pre><code>pick df94881 Allow install to SD 
+squash a7323e5 README Junkyism 
+squash 3ead26f rm classpath from git 
+</code></pre>
+
+<p>내용을 저장하고 편집기를 종료하면, 새로운 내용으로 편집기가 다시 뜰텐데 그때는 새로 하나로 만들어진 커밋 메시지를 입력하는 것이다. 거지같은 커밋이 깔끔하게 정리된 새 커밋으로 재탄생했다. 만쉐이~ 이제 Pull Request를 해도 부끄럽지 않겠다.</p>
+
+<h2>Pull Request 보내기</h2>
+
+<p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
+
+<pre><code>git push origin newfeature
+</code></pre>
+
+<p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
+
+<p><img src="/articles/2012/how-to-github/aAd2v.png" alt="Pull Request" title="" /><br /><em>Pull Request를 보내자</em></p>
+
+<p>브랜치로 이동한 것을 확인하고 'Pull Request' 버튼을 누르자. 다음과 같은 화면이 나오는데 브랜치에서 변경한 내용에 대한 설명을 적어주고 'Submit Pull Request' 버튼을 눌러준다.</p>
+
+<p><img src="/articles/2012/how-to-github/5Euiy.png" alt="Pull Request" title="" /><br /><em>Pull Request 설명 달기</em></p>
+
+<p>룰루랄라~ 끝났다. 사실 완전히 다 끝난건 아니다. 'Pull Request' 보낸 커밋에 고칠점이 있다면 메인테이너는 'Pull Request'를 바로 받아주지 않고 해당사항을 고쳐달라고 할 것이다. 메인테이너가 'Pull Request'를 닫지(Clone) 않는 한 해당 브랜치로 커밋을 Push하면 다행히도 'Pull Request' 속으로 들어간다.</p>
+
+<h2>Pull Request 받아서 Merge하기</h2>
+
+<p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
+
+<pre><code>git checkout master
+git remote add contributor git://github.com/contributor/project
+git fetch contributor
+git merge contributor/newfeature
+git push origin master
+</code></pre>
+
+<p>이렇게 하면 다른사람이 수정한 내용을 메인 master 브랜치로 merge하게 된다.</p>
+
+<h2>Pull Request를 받아주지 않는 이유</h2>
+
+<p>이 부분은 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">원본 페이지</a>를 확인하시라!</p>]]>
+    </content>
+  </entry>
+  <entry>
     <title><![CDATA[ KTH 발표 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/first-speach.html" />
     <updated>2012-03-29T15:00:00Z</updated>
@@ -1012,7 +1237,7 @@ nav.nav-primary li li {
 
 <p>이제 SVN을 사용하기 시작하는 회사도 봤는데 KTH 같이 규모가 되는 회사에서 Git을 도입하려는 시도는 너무 인상적이다. 질문도 많이 하셨다. KTH는 열심히 노력하는, 좋은 회사의 냄새가 난다. 왕멍의 가르침이 떠오른다.</p>
 
-<pre class="prettyprint"><code>'입신경지立身境地'는 '변화의 경지'이다. 이것은 한두 권의 책을 읽고 도달할 수 있는 것이 아니다. 한평생 책을 읽어도 입신경지에 도달하기 어렵다. 읽기 위해서 책을 읽는다면 이를 제대로 소화할 수 없다. 이는 입신경지에 도달하는 학습의 과정이며, 실행의 과정이며, 탁마의 과정이며, 터득의 과정이며, 반성의 과정이며, 발전과 성숙의 과정이다. 이는 승화하고 정화하여 넉넉함과 충실함에 도달하는 과정이다. - 왕멍 &lt;나는 학생이다&gt;
+<pre><code>'입신경지立身境地'는 '변화의 경지'이다. 이것은 한두 권의 책을 읽고 도달할 수 있는 것이 아니다. 한평생 책을 읽어도 입신경지에 도달하기 어렵다. 읽기 위해서 책을 읽는다면 이를 제대로 소화할 수 없다. 이는 입신경지에 도달하는 학습의 과정이며, 실행의 과정이며, 탁마의 과정이며, 터득의 과정이며, 반성의 과정이며, 발전과 성숙의 과정이다. 이는 승화하고 정화하여 넉넉함과 충실함에 도달하는 과정이다. - 왕멍 &lt;나는 학생이다&gt;
 </code></pre>]]>
     </content>
   </entry>
@@ -1061,7 +1286,7 @@ nav.nav-primary li li {
 
 <p>'git ff'라고 실행하면 origin에서 Fetch한다:</p>
 
-<pre class="prettyprint"><code>git ff [remote]
+<pre><code>git ff [remote]
 </code></pre>
 
 <p>하지만, origin이 아니라 다른 저장소로도 작업해야 할 때도 왕왕 있다. 특히 origin이 메인 저장소가 아닐 때가 그렇다. 'git ff managers'라고 실행하면 managers 저장소에서 Fetch한다.</p>
@@ -1092,20 +1317,20 @@ nav.nav-primary li li {
 
 <p>보통 셸에서 TAB 키를 누르면 파일 이름, 디렉토리 이름, 실행경로($PATH)에 있는 명령어를 자동으로 완성해준다:</p>
 
-<pre class="prettyprint"><code>ls /bo[TAB]
+<pre><code>ls /bo[TAB]
 </code></pre>
 
 <p><code>/bo</code> 다음에 TAB 키를 누르면 <code>/bo</code>가 <code>/boot</code>로 대체된다.</p>
 
 <p><a href="http://packages.debian.org/bash">Debian bash package</a>는 <code>/etc/bash_completion</code>이라는 Completion 파일이 있고 이 파일에는 일반적인 명령어에 대한 Completion이 정의돼 있다. 아직 사용하고 있지 않으면 ". /etc/bash_completion"라고 실행해서 바로 사용하자:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion
+<pre><code>skx@lappy:~$ . /etc/bash_completion
 skx@lappy:~$ 
 </code></pre>
 
 <p>이걸 한 번만 해주면 다양한 명령어에 Completion을 이용할 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ apt-get upd[TAB]
+<pre><code>skx@lappy:~$ apt-get upd[TAB]
 skx@lappy:~$ apt-get upg[TAB]
 </code></pre>
 
@@ -1119,12 +1344,12 @@ skx@lappy:~$ apt-get upg[TAB]
 
 <p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
+<pre><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
 </code></pre>
 
 <p>이 complete 명령을 한번 실행하고 [TAB]을 입력하면 다음과 같이 보여 줄 거다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ xvncviewer s[TAB]
+<pre><code>skx@lappy:~$ xvncviewer s[TAB]
 savannah.gnu.org            ssh.tardis.ed.ac.uk
 scratchy                    steve.org.uk
 security.debian.org         security-master.debian.org
@@ -1136,7 +1361,7 @@ skx@lappy:~$ xvncviewer sc[TAB]
 
 <p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "complete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ complete -p
+<pre><code>skx@lappy:~$ complete -p
 ....
 complete -F _known_hosts tracepath
 complete -F _known_hosts host
@@ -1149,7 +1374,7 @@ complete -F _known_hosts host
 
 <p>'part 1'에서 아무 명령에나 hostname을 완성하는 것을 만들어 봤다:</p>
 
-<pre class="prettyprint"><code>complete -F _known_hosts xvncviewer
+<pre><code>complete -F _known_hosts xvncviewer
 </code></pre>
 
 <p>이 명령은 xvncviewer의 인자를 Completion할 때 _known_hosts 함수를 사용하라고 알리는 것이다.</p>
@@ -1173,7 +1398,7 @@ complete -F _known_hosts host
 
 <p>파일에 다음과 같은 내용을 넣고 저장한다:</p>
 
-<pre class="prettyprint"><code>_foo() 
+<pre><code>_foo() 
 {
     local cur prev opts
     COMPREPLY=()
@@ -1191,7 +1416,7 @@ complete -F _foo foo
 
 <p>그리고 나서 이 파일만 읽어들여 테스트해본다: </p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion.d/foo
+<pre><code>skx@lappy:~$ . /etc/bash_completion.d/foo
 skx@lappy:~$ foo --[TAB]
 --help     --verbose  --version  
 </code></pre>
@@ -1208,22 +1433,22 @@ skx@lappy:~$ foo --[TAB]
 
 <p>그리고 실제로 옵션을 Completion하는 것은 compgen이라는 명령어를 통해서다:</p>
 
-<pre class="prettyprint"><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+<pre><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
 </code></pre>
 
 <p>compgen 명령의 결과를 $COMPREPLY에 할당한다:</p>
 
-<pre class="prettyprint"><code>compgen -W "${opts}" -- ${cur}
+<pre><code>compgen -W "${opts}" -- ${cur}
 </code></pre>
 
 <p>여기서 변수 대신 실제 값을 넣어보면 이 명령이 실제로 어떻게 동작하는지 이해하기 쉬울 것이다:</p>
 
-<pre class="prettyprint"><code>compgen -W "--help --verbose --version" -- "userinput"
+<pre><code>compgen -W "--help --verbose --version" -- "userinput"
 </code></pre>
 
 <p>compgen은 "--help --verbose --version" 중에서 "${cur}"와 일치하는 것을 찾아 리턴한다. 잘 이해가 안되면 바로 셸에서 이 명령을 직접 실행해 보면 알 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
+<pre><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
 --help
 --verbose
 --version
@@ -1272,7 +1497,7 @@ skx@lappy:~$ compgen -W "--help --verbose --version" -- --h
 
 <p>Completion할 때 이전 토큰을 알아야 해서 명령어마다 다르게 처리한다. 예를 들자면:</p>
 
-<pre class="prettyprint"><code>_xm() 
+<pre><code>_xm() 
 {
     local cur prev opts base
     COMPREPLY=()
@@ -1315,19 +1540,19 @@ complete -F _xm xm
 
 <p>"console" operation에 사용하는 목록은 다음과 같은 명령으로 만든다:</p>
 
-<pre class="prettyprint"><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
+<pre><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
 </code></pre>
 
 <p>이 명령은 지금 도는 Xen 시스템의 목록을 반환한다.</p>
 
 <p>"creation" operation에 사용하는 목록은 다음 명령으로 만든다:</p>
 
-<pre class="prettyprint"><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
+<pre><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
 </code></pre>
 
 <p>이 명령은 /etc/xen 디렉토리에 있는 '*.cfg' 파일을 모두 반환한다. 예를 들면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
+<pre><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
 etch.cfg
 root.cfg
 sarge.cfg
@@ -1342,7 +1567,7 @@ skx@lappy:~$
 
 <p>다음은 파일과 호스트이름을 Completion하는 방법을 설명하는 예제다:</p>
 
-<pre class="prettyprint"><code>#
+<pre><code>#
 #  Completion for foo:
 #
 #  foo file [filename]
@@ -1406,7 +1631,7 @@ complete -F _foo foo
 
 <p>Menu HTML:</p>
 
-<pre class="prettyprint"><code>&lt;ul class="menu"&gt;
+<pre><code>&lt;ul class="menu"&gt;
     &lt;li class="menu-inbox"&gt;Inbox&lt;/li&gt;
     &lt;li class="menu-drafts"&gt;Drafts&lt;/li&gt;
 &lt;/ul&gt;
@@ -1414,7 +1639,7 @@ complete -F _foo foo
 
 <p>Menu CSS:</p>
 
-<pre class="prettyprint"><code>.menu li {
+<pre><code>.menu li {
     background: url(/img/sprite.png) no-repeat 0 0;
     padding-left: 20px;
 }
@@ -1443,7 +1668,7 @@ complete -F _foo foo
 
 <p>Icon Module을 사용하도록 HTML을 바꾼다:</p>
 
-<pre class="prettyprint"><code>&lt;li&gt;&lt;i class="ico ico-16 ico-inbox"&gt;&lt;/i&gt; Inbox&lt;/li&gt;
+<pre><code>&lt;li&gt;&lt;i class="ico ico-16 ico-inbox"&gt;&lt;/i&gt; Inbox&lt;/li&gt;
 </code></pre>
 
 <p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
@@ -1454,7 +1679,7 @@ complete -F _foo foo
 
 <p>Icon Module CSS:</p>
 
-<pre class="prettyprint"><code>.ico {
+<pre><code>.ico {
     display: inline-block;
     background: url(/img/sprite.png) no-repeat;
     line-height: 0;
@@ -1486,120 +1711,6 @@ complete -F _foo foo
 <p><img src="/articles/2012/smacss/icon-menu2.png" alt="icon-menu2" title="" /></p>
 
 <p>잘 우겨넣으면 압축 효율이 좋아진다. 그리고 파일 크기도 더 작아지므로 사이트 성능도 향상된다. 아직 <a href="http://www.smushit.com/ysmush.it/">Smush.it</a>이나 <a href="http://imageoptim.pornel.net/">ImageOptim</a>을 사용해보지 않았으면 한번 사용해보는 것이 좋다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Git: Remote Tracking Branch vs Tracking Branch ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" />
-    <updated>2012-03-02T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html</id>
-    <content type="html">
-<![CDATA[
-<p>Tracking 브랜치와 Remote Tracking 브랜치는 조금 애매하다. <code>Tracking 브랜치</code> 개념은 잘 이용하지 않기 때문에 돌아서면 잊어버린다. 그래서 정리했다. 구분하고 있지 않아도 Git을 사용하는데 불편할 거라고는 생각하지 않지만, 그래도 궁금하다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg" alt="stalker" title="" /></p>
-
-<p>(절망선생)</p>
-
-<h2>Remote Tracking 브랜치</h2>
-
-<p>Remote Tracking 브랜치는 <code>origin/master</code>와 같은 브랜치를 말한다. 이 브랜치는 origin 저장소에 있는 master 브랜치가 가리키는 커밋을 그대로 가리키는 브랜치이다. 리모트 저장소의 브랜치를 Fetch해 오면 이 브랜치가 업데이트된다.</p>
-
-<p>Remote Tracking 브랜치는 다음과 같은 특징이 있다.</p>
-
-<ul>
-<li>이 브랜치는 사용자가 임의로 수정할 수 없다.</li>
-<li><code>git fetch</code>, <code>git pull</code> 명령으로만 업데이트할 수 있다.</li>
-</ul>
-
-<h2>Tracking 브랜치</h2>
-
-<p>Tracking 브랜치는 Remote Tracking 브랜치(이하 리모트 브랜치)보다 복잡하지만 그렇다고 어려운 것도 아니다.</p>
-
-<p>Tracking 브랜치는 로컬 브랜치이다. 로컬 브랜치 중에서 리모트 브랜치를 Tracking하는 브랜치다.</p>
-
-<p>Tracking 특징 다음과 같다:</p>
-
-<ul>
-<li>이 브랜치는 사용자가 임의로 수정할 수 있다.</li>
-<li><code>git fetch</code>로 정보가 업데이트되지 않는다. <code>git fetch</code>는 단지 리모트 저장소의 브랜치를 Tracking하는 Remote Tracking 브랜치만 만든다.</li>
-</ul>
-
-<p>Tracking 브랜치는 도우미 같은 것으로 생각하면 된다. 몰라도 크게 불편하지 않다.</p>
-
-<h3>Tracking 브랜치 확인</h3>
-
-<p><code>git clone</code> 명령은 리모트 저장소를 Fetch하고 나서 master 브랜치를 만들고 Checkout 해준다. 이때 master 브랜치를 origin/master 브랜치를 Tracking하도록 만든다.</p>
-
-<p><code>git clone</code> 명령으로 저장소를 만들고 <code>git config -l</code> 명령을 실행하면 다음과 같은 설정이 들어가 있다:</p>
-
-<pre class="prettyprint"><code>branch.master.remote=origin
-branch.master.merge=refs/heads/master
-</code></pre>
-
-<h3>Tracking 브랜치 만들기</h3>
-
-<p>Tracking 브랜치는 설정에 이런 정보를 가지고 있다. Tracking 브랜치는 만드는 게 간단하다. 리모트 브랜치에서 브랜치를 만들면 된다.</p>
-
-<pre class="prettyprint"><code>git br tracking origin/master
-git co -b tracking origin/master
-</code></pre>
-
-<p>하지만, 로컬 브랜치에서 만들면 Tracking 브랜치가 되지 않는다:</p>
-
-<pre class="prettyprint"><code>git br tracking master
-git co -b tracking master
-</code></pre>
-
-<p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:</p>
-
-<pre class="prettyprint"><code>git branch --set-upstream master origin/master
-</code></pre>
-
-<h3>쓰임새</h3>
-
-<p>Tracking 브랜치 정보는 로컬 브랜치와 리모트 브랜치 사이의 연결 정보이고 설정에 저장된다. Git은 이 정보를 이용해서 몇 가지 정보를 제공한다.</p>
-
-<h4>git branch -v</h4>
-
-<p>Tracking 브랜치의 경우 리모트 브랜치와 거리가 얼마나 되는지(다른 커밋 개수를) 보여준다:</p>
-
-<pre class="prettyprint"><code>$ git branch -v
-feature/kitchen e054c7e [ahead 1, behind 1] Add sink unit
-* ship            2d45d4c Add test
-</code></pre>
-
-<p><code>[ahead 1]</code>은 feature/kitchen은 origin/feature/kitchen에 없는 커밋이 하나 있다는 것이고 [behind 1]은 feature/kitchen은 origin/feature/kitchen에 있는 커밋 하나가 없다는 것이다.</p>
-
-<h4>git checkout</h4>
-
-<p><code>git checkout</code>도 브랜치가 Tracking 브랜치이면 얼마나 다른지 보여준다.</p>
-
-<pre class="prettyprint"><code>$ git checkout feature/kitchen 
-Switched to branch 'feature/kitchen'
-Your branch and 'origin/ship' have diverged,
-and have 1 and 1 different commit(s) each, respectively.
-</code></pre>
-
-<h4>git pull</h4>
-
-<p>Tracking 브랜치를 Checkout한 상태에서 <code>git pull</code> 명령을 실행하면 현재 Checkout과 연결된 리모트 저장소와 브랜치를 설정에서 찾아서 Fetch하고 현 브랜치에 Merge한다.</p>
-
-<p>Tracking 브랜치가 아니면 <code>git pull</code>을 할 수 없다. 그러니까 <code>git pull</code>을 하려면 Tracking 브랜치를 Checkout하고 있어야 한다.</p>
-
-<h4>git push</h4>
-
-<p><code>git push</code>라고 실행하면 Checkout한 브랜치와 상관없이 Tracking 브랜치를 모두 Push한다. <code>git push origin master</code>는 Tracking 브랜치와 상관없이 master 브랜치를 origin/master로 Push한다.</p>
-
-<h2>끝으로...</h2>
-
-<p>자동으로 Merge하는 방식은 아름다운 히스토리를 해칠 수 있다. 히스토리는 가능한 평평하게 펴줘야 하고 여러 커밋을 묶어서 관리할 필요가 있을 때만 Merge 커밋을 히스토리에 남기는 것이 좋다.</p>
-
-<p>물론 <code>git pull</code> 명령도 --rebase, --ff, --no-ff, --ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.</p>
-
-<p><code>git pull</code> 명령은 어떨 때 유용한 걸까?</p>
-
-<p>저장소와 모든 브랜치를 동기화하는 기능이 필요하긴 하다. 복잡하게 Tracking 브랜치에 따른 것이 아니라 걍 이름으로 했으면 좋겠는데..</p>]]>
     </content>
   </entry>
 </feed>

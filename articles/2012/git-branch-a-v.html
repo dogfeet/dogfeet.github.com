@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -134,7 +131,7 @@
 
 <p>merge를 설명할 때 사용했던 ship 저장소를 다시 살펴보자. 이 저장소를 clone하고 <code>git branch -a -v</code>를 실행한다:</p>
 
-<pre class="prettyprint"><code>$ git branch -a -v
+<pre><code>$ git branch -a -v
 ship                             3f129b5 Fix anchor
 remotes/origin/ship              3f129b5 Fix anchor
 </code></pre>
@@ -143,7 +140,7 @@ remotes/origin/ship              3f129b5 Fix anchor
 
 <p>'origin/ship'을 Tracking하는 'feature/kitchen'라는 브랜치를 만들고 싱크대를 추가한다:</p>
 
-<pre class="prettyprint"><code>$ git co -b feature/kitchen origin/ship
+<pre><code>$ git co -b feature/kitchen origin/ship
 $ touch sink_unit
 $ git add sink_unit
 $ git commit
@@ -154,7 +151,7 @@ $ git commit
 
 <p>그리고 누군가 ship 브랜치에 커밋을 추가했다. 그래서 다시 Fetch를 하고 나서 <code>git branch -a -v</code>를 실행한다:</p>
 
-<pre class="prettyprint"><code>feature/kitchen                  e054c7e [ahead 1, behind 1] Add sink unit
+<pre><code>feature/kitchen                  e054c7e [ahead 1, behind 1] Add sink unit
 ship                             3f129b5 [behind 1] Fix anchor
 remotes/origin/ship              3f129b5 Fix anchor
 </code></pre>
@@ -163,7 +160,7 @@ remotes/origin/ship              3f129b5 Fix anchor
 
 <p>마찬가지로 'behind 1'은 'origin/sink' 브랜치가 'feature/kitchen' 브랜치보다 커밋을 하나 더 가졌다는 것이다. <code>git log feature/kitchen...origin/ship --left-right</code>을 실행하면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>$ git lg feature/kitchen...origin/ship --left-right
+<pre><code>$ git lg feature/kitchen...origin/ship --left-right
 &gt; 2d45d4c - (origin/ship) Add test
 &lt; e054c7e - (feature/kitchen) Add sink unit
 </code></pre>
@@ -176,7 +173,7 @@ remotes/origin/ship              3f129b5 Fix anchor
 
 <p>나는 해당 프로젝트의 'todo' 목록을 별도로 관리하지 않고 그냥 토픽 브랜치로 만든다. 그리고 <code>git branch -a -v</code> 명령으로 관리한다. 나는 편의를 위해서 <code>todo</code>라는 alias를 만들어 사용한다:</p>
 
-<pre class="prettyprint"><code>git config --global alias.todo "branch -a -v"
+<pre><code>git config --global alias.todo "branch -a -v"
 </code></pre>
 
 <h2>결론</h2>
@@ -193,32 +190,32 @@ remotes/origin/ship              3f129b5 Fix anchor
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Dec 10 2011</span>
-&raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
-      </li>
-      <li>
-        <span>Feb 10 2012</span>
-&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
-      </li>
-      <li>
-        <span>Mar 30 2012</span>
-&raquo;        <a href="/articles/2012/first-speach.html">KTH 발표</a>
-      </li>
-      <li>
-        <span>Apr 01 2012</span>
-&raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
-      </li>
-      <li>
         <span>Jan 21 2012</span>
 &raquo;        <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+      </li>
+      <li>
+        <span>Dec 10 2011</span>
+&raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
       </li>
       <li>
         <span>Mar 03 2012</span>
 &raquo;        <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
       </li>
       <li>
+        <span>Mar 30 2012</span>
+&raquo;        <a href="/articles/2012/first-speach.html">KTH 발표</a>
+      </li>
+      <li>
+        <span>Feb 10 2012</span>
+&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
+      </li>
+      <li>
         <span>Feb 02 2012</span>
 &raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+      <li>
+        <span>Apr 01 2012</span>
+&raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
       </li>
     </ul>
   </div>

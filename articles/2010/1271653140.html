@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -136,7 +133,7 @@
 
 <p>SVN 저장소가 필요해서 Google code에 프로젝트를 만들었다. 프로젝트 페이지는 <a href="http://code.google.com/p/spring-finance-manager">여기</a>이고 SVN 저장소는 다음과 같이 이용할 수 있다:</p>
 
-<pre class="prettyprint"><code>svn checkout <a href='http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/'>http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</a> 
+<pre><code>svn checkout <a href='http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/'>http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</a> 
 </code></pre>
 
 <p>자세한 빌드 방법은 <a href="http://code.google.com/p/spring-finance-manager/wiki/BuildAndInstall">여기</a>에 있다.</p>
@@ -145,7 +142,7 @@
 
 <p>말했던데로 이 어플리케이션은 Spring @MVC를 사용했다. PersonController.java를 보면 Spring MVC의 콘트롤러는 어노테이션을 사용한 POJO 빈이라는 것을 알 수 있다. 이 어노테이션들은 빈을 Spring 어플리케이션 컨텍스트에 컨트롤러로 등록해 준다.</p>
 
-<pre class="prettyprint"><code>@Controller
+<pre><code>@Controller
 @RequestMapping("/person/**")
 public class PersonController {
 
@@ -167,7 +164,7 @@ public class PersonController {
 
 <p>분명, 여러분은 @Controller 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 @Controller 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:</p>
 
-<pre class="prettyprint"><code>&lt;context:component-scan base-package="net.stsmedia.financemanager" use-default-filters="false"&gt;
+<pre><code>&lt;context:component-scan base-package="net.stsmedia.financemanager" use-default-filters="false"&gt;
 
 &lt;context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"&gt;
 
@@ -187,20 +184,20 @@ public class PersonController {
 
 <p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:</p>
 
-<pre class="prettyprint"><code>&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"&gt;
+<pre><code>&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"&gt;
 &lt;/bean&gt;
 </code></pre>
 
 <p>update.jsp 페이지를 살펴봅시다:</p>
 
-<pre class="prettyprint"><code>&lt;form:form action="/FinanceManager/person/${person.id}" method="PUT" modelattribute="person"&gt;
+<pre><code>&lt;form:form action="/FinanceManager/person/${person.id}" method="PUT" modelattribute="person"&gt;
 [...]
 &lt;/form:form&gt; 
 </code></pre>
 
 <p>HTTP 메소드가 'method="PUT"'으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):</p>
 
-<pre class="prettyprint"><code>&lt;filter&gt;
+<pre><code>&lt;filter&gt;
     &lt;filter-name&gt;httpMethodFilter&lt;/filter-name&gt;
     &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
 &lt;/filter&gt;
@@ -215,7 +212,7 @@ public class PersonController {
 
 <p>이 절에서는 REST mappings에 대해 매우 자세히 설명한다. 다음에 나올 PersionController를 위해서도 필요하다. Spring Finance Manager같은 웹 어플리케이션은 네가지 기능이 사용자에게 노출된다. 이 네가지 기능은 새로 자원(a person)을 만드는 것(Create), 존제하는 자원(a person)의 상세정보를 보여주거나 읽는 것(Read), 자원(a person) 정보를 수정하는 것(Update), 자원(a person)을 삭제하는 것(Delete)이다. 우리는 Person 엔티티를 읽고 관리하는 것을 CRUD라고 부른다. REST 어플리케이션을 만들 때 다음과 같은 패턴을 따르는 것이 권장된다. 다음은 CRUD가 HTTP 메소드에 어떻게 매핑되는 지를 보여준다:</p>
 
-<pre class="prettyprint"><code>HTTP   | CRUD
+<pre><code>HTTP   | CRUD
 POST   | CREATE
 GET    | READ
 PUT    | UPDATE
@@ -285,12 +282,40 @@ DELETE | DELETE
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
         <span>May 04 2010</span>
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Apr 27 2010</span>
+&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
@@ -301,28 +326,12 @@ DELETE | DELETE
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Apr 27 2010</span>
-&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Apr 20 2010</span>
-&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
 &raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
       </li>
       <li>
         <span>Nov 10 2009</span>
@@ -333,20 +342,8 @@ DELETE | DELETE
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
       </li>
       <li>
         <span>Aug 19 2008</span>

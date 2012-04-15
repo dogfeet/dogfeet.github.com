@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -124,7 +121,7 @@
   <div property="sioc:content">
     <p>자 이제 서블릿의 설정파일인 /war/WEB-INF/web.xml 을 열어 다음 부분의 내용부터 살펴본다.</p>
 
-<pre class="prettyprint"><code>&lt;!--
+<pre><code>&lt;!--
 - Dispatcher servlet mapping for the main web user interface.
 - Either refering to "petstore" for the Spring web MVC dispatcher,
 - or to "action" for the Struts dispatcher.
@@ -143,7 +140,7 @@
 
 <p>servlet-mapping 설정은 특정 url-pattern을 servlet이 처리 하도록 지정한다. *.do 라는 url-pattern은 petstore로 처리가 된다. petstore라는 서블릿은 다음과 같이 정의하고 있으며 이어지는 내용을 보면 petstore서블릿은 SpringMVC를 통해 처리를 한다는 것을 알 수 있다.. 만약 petstore를 주석처리하고 action서블릿으로 처리를 하면 <a href="http://struts.apache.org/">Struts</a>를 통해 처리를 한다.</p>
 
-<pre class="prettyprint"><code>&lt;!--
+<pre><code>&lt;!--
 - Spring web MVC servlet that dispatches requests to registered handlers.
 - Has its own application context, by default defined in "{servlet-name}-servlet.xml",
 - i.e. "petstore-servlet.xml" in this case.
@@ -182,7 +179,7 @@
 
 <p>'/shop/index.do' 요청을 처리하는 예를 적용해 보면 petstore 서블릿 컨텍스트에서 다음의 정의에 의해 처리가 된다.</p>
 
-<pre class="prettyprint"><code>&lt;bean name="/shop/index.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController"&gt;
+<pre><code>&lt;bean name="/shop/index.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController"&gt;
 &lt;property name="viewName" value="index"/&gt;
 &lt;/bean&gt; 
 </code></pre>
@@ -191,7 +188,7 @@
 
 <p>index라는 View는 ViewResolver를 통해 '/WEB-INF/jsp/spring/index.jsp'를 가리키게 되고, 해당 View로 위의 Controller가 돌려준 Model이 전달된다.</p>
 
-<pre class="prettyprint"><code>&lt;bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+<pre><code>&lt;bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
 &lt;property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/&gt;
 &lt;property name="prefix" value="/WEB-INF/jsp/spring/"/&gt;
 &lt;property name="suffix" value=".jsp"/&gt;
@@ -206,12 +203,40 @@
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
         <span>May 04 2010</span>
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Apr 27 2010</span>
+&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+      </li>
+      <li>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
@@ -222,24 +247,8 @@
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Apr 27 2010</span>
-&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Apr 20 2010</span>
-&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
@@ -254,20 +263,8 @@
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
       </li>
       <li>
         <span>Aug 19 2008</span>

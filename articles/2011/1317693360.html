@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -128,7 +125,7 @@
 
 <p>역사적으로 <code>__proto__</code>는 편리하기 때문에 많은 사랑을 받았다. <code>__proto__</code>는 객체의 constructor 함수의 property에 접근하는 방법이다. 사용하기 쉽지만 좀 지저분하다. 다음의 코드는 true이다:</p>
 
-<pre class="prettyprint"><code>"test".__proto__ === String.prototype
+<pre><code>"test".__proto__ === String.prototype
 // Another alternative, not using __proto__
 // Only works when constructor isn't changed
 "test".constructor.prototype === String.prototype
@@ -142,7 +139,7 @@
 
 <p>instanceOf를 JavaScript로 구현한다면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>function instanceOf(object, constructor) {
+<pre><code>function instanceOf(object, constructor) {
   while (object != null) {
     if (object == constructor.prototype)
       return true;
@@ -160,7 +157,7 @@ instanceOf(true, Boolean);
 
 <p>getPrototypeOf()를 super 키워드 처럼 사용할 수 있다. 코드를 보자:</p>
 
-<pre class="prettyprint"><code>function Person(){}
+<pre><code>function Person(){}
 Person.prototype.kick = function(type){
   alert(type + " kick!");
 }
@@ -181,7 +178,7 @@ Norris.prototype.kick = function(){
 
 <p>브라우저들이 Object.getPrototypeOf를 구현할 때까지 다음과 같은 코드를 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>if ( typeof Object.getPrototypeOf !== "function" ) {
+<pre><code>if ( typeof Object.getPrototypeOf !== "function" ) {
   if ( typeof "test".__proto__ === "object" ) {
     Object.getPrototypeOf = function(object){
       return object.__proto__;
@@ -203,7 +200,7 @@ Norris.prototype.kick = function(){
 
 <p>일단 다음과 같은 예제부터 살펴보자:</p>
 
-<pre class="prettyprint"><code>var obj = { getPrototypeOf: "blah" };
+<pre><code>var obj = { getPrototypeOf: "blah" };
 </code></pre>
 
 <p>사용자가 이렇게 정의해 버리면 getPrototypeOf()은 메소드가 아니라서 호출될 수 없다. 그러니까 개발자들은 항상 Object.getPrototypeOf()라고 사용해야 한다. getPrototypeOf()가 필요한 때는 보통 fallback같은 것을 만들 때이다. 즉, 일반적으로 필요하지 않기 때문에 모든 객채의 property일 필요는 없는 것이다.</p>
@@ -216,32 +213,24 @@ Norris.prototype.kick = function(){
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+      </li>
+      <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+      </li>
+      <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
@@ -254,6 +243,14 @@ Norris.prototype.kick = function(){
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

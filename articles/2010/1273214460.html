@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -124,7 +121,7 @@
   <div property="sioc:content">
     <h2>클래스 정의</h2>
 
-<pre class="prettyprint"><code>class Base {
+<pre><code>class Base {
     public:
         virtual const char *getAlgorithm() = 0;
     };
@@ -146,7 +143,7 @@ class Derive2 : public Base {
 
 <h2>downcasting</h2>
 
-<pre class="prettyprint"><code>Base *b1 = new Derive();
+<pre><code>Base *b1 = new Derive();
 Base *b2 = new Derive2();
 
 Derive *d1 = dynamic_cast&lt;derive *&gt; (b1); // b1

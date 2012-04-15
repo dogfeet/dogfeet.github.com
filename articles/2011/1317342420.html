@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -148,7 +145,7 @@
 
 <p>구글 검색시 나오는 관련검색, HOT 토픽을 제거한다:</p>
 
-<pre class="prettyprint"><code>/* google search */
+<pre><code>/* google search */
 #rcnt &gt; #rhscol &gt; #rhs { 
     display: none !important;
 }
@@ -160,7 +157,7 @@
 
 <p>다음 Mail은 일관련으로 gmail이 안되도록 blacklist에 추가되는 업체들 때문에 사용한다. 로그인 화면에서 너무 많은 정보를 보여줘서 삼천포로 빠지게 만든다. 다음 것도 막어보자:</p>
 
-<pre class="prettyprint"><code>/* daum portal */
+<pre><code>/* daum portal */
 #wrap &gt; #content &gt; :not(#my), #wrap &gt; #content &gt; #my &gt; :not(#logon) { 
     display: none !important;
 }

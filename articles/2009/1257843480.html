@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -124,7 +121,7 @@
   <div property="sioc:content">
     <h2>Ioc.java</h2>
 
-<pre class="prettyprint"><code>import java.util.Calendar;
+<pre><code>import java.util.Calendar;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
@@ -153,7 +150,7 @@ public class Ioc {
 
 <h2>beans.xml</h2>
 
-<pre class="prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="<a href='http://www.springframework.org/schema/beans'>http://www.springframework.org/schema/beans</a>"
        xmlns:xsi="<a href='http://www.w3.org/2001/XMLSchema-instance'>http://www.w3.org/2001/XMLSchema-instance</a>"
        xsi:schemaLocation="
@@ -167,7 +164,7 @@ public class Ioc {
 
     &lt;bean id="ioc" class="Ioc"&gt;
 
-    &lt;/bean&gt;
+&lt;/bean&gt;
 
 &lt;/beans&gt; 
 </code></pre>
@@ -182,7 +179,7 @@ public class Ioc {
 
 <h2>execution</h2>
 
-<pre class="prettyprint"><code>$ javac Ioc.java -cp org.springframework.beans-3.0.0.RC1.jar:org.springframework.core-3.0.0.RC1.jar
+<pre><code>$ javac Ioc.java -cp org.springframework.beans-3.0.0.RC1.jar:org.springframework.core-3.0.0.RC1.jar
 $ java -cp .:org.springframework.core-3.0.0.RC1.jar:org.springframework.beans-3.0.0.RC1.jar:commons-logging.jar Ioc
 Spring Study!
 Nov 10, 2009 5:49:14 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
@@ -197,6 +194,10 @@ Tue Nov 10 17:49:14 KST 2009
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
@@ -205,24 +206,16 @@ Tue Nov 10 17:49:14 KST 2009
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
       </li>
       <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
       </li>
       <li>
-        <span>Jan 17 2010</span>
-&raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
       </li>
       <li>
         <span>Apr 27 2010</span>
@@ -233,12 +226,24 @@ Tue Nov 10 17:49:14 KST 2009
 &raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
       </li>
       <li>
-        <span>Dec 27 2009</span>
-&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
       </li>
       <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+      </li>
+      <li>
+        <span>Jan 17 2010</span>
+&raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
+      </li>
+      <li>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+      </li>
+      <li>
+        <span>Dec 27 2009</span>
+&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
       </li>
       <li>
         <span>Nov 10 2009</span>
@@ -249,16 +254,8 @@ Tue Nov 10 17:49:14 KST 2009
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
       </li>
       <li>
         <span>Aug 19 2008</span>

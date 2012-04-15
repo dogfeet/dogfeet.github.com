@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -168,7 +165,7 @@
 
 <p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
 
-<pre class="prettyprint"><code>git clone **your ssh/git url**
+<pre><code>git clone **your ssh/git url**
 </code></pre>
 
 <h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
@@ -177,17 +174,17 @@
 
 <p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
 
-<pre class="prettyprint"><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
+<pre><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
 </code></pre>
 
 <p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
 
-<pre class="prettyprint"><code>git fetch upstream
+<pre><code>git fetch upstream
 </code></pre>
 
 <p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
 
-<pre class="prettyprint"><code>git merge upstream/master
+<pre><code>git merge upstream/master
 </code></pre>
 
 <p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
@@ -198,12 +195,12 @@
 
 <p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
 
-<pre class="prettyprint"><code>git branch newfeature
+<pre><code>git branch newfeature
 </code></pre>
 
 <p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
 
-<pre class="prettyprint"><code>git checkout newfeature
+<pre><code>git checkout newfeature
 </code></pre>
 
 <p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
@@ -220,19 +217,19 @@
 
 <p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
 
-<pre class="prettyprint"><code>git rebase -i HEAD~3
+<pre><code>git rebase -i HEAD~3
 </code></pre>
 
 <p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
 
-<pre class="prettyprint"><code>pick df94881 Allow install to SD 
+<pre><code>pick df94881 Allow install to SD 
 pick a7323e5 README Junkyism 
 pick 3ead26f rm classpath from git 
 </code></pre>
 
 <p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
 
-<pre class="prettyprint"><code>pick df94881 Allow install to SD 
+<pre><code>pick df94881 Allow install to SD 
 squash a7323e5 README Junkyism 
 squash 3ead26f rm classpath from git 
 </code></pre>
@@ -243,7 +240,7 @@ squash 3ead26f rm classpath from git
 
 <p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
 
-<pre class="prettyprint"><code>git push origin newfeature
+<pre><code>git push origin newfeature
 </code></pre>
 
 <p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
@@ -260,7 +257,7 @@ squash 3ead26f rm classpath from git
 
 <p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
 
-<pre class="prettyprint"><code>git checkout master
+<pre><code>git checkout master
 git remote add contributor git://github.com/contributor/project
 git fetch contributor
 git merge contributor/newfeature
@@ -283,16 +280,16 @@ git push origin master
 &raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
       </li>
       <li>
-        <span>Feb 10 2012</span>
-&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
-      </li>
-      <li>
         <span>Mar 30 2012</span>
 &raquo;        <a href="/articles/2012/first-speach.html">KTH 발표</a>
       </li>
       <li>
         <span>Jan 14 2012</span>
 &raquo;        <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
+      </li>
+      <li>
+        <span>Feb 10 2012</span>
+&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
       </li>
       <li>
         <span>Jan 21 2012</span>

@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -128,14 +125,14 @@
 
 <p>다음과 같이 대충 만들고:</p>
 
-<pre class="prettyprint"><code class="language-js">#!/usr/bin/env node
+<pre><code>#!/usr/bin/env node
 var opts = require('tav').set();
 console.log(opts, opts.args);
 </code></pre>
 
 <p>라고 만들고 나서 대충 실행하면:</p>
 
-<pre class="prettyprint"><code class="language-bsh">#!/usr/bin/env bash
+<pre><code>#!/usr/bin/env bash
 $node app.js --host=localhost --port=8080 --debug arg1 arg2
 { host: 'localhost', port: 8080, debug: true } [ 'arg1', 'arg2' ]
 </code></pre>
@@ -144,7 +141,7 @@ $node app.js --host=localhost --port=8080 --debug arg1 arg2
 
 <p>규칙도 정의할 수 있는데 다음과 같이 만들고:</p>
 
-<pre class="prettyprint"><code class="language-js">#!/usr/bin/env node
+<pre><code>#!/usr/bin/env node
 var opts = require('tav').set({
     //value가 없기 때문에 host는 required 옵션이다.
     host: {
@@ -166,7 +163,7 @@ console.log(opts);
 
 <p>정의한대로 usage를 자동으로 구성해준다. <code>--help</code> 옵션을 주면 전체 볼 수 있다. <code>--help</code>가 없으면 그때그때 필요한 것만 보여준다.</p>
 
-<pre class="prettyprint"><code>$node app.js --host=localhost --debug arg1 arg2 --help
+<pre><code>$node app.js --host=localhost --debug arg1 arg2 --help
 Very cool app
 
 Hostname
@@ -195,40 +192,36 @@ Help. This message.
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+&raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
       </li>
       <li>
         <span>Jul 05 2011</span>
 &raquo;        <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
       </li>
       <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
       </li>
       <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
       </li>
       <li>
         <span>Sep 29 2011</span>
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
       </li>
       <li>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+      </li>
+      <li>
         <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
       </li>
       <li>
         <span>Oct 05 2011</span>
@@ -237,6 +230,14 @@ Help. This message.
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Apr 15 2012</span>
+&raquo;        <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
       </li>
     </ul>
   </div>

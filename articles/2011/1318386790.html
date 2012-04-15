@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -130,7 +127,7 @@
 
 <p>굳이 Tag를 기준으로 Revision을 Count하지 않아도 날짜정보나 기타 정보를 활용하여 Revision 정보를 만들수도<br />있다.</p>
 
-<pre class="prettyprint"><code>project-dir $ git tag
+<pre><code>project-dir $ git tag
 build
 project-dir $ git describe
 build-138-geba356c
@@ -148,7 +145,7 @@ branchA
 
 <p>자 이제 이 값들을 이용해서 배포 파일을 만들면 된다.</p>
 
-<pre class="prettyprint"><code>....
+<pre><code>....
 &lt;target name="dist"&gt;
   &lt;exec executable="git" outputproperty="rev"&gt;
     &lt;arg value="describe"/&gt;
@@ -205,56 +202,56 @@ branchA
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Dec 06 2011</span>
-&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-      </li>
-      <li>
-        <span>Dec 02 2011</span>
-&raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
-      </li>
-      <li>
-        <span>Nov 30 2011</span>
-&raquo;        <a href="/articles/2011/progit.html">progit</a>
+        <span>Dec 17 2011</span>
+&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
       </li>
       <li>
         <span>Sep 25 2011</span>
 &raquo;        <a href="/articles/2011/1316924580.html">diff::Unified format</a>
       </li>
       <li>
-        <span>Dec 22 2011</span>
-&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-      </li>
-      <li>
-        <span>Dec 17 2011</span>
-&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-      </li>
-      <li>
-        <span>Dec 24 2011</span>
-&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
+        <span>Dec 06 2011</span>
+&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
       </li>
       <li>
         <span>Dec 01 2011</span>
 &raquo;        <a href="/articles/2011/bash-it.html">Bash-it</a>
       </li>
       <li>
-        <span>Dec 01 2011</span>
-&raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+        <span>Dec 24 2011</span>
+&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
       </li>
       <li>
         <span>Dec 09 2011</span>
 &raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
       </li>
       <li>
+        <span>Dec 01 2011</span>
+&raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+      </li>
+      <li>
+        <span>Dec 02 2011</span>
+&raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
+      </li>
+      <li>
+        <span>Dec 22 2011</span>
+&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+      </li>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
+      </li>
+      <li>
         <span>Jan 01 2012</span>
 &raquo;        <a href="/articles/2012/git-conflict.html">Git:conflict</a>
       </li>
       <li>
-        <span>Jan 08 2012</span>
-&raquo;        <a href="/articles/2012/progit.html">progit</a>
-      </li>
-      <li>
         <span>Mar 25 2012</span>
 &raquo;        <a href="/articles/2012/git-ff.html">Git: git-ff</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
       </li>
     </ul>
   </div>

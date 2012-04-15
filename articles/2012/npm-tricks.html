@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -132,7 +129,7 @@
 
 <p>테스트 프레임워크같이 개발할 때만 필요한 '개발용' 모듈은 <code>devDependencies</code>에 넣는다:</p>
 
-<pre class="prettyprint"><code>"devDependencies": {
+<pre><code>"devDependencies": {
     "module": "0.1.0"
 }
 </code></pre>
@@ -141,13 +138,13 @@
 
 <p>Node 0.6부터는 <code>require()</code>로 JSON 파일을 자동으로 읽어 준다. 그래서 쉽게 모듈의 package.json 파일을 이용할 수 있다:</p>
 
-<pre class="prettyprint"><code>// considering the module lives in lib/module.js:
+<pre><code>// considering the module lives in lib/module.js:
 exports.version = require('../package').version;
 </code></pre>
 
 <p>특정 모듈의 package.json을 읽어 오려면 다음과 같이 한다:</p>
 
-<pre class="prettyprint"><code>require('my-module/package').name
+<pre><code>require('my-module/package').name
 </code></pre>
 
 <h2>Linking</h2>
@@ -158,7 +155,7 @@ exports.version = require('../package').version;
 
 <p>You can leverage <code>npm link</code> to generate a global reference to a module, and then run <code>npm link &lt;package&gt;</code> to install it in other modules. Consider the following example, in which <code>moduleB</code> depends on the version of <code>moduleA</code> you’re currently developing, and <code>moduleB</code> specifies <code>"moduleA"</code> as a dependency in its <code>package.json</code></p>
 
-<pre class="prettyprint"><code>$ cd moduleA/
+<pre><code>$ cd moduleA/
 $ npm link
 $ cd ../moduleB
 
@@ -178,19 +175,19 @@ $ npm install
 
 <p><code>npm install</code>할 때 <code>--production</code> 옵션을 주지 않으면 <code>devDependencies</code>에 있는 모듈을 설치해서 시간을 낭비하게 된다:</p>
 
-<pre class="prettyprint"><code>$ npm install --production
+<pre><code>$ npm install --production
 </code></pre>
 
 <p>설치하면서 발생하는 로그도 볼 수 있는데, 필요한 로그를 골라 볼 수 있다:</p>
 
-<pre class="prettyprint"><code>$ npm install --loglevel warn
+<pre><code>$ npm install --loglevel warn
 </code></pre>
 
 <h2>Git dependencies</h2>
 
 <p>NPM에 Publish하는 대신 <code>package.json</code>에 버전 대신 URI를 넣을 수 있다. Private 모듈이든 Public 모듈이든 <code>git://</code>로 시작하는 URI를 명시할 수 있다:</p>
 
-<pre class="prettyprint"><code>"dependencies": {
+<pre><code>"dependencies": {
     "public": "git://github.com/user/repo.git#ref"
     , "private": "git+ssh://<a href='mailto:git@github.com'>git@github.com</a>:user/repo.git#ref"
 }
@@ -204,13 +201,13 @@ $ npm install
 
 <p>다음과 같이 다른 곳에 설치된 프로그램을 사용하는 것이 아니라:</p>
 
-<pre class="prettyprint"><code>test:
+<pre><code>test:
   mocha mytest.js
 </code></pre>
 
 <p>숨겨진 <code>node_mdoules/.bin</code> 디렉토리에 있는 local 모듈을 사용한다:</p>
 
-<pre class="prettyprint"><code>test:
+<pre><code>test:
   node_modules/.bin/mocha mytest.js
 </code></pre>
 
@@ -218,7 +215,7 @@ $ npm install
 
 <p>Makefile을 따로 만들지 않을 거라면 <code>npm run-script</code> 명령어를 사용할 수 있다. <code>package.json</code>의 <code>scripts</code>에 다음과 같이 정의한다:</p>
 
-<pre class="prettyprint"><code>"scripts": {
+<pre><code>"scripts": {
         "test": "mocha mytest.js"
           , "build": "uglify mycode.js
 }
@@ -226,7 +223,7 @@ $ npm install
 
 <p>그러면 다음과 같이 실행할 수 있다:</p>
 
-<pre class="prettyprint"><code>$ npm run-script test
+<pre><code>$ npm run-script test
 $ npm run-script build
 $ npm test # shortcut for `run-script test`
 </code></pre>
@@ -237,12 +234,12 @@ $ npm test # shortcut for `run-script test`
 
 <p>개발 중인 모듈을 Publish하지 않을 때 <code>package.json</code>에 <code>private</code> 설정을 하면 실수로 Publish하는 일을 방지할 수 있다:</p>
 
-<pre class="prettyprint"><code>"private": true
+<pre><code>"private": true
 </code></pre>
 
 <p>Private 저장소가 있으면 package.json에 registry로 등록할 수 있다:</p>
 
-<pre class="prettyprint"><code>"publishConfig": { "registry": "<a href='https://yourregistry:1337/'>https://yourregistry:1337/</a>" }
+<pre><code>"publishConfig": { "registry": "<a href='https://yourregistry:1337/'>https://yourregistry:1337/</a>" }
 </code></pre>
   </div>
 </article>

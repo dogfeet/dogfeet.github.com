@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -124,7 +121,7 @@
   <div property="sioc:content">
     <h2>Extract privatekey and publickey from p12</h2>
 
-<pre class="prettyprint"><code>$ openssl pkcs12 -in seanlee_yessign.p12 -clcerts -nokeys -out cert.pem
+<pre><code>$ openssl pkcs12 -in seanlee_yessign.p12 -clcerts -nokeys -out cert.pem
 $ openssl x509 -in cert.pem -pubkey -noout &gt; pub.key
 
 $ cat pub.key 

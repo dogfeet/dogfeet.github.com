@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -134,26 +131,26 @@
 
 <p>기본적으로 <code>git diff</code>와 같은 형식으로 보여주지만 충돌 결과를 보여주는 스타일을 변경할 수 있다:</p>
 
-<pre class="prettyprint"><code>$ git config merge.conflictstyle diff3
+<pre><code>$ git config merge.conflictstyle diff3
 </code></pre>
 
 <h2>Checkout</h2>
 
 <p>Checkout 명령에 <code>--ours</code>와 <code>--theirs</code> 옵션이 있다. 이 옵션은 충돌 났을 때 사용한다. <code>ours</code> 브랜치에 conflict 파일은 다음과 같다고 하자:</p>
 
-<pre class="prettyprint"><code>$ cat conflict
+<pre><code>$ cat conflict
 ours
 </code></pre>
 
 <p><code>theirs</code> 브랜치의 conflict 파일은 다음과 같다:</p>
 
-<pre class="prettyprint"><code>$ cat conflict
+<pre><code>$ cat conflict
 theirs
 </code></pre>
 
 <p><code>theirs</code> 브랜치를 <code>ours</code> 브랜치에 Merge하면 충돌 난다:</p>
 
-<pre class="prettyprint"><code>$ git merge theirs
+<pre><code>$ git merge theirs
 Auto-merging conflict
 CONFLICT (content): Merge conflict in conflict
 Automatic merge failed; fix conflicts and then commit the result.
@@ -161,7 +158,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 <p>diff 명령으로 어디서 충돌 났는지 확인한다:</p>
 
-<pre class="prettyprint"><code>$ git diff
+<pre><code>$ git diff
 diff --cc conflict
 index 1b9074b,f853c8d..0000000
 --- a/conflict
@@ -176,12 +173,12 @@ index 1b9074b,f853c8d..0000000
 
 <p>편집기로 conflict 파일을 손으로 수정해도 되지만 그냥 ours에 있는 파일을 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>$ git checkout --ours -- conflict
+<pre><code>$ git checkout --ours -- conflict
 </code></pre>
 
 <p>theirs의 파일을 선택할 수도 있다:</p>
 
-<pre class="prettyprint"><code>$ git checkout --theirs -- conflict
+<pre><code>$ git checkout --theirs -- conflict
 </code></pre>
 
 <p>충돌을 해결했으면 <code>git add</code>로 추가하고 커밋한다.</p>
@@ -190,27 +187,27 @@ index 1b9074b,f853c8d..0000000
 
 <p><code>git diff</code> 명령에도 <code>--ours</code>, <code>--theirs</code> 옵션이 있다. 이 옵션을 주면 <code>git diff</code> 명령은 다른 색으로 표시해준다. 예를 들어 다음과 같이 실행한다.</p>
 
-<pre class="prettyprint"><code>$ git diff --ours --color=auto
+<pre><code>$ git diff --ours --color=auto
 </code></pre>
 
 <p>그러면 ours 브랜치의 내용만 다른 색으로 표시해준다. <code>--theirs</code>도 같은 방법으로 확인할 수 있다.</p>
 
 <p>diff 명령은 <code>--base</code> 옵션이 있어서 이 옵션을 주면 두 브랜치의 base 커밋에 있는 내용도 같이 보여준다:</p>
 
-<pre class="prettyprint"><code># git diff --base
+<pre><code># git diff --base
 </code></pre>
 
 <h2>Merge</h2>
 
 <p>Merge할 때 아예 어느 것을 선택할지 정해줄 수 있다. ours 브랜치의 것을 선택하는 merge를 해보자.</p>
 
-<pre class="prettyprint"><code>$ git merge -s ours theirs
+<pre><code>$ git merge -s ours theirs
 Merge made by ours.
 </code></pre>
 
 <p>그리고 파일 내용을 보면 ours 브랜치의 파일로 Merge 돼 있다.</p>
 
-<pre class="prettyprint"><code>$ cat conflict
+<pre><code>$ cat conflict
 ours
 </code></pre>
 
@@ -226,7 +223,7 @@ ours
 
 <p><code>.gitattributes</code> 파일을 프로젝트 루트 디렉토리에 다음과 같이 만들고:</p>
 
-<pre class="prettyprint"><code>src/main/resoruces/env.properties merge=ours
+<pre><code>src/main/resoruces/env.properties merge=ours
 </code></pre>
 
 <p><code>git merge</code> 명령을 실행하면 이 파일은 항상 ours의 파일로 Merge한다. 그래서 환경 설정이 Merge될 걱정 없이 사용할 수 있다.</p>
@@ -237,56 +234,56 @@ ours
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Dec 06 2011</span>
-&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-      </li>
-      <li>
-        <span>Dec 02 2011</span>
-&raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
-      </li>
-      <li>
-        <span>Oct 12 2011</span>
-&raquo;        <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-      </li>
-      <li>
-        <span>Nov 30 2011</span>
-&raquo;        <a href="/articles/2011/progit.html">progit</a>
+        <span>Dec 17 2011</span>
+&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
       </li>
       <li>
         <span>Sep 25 2011</span>
 &raquo;        <a href="/articles/2011/1316924580.html">diff::Unified format</a>
       </li>
       <li>
-        <span>Dec 22 2011</span>
-&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-      </li>
-      <li>
-        <span>Dec 17 2011</span>
-&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-      </li>
-      <li>
-        <span>Dec 24 2011</span>
-&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
+        <span>Dec 06 2011</span>
+&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
       </li>
       <li>
         <span>Dec 01 2011</span>
 &raquo;        <a href="/articles/2011/bash-it.html">Bash-it</a>
       </li>
       <li>
-        <span>Dec 01 2011</span>
-&raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+        <span>Dec 24 2011</span>
+&raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
       </li>
       <li>
         <span>Dec 09 2011</span>
 &raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
       </li>
       <li>
-        <span>Jan 08 2012</span>
-&raquo;        <a href="/articles/2012/progit.html">progit</a>
+        <span>Dec 01 2011</span>
+&raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+      </li>
+      <li>
+        <span>Oct 12 2011</span>
+&raquo;        <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
+      </li>
+      <li>
+        <span>Dec 02 2011</span>
+&raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
+      </li>
+      <li>
+        <span>Dec 22 2011</span>
+&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+      </li>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
       </li>
       <li>
         <span>Mar 25 2012</span>
 &raquo;        <a href="/articles/2012/git-ff.html">Git: git-ff</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
       </li>
     </ul>
   </div>

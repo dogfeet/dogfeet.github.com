@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -142,12 +139,12 @@
 
 <p>m2eclipse를 사용한다고 해도 테스트를 하나씩 혹은 몇개씩 실행하기도 쉽고 디버깅도 편리합니다. m2eclipse를 통해 실행할 테스트를 명시하려면 다음과 같이 옵션을 줘야하는데 귀찮습니다:</p>
 
-<pre class="prettyprint"><code>mvn -Dtest=TestSquare,TestCi*le test
+<pre><code>mvn -Dtest=TestSquare,TestCi*le test
 </code></pre>
 
 <p>또 디버깅하려면 다음과 같이 옵션을 줘서 실행하고 'Remote Java application'을 통해서 디버깅해야 하는데 이 것도 귀찮습니다:</p>
 
-<pre class="prettyprint"><code>mvn -Dmaven.surefire.debug=true test
+<pre><code>mvn -Dmaven.surefire.debug=true test
 </code></pre>
 
 <p>실행하면 디폴트로 5005 포트가 열립니다. 'Remote Java application'를 통해서 디버깅할 수 있는데 다시 말씀드리지만 조금 귀찮습니다. 자세한 설정방법은 <a href="http://communitymapbuilder.org/display/MAVENUSER/Classloading+and+Forking+under+Maven+Surefire">Classloading and Forking under Maven Surefire</a>을 읽어보세요.</p>
@@ -162,12 +159,12 @@
 
 <p>다음과 같은 옵션으로 테스트를 스킵할 수 있습니다:</p>
 
-<pre class="prettyprint"><code>mvn -Dmaven.test.skip=true package
+<pre><code>mvn -Dmaven.test.skip=true package
 </code></pre>
 
 <p>[Skipping Tests]에는 pom파일에도 명시할 수 있는데 전 잘되지 않네요. 아마도 버전때문일 듯싶습니다. 2.5라고 명시를 해도 2.4.x버전으로만 실행됩니다. 나중에 다시 해볼일이 생겼을때 확실히 정리하겠습니다.</p>
 
-<pre class="prettyprint"><code>&lt;project&gt;
+<pre><code>&lt;project&gt;
   [...]
   &lt;build&gt;
     &lt;plugins&gt;
@@ -199,8 +196,40 @@
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+      </li>
+      <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
+      </li>
+      <li>
+        <span>Apr 27 2010</span>
+&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Apr 20 2010</span>
+&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+      </li>
+      <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Apr 19 2010</span>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
@@ -211,36 +240,12 @@
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Apr 27 2010</span>
-&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Jun 01 2010</span>
-&raquo;        <a href="/articles/2010/1275352080.html">iPhone Unit Testing</a>
-      </li>
-      <li>
-        <span>Apr 20 2010</span>
-&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        <span>Aug 26 2008</span>
+&raquo;        <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
 &raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
       </li>
       <li>
         <span>Nov 10 2009</span>
@@ -251,24 +256,16 @@
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
         <span>Jan 02 2009</span>
 &raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
-        <span>Aug 26 2008</span>
-&raquo;        <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+      </li>
+      <li>
+        <span>Jun 01 2010</span>
+&raquo;        <a href="/articles/2010/1275352080.html">iPhone Unit Testing</a>
       </li>
       <li>
         <span>Aug 19 2008</span>

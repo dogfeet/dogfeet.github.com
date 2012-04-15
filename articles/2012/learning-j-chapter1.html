@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Learning J - Chapter 1. Basic</title>
+    <title>dogfeet - J언어를 배워보자 - 제 1장. 기본기</title>
     <meta name="description" content="Roger Stokes이 쓴 Learning J의 chapter 1:Basics를 번역/정리했다." />
-    <meta name="keywords" content="J,jsoftware,language" />
+    <meta name="keywords" content="J,jsoftware,language,j언어" />
     <meta name="author" content="Yongjae Choi" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -96,12 +93,12 @@
 </script>
 <article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/learning-j-chapter1.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Learning J - Chapter 1. Basic</h1>
+    <h1 property="dcterms:title">J언어를 배워보자 - 제 1장. 기본기</h1>
   </header>
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
  | <span property="dc:created">2012 Apr 06</span>
- | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> | <span><a href="/articles/2012/learning-j-chapter1.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter1.html"></a></span>
+ | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">j언어</a> | <span><a href="/articles/2012/learning-j-chapter1.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter1.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -122,11 +119,11 @@
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Roger Stokes이 쓴 <a href=""http://www.jsoftware.com/docs/help701/learning/contents.htm"">Learning J</a>의 chapter 1:Basics를 번역/정리했다.</p>
+    <p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 chapter 1:Basics를 번역/정리했다.</p>
 
 <p>요즘 J를 배워보려 하는데 관련된 한국어 자료가 거의 없었다. 그래서 공부하는 겸 Learning J를 읽고 간단히 정리했다. 원문을 그대로 옮기진 않았고, 필요하면 표현을 바꿨다.</p>
 
-<p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
+<p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="http://www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
 
 <p><img src="/articles/2012/learning-j-chapter1/j-code.png" alt="j-code" title="" /></p>
 
@@ -134,7 +131,7 @@
 
 <p>J의 개발환경은 사용자가 한 줄 입력하면, 그게 곧바로 해석되어 아랫줄에 출력된다. 사용자의 입력하는 것은 들여쓰기가 된 것으로 보이고, 아래 줄에 출력되는 결과는 들여쓰기가 없다.</p>
 
-<pre class="prettyprint"><code>   2+2
+<pre><code>   2+2
 4
 </code></pre>
 
@@ -144,13 +141,13 @@
 
 <p>곱셈을 위한 심볼은 <code>*</code>(asterisk)이다.</p>
 
-<pre class="prettyprint"><code>   2*3
+<pre><code>   2*3
 6
 </code></pre>
 
 <p>물론 아래와 같이 빈칸을 집어넣을 수도 있다.</p>
 
-<pre class="prettyprint"><code>   2 * 3
+<pre><code>   2 * 3
 6
 </code></pre>
 
@@ -158,37 +155,37 @@
 
 <p>나눗셈을 위한 심볼은 <code>%</code>(percent)이다.</p>
 
-<pre class="prettyprint"><code>   3 % 4
+<pre><code>   3 % 4
 0.75
 </code></pre>
 
 <p>뺄셈을 위해서는 <code>-</code>를 쓴다.</p>
 
-<pre class="prettyprint"><code>   3 - 2
+<pre><code>   3 - 2
 1
 </code></pre>
 
 <p>다음 예제는 음수에 대한 것이다. 음수는 숫자 앞에 <code>_</code>부호가 붙는다. 숫자와 <code>_</code>사이에는 빈칸이 있어선 안 된다. <code>_</code>는 산수 할 때 쓰는 연산자가 아니라 숫자의 표현 중 하나이다. 마치 부동소수점을 표현할 때 수 중간에 <code>.</code>을 찍는 것과 같다.</p>
 
-<pre class="prettyprint"><code>   2 - 3
+<pre><code>   2 - 3
 _1
 </code></pre>
 
 <p><code>-</code>또한 음수를 만들어내기는 한다. 하지만 음수를 '만들어낸다'고 한 것에 주의해야 한다. <code>_</code>는 숫자를 표현하는 방식 중 하나이지만 <code>-</code>는 연산자라는 뜻이다.</p>
 
-<pre class="prettyprint"><code>   - 3
+<pre><code>   - 3
 _3
 </code></pre>
 
 <p>거듭제곱을 위해서는 <code>^</code>(caret)을 쓴다. 2의 3 제곱을 계산하면 아래와 같다.</p>
 
-<pre class="prettyprint"><code>   2 ^ 3
+<pre><code>   2 ^ 3
 8
 </code></pre>
 
 <p>그냥 제곱을 위한 연산자는 <code>*:</code>(asterisk colon)이다.</p>
 
-<pre class="prettyprint"><code>   *: 4
+<pre><code>   *: 4
 16
 </code></pre>
 
@@ -200,19 +197,19 @@ _3
 
 <p>리스트는 <code>1 2 3 4</code>와 같이 쓸 수 있다. 숫자 사이에 빈칸이 들어있음에 주의하자. 리스트에 있는 각 숫자의 제곱을 알고 싶으면 다음과 같이 쓴다.</p>
 
-<pre class="prettyprint"><code>   *: 1 2 3 4
+<pre><code>   *: 1 2 3 4
 1 4 9 16
 </code></pre>
 
 <p>위 예제에서 "Square" 함수(<code>*:</code>)가 리스트의 각 아이템에 적용되었음을 알 수 있다. 리스트로 이루어진 두 개의 인자와 <code>+</code>같은 함수가 주어지면 그 함수는 두 리스트에서 서로 대응되는 아이템에 적용된다.</p>
 
-<pre class="prettyprint"><code>   1 2 3 + 10 20 30
+<pre><code>   1 2 3 + 10 20 30
 11 22 33
 </code></pre>
 
 <p>만약 한 인자는 리스트이고 다른 인자는 숫자 하나 라면, 숫자 하나는 리스트의 각 아이템에 대응된다.</p>
 
-<pre class="prettyprint"><code>   1 + 10 20 30
+<pre><code>   1 + 10 20 30
 11 21 31
 
    1 2 3 + 10
@@ -223,7 +220,7 @@ _3
 
 <p>예를 들어서 7을 2로 나누면, 몫이 3이고 나머지가 1이다. 나머지를 계산하는 J의 내장 함수는 <code>|</code>(vertical bar)이다. <code>|</code>의 이름은 "Residue"이다. 여러 패턴이 들어왔을 때 아래와 같은 결과가 나온다.</p>
 
-<pre class="prettyprint"><code>   2 | 0 1 2 3 4 5 6 7
+<pre><code>   2 | 0 1 2 3 4 5 6 7
 0 1 0 1 0 1 0 1
 
    3 | 0 1 2 3 4 5 6 7
@@ -236,13 +233,13 @@ _3
 
 <p>필요하다면 표현식은 괄호를 포함할 수 있다. 괄호 안의 표현식은 따로 계산된다.</p>
 
-<pre class="prettyprint"><code>   (2+1)*(2+2)
+<pre><code>   (2+1)*(2+2)
 12
 </code></pre>
 
 <p>괄호는 항상 필요하지는 않다. <code>3*2+1</code>이라는 표현식을 보자. 이 식이 <code>(3*2)+1</code>로 해석되어 7이 될까, 아니면 <code>3*(2+1)</code>이 되어 9가 될까?</p>
 
-<pre class="prettyprint"><code>   3 * 2 + 1
+<pre><code>   3 * 2 + 1
 9
 </code></pre>
 
@@ -250,7 +247,7 @@ _3
 
 <p>J에는 그런 규칙이 없다. 먼저 따로 계산해야 할 부분이 필요하다면 괄호를 쓰면 된다. 하지만 괄호가 없다면 뒤부터(오른쪽부터) 계산된다. 다시 말하자면 자연스레 읽었을 때에 연산자의 오른쪽 인자부터 계산된다. 따라서 <code>3*2+1</code>의 경우에는 <code>*</code>의 오른쪽 인자인 <code>2+1</code>부터 계산된다. 다른 예제를 보자.</p>
 
-<pre class="prettyprint"><code>   1 + 3 % 4 
+<pre><code>   1 + 3 % 4 
 1.75
 </code></pre>
 
@@ -264,31 +261,31 @@ _3
 
 <p>영어 표현으로 'let <code>x</code> be <code>100</code>'라는 문장은 J로</p>
 
-<pre class="prettyprint"><code>   x =: 100
+<pre><code>   x =: 100
 </code></pre>
 
 <p>로 나타낼 수 있다.</p>
 
 <p>우리가 할당문이라고 불리는 이 표현식은 <code>100</code>이라는 값을 <code>x</code>라는 이름에 할당한다. 이 말은 즉 <code>x</code>라는 이름의 변수가 생성되고 이 변수에 <code>100</code>이라는 값을 넣었다고 할 수 있다. 만약 사용자가 입력한 한 라인에 할당문만 있다면 그 아래 결과가 출력되는 줄에는 아무런 값도 출력되지 않는다.</p>
 
-<pre class="prettyprint"><code>   x - 1
+<pre><code>   x - 1
 99
 </code></pre>
 
 <p>값이 할당된 변수는 다른 표현식에서 가져다 쓸 수 있다.</p>
 
-<pre class="prettyprint"><code>   y =: x - 1
+<pre><code>   y =: x - 1
 </code></pre>
 
 <p>여기서 <code>y</code>는 <code>x-1</code>의 결과 값을 저장하는 데에 쓰였다. 변수에 저장된 값을 살펴보고 싶다면 그냥 변수의 이름을 입력하면 된다. 그것만으로도 다른 표현식처럼 하나의 표현식이 된다. </p>
 
-<pre class="prettyprint"><code>   y
+<pre><code>   y
 99
 </code></pre>
 
 <p>같은 변수에 반복해서 할당이 가능하다. 마지막에 할당한 것이 변수에 담긴다.</p>
 
-<pre class="prettyprint"><code>   z =: 6
+<pre><code>   z =: 6
    z =: 8
    z
 8
@@ -296,14 +293,14 @@ _3
 
 <p>변수는 그 변수에 할당된 값을 이용해서 자기 자신에게 새로운 값을 할당할 때에도 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>   z =: z + 1
+<pre><code>   z =: z + 1
    z
 9
 </code></pre>
 
 <p>위의 예제는 한 라인이 할당문으로만 이루어졌을 때에 결과 줄에 아무것도 출력되지 않음을 보여준다. 그럼에도 할당문 역시 하나의 표현식이다. 할당문이 어떤 표현식의 부분에 쓰였을 때에는 값으로 사용할 수 있다.</p>
 
-<pre class="prettyprint"><code>   1 + (u =: 99)
+<pre><code>   1 + (u =: 99)
 100
    u
 99
@@ -311,7 +308,7 @@ _3
 
 <p>아래는 어떤 이름을 변수명으로 사용할 수 있는지에 대한 예제이다.</p>
 
-<pre class="prettyprint"><code>   x                       =: 0
+<pre><code>   x                       =: 0
    X                       =: 1
    K9                      =: 2
    finaltotal              =: 3
@@ -321,7 +318,7 @@ _3
 
 <p>변수명은 반드시 알파벳으로 시작해야 한다. 그리고 변수명은 알파벳(대문자, 소문자), 숫자(0-9), 밑줄(_)로 이루어진다. 그리고 대소문자를 가린다. 즉, <code>x</code>와 <code>X</code>는 다른 변수이다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 0
    X
 1
@@ -333,7 +330,7 @@ _3
 
 <p>"Subtraction"(빼기) 함수와 "negation"(부정)함수는 같은 심볼(<code>-</code>)로 두가지 다른 기능을 하는 함수 중 하나이다. 다른 말로, <code>-</code>는 모나딕으로도 다이아딕으로도 사용할 수 있다는 것이다. 사실 J의 거의 모든 내장 함수가 모나딕과 다이아딕으로 사용될 수 있다. 아까 배웠던 나누기 함수, <code>%</code>도 그렇다. <code>%</code>는 다이아딕으로는 나누기이지만 모나딕으로 사용될 때는 역수 함수가 된다.</p>
 
-<pre class="prettyprint"><code>   % 4
+<pre><code>   % 4
 0.25
 </code></pre>
 
@@ -343,41 +340,41 @@ _3
 
 <p>영어로 "add together the numbers  2, 3, and 4, or more"말을 살펴보자. 이건 더 간단하게 다음과 같이 표현할 수 있다.</p>
 
-<pre class="prettyprint"><code>add together 2 3 4
+<pre><code>add together 2 3 4
 </code></pre>
 
 <p>이걸 계산하면 9이다. 이걸 J로 표현하면 다음과 같다.</p>
 
-<pre class="prettyprint"><code>   + / 2 3 4
+<pre><code>   + / 2 3 4
 9
 </code></pre>
 
 <p>영어 표현과 J의 표현을 비교해보자. "add"는 <code>+</code>에 대응되고 "together"는 <code>/</code>에 대응된다. 비슷하게 다음 표현을 생각해보자.</p>
 
-<pre class="prettyprint"><code>multiply together 2 3 4
+<pre><code>multiply together 2 3 4
 </code></pre>
 
 <p>이걸 계산하면 24이다. 이건 J로 다음과 같이 표현한다.</p>
 
-<pre class="prettyprint"><code>   * / 2 3 4
+<pre><code>   * / 2 3 4
 24
 </code></pre>
 
 <p><code>+/2 3 4</code>는 <code>2+3+4</code>와 같은 의미이고 <code>*/2 3 4</code>는 <code>2*3*4</code>와 같은 의미임을 알 수 있다. <code>/</code>는 "Insert"라고 한다. 이 녀석은 왼쪽에 있는 함수를 오른쪽의 리스트의 각 아이템 사이에 끼워 넣는 역할을 하기 때문이다. 일반화하여 말하자면, F가 임의의 다이아딕 함수이고, L이 숫자로 이루어진 리스트 a, b, c, .... y, z 라면</p>
 
-<pre class="prettyprint"><code>F / L    은   a F b F .... F y F z   이다.
+<pre><code>F / L    은   a F b F .... F y F z   이다.
 </code></pre>
 
 <p>또 다른 함수를 더 알아보자. <br />아래에 세 가지 명제가 있다.</p>
 
-<pre class="prettyprint"><code>2 는 1보다 크다     (명백히 참이다)
+<pre><code>2 는 1보다 크다     (명백히 참이다)
 2 는 1과 같다          (거짓)
 2 는 1보다 작다        (거짓)
 </code></pre>
 
 <p>J에서 "참"은 1로 표현하고, "거짓"은 0으로 표현한다. 그래서 위의 세 명제는 다음과 같이 쓸 수 있다.</p>
 
-<pre class="prettyprint"><code>   2 &gt; 1
+<pre><code>   2 &gt; 1
 1
 
    2 = 1
@@ -389,30 +386,30 @@ _3
 
 <p>만약 x가 수열이라면,</p>
 
-<pre class="prettyprint"><code>   x =: 5 4 1 9
+<pre><code>   x =: 5 4 1 9
 </code></pre>
 
 <p>'x의 어떤 수가 2보다 큰가?' 라고 J에게 물어볼 수 있다.</p>
 
-<pre class="prettyprint"><code>   x &gt; 2
+<pre><code>   x &gt; 2
 1 1 0 1
 </code></pre>
 
 <p>위에서 보면, '어떤 게 2보다 큰가?'라는 물음에 첫 번째, 두 번째, 네 번째가 1로 표현되었다. x에서 2보다 더 큰 숫자가 존재하는지 알려면 이렇게 쓰면 될까?</p>
 
-<pre class="prettyprint"><code>   * / x &gt; 2
+<pre><code>   * / x &gt; 2
 0
 </code></pre>
 
 <p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1<em>1</em>0*1) 0("거짓")이 들어있으면 죽어도 1이 될 수 없다.<br />x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <code>x&gt;2</code>의 결과를 전부 더하면 된다!</p>
 
-<pre class="prettyprint"><code>   + / x &gt; 2
+<pre><code>   + / x &gt; 2
 3
 </code></pre>
 
 <p>x에 숫자가 몇 개 있는지 알려면? <code>x=x</code>의 결과를 모두 더하면 된다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 5 4 1 9
 
    x = x
@@ -424,7 +421,7 @@ _3
 
 <p>그런데 이미 리스트의 길이를 반환하는 <code>#</code>이라는 내장 함수가 있다. </p>
 
-<pre class="prettyprint"><code>   # x
+<pre><code>   # x
 4
 </code></pre>
 
@@ -432,7 +429,7 @@ _3
 
 <p>우리가 컴퓨터에 J를 입력할 때, 입력한 문장과 결과 값은 아래로 주욱 내려가면서 붙어 표시된다. 아까 입력했던 몇 줄을 보면 알 수 있다.</p>
 
-<pre class="prettyprint"><code>   x
+<pre><code>   x
 5 4 1 9
    x = x
 1 1 1 1
@@ -502,7 +499,7 @@ _3
 
 <p>J에서 <code>NB.</code>심볼은 주석을 나타낸다. <code>NB.</code>심볼 부터 그 라인의 끝까지는 평가되지 않는다. 예를 들자면 아래와 같다.</p>
 
-<pre class="prettyprint"><code>   NB.   여기는 라인 전체가 주석입니다.
+<pre><code>   NB.   여기는 라인 전체가 주석입니다.
 
    6 + 6   NB. 12가 출력돼야 합니다.
 12
@@ -524,19 +521,19 @@ _3
 
 <p>모나딕 '<code>&gt;.</code>'은 올림 연산을 한다. 올림은 자기 자신보다 큰 정수 중 가장 가까운 수이다. 이것의 이름은 "Ceiling"이다.</p>
 
-<pre class="prettyprint"><code>   &gt;. _1.7 1 1.7
+<pre><code>   &gt;. _1.7 1 1.7
 _1 1 2
 </code></pre>
 
 <p>다이아딕 '<code>&gt;.</code>'은 두 인자 중 큰 녀석을 선택한다. ("Larger Of")</p>
 
-<pre class="prettyprint"><code>   3 &gt;. 1 3 5 
+<pre><code>   3 &gt;. 1 3 5 
 3 3 5
 </code></pre>
 
 <p><code>/</code>를 이용해서 "Larger Of"를 리스트의 아이템 사이에 끼워 넣으면, 리스트에서 가장 큰 수를 뽑아낼 수 있다. 예를 들어서 리스트 <code>1 6 5</code>에서 가장 큰 수를 알아내려면 <code>&gt;. / 1 6 5</code>를 입력하면 된다. 아래 예제를 통해 어떻게 해서 <code>6</code>이 나오는지 확인할 수 있다. 주석은 왜 이전 입력과 같은 결과가 나오는지 이유를 설명한다.</p>
 
-<pre class="prettyprint"><code>   &gt;. / 1 6 5
+<pre><code>   &gt;. / 1 6 5
 6
    1 &gt;. 6 &gt;. 5      NB. /의 의미에 따라서
 6
@@ -552,13 +549,13 @@ _1 1 2
 
 <p>모나딕 '<code>&gt;:</code>'은 비공식적으로 "Increment"라고 부른다. 인자의 값에 1을 더한다.</p>
 
-<pre class="prettyprint"><code>   &gt;: _2 3 5 6.3
+<pre><code>   &gt;: _2 3 5 6.3
 _1 4 6 7.3
 </code></pre>
 
 <p>다이아딕 '<code>&gt;:</code>'은 "Larger or Equal"이다.</p>
 
-<pre class="prettyprint"><code>   3 &gt;: 1 3 5 
+<pre><code>   3 &gt;: 1 3 5 
 1 1 0
 </code></pre>
 

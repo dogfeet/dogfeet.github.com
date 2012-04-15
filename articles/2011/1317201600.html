@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -132,34 +129,34 @@
 
 <p>Iterator는 Iterator() 함수로 만들고:</p>
 
-<pre class="prettyprint"><code>var lang = { name: 'JavaScript', birthYear: 1995 };
+<pre><code>var lang = { name: 'JavaScript', birthYear: 1995 };
 var it = Iterator(lang);
 </code></pre>
 
 <p>next()를 호출하면 해당 key, value가 반환된다:</p>
 
-<pre class="prettyprint"><code>var pair = it.next(); // Pair is ["name", "JavaScript"]
+<pre><code>var pair = it.next(); // Pair is ["name", "JavaScript"]
 pair = it.next(); // Pair is ["birthYear", 1995]
 pair = it.next(); // A StopIteration exception is thrown
 </code></pre>
 
 <p>next()대신 <code>for..in</code>으로도 사용할 수 있다. 여기에서도 StopIteration 예외가 발생하면 loop이 중지된다:</p>
 
-<pre class="prettyprint"><code>var it = Iterator(lang);
+<pre><code>var it = Iterator(lang);
   for (var pair in it)
 print(pair); // prints each [key, value] pair in turn
 </code></pre>
 
 <p>key, value pair가 아니라 단순히 key만 iteration하고 싶으면 Interator()의 두번째 인자에 true를 넘긴다:</p>
 
-<pre class="prettyprint"><code>var it = Iterator(lang, true);
+<pre><code>var it = Iterator(lang, true);
 for (var key in it)
   print(key); // prints each key in turn
 </code></pre>
 
 <p>Iterator()는 Array에도 OK:</p>
 
-<pre class="prettyprint"><code>var langs = ['JavaScript', 'Python', 'C++'];
+<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
 var it = Iterator(langs);
 for (var pair in it)
   print(pair); // prints each [index, language] pair in turn
@@ -167,7 +164,7 @@ for (var pair in it)
 
 <p>Array에서 Iterator()의 두번째 인자로 true를 주면 index를 iteration한다.</p>
 
-<pre class="prettyprint"><code>var langs = ['JavaScript', 'Python', 'C++'];
+<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
 var it = Iterator(langs, true);
 for (var i in it)
   print(i); // prints 0, then 1, then 2
@@ -175,7 +172,7 @@ for (var i in it)
 
 <p>let 키워드로 block scoped 변수를 만들어 할당할 수 있다:</p>
 
-<pre class="prettyprint"><code>var langs = ['JavaScript', 'Python', 'C++'];
+<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
 var it = Iterator(langs);
 for (let [i, lang] in it)
   print(i + ': ' + lang); // prints "0: JavaScript" etc.
@@ -187,7 +184,7 @@ for (let [i, lang] in it)
 
 <p>먼저 Range 객체를 만들고:</p>
 
-<pre class="prettyprint"><code>function Range(low, high){
+<pre><code>function Range(low, high){
   this.low = low;
   this.high = high;
 }
@@ -195,7 +192,7 @@ for (let [i, lang] in it)
 
 <p>low, high사이의 값을 순서대로 반환하고 끝나면 StopInteration 예외를 던지는 RangeIterator를 만든다:</p>
 
-<pre class="prettyprint"><code>function RangeIterator(range){
+<pre><code>function RangeIterator(range){
   this.range = range;
   this.current = this.range.low;
 }
@@ -209,14 +206,14 @@ RangeIterator.prototype.next = function(){
 
 <p>Range에 RangeIterator를 반환하는 메소드를 추가한다. <strong>iterator</strong>는 이를 위한 특별한 프로퍼티다.</p>
 
-<pre class="prettyprint"><code>Range.prototype.__iterator__ = function(){
+<pre><code>Range.prototype.__iterator__ = function(){
   return new RangeIterator(this);
 };
 </code></pre>
 
 <p>만든 RangeIterator를 써보자:</p>
 
-<pre class="prettyprint"><code>var range = new Range(3, 5);
+<pre><code>var range = new Range(3, 5);
 for (var i in range)
   print(i); // prints 3, then 4, then 5 in sequence 
 </code></pre>
@@ -227,14 +224,14 @@ for (var i in range)
 
 <p>yeild 키워드를 사용하려면 Script Block을 다음과 같이 선언해야 한다:</p>
 
-<pre class="prettyprint"><code>&lt;script type="application/JavaScript;version=1.7"/&gt;
+<pre><code>&lt;script type="application/JavaScript;version=1.7"/&gt;
 </code></pre>
 
 <p>Generator()를 호출하면 그 함수가 바로 실행되는 것이 아니라 generator-iterator 객체를 반환한다. 그리고<br />반환된 generator-iterator 객체의 next() 메소드를 호출할 때마다 다음 yield까지 실행한다. 함수가 끝나거나<br />return되면 StopIteration 예외를 던진다.</p>
 
 <p>간단한 예제를 보자:</p>
 
-<pre class="prettyprint"><code>function simpleGenerator(){
+<pre><code>function simpleGenerator(){
   yield "first";
   yield "second";
   yield "third";
@@ -254,7 +251,7 @@ print(g.next()); // StopIteration is thrown
 
 <p>위에서 살펴봤던 RangeIterator의 구현을 Range의 prototype의 <strong>iterator</strong> 프로퍼트를 바로 구현하여<br />더 간단하게 구현할 수 있다:</p>
 
-<pre class="prettyprint"><code>function Range(low, high){
+<pre><code>function Range(low, high){
   this.low = low;
   this.high = high;
 }
@@ -269,7 +266,7 @@ for (var i in range)
 
 <p>이전 두 수의 합을 구하는 피보나치 수열을 Generator로 구현해보자:</p>
 
-<pre class="prettyprint"><code>function fibonacci(){
+<pre><code>function fibonacci(){
   var fn1 = 1;
   var fn2 = 1;
   while (1){
@@ -292,7 +289,7 @@ print(sequence.next()); // 13
 
 <p>무한 수열을 구하는 것을 만들었지만 수열의 끝나도록 끝을 명시할 수 있다. Generator는 인자를 받을 수 있기 때문에<br />fibonacci()에 limit 인자를 추가한다:</p>
 
-<pre class="prettyprint"><code>function fibonacci(limit){
+<pre><code>function fibonacci(limit){
   var fn1 = 1;
   var fn2 = 1;
   while (1){
@@ -313,7 +310,7 @@ print(sequence.next()); // 13
 
 <p>피보나치 Generator에 send()를 사용해보자:</p>
 
-<pre class="prettyprint"><code>function fibonacci(){
+<pre><code>function fibonacci(){
   var fn1 = 1;
   var fn2 = 1;
   while (1){
@@ -346,7 +343,7 @@ print(sequence.next());     // 3
 
 <p>Generator를 종료할 때에는 close()를 사용한다:</p>
 
-<pre class="prettyprint"><code>var gen = generator();
+<pre><code>var gen = generator();
 
 function driveGenerator() {
   if (gen.next()) {
@@ -363,35 +360,35 @@ function driveGenerator() {
 
 <p>다음과 같은 코드를:</p>
 
-<pre class="prettyprint"><code>var numbers = [1, 2, 3, 4];
+<pre><code>var numbers = [1, 2, 3, 4];
 var doubled = numbers.map(function(i) { return i * 2; }); 
 alert(doubled); // Alerts 2,4,6,8
 </code></pre>
 
 <p>Array Comprehension으로 바꿀 수 있다:</p>
 
-<pre class="prettyprint"><code>var numbers = [1, 2, 3, 4];
+<pre><code>var numbers = [1, 2, 3, 4];
 var doubled = [i * 2 for each (i in numbers)];
 alert(doubled); // Alerts 2,4,6,8
 </code></pre>
 
 <p>filter()의 경우에도:</p>
 
-<pre class="prettyprint"><code>var numbers = [1, 2, 3, 21, 22, 30];
+<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
 var evens = numbers.filter(function(i) { return i % 2 == 0; });
 alert(evens); // Alerts 2,22,30
 </code></pre>
 
 <p>Array Comprehension을 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>var numbers = [1, 2, 3, 21, 22, 30];
+<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
 var evens = [i for each (i in numbers) if (i % 2 == 0)];
 alert(evens); // Alerts 2,22,30
 </code></pre>
 
 <p>map()과 filter()가 결합된 코드도 작성할 수 있다:</p>
 
-<pre class="prettyprint"><code>var numbers = [1, 2, 3, 21, 22, 30];
+<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
 var doubledEvens = [i * 2 for each (i in numbers) if (i % 2 == 0)];
 alert(doubledEvens); // Alerts 4,44,60
 </code></pre>
@@ -402,7 +399,7 @@ alert(doubledEvens); // Alerts 4,44,60
 
 <p>String도 Array처럼 취급할 수 있기 때문에 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>var str = 'abcdef';
+<pre><code>var str = 'abcdef';
 var consonantsOnlyStr = [c for each (c in str) if (!(/[aeiouAEIOU]/).test(c))  ].join(''); // 'bcdf'
 var interpolatedZeros = [c+'0' for each (c in str) ].join(''); // 'a0b0c0d0e0f0'
 </code></pre>
@@ -415,7 +412,7 @@ var interpolatedZeros = [c+'0' for each (c in str) ].join(''); // 'a0b0c0d0e0f0'
 
 <p>예제를 보자:</p>
 
-<pre class="prettyprint"><code>var a = 5;
+<pre><code>var a = 5;
 var b = 10;
 if (a === 5) {
 let a = 4; // The scope is inside the if-block
@@ -434,7 +431,7 @@ console.log(b); // 1
 
 <p>Destructuring assignment를 사용하면 임시 변수는 만들지 않고도 swap할 수 있다:</p>
 
-<pre class="prettyprint"><code>var a = 1;
+<pre><code>var a = 1;
 var b = 3;
 
 [a, b] = [b, a];
@@ -442,13 +439,13 @@ var b = 3;
 
 <p>다음과 같이 변수를 할당하는 것도 가능하다:</p>
 
-<pre class="prettyprint"><code>var i = 0, j = 1;
+<pre><code>var i = 0, j = 1;
 [i, j] = [j, i + j];
 </code></pre>
 
 <p>리턴값을 여러개 넘길 수 있다:</p>
 
-<pre class="prettyprint"><code>function f() {
+<pre><code>function f() {
   return [1, 2];
 }
 var a, b;
@@ -458,7 +455,7 @@ document.write ("A is " + a + " B is " + b + "&lt;br&gt;\n");
 
 <p>리턴값중에서 몇개는 무시할 수도 있다.</p>
 
-<pre class="prettyprint"><code>function f() {
+<pre><code>function f() {
   return [1, 2, 3];
 }
 
@@ -468,13 +465,13 @@ document.write ("A is " + a + " B is " + b + "&lt;br&gt;\n");
 
 <p>결과를 Array로도 받을 수 있다.</p>
 
-<pre class="prettyprint"><code>var a = f();
+<pre><code>var a = f();
 document.write ("A is " + a);
 </code></pre>
 
 <p>for loop에서도 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>let obj = { width: 3, length: 1.5, color: "orange" };
+<pre><code>let obj = { width: 3, length: 1.5, color: "orange" };
 
 for (let [name, value] in Iterator(obj)) {
   document.write ("Name: " + name + ", Value: " + value + "&lt;br&gt;\n");
@@ -483,7 +480,7 @@ for (let [name, value] in Iterator(obj)) {
 
 <p>Array안에 있는 객체의 프로퍼티에 직접 접근할 수도 있다.</p>
 
-<pre class="prettyprint"><code>var people = [
+<pre><code>var people = [
   {
     name: "Mike Smith",
     family: {
@@ -511,7 +508,7 @@ for each (let {name: n, family: { father: f } } in people) {
 
 <p>함수 인자에서도 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>function userId({id}) {
+<pre><code>function userId({id}) {
   return id;
 }
 
@@ -527,7 +524,7 @@ whois(user);
 
 <p>정규표현식에도 사용할 수 있다:</p>
 
-<pre class="prettyprint"><code>var parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
+<pre><code>var parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
 if (!parsedURL)
   return null;
 var [, protocol, fullhost, fullpath] = parsedURL;
@@ -543,24 +540,8 @@ var [, protocol, fullhost, fullpath] = parsedURL;
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
@@ -571,8 +552,8 @@ var [, protocol, fullhost, fullpath] = parsedURL;
 &raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
       </li>
       <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+        <span>Sep 30 2011</span>
+&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
       </li>
       <li>
         <span>Oct 05 2011</span>
@@ -581,6 +562,22 @@ var [, protocol, fullhost, fullpath] = parsedURL;
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

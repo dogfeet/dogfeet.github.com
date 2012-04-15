@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -134,20 +131,20 @@
 
 <p>보통 셸에서 TAB 키를 누르면 파일 이름, 디렉토리 이름, 실행경로($PATH)에 있는 명령어를 자동으로 완성해준다:</p>
 
-<pre class="prettyprint"><code>ls /bo[TAB]
+<pre><code>ls /bo[TAB]
 </code></pre>
 
 <p><code>/bo</code> 다음에 TAB 키를 누르면 <code>/bo</code>가 <code>/boot</code>로 대체된다.</p>
 
 <p><a href="http://packages.debian.org/bash">Debian bash package</a>는 <code>/etc/bash_completion</code>이라는 Completion 파일이 있고 이 파일에는 일반적인 명령어에 대한 Completion이 정의돼 있다. 아직 사용하고 있지 않으면 ". /etc/bash_completion"라고 실행해서 바로 사용하자:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion
+<pre><code>skx@lappy:~$ . /etc/bash_completion
 skx@lappy:~$ 
 </code></pre>
 
 <p>이걸 한 번만 해주면 다양한 명령어에 Completion을 이용할 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ apt-get upd[TAB]
+<pre><code>skx@lappy:~$ apt-get upd[TAB]
 skx@lappy:~$ apt-get upg[TAB]
 </code></pre>
 
@@ -161,12 +158,12 @@ skx@lappy:~$ apt-get upg[TAB]
 
 <p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
+<pre><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
 </code></pre>
 
 <p>이 complete 명령을 한번 실행하고 [TAB]을 입력하면 다음과 같이 보여 줄 거다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ xvncviewer s[TAB]
+<pre><code>skx@lappy:~$ xvncviewer s[TAB]
 savannah.gnu.org            ssh.tardis.ed.ac.uk
 scratchy                    steve.org.uk
 security.debian.org         security-master.debian.org
@@ -178,7 +175,7 @@ skx@lappy:~$ xvncviewer sc[TAB]
 
 <p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "complete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ complete -p
+<pre><code>skx@lappy:~$ complete -p
 ....
 complete -F _known_hosts tracepath
 complete -F _known_hosts host
@@ -191,7 +188,7 @@ complete -F _known_hosts host
 
 <p>'part 1'에서 아무 명령에나 hostname을 완성하는 것을 만들어 봤다:</p>
 
-<pre class="prettyprint"><code>complete -F _known_hosts xvncviewer
+<pre><code>complete -F _known_hosts xvncviewer
 </code></pre>
 
 <p>이 명령은 xvncviewer의 인자를 Completion할 때 _known_hosts 함수를 사용하라고 알리는 것이다.</p>
@@ -215,7 +212,7 @@ complete -F _known_hosts host
 
 <p>파일에 다음과 같은 내용을 넣고 저장한다:</p>
 
-<pre class="prettyprint"><code>_foo() 
+<pre><code>_foo() 
 {
     local cur prev opts
     COMPREPLY=()
@@ -233,7 +230,7 @@ complete -F _foo foo
 
 <p>그리고 나서 이 파일만 읽어들여 테스트해본다: </p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ . /etc/bash_completion.d/foo
+<pre><code>skx@lappy:~$ . /etc/bash_completion.d/foo
 skx@lappy:~$ foo --[TAB]
 --help     --verbose  --version  
 </code></pre>
@@ -250,22 +247,22 @@ skx@lappy:~$ foo --[TAB]
 
 <p>그리고 실제로 옵션을 Completion하는 것은 compgen이라는 명령어를 통해서다:</p>
 
-<pre class="prettyprint"><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+<pre><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
 </code></pre>
 
 <p>compgen 명령의 결과를 $COMPREPLY에 할당한다:</p>
 
-<pre class="prettyprint"><code>compgen -W "${opts}" -- ${cur}
+<pre><code>compgen -W "${opts}" -- ${cur}
 </code></pre>
 
 <p>여기서 변수 대신 실제 값을 넣어보면 이 명령이 실제로 어떻게 동작하는지 이해하기 쉬울 것이다:</p>
 
-<pre class="prettyprint"><code>compgen -W "--help --verbose --version" -- "userinput"
+<pre><code>compgen -W "--help --verbose --version" -- "userinput"
 </code></pre>
 
 <p>compgen은 "--help --verbose --version" 중에서 "${cur}"와 일치하는 것을 찾아 리턴한다. 잘 이해가 안되면 바로 셸에서 이 명령을 직접 실행해 보면 알 수 있다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
+<pre><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
 --help
 --verbose
 --version
@@ -314,7 +311,7 @@ skx@lappy:~$ compgen -W "--help --verbose --version" -- --h
 
 <p>Completion할 때 이전 토큰을 알아야 해서 명령어마다 다르게 처리한다. 예를 들자면:</p>
 
-<pre class="prettyprint"><code>_xm() 
+<pre><code>_xm() 
 {
     local cur prev opts base
     COMPREPLY=()
@@ -357,19 +354,19 @@ complete -F _xm xm
 
 <p>"console" operation에 사용하는 목록은 다음과 같은 명령으로 만든다:</p>
 
-<pre class="prettyprint"><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
+<pre><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
 </code></pre>
 
 <p>이 명령은 지금 도는 Xen 시스템의 목록을 반환한다.</p>
 
 <p>"creation" operation에 사용하는 목록은 다음 명령으로 만든다:</p>
 
-<pre class="prettyprint"><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
+<pre><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
 </code></pre>
 
 <p>이 명령은 /etc/xen 디렉토리에 있는 '*.cfg' 파일을 모두 반환한다. 예를 들면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
+<pre><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
 etch.cfg
 root.cfg
 sarge.cfg
@@ -384,7 +381,7 @@ skx@lappy:~$
 
 <p>다음은 파일과 호스트이름을 Completion하는 방법을 설명하는 예제다:</p>
 
-<pre class="prettyprint"><code>#
+<pre><code>#
 #  Completion for foo:
 #
 #  foo file [filename]

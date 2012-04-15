@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -136,19 +133,19 @@
 
 <p>parse()는 다음과 같이 사용하면 된다:</p>
 
-<pre class="prettyprint"><code>var jsObject = JSON.parse(jsonString);
+<pre><code>var jsObject = JSON.parse(jsonString);
 </code></pre>
 
 <p>단 다음과 같은 것은 에러가 나니 주의:</p>
 
-<pre class="prettyprint"><code>// both will throw an SyntaxError as of JavaScript 1.8.5
+<pre><code>// both will throw an SyntaxError as of JavaScript 1.8.5
 var jsObject = JSON.parse("[1, 2, 3, 4, ]");
 var jsObject = JSON.parse("{ \"foo\" : 1, }");
 </code></pre>
 
 <p>stringify()는 다음과 같이 사용한다.</p>
 
-<pre class="prettyprint"><code>var foo = {};  
+<pre><code>var foo = {};  
 foo.bar = "new property";  
 foo.baz = 3;  
 
@@ -158,7 +155,7 @@ var jsonString = JSON.stringify(foo);
 
 <p>stringify()의 문법은 다음과 같다.</p>
 
-<pre class="prettyprint"><code>jsonString = JSON.stringify(value [, replacer [, space]])
+<pre><code>jsonString = JSON.stringify(value [, replacer [, space]])
 </code></pre>
 
 <ul>
@@ -169,7 +166,7 @@ var jsonString = JSON.stringify(foo);
 
 <p>replacer를 사용하는 예제를 보자:</p>
 
-<pre class="prettyprint"><code>function censor(key, value) {
+<pre><code>function censor(key, value) {
   if (typeof(value) == "string") {
     return undefined;//or return null
   }
@@ -183,19 +180,19 @@ var jsonString = JSON.stringify(foo, censor);
 
 <p>replacer에 function대신 Arrray를 사용할 수도 있다:</p>
 
-<pre class="prettyprint"><code>console.log(JSON.stringify({ a: 2, b:3 }, ['a']));
+<pre><code>console.log(JSON.stringify({ a: 2, b:3 }, ['a']));
 //{"a":2}
 </code></pre>
 
 <p>space를 사용하는 예제를 보자:</p>
 
-<pre class="prettyprint"><code>console.log(JSON.stringify({ a: 2 }, null, "  "));
+<pre><code>console.log(JSON.stringify({ a: 2 }, null, "  "));
 // '{\n "a": 2\n}'
 </code></pre>
 
 <p>해당 객체마다 custom하게 JSON으로 serialize하고 싶으면 toJSON프로퍼티에 메소드를 할당하면 된다:</p>
 
-<pre class="prettyprint"><code>var x = {
+<pre><code>var x = {
   foo: 'foo',
   toJSON: function () {
     return 'bar';
@@ -209,18 +206,18 @@ var json = JSON.stringify({x: x});
 
 <p>공백 문자를 제거하는 함수가 추가됨:</p>
 
-<pre class="prettyprint"><code>var orig = "   foo  ";
+<pre><code>var orig = "   foo  ";
 console.log(orig.trim());// "foo"
 </code></pre>
 
 <p>왼쪽 것만 제거:</p>
 
-<pre class="prettyprint"><code>console.log(orig.trimLeft());// "foo  "
+<pre><code>console.log(orig.trimLeft());// "foo  "
 </code></pre>
 
 <p>오른 쪽 것만 제거:</p>
 
-<pre class="prettyprint"><code>console.log(orig.trimLeft());// "  foo"
+<pre><code>console.log(orig.trimLeft());// "  foo"
 </code></pre>
   </div>
 </article>
@@ -229,36 +226,20 @@ console.log(orig.trim());// "foo"
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
         <span>Sep 30 2011</span>
 &raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Sep 27 2011</span>
 &raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
       </li>
       <li>
-        <span>Sep 29 2011</span>
-&raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+        <span>Sep 28 2011</span>
+&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
       </li>
       <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+        <span>Sep 29 2011</span>
+&raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
       </li>
       <li>
         <span>Oct 05 2011</span>
@@ -267,6 +248,22 @@ console.log(orig.trim());// "foo"
       <li>
         <span>Oct 06 2011</span>
 &raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+      </li>
+      <li>
+        <span>Oct 06 2011</span>
+&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+      </li>
+      <li>
+        <span>Sep 27 2011</span>
+&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
+      </li>
+      <li>
+        <span>Oct 04 2011</span>
+&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
     </ul>
   </div>

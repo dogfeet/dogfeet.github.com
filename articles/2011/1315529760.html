@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -128,12 +125,12 @@
 
 <p>다음과 같이 양쪽에 모두 정의했어야 했는데:</p>
 
-<pre class="prettyprint"><code>Map&lt;String, List&lt;Trade» trades = new TreeMap&lt;String, List&lt;Trade» ();
+<pre><code>Map&lt;String, List&lt;Trade» trades = new TreeMap&lt;String, List&lt;Trade» ();
 </code></pre>
 
 <p>이제 한쪽만 해주면 된다:</p>
 
-<pre class="prettyprint"><code>Map&lt;String, List&lt;Trade» trades = new TreeMap &lt;&gt; ();
+<pre><code>Map&lt;String, List&lt;Trade» trades = new TreeMap &lt;&gt; ();
 </code></pre>
 
 <p><code>&lt;&gt;</code> 이걸 Diamond Operator라고 부른다.</p>
@@ -148,7 +145,7 @@
 
 <h2>상수에 <code>_</code> 사용가능</h2>
 
-<pre class="prettyprint"><code>int thousand =  1_000;
+<pre><code>int thousand =  1_000;
 int million  =  1_000_000;
 </code></pre>
 
@@ -158,7 +155,7 @@ int million  =  1_000_000;
 
 <p>handling 코드가 같은 경우에는 Interface를 구현하던가 아니면 각각 처리했어야 했는데. 단순해짐.</p>
 
-<pre class="prettyprint"><code>public void newMultiCatch() {
+<pre><code>public void newMultiCatch() {
   try {
     methodThatThrowsThreeExceptions();
   } catch (ExceptionOne | ExceptionTwo | ExceptionThree e) {

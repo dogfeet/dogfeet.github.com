@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -134,7 +131,7 @@
 
 <p>Hunk는 줄 단위의 범위 정보가 들어 있는 라인으로 시작하고 계속해서 어떤 라인인지 추가되는지, 어떤 라인이 삭제되는지, 그리고 그냥 놔둘 라인은 어떤 것인지를 보여준다. 범위 정보는 '@@'사이에 표현한다:</p>
 
-<pre class="prettyprint"><code>@@ -l,s +l,s @@
+<pre><code>@@ -l,s +l,s @@
 </code></pre>
 
 <p>Hunk에 대한 범위 정보는 사실 두 가지 정보를 포함한다. 원래 Hunk에 대한 것은 '-'뒤에 나오고 새로운 파일의 범위정보는 '+'뒤에 나온다. 범위는 <code>l,s</code>형식으로 표현하는데 l은 Hunk가 시작되는 라인의 번호이고 s는 Hunk의 라인 수다. GNU diff는 콤마와 s를 생략하는 경우도 있는데 이 때에는 s값이 1인 것을 의미한다. Hunk가 시작되는 라인 번호인 l값만 있어도 나머지 값들은 diff가 계산해 낸다.</p>
@@ -145,13 +142,13 @@
 
 <p>어떤 라인이 수정되면 삭제하고 다시 추가된 것으로 표현한다. 원래 파일과 새 파일의 다른 부분은 하나의 Hunk에 표현되고 실제로 차이가 나는 라인이 바로 이어진다. 한 라인만 다른 경우는 다음과 같다:</p>
 
-<pre class="prettyprint"><code>-check this dokument. On
+<pre><code>-check this dokument. On
 +check this document. On
 </code></pre>
 
 <p>diff 명령에 '-u' 옵션을 주고 실행하면 다음과 같은 결과가 생성된다:</p>
 
-<pre class="prettyprint"><code>--- /path/to/original ''timestamp''
+<pre><code>--- /path/to/original ''timestamp''
 +++ /path/to/new      ''timestamp''
 @@ -1,3 +1,9 @@
 +This is an important
@@ -198,56 +195,56 @@
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Dec 06 2011</span>
-&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+        <span>Dec 17 2011</span>
+&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
       </li>
       <li>
         <span>Dec 02 2011</span>
 &raquo;        <a href="/articles/2011/git-refs.html">Git:refs</a>
       </li>
       <li>
-        <span>Oct 12 2011</span>
-&raquo;        <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-      </li>
-      <li>
-        <span>Nov 30 2011</span>
-&raquo;        <a href="/articles/2011/progit.html">progit</a>
-      </li>
-      <li>
-        <span>Dec 22 2011</span>
-&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-      </li>
-      <li>
-        <span>Dec 17 2011</span>
-&raquo;        <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+        <span>Dec 06 2011</span>
+&raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
       </li>
       <li>
         <span>Dec 24 2011</span>
 &raquo;        <a href="/articles/2011/git-diff.html">Git:diff</a>
       </li>
       <li>
-        <span>Dec 01 2011</span>
-&raquo;        <a href="/articles/2011/bash-it.html">Bash-it</a>
+        <span>Dec 09 2011</span>
+&raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
       </li>
       <li>
         <span>Dec 01 2011</span>
 &raquo;        <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
       </li>
       <li>
-        <span>Dec 09 2011</span>
-&raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+        <span>Oct 12 2011</span>
+&raquo;        <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
+      </li>
+      <li>
+        <span>Dec 01 2011</span>
+&raquo;        <a href="/articles/2011/bash-it.html">Bash-it</a>
+      </li>
+      <li>
+        <span>Dec 22 2011</span>
+&raquo;        <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+      </li>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
       </li>
       <li>
         <span>Jan 01 2012</span>
 &raquo;        <a href="/articles/2012/git-conflict.html">Git:conflict</a>
       </li>
       <li>
-        <span>Jan 08 2012</span>
-&raquo;        <a href="/articles/2012/progit.html">progit</a>
-      </li>
-      <li>
         <span>Mar 25 2012</span>
 &raquo;        <a href="/articles/2012/git-ff.html">Git: git-ff</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
       </li>
     </ul>
   </div>

@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -160,7 +157,7 @@
 
 <p><code>git clone</code> 명령으로 저장소를 만들고 <code>git config -l</code> 명령을 실행하면 다음과 같은 설정이 들어가 있다:</p>
 
-<pre class="prettyprint"><code>branch.master.remote=origin
+<pre><code>branch.master.remote=origin
 branch.master.merge=refs/heads/master
 </code></pre>
 
@@ -168,19 +165,19 @@ branch.master.merge=refs/heads/master
 
 <p>Tracking 브랜치는 설정에 이런 정보를 가지고 있다. Tracking 브랜치는 만드는 게 간단하다. 리모트 브랜치에서 브랜치를 만들면 된다.</p>
 
-<pre class="prettyprint"><code>git br tracking origin/master
+<pre><code>git br tracking origin/master
 git co -b tracking origin/master
 </code></pre>
 
 <p>하지만, 로컬 브랜치에서 만들면 Tracking 브랜치가 되지 않는다:</p>
 
-<pre class="prettyprint"><code>git br tracking master
+<pre><code>git br tracking master
 git co -b tracking master
 </code></pre>
 
 <p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:</p>
 
-<pre class="prettyprint"><code>git branch --set-upstream master origin/master
+<pre><code>git branch --set-upstream master origin/master
 </code></pre>
 
 <h3>쓰임새</h3>
@@ -191,7 +188,7 @@ git co -b tracking master
 
 <p>Tracking 브랜치의 경우 리모트 브랜치와 거리가 얼마나 되는지(다른 커밋 개수를) 보여준다:</p>
 
-<pre class="prettyprint"><code>$ git branch -v
+<pre><code>$ git branch -v
 feature/kitchen e054c7e [ahead 1, behind 1] Add sink unit
 * ship            2d45d4c Add test
 </code></pre>
@@ -202,7 +199,7 @@ feature/kitchen e054c7e [ahead 1, behind 1] Add sink unit
 
 <p><code>git checkout</code>도 브랜치가 Tracking 브랜치이면 얼마나 다른지 보여준다.</p>
 
-<pre class="prettyprint"><code>$ git checkout feature/kitchen 
+<pre><code>$ git checkout feature/kitchen 
 Switched to branch 'feature/kitchen'
 Your branch and 'origin/ship' have diverged,
 and have 1 and 1 different commit(s) each, respectively.
@@ -234,24 +231,20 @@ and have 1 and 1 different commit(s) each, respectively.
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Dec 10 2011</span>
-&raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
+        <span>Jan 14 2012</span>
+&raquo;        <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
       </li>
       <li>
-        <span>Feb 10 2012</span>
-&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
+        <span>Dec 10 2011</span>
+&raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
       </li>
       <li>
         <span>Mar 30 2012</span>
 &raquo;        <a href="/articles/2012/first-speach.html">KTH 발표</a>
       </li>
       <li>
-        <span>Jan 14 2012</span>
-&raquo;        <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
-      </li>
-      <li>
-        <span>Apr 01 2012</span>
-&raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
+        <span>Feb 10 2012</span>
+&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
       </li>
       <li>
         <span>Jan 21 2012</span>
@@ -260,6 +253,10 @@ and have 1 and 1 different commit(s) each, respectively.
       <li>
         <span>Feb 02 2012</span>
 &raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+      <li>
+        <span>Apr 01 2012</span>
+&raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
       </li>
     </ul>
   </div>

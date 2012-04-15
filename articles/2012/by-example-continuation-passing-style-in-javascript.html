@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -161,12 +158,12 @@
 
 <p>하지만, 다음의 원리만 깨우치면 프로그래머는 컨티뉴에이션-패싱 스타일을 스스로 깨달은 것이나 마찬가지다.</p>
 
-<pre class="prettyprint"><code>어떠한 프로시저도 caller에 리턴(return)하지 않는다.
+<pre><code>어떠한 프로시저도 caller에 리턴(return)하지 않는다.
 </code></pre>
 
 <p>아래 힌트는 CPS로 프로그래밍하는 데 도움이 된다:</p>
 
-<pre class="prettyprint"><code>프로시저는 리턴 값으로 호출 가능한 콜백을 받는다.
+<pre><code>프로시저는 리턴 값으로 호출 가능한 콜백을 받는다.
 </code></pre>
 
 <p>프로시저가 caller로 "리턴" 해야 할 때, 프로시저는 return 대신 "현재 컨티뉴에이션(current continuation)" 콜백을 호출한다. (이 콜백은 caller가 넘겨줬다.)</p>
@@ -177,21 +174,21 @@
 
 <p>항등 함수가 하나 있다:</p>
 
-<pre class="prettyprint"><code>function id(x) {
+<pre><code>function id(x) {
     return x ;
 }
 </code></pre>
 
 <p>이 것을 CPS로 하면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>function id(x,cc) {
+<pre><code>function id(x,cc) {
     cc(x) ;
 }
 </code></pre>
 
 <p>가끔 현재 컨티뉴에이션 인자를 ret로 명명해서 코드를 좀 더 명확하게 할 수 있다:</p>
 
-<pre class="prettyprint"><code>function id(x,ret) {
+<pre><code>function id(x,ret) {
     ret(x) ;
 }
 </code></pre>
@@ -200,7 +197,7 @@
 
 <p>아래는 보통의 단순무식한 팩토리얼이다:</p>
 
-<pre class="prettyprint"><code>function fact(n) {
+<pre><code>function fact(n) {
     if(n == 0)
         return 1 ;
     else
@@ -210,7 +207,7 @@
 
 <p>그리고 이를 CPS로 작성하면 다음과 같다:</p>
 
-<pre class="prettyprint"><code>function fact(n,ret) {
+<pre><code>function fact(n,ret) {
     if(n == 0)
         ret(1) ;
     else
@@ -220,7 +217,7 @@
 
 <p>그리고 이 함수를 실제로 "사용"할 때에는 다음과 같이 콜백을 넘겨준다:</p>
 
-<pre class="prettyprint"><code>fact (5,function(n) {
+<pre><code>fact (5,function(n) {
     console.log(n); // 콘솔에 120이 출력된다.
 })
 </code></pre>
@@ -229,7 +226,7 @@
 
 <p>아래는 tail-recursive 팩토리얼의 구현이다.</p>
 
-<pre class="prettyprint"><code>function fact(n) {
+<pre><code>function fact(n) {
     return tail_fact(n,1) ;
 }
 
@@ -243,7 +240,7 @@ function tail_fact(n,a) {
 
 <p>그리고 아래는 CPS.</p>
 
-<pre class="prettyprint"><code>function fact(n,ret) {
+<pre><code>function fact(n,ret) {
     tail_fact(n,1,ret) ;
 }
 
@@ -277,7 +274,7 @@ function tail_fact(n,a,ret) {
 
 <p>콜백 유무에 따라 non-blocking 모드나 블러킹 모드를 스위칭하며 동작하는 fetch는 어렵지 않게 구현할 수 있다:</p>
 
-<pre class="prettyprint"><code>/*
+<pre><code>/*
  fetch는 클라이언트에서 서버로 리퀘스트를
  보낼 때 블로킹될 수도 있고 안될 수도 있다.
 
@@ -343,7 +340,7 @@ function fetch (url, onSuccess, onFail) {
 
 <p>UID의 이름을 가져오는 프로그램이 필요하다고 치고, fetch를 이용해서 두 버전(동기, 비동기)을 다 만들어보자.</p>
 
-<pre class="prettyprint"><code>// 요청이 끝날 때까지 블로킹된다:
+<pre><code>// 요청이 끝날 때까지 블로킹된다:
 var someName = fetch("./1031/name") ;
 
 document.write ("someName: "+ someName +"&lt;br&gt;") ;
@@ -368,7 +365,7 @@ fetch("./1030/name",function(name) {
 
 <p>node.js 웹 서버는 파일을 읽는 프로시저에 컨티뉴에이션을 넘긴다. select를 이용하는 것보다 CPS를 이용하는 것이 더 간단한 non-blocking IO이다.</p>
 
-<pre class="prettyprint"><code>var sys = require('sys') ;
+<pre><code>var sys = require('sys') ;
 var http = require('http') ;
 var url = require('url') ;
 var fs = require('fs') ;
@@ -445,7 +442,7 @@ httpd.listen(8000) ;
 
 <p>조합(combination)을 계산해주는 함수인 choose를 작성해보자. 우선 일반적인 방법:</p>
 
-<pre class="prettyprint"><code>function choose (n,k) {
+<pre><code>function choose (n,k) {
     return fact(n) /
         (fact(k) * fact(n-k)) ;
 }
@@ -457,7 +454,7 @@ httpd.listen(8000) ;
 
 <p>대신 CPS로 choose를 작성해보자:</p>
 
-<pre class="prettyprint"><code>function choose(n,k,ret) {
+<pre><code>function choose(n,k,ret) {
     fact (n,  function(factn) {
     fact (n-k,function(factnk) {
     fact (k,  function(factk) {
@@ -467,7 +464,7 @@ httpd.listen(8000) ;
 
 <p>이제 비동기적으로 팩토리얼을 계산하는 fact 프로시저 만들기가 쉬워졌다. 아래와 같이 말이다:</p>
 
-<pre class="prettyprint"><code>function fact(n,ret) {
+<pre><code>function fact(n,ret) {
     fetch ("./fact/"+ n,function(res) {
         ret(eval(res))
     }) ;
@@ -484,7 +481,7 @@ httpd.listen(8000) ;
 
 <p>다음 예제는 Exception을 이용해서 팩토리얼 "total" 버전을 정의한다:</p>
 
-<pre class="prettyprint"><code>function fact (n) {
+<pre><code>function fact (n) {
     if(n &lt; 0)
         throw "n &lt; 0";
     else if(n == 0)
@@ -507,7 +504,7 @@ document.write("total_fact(-1): "+ total_fact(-1)) ;
 
 <p>예외를 처리하는 컨티뉴에이션을 추가해서 throw, try, catch 를 제거할 수 있다:</p>
 
-<pre class="prettyprint"><code>function fact (n,ret,thro) {
+<pre><code>function fact (n,ret,thro) {
     if(n &lt; 0)
         thro ("n &lt; 0");
     else if(n == 0)
@@ -547,14 +544,14 @@ total_fact(-1,function(res) {
 
 <p>람다는 보편적인 계산을 할 수 있는 표현식(어플리케이션, 익명함수 변수 레퍼런스)을 가진 Lisp의 축소판이다. </p>
 
-<pre class="prettyprint"><code>exp ::= (expexp)           ; 함수 어플리케이션
+<pre><code>exp ::= (expexp)           ; 함수 어플리케이션
     |  (lambda (var) exp)  ; 익명 함수
     |  var                 ; 변수 레퍼런스
 </code></pre>
 
 <p>아래의 코드는 이 언어를 CPS로 변환해주는 도구다:</p>
 
-<pre class="prettyprint"><code>(define (cps-convert term cont)
+<pre><code>(define (cps-convert term cont)
     (match term
         [`(,f ,e)
             ; =&gt;
@@ -584,7 +581,7 @@ total_fact(-1,function(res) {
 
 <p>만약 어떤 자바스크립트 코드를 CPS로 바꾸고 싶다면 call/cc는 간단하게 정의할 수 있다.</p>
 
-<pre class="prettyprint"><code>function callcc (f,cc) { 
+<pre><code>function callcc (f,cc) { 
     f(function(x,k) { cc(x) },cc)
 }
 </code></pre>

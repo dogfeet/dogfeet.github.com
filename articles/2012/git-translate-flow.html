@@ -23,7 +23,6 @@
 <!--Styles-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/vendor/prettify.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
     <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
 <!--Scripts-->
@@ -31,8 +30,6 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/vendor/prettify.js"></script>
-    <script src="/vendor/lang.min.js"></script>
     <script src="/scripts/script.js"></script>
   </head>
   <body>
@@ -174,19 +171,19 @@
 
 <p>브랜치 이름을 <code>ko</code>라고 해야 하는 이유는 Merge 커밋에 브랜치 이름이 기록되기 때문이다. 보통 Git의 Merge 커밋은 다음과 같다:</p>
 
-<pre class="prettyprint"><code>Merge branch 'ko' into master
+<pre><code>Merge branch 'ko' into master
 </code></pre>
 
 <p>Github에서 Pull Request를 Merge했을 때의 커밋 메시지는 거의 같지만 다르게 생겼다:</p>
 
-<pre class="prettyprint"><code>Merge pull request #158 from dogfeet/ko
+<pre><code>Merge pull request #158 from dogfeet/ko
 </code></pre>
 
 <p>해당 Pull Request의 이슈 번호와 저장소 이름/브랜치 이름이 기록된다. 그래서 한국어를 나타낼 수 있도록 ko라는 이름으로 만든다.</p>
 
 <p>Pull Request를 보내고 나서 원문 저장소에 Merge되면 다시 히스토리를 맞춰 주어야 한다. 원문 저장소는 한글뿐만 아니라 스페인어, 불어, 독어 등등의 커밋이 계속 업데이트된다. ko 브랜치를 삭제하고 다시 만들어도 되지만 reset 명령으로 ko 브랜치 포인터를 옮길 수 있다:</p>
 
-<pre class="prettyprint"><code>$ git checkout master
+<pre><code>$ git checkout master
 $ git merge progit/master #Fast-forward Merge
 $ git checkout ko
 $ git reset --hard master
@@ -262,7 +259,7 @@ $ git reset --hard master
 
 <p>커밋 메시지는 첫 줄은 다음과 같은 형식을 따른다.</p>
 
-<pre class="prettyprint"><code>[ko] Chapter 1: 오타 수정
+<pre><code>[ko] Chapter 1: 오타 수정
 
 본문...
 </code></pre>
@@ -285,7 +282,7 @@ $ git reset --hard master
 
 <p><code>git todo</code>를 실행해서 브랜치 상태를 확인한다. <a href="/articles/2012/git-todo.html">git-todo</a> 사용법은 따로 설명해 놓았다:</p>
 
-<pre class="prettyprint"><code>$ git todo
+<pre><code>$ git todo
       [@] ko - 09b4f9c - ...
 [-1] ko-base - e7c00d8 - ...
  [-1] master * e7c00d8 - ...
@@ -299,7 +296,7 @@ $ git reset --hard master
 
 <p>owner 저장소를 fetch한다:</p>
 
-<pre class="prettyprint"><code>$git fetch owner
+<pre><code>$git fetch owner
 remote: Counting objects: 164, done.
 remote: Compressing objects: 100% (44/44), done.
 remote: Total 101 (delta 65), reused 80 (delta 45)
@@ -312,7 +309,7 @@ From <a href='https://github.com/BonsaiDen/JavaScript-Garden'>https://github.com
 
 <p>그리고 나서 브랜치 상태를 확인한다:</p>
 
-<pre class="prettyprint"><code>$ git todo -r
+<pre><code>$ git todo -r
                     [@] ko - 09b4f9c - ...
               [-1] ko-base - e7c00d8 - ...
                [-1] master * e7c00d8 - ...
@@ -327,25 +324,25 @@ From <a href='https://github.com/BonsaiDen/JavaScript-Garden'>https://github.com
 
 <p><code>owner/master</code>에 새로운 커밋이 생겼다. master는 단순히 <code>owner/master</code>를 Tracking하는 브랜치니까 master에 Merge한다:</p>
 
-<pre class="prettyprint"><code>$ git co master
+<pre><code>$ git co master
 $ git merge owner/master
 </code></pre>
 
 <p>ko 브랜치가 Merge됐는지 확인한다. 히스토리를 보면 다음과 같은 커밋이 들어 있다:</p>
 
-<pre class="prettyprint"><code>34c3271 Merge pull request #121 from pismute/ko
+<pre><code>34c3271 Merge pull request #121 from pismute/ko
 09b4f9c [ko] proofreading
 </code></pre>
 
 <p>Merge됐으므로 ko 브랜치가 owner/master를 가리키게 한다:</p>
 
-<pre class="prettyprint"><code>$ git co ko
+<pre><code>$ git co ko
 $ git reset --hard owner/master
 </code></pre>
 
 <p>그리고 나서 브랜치 상태를 확인해보자:</p>
 
-<pre class="prettyprint"><code>$ git todo -r
+<pre><code>$ git todo -r
                     [@] ko * 01fe309 - ...
              [-15] ko-base - e7c00d8 - ...
                     master - 01fe309 - ...
@@ -366,7 +363,7 @@ $ git reset --hard owner/master
 
 <p>먼저 변경된 커밋 중에서 어떤 파일들이 변경됐는지 확인해보자. ko-base 브랜치가 이미 번역한 번역본의 기준이므로 master와 ko-base 브랜치를 비교한다. 이때 브랜치 순서가 중요하다. <code>ko-base...master</code> 같이 <code>ko-base</code>를 먼저 사용한다. 순서를 반대로 쓰면 diff 명령에서 헷갈리기 쉽다.</p>
 
-<pre class="prettyprint"><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master
+<pre><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master
 &gt; 01fe309 Finally get around and start fixing some issues
 doc/en/core/undefined.md
 doc/en/function/constructors.md
@@ -419,7 +416,7 @@ doc/en/other/timeouts.md
 
 <p>그동안 수정된 커밋이 좀 있다. 영어로 된 것을 번역한 것이니 이 중에서 <code>doc/en</code> 파일이 수정된 것만 확인한다. <code>doc/en</code> 디렉토리에 있는 파일만 조회하자:</p>
 
-<pre class="prettyprint"><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master doc/en
+<pre><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master doc/en
 &gt; 01fe309 Finally get around and start fixing some issues
 doc/en/core/undefined.md
 doc/en/function/constructors.md
@@ -437,7 +434,7 @@ doc/en/other/timeouts.md
 
 <p>커밋 정보 없이 수정된 파일만 볼 수도 있다:</p>
 
-<pre class="prettyprint"><code>$ git diff --name-only ko-base..master doc/en
+<pre><code>$ git diff --name-only ko-base..master doc/en
 doc/en/core/undefined.md
 doc/en/function/constructors.md
 doc/en/function/scopes.md
@@ -448,7 +445,7 @@ doc/en/other/timeouts.md
 
 <p>파일 내용까지 보려면 <code>--name-only</code> 옵션을 빼면 된다. 그러면 diff 내역을 모두 보여준다. 한 번에 보면 너무 많으니 하나씩 diff를 확인해 볼 수 있다. <code>doc/en/core/undefined.md</code> 파일의 diff 내용을 살펴보자:</p>
 
-<pre class="prettyprint"><code>$ git diff ko-base..master doc/en/core/undefined.md
+<pre><code>$ git diff ko-base..master doc/en/core/undefined.md
 diff --git a/doc/en/core/undefined.md b/doc/en/core/undefined.md
 index d27761f..c819920 100644
 --- a/doc/en/core/undefined.md
@@ -470,7 +467,7 @@ index d27761f..c819920 100644
 
 <p>파일을 하나씩 diff해보면서 번역을 수정한다. 수정하고 커밋한 후에 브랜치를 살펴보자.</p>
 
-<pre class="prettyprint"><code>$ git todo -r
+<pre><code>$ git todo -r
                     [@] ko * c712143 - ...
              [-16] ko-base - e7c00d8 - ...
                [-1] master - 01fe309 - ...
@@ -489,13 +486,13 @@ index d27761f..c819920 100644
 
 <p>다음에 원문이 수정됐을 때 다시 참고 할 수 있도록 ko-base가 owner/master를 가리키도록 한다.</p>
 
-<pre class="prettyprint"><code>$ git checkout ko-base
+<pre><code>$ git checkout ko-base
 $ git reset --hard owner/master
 </code></pre>
 
 <p>그리고 저장소를 origin에 Push한다. Push하고 나면 브랜치 상태는 다음과 같아진다:</p>
 
-<pre class="prettyprint"><code>$ git todo -r
+<pre><code>$ git todo -r
                     [@] ko - c712143 - ...
               [-1] ko-base * 01fe309 - ...
                [-1] master - 01fe309 - ...
@@ -520,20 +517,16 @@ $ git reset --hard owner/master
   <div class="alert alert-info">
     <ul>
       <li>
+        <span>Jan 21 2012</span>
+&raquo;        <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+      </li>
+      <li>
         <span>Dec 06 2011</span>
 &raquo;        <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
       </li>
       <li>
         <span>Dec 10 2011</span>
 &raquo;        <a href="/articles/2011/git-merge.html">Git:merge</a>
-      </li>
-      <li>
-        <span>Dec 09 2011</span>
-&raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-      </li>
-      <li>
-        <span>Feb 10 2012</span>
-&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
       </li>
       <li>
         <span>Mar 30 2012</span>
@@ -544,24 +537,28 @@ $ git reset --hard owner/master
 &raquo;        <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
       </li>
       <li>
-        <span>Jan 08 2012</span>
-&raquo;        <a href="/articles/2012/progit.html">progit</a>
+        <span>Feb 10 2012</span>
+&raquo;        <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
       </li>
       <li>
-        <span>Jan 15 2012</span>
-&raquo;        <a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a>
+        <span>Dec 09 2011</span>
+&raquo;        <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+      </li>
+      <li>
+        <span>Mar 03 2012</span>
+&raquo;        <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
       </li>
       <li>
         <span>Apr 01 2012</span>
 &raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
       </li>
       <li>
-        <span>Jan 21 2012</span>
-&raquo;        <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+        <span>Jan 15 2012</span>
+&raquo;        <a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a>
       </li>
       <li>
-        <span>Mar 03 2012</span>
-&raquo;        <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
       </li>
     </ul>
   </div>
