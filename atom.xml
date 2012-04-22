@@ -3,8 +3,12 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-04-15T17:01:59Z</updated>
+  <updated>2012-04-22T07:59:20Z</updated>
   <id>http://dogfeet.github.com</id>
+  <author>
+    <name>Changwoo Park</name>
+    <email>pismute@gmail.com</email>
+  </author>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
@@ -13,10 +17,746 @@
     <name>Yongjae Choi</name>
     <email>mage@weaveus.com</email>
   </author>
-  <author>
-    <name>Changwoo Park</name>
-    <email>pismute@gmail.com</email>
-  </author>
+  <entry>
+    <title><![CDATA[ Bash: .profile, .bash_profile, .bashrc ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/bash-profile.html" />
+    <updated>2012-04-21T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/bash-profile.html</id>
+    <content type="html">
+<![CDATA[
+<p>필요할 때마다 Google님께 물어보는 것이 '.profile, .bash_profile, .bashrc'의 차이다. 신기하게도 잘 기억나지 않아서 글로 적어본다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/bash-profile/bash-computer.png" alt="bash-computer" title="" /><br />(from <a href="http://www.gamefudge.com/Bash-the-Computer">bash the computer</a>, 이참에 computer를 한번 bash해보자)</p>
+
+<h2>Ubuntu</h2>
+
+<p>최근 업무에 X windows가 필요해서 백 년 만에 ubuntu Desktop을 vmware에 설치했는데, 이거 웬걸 쓸만하다. 적어도 Windows보다 편하다. 회사에서 보안프로그램만 지원해주면 업무용으로 그냥 Ubuntu Desktop를 쓰고 싶다.</p>
+
+<p>이제 돈 받고 팔아도 되겠다. 12.04가 기대된다. 설치도, 내 취향에 맞춘 설정까지 하루밖에 안 걸린다.</p>
+
+<h2>Login Shell vs Non-login Shell</h2>
+
+<p>먼저 'Login Shell'과 'Non-login Shell' 을 구분해야 하는데, 로그인은 계정과 암호를 입력해서 Shell을 실행하는 것이다. ssh로 접속하거나 로컬에서 GUI에서 로그인한다는 의미다.</p>
+
+<p>'.profile', '.bash_profile'이 Login할 때 로드되는(source) 파일이다. '.profile'은 꼭 bash가 아니더라도 로그인하면 로드되고 '.bash_profile'은 꼭 Bash로 Login할 때 로드된다.</p>
+
+<p>그리고 'Non-login Shell'은 로그인 없이 실행하는 Shell을 말한다. ssh로 접속하고 나서 다시 bash를 실행하는 경우나. GUI 세션에서 터미널을 띄우는 것이 이해 해당한다. 'sudo bash'나 'su' 같은 것도 이에 해당한다.</p>
+
+<p>'.bashrc'는 로그인 없이 Bash가 실행될 때 로드된다. 'sudo bash'나 'su'로 root 권한을 얻으려 bash를 실행할 때도 이 파일이 로드된다.</p>
+
+<p>정리:</p>
+
+<ul>
+<li>'.profile' - 로그인할 때 로드된다. PATH처럼 로그인할 때 로드해야 하는데 bash와 상관없는 것들을 여기에 넣는다.</li>
+<li>'.bash_profile' - 로그인할 때 로드된다. 'bash completion'이나 'nvm'같이 로그인할 때 로드해야 하는데 Bash와 관련된 것이면 여기에 넣는다. </li>
+<li>'.bashrc' - 로그인하지 않고 Bash가 실행될 때마다 로드된다.</li>
+</ul>
+
+<h2>bash-it</h2>
+
+<p>나는 Bash 프레임워크인 <a href="https://github.com/revans/bash-it">bash-it</a>을 사용하는데, 그냥 터미널에서 ssh로 접속하기만 할 때는 '.bash_profile'에만 넣어주는 걸로 충분했다. 그런데 Desktop으로 쓸려니 로그인 없이 Bash를 실행할 일이 많아서 '.bashrc'에 넣어줘야 했다:</p>
+
+<pre><code>if [ -f "~/.bash_profile" ]; then
+    . ~/.bash_profile
+fi
+</code></pre>
+
+<p>그런데 'sudo bash'를 실행할 때도 bash-it이 로드돼서 root가 아닐 때만 로드되게 했다:</p>
+
+<pre><code>if [ "$USER" != "root" ] &amp;&amp; [ -f "~/.bash_profile" ]; then
+    . ~/.bash_profile
+fi
+</code></pre>
+
+<p>꼭 터미널을 열고 Bash를 띄울 때만 bash-it을 사용하고 싶은데 GUI 세션에 로그인할 때도 실행되는 느낌이다. 이것도 확인해봐야 하는데,</p>
+
+<h2>Mac</h2>
+
+<p>사실 Mac에서 한 번도 'Login Bash'같은 컨셉에 대해 생각해본 적 없다. 그러니까 Bash를 실행할 때 로그인해 본 적 없다. Mac에 ssh로 접속한 적도 없다. 그러니까 Mac에서는 .bash_profile과 .bashrc를 구분해 사용하려고 생각한 적이 없다.</p>
+
+<p>그래서 더 헷갈린다. Mac에서는 터미널을 열어도 '.bash_profile'이 로드된다. 'sudo bash'할 때나 그냥 'bash'를 실행시켰을 때에는 로드하지 않는 것으로 봐서 여태껏 얘기한 것에서 크게 벗어나는 것 같진 않다. 그냥 조금 다르다.</p>
+
+<p>이를테면 '터미널을 연다는 것은 로그인하면서 Bash를 실행시키는 것'이라고 보면 된다. 터미널을 열 때에도 '.bash_profile'이 로드되지만, bash를 그냥 실행시킬 때는 '.bash_profile'은 로드하지 않는다.</p>
+
+<h2>.bash_login, .bash_logout, .bash_complete ...</h2>
+
+<p>그 외 파일이 많은데 별로 중요하지도 않고 필요하다고 생각해본 적 없어서 정리하지 않았다.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ J언어 배우기 - 제 2장: 리스트와 테이블 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/learning-j-chapter2.html" />
+    <updated>2012-04-17T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/learning-j-chapter2.html</id>
+    <content type="html">
+<![CDATA[
+<p><a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 Chapter2 를 번역했다. 이번엔 리스트와 테이블에 관한 내용이다. 굉장히 기초적이고 중요한 내용이다. 특히 배열의 차원(dimension)에 관한 이야기는 나중에 나올 랭크라는 개념을 이해하기 위한 초석이므로 예제들을 잘 봐야 한다. 눈에 보이는 데이터가 같다고 해서 같은 데이터가 아니라는 것도 중요하다. 지금 말하고 있는 게 무슨 말인지 모르겠다면 이번 챕터를 읽도록 하자.</p>
+
+<p>자 시작하자.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/learning-j-chapter2/j-code.png" alt="j-code" title="" /></p>
+
+<p>계산(computation)을 하려면 데이터가 필요하다. 지금까지 단일 숫자와 숫자 리스트로 된 데이터만을 다뤘다. 하지만 테이블 같은, 다른 형태를 가진 데이터도 생각해볼 수 있다. 그런 데이터 즉, 리스트나 테이블들을 "배열"(Array)이라고 한다.</p>
+
+<h2>2.1 테이블</h2>
+
+<p>2행 3열 테이블은 <code>$</code>함수로 만든다.</p>
+
+<pre><code>   table =: 2 3   $   5 6 7  8 9 10
+   table
+5 6  7
+8 9 10
+</code></pre>
+
+<p>위 예제는 <code>x $ y</code>라는 표현식으로 테이블을 만드는 것을 보여준다. x는 테이블의 차원(dimensions)을 결정한다. x는 행의 개수 다음에 열의 개수가 오는 리스트의 형태이다. 테이블은 y의 내용으로 채워진다.<br />y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음에는 두 번째 행을 채워나간다. 행이 더 있으면 계속 y의 아이템을 가져와 순서대로 채운다. y는 적어도 하나 이상의 아이템을 가지고 있어야만 한다. 만약 y의 아이템 개수가 테이블을 채우기 부족하다면 y의 처음부터 재사용한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>2 4 $ 5 6 7 8 9</tt></td>
+<td><tt>2 2 $ 1</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7 8<br>
+9 5 6 7</tt></td>
+<td><tt>1 1<br>
+1 1</tt></td>
+</tr></tbody></table>
+
+<p><code>$</code>함수는 한가지 방식으로만 테이블을 만든다. 더 많은 방식을 보고 싶다면 5장을 참고하시라.</p>
+
+<p>우리가 배웠던 함수들은 이전에 리스트 데이터에서도 그랬듯이 테이블 데이터에도 정확하게 똑같이 적용된다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>table  </tt></td>
+<td><tt>10 * table</tt></td>
+<td><tt>table + table</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6&nbsp;&nbsp;7<br>
+8 9 10</tt></td>
+<td><tt>50 60&nbsp;&nbsp;70<br>
+80 90 100</tt></td>
+<td><tt>10 12 14<br>
+16 18 20</tt></td>
+</tr></tbody></table>
+
+<p>한 인자는 테이블, 또 다른 인자는 리스트인 경우도 가능하다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>table</tt></td>
+<td><tt>0 1 * table</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6&nbsp;&nbsp;7<br>
+8 9 10</tt></td>
+<td><tt>0 0&nbsp;&nbsp;0<br>
+8 9 10</tt></td>
+</tr></tbody></table>
+
+<p>바로 위 예제에서, 리스트 <code>0 1</code>의 각 아이템은 자동으로 테이블의 행과 매칭되었다. 0은 첫 번째 행과 1은 두 번째 행과 매칭되었다. 다른 패턴들도 이런 식으로 매칭될 수 있다. 더 보려면 7장을 보면 된다.</p>
+
+<h2>2.2 배열</h2>
+
+<p>테이블은 차원이 2이다. (행과 열) 비슷하게, 리스트는 1차원이라고 말할 수 있다.<br />2개 이상의 차원을 가진 테이블 형 데이터 오브젝트도 있다. 그런 의미에서 <code>$</code>함수의 왼쪽 인자는 차원의 개수를 가지는 리스트라고도 말할 수 있다. "배열"이라는 단어는 차원을 가진 데이터 오브젝트를 가리키는 일반적인 말이다. 아래에는 1차원, 2차원, 3차원의 배열에 대한 예제이다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>3 $ 1</tt></td>
+<td><tt>2 3 $ 5 6 7</tt></td>
+<td><tt>2 2 3 $ 5 6 7 8</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 1 1</tt></td>
+<td><tt>5 6 7<br>
+5 6 7</tt></td>
+<td><tt>5 6 7<br>
+8 5 6<br>
+<br>
+7 8 5<br>
+6 7 8</tt></td>
+</tr></tbody></table>
+
+<p>위 예제의 3차원 배열은 2면, 2행, 3열로 이루어져 있다. 두 개의 면은 위아래 차례대로 출력되었다.</p>
+
+<p>모나딕 <code>#</code>함수로 리스트의 길이를 알 수 있는 것을 상기하자.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt># 6 7</tt></td>
+<td><tt># 6 7 8</tt></td>
+</tr><tr valign="TOP">
+<td><tt>2</tt></td>
+<td><tt>3</tt></td>
+</tr></tbody></table>
+
+<p>모나딕 <code>$</code>함수로는 인자의 차원 리스트를 알 수 있다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>L =: 5 6 7</tt></td>
+<td><tt>$ L</tt></td>
+<td><tt>T =: 2 3 $ 1</tt></td>
+<td><tt>$ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7</tt></td>
+<td><tt>3</tt></td>
+<td><tt>1 1 1<br>
+1 1 1</tt></td>
+<td><tt>2 3</tt></td>
+</tr></tbody></table>
+
+<p>그러므로 만약 x가 배열이라면 <code># $ x</code>라는 표현식은 x의 차원 리스트의 길이, 즉 x의 차원 개수를 내뱉는다. 차원의 개수가 1이면 리스트, 2이면 테이블인 식이다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> L </tt></td>
+<td><tt>$ L </tt></td>
+<td><tt> # $ L</tt></td>
+<td><tt> T </tt></td>
+<td><tt>$T</tt></td>
+<td><tt># $ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7</tt></td>
+<td><tt>3</tt></td>
+<td><tt>1</tt></td>
+<td><tt>1 1 1<br>
+1 1 1</tt></td>
+<td><tt>2 3</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
+
+<p>만약 x가 단일 숫자라면 <code># $ x</code>는 0이다.</p>
+
+<pre><code>   # $ 17
+0
+</code></pre>
+
+<p>테이블은 2차원이고 리스트가 1차원이므로 단일 수는 차원이 없다라고 말할 수 있다. 단일수의 차원 수는 0이기 때문이다.(위 코드의 결과가 그 근거이다) 차원 수가 0인 데이터 오브젝트는 스칼라(scalar)라고 한다. 위에서 "배열"을 어떤 차원을 가지고 있는 데이터 오브젝트로 정의했었다. 그렇다면 스칼라 또한 배열이다. 다만 차원이 0일 뿐이다.</p>
+
+<p>우리는 위에서 <code># $ 17</code>이 0임을 확인했다. 여기서 이런 결론을 도출할 수 있을 것이다. 스칼라가 차원을 가지고 있지 않기 때문에, (<code>$ 17</code>의 결과물로써의) 차원 리스트는 길이가 0이거나 비어있는 리스트여야만 한다. 이제 2의 길이를 가진 리스트는 <code>2 $ 99</code> 와 같은 코드를 이용해서 만들어 낼 수 있다. 그리고 길이가 0인 빈 리스트는 <code>0 $ 99</code> 같은 코드로 만들어 낼 수 있겠다. (사실 99대신 아무 숫자나 쓰여도 된다.)</p>
+
+<p>빈 리스트의 값은 표시되지 않는다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>2 $ 99</tt></td>
+<td><tt>0 $ 99</tt></td>
+<td><tt> $ 17</tt></td>
+</tr><tr valign="TOP">
+<td><tt>99 99</tt></td>
+<td><tt>&nbsp;</tt></td>
+<td><tt>&nbsp;</tt></td>
+</tr></tbody></table>
+
+<p>스칼라(예를 들면 <code>17</code>)는 길이가 1인 리스트(예를 들면 <code>1 $ 17</code>) 와는 다르다. 또 1행 1열짜리인 테이블(예를 들면 <code>1 1 $ 17</code>)과도 다르다. 스칼라는 차원이 없다. 리스트는 차원이 하나, 테이블은 두 개 이다. 하지만 세 개 모두 화면에는 똑같이 보인다.</p>
+
+<pre><code>   S =: 17
+   L =: 1 $ 17
+   T =: 1 1 $ 17
+</code></pre>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> S </tt></td>
+<td><tt> L </tt></td>
+<td><tt> T </tt></td>
+<td><tt># $ S</tt></td>
+<td><tt># $ L</tt></td>
+<td><tt># $ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>17</tt></td>
+<td><tt>17</tt></td>
+<td><tt>17</tt></td>
+<td><tt>0</tt></td>
+<td><tt>1</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
+
+<p>하나의 열을 가진 테이블도 여전히 2차원 테이블이다. 아래에 3행 1열의 <code>t</code>가 있다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>t =: 3 1 $ 5 6 7</tt></td>
+<td><tt>$ t</tt></td>
+<td><tt># $ t</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5<br>
+6<br>
+7</tt></td>
+<td><tt>3 1</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
+
+<h2>2.3 용어: 랭크와 모양(Rank and Shape)</h2>
+
+<p>"차원 수"라고 부르는 속성은 J에서는 짧게 줄여 "랭크(Rank)"라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 "모양(Shape)"이라고 한다.<br />수학 용어에서 "벡터(Vector)"와 "매트릭스(Matrix)"는 위에서 말했던 "리스트"와 "테이블"과 관련이 있다. 3차원 이상의 배열(아, 이제는 랭크 3이상의 배열 이라고 하겠다.)은 "리포트(Report)"라고 한다.</p>
+
+<p>아래 테이블에 배열에 대한 용어와 함수들을 정리해놓았다.</p>
+
+<pre><code>+--------+--------+-----------+------+
+|        | Example| Shape     | Rank |
++--------+--------+-----------+------+
+|        | x      | $ x       | # $ x|
++--------+--------+-----------+------+
+| Scalar | 6      | empty list| 0    |
++--------+--------+-----------+------+
+| List   | 4 5 6  | 3         | 1    |
++--------+--------+-----------+------+
+| Table  |0 1 2   | 2 3       | 2    |
+|        |3 4 5   |           |      |
++--------+--------+-----------+------+
+| Report |0  1  2 | 2 2 3     | 3    |
+|        |3  4  5 |           |      |
+|        |        |           |      |
+|        |6  7  8 |           |      |
+|        |9 10 11 |           |      |
++--------+--------+-----------+------+
+</code></pre>
+
+<p>위 테이블은 사실 J로 짠 프로그램의 출력물이다. 게다가 저건 위에 작은 챕터를 할애해서 말했던 자료구조인 진짜 "테이블"이다. 이 테이블의 모양은 <code>6 4</code>이다. 하지만 이건 숫자로만 이루어진 테이블이 아니라 문자도 있고, 리스트도 담고 있다. 그럼 이제 숫자가 아닌 걸로 이루어진 배열을 살펴보자</p>
+
+<h2>2.4 문자로 이루어진 배열</h2>
+
+<p>문자는 알파벳, 구두점, 숫자 등을 말한다. 숫자로 배열을 만들었듯이 문자로도 배열을 만들 수 있다. 문자의 리스트를 만들려면 작은따옴표 안에 문자들을 넣으면 된다. 하지만 결과 화면에 출력될 때는 작은따옴표는 보이지 않는다. 예를 들자면 아래와 같다.</p>
+
+<pre><code>   title =: 'My Ten Years in a Quandary'
+   title
+My Ten Years in a Quandary
+</code></pre>
+
+<p>문자의 리스트는 문자열(string)이라고 한다. 문자열 안의 작은따옴표를 넣으려면 작은따옴표를 연속 두 번 타이핑 한다.</p>
+
+<pre><code>   'What''s new?'
+What's new?
+</code></pre>
+
+<p>빈 문자열이나 길이가 0인 문자열을 나타내려면 연속된 두 개의 작은 따옴표를 타이핑한다. 이건 화면에 보이지 않는다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> '' </tt></td>
+<td><tt># '' </tt></td>
+</tr><tr valign="TOP">
+<td><tt>&nbsp;</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
+
+<h2>2.5 배열에 사용되는 함수</h2>
+
+<p>이 장에서는 배열을 다루는 몇 가지 유용한 함수들을 알아보도록 한다. J는 매우 다양한 함수들을 가진 언어이다. 한번 살펴보자.</p>
+
+<h3>2.5.1 합치기</h3>
+
+<p>내장 함수인 <code>,</code>는 "Append"라고 한다. 이 함수는 여러 개의 요소를 붙여서 리스트를 만든다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>a =: 'rear'</tt></td>
+<td><tt>b =: 'ranged'</tt></td>
+<td><tt>a,b</tt></td>
+</tr><tr valign="TOP">
+<td><tt>rear</tt></td>
+<td><tt>ranged</tt></td>
+<td><tt>rearranged</tt></td>
+</tr></tbody></table>
+
+<p>"Append" 함수는 리스트나 아이템 하나를 합친다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x =: 1 2 3</tt></td>
+<td><tt>0 , x </tt></td>
+<td><tt>x , 0 </tt></td>
+<td><tt>0 , 0</tt></td>
+<td><tt>x , x </tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3</tt></td>
+<td><tt>0 1 2 3</tt></td>
+<td><tt>1 2 3 0</tt></td>
+<td><tt>0 0</tt></td>
+<td><tt>1 2 3 1 2 3</tt></td>
+</tr></tbody></table>
+
+<p>"Append" 함수는 두 개의 테이블의 양 끝을 합쳐서 더 긴 테이블을 만들 수도 있다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1=: 2 3 $ 'catdog'</tt></td>
+<td><tt>T2=: 2 3 $ 'ratpig'</tt></td>
+<td><tt>T1,T2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>rat<br>
+pig</tt></td>
+<td><tt>cat<br>
+dog<br>
+rat<br>
+pig</tt></td>
+</tr></tbody></table>
+
+<p>"Append"에 대한 더 많은 정보를 원하면 5장을 보라.</p>
+
+<h3>2.5.2 아이템</h3>
+
+<p>숫자로 이루어진 리스트의 아이템은 각각이 숫자다. 그리고 테이블의 아이템은 그 테이블의 행이라고 한다. 3차원 배열의 아이템은 그 배열의 평면이다. 일반적으로 말해서 아이템이라 함은 배열의 첫 번째 차원을 따라 늘어서 있는 요소들의 연속이다. 배열은 아이템으로 이루어진 리스트이다.<br /><code>#</code>("Tally")함수가 리스트의 길이를 반환한다고 했었다. 아래를 보자</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x</tt></td>
+<td><tt> # x</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3</tt></td>
+<td><tt>3</tt></td>
+</tr></tbody></table>
+
+<p>일반적으로 <code>#</code>는 배열의 아이템 개수, 즉 첫 번째 차원의 크기를 잰다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1</tt></td>
+<td><tt>$ T1</tt></td>
+<td><tt># T1</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>2 3</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
+
+<p>확실히 <code># T1</code>은 차원 리스트인 <code>$ T1</code>의 첫 번째 아이템이다. 차원이 없는 스칼라는 단일 아이템으로 취급한다.</p>
+
+<pre><code>   # 6
+1
+</code></pre>
+
+<p>밑에 있는 "Append"의 예를 다시 보자.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1</tt></td>
+<td><tt>T2</tt></td>
+<td><tt>T1 , T2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>rat<br>
+pig</tt></td>
+<td><tt>cat<br>
+dog<br>
+rat<br>
+pig</tt></td>
+</tr></tbody></table>
+
+<p>이제 <code>x , y</code>의 의미를 <code>x</code>의 아이템 다음에 <code>y</code>의 아이템이 오는 리스트라고 일반화시켜 말할 수 있겠다.</p>
+
+<p>"아이템"을 잘 이용하기 위한 다른 예제로 <code>+/</code> 함수가 있다. <code>+/</code>는 +를 리스트의 아이템 사이사이에 끼워 넣는다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>+/ 1 2 3</tt></td>
+<td><tt>1 + 2 + 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>6</tt></td>
+<td><tt>6</tt></td>
+</tr></tbody></table>
+
+<p>일반적으로는 <code>+/</code>는 <code>+</code>를 배열의 아이템 사이에 끼워 넣는다. (리스트의 아이템 사이가 아니다.) 다음 예제는 아이템이 단일 숫자가 아니라 테이블의 행인 경우이다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T =: 3 2 $ 1 2 3 4 5 6</tt></td>
+<td><tt>+/ T</tt></td>
+<td><tt>1 2 + 3 4 + 5 6</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2<br>
+3 4<br>
+5 6</tt></td>
+<td><tt>9 12</tt></td>
+<td><tt>9 12</tt></td>
+</tr></tbody></table>
+
+<h3>2.5.3 선택하기</h3>
+
+<p>이제 리스트에서 아이템을 선택하는 방법을 알아보자. 리스트에서 아이템의 위치는 0, 1, 2... 로 숫자를 매긴다. 첫 번째 아이템의 위치는 0이다.(10번째 아이템의 위치는 9이다.) 위치 정보를 가지고 아이템을 선택하기 위해서는 <code>{</code>("From") 함수를 사용한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y =: 'abcd'</tt></td>
+<td><tt>0 { Y</tt></td>
+<td><tt>1 { Y</tt></td>
+<td><tt>3 { Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abcd</tt></td>
+<td><tt>a</tt></td>
+<td><tt>b</tt></td>
+<td><tt>d</tt></td>
+</tr></tbody></table>
+
+<p>위치를 나타내는 숫자는 "인덱스"라고 한다. <code>{</code>함수는 왼쪽 인자에 인덱스로써 단일수나 숫자 리스트를 받는다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> Y</tt></td>
+<td><tt> 0 { Y</tt></td>
+<td><tt> 0 1 { Y</tt></td>
+<td><tt> 3 0 1 { Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abcd</tt></td>
+<td><tt>a</tt></td>
+<td><tt>ab</tt></td>
+<td><tt>dab</tt></td>
+</tr></tbody></table>
+
+<p><code>i.</code> 라는 내장 함수도 있다. 표현식 <code>i. n</code>은 크기가 n인 0부터 순서대로 커지는 양의 정수의 리스트를 생성한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>i. 4</tt></td>
+<td><tt>i. 6</tt></td>
+<td><tt>1 + i. 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>0 1 2 3</tt></td>
+<td><tt>0 1 2 3 4 5</tt></td>
+<td><tt>1 2 3</tt></td>
+</tr></tbody></table>
+
+<p>만약 x가 리스트라면 <code>i. # x</code>라는 표현식은 x에서 사용할 수 있는 모든 인덱스의 리스트를 만들어낸다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x =: 'park'</tt></td>
+<td><tt># x</tt></td>
+<td><tt>i. # x</tt></td>
+</tr><tr valign="TOP">
+<td><tt>park</tt></td>
+<td><tt>4</tt></td>
+<td><tt>0 1 2 3</tt></td>
+</tr></tbody></table>
+
+<p><code>i.</code>의 인자로 리스트가 들어오면 배열이 만들어진다.</p>
+
+<pre><code>   i. 2 3
+0 1 2
+3 4 5
+</code></pre>
+
+<p><code>i.</code>를 다이아딕으로 사용하면 이때는 <code>i.</code>를 "Index Of"라고 한다. <code>x i. y</code>라는 표현식은 x에 있는 y의 위치를 찾아낸다.</p>
+
+<pre><code>   'park' i. 'k'
+3
+</code></pre>
+
+<p>찾은 인덱스는 x에서 y가 처음으로 발견된 위치이다.</p>
+
+<pre><code>   'parka' i. 'a'
+1
+</code></pre>
+
+<p>x에 y가 없다면 마지막 위치보다 1 큰 수를 반환한다.</p>
+
+<pre><code>   'park' i. 'j'
+4
+</code></pre>
+
+<p>인덱싱에 대해 더 많은 것을 알고 싶다면 챕터 6을 보라.</p>
+
+<h3>2.5.4 같음과 매칭(Equality and Matching)</h3>
+
+<p>두 배열이 같은지 알아봐야 하는 상황이라면 내장 함수인 <code>-:</code>("Match")를 사용하면 된다. 이 함수는 두 개의 인자가 같은 모양, 같은 값을 가졌는지 검사한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>X =: 'abc'</tt></td>
+<td><tt>X -: X</tt></td>
+<td><tt>Y =: 1 2 3 4</tt></td>
+<td><tt>X -: Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abc</tt></td>
+<td><tt>1</tt></td>
+<td><tt>1 2 3 4</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
+
+<p>인자가 뭐든 간에 함수의 결과 값은 0 아니면 1이다.</p>
+
+<p>빈 문자 리스트와 빈 숫자 리스트는 같다는 건 알아두어야 한다.</p>
+
+<pre><code>   '' -: 0 $ 0
+1
+</code></pre>
+
+<p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)<br /><code>=</code>("Equal")라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y</tt></td>
+<td><tt>Y = Y</tt></td>
+<td><tt>Y = 2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3 4</tt></td>
+<td><tt>1 1 1 1</tt></td>
+<td><tt>0 1 0 0</tt></td>
+</tr></tbody></table>
+
+<p>결론적으로 <code>=</code>가 가지는 두 인자는 반드시 같은 모양이어야 한다. (아니면 적어도, <code>Y=2</code>의 경우와 같이 호환되는 모양이어야 한다) 그렇지 않으면 에러가 발생한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y</tt></td>
+<td><tt>Y = 1 5 6 4</tt></td>
+<td><tt>Y = 1 5 6</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3 4</tt></td>
+<td><tt>1 0 0 1</tt></td>
+<td><tt>error</tt></td>
+</tr></tbody></table>
+
+<h2>2.6 박스의 배열(Arrays of Boxes)</h2>
+
+<h3>2.6.1 연결하기</h3>
+
+<p><code>;</code>("Link")라는 내장 함수가 있다. 이 함수는 두 인자를 리스트의 형태로 연결한다. 두 인자는 다른 것 이어도 된다. 예를 들어 문자열과 숫자를 연결 할수 있다.</p>
+
+<pre><code>   A =: 'The answer is'  ;  42
+   A
++-------------+--+
+|The answer is|42|
++-------------+--+
+</code></pre>
+
+<p>위 에서 A는 길이가 2인 리스트이다. 그리고 이 리스트는 박스의 리스트라고 한다. 첫 번째 박스 안에는 문자열 'The answer is'가 들어있고 두 번째 박스에는 숫자 42가 있다. 박스는 화면에 사각형으로 그려지고 안에 그 박스의 값을 담고 있는 형태로 그려진다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> A </tt></td>
+<td><tt> 0 { A</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-------------+--+<br>
+|The answer is|42|<br>
++-------------+--+</tt></td>
+<td><tt>+-------------+<br>
+|The answer is|<br>
++-------------+</tt></td>
+</tr></tbody></table>
+
+<p>박스 하나는 안에 있는 값이 무엇이든 간에 스칼라로 취급한다. 박스는 그 안에 일반적인 배열(예를 들면 숫자로 이루어진 리스트 같은 거)을 넣을 수 있다. 따라서 A는 스칼라의 리스트이다. (A의 아이템들은 각각이 스칼라는 말이다.)</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> A </tt></td>
+<td><tt>$ A</tt></td>
+<td><tt>s =: 1 { A</tt></td>
+<td><tt> # $ s</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-------------+--+<br>
+|The answer is|42|<br>
++-------------+--+</tt></td>
+<td><tt>2</tt></td>
+<td><tt>+--+<br>
+|42|<br>
++--+</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
+
+<p>박스로 이루어진 배열의 주목적은 다른 종류의 값들을 하나의 변수에 집어넣는 것이다. 예를 들어 구입 한 물건의 자세한 사항들(구매 날짜, 가격, 설명)을 담은 변수는 박스의 리스트로 나타낼 수 있다.</p>
+
+<pre><code>   P =: 18 12 1998  ;  1.99  ;  'baked beans'
+   P
++----------+----+-----------+
+|18 12 1998|1.99|baked beans|
++----------+----+-----------+
+</code></pre>
+
+<p>"Link"와 "Append"의 차이점에 주목해야 한다. "Link"가 다른 종류의 값들을 합치는 반면 "Append"가 합치는 값들은 언제나 같은 종류이다. 즉 "Append" 함수에 주어지는 두 인자는 반드시 둘 다 숫자로 이루어진 배열이거나 둘 다 문자로 이루어진 배열이어야 한다. 아니면 둘 다 박스로 이루어진 배열이어야 한다. 그게 아니면 에러가 난다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>'answer is'; 42</tt></td>
+<td><tt>'answer is' , 42</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+---------+--+<br>
+|answer is|42|<br>
++---------+--+</tt></td>
+<td><tt>error</tt></td>
+</tr></tbody></table>
+
+<p>문자열과 숫자를 연결해야 할 때가 있을 수 있다. 예를 들자면 어떤 결과 값과 그에 대한 설명은 같이 보여줘야 할 때가 있다. 그 때 위에서 봤듯이 문자열과 숫자를 "연결(Link)"할 수 있다. 하지만 더 부드러운 표현은 숫자를 문자열로 바꿔서 두 문자열을 연결하는 방식으로 처리하는 것이다. 그러면 결과물은 박스의 리스트가 아니라 문자열이 된다.</p>
+
+<p>숫자를 문자열로 바꾸는 것은 내장 함수인 <code>":</code>("Format")을 이용한다. 아래 예제에서 n은 단일 숫자이고 s는 n을 포맷해서 만든 문자열이다. s는 길이가 2이다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>n =: 42</tt></td>
+<td><tt>s =: ": n</tt></td>
+<td><tt># s</tt></td>
+<td><tt>'answer is ' , s</tt></td>
+</tr><tr valign="TOP">
+<td><tt>42</tt></td>
+<td><tt>42</tt></td>
+<td><tt>2</tt></td>
+<td><tt>answer is 42</tt></td>
+</tr></tbody></table>
+
+<p>"Format"에 대해서 더 알고 싶다면 19장을 보면 된다. 다시 박스로 돌아가도록 하자. 박스는 값이 상자로 둘러싸고 있는 형태이기 때문에, 박스가 화면에 보일 때에는 간단한 표의 형태로 보인다.</p>
+
+<pre><code>   p =: 4 1 $ 1 2 3 4
+   q =: 4 1 $ 3 0 1 1
+
+   2 3 $ ' p ' ; ' q ' ; ' p+q ' ;  p ; q ; p+q
++---+---+-----+
+| p | q | p+q |
++---+---+-----+
+|1  |3  |4    |
+|2  |0  |2    |
+|3  |1  |4    |
+|4  |1  |5    |
++---+---+-----+
+</code></pre>
+
+<h3>2.6.2 박싱과 언박싱(Boxing and Unboxing)</h3>
+
+<p><code>&lt;</code>("Box")라는 내장 함수가 있다. 이 함수는 인자로 들어온 값을 감싸 하나의 박스를 만든다.</p>
+
+<pre><code>   &lt; 'baked beans'
++-----------+
+|baked beans|
++-----------+
+</code></pre>
+
+<p>박스는 숫자를 담을 수 있지만, 그 자체로 숫자는 아니다. 박스 안에 있는 값으로 계산 하려면 박스를 열어서 값을 꺼내야 한다. <code>&gt;</code> 함수가 바로 그런 것이다. 이 함수는 "Open"이라고 한다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>b =: &lt; 1 2 3</tt></td>
+<td><tt>&gt; b</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-----+<br>
+|1 2 3|<br>
++-----+</tt></td>
+<td><tt>1 2 3</tt></td>
+</tr></tbody></table>
+
+<p><code>&lt;</code>를 깔때기 모양의 그림으로 생각하면 이해하기가 쉽다. 데이터가 넓은 쪽으로 흘러들어 가서 좁은 쪽으로 박스에 담겨 나온다. 나온 박스는 스칼라, 즉 차원이 없다. <code>&gt;</code>도 비슷하게 생각하면 된다. 박스가 스칼라이기 때문에 <code>,</code>함수로 각 박스를 리스트로 묶을 수 있다. 하지만 <code>;</code>함수를 쓰는 게 좀 더 편하다. 이 함수는 박스에 담아 연결해주는 작업을 한 번에 해준다.</p>
+
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>(&lt; 1 1) , (&lt; 2 2) , (&lt; 3 3)</tt></td>
+<td><tt>1 1 ; 2 2 ; 3 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+---+---+---+<br>
+|1 1|2 2|3 3|<br>
++---+---+---+</tt></td>
+<td><tt>+---+---+---+<br>
+|1 1|2 2|3 3|<br>
++---+---+---+</tt></td>
+</tr></tbody></table>
+
+<h2>2.7 요약</h2>
+
+<p>결론적으로 J의 모든 데이터 오브젝트는 전부 n 차원 배열(n >= 0)이다. 배열은 숫자로 이루어진 배열일 수도 있고, 문자, 또는 박스로 이루어졌을 수도 있다. (물론 다른 것으로 이루어질 수도 있다.)</p>
+
+<p>2장을 마친다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ nodejs: Mocha ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" />
@@ -781,6 +1521,165 @@ _1 4 6 7.3
     </content>
   </entry>
   <entry>
+    <title><![CDATA[ GitHub로 남의 프로젝트에 감놓고 배놓기 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/how-to-github.html" />
+    <updated>2012-03-31T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/how-to-github.html</id>
+    <content type="html">
+<![CDATA[
+<p><a href="http://github.com/">GitHub</a>를 사용하여 오픈소스 프로젝트에 어떻게 참여할 수 있는 방법을 정리한다. GitHub에 계정이 있어야 하고 <a href="http://git-scm.org/">Git</a>을 어느정도 써 본 사람이어야 한다. </p>
+
+<p><em>원문은 <a href="http://gun.io/">Rich Jones</a>의 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">How to GitHub: Fork, Branch, Track, Squash and Pull Request</a> 이다.</em></p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png" alt="gun.io" title="" /></p>
+
+<h2>저자 공지사항</h2>
+
+<p><a href="http://github.com/">GitHub</a>에서 활동하는 개발자 중 저자의 <a href="http://gun.io/contracts/new/">구인구직 사이트</a>에 등록하면 구직하는 사람과 연결해준다고 한다. 관심있는 사람은 둘러보시길!</p>
+
+<h2>자 시작!</h2>
+
+<p><a href="http://github.com/">GitHub</a>에서 저장소를 새로 하나 만들면 아래와 같은 설명을 보여준다.</p>
+
+<p><img src="/articles/2012/how-to-github/LiEI3.png" alt="GitHub" title="" /></p>
+
+<p>GitHub은 새로운 프로젝트와 새로운 저장소를 만들었을 경우에 대한 설명은 친절하게 해주고 있다. 하지만 다른 프로젝트를 개선하고 참여하는 방법에 대해서는 그다지 좋은 설명을 해주고 있지 않다. 이 글은 그러한 점에서 도움이 될 것이다.</p>
+
+<p>우선 시작하기 전에 고쳐보고 싶은 프로젝트를 하나 골라보자. GitHub에서 프로젝트를 찾아서 코드도 둘러보고 익숙한 개발방식을 갖고 있는지 확인도 해보고 커밋 로그도 살펴보고 참여하는 사람이 어떤 사람인지도 살펴들 보자.</p>
+
+<h2>네트워크</h2>
+
+<p><img src="/articles/2012/how-to-github/naZ6I.png" alt="GitHub Network" title="" /></p>
+
+<p>네트워크 그림이다. 'mobile' 이라는 브랜치에서 누군가 열심히 작업을 하고 있기 때문에 'mobile'에 대한 일을 하는 수고는 하지 않는것이 좋을듯 하다.</p>
+
+<p>우선 해야할 일은 프로젝트의 네트워크를 확인해보는 것이다. 네트워크를 확인함으로서 누가 어떤일을 하고 있는지를 살펴볼 수 있다. 네트워크를 한참 들여다보면 고쳐보고자 하던 부분도 이미 다른이가 하고 있는지 알수도 있다. 프로젝트 활동상황도 알 수 있으며 고친 부분이 어떻게 프로젝트에 Merge되는지도 알 수 있다.</p>
+
+<h2>이슈 등록</h2>
+
+<p><img src="/articles/2012/how-to-github/oksQI.png" alt="GitHub Issue" title="" /><br /><em>이슈가 왔어요!</em></p>
+
+<p>프로젝트 화면에서 이슈메뉴로 가 봅시다. 얼마나 많은 이슈가 있는지 그리고 내가 고쳐보고픈 부분이 이미 이슈로 등록이 되어있는지 알 수 있다.</p>
+
+<p>많은 사람들이 잊기 쉬운 이 과정이 왜 중요하냐면 고친점을 보내는 사람들은 보통 프로젝트의 관리자 즉 메인테이너가 같은 문제로 고민중이라는 점을 전혀 고려하지 않기 때문이다.</p>
+
+<p>고쳐볼 부분이 아직 이슈로 등록이 안되어있다면 새로 하나 등록하자. 이슈를 등록할때는 메인테이너에게 공손히 프로젝트에 감사하다는 마음을 갖고 고쳐보고자 하는 버그나 개선사항을 적는거다.</p>
+
+<p>메인테이너가 만들어진 이슈에 대한 댓글로 도움이 될 만한 점을 달아줄지도 모른다.</p>
+
+<h2>Fork로 저장소 분리</h2>
+
+<p><img src="/articles/2012/how-to-github/VWFCB.png" alt="Hardcore Fork" title="" /></p>
+
+<p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
+
+<pre><code>git clone **your ssh/git url**
+</code></pre>
+
+<h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
+
+<p><img src="/articles/2012/how-to-github/bbNRs.png" alt="Fork" title="" /><br /><em>Fork가 이거냥!</em></p>
+
+<p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
+
+<pre><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
+</code></pre>
+
+<p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
+
+<pre><code>git fetch upstream
+</code></pre>
+
+<p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
+
+<pre><code>git merge upstream/master
+</code></pre>
+
+<p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
+
+<h2>개발용 브랜치</h2>
+
+<p><img src="/articles/2012/how-to-github/fI9qT.gif" alt="Old Internet" title="" /><br /><em>그 옛날의 인터넷이 생각나지 않나요들?</em></p>
+
+<p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
+
+<pre><code>git branch newfeature
+</code></pre>
+
+<p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
+
+<pre><code>git checkout newfeature
+</code></pre>
+
+<p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
+
+<h2>Hack!</h2>
+
+<p>이제 실제 고치는 작업을 하자. 계획했던 고칠점이 맘에 들 때 까지 될대로 코드를 고쳐보고 테스트해보고 행복의 경지에 이르러보자. 음하하하~</p>
+
+<h2>커밋 하나로 합치기</h2>
+
+<p><img src="/articles/2012/how-to-github/FgOPu.png" alt="Squash" title="" /><br /><em>이게 '스쿼시'냥!</em></p>
+
+<p>여러분도 나처럼 엄청나게 커밋을 해댄다면 커밋 메시지는 안봐도 거지같을게('동작함!', '안돌아감', '열여덟', '후아~', 등등) 뻔하다. 사실 이런 습관은 좋지 않지만 고치고 싶은 생각도 없고 이런 습관을 가진 사람도 많이 봤다.</p>
+
+<p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
+
+<pre><code>git rebase -i HEAD~3
+</code></pre>
+
+<p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
+
+<pre><code>pick df94881 Allow install to SD 
+pick a7323e5 README Junkyism 
+pick 3ead26f rm classpath from git 
+</code></pre>
+
+<p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
+
+<pre><code>pick df94881 Allow install to SD 
+squash a7323e5 README Junkyism 
+squash 3ead26f rm classpath from git 
+</code></pre>
+
+<p>내용을 저장하고 편집기를 종료하면, 새로운 내용으로 편집기가 다시 뜰텐데 그때는 새로 하나로 만들어진 커밋 메시지를 입력하는 것이다. 거지같은 커밋이 깔끔하게 정리된 새 커밋으로 재탄생했다. 만쉐이~ 이제 Pull Request를 해도 부끄럽지 않겠다.</p>
+
+<h2>Pull Request 보내기</h2>
+
+<p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
+
+<pre><code>git push origin newfeature
+</code></pre>
+
+<p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
+
+<p><img src="/articles/2012/how-to-github/aAd2v.png" alt="Pull Request" title="" /><br /><em>Pull Request를 보내자</em></p>
+
+<p>브랜치로 이동한 것을 확인하고 'Pull Request' 버튼을 누르자. 다음과 같은 화면이 나오는데 브랜치에서 변경한 내용에 대한 설명을 적어주고 'Submit Pull Request' 버튼을 눌러준다.</p>
+
+<p><img src="/articles/2012/how-to-github/5Euiy.png" alt="Pull Request" title="" /><br /><em>Pull Request 설명 달기</em></p>
+
+<p>룰루랄라~ 끝났다. 사실 완전히 다 끝난건 아니다. 'Pull Request' 보낸 커밋에 고칠점이 있다면 메인테이너는 'Pull Request'를 바로 받아주지 않고 해당사항을 고쳐달라고 할 것이다. 메인테이너가 'Pull Request'를 닫지(Clone) 않는 한 해당 브랜치로 커밋을 Push하면 다행히도 'Pull Request' 속으로 들어간다.</p>
+
+<h2>Pull Request 받아서 Merge하기</h2>
+
+<p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
+
+<pre><code>git checkout master
+git remote add contributor git://github.com/contributor/project
+git fetch contributor
+git merge contributor/newfeature
+git push origin master
+</code></pre>
+
+<p>이렇게 하면 다른사람이 수정한 내용을 메인 master 브랜치로 merge하게 된다.</p>
+
+<h2>Pull Request를 받아주지 않는 이유</h2>
+
+<p>이 부분은 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">원본 페이지</a>를 확인하시라!</p>]]>
+    </content>
+  </entry>
+  <entry>
     <title><![CDATA[ SMACSS: Brief Notes - Part 2 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/smacss-part2.html" />
     <updated>2012-03-31T15:00:00Z</updated>
@@ -1056,165 +1955,6 @@ nav.nav-primary li li {
     </content>
   </entry>
   <entry>
-    <title><![CDATA[ GitHub로 남의 프로젝트에 감놓고 배놓기 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/how-to-github.html" />
-    <updated>2012-03-31T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/how-to-github.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://github.com/">GitHub</a>를 사용하여 오픈소스 프로젝트에 어떻게 참여할 수 있는 방법을 정리한다. GitHub에 계정이 있어야 하고 <a href="http://git-scm.org/">Git</a>을 어느정도 써 본 사람이어야 한다. </p>
-
-<p><em>원문은 <a href="http://gun.io/">Rich Jones</a>의 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">How to GitHub: Fork, Branch, Track, Squash and Pull Request</a> 이다.</em></p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png" alt="gun.io" title="" /></p>
-
-<h2>저자 공지사항</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 활동하는 개발자 중 저자의 <a href="http://gun.io/contracts/new/">구인구직 사이트</a>에 등록하면 구직하는 사람과 연결해준다고 한다. 관심있는 사람은 둘러보시길!</p>
-
-<h2>자 시작!</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 저장소를 새로 하나 만들면 아래와 같은 설명을 보여준다.</p>
-
-<p><img src="/articles/2012/how-to-github/LiEI3.png" alt="GitHub" title="" /></p>
-
-<p>GitHub은 새로운 프로젝트와 새로운 저장소를 만들었을 경우에 대한 설명은 친절하게 해주고 있다. 하지만 다른 프로젝트를 개선하고 참여하는 방법에 대해서는 그다지 좋은 설명을 해주고 있지 않다. 이 글은 그러한 점에서 도움이 될 것이다.</p>
-
-<p>우선 시작하기 전에 고쳐보고 싶은 프로젝트를 하나 골라보자. GitHub에서 프로젝트를 찾아서 코드도 둘러보고 익숙한 개발방식을 갖고 있는지 확인도 해보고 커밋 로그도 살펴보고 참여하는 사람이 어떤 사람인지도 살펴들 보자.</p>
-
-<h2>네트워크</h2>
-
-<p><img src="/articles/2012/how-to-github/naZ6I.png" alt="GitHub Network" title="" /></p>
-
-<p>네트워크 그림이다. 'mobile' 이라는 브랜치에서 누군가 열심히 작업을 하고 있기 때문에 'mobile'에 대한 일을 하는 수고는 하지 않는것이 좋을듯 하다.</p>
-
-<p>우선 해야할 일은 프로젝트의 네트워크를 확인해보는 것이다. 네트워크를 확인함으로서 누가 어떤일을 하고 있는지를 살펴볼 수 있다. 네트워크를 한참 들여다보면 고쳐보고자 하던 부분도 이미 다른이가 하고 있는지 알수도 있다. 프로젝트 활동상황도 알 수 있으며 고친 부분이 어떻게 프로젝트에 Merge되는지도 알 수 있다.</p>
-
-<h2>이슈 등록</h2>
-
-<p><img src="/articles/2012/how-to-github/oksQI.png" alt="GitHub Issue" title="" /><br /><em>이슈가 왔어요!</em></p>
-
-<p>프로젝트 화면에서 이슈메뉴로 가 봅시다. 얼마나 많은 이슈가 있는지 그리고 내가 고쳐보고픈 부분이 이미 이슈로 등록이 되어있는지 알 수 있다.</p>
-
-<p>많은 사람들이 잊기 쉬운 이 과정이 왜 중요하냐면 고친점을 보내는 사람들은 보통 프로젝트의 관리자 즉 메인테이너가 같은 문제로 고민중이라는 점을 전혀 고려하지 않기 때문이다.</p>
-
-<p>고쳐볼 부분이 아직 이슈로 등록이 안되어있다면 새로 하나 등록하자. 이슈를 등록할때는 메인테이너에게 공손히 프로젝트에 감사하다는 마음을 갖고 고쳐보고자 하는 버그나 개선사항을 적는거다.</p>
-
-<p>메인테이너가 만들어진 이슈에 대한 댓글로 도움이 될 만한 점을 달아줄지도 모른다.</p>
-
-<h2>Fork로 저장소 분리</h2>
-
-<p><img src="/articles/2012/how-to-github/VWFCB.png" alt="Hardcore Fork" title="" /></p>
-
-<p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
-
-<pre><code>git clone **your ssh/git url**
-</code></pre>
-
-<h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
-
-<p><img src="/articles/2012/how-to-github/bbNRs.png" alt="Fork" title="" /><br /><em>Fork가 이거냥!</em></p>
-
-<p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
-
-<pre><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
-</code></pre>
-
-<p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
-
-<pre><code>git fetch upstream
-</code></pre>
-
-<p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
-
-<pre><code>git merge upstream/master
-</code></pre>
-
-<p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
-
-<h2>개발용 브랜치</h2>
-
-<p><img src="/articles/2012/how-to-github/fI9qT.gif" alt="Old Internet" title="" /><br /><em>그 옛날의 인터넷이 생각나지 않나요들?</em></p>
-
-<p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
-
-<pre><code>git branch newfeature
-</code></pre>
-
-<p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
-
-<pre><code>git checkout newfeature
-</code></pre>
-
-<p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
-
-<h2>Hack!</h2>
-
-<p>이제 실제 고치는 작업을 하자. 계획했던 고칠점이 맘에 들 때 까지 될대로 코드를 고쳐보고 테스트해보고 행복의 경지에 이르러보자. 음하하하~</p>
-
-<h2>커밋 하나로 합치기</h2>
-
-<p><img src="/articles/2012/how-to-github/FgOPu.png" alt="Squash" title="" /><br /><em>이게 '스쿼시'냥!</em></p>
-
-<p>여러분도 나처럼 엄청나게 커밋을 해댄다면 커밋 메시지는 안봐도 거지같을게('동작함!', '안돌아감', '열여덟', '후아~', 등등) 뻔하다. 사실 이런 습관은 좋지 않지만 고치고 싶은 생각도 없고 이런 습관을 가진 사람도 많이 봤다.</p>
-
-<p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
-
-<pre><code>git rebase -i HEAD~3
-</code></pre>
-
-<p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
-
-<pre><code>pick df94881 Allow install to SD 
-pick a7323e5 README Junkyism 
-pick 3ead26f rm classpath from git 
-</code></pre>
-
-<p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
-
-<pre><code>pick df94881 Allow install to SD 
-squash a7323e5 README Junkyism 
-squash 3ead26f rm classpath from git 
-</code></pre>
-
-<p>내용을 저장하고 편집기를 종료하면, 새로운 내용으로 편집기가 다시 뜰텐데 그때는 새로 하나로 만들어진 커밋 메시지를 입력하는 것이다. 거지같은 커밋이 깔끔하게 정리된 새 커밋으로 재탄생했다. 만쉐이~ 이제 Pull Request를 해도 부끄럽지 않겠다.</p>
-
-<h2>Pull Request 보내기</h2>
-
-<p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
-
-<pre><code>git push origin newfeature
-</code></pre>
-
-<p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
-
-<p><img src="/articles/2012/how-to-github/aAd2v.png" alt="Pull Request" title="" /><br /><em>Pull Request를 보내자</em></p>
-
-<p>브랜치로 이동한 것을 확인하고 'Pull Request' 버튼을 누르자. 다음과 같은 화면이 나오는데 브랜치에서 변경한 내용에 대한 설명을 적어주고 'Submit Pull Request' 버튼을 눌러준다.</p>
-
-<p><img src="/articles/2012/how-to-github/5Euiy.png" alt="Pull Request" title="" /><br /><em>Pull Request 설명 달기</em></p>
-
-<p>룰루랄라~ 끝났다. 사실 완전히 다 끝난건 아니다. 'Pull Request' 보낸 커밋에 고칠점이 있다면 메인테이너는 'Pull Request'를 바로 받아주지 않고 해당사항을 고쳐달라고 할 것이다. 메인테이너가 'Pull Request'를 닫지(Clone) 않는 한 해당 브랜치로 커밋을 Push하면 다행히도 'Pull Request' 속으로 들어간다.</p>
-
-<h2>Pull Request 받아서 Merge하기</h2>
-
-<p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
-
-<pre><code>git checkout master
-git remote add contributor git://github.com/contributor/project
-git fetch contributor
-git merge contributor/newfeature
-git push origin master
-</code></pre>
-
-<p>이렇게 하면 다른사람이 수정한 내용을 메인 master 브랜치로 merge하게 된다.</p>
-
-<h2>Pull Request를 받아주지 않는 이유</h2>
-
-<p>이 부분은 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">원본 페이지</a>를 확인하시라!</p>]]>
-    </content>
-  </entry>
-  <entry>
     <title><![CDATA[ KTH 발표 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/first-speach.html" />
     <updated>2012-03-29T15:00:00Z</updated>
@@ -1296,421 +2036,6 @@ git push origin master
 <p><img src="/articles/2012/git-ff/git-ff-result.png" alt="git-ff-result" title="" /></p>
 
 <p>Fast-Forward Merge도 하지만 해당 저장소랑 Delta가 얼마나 되는지 한눈에 알 수 있다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Bash: 자동완성 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/bash-completion.html" />
-    <updated>2012-03-17T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/bash-completion.html</id>
-    <content type="html">
-<![CDATA[
-<p><em>이 글은 'An introduction to bash completion'(<a href="http://www.debian-administration.org/articles/316">part 1</a>, <a href="http://www.debian-administration.org/articles/317">part 2</a>)을 정리한 것이다. DocPad에 Completion이 있으면 좀 편할 것 같아서 시작했다.</em></p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/bash-completion/tab-key.jpeg" alt="tab-key" title="" /></p>
-
-<p>Bash Completion은 간단한 메커니즘으로 구현하는 것 같은데 막상 원하는 대로 조작하긴 쉽지 않다.</p>
-
-<h2>Part 1</h2>
-
-<p>Completion 덕에 명령어와 인자를 좀 더 쉽게 사용할 수 있다. 자주 사용하는 명령어에 Completion을 구현하려면 이 글을 읽는 것이 좋다.</p>
-
-<p>보통 셸에서 TAB 키를 누르면 파일 이름, 디렉토리 이름, 실행경로($PATH)에 있는 명령어를 자동으로 완성해준다:</p>
-
-<pre><code>ls /bo[TAB]
-</code></pre>
-
-<p><code>/bo</code> 다음에 TAB 키를 누르면 <code>/bo</code>가 <code>/boot</code>로 대체된다.</p>
-
-<p><a href="http://packages.debian.org/bash">Debian bash package</a>는 <code>/etc/bash_completion</code>이라는 Completion 파일이 있고 이 파일에는 일반적인 명령어에 대한 Completion이 정의돼 있다. 아직 사용하고 있지 않으면 ". /etc/bash_completion"라고 실행해서 바로 사용하자:</p>
-
-<pre><code>skx@lappy:~$ . /etc/bash_completion
-skx@lappy:~$ 
-</code></pre>
-
-<p>이걸 한 번만 해주면 다양한 명령어에 Completion을 이용할 수 있다:</p>
-
-<pre><code>skx@lappy:~$ apt-get upd[TAB]
-skx@lappy:~$ apt-get upg[TAB]
-</code></pre>
-
-<p>그런데, 어떻게 만들지? 직접 만들고 싶은데. Completion 루틴은 'complete' 같은 bash 내부 명령어 몇 개를 조합해서 만든다. 이 루틴을 만들어 .bash_profile에 넣거나 별도의 파일로 만들어 /etc/bash_completion.d/에 넣을 수 있다.</p>
-
-<p>/etc/bash_completion 파일을 로드하면(sourced) /etc/bash_completion.d 디렉토리에 있는 모든 파일이 같이 로드된다. 편리하다.</p>
-
-<p>개중에는 호스트 이름을 완성해주는 것도 있다. 이 게 유용한 명령어도 있고 아닌 명령어도 있지만 하나 살펴보자.</p>
-
-<p>저자인 [Steve][]는 <a href="http://www.debian-administration.org/articles/135">VNC로 관리하는 컴퓨터가 몇 대 있다</a>. 보통 "xvncviewer hostname"이라고 실행한다.</p>
-
-<p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:</p>
-
-<pre><code>skx@lappy:~$ complete -F _known_hosts xvncviewer
-</code></pre>
-
-<p>이 complete 명령을 한번 실행하고 [TAB]을 입력하면 다음과 같이 보여 줄 거다:</p>
-
-<pre><code>skx@lappy:~$ xvncviewer s[TAB]
-savannah.gnu.org            ssh.tardis.ed.ac.uk
-scratchy                    steve.org.uk
-security.debian.org         security-master.debian.org
-sun
-skx@lappy:~$ xvncviewer sc[TAB]
-</code></pre>
-
-<p>이 호스트들은 나한테만 이렇게 보인다.</p>
-
-<p>_known_hosts 함수는 /etc/bash_completion에 정의돼 있다. 이런 함수가 있다는 걸 내가 어떻게 알았을까? "complete -p" 명령을 실행하면 현재 사용하고 있는 것을 모두 보여준다:</p>
-
-<pre><code>skx@lappy:~$ complete -p
-....
-complete -F _known_hosts tracepath
-complete -F _known_hosts host
-...
-</code></pre>
-
-<h2>Part 2</h2>
-
-<p>이제 직접 Completion 함수를 작성해 보자.</p>
-
-<p>'part 1'에서 아무 명령에나 hostname을 완성하는 것을 만들어 봤다:</p>
-
-<pre><code>complete -F _known_hosts xvncviewer
-</code></pre>
-
-<p>이 명령은 xvncviewer의 인자를 Completion할 때 _known_hosts 함수를 사용하라고 알리는 것이다.</p>
-
-<p>이제는 이미 만들어진 함수를 사용하는 것이 아니라 직접 만들어 사용하는 것을 알아보자.</p>
-
-<h3>A Basic Example</h3>
-
-<p>먼저 <code>foo</code>라는 명령어의 인자를 Completion하는 예제를 만들어보자. <code>foo</code>는 다음과 같은 인자를 가진 가짜 명령어다:</p>
-
-<ul>
-<li>--help
-<ul><li>Shows the help options for foo, and exits.</li></ul></li>
-<li>--version
-<ul><li>Shows the version of the foo command, and exits.</li></ul></li>
-<li>--verbose
-<ul><li>Runs foo with extra verbosity</li></ul></li>
-</ul>
-
-<p>/etc/bash_comletion을 로드할 때 자동으로 로드되도록 /etc/bash_completeion.d/foo 파일을 만든다. </p>
-
-<p>파일에 다음과 같은 내용을 넣고 저장한다:</p>
-
-<pre><code>_foo() 
-{
-    local cur prev opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="--help --verbose --version"
-
-    if [[ ${cur} == -* ]] ; then
-        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-        return 0
-    fi
-}
-complete -F _foo foo
-</code></pre>
-
-<p>그리고 나서 이 파일만 읽어들여 테스트해본다: </p>
-
-<pre><code>skx@lappy:~$ . /etc/bash_completion.d/foo
-skx@lappy:~$ foo --[TAB]
---help     --verbose  --version  
-</code></pre>
-
-<p>한번 해보면 인자가 자동으로 완성되는 것을 볼 수 있다. 그리고 예를 들어, "foo --h[TAB]"라고 입력하면 '--help' 옵션을 자동으로 완성해준다</p>
-
-<p>이제 실제로 동작하는 것을 만들어 봤고 어떻게 동작하는 것인지 뜯어보자!</p>
-
-<h3>How Completion Works</h3>
-
-<p>Completion에 사용할 함수를 간단하게 구현해봤다.</p>
-
-<p>이 함수는 cur, prev, opts 옵션을 정의하면서 시작한다. cur는 '현재 입력된 단어(word)'에 사용하고, prev는 '이전에 입력된 단어'에, opts는 Completion할 옵션에 사용한다.</p>
-
-<p>그리고 실제로 옵션을 Completion하는 것은 compgen이라는 명령어를 통해서다:</p>
-
-<pre><code>COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-</code></pre>
-
-<p>compgen 명령의 결과를 $COMPREPLY에 할당한다:</p>
-
-<pre><code>compgen -W "${opts}" -- ${cur}
-</code></pre>
-
-<p>여기서 변수 대신 실제 값을 넣어보면 이 명령이 실제로 어떻게 동작하는지 이해하기 쉬울 것이다:</p>
-
-<pre><code>compgen -W "--help --verbose --version" -- "userinput"
-</code></pre>
-
-<p>compgen은 "--help --verbose --version" 중에서 "${cur}"와 일치하는 것을 찾아 리턴한다. 잘 이해가 안되면 바로 셸에서 이 명령을 직접 실행해 보면 알 수 있다:</p>
-
-<pre><code>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
---help
---verbose
---version
-skx@lappy:~$ compgen -W "--help --verbose --version" -- --h
---help
-</code></pre>
-
-<p>"--"라고 입력하면 세 옵션 모두 일치하므로 전부 반환된다. 하지만 "--h"만 입력하면 "--help"만 일치하므로 --help만 반환한다.</p>
-
-<p>그래서 이 결과를 "COMPREPLY" 변수에 할당하면 bash가 입력 중인 부분의 글자를 대체시킨다. bash에서 COMPREPLY는 Completion 루틴에서 결과를 반환하는 방법이라서 특별한 의미가 있는 변수다.</p>
-
-<p><a href="http://www.gnu.org/software/bash/manual/bash.html">the bash reference manual</a>에 있는 COMPREPLY에 대한 설명을 살펴보자:</p>
-
-<h4>COMPREPLY</h4>
-
-<p>Completion 함수가 반환한 결과를 배열 형태로 반환하고 Bash가 이 변수를 읽는다.</p>
-
-<p>그리고 사용자가 입력하는 단어가 무엇인지 COMP_WORDS라는 배열로 알 수 있다. 그리고 현재 단어와 이전 단어가 무엇인지도 알 수 있다.</p>
-
-<h4>COMP_WORDS</h4>
-
-<p>지금 Command line에 있는 각 단어가 담긴 배열이다. 이 변수는 Completion을 만들 때 사용하는 명령어를 통해 호출한 함수에서만 사용할 수 있다.</p>
-
-<h4>COMP_CWORD</h4>
-
-<p>${COMP_WORDS} 배열에서 현 단어를 가리키는 인덱스다. 이것도 Completion 명령어가 호출한 함수에서만 사용할 수 있다.</p>
-
-<h3>A Complex Example</h3>
-
-<p>옵션이 굉장히 복잡한 명령어도 많다. 이런 명령어는 상당히 정교한 작업이 필요하다.</p>
-
-<p>Xen에 있는 xm 명령어의 예를 살펴보자(<a href="http://www.ibm.com/developerworks/kr/library/l-xen/">developerworks의 Xen 소개</a>):</p>
-
-<ul>
-<li>xm list
-<ul><li>List all running Xen instances</li></ul></li>
-<li>xm create ConfigName
-<ul><li>Create a new Xen instances using the configuration file in /etc/xen called ConfigName.</li></ul></li>
-<li>xm console Name
-<ul><li>Connect to the console of the running machine named "Name".</li></ul></li>
-</ul>
-
-<p>예를 들어, "xm operation args" 라는 명령어에서 "args"는 앞에 "operation"이 무엇이냐에 따라 다르다.</p>
-
-<p>먼저 "operation"의 Completion을 구현하는 것은 앞에서 설명했던 것과 방법이 같다. "--" 없이 구현하고 사용하면 된다. 하지만, 후속 인자를 Completion하는 것은 특별한 처리가 필요하다.</p>
-
-<p>Completion할 때 이전 토큰을 알아야 해서 명령어마다 다르게 처리한다. 예를 들자면:</p>
-
-<pre><code>_xm() 
-{
-    local cur prev opts base
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-
-    #
-    #  The basic options we'll complete.
-    #
-    opts="console create list"
-
-
-    #
-    #  Complete the arguments to some of the basic commands.
-    #
-    case "${prev}" in
-        console)
-            local running=$(for x in `xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)`; do echo ${x} ; done )
-
-            COMPREPLY=( $(compgen -W "${running}" -- ${cur}) )
-            return 0
-            ;;
-        create)
-            local names=$(for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done )
-
-            COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
-            return 0
-            ;;
-        *)
-            ;;
-    esac
-
-    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))  
-    return 0
-}
-complete -F _xm xm
-</code></pre>
-
-<p>이 코드는 "operation"을 Completion하는 것이고 "create"와 "console"이라는 "operation"에 대해서는 추가적인 코드를 더 했다. <br />사용자가 입력하는 값을 Completion하기 위해 compgen을 사용하는 것까지는 같지만, 상황에 따라 다른 목록을 사용한다.</p>
-
-<p>"console" operation에 사용하는 목록은 다음과 같은 명령으로 만든다:</p>
-
-<pre><code>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)
-</code></pre>
-
-<p>이 명령은 지금 도는 Xen 시스템의 목록을 반환한다.</p>
-
-<p>"creation" operation에 사용하는 목록은 다음 명령으로 만든다:</p>
-
-<pre><code>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done
-</code></pre>
-
-<p>이 명령은 /etc/xen 디렉토리에 있는 '*.cfg' 파일을 모두 반환한다. 예를 들면 다음과 같다:</p>
-
-<pre><code>skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
-etch.cfg
-root.cfg
-sarge.cfg
-steve.cfg
-x.cfg
-skx@lappy:~$ 
-</code></pre>
-
-<h3>Other Completion</h3>
-
-<p>지금까지 compgen을 사용해서 사용자가 입력한 값과 일치하는 스트링을 찾았다. 찾을 스트링은 하드 코딩한 목록이거나 명령어가 반환하는 결과에서 찾았다. 디렉토리 이름이나 프로세스 이름등 다른 것에서 찾을 수도 있다. 자세한 내용은 "man bash"를 실행해서 살펴볼 수 있다.</p>
-
-<p>다음은 파일과 호스트이름을 Completion하는 방법을 설명하는 예제다:</p>
-
-<pre><code>#
-#  Completion for foo:
-#
-#  foo file [filename]
-#  foo hostname [hostname]
-#
-_foo() 
-{
-    local cur prev opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="file hostname"
-
-    case "${prev}" in
-        file)
-        COMPREPLY=( $(compgen -f ${cur}) )
-            return 0
-            ;;
-        hostname)
-        COMPREPLY=( $(compgen -A hostname ${cur}) )
-            return 0
-            ;;
-        *)
-        ;;
-    esac
-
-    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-}
-complete -F _foo foo
-</code></pre>
-
-<p>이 예제를 활용하면 직접 Completion 함수를 만들 수 있다. 사실 Completion 함수를 만드는데 시간이 많이 들고 나머지는 매우 간단하다.</p>
-
-<p>@pismute가 만든 <a href="https://github.com/dogfeet/docpad/blob/dogfeet/contrib/docpad-completion.bash">docpad-completion.bash</a>도 읽어 볼 수 있다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ SMACSS:The Icon Module ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/smacss-icon-module.html" />
-    <updated>2012-03-07T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/smacss-icon-module.html</id>
-    <content type="html">
-<![CDATA[
-<p>이글은 <a href="https://smacss.com/book/icon-module">The Icon Module</a>을 정리한 것이다. <a href="https://smacss.com/">SMACSS</a>를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 'CSS Sprite' 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/smacss/smacss.png" alt="smacss" title="" /></p>
-
-<p>이 글은 무료로 공개돼 있지 않다.</p>
-
-<h2>SMACSS</h2>
-
-<p><a href="https://smacss.com/">SMACSS</a>는 좋은 책이다. CSS '관리'에 초점을 맞추고 이렇게 일목요연하게 정리된 자료는 일찍이 보지 못했다. 이 글을 읽고 도움이 됐다면 <a href="https://smacss.com/">SMACSS</a>를 꼭 사길 바란다. $30 짜리 workshop 계정을 사면 저자인 <a href="http://snook.ca/">Jonathan Snook</a>가 지속적으로 업데이트하는 유로 컨텐츠를 계속 이용할 수 있다.</p>
-
-<h2>The Icon Module</h2>
-
-<p>Asset(Image)을 한 파일로 모으면 HTTP 요청 수도 줄고 이미 모든 Asset을 내려받았기 때문에 나중에 필요할 때 바로 사용할 수 있다. 이것을 <code>CSS Sprite</code>라고 부른다.</p>
-
-<p>다음 그림을 보면 이 말이 무슨 뜻인지 알 수 있다:</p>
-
-<p><img src="/articles/2012/smacss/icon-menu.png" alt="icon-menu" title="" /></p>
-
-<p>Menu HTML:</p>
-
-<pre><code>&lt;ul class="menu"&gt;
-    &lt;li class="menu-inbox"&gt;Inbox&lt;/li&gt;
-    &lt;li class="menu-drafts"&gt;Drafts&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<p>Menu CSS:</p>
-
-<pre><code>.menu li {
-    background: url(/img/sprite.png) no-repeat 0 0;
-    padding-left: 20px;
-}
-
-.menu .menu-inbox {
-    background-position: 0 -20px;
-}
-
-.menu .menu-drafts {
-    background-position: 0 -40px;
-}
-</code></pre>
-
-<p>모든 Icon은 Sprite 파일 하나에 다 들어 있고 아이템마다 필요한 Icon이 있는 위치를 보여준다.</p>
-
-<p>이걸로도 되긴 되지만 좀 더 작업을 다듬을 수 있다:</p>
-
-<ul>
-<li>list 아이템이라는 특정 DOM에만 사용할 수 있다.</li>
-<li>모듈마다 Sprite를 항상 다시 만들어야 한다.</li>
-<li>위치가 취약하다: 폰트 크기를 늘리면 다른 부분이 살짝 보일 수 있다.</li>
-<li>x가 항상 0이기 때문에 수평적으로 처리하기 까다롭다.</li>
-</ul>
-
-<p>이 이슈만 해결되면 소위 Icon Module이라 칭할 수 있다.</p>
-
-<p>Icon Module을 사용하도록 HTML을 바꾼다:</p>
-
-<pre><code>&lt;li&gt;&lt;i class="ico ico-16 ico-inbox"&gt;&lt;/i&gt; Inbox&lt;/li&gt;
-</code></pre>
-
-<p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
-
-<p><code>&lt;i&gt;</code>는 HTML 속 어디에 넣어도 되니까 HTML 구조의 의존성은 사라졌다고 볼 수 있다.</p>
-
-<p>그리고 "ico ico-16 ico-inbox" 클래스는 각각 역할이 다르다. 게다가 <code>&lt;img&gt;</code> 태그와 잘 섞어 사용할 수 있다.</p>
-
-<p>Icon Module CSS:</p>
-
-<pre><code>.ico {
-    display: inline-block;
-    background: url(/img/sprite.png) no-repeat;
-    line-height: 0;
-    vertical-align: bottom;
-}
-
-.ico-16 {
-    height: 16px;
-    width: 16px;
-}
-
-.ico-inbox {
-    background-position: 20px 20px;
-}
-
-.ico-drafts {
-    background-position: 20px 40px;
-}
-</code></pre>
-
-<p><code>ico</code> 클래스는 모듈의 기본적인 토대를 다지는 클래스다. <code>&lt;img&gt;</code>처럼 inline-block 엘리멘트로 만들고 <code>vertical-align</code>으로 Icon이 텍스트와 잘 어우러지도록 해준다. IE는 <code>inline-block</code>을 <code>block</code> 엘리먼트로 취급하기 때문에 IE에서는 <code>{ zoom:1; display:inline; }</code>로 해야 한다.</p>
-
-<p><code>ico-16</code>은 크기 정해주기 위함이다. ico 클래스에 같이 넣어줘도 되지만 Icon마다 크기가 다를 수도 있어서 이렇게 하는 거다.</p>
-
-<p><code>icon-inbox</code>는 Sprite 이미지에서의 Inbox용 Icon의 위치를 정의하는 것이다.</p>
-
-<p>촘촘히 우겨넣은 이미지:</p>
-
-<p><img src="/articles/2012/smacss/icon-menu2.png" alt="icon-menu2" title="" /></p>
-
-<p>잘 우겨넣으면 압축 효율이 좋아진다. 그리고 파일 크기도 더 작아지므로 사이트 성능도 향상된다. 아직 <a href="http://www.smushit.com/ysmush.it/">Smush.it</a>이나 <a href="http://imageoptim.pornel.net/">ImageOptim</a>을 사용해보지 않았으면 한번 사용해보는 것이 좋다.</p>]]>
     </content>
   </entry>
 </feed>
