@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - eclipse 메모리 설정하기</title>
-    <meta name="description" content="cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다." />
-    <meta name="keywords" content="Java,Eclipse,STS" />
+    <title>dogfeet - Ubuntu</title>
+    <meta name="description" content="Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다." />
+    <meta name="keywords" content="ubuntu" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -91,14 +91,14 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2010/1263755580.html" lang="ko-kr">
+<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/ubuntu-desktop.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">eclipse 메모리 설정하기</h1>
+    <h1 property="dcterms:title">Ubuntu</h1>
   </header>
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">2010 Jan 17</span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#sts" class="tag">STS</a> | <span><a href="/articles/2010/1263755580.html#disqus_thread" data-disqus-identifier="/articles/2010/1263755580.html"></a></span>
+ | <span property="dc:created">2012 Apr 28</span>
+ | <a href="/site/tagmap.html#ubuntu" class="tag">ubuntu</a> | <span><a href="/articles/2012/ubuntu-desktop.html#disqus_thread" data-disqus-identifier="/articles/2012/ubuntu-desktop.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -107,120 +107,135 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1263755580.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/ubuntu-desktop.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1263755580.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/ubuntu-desktop.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1263755580.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/ubuntu-desktop.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다.</p>
+    <p>Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다.</p>
 
-<p>STS의 경우에는 좀 다르다. 스스로를 '성인'으로 착각할 만큼 느리다. 첨부터 느리지만 쓰면 쓸 수록 느려진다. 프로그램을 실행 후 조금 사용하다보면 미치게 하는 속도를 보여준다.</p>
+<p><img src="/articles/2012/ubuntu-desktop/ubuntu.png" alt="ubuntu" title="" /></p>
 
-<p>소스탭하나 바꾸는데 2~3초의 시간을 기다려야 했는데--; 이제 1초 이내에 바뀐다. 다음과 같이 변경했다.</p>
+<p>만날 X 없이 Server만 깔아서 쓰다가 Desktop을 설치했는데 너무 편하다. 앞으로는 Ubuntu Desktop을 많이 쓸 것 같다.</p>
 
-<pre><code>-Xms1024m -Xmx1024m -XstartOnFirstThread -Xverify:none
--XX:MaxPermSize=256m -XX:PermSize=256m -XX:MaxNewSize=128m
--XX:NewSize=128m -XX:+UseParallelGC
+<h2>할 일</h2>
+
+<ul>
+<li>/tmp를 tmpfs로 만들기</li>
+</ul>
+
+<p>noexec로 하면 <code>/tmp</code>에 압축을 풀고 설치하는 인스톨러들이(특히 오라클 제품들...) 실패한다. 보안을 위해 noexec로 설명하는 글들이 많은데, 서버가 아니니 exec로 하도록 하자.</p>
+
+<pre><code>#/etc/fstab
+tmpfs            /tmp           tmpfs   defaults,exec,nosuid 0       0
 </code></pre>
 
-<p>Mac은 OS Paging을 끌수가 없어서 4G를 장착하고도 꽤 느리다. SO(DLL)을 사용하지 않는 정책때문에 매모리가 많이 필요하며 시간이 지나면 리부팅을 해줘야 한다. 적어도 일주일에 한번이나 해줘야 한다.</p>
+<ul>
+<li>apt source를 ftp.daum.net로 변경. - System Settings/Software Sources</li>
+<li>virtual kernel 설치.</li>
+<li>dselect 설치 - <code>sudo apt-get install dselect</code></li>
+<li>vmware tools 설치 - <code>sudo apt-get install open-vm-dkms</code></li>
+<li>나눔폰트 설치 - <code>sudo apt-get install ttf-nanum ttf-nanum-coding ttf-nanum-extra</code></li>
+<li>한글설정 - System Settings/Language Support</li>
+<li>폰트, 폰트 크기 변경 - <code>sudo apt-get install gnome-tweak-tool</code></li>
+<li>git 설치 - git</li>
+<li>7zip 설치 - p7zip, p7zip-full</li>
+<li>nvm, node를 위해 - curl, libss-dev</li>
+<li>vim - default는 vim-tiny</li>
+<li>가끔 필요 - jekyll</li>
+</ul>
 
-<p>찾아보니 코쟁이들도 일주일에 한번이나 리부팅해야 한다며(--;) 불평을 하는 글들이 좀 있었다. 양덕도 별수 없다.</p>
+<p>이걸 다 더하면:</p>
+
+<pre><code>sudo apt-get install dselect open-vm-dkms ttf-nanum ttf-nanum-coding ttf-nanum-extra gnome-tweak-tool git p7zip p7zip-full curl libss-dev vim ruby ruby1.9.1 ruby1.9.1-dev
+
+sudo gem install jekyll
+</code></pre>
+
+<h3>chrome 설치</h3>
+
+<p>인증서를 등록하고:</p>
+
+<pre><code>wget -q -O - <a href='https://dl-ssl.google.com/linux/linux_signing_key.pub'>https://dl-ssl.google.com/linux/linux_signing_key.pub</a> | sudo apt-key add -
+</code></pre>
+
+<p>apt source 등록:</p>
+
+<pre><code>sudo sh -c 'echo "deb <a href='http://dl.google.com/linux/chrome/deb/'>http://dl.google.com/linux/chrome/deb/</a> stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'
+</code></pre>
+
+<p>update하고:</p>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>안정 버전을 설치한다:</p>
+
+<pre><code>sudo apt-get install google-chrome-stable
+</code></pre>
+
+<p><a href="http://www.howopensource.com/2011/10/install-google-chrome-in-ubuntu-11-10-11-04-10-10-10-04/">원문</a></p>
+
+<h3>sumlime text</h3>
+
+<ul>
+<li><a href="http://www.webupd8.org/2011/03/sublime-text-2-ubuntu-ppa.html">sublime text 설치</a></li>
+</ul>
+
+<h3>ubuntu one</h3>
+
+<p>모류 5G라, home directory를 백업하기 적당해 보인다.</p>
+
+<p>백업하지 않을 디렉토리:</p>
+
+<pre><code>.nvm
+.npm
+.jenkins
+.m2
+.cache #chrome cache
+.mozilla/firefox #firefox cache
+</code></pre>
+
+<h3>git-svn, svn</h3>
+
+<p>12.04에서만 발생하는 에러일 수도 있지만 당분간 해결되지 않을 것 같은 느낌이다. SVN에서 https인 저장소에 접근하면 다음과 같은 에러가 발생한다.</p>
+
+<pre><code>└─▪ git svn dcommit
+Committing to <a href='https://my.svn/trunk'>https://my.svn/trunk</a> ...
+RA layer request failed: OPTIONS of '<a href='https://my.svn/trunk'>https://my.svn/trunk</a>': SSL handshake failed: SSL error: Key usage violation in certificate has been detected. (<a href='https://my.svn'>https://my.svn</a>) at /usr/lib/git-core/git-svn line 577
+</code></pre>
+
+<p>뭐 이런 에러가 발생하면 다음과 같이 임시로 조치할 수 있다.:</p>
+
+<pre><code>sudo apt-get install libneon27
+cd /usr/lib
+sudo mv libneon-gnutls.so.27 libneon-gnutls.so.27.old
+sudo ln -s libneon.so.27.2.6 libneon-gnutls.so.27
+</code></pre>
+
+<p>임시로 이렇게 우회할 수 있지만 Ubunut가 자동으로 복구한다.</p>
+
+<p>그냥 간단하게 스킴을 https가 아니라 http로 해주는 게 더 편하다.</p>
+
+<h3>USB에 있는 Ubuntu를 VM에서 부팅 하고자 할 때</h3>
+
+<p>USB에 우분트를 설치한 게 있는데 그걸 VM에서 부팅하고 싶다면 <a href="http://www.plop.at/en/bootmanager/plpbt.bin.html">Plop Boot Manager</a>로 부팅시킬 수 있다.</p>
   </div>
 </article>
-<section id="related">
-  <h3>Related Posts</h3>
-  <div class="alert alert-info">
-    <ul>
-      <li>
-        <span>Dec 27 2009</span>
-&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-      </li>
-      <li>
-        <span>Jul 29 2010</span>
-&raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
-      </li>
-      <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
-      </li>
-      <li>
-        <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</a>
-      </li>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Apr 27 2010</span>
-&raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Apr 20 2010</span>
-&raquo;        <a href="/articles/2010/1271743080.html">Spring Finance</a>
-      </li>
-      <li>
-        <span>May 04 2010</span>
-&raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-      </li>
-      <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
-      </li>
-      <li>
-        <span>Apr 03 2009</span>
-&raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
-      </li>
-      <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
-      </li>
-      <li>
-        <span>Aug 26 2008</span>
-&raquo;        <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
-      </li>
-      <li>
-        <span>Aug 19 2008</span>
-&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
-      </li>
-    </ul>
-  </div>
-</section>
 <section id="comments">
   <h3>Feedback</h3>
   <div class="row">
 <div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2010/1263755580.html';
+    var disqus_identifier = '/articles/2012/ubuntu-desktop.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -228,8 +243,8 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
-  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1263755580.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1263755580.html" data-num-posts="1"></div>
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/ubuntu-desktop.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/ubuntu-desktop.html" data-num-posts="1"></div>
   </div>  </div>
 </section>
 
