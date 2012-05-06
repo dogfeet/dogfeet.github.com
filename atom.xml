@@ -3,8 +3,12 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-04-30T05:54:15Z</updated>
+  <updated>2012-05-06T12:45:44Z</updated>
   <id>http://dogfeet.github.com</id>
+  <author>
+    <name>Yongjae Choi</name>
+    <email>mage@weaveus.com</email>
+  </author>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
@@ -13,10 +17,745 @@
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
-  <author>
-    <name>Yongjae Choi</name>
-    <email>mage@weaveus.com</email>
-  </author>
+  <entry>
+    <title><![CDATA[ nodejs: npm config ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/nodejs-npm-config.html" />
+    <updated>2012-05-04T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/nodejs-npm-config.html</id>
+    <content type="html">
+<![CDATA[
+<p>이글은 <a href="http://npmjs.org/doc/config.html">npm config</a>를 정리한 글이다. npm이 설정을 관리하는 부분은 꽤 재미있다. npm 설정을 바꿀 일은 아직 없어서 몰랐는데 꽤 꼼꼼하게 설계했다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/npm/npm-config.png" alt="npm-config" title="" /></p>
+
+<h2>config</h2>
+
+<p>npm은 설정하는 방법이 여섯 가지나 있고 우선순위는 다음과 같다:</p>
+
+<ul>
+<li>Command Line Flags</li>
+<li>Environment Variables</li>
+<li>Per-user config file</li>
+<li>Global config file</li>
+<li>Built-in config file</li>
+<li>Default Configs</li>
+</ul>
+
+<h3>Command Line Flags</h3>
+
+<p>CLI에서 <code>--foo bar</code>라고 사용하면 <code>foo</code>라는 변수에 값이 <code>"bar"</code>라고 설정된다. 그리고 <code>--</code>는 CLI 파서에게 flag 처리는 인제 그만 한다고 말하는 것이다. <code>--flag</code>처럼 단독으로 사용하는 파라미터는 명령어 끝에 사용하고 <code>true</code> 값이 할당된다.</p>
+
+<h3>Environment Variables</h3>
+
+<p><code>npm_config_</code>로 시작하는 환경변수도 npm 설정으로 사용된다. 예를 들어, <code>npm_config_foo=bar</code>라는 환경변수를 정의하면 npm에서 <code>foo</code> 설정의 값을 <code>bar</code>라고 설정하는 것과 같다. 환경변수에 값이 없으면 npm은 해당 설정의 값을 <code>true</code>라고 해석한다. 대소문자를 구분하지 않기 때문에 <code>NPM_CONFIG_FOO=bar</code>와 <code>npm_config_foo=bar</code>는 같다.</p>
+
+<h3>Per-user config file</h3>
+
+<p><code>$HOME/.npmrc</code>(파일의 위치는 <code>userconfig</code> 파라미터로 바꿀 수 있으며 위 방법(CLI 파라미터, 환경변수)으로 설정할 수 있다.)</p>
+
+<p>이 파일은 ini 형식이라서 <code>key = value</code>라고 설정한다.</p>
+
+<h3>Global config file</h3>
+
+<p><code>$PREFIX/etc/npmrc</code>(파일의 위치는 <code>globalconfig</code> 파라미터로 바꿀 수 있고 위 방법(CLI 파라미터, 환경변수, userconfig)으로 설정한다.)</p>
+
+<p>이 파일도 ini 형식이다.</p>
+
+<h3>Built-in config file</h3>
+
+<p><code>path/to/npm/itself/npmrc</code></p>
+
+<p>이 파일은 "빌트인"이라 수정할 수 없다. npm 스크립트에 들어 있는 <code>./configure</code> 스크립트로 값을 설정할 수 있다. 이 파일은 기본 값을 변경해야 하는 배포 관리자를 위한 것이고 표준과 일관성을 지키며 수정해야 한다.</p>
+
+<p>그러니까 회사에서 회사에 맞는 설정(회사의 registry를 기본 registry로 한다든가 하는)을 직원에게 배포할 때 이 설정을 바꾼 npm을 만들어서 배포하면 되겠다.</p>
+
+<h3>Default Configs</h3>
+
+<p>npm 내부에 박혀있는 것으로 파라미터가 어디에도 설정되지 않으면 사용하는 기본값이다. 이것은 그냥 하드코딩된 것으로 생각하면 된다.</p>
+
+<h2>명령어</h2>
+
+<p>config 명령어가 있는데 <code>git config</code>랑 비슷하다.</p>
+
+<h3>set</h3>
+
+<pre><code>npm config set key value
+</code></pre>
+
+<p>key, value를 설정한다.</p>
+
+<p>value를 생략하면 "true"로 설정된다.</p>
+
+<h3>get</h3>
+
+<pre><code>npm config get key
+</code></pre>
+
+<p>stdout에 설정 값을 보여준다.</p>
+
+<h3>list</h3>
+
+<pre><code>npm config list
+</code></pre>
+
+<p>npm 설정 목록을 보여준다.</p>
+
+<h3>delete</h3>
+
+<pre><code>npm config delete key
+</code></pre>
+
+<p>모든 설정 파일에서 key를 삭제한다.</p>
+
+<h3>edit</h3>
+
+<pre><code>npm config edit
+</code></pre>
+
+<p>설정을 편집기에서 수정하도록 편집기를 열어준다. <code>--global</code> flag를 주면 global 설정 파일이 열린다.</p>
+
+<h2>단축 파라미터</h2>
+
+<p>사용할 수 있는 단축 파라미터들:</p>
+
+<ul>
+<li><code>-v</code>: <code>--version</code></li>
+<li><code>-h</code>, <code>-?</code>, <code>--help</code>, <code>-H</code>: <code>--usage</code></li>
+<li><code>-s</code>, <code>--silent</code>: <code>--loglevel silent</code></li>
+<li><code>-q</code>, <code>--quiet</code>: <code>--loglevel warn</code></li>
+<li><code>-d</code>: <code>--loglevel info</code></li>
+<li><code>-dd</code>, <code>--verbose</code>: <code>--loglevel verbose</code></li>
+<li><code>-ddd</code>: <code>--loglevel silly</code></li>
+<li><code>-g</code>: <code>--global</code></li>
+<li><code>-l</code>: <code>--long</code></li>
+<li><code>-m</code>: <code>--message</code></li>
+<li><code>-p</code>, <code>--porcelain</code>: <code>--parseable</code></li>
+<li><code>-reg</code>: <code>--registry</code></li>
+<li><code>-v</code>: <code>--version</code></li>
+<li><code>-f</code>: <code>--force</code></li>
+<li><code>-l</code>: <code>--long</code></li>
+<li><code>-desc</code>: <code>--description</code></li>
+<li><code>-S</code>: <code>--save</code></li>
+<li><code>-y</code>: <code>--yes</code></li>
+<li><code>-n</code>: <code>--yes false</code></li>
+<li><code>ll</code> and <code>la</code> commands: <code>ls --long</code></li>
+</ul>
+
+<p>파라미터를 입력하다 말아도 특정 파라미터로 판단할 수만 있으면(resolve unambiguously) 해당 파라미터로 사용한다:</p>
+
+<pre><code>npm ls --par
+# same as:
+npm ls --parseable
+</code></pre>
+
+<p>단축 파라미터는 여러 개를 붙여 사용해도 된다. 예를 들어:</p>
+
+<pre><code>npm ls -gpld
+# same as:
+npm ls --global --parseable --long --loglevel info
+</code></pre>
+
+<h2>Per-Package Config Settings</h2>
+
+<p>npm script를 사용할 때만 적용되는 설정도 할 수 있다. package.json의 "config" 설정은 "scripts" 설명을 이용할 때 적용된다. 다음과 같으면:</p>
+
+<pre><code>{ "name" : "foo"
+, "config" : { "port" : "8080" }
+, "scripts" : { "start" : "node server.js" } }
+</code></pre>
+
+<p><code>npm start</code>를 실행시킬 때 config 설정이 적용된다. 하지만, 다른 곳에 설정할 수도 있다. <code>&lt;name&gt;[@&lt;version&gt;]:&lt;key&gt;</code>처럼 정의하면 된다. 이 pacakge.json을 사용하는 server.js가 다음과 같으면:</p>
+
+<pre><code>http.createServer(...).listen(process.env.npm_package_config_port)
+</code></pre>
+
+<p>다음과 같이 바꿀 수 있다:</p>
+
+<pre><code>npm config set foo:port 80
+</code></pre>]]>
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ 프로그래머 관점에서의 바둑 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/the-game-of-go_a-programmers-perspective.html" />
+    <updated>2012-05-01T00:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/the-game-of-go_a-programmers-perspective.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 Louis Chatriot이 자신의 블로그에 쓴 <a href="http://needforair.com/blog/2012/04/18/game-of-go/">The Game of Go: A Programmer's Perspective</a>를 번역한 것이다.</p>
+
+<p>AI 프로그래머가 바라 봤을 때 바둑은 매우 흥미로운 게임이다. 컴퓨터가 실력 좋은 바둑 기사를 이기는게 매우 어렵고, 많은 연구자가 이 문제에 도전하기 때문이다. 모순적이게도 랜덤하게 돌을 놓는 것이 컴퓨터에겐 더 좋은 전략이다.</p>
+
+<p><a href="http://www.flickr.com/photos/obli/322662164/" title="COPA EMBAJADOR DE COREA 2006 by oblivionz, on Flickr"><img src="http://farm1.staticflickr.com/134/322662164_0260e91add.jpg" width="250" height="166" alt="COPA EMBAJADOR DE COREA 2006"></a><br />by <a href="http://www.flickr.com/photos/obli/">oblivionz</a></p>
+
+<h2>바둑: 엄청나게 간단한 개요</h2>
+
+<p>바둑은 아시아에선 대중적인 게임이지만 서양에는 많이 알려지지 않았다. 바둑은 체스와 비슷하게 두 명이서 차례를 바꿔가며 바둑판에 돌을 놓는 전략게임이다. 체스와 바둑이 완전 다른 점은 두 개 정도있다.</p>
+
+<ul>
+<li>바둑에선 바둑판이 비어있는 상태로 시작하고 차례를 바꿔가며 돌을 놓는다. 반면 체스는 말을 놓고 시작하며 상대편의 말을 쓰러트려야 하는 게임이다.</li>
+<li>게임 <a href="http://senseis.xmp.net/?RulesOfGoIntroductory">규칙</a>은 체스보다 바둑이 더 간단하다. 체스는 6개의 다른 말이 있지만, 바둑은 한 종류의 돌만 놓으면 된다.</li>
+</ul>
+
+<p><a href="http://senseis.xmp.net/?RulesOfGoIntroductory">여기</a>에서 배울 수 있고 <a href="http://www.gokgs.com/">여기</a>에서 바둑을 둘 수 있으니 확인해보라고 하고 싶다.</p>
+
+<h2>체스와의 복잡도 비교</h2>
+
+<p>규칙이 단순할지라도 좋은 바둑 프로그램을 만드는것은 매우 어렵다고 증명되어있다. 정말로 가장 뛰어난 체스 프로그램은 가장 뛰어난 체스 플레이어를 이기는게 가능했다. 1997년에 딥 블루가 게리 카스파로프(Gary Kasparov)를 이겼다. 하지만 가장 뛰어난 바둑 프로그램은 그냥 강한 아마추어에게 참패했다. 그리고 강한 아마추어는 프로 기사보다 엄청 약하다. 이런 일이 가능한 것에는 세가지 주된 이유가 있다.</p>
+
+<ul>
+<li><strong>게임-트리 복잡도</strong> : 체스에는 <a href="http://en.wikipedia.org/wiki/Shannon_number">10^123개의 게임</a>이 있다. 바둑에 있어서는 <a href="http://en.wikipedia.org/wiki/Go_and_mathematics">여러 추정치</a>가 나올 수 있지만, <a href="http://www.usgo.org/resources/topten.html">미국 바둑 협회 계산으로는 10^700개의 가능한 게임</a>이 있다고 한다. 바둑에는 플레이어에게 주어진 턴이 더 많고(평균적으로 200 대 50) 각각의 턴에서 돌을 놓을 수 있는 경우의 수(350 대 50)가 바둑이 더 많기에 바둑의 게임 수가 더 많다.</li>
+<li><strong><a href="http://en.wikipedia.org/wiki/Evaluation_function">훌륭한 휴리스틱의 부족</a></strong> : 체스 프로그램은 어떤 행동이 다른 행동보다 좋은 것인지 꽤나 빠르고 정확하게 판단할 수 있다. 반대로 바둑에 대해선 아직 좋은 휴리스틱이 발견되지 않았다.</li>
+<li><strong>패턴 인식</strong> : 뛰어난 바둑 기사라는건 판에 놓여진 돌이 만드는 모양을 인식하는 것에 달려있다. 게임을 하는 도중에 컴퓨터가 그 모양을 인식 하기엔 너무 많은 시간이 든다. <a href="http://curiosity.discovery.com/question/humans-better-than-computers">사람은 컴퓨터보다 훨씬 빠르다.</a></li>
+</ul>
+
+<h2>지금까지의 바둑 프로그램을 넘어설 핵심 아이디어</h2>
+
+<p>바둑 알고리즘 연구가 흥미로운 이유가 이런 복잡도가 있기 때문이다. 우리는 몇 년전 스팩타클한 성능 향상을 보인 <a href="http://www.lri.fr/~teytaud/mogo.html">MoGo</a>라는 이름이 프로그램을 보았다. MoGo의 핵심 아이디어는 이렇다.</p>
+
+<ul>
+<li><strong>랜덤 게임을 이용한 위치 선정</strong> : 역설적이게도 지금까지 알아낸 돌을 놓을 위치를 알아내는 최고의 방법은 현재 상태에서 시작해 각각의 선수가 바둑판에 랜덤으로 돌을 놓는 수많은 경기를 진행해 보는것 이다. 바둑판 위, 한 위치의 점수는 단순히 랜덤 게임들이 이긴 확률이다.</li>
+<li>브랜칭 팩터(각 턴마다 가능한 행동-돌을 놓는 등-의 경우의 수)를 줄이기 위해 <strong>'<a href="http://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit</a> 알고리즘'를 이용</strong>한다. 목표는 탐색(새로운 행동을 하는 것)과 개척(이미 알고 있는 행동 중에 최적의 하나를 찾아내는 것) 사이에 트레이드 오프를 최적화 하는 것이다. 컴퓨터는 처음에 가능한 모든 행동에 대해 사전 확률 분포를 만든다. 이 분포에 따라 하나를 고르고 그에 상응하는 위치를 기반으로 랜덤 게임을 돌린다. 그리고 결과를 이용해 그 행동에 대한 확률을 업데이트한다. 그리고 업데이트된 분포를 이용해 다음 가능한 수를 선택한다. 그렇게 계속 해나간다.</li>
+<li><strong>작은 전문 지식을 이용</strong> : 'multi-armed bandit'에서 쓰이는 사전 분포는 적은 노력으로 멍청한 행동을 피하는 용도로 사용한다. 게임을 시작하면 고전적인 시작 위치를 선호한다. 그리고 랜덤 게임을 하는데 사실 이 랜덤 게임은 완전한 랜덤이 아니다. 간단한 패턴에 따라 특정 행동들은 제거하기 때문이다. 그렇게 몇가지를 제거한다 해도 전문 지식은 탐사 알고리즘 부분의 정말 작은 상처 하나에 불과하다.</li>
+<li><strong>병렬화</strong> : MoGo같은 프로그램은 컴퓨터 클러스터에서 더 나은 성능을 보인다. 랜덤 게임 부분이 여러개의 CPU에서 돌 수 있기 때문이다. <a href="http://en.wikipedia.org/wiki/Amdahl's_law">성능 향상</a>은 약 8배 정도이다.</li>
+<li><strong>강화된 학습</strong> : MoGo는 게임을 진행하는 동안이나 랜덤 게임을 진행하는 동안 계속 학습한다. 잘못된 결과를 가져오는 행동을 했을때 그 행동에 더 작은 확률을 부여한다.</li>
+</ul>
+
+<p><a href="http://www.pleinsud.u-psud.fr/specialR2008/en/12_GOthique.pdf">이 글</a>에 MoGo에 대해 더 많은 자료가 있다.</p>
+
+<h2>현재 컴퓨터의 성능</h2>
+
+<p>오늘날 바둑 프로그램은 조그마한 게임 판에서 프로 바둑 기사를 이기고 잘하는 아마추어 기사를 정식 바둑판에서 이기는 수준이다. 이건 굉장한 성과이지만 정식 바둑판에서 프로 바둑 기사를 상대하기 까지는 너무 먼 여정이 남아있다.</p>
+
+<p><em>난 그리 실력이 좋지 않을지 모르겠지만, 스스로 바둑 플레이어라고 말한다. 2008년에 컴퓨터 공학 연구실에 인턴으로 있을 때, 한 2달 정도 MoGo를 사용했었다.<br />이 글을 검토해준 <a href="http://www.linkedin.com/pub/arpad-rimmel/b/9a7/847">Arpad Rimmel</a>에게 감사의 말을 전한다. 그는 박사과정을 지내는 중 3년 정도 MoGo를 사용했다.</em></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ J언어 배우기 - 제 3장: 함수 정의하기 ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" />
+    <updated>2012-04-30T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/learning-j-chapter3.html</id>
+    <content type="html">
+<![CDATA[
+<p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a> 의 chapter 3:Defining Functions를 번역/정리했다. 이전 챕터들은 본 사이트에서 <a href="/site/tagmap.html#j언어">J언어 태그</a>로 검색해 볼 수 있다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/learning_j_chapter3/jcode.png" alt="j code" title="" /></p>
+
+<p>J에는 많은 내장 함수가 있다. 우리는 그 중 몇 가지를 살펴보았다.(<code>*</code>나 <code>+</code>같은 것들) 이번 섹션에서는 이 내장함수를 조합해 원하는 함수를 정의하는 여러 방법을 배운다.</p>
+
+<h2>3.1 이름짓기</h2>
+
+<p>함수를 정의하는 가장 간단한 방법은 그냥 원하는 내장 함수에 이름을 부여하는 것이다. 정의는 할당 함수를 이용해서 한다. 예를 들어서 아래의 <code>square</code>함수는 내장 함수인 <code>*:</code>를 이용하는 것과 똑같다.</p>
+
+<pre><code>   square =: *:
+
+   square 1 2 3 4
+1 4 9 16
+</code></pre>
+
+<p>우리가 지은 이름이 더 기억하기 쉽거나 해서 그게 좋다면 새로운 이름을 사용한다. 같은 내장 함수에 다른 두 개의 이름을 부여할 수도 있다. 하나는 모나딕용으로, 다른 하나는 다이아딕 용으로.</p>
+
+<pre><code>   Ceiling =: &gt;.
+   Max     =: &gt;.
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Ceiling 1.7</tt></td>
+<td><tt>3 Max 4</tt></td>
+</tr><tr valign="TOP">
+<td><tt>2</tt></td>
+<td><tt>4</tt></td>
+</tr></tbody></table>
+
+<h2>3.2 삽입하기</h2>
+
+<p>표현식 <code>+/ 2 3 4</code>는 의미가 <code>2 + 3 + 4</code>와 같고 비슷하게 <code>*/ 2 3 4</code>는 <code>2 * 3 * 4</code>와 같다. 이제 이 함수에 <code>sum</code>이라는 이름을 붙여보자.</p>
+
+<pre><code>   sum =: + /
+
+   sum 2 3 4
+9
+</code></pre>
+
+<p><code>sum =: +/</code>라는 코드를 보면 <code>+/</code>가 이 자체로 함수를 표현하는 표현식임을 알 수 있다.<br /><code>+/</code>는 "Insert"(<code>/</code>)가 함수 <code>+</code>에 적용되어 리스트를 합치는 함수가 되었다 라고 말한다.</p>
+
+<p>즉, <code>/</code>은 그 자체로 함수의 한 종류이다. 이 함수는 왼쪽에 인자 하나를 받는다. 그 인자도 함수고 계산 결과도 함수다.</p>
+
+<h2>3.3 용어: 동사, 연산자, 부사</h2>
+
+<p>우리는 두 종류의 함수를 봤다. 첫째로 "일반적인" 함수다. 숫자를 계산해서 숫자를 내뱉는 <code>+</code>나 <code>*</code>같은 함수. J에서는 이런 것들을 "동사"라고 한다. 둘째로 함수를 계산해서 함수를 내뱉는 <code>/</code>같은 함수이다. 이런 종류의 함수를 다른 종류의 함수와는 구별하여 "연산자"라고 한다. </p>
+
+<p>하나의 인자를 받는 연산자는 "부사"라고 한다. 부사는 항상 왼쪽에 하나의 인자를 받는다. 그래서 표현식 <code>+ /</code>에서 부사 <code>/</code>는 동사 <code>+</code>에 적용되어서 리스트를 더하는 동사가 만들어진다.</p>
+
+<p>용어는 영어구문에서 따왔다. 동사는 물건의 행동을 묘사하고 부사는 동사의 의미를 변한다.</p>
+
+<h2>3.4 교환하기(Commuting)</h2>
+
+<p>부사 <code>/</code>말고 다른것도 보자. 부사 <code>~</code>는 왼쪽과 오른쪽의 인자를 서로 바꾸는 기능이 있다.</p>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>'a' , 'b'</tt></td>
+<td><tt>'a' ,~ 'b'</tt></td>
+</tr><tr valign="TOP">
+<td><tt>ab</tt></td>
+<td><tt>ba</tt></td>
+</tr></tbody></table>
+
+<p>다이아드 함수 <code>f</code>와 그 인자 <code>x</code>, <code>y</code>에 대해서 <code>~</code>의 구조는 다음과 같다.</p>
+
+<pre><code>         x f~ y      는   y f x   이다
+</code></pre>
+
+<p>또 다른 예로 동사 <code>|</code>를 기억하는가? <code>2|7</code>은 "7 mod 2"와 같다. 이제 mod함수를 정의 할 차례이다.</p>
+
+<pre><code>   mod =: | ~
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>7 mod 2</tt></td>
+<td><tt>2 | 7</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1</tt></td>
+<td><tt>1</tt></td>
+</tr></tbody></table>
+
+<p>그림을 한번 그려보자. 우선 함수 f에 인자 y를 적용해 <code>f y</code>의 결과를 반환하는 다이어그램이 있다. 이 다이어그램에서 함수 f는 사각형으로 그리고 인자가 어떻게 흘러서 결과가 나타나는지 화살표로 나타낸다. 각각의 화살표에는 표현식이 쓰여있다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag01.gif" alt="monadic" title="" /></p>
+
+<p>아래에 다이아딕 함수 f에 인자 x, y를 적용해 <code>x f y</code>가 만들어지는 다이어그램이 있다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag02.gif" alt="dyadic" title="" /></p>
+
+<p>이것이 함수 <code>f~</code>에 대한 다이어그램이다. 상자 안에 함수 f가 있고 인자가 서로 엇갈려서 들어가는 그림으로 나타냈다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag03.gif" alt="~" title="" /></p>
+
+<h2>3.5 묶기(Bonding)</h2>
+
+<p>double이라는 동사를 정의해야한다고 가정해보자. <code>double x</code>는 <code>x * 2</code>를 뜻한다. 즉 double은 "곱하기 2"이다. 아래와 같이 정의할 수 있다.</p>
+
+<pre><code>   double =: * &amp; 2
+
+   double 3
+6
+</code></pre>
+
+<p>우리는 <code>*</code>를 두 인자중 한 인자를 미리 정해놓고(이 경우엔 2) 그걸 마치 모나드 처럼 써서 <code>*</code>를 다이아드로 사용했다. <code>&amp;</code> 연산자는 함수와 값을 묶어놓는 역할을 한다. f가 다이아딕 함수이고 k가 f의 오른쪽 인자라면 다음과 같은 구조를 가진다.</p>
+
+<pre><code>        (f &amp; k) y    은    y f k   이다.
+</code></pre>
+
+<p>오른쪽 인자말고 왼쪽 인자를 고정하고 싶다면 아래와 같이 쓸 수 있다.</p>
+
+<pre><code>        (k &amp; f)  y   은    k f y   이다
+</code></pre>
+
+<p>예를 들어서 물건 값의 10% 세금은 계산해야 한다고 하자. 그러면 세액을 계산하는 함수는 다음과 같다.</p>
+
+<pre><code>   tax =: 0.10 &amp; *
+
+   tax 50
+5
+</code></pre>
+
+<p>아래에 <code>k&amp;f</code>함수의 다이어그램이 있다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag04.gif" alt="bond" title="" /></p>
+
+<h2>3.6 용어: 접속사와 동사</h2>
+
+<p>표현식 <code>*&amp;2</code>는 <code>&amp;</code> 연산자는 두 인자(동사 <code>*</code>와 숫자 2)를 받는 함수이며 그 결과로 "doubling"이라는 동사를 만들어낸다.<br /><code>&amp;</code>와 같은 두 인자를 취하는 "연산자"를 J에서는 "접속사"라고 한다. 이는 두 인자를 묶어주기 때문이다. 반면에 부사는 하나의 인자만을 가지는 연산자이다.</p>
+
+<p>J의 모든 함수는 내장 함수이건 사용자 정의 함수이건 반드시 4종류 중 하나이다. 모나딕 동사, 다이아딕 동사, 부사, 접속사가 그것이다. 같은 심볼이지만 다른 의미를 가지는 동사는 두 개의 다른 동사로 간주한다. 예를 들면 <code>-</code>는 모나딕으로는 "negation"이고 다이아딕으로는 "subtraction"이다.</p>
+
+<p>J의 모든 표현식은 어떤 타입을 가진 값이다. 그리고 함수가 아닌 모든 값은 데이터이다.(정확히는 이전 섹션에서 본 배열이다)</p>
+
+<p>J에서 데이터 값, 즉 배열은 "명사"라고 부른다. 이는 영어의 구문과 비슷하다. 이젠 어떤 것이 동사가 아닌 것을 강조하기 위해서 그것을 명사라 부르고, 어떤 차원을 가지고 있다는걸 강조하기 위해서 그것을 배열이라 부른다.</p>
+
+<h2>3.7 함수의 합성(composition)</h2>
+
+<p>이런 영어 표현을 생각해보자. "the sum of the squares of the numbers 1 2 3" 이건 <code>1+4+9</code> 또는 <code>14</code>이다. 우리가 앞에서 sum과 square동사를 정의 했으니 J로는 다음과 같이 쓸 수 있다.</p>
+
+<pre><code>   sum square 1 2 3
+14
+</code></pre>
+
+<p>sum과 square를 합성하여 하나의 "sum-of-the-squares"함수를 만들 수도 있다.</p>
+
+<pre><code>   sumsq =: sum @: square
+
+   sumsq 1 2 3
+14
+</code></pre>
+
+<p>심볼 <code>@:</code>(at colon)은 "composition(합성)" 연산자다. f와 g가 동사이고 y라는 인자가 있을때 이 연산자의 구조는 다음과 같다.</p>
+
+<pre><code>       (f @: g) y    는  f (g y)  이다.
+</code></pre>
+
+<p>아래에는 이 구조에 대한 다이어그램이다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag05.gif" alt="composition" title="" /></p>
+
+<p>이 시점에서 독자분들은 동사를 합성할 때 왜 간단하게 <code>f g</code>라고 쓰지 않고 <code>f @: g</code>라고 쓰는지 궁금할 것이다. 간단히 말하자면 <code>f g</code>은 또 다른 의미이다. 이건 곧 나온다.</p>
+
+<p>합성에 대한 다른 예는 화씨를 섭씨로 바꾸는 것이다. 32를 빼는 함수 s와 5%9를 곱하는 함수 m을 합성해보자.</p>
+
+<pre><code>   s       =: - &amp; 32
+   m       =: * &amp; (5%9)
+   convert =: m @: s
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>s 212</tt></td>
+<td><tt>m s 212</tt></td>
+<td><tt>convert 212</tt></td>
+</tr><tr valign="TOP">
+<td><tt>180</tt></td>
+<td><tt>100</tt></td>
+<td><tt>100</tt></td>
+</tr></tbody></table>
+
+<p>이 예제는 이름있는 함수의 합성을 잘 보여준다. 다음과 같이 함수의 표현식 자체를 합성 할 수도 있다.</p>
+
+<pre><code>   conv =: (* &amp; (5%9)) @: (- &amp; 32) 
+   conv 212
+100
+</code></pre>
+
+<p>합성한 함수에 이름을 주지 않고서도 인자를 적용시켜 사용할 수 있다.</p>
+
+<pre><code>   (* &amp; (5%9)) @: (- &amp; 32)  212
+100
+</code></pre>
+
+<p>위 예제들로 모나드와 모나드를 합성한 것을 보였다. 다음 예제는 다이아드를 합성한 것이다. 일반적인 구조는 다음과 같다.</p>
+
+<pre><code>           x (f @: g) y   은    f (x g y)   이다.
+</code></pre>
+
+<p>예를 들어서 아이템 몇 개를 구매한 총 금액은 각 아이템의 가격에 개 수를 곱하고 곱한 값을 더하면 알 수 있다. 아래를 보자.</p>
+
+<pre><code>   P =:  2 3        NB. 가격
+   Q =:  1 100      NB. 개 수
+
+   total =: sum @: *
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>P</tt></td>
+<td><tt>Q</tt></td>
+<td><tt>P*Q</tt></td>
+<td><tt>sum P * Q</tt></td>
+<td><tt>P total Q</tt></td>
+</tr><tr valign="TOP">
+<td><tt>2 3</tt></td>
+<td><tt>1 100</tt></td>
+<td><tt>2 300</tt></td>
+<td><tt>302</tt></td>
+<td><tt>302</tt></td>
+</tr></tbody></table>
+
+<p>합성에 대해서 더 알고 싶으면 8장을 보라.</p>
+
+<h2>3.8 동사의 연결(Trains of Verbs)</h2>
+
+<p>"no pain, no gain"이라는 문구를 아는가. 이것은 압축되고 요약된 관용적 표현이다. 이런 말은 문법적 구조에는 맞지 않지만 제법 알아들을 수 있다. (메인 동사가 없으므로 문장이 아니다) J에는 이와 비슷하게 함수를 몇 개 연결해서 특정한 의미가 되도록 하는 표기법이 있다. 아래에 그 방법이 나온다.</p>
+
+<h3>3.8.1 훅(Hooks)</h3>
+
+<p>위에서 정의했던 세금을 계산하는 동사를 다시 가져오자. 이 동사에서 세율은 10%였다. </p>
+
+<pre><code>   tax =: 0.10 &amp; *
+</code></pre>
+
+<p>지불해야 하는 금액은 물건 가격 더하기 세금이다. 지불해야 하는 금액을 계산하는 동사는 다음과 같이 작성 할 수 있다.</p>
+
+<pre><code>   payable =: + tax
+</code></pre>
+
+<p>만약 물건 가격이 50달러 라면, 아래와 같이 계산할 수 있다.</p>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>tax 50</tt></td>
+<td><tt>50 + tax 50</tt></td>
+<td><tt>payable 50</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5</tt></td>
+<td><tt>55</tt></td>
+<td><tt>55</tt></td>
+</tr></tbody></table>
+
+<p><code>payable =: + tax</code>라는 정의를 보면 <code>+</code>동사 다음에 곧바로 <code>tax</code>가 온다. 이 시퀀스는 할당 연산자 오른쪽에 위치함으로써 분리되어있다.(isolated) 이렇게 분리된 동사의 시퀀스를 "train"이라고 부르고 동사 2개의 train을 "hook"(훅)이라고 부른다.</p>
+
+<p>두 개의 동사를 괄호 안에 넣어 분리시켜 훅의 형태로 사용할 수 있다.</p>
+
+<pre><code>   (+ tax) 50
+55
+</code></pre>
+
+<p>f가 다이아드, g가 모나드이고 y라는 어떤 인자가 있을때 훅의 일반적인 구조는 다음과 같다. </p>
+
+<pre><code>        (f g) y       는   y f (g y)   이다.
+</code></pre>
+
+<p>이 구조를 다이어그램으로 나타내면 다음과 같다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook" title="" /></p>
+
+<p>또다른 예로 인자로 들어온 수의 정수 부분을 계산하는 동사인 <code>&lt;.</code>("floor")를 이용해보자. 숫자가 정수인지 아닌지 검사를 하려면 그 숫자가 정수부와 같은지 검사한다. "equal-to-its-floor"라는 의미를 가진 이 동사는 <code>= &lt;.</code>라는 훅으로 정의할 수 있다.</p>
+
+<pre><code>   wholenumber  =:  = &lt;.
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>y =: 3 2.7</tt></td>
+<td><tt>&lt;. y</tt></td>
+<td><tt>y = &lt;. y</tt></td>
+<td><tt>wholenumber y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 2.7</tt></td>
+<td><tt>3 2</tt></td>
+<td><tt>1 0</tt></td>
+<td><tt>1 0</tt></td>
+</tr></tbody></table>
+
+<h3>3.8.2 포크(Forks)</h3>
+
+<p>숫자 리스트 L의 산술 평균은 L의 합을 L의 아이템 개 수로 나눈 것이다.(아이템 개 수를 세는 모나딕 동사인 <code>#</code>는 기억하고 있겠지?)</p>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>L =: 3 5 7 9</tt></td>
+<td><tt>sum L</tt></td>
+<td><tt># L</tt></td>
+<td><tt>(sum L) % (# L)</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5 7 9</tt></td>
+<td><tt>24</tt></td>
+<td><tt>4</tt></td>
+<td><tt>6</tt></td>
+</tr></tbody></table>
+
+<p>합을 아이템 개 수로 나누기 계산을 하는 동사는 세가지 동사의 시퀀스로 나타낼 수 있다. <code>sum</code> 다음에 <code>%</code>다음에 <code>#</code>가 오면 된다.</p>
+
+<pre><code>   mean =: sum % #
+
+   mean L
+6
+</code></pre>
+
+<p>세 동사의 분리된 시퀀스는 "fork(포크)"라고 한다. 임의의 인자 y에 대해서 f가 모나드이고 g가 다이아드이고 h가 모나드일 때 다음과 같은 일반적인 구조를 지닌다.</p>
+
+<pre><code>        (f g h) y     는   (f y) g (h y)   이다.
+</code></pre>
+
+<p>이 구조를 다이어그램으로 나타내면 아래와 같다.</p>
+
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook" title="" /></p>
+
+<p>포크에 대한 다른 예로는 숫자 리스트의 범위를 구하는 것이 있다. 숫자 리스트의 범위는 리스트에서 가장 작은 수와 가장 큰 수를 구하는 것이다. 이는 최소, 최대를 구하는 동사 중간에 콤마 동사를 넣어 포크하면 된다.</p>
+
+<p>리스트에서 가장 큰 수를 구하는 함수 <code>&gt;./</code>와 가장 작은 수를 구하는 함수 <code>&lt;./</code>는 1장에서 배웠다.</p>
+
+<pre><code>   range =: &lt;./  ,  &gt;./
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>L</tt></td>
+<td><tt>range L</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5 7 9</tt></td>
+<td><tt>3 9</tt></td>
+</tr></tbody></table>
+
+<p>훅과 포크는 동사의 시퀀스이다. 이는 동사의 "trains" 라고도 말한다. trains에 대해 더 많은 정보를 알려면 제 9장을 참고하라.</p>
+
+<h2>3.9 다 집어넣고 보자(Putting Things Together)</h2>
+
+<p>이제까지 배운 것들 중 몇가지를 섞어서 좀 더 커다란 예제를 만들어보자<br />어떤걸 만들꺼냐면, 숫자 리스트를 보여주고 각 숫자가 전체에서 몇 퍼센트를 차지하는지 보여주는 간단한 표를 만들 예정이다.</p>
+
+<p>어떤걸 만들어야 하는지 명확히 하기 위해 우선 완성된 예제를 먼저 보자. 아래에 설명 할 것이기 때문에 당장에 이 모든걸 알 필요는 없다. 그냥 아래 6라인의 코드를 보고 어떤 동사가 정의되어 있는지 살펴보자.</p>
+
+<pre><code>   percent  =: (100 &amp; *) @: (% +/)
+   round    =: &lt;. @: (+&amp;0.5)
+   comp     =: round @: percent
+   br       =: ,.  ;  (,. @: comp)
+   tr       =: ('Data';'Percentages') &amp; ,
+   display  =: (2 2 &amp; $) @: tr @: br
+</code></pre>
+
+<p>간단한 데이터로 시작해보자.</p>
+
+<pre><code>   data =: 3 5
+</code></pre>
+
+<p>이 데이터를 이용하면 <code>display</code>동사는 각 숫자와 그 숫자의 퍼센트를 표현할 것이다. 아래 표를 보자면, 3은 8에서 38%를 차지한다.</p>
+
+<pre><code>   display data
++----+-----------+
+|Data|Percentages|
++----+-----------+
+|3   |38         |
+|5   |63         |
++----+-----------+
+</code></pre>
+
+<p><code>percent</code>동사는 훅 <code>% +/</code>으로 전체 수에서 각각의 수를 나누고 각각에 100을 곱해서 퍼센트를 계산해낸다. 아래에 <code>percent</code>의 정의를 다시 쓸테니 위로 스크롤 하지 않아도 된다.</p>
+
+<pre><code>   percent  =: (100 &amp; *) @: (% +/)
+</code></pre>
+
+<p>이를 사용해보자.</p>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>data</tt></td>
+<td><tt>+/ data</tt></td>
+<td><tt>data % +/ data</tt></td>
+<td><tt>(% +/) data</tt></td>
+<td><tt>percent data</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5</tt></td>
+<td><tt>8</tt></td>
+<td><tt>0.375 0.625</tt></td>
+<td><tt>0.375 0.625</tt></td>
+<td><tt>37.5 62.5</tt></td>
+</tr></tbody></table>
+
+<p>퍼센트 값을 반올림하자. 반올림은 각 값에 0.5를 더하고 "floor"(<code>&lt;.</code>)를 이용해 정수 부분만을 취한다. 이런 일을 하는 동사 <code>round</code>는 아래와 같이 정의한다.</p>
+
+<pre><code>   round    =: &lt;. @: (+&amp;0.5)
+</code></pre>
+
+<p>그러면 화면에 표시할 값을 계산하는 동사는 다음과 같다.</p>
+
+<pre><code>   comp     =: round @: percent
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>data</tt></td>
+<td><tt>comp data</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5</tt></td>
+<td><tt>38 63</tt></td>
+</tr></tbody></table>
+
+<p>이제 테이블에 데이터와 퍼센트로 계산된 값을 표현해야 한다. 리스트를 하나의 열(column)을 만들기 위해선 동사 <code>,.</code>를 사용할 수 있다.("Ravel Items"라고 부른다)</p>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>data</tt></td>
+<td><tt>,. data</tt></td>
+<td><tt>,. comp data</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5</tt></td>
+<td><tt>3<br>
+5</tt></td>
+<td><tt>38<br>
+63</tt></td>
+</tr></tbody></table>
+
+<p>테이블의 아래쪽 행을 만들기 위해 <code>br</code> 이라는 동사를 정의한다. 이 동사는 데이타와 계산된 값을 열(column)로 링크하는 포크이다.(포크는 위에서 정의했듯이 세 동사의 시퀀스이다.)</p>
+
+<pre><code>   br  =: ,.  ;  (,. @: comp)
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>data</tt></td>
+<td><tt>br data</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5</tt></td>
+<td><tt>+-+--+<br>
+|3|38|<br>
+|5|63|<br>
++-+--+</tt></td>
+</tr></tbody></table>
+
+<p>테이블의 위쪽 행(컬럼 헤딩)은 간단하게 만들 수 있다. 아래쪽 행은 두 박스의 리스트이다. 우리가 그 앞에 두 개의 박스를 더 붙이면 박스가 4개인 리스트가 된다. 동사 <code>tr</code>이 그 작업을 한다.</p>
+
+<pre><code>   tr  =: ('Data';'Percentages') &amp; ,
+</code></pre>
+
+<table style="margin:20px 0px" cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>data</tt></td>
+<td><tt>br data</tt></td>
+<td><tt>tr br data</tt></td>
+</tr><tr valign="TOP">
+<td><tt>3 5</tt></td>
+<td><tt>+-+--+<br>
+|3|38|<br>
+|5|63|<br>
++-+--+</tt></td>
+<td><tt>+----+-----------+-+--+<br>
+|Data|Percentages|3|38|<br>
+|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5|63|<br>
++----+-----------+-+--+</tt></td>
+</tr></tbody></table>
+
+<p>남은건 박스 4개의 리스트를 2행 2열의 테이블로 만드는 것이다.</p>
+
+<pre><code>   (2 2 &amp; $)  tr br data
++----+-----------+
+|Data|Percentages|
++----+-----------+
+|3   |38         |
+|5   |63         |
++----+-----------+
+</code></pre>
+
+<p>이걸 다 합하면,</p>
+
+<pre><code>   display =: (2 2 &amp; $) @: tr @: br
+
+   display data
++----+-----------+
+|Data|Percentages|
++----+-----------+
+|3   |38         |
+|5   |63         |
++----+-----------+
+</code></pre>
+
+<p>이렇게 된다.</p>
+
+<p><code>display</code>동사는 두 부분으로 나눈다. 반올림된 퍼센트 값을 계산하는 <code>comp</code>함수와 화면에 결과를 표시하는 나머지 부분이 그것이다. <code>comp</code>함수를 바꾸어 다른 함수를 사용하면 그 함수의 계산 결과를 표 형태로 표시한다. <code>comp</code>를 제곱근을 계산하는 <code>%:</code>함수로 바꿔보자.</p>
+
+<pre><code>   comp =: %:
+</code></pre>
+
+<p>동사 <code>tr</code>에 있는 표의 컬럼 헤딩도 알맞게 수정해야한다.</p>
+
+<pre><code>   tr   =: ('Numbers';'Square Roots') &amp; ,
+
+   display 1 4 9 16
++-------+------------+
+|Numbers|Square Roots|
++-------+------------+
+| 1     |1           |
+| 4     |2           |
+| 9     |3           |
+|16     |4           |
++-------+------------+
+</code></pre>
+
+<p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.<br />이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.</p>
+
+<p>이렇게 제 3장이 끝났다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ Git: git-svn ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/git-svn.html" />
@@ -1353,890 +2092,6 @@ after
 <li>8580은 <a href="http://en.wikipedia.org/wiki/Freegate">freegate</a> 기본 포트다.</li>
 <li>freegate는 중국 여행 필수품; 공익재단이(라고 쓰고 '미국이' 라고 읽는다) 만든다. freegate는 무료 Proxy로 인터넷 통제국을(이라고 쓰고 '중국을' 이라고 읽는다) 무력화할 목적으로 개발되고 있다. 인터넷 통제국으로 인정해주지 않은 나라에서는 사용할 수 없다. 그런데, 한국은 인터넷 통제국임에도 불구하고 freegate를 사용할 수 없다. 한국도 인정해달라!</li>
 </ul>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ J언어를 배워보자 - 제 1장. 기본기 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/learning-j-chapter1.html" />
-    <updated>2012-04-06T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/learning-j-chapter1.html</id>
-    <content type="html">
-<![CDATA[
-<p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 chapter 1:Basics를 번역/정리했다.</p>
-
-<p>요즘 J를 배워보려 하는데 관련된 한국어 자료가 거의 없었다. 그래서 공부하는 겸 Learning J를 읽고 간단히 정리했다. 원문을 그대로 옮기진 않았고, 필요하면 표현을 바꿨다.</p>
-
-<p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="http://www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/learning-j-chapter1/j-code.png" alt="j-code" title="" /></p>
-
-<h2>1.1 인터렉티브 환경</h2>
-
-<p>J의 개발환경은 사용자가 한 줄 입력하면, 그게 곧바로 해석되어 아랫줄에 출력된다. 사용자의 입력하는 것은 들여쓰기가 된 것으로 보이고, 아래 줄에 출력되는 결과는 들여쓰기가 없다.</p>
-
-<pre><code>   2+2
-4
-</code></pre>
-
-<p>결과가 출력되고 나면 바로 아랫줄에 다시 커서가 깜빡이고, 다른 표현식을 입력할 수 있다.</p>
-
-<h2>1.2 산수</h2>
-
-<p>곱셈을 위한 심볼은 <code>*</code>(asterisk)이다.</p>
-
-<pre><code>   2*3
-6
-</code></pre>
-
-<p>물론 아래와 같이 빈칸을 집어넣을 수도 있다.</p>
-
-<pre><code>   2 * 3
-6
-</code></pre>
-
-<p>결과는 똑같다. 빈칸은 있어도 되고 없어도 된다. 가독성을 위해서 필요하면 넣는다.</p>
-
-<p>나눗셈을 위한 심볼은 <code>%</code>(percent)이다.</p>
-
-<pre><code>   3 % 4
-0.75
-</code></pre>
-
-<p>뺄셈을 위해서는 <code>-</code>를 쓴다.</p>
-
-<pre><code>   3 - 2
-1
-</code></pre>
-
-<p>다음 예제는 음수에 대한 것이다. 음수는 숫자 앞에 <code>_</code>부호가 붙는다. 숫자와 <code>_</code>사이에는 빈칸이 있어선 안 된다. <code>_</code>는 산수 할 때 쓰는 연산자가 아니라 숫자의 표현 중 하나이다. 마치 부동소수점을 표현할 때 수 중간에 <code>.</code>을 찍는 것과 같다.</p>
-
-<pre><code>   2 - 3
-_1
-</code></pre>
-
-<p><code>-</code>또한 음수를 만들어내기는 한다. 하지만 음수를 '만들어낸다'고 한 것에 주의해야 한다. <code>_</code>는 숫자를 표현하는 방식 중 하나이지만 <code>-</code>는 연산자라는 뜻이다.</p>
-
-<pre><code>   - 3
-_3
-</code></pre>
-
-<p>거듭제곱을 위해서는 <code>^</code>(caret)을 쓴다. 2의 3 제곱을 계산하면 아래와 같다.</p>
-
-<pre><code>   2 ^ 3
-8
-</code></pre>
-
-<p>그냥 제곱을 위한 연산자는 <code>*:</code>(asterisk colon)이다.</p>
-
-<pre><code>   *: 4
-16
-</code></pre>
-
-<h2>1.3 몇몇 용어들: 함수, 인자, 적용, 값</h2>
-
-<p><code>2 * 3</code>을 한번 보자. 이건 <strong>두 인자에 곱하기 함수인 <code>*</code>가 적용되었다</strong> 라고 말할 수 있다. 왼쪽 인자는 <code>2</code>이고 오른쪽 인자는 <code>3</code>이다. 그리고 <code>2</code>와 <code>3</code>은 각 인자의 값이다.</p>
-
-<h2>1.4 리스트</h2>
-
-<p>리스트는 <code>1 2 3 4</code>와 같이 쓸 수 있다. 숫자 사이에 빈칸이 들어있음에 주의하자. 리스트에 있는 각 숫자의 제곱을 알고 싶으면 다음과 같이 쓴다.</p>
-
-<pre><code>   *: 1 2 3 4
-1 4 9 16
-</code></pre>
-
-<p>위 예제에서 "Square" 함수(<code>*:</code>)가 리스트의 각 아이템에 적용되었음을 알 수 있다. 리스트로 이루어진 두 개의 인자와 <code>+</code>같은 함수가 주어지면 그 함수는 두 리스트에서 서로 대응되는 아이템에 적용된다.</p>
-
-<pre><code>   1 2 3 + 10 20 30
-11 22 33
-</code></pre>
-
-<p>만약 한 인자는 리스트이고 다른 인자는 숫자 하나 라면, 숫자 하나는 리스트의 각 아이템에 대응된다.</p>
-
-<pre><code>   1 + 10 20 30
-11 21 31
-
-   1 2 3 + 10
-11 12 13
-</code></pre>
-
-<p>이런 식의 실험은 새로운 함수가 여러 인자 패턴에 어떻게 동작하는지 알아보는 데에 효과적이다. </p>
-
-<p>예를 들어서 7을 2로 나누면, 몫이 3이고 나머지가 1이다. 나머지를 계산하는 J의 내장 함수는 <code>|</code>(vertical bar)이다. <code>|</code>의 이름은 "Residue"이다. 여러 패턴이 들어왔을 때 아래와 같은 결과가 나온다.</p>
-
-<pre><code>   2 | 0 1 2 3 4 5 6 7
-0 1 0 1 0 1 0 1
-
-   3 | 0 1 2 3 4 5 6 7
-0 1 2 0 1 2 0 1
-</code></pre>
-
-<p>Residue 함수는 "mod"(modulo)함수와 같다. 다만 이건 <code>2|7</code>이라고 쓰고, mod 함수는 7mod2라고 쓰는게 다르다.</p>
-
-<h2>1.5 괄호</h2>
-
-<p>필요하다면 표현식은 괄호를 포함할 수 있다. 괄호 안의 표현식은 따로 계산된다.</p>
-
-<pre><code>   (2+1)*(2+2)
-12
-</code></pre>
-
-<p>괄호는 항상 필요하지는 않다. <code>3*2+1</code>이라는 표현식을 보자. 이 식이 <code>(3*2)+1</code>로 해석되어 7이 될까, 아니면 <code>3*(2+1)</code>이 되어 9가 될까?</p>
-
-<pre><code>   3 * 2 + 1
-9
-</code></pre>
-
-<p>학교에서 수학을 배울 때에는 곱셈을 덧셈보다 연산을 먼저 한다고 배웠다. 이런 규칙이 있어서 괄호를 적게 쓸 수 있다.</p>
-
-<p>J에는 그런 규칙이 없다. 먼저 따로 계산해야 할 부분이 필요하다면 괄호를 쓰면 된다. 하지만 괄호가 없다면 뒤부터(오른쪽부터) 계산된다. 다시 말하자면 자연스레 읽었을 때에 연산자의 오른쪽 인자부터 계산된다. 따라서 <code>3*2+1</code>의 경우에는 <code>*</code>의 오른쪽 인자인 <code>2+1</code>부터 계산된다. 다른 예제를 보자.</p>
-
-<pre><code>   1 + 3 % 4 
-1.75
-</code></pre>
-
-<p>여기서 <code>%</code>가 <code>+</code>보다 먼저 적용되는 것을 볼 수 있다. 즉 "제일 오른쪽 먼저" 연산이 시작되었다.</p>
-
-<p>이 "제일 오른쪽 먼저" 규칙은 일반 수학의 "덧셈보다 곱셈 먼저"규칙하고는 다르다. 이 규칙이 별로 편하지 않다면 그냥 괄호를 쓰면 된다. 하지만 이 규칙을 사용하면 함수나 숫자가 엄청나게 많이 사용된 문장에서도 어디에서부터 계산해나가야 할지 쉽게 알 수 있다.</p>
-
-<p>이 책에서는 "제일 오른쪽 먼저" 규칙을 적용 시킬 필요가 없다면 괄호를 쓸 것이다. 지금 여기서 중요한 건 코드를 잘 읽을 수 있을 정도로 표현식의 구조를 아는 것이다.</p>
-
-<h2>1.6 변수와 할당</h2>
-
-<p>영어 표현으로 'let <code>x</code> be <code>100</code>'라는 문장은 J로</p>
-
-<pre><code>   x =: 100
-</code></pre>
-
-<p>로 나타낼 수 있다.</p>
-
-<p>우리가 할당문이라고 불리는 이 표현식은 <code>100</code>이라는 값을 <code>x</code>라는 이름에 할당한다. 이 말은 즉 <code>x</code>라는 이름의 변수가 생성되고 이 변수에 <code>100</code>이라는 값을 넣었다고 할 수 있다. 만약 사용자가 입력한 한 라인에 할당문만 있다면 그 아래 결과가 출력되는 줄에는 아무런 값도 출력되지 않는다.</p>
-
-<pre><code>   x - 1
-99
-</code></pre>
-
-<p>값이 할당된 변수는 다른 표현식에서 가져다 쓸 수 있다.</p>
-
-<pre><code>   y =: x - 1
-</code></pre>
-
-<p>여기서 <code>y</code>는 <code>x-1</code>의 결과 값을 저장하는 데에 쓰였다. 변수에 저장된 값을 살펴보고 싶다면 그냥 변수의 이름을 입력하면 된다. 그것만으로도 다른 표현식처럼 하나의 표현식이 된다. </p>
-
-<pre><code>   y
-99
-</code></pre>
-
-<p>같은 변수에 반복해서 할당이 가능하다. 마지막에 할당한 것이 변수에 담긴다.</p>
-
-<pre><code>   z =: 6
-   z =: 8
-   z
-8
-</code></pre>
-
-<p>변수는 그 변수에 할당된 값을 이용해서 자기 자신에게 새로운 값을 할당할 때에도 사용할 수 있다.</p>
-
-<pre><code>   z =: z + 1
-   z
-9
-</code></pre>
-
-<p>위의 예제는 한 라인이 할당문으로만 이루어졌을 때에 결과 줄에 아무것도 출력되지 않음을 보여준다. 그럼에도 할당문 역시 하나의 표현식이다. 할당문이 어떤 표현식의 부분에 쓰였을 때에는 값으로 사용할 수 있다.</p>
-
-<pre><code>   1 + (u =: 99)
-100
-   u
-99
-</code></pre>
-
-<p>아래는 어떤 이름을 변수명으로 사용할 수 있는지에 대한 예제이다.</p>
-
-<pre><code>   x                       =: 0
-   X                       =: 1
-   K9                      =: 2
-   finaltotal              =: 3
-   FinalTotal              =: 4
-   average_annual_rainfall =: 5
-</code></pre>
-
-<p>변수명은 반드시 알파벳으로 시작해야 한다. 그리고 변수명은 알파벳(대문자, 소문자), 숫자(0-9), 밑줄(_)로 이루어진다. 그리고 대소문자를 가린다. 즉, <code>x</code>와 <code>X</code>는 다른 변수이다.</p>
-
-<pre><code>   x
-0
-   X
-1
-</code></pre>
-
-<h2>1.7 용어: 모나드와 다이아드(Monads and Dyads)</h2>
-
-<p>오른쪽에 하나의 인자만 받는 함수를 모나딕 함수(monadic function)이라고 부른다. 줄여서 모나드라고 한다. 예를 들자면 "Square"(<code>*:</code>)함수가 있다. 함수의 오른쪽과 왼쪽에 인자를 하나씩 두어 총 두 개의 인자를 받는 함수를 다이아딕(dyadic) 함수라 부른다. 이 역시 줄여서 다이아드라고 한다. 위에서 봤던<code>+</code>가 그 예가 될 수 있겠다.</p>
-
-<p>"Subtraction"(빼기) 함수와 "negation"(부정)함수는 같은 심볼(<code>-</code>)로 두가지 다른 기능을 하는 함수 중 하나이다. 다른 말로, <code>-</code>는 모나딕으로도 다이아딕으로도 사용할 수 있다는 것이다. 사실 J의 거의 모든 내장 함수가 모나딕과 다이아딕으로 사용될 수 있다. 아까 배웠던 나누기 함수, <code>%</code>도 그렇다. <code>%</code>는 다이아딕으로는 나누기이지만 모나딕으로 사용될 때는 역수 함수가 된다.</p>
-
-<pre><code>   % 4
-0.25
-</code></pre>
-
-<h2>1.8 내장 함수들 더 보기</h2>
-
-<p>이 섹션의 목적은 J의 내장 함수 중 몇 개를 더 소개해서 J로 프로그래밍하는 걸 맛 보는데 있다.</p>
-
-<p>영어로 "add together the numbers  2, 3, and 4, or more"말을 살펴보자. 이건 더 간단하게 다음과 같이 표현할 수 있다.</p>
-
-<pre><code>add together 2 3 4
-</code></pre>
-
-<p>이걸 계산하면 9이다. 이걸 J로 표현하면 다음과 같다.</p>
-
-<pre><code>   + / 2 3 4
-9
-</code></pre>
-
-<p>영어 표현과 J의 표현을 비교해보자. "add"는 <code>+</code>에 대응되고 "together"는 <code>/</code>에 대응된다. 비슷하게 다음 표현을 생각해보자.</p>
-
-<pre><code>multiply together 2 3 4
-</code></pre>
-
-<p>이걸 계산하면 24이다. 이건 J로 다음과 같이 표현한다.</p>
-
-<pre><code>   * / 2 3 4
-24
-</code></pre>
-
-<p><code>+/2 3 4</code>는 <code>2+3+4</code>와 같은 의미이고 <code>*/2 3 4</code>는 <code>2*3*4</code>와 같은 의미임을 알 수 있다. <code>/</code>는 "Insert"라고 한다. 이 녀석은 왼쪽에 있는 함수를 오른쪽의 리스트의 각 아이템 사이에 끼워 넣는 역할을 하기 때문이다. 일반화하여 말하자면, F가 임의의 다이아딕 함수이고, L이 숫자로 이루어진 리스트 a, b, c, .... y, z 라면</p>
-
-<pre><code>F / L    은   a F b F .... F y F z   이다.
-</code></pre>
-
-<p>또 다른 함수를 더 알아보자. <br />아래에 세 가지 명제가 있다.</p>
-
-<pre><code>2 는 1보다 크다     (명백히 참이다)
-2 는 1과 같다          (거짓)
-2 는 1보다 작다        (거짓)
-</code></pre>
-
-<p>J에서 "참"은 1로 표현하고, "거짓"은 0으로 표현한다. 그래서 위의 세 명제는 다음과 같이 쓸 수 있다.</p>
-
-<pre><code>   2 &gt; 1
-1
-
-   2 = 1
-0
-
-   2 &lt; 1
-0
-</code></pre>
-
-<p>만약 x가 수열이라면,</p>
-
-<pre><code>   x =: 5 4 1 9
-</code></pre>
-
-<p>'x의 어떤 수가 2보다 큰가?' 라고 J에게 물어볼 수 있다.</p>
-
-<pre><code>   x &gt; 2
-1 1 0 1
-</code></pre>
-
-<p>위에서 보면, '어떤 게 2보다 큰가?'라는 물음에 첫 번째, 두 번째, 네 번째가 1로 표현되었다. x에서 2보다 더 큰 숫자가 존재하는지 알려면 이렇게 쓰면 될까?</p>
-
-<pre><code>   * / x &gt; 2
-0
-</code></pre>
-
-<p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1<em>1</em>0*1) 0("거짓")이 들어있으면 죽어도 1이 될 수 없다.<br />x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <code>x&gt;2</code>의 결과를 전부 더하면 된다!</p>
-
-<pre><code>   + / x &gt; 2
-3
-</code></pre>
-
-<p>x에 숫자가 몇 개 있는지 알려면? <code>x=x</code>의 결과를 모두 더하면 된다.</p>
-
-<pre><code>   x
-5 4 1 9
-
-   x = x
-1 1 1 1
-
-   +/ x = x
-4
-</code></pre>
-
-<p>그런데 이미 리스트의 길이를 반환하는 <code>#</code>이라는 내장 함수가 있다. </p>
-
-<pre><code>   # x
-4
-</code></pre>
-
-<h2>1.9 옆으로 늘어 놓아 표시하기</h2>
-
-<p>우리가 컴퓨터에 J를 입력할 때, 입력한 문장과 결과 값은 아래로 주욱 내려가면서 붙어 표시된다. 아까 입력했던 몇 줄을 보면 알 수 있다.</p>
-
-<pre><code>   x
-5 4 1 9
-   x = x
-1 1 1 1
-   +/ x = x
-4
-   # x
-4
-</code></pre>
-
-<p>이제부터는 종종 옆으로 늘어놓아서 표시할 것이다. 밑의 표처럼 말이다.</p>
-
-<table cellpadding="10" style="margin:20px 0px;" border="1">
-<tbody><tr valign="TOP">
-<td><tt> x </tt></td>
-<td><tt>x = x</tt></td>
-<td><tt>+/ x = x</tt></td>
-<td><tt># x</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 4 1 9</tt></td>
-<td><tt>1 1 1 1</tt></td>
-<td><tt>4</tt></td>
-<td><tt>4</tt></td>
-</tr></tbody></table>
-
-<p>이 표는 코드가 수행되는 순서에 따라서, <code>x</code>를 입력하면 <code>5 4 1 9</code>가 나오고, <code>x=x</code>를 입력하면 <code>1 1 1 1</code>이 나오고... 그런 의미이다. 이런 표시방식은 J에서 제공하는 것은 아니다. 하지만 여기에선 자주 쓸 거다. 첫째 줄에는 입력들이, 그 아래 줄에는 출력들이 나온다.</p>
-
-<p>할당문(<code>x=:something</code>)을 입력했을 때에는 아무것도 표시되지 않은 것을 봤을 것이다. 그래도 할당문은 표현식이기 때문에 값을 가진다. 할당문의 값을 보거나, 뭔가를 기억하거나 보기에 쉽도록 종종 차례로 문장이 완성되는 것을 보여줄 거다. 예를 들자면 아래와 같다.</p>
-
-<table cellpadding="10" style="margin:20px 0px;" border="1">
-<tbody><tr valign="TOP">
-<td><tt>x =: 1 + 2 3 4</tt></td>
-<td><tt>x = x</tt></td>
-<td><tt>+/ x = x</tt></td>
-<td><tt># x</tt></td>
-</tr><tr valign="TOP">
-<td><tt>3 4 5</tt></td>
-<td><tt>1 1 1</tt></td>
-<td><tt>3</tt></td>
-<td><tt>3</tt></td>
-</tr></tbody></table>
-
-<p>이제 다시 내장 함수로 돌아가자. 리스트가 하나 있다고 하자. 그럼 우리는 그 리스트를 차례대로 보면서 "통과, 통과, 아니, 통과, 아니" 하면서 특정 아이템들만 고를 수 있다. 리스트를 선택하기 위한 리스트(아까 말했던 "통과, 아니"의 리스트)는 J로는 <code>1 1 0 1 0</code>으로 표현할 수 있다. 이렇게 1과 0으로만 이루어진 리스트를 비트-스트링(bit-string)이라고 부른다. (비트-리스트나 비트-벡터라고 부르기도 한다.) <code>#</code>함수가 다이아딕으로 사용되면 왼쪽 인자로 들어온 비트-스트링을 이용해서 오른쪽 인자의 아이템을 골라서 새로운 리스트를 만든다.</p>
-
-<table style="margin:20px 0px;" cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>y =: 6 7 8 9 10</tt></td>
-<td><tt>1 1 0 1 0 # y</tt></td>
-</tr><tr valign="TOP">
-<td><tt>6 7 8 9 10</tt></td>
-<td><tt>6 7 9</tt></td>
-</tr></tbody></table>
-
-<p>이제 y에서 특정한 조건을 만족하는 아이템만 고를 수도 있다. 예를 들자면 7보다 큰 수들 같은 것.</p>
-
-<table style="margin:20px 0px;" cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> y </tt></td>
-<td><tt>y &gt; 7</tt></td>
-<td><tt>(y &gt; 7) # y</tt></td>
-</tr><tr valign="TOP">
-<td><tt>6 7 8 9 10</tt></td>
-<td><tt>0 0 1 1 1</tt></td>
-<td><tt>8 9 10</tt></td>
-</tr></tbody></table>
-
-<h2>1.10 주석</h2>
-
-<p>J에서 <code>NB.</code>심볼은 주석을 나타낸다. <code>NB.</code>심볼 부터 그 라인의 끝까지는 평가되지 않는다. 예를 들자면 아래와 같다.</p>
-
-<pre><code>   NB.   여기는 라인 전체가 주석입니다.
-
-   6 + 6   NB. 12가 출력돼야 합니다.
-12
-</code></pre>
-
-<h2>1.11 내장 함수가 가진 이름의 구조</h2>
-
-<p>J의 각 내장 함수들은 공식적인 이름과 비공식 이름이 있다. 예를 들어 공식적인 이름이 <code>+</code>인 함수는 비공식 이름이 "Plus"이다. 게다가 모나딕과 다이아딕의 경우도 생각해야 한다. 공식 이름이 <code>-</code>인 함수는 비공식 이름이 "Negate"와 "Minus"가 있다.<br />비공식적인 이름은 보통 한 단어 정도로 짧다. 이 이름은 J가 인식하지 못하기때문에 J에서는 반드시 공식적인 이름을 사용해야 한다. 이 책에서는 비공식 이름은 큰따옴표로 감싸서 표현한다. ("Minus"처럼)</p>
-
-<p>거의 모든 내장 함수가 한 글자 내지 두 글자로 이루어진 공식적인 이름을 가지고 있다. (<code>*</code>나 <code>*:</code> 등등...) 두 번째 글자는 항당 <code>:</code>(colon)나 <code>.</code>(dot, full stop, period)이다.</p>
-
-<p>두 글자로 이루어진 이름은 한 글자로 이루어진 함수와 뭔가 관련이 있다. "Square"(<code>*:</code>)는 "Times"(<code>*</code>)와 관련성이 있다. 느껴지는가?</p>
-
-<p>따라서 J의 내장언어는 한 함수에 보통 6개 정도의 관련 함수들이 있다. 기본 함수에 더해서 위에서 말한 <code>:</code>와 <code>.</code>가 붙은 두 가지 변형과 각각에 대한 모나딕, 다이아딕까지 있다. 예제로 <code>&gt;</code>패밀리를 보자.</p>
-
-<p>다이아딕 '<code>&gt;</code>'은 위에서 봤듯이 "Larger Than"이다.</p>
-
-<p>모나딕 '<code>&gt;</code>'은 뒤에 나올 것이다.</p>
-
-<p>모나딕 '<code>&gt;.</code>'은 올림 연산을 한다. 올림은 자기 자신보다 큰 정수 중 가장 가까운 수이다. 이것의 이름은 "Ceiling"이다.</p>
-
-<pre><code>   &gt;. _1.7 1 1.7
-_1 1 2
-</code></pre>
-
-<p>다이아딕 '<code>&gt;.</code>'은 두 인자 중 큰 녀석을 선택한다. ("Larger Of")</p>
-
-<pre><code>   3 &gt;. 1 3 5 
-3 3 5
-</code></pre>
-
-<p><code>/</code>를 이용해서 "Larger Of"를 리스트의 아이템 사이에 끼워 넣으면, 리스트에서 가장 큰 수를 뽑아낼 수 있다. 예를 들어서 리스트 <code>1 6 5</code>에서 가장 큰 수를 알아내려면 <code>&gt;. / 1 6 5</code>를 입력하면 된다. 아래 예제를 통해 어떻게 해서 <code>6</code>이 나오는지 확인할 수 있다. 주석은 왜 이전 입력과 같은 결과가 나오는지 이유를 설명한다.</p>
-
-<pre><code>   &gt;. / 1 6 5
-6
-   1 &gt;. 6 &gt;. 5      NB. /의 의미에 따라서
-6
-   1 &gt;. (6 &gt;. 5)    NB. 제일 오른쪽 먼저 규칙에 따라서
-6
-   1 &gt;. (6)         NB. &gt;.의 의미에 따라서
-6
-   1 &gt;. 6           NB. ()의 의미에 따라서
-6
-   6                NB. &gt;.의 의미에 따라서
-6
-</code></pre>
-
-<p>모나딕 '<code>&gt;:</code>'은 비공식적으로 "Increment"라고 부른다. 인자의 값에 1을 더한다.</p>
-
-<pre><code>   &gt;: _2 3 5 6.3
-_1 4 6 7.3
-</code></pre>
-
-<p>다이아딕 '<code>&gt;:</code>'은 "Larger or Equal"이다.</p>
-
-<pre><code>   3 &gt;: 1 3 5 
-1 1 0
-</code></pre>
-
-<p>이 책의 1장을 마친다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ SMACSS: Brief Notes - Part 2 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/smacss-part2.html" />
-    <updated>2012-03-31T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/smacss-part2.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://smacss.com/">SMACSS</a>('smacks', 아마도 '스맥스'로 읽는다)에는 '<a href="http://snook.ca/">Jonathan Snook</a>'의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
-
-<p><em>Back-End 출신이라 CSS를 사용할 때마다 '이 많은 스타일은 어떻게 관리해야 할까?'라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
-
-<p><a href="/articles/2012/smacss.html">Part 1</a>은 CSS Rule에 대하여 다루었고, Part 2는 SMACSS의 나머지 부분을 다룬다. <a href="/articles/2012/smacss.html">Part 1</a>에서 SMACSS는 4가지 중요한 Rule이 있다고 했는데 여기 하나가 더 추가되었다.</p>
-
-<ul>
-<li>Base - 기본 스타일</li>
-<li>Layout - 엘리먼트를 나열하는 것과 관련된 스타일</li>
-<li>Module - 재사용 위해 하나로 묶는 스타일</li>
-<li>State - Hidden/Expand나 Active/Inactive 같은 상태를 스타일</li>
-<li><strong>Theme - 사이트 전체가 보이는 느낌에 대한 스타일</strong></li>
-</ul>
-
-<p><img src="http://dogfeet.github.com/articles/2012/smacss/smacss.png" alt="SMACSS" title="" /></p>
-
-<h2>테마 Rule</h2>
-
-<p>우리가 <a href="/articles/2012/smacss.html">Part 1</a>을 쓸 당시 저자는 사실 이 부분을 SMACSS Rule에 넣기에는 부족하지만 어쨌든 한번은 다루어야 겠다는 생각을 했다고 언급했다. 결국은 SMACSS Rule에 들아갔다.</p>
-
-<p>테마는 웹사이트에 따라 사용할수도 사용하지 않을수도 있다. 테마를 지원하는 사이트를 살펴보면 Google 메일이나 Yahoo 메일 같은 사이트가 있다. 비록 그대가 지금 만들고 있는 웹사이트가 테마를 지원하지 않더라도 알아둘 필요가 있다고 생각한다.</p>
-
-<h3>테마</h3>
-
-<p>딱히 설명이 필요 없지만 굳이 정의하자면 테마라는 것은 색상 및 이미지를 사용하여 사이트의 전체적인 Look and Feel을 결정한다. 테마와 관련된 부분을 따로 하나의 CSS로 분리해두면 나중에 새로운 테마를 만들거나 테마를 서로 바꿀 때 아주 적절하게 사용할 수 있다.</p>
-
-<p>테마는 모든 스타일을 재정의 할 수 있다. 예를 들어 링크의 색상을 바꾼다거나 사이트 전체의 레이아웃을 변경할 수도 있다. 테마와 스타일을 분리하기 위해 클래스 이름을 쓰는 방법도 있지만 대개 테마를 하나의 파일로 분리하여 사용하면 될 것이다.</p>
-
-<h3>타이포그러피</h3>
-
-<p>마지막으로 중요한 것이 타이포그러피(역주: 활자라 부르고 싶다)이다. 종종 사이트의 타이포그러피를 전체적으로 변경해야 할 상황이 있다. 또한 예를 들어 여러 나라의 언어를 지원할 때 만약 한국어나 중국어의 글자는 크기가 작으면 읽기가 매우 힘들다. 이러한 경우에도 전반적인 글자 크기 조정이 필요하다.</p>
-
-<p>타이포그러피는 Base, Module, State Rule에 영향을 미치지만 Layout에는 영향을 주지 않는다. 글자의 크기를 조절할 때 약 3가지 정도의 다른 크기를 정해서 사용하는 것이 좋다. 만약 여러 단계의 글자 크기가 있다면 사용자는 구별하기 힘들어 할 것이다.</p>
-
-<h2>상태 변경</h2>
-
-<p>사이트를 만들 때 어떤 부분은 처음부터 보이는 부분이 있고 어떤 부분은 어떤 상태가 변경이 되어야만 보이는 부분이 있다. 상태라는 것을 무엇으로 나타내고 어떻게 변경할 수 있을까?</p>
-
-<p><strong>클래스 이름</strong></p>
-
-<p>마우스를 움직이거나 키보드를 누르거나하는 이벤트가 발생하면 JavaScript를 사용하여 클래스 이름을 변경할 수 있다. 클래스 이름이 변경되면 스타일이 변경되고 그에 따라 보여지는 모습도 바뀔 것이다.</p>
-
-<p><strong>Pseudo 클래스</strong></p>
-
-<p>Pseudo 클래스를 사용하면 JavaScript를 사용하지 않고도 상태 변경을 보여줄 수 있다. 하자만 보통 인접한 엘리먼트만 변경할 수 있는 제한이 있다.</p>
-
-<p><strong>미디어 쿼리</strong></p>
-
-<p>페이지가 보여지는 화면의 크기에 따라 스타일을 변경할 수 있다.</p>
-
-<h3>상태 변경 해보기</h3>
-
-<p><a href="http://smacss.com/book/state">SMACSS - Changing State</a> 사이트에서 저자는 상태를 변경하는 여러 코드를 직접 보여주고 있다. '클래스 이름으로 상태 변경하기', 'Pseudo 클래스로 상태 변경하기', '미디어 쿼리로 상태 변경하기' 등의 예제를 볼 수 있다.</p>
-
-<h2>SMACSS를 쓰면...</h2>
-
-<p>이어지는 아래의 여러 내용은 SMACSS를 적용했을 때 기대할 수 있는 부분을 설명하고 있다.</p>
-
-<h2>적용도(Depth of Applicability)</h2>
-
-<p>깊이는 쉽게 말해 CSS 셀렉터의 길이를 의미한다. CSS 깊이 문제는 이미 만들어놓은 HTML 구조에 관련있는 것이고 HTML 구조를 그대로 CSS 셀렉터에 표현하면 너무 길어진다. 예를 들어 다음과 같은 CSS Rule이 있으면:</p>
-
-<pre><code>#sidebar div, #footer div {
-    border: 1px solid #333;
-}
-
-#sidebar div h3, #footer div h3 {
-    margin-top: 5px;
-}
-
-#sidebar div ul, #footer div ul {
-    margin-bottom: 5px;
-}
-</code></pre>
-
-<p>div 엘레멘트를 기본으로 하여 다음과 같이 바꿀 수 있다.</p>
-
-<pre><code>.pod {
-    border: 1px solid #333;
-}
-
-.pod &gt; h3 {
-    margin-top: 5px;
-}
-
-.pod &gt; ul {
-    margin-bottom: 5px;
-}
-</code></pre>
-
-<p>엘리먼트 마다 Class 셀렉터를 만들지 않고 <code>.pod</code> 하나만 만들었다. 깊이도 간단해졌고 문서 구조에 따라 의도하지 않은 CSS 적용도 피할 수 있다. 문서 구조는 변하지 않았지만 대신 적용해야 하는 부분마다 <code>.pod</code> 클래스를 지정해줘야 한다 이런 점이 고민할 부분이다. 한 쪽으로 치우치면 다른 한 쪽이 아쉬워진다.</p>
-
-<p>이렇게 얕은 깊이의 CSS은 템플릿 엔진을 사용할 때 효과적이다. 이 CSS를 따르는 <a href="http://mustache.github.com/">Mushache</a>의 템플릿 코드를 살펴보자:</p>
-
-<pre><code>&lt;div class="pod"&gt;
-    &lt;h3&gt;{{heading}}&lt;/h3&gt;
-    &lt;ul&gt;
-        {{#items}}
-        &lt;li&gt;{{item}}&lt;/li&gt;
-        {{/items}}
-    &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>중요한 점은 관리성, 성능, 가독성을 잘 조화시켜야 한다. CSS 셀렉터 길이가 너무 길면 HTML 여기저기 클래스 속성이 남발하는 것을 낮출 수 있지만 관리성과 가독성을 포기해야 한다. 반대로 모든 엘리먼트에 Class 셀렉터를 새로 만들어 줄 수도 있다. 이 예제에서 h3, h1에 까지 class 셀렉터를 부여하는 것은 불필요하다.</p>
-
-<p>Container는 보통 Header, Body, Footer 영역으로 나눈다. 이 것은 일종의 디자인 패턴이라고 할 수 있다. 그래서 <code>.pod &gt; ul</code>을 다음과 같은 CSS Rule을 만들고 HTML에 적용시면:</p>
-
-<pre><code>.pod-body {
-    margin-bottom: 5px;
-}
-</code></pre>
-
-<p>Container 안에서 ul, ol, div에서 클래스 지정만으로 같은 효과를 사용할 수 있다.</p>
-
-<p>이렇게 단일 셀렉터를 사용하면 결국 '어떤 CSS 셀렉터를 사용해야 할지?' 더는 고민하지 않아도 된다. 특별한 이유가 없으면 이렇게 단일 셀렉터를 사용하는게 장땡이다.</p>
-
-<h2>셀렉터 성능 고려</h2>
-
-<p>성능을 위해 CSS 셀렉터를 어떻게 적용할 지 몇가지 팁을 제시하고 있다. 성능 측정을 위해 몇 가지 도구를 사용한다고 말하는데 <a href="http://css-tricks.com/efficiently-rendering-css/">Google Page Speed</a>같은 프로그램으로 한번 측정해보는 것이 적당할 것이다.</p>
-
-<p>우선 스타일은 HTML의 엘리먼트가가 생성되는 시점에 적용이 된다. 브라우저는 HTML문서를 일종의 Stream으로 다룬다. 그러니까 먼저 들어온 엘리먼트를 먼저 생성한다. 다음 예제를 보면:</p>
-
-<pre><code>&lt;body&gt;
-    &lt;div id="content"&gt;
-        &lt;div class="module intro"&gt;
-            &lt;p&gt;Lorem Ipsum&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class="module"&gt;
-            &lt;p&gt;Lorem Ipsum&lt;/p&gt;
-            &lt;p&gt;Lorem Ipsum&lt;/p&gt;
-            &lt;p&gt;Lorem Ipsum &lt;span&gt;Test-&lt;/span&gt;&lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-</code></pre>
-
-<p><code>body, div#content, div.module.intro ...</code> 순으로 엘리먼트를 생성하고 스타일을 evaluate한다는 말이다. 각 엘리먼트를 Evaluate할 때 Font는 뭐고, 컬러는 뭐고, 높이나 넓으는 얼마인지 브라우저는 정리한 스타일대로 적용하고 그린다. 그리고 하위 엘리먼트의 크기가 바뀌면 브라우저는 Body를 다시 그려야(Repaint)한다고 생각한다(저자는 다른 변수가 있는 사례가 있다고 의심하지만 확실한 것은 보통 width와 height값이 바뀌면 다시 그린다는 것이다).</p>
-
-<p>HTML이 실제로 Render되는 영상을 소개하고 있다. <a href='http://youtu.be/ZTnIxIA5KGw'>http://youtu.be/ZTnIxIA5KGw</a> 는 Firefox의 reflow/repaint 영상이다.</p>
-
-<h3>Right to Left</h3>
-
-<p>CSS는 오른쪽 부터 Evaluate한다. <code>#content &gt; div &gt; p</code> 같은 셀렉터가 있다면 <code>p</code> 엘리먼트가 그려질 때 마다 상위 <code>div</code>를 찾고 상위 <code>#content</code>를 찾는다. 스타일이 적용되기 위해 셀렉터가 찾아봐야 하는 엘리먼트의 갯수가 얼마나 될지 생각해봐야 한다.</p>
-
-<h3>그외 다른 규칙은?</h3>
-
-<p>Google Page Speed는 다음 네 가지 셀렉터 Rule은 비효율적이라고 말한다.</p>
-
-<ul>
-<li><code>#content h3</code>와 같은 Descendant Selector</li>
-<li><code>#content &gt; h3</code>와 같은 Child Selector</li>
-<li><code>div#content &gt; h3</code>와 같이 불필요한 엘리먼트까지 정의하는 Selector</li>
-<li><code>div#content:hover</code>와 같이 link 엘리먼트가 아닌 엘리먼트에 :hover를 정의하는 Selector</li>
-</ul>
-
-<p>자세한 내용은 <a href="http://code.google.com/speed/page-speed/docs/rendering.html">Google Page Speed의 조언</a>을 참고하는 것이 좋다.</p>
-
-<p><a href="http://css-tricks.com/efficiently-rendering-css/">Efficiently Rendering CSS</a> 사이트를 참고해 보는 것도 좋다.</p>
-
-<h2>HTML5와 SMACSS</h2>
-
-<p><a href="http://smacss.com/">SMACSS</a>는 당근 HTML5에 잘 들어맞는다. 사실 HTML4에도 잘 들어맞는다. <a href="http://smacss.com/">SMACSS</a>는 다음 두 가지 목표를 위해 노력하기 때문이다.</p>
-
-<ol>
-<li>증가: HTML과 Content에서 Section의 의미</li>
-<li>감소: 특정 구조로 HTML을 만들거라는 기대</li>
-</ol>
-
-<p>특히 HTML5에서 새로 추가된 의미 태그는 1번 항목을 도와준다. 하지만 HTML5라고 해서 충분히 모든 의미를 포함할수는 없다. 클래스 속성을 통해서 아주 구체적인 의미를 밝힐 수 있다. 아래의 두 <code>&lt;nav&gt;</code> 엘리먼트는 클래스로 그 의미를 밝혀두고 있다. 클래스 속성에 따라 <code>nav-primary</code> 클래스는 가로 메뉴로, <code>nav-secondary</code> 세로메뉴로 만들수도 있다.</p>
-
-<pre><code>&lt;nav class="nav-primary"&gt;
-    &lt;h1&gt;Primary Navigation&lt;/h1&gt;
-    &lt;ul&gt;…&lt;/ul&gt;
-&lt;/nav&gt;
-
-&lt;nav class="nav-secondary"&gt;
-    &lt;h1&gt;External Links&lt;/h1&gt;
-    &lt;ul&gt;…&lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
-
-<h3>2단계 메뉴 목록</h3>
-
-<p>SMACSS의 목표는 최대한 얕은 깊이의 셀렉터를 사용하는 것이다. 만약 아래와 같은 마크업이 있을 때 2단계를 어떻게 다르게 처리할 수 있을까.</p>
-
-<pre><code>&lt;nav class="nav-primary"&gt;
-    &lt;h1&gt;Primary Navigation&lt;/h1&gt;
-    &lt;ul&gt;
-        &lt;li&gt;About Us
-            &lt;ul&gt;
-                &lt;li&gt;Team&lt;/li&gt;
-                &lt;li&gt;Location&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
-
-<p>CSS 셀렉터를 중첩해서 쓰면 아래와 같다:</p>
-
-<pre><code>nav.nav-primary li { 
-    display: inline-block; 
-}
-
-nav.nav-secondary li,
-nav.nav-primary li li {
-    display: block;
-}
-</code></pre>
-
-<p>자 여기서 엘리먼트를 제한하는 <code>nav</code>를 제거하고 셀렉터의 깊이도 더 얕게 만들어보면:</p>
-
-<pre><code>.l-inline &gt; * { 
-    display: inline-block;
-}
-
-.l-stacked &gt; * {
-    display: block;
-}
-</code></pre>
-
-<p>요렇게 만들어볼 수 있다. 마크업은 아래와 같이 수정되어야 한다.</p>
-
-<pre><code>&lt;nav class="l-inline"&gt;
-    &lt;h1&gt;Primary Navigation&lt;/h1&gt;
-    &lt;ul&gt;
-        &lt;li&gt;About Us
-            &lt;ul class="l-stacked"&gt;
-                &lt;li&gt;Team&lt;/li&gt;
-                &lt;li&gt;Location&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
-</code></pre>
-
-<h2>프로토타입</h2>
-
-<p>좋은 프로그래머는 패턴을 좋아해~ 좋은 디자이너도 패턴을 좋아해~</p>
-
-<p>패턴으로서 재사용성을 높일 수 있다. SMACSS는 코드에서도 디자인에서도 패턴을 찾아내려 애쓴다. 프로토타입을 써서 전체적인 혹은 빌딩 블록 각 부분의 코드와 디자인이 제대로 되었는가를 확인할 수 있다. 잘 만든 디자인과 코드는 재사용하기가 매우매우 좋다. <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> 과 <a href="http://960.gs/">960.gs</a>를 보라.</p>
-
-<h3>프로토타입</h3>
-
-<p>프로토타입을 통해 다음 사항을 확인해볼 수 있다.</p>
-
-<p><strong>상태</strong></p>
-
-<p>프로토타입에서는 정의해 둔 모든 상태에 대해서 테스트해 볼 수 있어야 한다. 데이터를 필요로 한다면 JSON이든 실제 서버든 간에 만들어서 테스트해보아야 한다.</p>
-
-<p><strong>지역화</strong></p>
-
-<p>사이트가 여러 언어를 지원하면 프로토타입을 통해 지역화를 지원하는지, 지역화를 통해 레이아웃이 손상되지 않는지 테스트 해볼 수 있다.</p>
-
-<p><strong>의존관계</strong></p>
-
-<p>프로토타입을 통해 각 모듈이 잘 보여지기 위한 최소의 필요조건을 테스트해볼 수 있다. 사이트가 커질수록 불필요한 부분을 줄이는것이 중요하다.</p>
-
-<h3>퍼즐 맞추기</h3>
-
-<p>야후처럼 아주 큰 사이트의 경우 프로토타입을 만들기 위한 시스템을 구축하여 부분적인 또한 전체적인 스타일을 테스트 해볼 수 있다. 운영하는 사이트가 규모가 작다면 이런 시스템은 오히려 배보다 배꼽이 더 클수도 있다. 사이트에 적당한 프로토타입을 정하는것이 중요하다.</p>
-
-<p>좋은 모듈을 만들고 패턴을 재사용하기 좋게 만드는 것이 추구해야할 목적이다. <a href="http://www.flickr.com/photos/aarronwalter/5579386649/">MailChimp의 디자인 패턴 깜지</a>처럼 한눈에 보기쉽게 정리해두면 좋을 것이다.</p>
-
-<p>패턴은 락(樂)이다. 패턴을 코드로 만듦도 락(樂)이다. 패턴을 리뷰하고 테스트 하는 프로세스를 만듦은 극락(極樂)이다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ GitHub로 남의 프로젝트에 감놓고 배놓기 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/how-to-github.html" />
-    <updated>2012-03-31T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/how-to-github.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://github.com/">GitHub</a>를 사용하여 오픈소스 프로젝트에 어떻게 참여할 수 있는 방법을 정리한다. GitHub에 계정이 있어야 하고 <a href="http://git-scm.org/">Git</a>을 어느정도 써 본 사람이어야 한다. </p>
-
-<p><em>원문은 <a href="http://gun.io/">Rich Jones</a>의 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">How to GitHub: Fork, Branch, Track, Squash and Pull Request</a> 이다.</em></p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png" alt="gun.io" title="" /></p>
-
-<h2>저자 공지사항</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 활동하는 개발자 중 저자의 <a href="http://gun.io/contracts/new/">구인구직 사이트</a>에 등록하면 구직하는 사람과 연결해준다고 한다. 관심있는 사람은 둘러보시길!</p>
-
-<h2>자 시작!</h2>
-
-<p><a href="http://github.com/">GitHub</a>에서 저장소를 새로 하나 만들면 아래와 같은 설명을 보여준다.</p>
-
-<p><img src="/articles/2012/how-to-github/LiEI3.png" alt="GitHub" title="" /></p>
-
-<p>GitHub은 새로운 프로젝트와 새로운 저장소를 만들었을 경우에 대한 설명은 친절하게 해주고 있다. 하지만 다른 프로젝트를 개선하고 참여하는 방법에 대해서는 그다지 좋은 설명을 해주고 있지 않다. 이 글은 그러한 점에서 도움이 될 것이다.</p>
-
-<p>우선 시작하기 전에 고쳐보고 싶은 프로젝트를 하나 골라보자. GitHub에서 프로젝트를 찾아서 코드도 둘러보고 익숙한 개발방식을 갖고 있는지 확인도 해보고 커밋 로그도 살펴보고 참여하는 사람이 어떤 사람인지도 살펴들 보자.</p>
-
-<h2>네트워크</h2>
-
-<p><img src="/articles/2012/how-to-github/naZ6I.png" alt="GitHub Network" title="" /></p>
-
-<p>네트워크 그림이다. 'mobile' 이라는 브랜치에서 누군가 열심히 작업을 하고 있기 때문에 'mobile'에 대한 일을 하는 수고는 하지 않는것이 좋을듯 하다.</p>
-
-<p>우선 해야할 일은 프로젝트의 네트워크를 확인해보는 것이다. 네트워크를 확인함으로서 누가 어떤일을 하고 있는지를 살펴볼 수 있다. 네트워크를 한참 들여다보면 고쳐보고자 하던 부분도 이미 다른이가 하고 있는지 알수도 있다. 프로젝트 활동상황도 알 수 있으며 고친 부분이 어떻게 프로젝트에 Merge되는지도 알 수 있다.</p>
-
-<h2>이슈 등록</h2>
-
-<p><img src="/articles/2012/how-to-github/oksQI.png" alt="GitHub Issue" title="" /><br /><em>이슈가 왔어요!</em></p>
-
-<p>프로젝트 화면에서 이슈메뉴로 가 봅시다. 얼마나 많은 이슈가 있는지 그리고 내가 고쳐보고픈 부분이 이미 이슈로 등록이 되어있는지 알 수 있다.</p>
-
-<p>많은 사람들이 잊기 쉬운 이 과정이 왜 중요하냐면 고친점을 보내는 사람들은 보통 프로젝트의 관리자 즉 메인테이너가 같은 문제로 고민중이라는 점을 전혀 고려하지 않기 때문이다.</p>
-
-<p>고쳐볼 부분이 아직 이슈로 등록이 안되어있다면 새로 하나 등록하자. 이슈를 등록할때는 메인테이너에게 공손히 프로젝트에 감사하다는 마음을 갖고 고쳐보고자 하는 버그나 개선사항을 적는거다.</p>
-
-<p>메인테이너가 만들어진 이슈에 대한 댓글로 도움이 될 만한 점을 달아줄지도 모른다.</p>
-
-<h2>Fork로 저장소 분리</h2>
-
-<p><img src="/articles/2012/how-to-github/VWFCB.png" alt="Hardcore Fork" title="" /></p>
-
-<p>'Fork' 버튼을 누르는 희열!! 복제된 저장소가 내 가슴속으로 들어왔다. 나의 복제된 저장소 페이지로 가보라! Clone해서 내려받을 수 있는 주소가 적혀있을 것이다. 바로 그냥 내려받는거다.</p>
-
-<pre><code>git clone **your ssh/git url**
-</code></pre>
-
-<h2>Fork로 만든 저장소와 원본 저장소 연결</h2>
-
-<p><img src="/articles/2012/how-to-github/bbNRs.png" alt="Fork" title="" /><br /><em>Fork가 이거냥!</em></p>
-
-<p>이 과정이 꼭 필요한건 아니다. 하지만 단 한번만 이 프로젝트에 참여할 것이 아니라면 이 과정을 해두면 정말 쓸모있다. 아래 명령을 실행하여 원래 프로젝트 저장소를 'upstream'으로 등록해두면 원래 프로젝트의 변경사항을 계속 받아볼 수 있다. 'upstreamname'과 'projectname' 부분을 실제 프로젝트에 맞게 적당히 바꿔서 명령을 실행한다.</p>
-
-<pre><code>git remote add --track master upstream git://github.com/upstreamname/projectname.git
-</code></pre>
-
-<p>자 이렇게 하면 <code>upstream</code> 이라는 리모트로 등록이 된다.</p>
-
-<pre><code>git fetch upstream
-</code></pre>
-
-<p>이렇게 하면 원래 프로젝트의 최신 내용을 받아오고</p>
-
-<pre><code>git merge upstream/master
-</code></pre>
-
-<p>이렇게 하면 최신 내용을 현재 작업하고 있는 브랜치에 Merge하게 된다. 짜잔!</p>
-
-<h2>개발용 브랜치</h2>
-
-<p><img src="/articles/2012/how-to-github/fI9qT.gif" alt="Old Internet" title="" /><br /><em>그 옛날의 인터넷이 생각나지 않나요들?</em></p>
-
-<p>자 이제 고쳐야 할 부분에 집중하기 위해 <code>master</code> 브랜치에서 새로운 브랜치로 <code>checkout</code>할 때가 왔다. Pull Request는 Branch 단위로 하기 때문에 브랜치를 잘 만들어두는게 중요하다. 고쳐야 할 이슈가 여럿이라면 브랜치도 여러개 이어야 겠다. 아래처럼 해서 브랜치를 만들자:</p>
-
-<pre><code>git branch newfeature
-</code></pre>
-
-<p>해당 브랜치로 바꾸려면 즉 <code>checkout</code> 하려면:</p>
-
-<pre><code>git checkout newfeature
-</code></pre>
-
-<p>새로 만든 브랜치로 변경했다. 현재 위치한 브랜치를 확인하려면 <code>git branch</code>를 실행해보라.</p>
-
-<h2>Hack!</h2>
-
-<p>이제 실제 고치는 작업을 하자. 계획했던 고칠점이 맘에 들 때 까지 될대로 코드를 고쳐보고 테스트해보고 행복의 경지에 이르러보자. 음하하하~</p>
-
-<h2>커밋 하나로 합치기</h2>
-
-<p><img src="/articles/2012/how-to-github/FgOPu.png" alt="Squash" title="" /><br /><em>이게 '스쿼시'냥!</em></p>
-
-<p>여러분도 나처럼 엄청나게 커밋을 해댄다면 커밋 메시지는 안봐도 거지같을게('동작함!', '안돌아감', '열여덟', '후아~', 등등) 뻔하다. 사실 이런 습관은 좋지 않지만 고치고 싶은 생각도 없고 이런 습관을 가진 사람도 많이 봤다.</p>
-
-<p>Pull Request를 보내기 전에 여러 커밋을 하나 혹은 몇 개의 커밋으로 모아서 정리하고 싶을 수도 있다. 하여 <code>git rebase</code> 명령을 써 볼 것이다. 우선 <code>git log</code>로 커밋 메시지를 확인해보고 어떻게 정리할 지 생각해둔다. 마지막 3개의 커밋을 하나로 합치려면 아래와 같은 명령을 실행한다:</p>
-
-<pre><code>git rebase -i HEAD~3
-</code></pre>
-
-<p>명령을 실행하면 Git은 기본 편집기를 불러내서 아래같은 내용을 보여준다.</p>
-
-<pre><code>pick df94881 Allow install to SD 
-pick a7323e5 README Junkyism 
-pick 3ead26f rm classpath from git 
-</code></pre>
-
-<p>각 줄이 각 커밋에 해당하는데 하나로 합치려면 아래와 같이 내용을 수정한다.</p>
-
-<pre><code>pick df94881 Allow install to SD 
-squash a7323e5 README Junkyism 
-squash 3ead26f rm classpath from git 
-</code></pre>
-
-<p>내용을 저장하고 편집기를 종료하면, 새로운 내용으로 편집기가 다시 뜰텐데 그때는 새로 하나로 만들어진 커밋 메시지를 입력하는 것이다. 거지같은 커밋이 깔끔하게 정리된 새 커밋으로 재탄생했다. 만쉐이~ 이제 Pull Request를 해도 부끄럽지 않겠다.</p>
-
-<h2>Pull Request 보내기</h2>
-
-<p>단장하고 커밋해놓은 브랜치를 서버 저장소로 아래와 같은 명령으로 보낸다:</p>
-
-<pre><code>git push origin newfeature
-</code></pre>
-
-<p>그리고 GitHub 사이트로 가서 새로 만든 브랜치로 이동한다. 보통 기본으로 master 브랜치로 되어있을 것이다.</p>
-
-<p><img src="/articles/2012/how-to-github/aAd2v.png" alt="Pull Request" title="" /><br /><em>Pull Request를 보내자</em></p>
-
-<p>브랜치로 이동한 것을 확인하고 'Pull Request' 버튼을 누르자. 다음과 같은 화면이 나오는데 브랜치에서 변경한 내용에 대한 설명을 적어주고 'Submit Pull Request' 버튼을 눌러준다.</p>
-
-<p><img src="/articles/2012/how-to-github/5Euiy.png" alt="Pull Request" title="" /><br /><em>Pull Request 설명 달기</em></p>
-
-<p>룰루랄라~ 끝났다. 사실 완전히 다 끝난건 아니다. 'Pull Request' 보낸 커밋에 고칠점이 있다면 메인테이너는 'Pull Request'를 바로 받아주지 않고 해당사항을 고쳐달라고 할 것이다. 메인테이너가 'Pull Request'를 닫지(Clone) 않는 한 해당 브랜치로 커밋을 Push하면 다행히도 'Pull Request' 속으로 들어간다.</p>
-
-<h2>Pull Request 받아서 Merge하기</h2>
-
-<p>보너스! Pull Request를 받았을 때에는 어떻게 Merge하면 되는가! 그냥 버튼 하나만 누르면 된다. 쉽네. GitHub이 버튼 한 번만 누르면 모든게 자동으로 되도록 잘 만들어놨다. 간혹, 자동으로 되지 않을때가 있는데 그때는 직접 명령어를 써서 Merge해야 한다.</p>
-
-<pre><code>git checkout master
-git remote add contributor git://github.com/contributor/project
-git fetch contributor
-git merge contributor/newfeature
-git push origin master
-</code></pre>
-
-<p>이렇게 하면 다른사람이 수정한 내용을 메인 master 브랜치로 merge하게 된다.</p>
-
-<h2>Pull Request를 받아주지 않는 이유</h2>
-
-<p>이 부분은 <a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">원본 페이지</a>를 확인하시라!</p>]]>
     </content>
   </entry>
 </feed>
