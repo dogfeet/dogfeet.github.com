@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - Dogfeet Flavored Markdown</title>
+    <meta name="description" content="'Dogfeet-Flavored-Markdown'은 Markdown에서 Twitter처럼 @mention, #hash와 같은 표현을 사용하고 싶어서 만들었다. 이 모듈은 아직 실험중이다." />
+    <meta name="keywords" content="Markdown,Docpad,Github" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <section class="content span10">
+          <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/dogfeet-flavored-markdown.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">Dogfeet Flavored Markdown</h1>
+  </header>
+  <footer class="modern-font  small-font">
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">2012 Dec 08</span>
+ | <a href="/site/tagmap.html#markdown" class="tag">Markdown</a> <a href="/site/tagmap.html#docpad" class="tag">Docpad</a> <a href="/site/tagmap.html#github" class="tag">Github</a> | <span><a href="/articles/2012/dogfeet-flavored-markdown.html#disqus_thread" data-disqus-identifier="/articles/2012/dogfeet-flavored-markdown.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>'Dogfeet-Flavored-Markdown'은 Markdown에서 Twitter처럼 <code>@mention</code>, <code>#hash</code>와 같은 표현을 사용하고 싶어서 만들었다. 이 모듈은 아직 실험중이다.</p>
+
+<p>'Dogfeet-Flavored-Markdown'의 구현을 요약하자면 다음과 같다:</p>
+
+<ul>
+<li>'<a href="https://github.com/dogfeet/dogfeet-flavored-markdown">Dogfeet-Flavored-Markdown</a>'은 Issac의 '<a href="https://github.com/github/github-flavored-markdown">GitHub-Flavored-Markdown</a>'을 포크해서 만들었다.</li>
+<li><a href="https://github.com/isaacs/github-flavored-markdown">Issac의 'GitHub-Flavored-Markdown'</a>은 <a href="https://github.com/github/github-flavored-markdown">GitHub의 'GitHub-Flavored-Markdown'</a>을 node 모듈로 만든 것이다.</li>
+<li><a href="https://github.com/github/github-flavored-markdown">GitHub의 'GitHub-Flavored-Markdown'</a>은 ShowDown에 몇 가지 문법을 추가한 것이다.</li>
+</ul>
+
+<p>그래서 먼저 <a href="http://github.github.com/github-flavored-markdown/">GitHub의 GitHub-Flavored-Markdown 설명서</a>를 숙지하고 읽어 보는 것이 좋다.</p>
+
+<h2>Github-Flavored-Markdown</h2>
+
+<p>Github-Flavored-Markdown(이하 GFM)은 다음과 같은 표현을 지원한다.</p>
+
+<pre><code>* SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
+* User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
+* User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
+* #Num: #1
+* User/#Num: mojombo#1
+* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>
+</code></pre>
+
+<p>하지만 실제로 작동하는 것은 '사용자/저장소' 패턴이 명시된 다음의 두 경우 뿐이다:</p>
+
+<ul>
+<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
+</ul>
+
+<p>나머지 패턴도 동작하게 하려면 '사용자/저장소' 정보가 필요하다. GFM의 용법은 다음과 같은데 인자로 '사용자/저장소'를 넘겨줄 수 있다:</p>
+
+<pre><code>var ghm = require("github-flavored-markdown")
+ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
+// returns:
+// '&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; GHM.  '+
+// '&lt;a href=\'<a href='http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt'>http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt</a>;'
+</code></pre>
+
+<p>그러면 나머지 패턴도 해당 저장소에 대한 GitHub 링크가 생성된다:</p>
+
+<ul>
+<li>SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
+<li>User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
+<li><a href="/site/tagmap.html#Num">#Num</a>: <a href="/site/tagmap.html#1">#1</a></li>
+<li>User/#Num: mojombo#1</li>
+</ul>
+
+<h2>Dogfeet-Flavored-Markdown</h2>
+
+<p>Dogfeet-Flavored-Markdown(이하 DFM)은 DFM에서 '사용자/저장소' 정보가 필요한 나머지 패턴은 삭제했다. 그래서 다음과 같은 패턴만 사용할 수 있다:</p>
+
+<ul>
+<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
+</ul>
+
+<p>대신 <code>@mention</code>과 <code>#hash</code>를 추가 했다. 정확한 패턴은 다음과 같다:</p>
+
+<ul>
+<li>mention - <code>(^|[ \t]+)@([ㄱ-ㅎ가-힣a-zA-Z0-9]+)</code></li>
+<li>hash - <code>(^|[ \t]+)#([ㄱ-ㅎ가-힣a-zA-Z0-9]+)</code></li>
+</ul>
+
+<p>다시 말해서 줄 처음에 시작하는 <code>@mention</code>이나 앞에 공백(space, tab)문자가 있는 것만 인식한다.</p>
+
+<p>이 규칙이 중요할 때가 있는데, <code>#</code>으로 Heading을 표현하는 Markdown에서 중요하다. 줄 맨앞에서 <code>#Heading</code>이라고 표현하면 DFM가 처리하는 것이 아니라 showdown 엔진이 처리하기 때문에 링크가 생성되지 않고 <code>&lt;h1&gt;Heading&lt;/h1&gt;</code>이라고 해석된다. 이 것은 해석하는 순서의 문제다. 순서는 이 글 마지막에 있다.</p>
+
+<p>그리고 <code>&lt;code&gt;</code> 블럭과 <code>&lt;a&gt;</code> 블럭에 있는 것은 무시한다. 간단히 말하면 <code>@mention</code>과 <a href="https://twitter.com/#!/mention">@mention</a>의 차이이고 <a href="http://twitter.com"><a href="https://twitter.com/#!/twitter">@twitter</a></a>와 <a href="https://twitter.com/#!/twitter">@twitter</a> 의 차이다. 원문은 다음과 같다:</p>
+
+<pre><code>그리고 `&lt;code&gt;` 블럭과 `&lt;a&gt;` 블럭에 있는 것은 무시한다. 간단히 말하면 `@mention`과 @mention의 차이이고 [@twitter](<a href='http://twitter.com)와'>http://twitter.com)와</a> @twitter 의 차이다. 원문은 다음과 같다:
+</code></pre>
+
+<h3>예제</h3>
+
+<p>이 것은 코드 블럭이 아니라 잘 된다:</p>
+
+<ul>
+<li>User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
+<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
+<li><a href="/site/tagmap.html#Num">#Num</a>: <a href="/site/tagmap.html#1">#1</a></li>
+<li>User/#Num: mojombo#1</li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, <code><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></code></li>
+<li><a href="https://twitter.com/#!/pismute">@pismute</a></li>
+<li><a href="/site/tagmap.html#EveryoneIsBeautiful">#EveryoneIsBeautiful</a> <code>, #EveryoneIsBeautiful,#EveryoneIsBeautiful</code></li>
+<li><a href="/site/tagmap.html#한글">#한글</a> <code>, #한글,#한글</code></li>
+</ul>
+
+<p>(이글에서는 <code>#hash</code>는 Twitter가 아니라 이 블로그의 tagmap 페이지로 연결된다.)</p>
+
+<p>다음은 코드 블럭이라 DFM은 동작하지 않는다. 하지만 GFM의 것은 코드 블럭의 것도 처리한다. 다시 말하지만 GFM의 것은 코드 블럭에서도 링크를 생성 하지만 Dogfeet에서 추가한 <code>@mention</code>과  <code>#hash</code>는 코드 블럭에서는 링크를 생성하지 않는다:</p>
+
+<pre><code>* SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
+* User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
+* User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
+* #Num: #1
+* User/#Num: mojombo#1
+* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, `<a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>`
+* @pismute
+* #EveryoneIsBeautiful `, #EveryoneIsBeautiful,#EveryoneIsBeautiful`
+* #한글 `, #한글,#한글`
+</code></pre>
+
+<h3>Coding</h3>
+
+<p>기본적으로 내장된 템플릿은 twitter로 연결된다. 그래서 <code>@mention</code>과 <code>#hash</code>를 클릭하면 twitter로 연결된다. 하지만 바꿀 수 있다.</p>
+
+<pre><code>var templates={
+  '@': function(key){ return ['@@', key].join(''); }
+  , '#': function(key){ return ['##', key].join(''); }
+}
+var dhm = require("dogfeet-flavored-markdown");
+ghm.parse("I **love** @DHM. #DHM", {templates:templates});
+// returns:
+// '&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; @@GHM. ##DHM'
+</code></pre>
+
+<h3>순서</h3>
+
+<p>이 모듈은 세단계로 Markdown을 처리한다.</p>
+
+<ul>
+<li>먼저 원래 코드인 <a href="http://www.showdown.im/">showdown</a> 엔진이 먼저 처리한다.</li>
+<li>그리고 그 결과를 <a href="https://github.com/isaacs/github-flavored-markdown">Github-Flavored-Markdown</a> 이 처리한다.</li>
+<li>마지막으로 <a href="https://github.com/dogfeet/dogfeet-flavored-markdown">Dogfeet-Flavored-Markdown</a> 이 처리한다.</li>
+</ul>
+
+<h3>설치</h3>
+
+<p>이 모듈은 npmjs.org에 올릴 계획이 없다. 그러니 다음과 같이 설치해야 한다.</p>
+
+<pre><code>npm install git://github.com/dogfeet/dogfeet-flavored-markdown.git#master
+</code></pre>
+
+<h2>마치며</h2>
+
+<p>이 모듈의 <a href="https://github.com/dogfeet/dogfeet-flavored-markdown">저장소</a>에 올려 두었다.</p>
+
+<h2>TODO</h2>
+
+<p>다음과 같은 두 문제를 더 해결해야 한다.</p>
+
+<ul>
+<li><code>#hash</code>로 정의하면 실제로 문서의 tag로 인식하는 docpad plugin을 만들어야 함.</li>
+</ul>
+  </div>
+</article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <div class="alert alert-info">
+    <ul>
+      <li>
+        <span>Nov 26 2011</span>
+&raquo;        <a href="/articles/2011/docpad.html">Docpad</a>
+      </li>
+      <li>
+        <span>Apr 01 2012</span>
+&raquo;        <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
+      </li>
+    </ul>
+  </div>
+</section>
+<section id="comments">
+  <h3>Feedback</h3>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2012/dogfeet-flavored-markdown.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
+
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>
