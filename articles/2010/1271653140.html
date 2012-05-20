@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</title>
+    <title>dogfeet - Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</title>
     <meta name="description" content="이글은 Stefan Schmidt의 Spring Finance를 번역한 것이다." />
     <meta name="keywords" content="Java,Spring,Spring Finance,Stefan Schmidt" />
     <meta name="author" content="Changwoo Park" />
@@ -93,7 +93,7 @@
 </script>
 <article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration</h1>
+    <h1 property="dcterms:title">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</h1>
   </header>
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
@@ -121,7 +121,7 @@
   <div property="sioc:content">
     <p>이글은 Stefan Schmidt의 Spring Finance를 번역한 것이다.</p>
 
-<h2>Part 2: Spring @MVC &amp; Spring 3.0 REST integration</h2>
+<h2>Part 2: Spring <code>@MVC</code> &amp; Spring 3.0 REST integration</h2>
 
 <p>이전 글에서 Spring Finance Manager 어플리케이션을 소개하고 나서 소개할 기술들에 대해 줄곧 고민했다. 이 글은 Spring 3.0 M1부터 처음 도입된 REST 특징을 위주로 설명하고자 한다.</p>
 
@@ -133,14 +133,14 @@
 
 <p>SVN 저장소가 필요해서 Google code에 프로젝트를 만들었다. 프로젝트 페이지는 <a href="http://code.google.com/p/spring-finance-manager">여기</a>이고 SVN 저장소는 다음과 같이 이용할 수 있다:</p>
 
-<pre><code>svn checkout <a href='http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/'>http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</a> 
+<pre><code>svn checkout <a href='http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/'><a href='http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/'>http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</a></a> 
 </code></pre>
 
 <p>자세한 빌드 방법은 <a href="http://code.google.com/p/spring-finance-manager/wiki/BuildAndInstall">여기</a>에 있다.</p>
 
-<h2>Spring @MVC</h2>
+<h2>Spring <code>@MVC</code></h2>
 
-<p>말했던데로 이 어플리케이션은 Spring @MVC를 사용했다. PersonController.java를 보면 Spring MVC의 콘트롤러는 어노테이션을 사용한 POJO 빈이라는 것을 알 수 있다. 이 어노테이션들은 빈을 Spring 어플리케이션 컨텍스트에 컨트롤러로 등록해 준다.</p>
+<p>말했던데로 이 어플리케이션은 Spring <code>@MVC</code>를 사용했다. PersonController.java를 보면 Spring MVC의 콘트롤러는 어노테이션을 사용한 POJO 빈이라는 것을 알 수 있다. 이 어노테이션들은 빈을 Spring 어플리케이션 컨텍스트에 컨트롤러로 등록해 준다.</p>
 
 <pre><code>@Controller
 @RequestMapping("/person/**")
@@ -159,10 +159,10 @@ public class PersonController {
     }
 
     //further methods omitted
-} 
+}
 </code></pre>
 
-<p>분명, 여러분은 @Controller 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 @Controller 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:</p>
+<p>분명, 여러분은 <code>@Controller</code> 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 <code>@Controller</code> 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:</p>
 
 <pre><code>&lt;context:component-scan base-package="net.stsmedia.financemanager" use-default-filters="false"&gt;
 
@@ -172,15 +172,15 @@ public class PersonController {
 &lt;/context:component-scan&gt; 
 </code></pre>
 
-<p>@Controller 어노테이션 이외에도 @RequestMapping 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 '/FinanceManager/person/'와 그 하위 URI에 매핑시킨다. 만약 Spring @MVC가 생소하다면 Jurergen Hoeller의 블로그에서 '<a href="[http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>'란 글을 참고하라.</p>
+<p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 '/FinanceManager/person/'와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 '<a href="[http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>'란 글을 참고하라.</p>
 
-<p>@Autowired 어노테이션으로 PersionService를 주입하면 show() 메소드를 살펴볼 준비가 된 것이다. 이 메소드는 REST 스타일로 특정 사람의 상세정보를 얻어 오는데 사용된다.</p>
+<p><code>@Autowired</code> 어노테이션으로 PersionService를 주입하면 show() 메소드를 살펴볼 준비가 된 것이다. 이 메소드는 REST 스타일로 특정 사람의 상세정보를 얻어 오는데 사용된다.</p>
 
 <h2>Spring 3.0 REST</h2>
 
-<p>@RequestMapping 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 @RequestMapping을 show() 메소드에 정의했다. '/FinanceManager/person/1'에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.</p>
+<p><code>@RequestMapping</code> 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 <code>@RequestMapping</code>을 show() 메소드에 정의했다. '/FinanceManager/person/1'에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.</p>
 
-<p>Spring 3.0은 @PathVariable 어노세이션을 도입했다. 그래서 요청 URI에 공급된 값을 얻기가(binding) 매우 쉬워졌습니다. @PathVariable은 Spring 3.0 REST의 핵심이다. 위 코드에서 path variable은 {id}를 가르킨다. '@PathVariable(“id”) Long id'만으로도 자동으로 Long 객체로 매핑된다. 이 것은 Spring의 기본 프로퍼티 에티터 덕이다.</p>
+<p>Spring 3.0은 <code>@PathVariable</code> 어노세이션을 도입했다. 그래서 요청 URI에 공급된 값을 얻기가(binding) 매우 쉬워졌습니다. <code>@PathVariable</code>은 Spring 3.0 REST의 핵심이다. 위 코드에서 path variable은 {id}를 가르킨다. <code>@PathVariable("id") Long id</code>만으로도 자동으로 Long 객체로 매핑된다. 이 것은 Spring의 기본 프로퍼티 에티터 덕이다.</p>
 
 <p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:</p>
 
@@ -230,28 +230,28 @@ DELETE | DELETE
     <th>DELETE</th>
   </tr>
   <tr>
-    <td>Collection URI such as <a href='http://domain.com/financemanager/person/'>http://domain.com/financemanager/person/</a></td>
+    <td>Collection URI such as <a href='http://domain.com/financemanager/person/'><a href='http://domain.com/financemanager/person/'>http://domain.com/financemanager/person/</a></a></td>
     <td>사람들의 목록, 예를 들어 시스템에 등록된 모든 사람을 나열한다.</td>
     <td>사용되지 않는다.</td>
     <td>Id를 자동으로 생성하여 사람을 생성한다.</td>
     <td>사용되지 않는다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href='http://domain.com/financemanager/person/5'>http://domain.com/financemanager/person/5</a></td>
+    <td>Member URI such as <a href='http://domain.com/financemanager/person/5'><a href='http://domain.com/financemanager/person/5'>http://domain.com/financemanager/person/5</a></a></td>
     <td>id가 5인 사람의 상세정보를 가져온다.</td>
     <td>id가 5인 사람을 갱신한다.</td>
     <td>사용되지 않는다.</td>
     <td>id가 5인 사람을 삭제한다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href='http://domain.com/financemanager/person/form'>http://domain.com/financemanager/person/form</a></td>
+    <td>Member URI such as <a href='http://domain.com/financemanager/person/form'><a href='http://domain.com/financemanager/person/form'>http://domain.com/financemanager/person/form</a></a></td>
     <td>생성(Create) 폼 - 초기화 된 사람을 반환한다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href='http://domain.com/financemanager/person/5/form'>http://domain.com/financemanager/person/5/form</a></td>
+    <td>Member URI such as <a href='http://domain.com/financemanager/person/5/form'><a href='http://domain.com/financemanager/person/5/form'>http://domain.com/financemanager/person/5/form</a></a></td>
     <td>갱신(Update) 폼 - 폼 바인딩으로 미리 데이터가 채워진 사람을 반환한다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
@@ -263,12 +263,12 @@ DELETE | DELETE
 
 <h2>결론과 부가 정보</h2>
 
-<p>이 글에서는 Spring @MVC 어노테이션 스타일과 Spring @MVC의 REST 기능을 이용해서 Spring MVC 프레임워크를 사용해봤다. 나는 XML, ATOM, RSS, JSON같은 문서들이 생성되게 해주는 content negotiation은 설명하지 않았다. 하지만 Spring Finance Manager에 걸맞는 유즈 케이스를 제안해 주시는 분이 있으면 나는 기쁘게 이 시리즈의 한 파트로 추가시킬 것이다.</p>
+<p>이 글에서는 Spring <code>@MVC</code> 어노테이션 스타일과 Spring <code>@MVC</code>의 REST 기능을 이용해서 Spring MVC 프레임워크를 사용해봤다. 나는 XML, ATOM, RSS, JSON같은 문서들이 생성되게 해주는 content negotiation은 설명하지 않았다. 하지만 Spring Finance Manager에 걸맞는 유즈 케이스를 제안해 주시는 분이 있으면 나는 기쁘게 이 시리즈의 한 파트로 추가시킬 것이다.</p>
 
 <p>나는 여러분이 내 동료 Arjen Poutsma, Alef Arendsen의 글도 참고하길 바란다.</p>
 
 <ul>
-<li><a href="http://blog.springsource.com/2009/03/08/rest-in-spring-3-mvc/">REST in Spring 3</a> - @MVC: Arjen이 Spring 3.0 REST 지원의 주요 기능을 소개한다.</li>
+<li><a href="http://blog.springsource.com/2009/03/08/rest-in-spring-3-mvc/">REST in Spring 3</a> - <code>@MVC</code>: Arjen이 Spring 3.0 REST 지원의 주요 기능을 소개한다.</li>
 <li><a href="http://blog.springsource.com/2009/03/16/adding-an-atom-view-to-an-application-using-springs-rest-support/">Adding an Atom view to an application using Spring's REST support</a> - Alef는 Spring 3.0 REST content negotiation을 사용하여 ATOM 피드를 생성하는 방법을 설명한다.</li>
 </ul>
 

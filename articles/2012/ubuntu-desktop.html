@@ -163,12 +163,12 @@ sudo gem install jekyll
 
 <p>인증서를 등록하고:</p>
 
-<pre><code>wget -q -O - <a href='https://dl-ssl.google.com/linux/linux_signing_key.pub'>https://dl-ssl.google.com/linux/linux_signing_key.pub</a> | sudo apt-key add -
+<pre><code>wget -q -O - <a href='https://dl-ssl.google.com/linux/linux_signing_key.pub'><a href='https://dl-ssl.google.com/linux/linux_signing_key.pub'>https://dl-ssl.google.com/linux/linux_signing_key.pub</a></a> | sudo apt-key add -
 </code></pre>
 
 <p>apt source 등록:</p>
 
-<pre><code>sudo sh -c 'echo "deb <a href='http://dl.google.com/linux/chrome/deb/'>http://dl.google.com/linux/chrome/deb/</a> stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'
+<pre><code>sudo sh -c 'echo "deb <a href='http://dl.google.com/linux/chrome/deb/'><a href='http://dl.google.com/linux/chrome/deb/'>http://dl.google.com/linux/chrome/deb/</a></a> stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'
 </code></pre>
 
 <p>update하고:</p>
@@ -208,8 +208,8 @@ sudo gem install jekyll
 <p>12.04에서만 발생하는 에러일 수도 있지만 당분간 해결되지 않을 것 같은 느낌이다. SVN에서 https인 저장소에 접근하면 다음과 같은 에러가 발생한다.</p>
 
 <pre><code>└─▪ git svn dcommit
-Committing to <a href='https://my.svn/trunk'>https://my.svn/trunk</a> ...
-RA layer request failed: OPTIONS of '<a href='https://my.svn/trunk'>https://my.svn/trunk</a>': SSL handshake failed: SSL error: Key usage violation in certificate has been detected. (<a href='https://my.svn'>https://my.svn</a>) at /usr/lib/git-core/git-svn line 577
+Committing to <a href='https://my.svn/trunk'><a href='https://my.svn/trunk'>https://my.svn/trunk</a></a> ...
+RA layer request failed: OPTIONS of '<a href='https://my.svn/trunk'><a href='https://my.svn/trunk'>https://my.svn/trunk</a></a>': SSL handshake failed: SSL error: Key usage violation in certificate has been detected. (<a href='https://my.svn'><a href='https://my.svn'>https://my.svn</a></a>) at /usr/lib/git-core/git-svn line 577
 </code></pre>
 
 <p>뭐 이런 에러가 발생하면 다음과 같이 임시로 조치할 수 있다.:</p>

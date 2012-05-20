@@ -135,15 +135,15 @@
 
 <p>앞서 살펴본 ollehWifi 인증 화면 iOS에 설치된 Captive Network 에 대한 Portal 화면이다. 이 화면은 브라우저를 띄우지 않아도 Captive Network에 접속하게 되면 OS가 자동으로 띄워준다. OS는 이러한 환경을 어떻게 찾아낼 수 있는것일까? </p>
 
-<p><img src="/articles/2012/captive-network/panera-captive.png" alt="panera-captive" title="" /><br /><sup><a href='http://www.docstechnotes.com/2011/07/os-x-lion-learns-wi-fi-login-trick-from.html'>http://www.docstechnotes.com/2011/07/os-x-lion-learns-wi-fi-login-trick-from.html</a></sup></p>
+<p><img src="/articles/2012/captive-network/panera-captive.png" alt="panera-captive" title="" /><br /><sup><a href='http://www.docstechnotes.com/2011/07/os-x-lion-learns-wi-fi-login-trick-from.html'><a href='http://www.docstechnotes.com/2011/07/os-x-lion-learns-wi-fi-login-trick-from.html'>http://www.docstechnotes.com/2011/07/os-x-lion-learns-wi-fi-login-trick-from.html</a></a></sup></p>
 
 <p>모바일뿐만 아니라 요즘은 데스크톱 OS에서도 적용되어 있다. iOS의 경우 3.0부터, Mac의 경우 Lion부터, Win의 경우 Win7부터 적용된 것 같다. Lion의 경우 브라우저 말고 이런 팝업창에서 입력한 Captive Network에 대한 사용자ID와 패스워드를 OS 차원에서 저장해주기도 한다.</p>
 
-<p><img src="/articles/2012/captive-network/mac-captive.png" alt="mac-captive" title="" /><br /><sup><a href='http://www.apple.com/macosx/whats-new/features.html#networking'>http://www.apple.com/macosx/whats-new/features.html#networking</a></sup></p>
+<p><img src="/articles/2012/captive-network/mac-captive.png" alt="mac-captive" title="" /><br /><sup><a href='http://www.apple.com/macosx/whats-new/features.html#networking'><a href='http://www.apple.com/macosx/whats-new/features.html#networking'>http://www.apple.com/macosx/whats-new/features.html#networking</a></a></sup></p>
 
 <p>Captive Network인지를 확인하기 위해 Lion의 경우 Captive Service가 항상 동작하고 있으며 수시로 네트워크 상황을 확인한다. Captive Network인지 확인하기 위해서 다음과 같은 URL의 데이터를 불러와본다.</p>
 
-<pre><code>$ curl <a href='http://www.apple.com/library/test/success.html'>http://www.apple.com/library/test/success.html</a>
+<pre><code>$ curl <a href='http://www.apple.com/library/test/success.html'><a href='http://www.apple.com/library/test/success.html'>http://www.apple.com/library/test/success.html</a></a>
 &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"&gt;
 &lt;HTML&gt;
 &lt;HEAD&gt;
@@ -155,7 +155,7 @@ Success
 &lt;/HTML&gt;
 </code></pre>
 
-<p><code><a href='http://www.apple.com/library/test/success.html'>http://www.apple.com/library/test/success.html</a></code>의 데이터를 불러왔을 때 진짜로 원하는 데이터가 들어있는지 확인하는 <a href="http://erratasec.blogspot.com/2010/09/apples-secret-wispr-request.html">방식</a>이다. 간단하다. Windows또한 비슷한 방식을 사용하며 <a href="http://blog.superuser.com/2011/05/16/windows-7-network-awareness/">NCSI:Network Connectivity Status Indicator</a>라고 부른다.</p>
+<p><code><a href='http://www.apple.com/library/test/success.html'><a href='http://www.apple.com/library/test/success.html'>http://www.apple.com/library/test/success.html</a></a></code>의 데이터를 불러왔을 때 진짜로 원하는 데이터가 들어있는지 확인하는 <a href="http://erratasec.blogspot.com/2010/09/apples-secret-wispr-request.html">방식</a>이다. 간단하다. Windows또한 비슷한 방식을 사용하며 <a href="http://blog.superuser.com/2011/05/16/windows-7-network-awareness/">NCSI:Network Connectivity Status Indicator</a>라고 부른다.</p>
 
 <h2>적용 및 참고</h2>
 

@@ -124,7 +124,7 @@
 <p>C#에서 XPath로 XML을 쉽게 다룰 수 있는데, Select검색시에 기본 네임스페이스(RootElement에 정의된 xmlns)가 정의되어 있을 경우, ElementName만 가지고서는 검색되지 않는다.</p>
 
 <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;html xmlns="<a href='http://www.w3.org/1999/xhtml'>http://www.w3.org/1999/xhtml</a>"&gt;
+&lt;html xmlns="<a href='http://www.w3.org/1999/xhtml'><a href='http://www.w3.org/1999/xhtml'>http://www.w3.org/1999/xhtml</a></a>"&gt;
   &lt;body /&gt;
 &lt;/html&gt; 
 </code></pre>
@@ -137,7 +137,7 @@
 <p>다음과 같이 Namespace를 별칭과 함께 사용하여 검색할 수 있다.</p>
 
 <pre><code>XmlNamespaceManager namespaceManager = new XmlNamespaceManager(xmldoc.NameTable);
-namespaceManager.AddNamespace("myprefix", "<a href='http://www.w3.org/1999/xhtml'>http://www.w3.org/1999/xhtml</a>");
+namespaceManager.AddNamespace("myprefix", "<a href='http://www.w3.org/1999/xhtml'><a href='http://www.w3.org/1999/xhtml'>http://www.w3.org/1999/xhtml</a></a>");
 
 XmlNode metaNode = xmldoc.SelectSingleNode("//myprefix:Body"); // returns body element node
 </code></pre>

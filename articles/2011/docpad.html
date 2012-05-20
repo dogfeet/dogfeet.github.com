@@ -199,7 +199,7 @@
 
 <p>기본적으로 Template Engine이기 때문에 다양한 function을 사용할 수 없다. nodejs의 다양한 api들을 template에서 사용하고 싶은 것이다. 나는 CoffeeKup이외의 지식이 빈약하기 때문에 다른 Template Engine에 관한 예제는 올리지 않는다.</p>
 
-<h4>@tool.moment</h4>
+<h4><code>@tool.moment</code></h4>
 
 <p>CoffeeKup의 경우에 Tempate Data에 함수를 담아 넘기고 그 함수를 사용할 수 있다. Plugin으로 Template Data에 momentjs를 넘기고 그 것을 사용하는 예제를 보자.</p>
 
@@ -232,7 +232,7 @@ module.exports = ToolPlugin
 dateWrapper.format 'MMM DD' #ex) JAN 01
 </code></pre>
 
-<h4>@tool.summary</h4>
+<h4><code>@tool.summary</code></h4>
 
 <p>index 페이지에서는 글들의 summary만 보여주고 싶었다. docpad는 부가기능이 별로 없기 때문에 고민이 좀 됐는데 의외로 간단히 해결했다.</p>
 
@@ -264,7 +264,7 @@ name= 'ahmooge'
 blahblah
 </code></pre>
 
-<p>docpad는 이 문서를 처리해서 <code>{name:'ahmooge', url:'/authors/ahmooge.html', content: 'blahblah..', contentRendered: '&lt;span&gt;blahblah&lt;/span&gt;'}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 @authors.data 객체에 담아준다. 'Kim'라는 document1와 'Park'라는 document2가 있으면 @authors.data에는 <code>{"Kim": document1, "Park":document2}</code>라는 객체가 들어가게 된다. </p>
+<p>docpad는 이 문서를 처리해서 <code>{name:'ahmooge', url:'/authors/ahmooge.html', content: 'blahblah..', contentRendered: '&lt;span&gt;blahblah&lt;/span&gt;'}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 <code>@authors.data</code> 객체에 담아준다. 'Kim'라는 document1와 'Park'라는 document2가 있으면 <code>@authors.data</code>에는 <code>{"Kim": document1, "Park":document2}</code>라는 객체가 들어가게 된다. </p>
 
 <p>그럼 CoffeeKup template에서 사용해보자:</p>
 
@@ -281,7 +281,7 @@ blahblah
 
 <p>docpad를 실행했는데 다음과 같은 에러가 발생하면:</p>
 
-<pre><code>Error: Command failed: npm ERR! error installing <a href='mailto:coffee-script@1.1.3'>coffee-script@1.1.3</a> Error: ENOENT, no such file or directory '/Users/pismute/dogfeet/dogfeet.github.com/node_modules/coffee-script/package.json'
+<pre><code>Error: Command failed: npm ERR! error installing <a href='mailto:<a href='mailto:coffee-script@1.1.3'>coffee-script@1.1.3</a>'><a href='mailto:coffee-script@1.1.3'>coffee-script@1.1.3</a></a> Error: ENOENT, no such file or directory '/Users/pismute/dogfeet/dogfeet.github.com/node_modules/coffee-script/package.json'
 </code></pre>
 
 <p>수동으로 패키지를 설치한다. 원래 docpad는 자동으로 설치하고 update해줄 수 있다고 하는데 뭔가 잘 안될 때가 있다:</p>
@@ -301,6 +301,10 @@ npm install coffee-script
   <h3>Related Posts</h3>
   <div class="alert alert-info">
     <ul>
+      <li>
+        <span>Dec 08 2012</span>
+&raquo;        <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
+      </li>
       <li>
         <span>Nov 22 2011</span>
 &raquo;        <a href="/articles/2011/coffee-kup.html">CoffeeKup &lt;☕/&gt;</a>

@@ -162,7 +162,7 @@
     }
 
     // dropbox도 막았다.
-    if (shExpMatch(url, "<a href='http://www.dropbox.com*'>http://www.dropbox.com*</a>")) {
+    if (shExpMatch(url, "<a href='http://www.dropbox.com*'><a href='http://www.dropbox.com*'>http://www.dropbox.com*</a></a>")) {
         //이건 HTTP PROXY로 연결하고 실패하면 그냥 연결한다.
         return "PROXY 127.0.0.1:8580; DIRECT";
     }

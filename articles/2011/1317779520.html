@@ -156,7 +156,7 @@ print( Object.isExtensible( obj ) );
 
 Object.preventExtensions( obj );
 
-obj.url = "<a href='http://ejohn.org/'>http://ejohn.org/</a>"; // Exception in strict mode
+obj.url = "<a href='http://ejohn.org/'><a href='http://ejohn.org/'>http://ejohn.org/</a></a>"; // Exception in strict mode
 
 print( Object.isExtensible( obj ) );
 // false 
@@ -322,7 +322,7 @@ Object.defineProperties(obj, {
 
 <p>Example Usage:</p>
 
-<pre><code>var obj = { name: "John", url: "<a href='http://ejohn.org/'>http://ejohn.org/</a>" };
+<pre><code>var obj = { name: "John", url: "<a href='http://ejohn.org/'><a href='http://ejohn.org/'>http://ejohn.org/</a></a>" };
 print( Object.keys(obj).join(", ") );
 // name, url 
 </code></pre>
@@ -372,10 +372,10 @@ print( Object.keys(obj).join(", ") );
 
 <pre><code>function User(){}
 User.prototype.name = "Anonymous";
-User.prototype.url = "<a href='http://google.com/'>http://google.com/</a>";
+User.prototype.url = "<a href='http://google.com/'><a href='http://google.com/'>http://google.com/</a></a>";
 var john = Object.create(new User(), {
   name: { value: "John", writable: false },
-  url: { value: "<a href='http://google.com/'>http://google.com/</a>" }
+  url: { value: "<a href='http://google.com/'><a href='http://google.com/'>http://google.com/</a></a>" }
 });
 
 print( john.name );
