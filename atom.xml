@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-05-20T14:50:21Z</updated>
+  <updated>2012-05-27T12:38:23Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Yongjae Choi</name>
@@ -18,9 +18,223 @@
     <email>pismute@gmail.com</email>
   </author>
   <entry>
+    <title><![CDATA[ Coroutine ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/coroutine.html" />
+    <updated>2012-05-26T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/coroutine.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 <a href="http://en.wikipedia.org/wiki/Coroutine">Wikipedia의 Coroutine</a>을 번역한 것이다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/coroutine/source-code.png" alt="coroutine-python" title="" /></p>
+
+<h2>Coroutine</h2>
+
+<p>Coroutine은 컴퓨터 프로그램에서 엔트리 포인트가 여러 개인 Subroutine이다. 그래서 어디서든지 잠시 멈췄다가 다시 이어서 실행할 수 있다. Coroutine은 <a href="http://en.wikipedia.org/wiki/Cooperative_multitasking#Cooperative_multitasking.2Ftime-sharing">cooperative task</a>, <a href="http://en.wikipedia.org/wiki/Iterator">iterator</a>, <a href="http://en.wikipedia.org/wiki/Lazy_evaluation">infinite list</a> and <a href="http://en.wikipedia.org/wiki/Pipeline_" title="software">pipe</a> 같은 것을 구현하기에 좋다.</p>
+
+<p>"Coroutine"이라는 용어는 Melvin Conway가 1963년에 자신의 논문에서 처음 사용했다.</p>
+
+<h2>Subroutine과 비교</h2>
+
+<p>"Subroutine은 Coroutine 중 한 종류에 불과하다" - Donald Knuth]. Subroutine은 한번 실행하면 다 마칠 때까지 계속 실행되고 한번 호출할 때 한번 리턴한다. Coroutine도 이와 비슷하지만, Yield라는 것으로 빠져나오거나 다른 Coroutine을 호출해서 다시 해당 Coroutine이 하던 일을 이어서 할 수 있다.</p>
+
+<p>그리고 Yield 없이 간단하게 Coroutine을 구현할 수도 있다.</p>
+
+<p>언어를 개발할 때 Subroutine을 구현하려면 Subroutine을 실행하기 전에 스택을 하나 만들어야 한다. 하지만, Coroutine은 다른 Coroutine을 호출할 수 있어서 Continuation을 가지고 구현하는 것이 제일 좋다. Continuation은 스택이 여러 개 필요하기 때문에 보통 가비지컬렉터가 있는 언어에서 구현한다. 스택을 캐시해두거나 미리 할당하는 방식으로 좀 쉽게 Coroutine을 구현할 수 있다.</p>
+
+<p>Coroutine이 얼마나 유용한지 보여 줄 수 있는 예제를 하나 보여주겠다. 소비자-생산자 관계인 Coroutine이 두 개 있다고 가정한다. 한쪽은 아이템을 생성해서 큐에 넣고 다른 쪽은 큐에서 아이템을 꺼내서 사용한다. 그리고 한꺼번에 아이템을 추가하거나 삭제해서 성능을 최적화할 수 있다. 이 내용을 코드로 구현하면 다음과 같다:</p>
+
+<pre><code>var q := new queue
+
+coroutine produce
+    loop
+        while q is not full
+            create some new items
+            add the items to q
+        yield to consume
+
+coroutine consume
+    loop
+        while q is not empty
+            remove some items from q
+            use the items
+        yield to produce
+</code></pre>
+
+<p>큐가 다 차거나 다 비워지면 yield 명령어로 컨트롤를 다른 Coroutine에 양보한다. 그러면 그 Coroutine이 바로 시작한다.</p>
+
+<p>이 예제는 멀티 Thread를 설명할 때 사용하는 예제랑 비슷하게 생겼지만, Thread를 두 개 만들지 않는다: 루틴이 돌다가 yield 구문을 만나면 다른 루틴으로 바로 점프한다.</p>
+
+<h2>Coroutine과 Generator</h2>
+
+<p>Generator도 Subroutine보다 넓은(generalisation) 개념이지만 Generator를 처음 볼 땐 Coroutine보다 후져 보인다. Generator는 기본적으로 Iterator 코드를 단순화할 목적으로 사용하기 때문에 Generator의 yield 구문은 다른 Coroutine으로 점프하는 게 아니라 호출한 상위 루틴으로 값을 넘겨준다. 하지만, Generator로 Coroutine을 구현할 수 있다. Generator를 호출하는 상위 루틴을 'Dispatcher'로(엄밀히 말하자면 <a href="http://en.wikipedia.org/wiki/Trampoline_" title="computing">Trampoline</a>) 구현하면 되는데 한 Generator가 반환한 토큰으로 다른 Generator를 실행한다.</p>
+
+<pre><code>var q := new queue
+
+generator produce
+    loop
+        while q is not full
+            create some new items
+            add the items to q
+        yield consume
+
+generator consume
+    loop
+        while q is not empty
+            remove some items from q
+            use the items
+        yield produce
+
+subroutine dispatcher
+    var d := new dictionary(generator → iterator)
+    d[produce] := start produce
+    d[consume] := start consume
+    var current := produce
+    loop
+        current := next d[current]
+</code></pre>
+
+<p>언어 차원에서 Coroutine을 지원하는 것도 많지만, native Coroutine이 없는 언어에서는 이렇게 많이들 구현한다. 예를 들어, Python 2.5 이전 버전에서는 이와 같은 방법을 사용했다.</p>
+
+<h2>Coroutine의 용도</h2>
+
+<p>Coroutine은 다음과 같은 것을 구현할 때 유용하다:</p>
+
+<ul>
+<li>Subroutine 하나로 구현하는 State-Machine에 유용하다.
+이 머신의 State는 프로시저의 entry/exit point로 결정한다. 이렇게 하면 좀 더 가독성 높은 코드가 된다.</li>
+<li>Concurrency에서 사용하는 Actor 모델에 유용하다. Actor마다 프로시저가 하나 있다(이 프로시저는 다시 여러 개로 나뉜다). 각 Actor는 스스로 스케쥴러에 컨트롤을 반환한다. 그래서 선점형 멀티태스킹 시스템처럼 차례로 실행된다.</li>
+<li>Generator는 IO 처리나 자료구조를 Traverse하는 코드에 유용하다.</li>
+</ul>
+
+<h2>Coroutine을 지원하는 언어들</h2>
+
+<p>Aikido, AngelScript, BCPL, Pascal, BETA, C#, ChucK, D, Dynamic C, Erlang, F#, Factor, GameMonkey, Go, Haskell, High Level Assembly, JavaScript(since 1.7), Icon, Io, Limbo, Lua, Lucid, µC++, MiniD, Modula-2, Nemerle, Perl(Perl 5 with Coro, Perl 6 native[citation needed]), Prolog, Python(since 2.5), Ruby, Sather, Scheme, Self, Simula-67, Squirrel, 스택less Python, SuperCollider, Tcl(since 8.6), urbiscript</p>
+
+<p>Continuation으로도 Coroutine을 구현할 수 있어서 Continuation을 지원하는 언어라면 Coroutine은 쉽게 구현할 수 있다.</p>
+
+<h2>Coroutine 대용으로 쓸 수 있는 것.</h2>
+
+<p>Coroutine은 원래 assembly 수준 기술이지만 일부 high-level 언어에서만 지원한다. Coroutine을 지원하는 언어는 Simula나 Modula-2가 처음이었고 최근에는 Lua나 Go에서도 지원한다.</p>
+
+<p>2003년 당시에는 C나 그 파생언어들이 인기가 높았다. 하지만, 그 언어들은 언어 자체나 표준 라이브러리에서 Coroutine을 지원하지 않았다. Subroutine이 스택을 사용하기 때문에 어려웠다.</p>
+
+<p>그런 이유로 Coroutine 자체는 구현하기 어렵지 않은데도 쓸 수가 없었다. 이렇게 Coroutine을 못 쓸 때는 State 변수나 플래그 같은 것의 조합으로 내부 상태를 관리하는 Subroutine을 만들어 쓸 수 있다. State 변수가 어떠냐에 따라서 전혀 다른 코드가 수행되는 것을 이용하는 것이다. 아니면 복잡한 switch 구문을 많이 써서 explicit state machine을 만드는 방법도 있다. 그렇지만, 이런 방법은 만들기도 어렵고 관리하기도 어렵다.</p>
+
+<p>Thread는 많이 사용하는 언어에서 Coroutine 대용으로 사용한다. Thread는 동시성(simultaneously)이라는 여러 코드가 동시에 실행할 수 있는 기능을 제공한다. C 환경이나 Native로 Thread를 지원하는 다른 언어에서 널리 쓰인다. 많은 프로그래머가 알고 있고, 구현체도 매우 많고, 문서도 넘쳐나고, 지원도 잘된다. 하지만, Thread는 어려운 문제를 다루고 있어서 좀 더 강력하지만 복잡한 내용을 배워야 한다. 그래서 상대적으로 배우기 어렵다. Coroutine은 별로 알아야 할 게 없다. Thread를 사용하는 것은 소 잡는 칼로 닭 잡는 격이다.</p>
+
+<p>Thread와 Coroutine의 가장 중요한 차이는 Thread는 선점형 스케쥴링이지만 Coroutine은 아니라는 것이다. Thread는 아무 데서나 스케쥴이 변경되고 Concurrent하게 실행한다. Thread를 사용하면 Locking할 때 조심해야 한다. 반대로 Coroutine은 스케줄이 변경되는 곳이 정해져 있고 Concurrent하게 실행되지 않는다. Coroutine은 전체적으로 locking이 필요 없다. 보통 이 특징은 event-driven이나 비동기 방식을 설명할 때도 장점으로 설명하는 특징이다.</p>
+
+<p>그리고 Fiber라는 게 있어서 Coroutine을 구현해 쓸 수 있다. 하지만, Thread와 비교하면 Fiber를 지원하는 시스템은 별로 없다.</p>
+
+<h3>.NET 프레임웤에서 fiber로 Coroutine 구현하기</h3>
+
+<p>.NET 프레임웤 2.0을 개발하면서 Microsoft는 fiber기반 스케줄링을 다룰 수 있도록 CLR(Common Langauge Runtime) 호스팅 API의 설계를 확장했다. 이것은 SQL 서버의 fiber-mode를 사용할 수 있도록 하기 위함이다. 릴리즈할 때에는 시간 제약사항(constraints) 때문에 타스크 스위칭을 지원하는 ICLRTask:SwitchOut을 제거했다. 그래서 타스크를 스위칭에 필요한 fiber API는 현재 .NET 프레임웤에서는 사용할 수 없다.</p>
+
+<h3>Mono에서의 Coroutine</h3>
+
+<p>Mono CLR은 Continuation을 지원하기 때문에 coroutine을 만들 수 있다.</p>
+
+<h3>Java에서의 Coroutine</h3>
+
+<p>Java는 추상화 때문에 Coroutine을 구현하기 어려운데도 구현체가 네 가지나 된다. JVM에서 불가능한 것은 아니다.</p>
+
+<ul>
+<li>JVM 수정 버전들. Native로 Coroutine을 지원하도록 JVM을 Patch할 수 있다. Da Vinci JVM에는 해당 패치가 있다.</li>
+<li>바이트코드 수정 버전들. Coroutine은 Java 바이트코드를 수정해서 구현할 수도 있다. 컴파일할 때 수정할 수도 있고 실행할 때 수정할 수도 있다. <a href="http://code.google.com/p/coroutines/">Java Coroutine</a> 프로젝트가 있다.</li>
+<li>JNI로 구현. 해당 플랫폼용으로 구현된 C 라이브러리로 JVM에서 Coroutine을 사용한다.</li>
+<li>Thread를 이용. 무겁디무거운(heavywight) 쓰레드로 Coroutine 라이브러리를 구현할 수도 있다. 성능은 JVM의 Thread 구현체에 따라 다르다.</li>
+</ul>
+
+<h3>C에서의 Coroutine</h3>
+
+<p>다양한 시도가 있었는데 구현 정도가 다르다. C에서는 Subroutine과 마크로를 사용해서 Coroutine을 구현한다. 이 방법으로 구현한 것 중에서는 Simon Tatham이 구현한 것이 좋다. Tatham은 주석에서 이 방법의 한계를 잘 설명한다. 이 방법은 아직 논쟁`의 여지가 남아 있지만, 코드를 작성하기도 쉽고, 읽기도 쉽고, 관리하기도 쉽다. Tatham이 말하길 "물론, 이 방법은 책에서 말하는 코딩 규칙에 어긋난다. 하지만, 모든 코딩 규칙은 알고리즘의 명확성을 대가로 문법적 명확성을 얻는 방법들이다. 이 방법을 사용하자고 사장에게 말하면 사장는 분명히 그 직원을 건물 밖으로 드래그해버리라고 경비에게 소리칠 것이다"</p>
+
+<p>Coroutine을 구현하는 좀 더 믿음직한 방법이 있는데, 대신 이식성이 떨어지고 특정 프로세서에서만 사용할 수 있다. 어셈블리 수준에서 Coroutine 컨텍스트를 저장했다가 다시 복원하는 기능이 있는 프로세서에서만 사용할 수 있다. 표준 C 라이브러리에는 setjmp와 longjmp 함수가 있어서 Coroutine 비슷하게 구현할 수 있다. 그런데 Harbison과 Steele은 "setjmp와 longjmp 함수로 구현하는 것은 매우 어렵다고 알려져 있다. 프로그래머는 setjmp와 longjmp에 대해 어떠한 가정도 하지 말하야 한다"라고 말한다. Harbison과 Steele이 말한 주의 사항과 제약 사항들은 무엇을 의미하는 걸까? setjmp와 longjmp를 사용해서 Coroutine을 구현했다 한들 다른 환경으로 옮기면 작동하지 않는다. 더욱 나쁜 것은 잘못 구현한 것들도 적지 않다. setjmp/longjmp는 실제로 스택 하나로 구현하는 거라서 제대로 된 Coroutine을 구현할 수 없다. 스택이 하나뿐이기 때문에 엉뚱한 Coroutine이 스택에 있는 변수를 수정해 버릴 수 있다.</p>
+
+<p>그래서 C에서 스택기반 Coroutine을 구현하려면 스택을 만들고 점프할 수 있는 기능이 필요하다. 세 번째는 특정 머신에서만 동작하는 C로(machine-specific C) 작성하는 방법이다. 이 방법은 Coroutine용 컨텍스트가 지원돼야 한다. POSIX나 <a href="http://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%9C%A0%EB%8B%89%EC%8A%A4_%EA%B7%9C%EA%B2%A9">Single UNIX Specification</a>의 C 라이브러리에는 getcontext, setcontext, makecontext, swapcontext같은 루틴이 있다. setcontext류 함수들은 setjmp/longjmp 함수보다 상당히 강력하다. 하지만, 표준을 준수하는 구현체는 흔치않다. 이 방법의 최대 단점은 Coroutine의 스택 크기가 고정돼 있다는 것이다. 그래서 실행 중에 스택 크기는 커지지 않는다. 그래서 사람들은 스택 오버플로우를 예방하는 차원에서 처음부터 너무 큰 스택을 할당하는 경향이 있다.</p>
+
+<p>표준 라이브러리의 한계 때문에 사람들은 직접 Coroutine 라이브리를 만들어 사용한다. Russ Cox가 만든 libtask라는 게 있는데 꽤 좋다. Native C 라이브러리에 context 함수가 있으면 그냥 그걸 사용하고 그게 아니면 자체적으로 구현한 ARM, PowerPC, Sparc, x86용 라이브러리를 사용한다. 그 외 살펴볼 만한 라이브러리로 libpcl, coro, lthread, libCoroutine, libconcurrency, libcoro가 있다.</p>
+
+<h3>C++에서의 Coroutine</h3>
+
+<ul>
+<li>Boost.Coroutine - Giovanni P. Deretta는 "Google Summer of Code 2006" 프로젝트로 이 라이브러리를 만들었다. 이 포터블한 Coroutine 라이브러리는 boost와 C++ 템플릿을 사용해서 만들었다. Boost.Coroutine은 아직 마무리되지 않았고 boost 공식 라이브러리가 아니므로 문서는 boost 싸이트가 아닌 다른 곳에서 호스팅하고 있다.</li>
+<li>Mordor - Mozy는 2010년에 C++ Coroutine 라이브러리를 만들었다. 비동기 I/O를 사용하는 순차(sequential) 프로그래밍 모델처럼 사용할 수 있게 하였다.</li>
+</ul>
+
+<h3>C#에서의 Coroutine</h3>
+
+<ul>
+<li>MindTouch Dream - MindTouch Dream REST 프레임웤은 C# 2.0의 iterator 패턴으로 구현한 Coroutine이 들어 있다.</li>
+<li>Caliburn - WPF용 Caliburn 스크린 패턴 프레임웤은 C# 2.0의 iterator를 사용해서 UI 프로그래밍과 비동기 씨나리오를 좀 더 쉽게 구현할 수 있게 하였다.</li>
+<li>Power Threading Library - Jeffrey Richter가 만든 Power Threading Library에는 AsyncEnumerator라는 게 있다. 그래서 Coroutine 기반으로 비동기 프로그래밍을 쉽게 할 수 있다.</li>
+<li>Sevletat Pieces - Yevhen Bobrov가 만든 Servelat Pieces 프로젝트는 Silverlight WCF 서비스에 비동기를 투명하게(transparent asynchrony) 제공하고 동기 콜을 비동기적으로 호출하는 방법도 제공한다.</li>
+<li><a href="http://msdn.microsoft.com/en-us/library/dscyy5s0(VS.80).aspx">13</a> - .NET 프레임웤은 2.0+ 부터 자체적으로 iterator 패턴과 yield 키워드로 coroutine을 제공한다. </li>
+</ul>
+
+<h3>Python에서의 Coroutine</h3>
+
+<ul>
+<li><a href="http://www.python.org/peps/pep-0342.html">PEP 342</a> - Pythone 2.5에 확장된 Generator를 기반으로 Coroutine 같은 기능을 구현하기 쉬워졌다.</li>
+<li><a href="http://codespeak.net/py/0.9.2/greenlet.html">Greenlets</a></li>
+<li><a href="http://www.async.com.br/projects/kiwi/api/kiwi.tasklet.html">kiwi tasklets</a></li>
+<li><a href="http://pypi.python.org/pypi/multitask">multitask</a></li>
+<li><a href="http://chiral.j4cbo.com/trac">chiral</a></li>
+<li><a href="http://code.google.com/p/cogen">cogen</a></li>
+<li><a href="http://www.kamaelia.org/">Kamaelia</a></li>
+<li><a href="https://github.com/ironport/shrapnel/">Shrapnel</a></li>
+</ul>
+
+<h3>Ruby에서의 Coroutine</h3>
+
+<ul>
+<li>Ruby 1.9은 fiber로 구현한 Coroutine을 지원한다.</li>
+<li><a href="http://liber.sourceforge.net/coroutines.rb">Marc De Scheemaecker가 만든 것도 있다</a></li>
+</ul>
+
+<h3>Perl에서의 Coroutine</h3>
+
+<ul>
+<li><a href="http://search.cpan.org/dist/Coro/">Coro</a></li>
+</ul>
+
+<p>Perl 6 부터 Coroutine을 지원한다.</p>
+
+<h3>Smalltalk에서의 Coroutine</h3>
+
+<p>Smalltalk에서는 실행 스택이 First-class citizen이기 때문에 VM이 지원이나 다른 라이브러리 필요없이 Coroutine을 구현할 수 있다.</p>
+
+<h3>Scheme에서의 Coroutine</h3>
+
+<p>Since Scheme provides full support for continuations, the implementation of coroutines is nearly trivial, requiring only that a queue of continuations be maintained.</p>
+
+<h3>Delphi에서의 Coroutine</h3>
+
+<ul>
+<li>Bart van der Werf가 만든 <a href="http://www.festra.com/wwwboard/messages/12899.html">Coroutine 함수</a>가 있는데 정말 작고 좋다.</li>
+<li>Sergey Antonov는 <a href="http://hallvards.blogspot.com/2007/10/sergey-antonov-implements-yield-for.html">C# Yield를 델파이에서 구현했다</a>.</li>
+</ul>
+
+<h3>assembly에서의 Coroutine</h3>
+
+<p>(이 부분은 이해할 수 없군요)</p>
+
+<p>Machine-dependent assembly languages often provide direct methods for coroutine execution. For example, in MACRO-11, the assembly language of the PDP-11 family of minicomputers, the “classic” coroutine switch is effected by the instruction "JSR PC,@(SP)+" (which assembles as octal "004736") which jumps to the address popped from the stack and pushes the current (i.e that of the next) instruction address onto the stack. On VAXen (in Macro-32) the comparable instruction is "JSB @(SP)+" (which assembles as hex "9E 16" as the assembler shows it (with in effect bytes reversed). Even on a Motorola 6809 there is the instruction "JSR [,S++]", which assembles as (hex) "AD F1"; note the "++", as 2 bytes (of address) are popped from the stack. This instruction is much used in the (standard) 'monitor' Assist 09.</p>
+
+<p>Simply calling back the routine whose address is on the top of the stack, does not, of course, exhaust the possibilities in assembly language(s)!</p>
+
+<h2>See also</h2>
+
+<ul>
+<li>Unix pipes – 프로그램끼리 통신하는 데 사용하는 pipe도 Coroutine의 한 종류다.</li>
+</ul>]]>
+    </content>
+  </entry>
+  <entry>
     <title><![CDATA[ dogfeet-flavored-markdown ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" />
-    <updated>2012-12-07T15:00:00Z</updated>
+    <updated>2012-05-19T15:00:00Z</updated>
     <id>http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html</id>
     <content type="html">
 <![CDATA[
@@ -1692,680 +1906,6 @@ fi
 <h2>.bash_login, .bash_logout, .bash_complete ...</h2>
 
 <p>그 외 파일이 많은데 별로 중요하지도 않고 필요하다고 생각해본 적 없어서 정리하지 않았다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ J언어 배우기 - 제 2장: 리스트와 테이블 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/learning-j-chapter2.html" />
-    <updated>2012-04-17T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/learning-j-chapter2.html</id>
-    <content type="html">
-<![CDATA[
-<p><a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 Chapter2 를 번역했다. 이번엔 리스트와 테이블에 관한 내용이다. 굉장히 기초적이고 중요한 내용이다. 특히 배열의 차원(dimension)에 관한 이야기는 나중에 나올 랭크라는 개념을 이해하기 위한 초석이므로 예제들을 잘 봐야 한다. 눈에 보이는 데이터가 같다고 해서 같은 데이터가 아니라는 것도 중요하다. 지금 말하고 있는 게 무슨 말인지 모르겠다면 이번 챕터를 읽도록 하자.</p>
-
-<p>자 시작하자.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/learning-j-chapter2/j-code.png" alt="j-code" title="" /></p>
-
-<p>계산(computation)을 하려면 데이터가 필요하다. 지금까지 단일 숫자와 숫자 리스트로 된 데이터만을 다뤘다. 하지만 테이블 같은, 다른 형태를 가진 데이터도 생각해볼 수 있다. 그런 데이터 즉, 리스트나 테이블들을 "배열"(Array)이라고 한다.</p>
-
-<h2>2.1 테이블</h2>
-
-<p>2행 3열 테이블은 <code>$</code>함수로 만든다.</p>
-
-<pre><code>   table =: 2 3   $   5 6 7  8 9 10
-   table
-5 6  7
-8 9 10
-</code></pre>
-
-<p>위 예제는 <code>x $ y</code>라는 표현식으로 테이블을 만드는 것을 보여준다. x는 테이블의 차원(dimensions)을 결정한다. x는 행의 개수 다음에 열의 개수가 오는 리스트의 형태이다. 테이블은 y의 내용으로 채워진다.<br />y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음에는 두 번째 행을 채워나간다. 행이 더 있으면 계속 y의 아이템을 가져와 순서대로 채운다. y는 적어도 하나 이상의 아이템을 가지고 있어야만 한다. 만약 y의 아이템 개수가 테이블을 채우기 부족하다면 y의 처음부터 재사용한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>2 4 $ 5 6 7 8 9</tt></td>
-<td><tt>2 2 $ 1</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 6 7 8<br>
-9 5 6 7</tt></td>
-<td><tt>1 1<br>
-1 1</tt></td>
-</tr></tbody></table>
-
-<p><code>$</code>함수는 한가지 방식으로만 테이블을 만든다. 더 많은 방식을 보고 싶다면 5장을 참고하시라.</p>
-
-<p>우리가 배웠던 함수들은 이전에 리스트 데이터에서도 그랬듯이 테이블 데이터에도 정확하게 똑같이 적용된다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>table  </tt></td>
-<td><tt>10 * table</tt></td>
-<td><tt>table + table</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 6&nbsp;&nbsp;7<br>
-8 9 10</tt></td>
-<td><tt>50 60&nbsp;&nbsp;70<br>
-80 90 100</tt></td>
-<td><tt>10 12 14<br>
-16 18 20</tt></td>
-</tr></tbody></table>
-
-<p>한 인자는 테이블, 또 다른 인자는 리스트인 경우도 가능하다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>table</tt></td>
-<td><tt>0 1 * table</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 6&nbsp;&nbsp;7<br>
-8 9 10</tt></td>
-<td><tt>0 0&nbsp;&nbsp;0<br>
-8 9 10</tt></td>
-</tr></tbody></table>
-
-<p>바로 위 예제에서, 리스트 <code>0 1</code>의 각 아이템은 자동으로 테이블의 행과 매칭되었다. 0은 첫 번째 행과 1은 두 번째 행과 매칭되었다. 다른 패턴들도 이런 식으로 매칭될 수 있다. 더 보려면 7장을 보면 된다.</p>
-
-<h2>2.2 배열</h2>
-
-<p>테이블은 차원이 2이다. (행과 열) 비슷하게, 리스트는 1차원이라고 말할 수 있다.<br />2개 이상의 차원을 가진 테이블 형 데이터 오브젝트도 있다. 그런 의미에서 <code>$</code>함수의 왼쪽 인자는 차원의 개수를 가지는 리스트라고도 말할 수 있다. "배열"이라는 단어는 차원을 가진 데이터 오브젝트를 가리키는 일반적인 말이다. 아래에는 1차원, 2차원, 3차원의 배열에 대한 예제이다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>3 $ 1</tt></td>
-<td><tt>2 3 $ 5 6 7</tt></td>
-<td><tt>2 2 3 $ 5 6 7 8</tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 1 1</tt></td>
-<td><tt>5 6 7<br>
-5 6 7</tt></td>
-<td><tt>5 6 7<br>
-8 5 6<br>
-<br>
-7 8 5<br>
-6 7 8</tt></td>
-</tr></tbody></table>
-
-<p>위 예제의 3차원 배열은 2면, 2행, 3열로 이루어져 있다. 두 개의 면은 위아래 차례대로 출력되었다.</p>
-
-<p>모나딕 <code>#</code>함수로 리스트의 길이를 알 수 있는 것을 상기하자.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt># 6 7</tt></td>
-<td><tt># 6 7 8</tt></td>
-</tr><tr valign="TOP">
-<td><tt>2</tt></td>
-<td><tt>3</tt></td>
-</tr></tbody></table>
-
-<p>모나딕 <code>$</code>함수로는 인자의 차원 리스트를 알 수 있다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>L =: 5 6 7</tt></td>
-<td><tt>$ L</tt></td>
-<td><tt>T =: 2 3 $ 1</tt></td>
-<td><tt>$ T</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 6 7</tt></td>
-<td><tt>3</tt></td>
-<td><tt>1 1 1<br>
-1 1 1</tt></td>
-<td><tt>2 3</tt></td>
-</tr></tbody></table>
-
-<p>그러므로 만약 x가 배열이라면 <code># $ x</code>라는 표현식은 x의 차원 리스트의 길이, 즉 x의 차원 개수를 내뱉는다. 차원의 개수가 1이면 리스트, 2이면 테이블인 식이다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> L </tt></td>
-<td><tt>$ L </tt></td>
-<td><tt> # $ L</tt></td>
-<td><tt> T </tt></td>
-<td><tt>$T</tt></td>
-<td><tt># $ T</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5 6 7</tt></td>
-<td><tt>3</tt></td>
-<td><tt>1</tt></td>
-<td><tt>1 1 1<br>
-1 1 1</tt></td>
-<td><tt>2 3</tt></td>
-<td><tt>2</tt></td>
-</tr></tbody></table>
-
-<p>만약 x가 단일 숫자라면 <code># $ x</code>는 0이다.</p>
-
-<pre><code>   # $ 17
-0
-</code></pre>
-
-<p>테이블은 2차원이고 리스트가 1차원이므로 단일 수는 차원이 없다라고 말할 수 있다. 단일수의 차원 수는 0이기 때문이다.(위 코드의 결과가 그 근거이다) 차원 수가 0인 데이터 오브젝트는 스칼라(scalar)라고 한다. 위에서 "배열"을 어떤 차원을 가지고 있는 데이터 오브젝트로 정의했었다. 그렇다면 스칼라 또한 배열이다. 다만 차원이 0일 뿐이다.</p>
-
-<p>우리는 위에서 <code># $ 17</code>이 0임을 확인했다. 여기서 이런 결론을 도출할 수 있을 것이다. 스칼라가 차원을 가지고 있지 않기 때문에, (<code>$ 17</code>의 결과물로써의) 차원 리스트는 길이가 0이거나 비어있는 리스트여야만 한다. 이제 2의 길이를 가진 리스트는 <code>2 $ 99</code> 와 같은 코드를 이용해서 만들어 낼 수 있다. 그리고 길이가 0인 빈 리스트는 <code>0 $ 99</code> 같은 코드로 만들어 낼 수 있겠다. (사실 99대신 아무 숫자나 쓰여도 된다.)</p>
-
-<p>빈 리스트의 값은 표시되지 않는다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>2 $ 99</tt></td>
-<td><tt>0 $ 99</tt></td>
-<td><tt> $ 17</tt></td>
-</tr><tr valign="TOP">
-<td><tt>99 99</tt></td>
-<td><tt>&nbsp;</tt></td>
-<td><tt>&nbsp;</tt></td>
-</tr></tbody></table>
-
-<p>스칼라(예를 들면 <code>17</code>)는 길이가 1인 리스트(예를 들면 <code>1 $ 17</code>) 와는 다르다. 또 1행 1열짜리인 테이블(예를 들면 <code>1 1 $ 17</code>)과도 다르다. 스칼라는 차원이 없다. 리스트는 차원이 하나, 테이블은 두 개 이다. 하지만 세 개 모두 화면에는 똑같이 보인다.</p>
-
-<pre><code>   S =: 17
-   L =: 1 $ 17
-   T =: 1 1 $ 17
-</code></pre>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> S </tt></td>
-<td><tt> L </tt></td>
-<td><tt> T </tt></td>
-<td><tt># $ S</tt></td>
-<td><tt># $ L</tt></td>
-<td><tt># $ T</tt></td>
-</tr><tr valign="TOP">
-<td><tt>17</tt></td>
-<td><tt>17</tt></td>
-<td><tt>17</tt></td>
-<td><tt>0</tt></td>
-<td><tt>1</tt></td>
-<td><tt>2</tt></td>
-</tr></tbody></table>
-
-<p>하나의 열을 가진 테이블도 여전히 2차원 테이블이다. 아래에 3행 1열의 <code>t</code>가 있다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>t =: 3 1 $ 5 6 7</tt></td>
-<td><tt>$ t</tt></td>
-<td><tt># $ t</tt></td>
-</tr><tr valign="TOP">
-<td><tt>5<br>
-6<br>
-7</tt></td>
-<td><tt>3 1</tt></td>
-<td><tt>2</tt></td>
-</tr></tbody></table>
-
-<h2>2.3 용어: 랭크와 모양(Rank and Shape)</h2>
-
-<p>"차원 수"라고 부르는 속성은 J에서는 짧게 줄여 "랭크(Rank)"라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 "모양(Shape)"이라고 한다.<br />수학 용어에서 "벡터(Vector)"와 "매트릭스(Matrix)"는 위에서 말했던 "리스트"와 "테이블"과 관련이 있다. 3차원 이상의 배열(아, 이제는 랭크 3이상의 배열 이라고 하겠다.)은 "리포트(Report)"라고 한다.</p>
-
-<p>아래 테이블에 배열에 대한 용어와 함수들을 정리해놓았다.</p>
-
-<pre><code>+--------+--------+-----------+------+
-|        | Example| Shape     | Rank |
-+--------+--------+-----------+------+
-|        | x      | $ x       | # $ x|
-+--------+--------+-----------+------+
-| Scalar | 6      | empty list| 0    |
-+--------+--------+-----------+------+
-| List   | 4 5 6  | 3         | 1    |
-+--------+--------+-----------+------+
-| Table  |0 1 2   | 2 3       | 2    |
-|        |3 4 5   |           |      |
-+--------+--------+-----------+------+
-| Report |0  1  2 | 2 2 3     | 3    |
-|        |3  4  5 |           |      |
-|        |        |           |      |
-|        |6  7  8 |           |      |
-|        |9 10 11 |           |      |
-+--------+--------+-----------+------+
-</code></pre>
-
-<p>위 테이블은 사실 J로 짠 프로그램의 출력물이다. 게다가 저건 위에 작은 챕터를 할애해서 말했던 자료구조인 진짜 "테이블"이다. 이 테이블의 모양은 <code>6 4</code>이다. 하지만 이건 숫자로만 이루어진 테이블이 아니라 문자도 있고, 리스트도 담고 있다. 그럼 이제 숫자가 아닌 걸로 이루어진 배열을 살펴보자</p>
-
-<h2>2.4 문자로 이루어진 배열</h2>
-
-<p>문자는 알파벳, 구두점, 숫자 등을 말한다. 숫자로 배열을 만들었듯이 문자로도 배열을 만들 수 있다. 문자의 리스트를 만들려면 작은따옴표 안에 문자들을 넣으면 된다. 하지만 결과 화면에 출력될 때는 작은따옴표는 보이지 않는다. 예를 들자면 아래와 같다.</p>
-
-<pre><code>   title =: 'My Ten Years in a Quandary'
-   title
-My Ten Years in a Quandary
-</code></pre>
-
-<p>문자의 리스트는 문자열(string)이라고 한다. 문자열 안의 작은따옴표를 넣으려면 작은따옴표를 연속 두 번 타이핑 한다.</p>
-
-<pre><code>   'What''s new?'
-What's new?
-</code></pre>
-
-<p>빈 문자열이나 길이가 0인 문자열을 나타내려면 연속된 두 개의 작은 따옴표를 타이핑한다. 이건 화면에 보이지 않는다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> '' </tt></td>
-<td><tt># '' </tt></td>
-</tr><tr valign="TOP">
-<td><tt>&nbsp;</tt></td>
-<td><tt>0</tt></td>
-</tr></tbody></table>
-
-<h2>2.5 배열에 사용되는 함수</h2>
-
-<p>이 장에서는 배열을 다루는 몇 가지 유용한 함수들을 알아보도록 한다. J는 매우 다양한 함수들을 가진 언어이다. 한번 살펴보자.</p>
-
-<h3>2.5.1 합치기</h3>
-
-<p>내장 함수인 <code>,</code>는 "Append"라고 한다. 이 함수는 여러 개의 요소를 붙여서 리스트를 만든다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>a =: 'rear'</tt></td>
-<td><tt>b =: 'ranged'</tt></td>
-<td><tt>a,b</tt></td>
-</tr><tr valign="TOP">
-<td><tt>rear</tt></td>
-<td><tt>ranged</tt></td>
-<td><tt>rearranged</tt></td>
-</tr></tbody></table>
-
-<p>"Append" 함수는 리스트나 아이템 하나를 합친다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>x =: 1 2 3</tt></td>
-<td><tt>0 , x </tt></td>
-<td><tt>x , 0 </tt></td>
-<td><tt>0 , 0</tt></td>
-<td><tt>x , x </tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 2 3</tt></td>
-<td><tt>0 1 2 3</tt></td>
-<td><tt>1 2 3 0</tt></td>
-<td><tt>0 0</tt></td>
-<td><tt>1 2 3 1 2 3</tt></td>
-</tr></tbody></table>
-
-<p>"Append" 함수는 두 개의 테이블의 양 끝을 합쳐서 더 긴 테이블을 만들 수도 있다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>T1=: 2 3 $ 'catdog'</tt></td>
-<td><tt>T2=: 2 3 $ 'ratpig'</tt></td>
-<td><tt>T1,T2</tt></td>
-</tr><tr valign="TOP">
-<td><tt>cat<br>
-dog</tt></td>
-<td><tt>rat<br>
-pig</tt></td>
-<td><tt>cat<br>
-dog<br>
-rat<br>
-pig</tt></td>
-</tr></tbody></table>
-
-<p>"Append"에 대한 더 많은 정보를 원하면 5장을 보라.</p>
-
-<h3>2.5.2 아이템</h3>
-
-<p>숫자로 이루어진 리스트의 아이템은 각각이 숫자다. 그리고 테이블의 아이템은 그 테이블의 행이라고 한다. 3차원 배열의 아이템은 그 배열의 평면이다. 일반적으로 말해서 아이템이라 함은 배열의 첫 번째 차원을 따라 늘어서 있는 요소들의 연속이다. 배열은 아이템으로 이루어진 리스트이다.<br /><code>#</code>("Tally")함수가 리스트의 길이를 반환한다고 했었다. 아래를 보자</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>x</tt></td>
-<td><tt> # x</tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 2 3</tt></td>
-<td><tt>3</tt></td>
-</tr></tbody></table>
-
-<p>일반적으로 <code>#</code>는 배열의 아이템 개수, 즉 첫 번째 차원의 크기를 잰다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>T1</tt></td>
-<td><tt>$ T1</tt></td>
-<td><tt># T1</tt></td>
-</tr><tr valign="TOP">
-<td><tt>cat<br>
-dog</tt></td>
-<td><tt>2 3</tt></td>
-<td><tt>2</tt></td>
-</tr></tbody></table>
-
-<p>확실히 <code># T1</code>은 차원 리스트인 <code>$ T1</code>의 첫 번째 아이템이다. 차원이 없는 스칼라는 단일 아이템으로 취급한다.</p>
-
-<pre><code>   # 6
-1
-</code></pre>
-
-<p>밑에 있는 "Append"의 예를 다시 보자.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>T1</tt></td>
-<td><tt>T2</tt></td>
-<td><tt>T1 , T2</tt></td>
-</tr><tr valign="TOP">
-<td><tt>cat<br>
-dog</tt></td>
-<td><tt>rat<br>
-pig</tt></td>
-<td><tt>cat<br>
-dog<br>
-rat<br>
-pig</tt></td>
-</tr></tbody></table>
-
-<p>이제 <code>x , y</code>의 의미를 <code>x</code>의 아이템 다음에 <code>y</code>의 아이템이 오는 리스트라고 일반화시켜 말할 수 있겠다.</p>
-
-<p>"아이템"을 잘 이용하기 위한 다른 예제로 <code>+/</code> 함수가 있다. <code>+/</code>는 +를 리스트의 아이템 사이사이에 끼워 넣는다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>+/ 1 2 3</tt></td>
-<td><tt>1 + 2 + 3</tt></td>
-</tr><tr valign="TOP">
-<td><tt>6</tt></td>
-<td><tt>6</tt></td>
-</tr></tbody></table>
-
-<p>일반적으로는 <code>+/</code>는 <code>+</code>를 배열의 아이템 사이에 끼워 넣는다. (리스트의 아이템 사이가 아니다.) 다음 예제는 아이템이 단일 숫자가 아니라 테이블의 행인 경우이다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>T =: 3 2 $ 1 2 3 4 5 6</tt></td>
-<td><tt>+/ T</tt></td>
-<td><tt>1 2 + 3 4 + 5 6</tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 2<br>
-3 4<br>
-5 6</tt></td>
-<td><tt>9 12</tt></td>
-<td><tt>9 12</tt></td>
-</tr></tbody></table>
-
-<h3>2.5.3 선택하기</h3>
-
-<p>이제 리스트에서 아이템을 선택하는 방법을 알아보자. 리스트에서 아이템의 위치는 0, 1, 2... 로 숫자를 매긴다. 첫 번째 아이템의 위치는 0이다.(10번째 아이템의 위치는 9이다.) 위치 정보를 가지고 아이템을 선택하기 위해서는 <code>{</code>("From") 함수를 사용한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>Y =: 'abcd'</tt></td>
-<td><tt>0 { Y</tt></td>
-<td><tt>1 { Y</tt></td>
-<td><tt>3 { Y</tt></td>
-</tr><tr valign="TOP">
-<td><tt>abcd</tt></td>
-<td><tt>a</tt></td>
-<td><tt>b</tt></td>
-<td><tt>d</tt></td>
-</tr></tbody></table>
-
-<p>위치를 나타내는 숫자는 "인덱스"라고 한다. <code>{</code>함수는 왼쪽 인자에 인덱스로써 단일수나 숫자 리스트를 받는다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> Y</tt></td>
-<td><tt> 0 { Y</tt></td>
-<td><tt> 0 1 { Y</tt></td>
-<td><tt> 3 0 1 { Y</tt></td>
-</tr><tr valign="TOP">
-<td><tt>abcd</tt></td>
-<td><tt>a</tt></td>
-<td><tt>ab</tt></td>
-<td><tt>dab</tt></td>
-</tr></tbody></table>
-
-<p><code>i.</code> 라는 내장 함수도 있다. 표현식 <code>i. n</code>은 크기가 n인 0부터 순서대로 커지는 양의 정수의 리스트를 생성한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>i. 4</tt></td>
-<td><tt>i. 6</tt></td>
-<td><tt>1 + i. 3</tt></td>
-</tr><tr valign="TOP">
-<td><tt>0 1 2 3</tt></td>
-<td><tt>0 1 2 3 4 5</tt></td>
-<td><tt>1 2 3</tt></td>
-</tr></tbody></table>
-
-<p>만약 x가 리스트라면 <code>i. # x</code>라는 표현식은 x에서 사용할 수 있는 모든 인덱스의 리스트를 만들어낸다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>x =: 'park'</tt></td>
-<td><tt># x</tt></td>
-<td><tt>i. # x</tt></td>
-</tr><tr valign="TOP">
-<td><tt>park</tt></td>
-<td><tt>4</tt></td>
-<td><tt>0 1 2 3</tt></td>
-</tr></tbody></table>
-
-<p><code>i.</code>의 인자로 리스트가 들어오면 배열이 만들어진다.</p>
-
-<pre><code>   i. 2 3
-0 1 2
-3 4 5
-</code></pre>
-
-<p><code>i.</code>를 다이아딕으로 사용하면 이때는 <code>i.</code>를 "Index Of"라고 한다. <code>x i. y</code>라는 표현식은 x에 있는 y의 위치를 찾아낸다.</p>
-
-<pre><code>   'park' i. 'k'
-3
-</code></pre>
-
-<p>찾은 인덱스는 x에서 y가 처음으로 발견된 위치이다.</p>
-
-<pre><code>   'parka' i. 'a'
-1
-</code></pre>
-
-<p>x에 y가 없다면 마지막 위치보다 1 큰 수를 반환한다.</p>
-
-<pre><code>   'park' i. 'j'
-4
-</code></pre>
-
-<p>인덱싱에 대해 더 많은 것을 알고 싶다면 챕터 6을 보라.</p>
-
-<h3>2.5.4 같음과 매칭(Equality and Matching)</h3>
-
-<p>두 배열이 같은지 알아봐야 하는 상황이라면 내장 함수인 <code>-:</code>("Match")를 사용하면 된다. 이 함수는 두 개의 인자가 같은 모양, 같은 값을 가졌는지 검사한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>X =: 'abc'</tt></td>
-<td><tt>X -: X</tt></td>
-<td><tt>Y =: 1 2 3 4</tt></td>
-<td><tt>X -: Y</tt></td>
-</tr><tr valign="TOP">
-<td><tt>abc</tt></td>
-<td><tt>1</tt></td>
-<td><tt>1 2 3 4</tt></td>
-<td><tt>0</tt></td>
-</tr></tbody></table>
-
-<p>인자가 뭐든 간에 함수의 결과 값은 0 아니면 1이다.</p>
-
-<p>빈 문자 리스트와 빈 숫자 리스트는 같다는 건 알아두어야 한다.</p>
-
-<pre><code>   '' -: 0 $ 0
-1
-</code></pre>
-
-<p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)<br /><code>=</code>("Equal")라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>Y</tt></td>
-<td><tt>Y = Y</tt></td>
-<td><tt>Y = 2</tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 2 3 4</tt></td>
-<td><tt>1 1 1 1</tt></td>
-<td><tt>0 1 0 0</tt></td>
-</tr></tbody></table>
-
-<p>결론적으로 <code>=</code>가 가지는 두 인자는 반드시 같은 모양이어야 한다. (아니면 적어도, <code>Y=2</code>의 경우와 같이 호환되는 모양이어야 한다) 그렇지 않으면 에러가 발생한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>Y</tt></td>
-<td><tt>Y = 1 5 6 4</tt></td>
-<td><tt>Y = 1 5 6</tt></td>
-</tr><tr valign="TOP">
-<td><tt>1 2 3 4</tt></td>
-<td><tt>1 0 0 1</tt></td>
-<td><tt>error</tt></td>
-</tr></tbody></table>
-
-<h2>2.6 박스의 배열(Arrays of Boxes)</h2>
-
-<h3>2.6.1 연결하기</h3>
-
-<p><code>;</code>("Link")라는 내장 함수가 있다. 이 함수는 두 인자를 리스트의 형태로 연결한다. 두 인자는 다른 것 이어도 된다. 예를 들어 문자열과 숫자를 연결 할수 있다.</p>
-
-<pre><code>   A =: 'The answer is'  ;  42
-   A
-+-------------+--+
-|The answer is|42|
-+-------------+--+
-</code></pre>
-
-<p>위 에서 A는 길이가 2인 리스트이다. 그리고 이 리스트는 박스의 리스트라고 한다. 첫 번째 박스 안에는 문자열 'The answer is'가 들어있고 두 번째 박스에는 숫자 42가 있다. 박스는 화면에 사각형으로 그려지고 안에 그 박스의 값을 담고 있는 형태로 그려진다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> A </tt></td>
-<td><tt> 0 { A</tt></td>
-</tr><tr valign="TOP">
-<td><tt>+-------------+--+<br>
-|The answer is|42|<br>
-+-------------+--+</tt></td>
-<td><tt>+-------------+<br>
-|The answer is|<br>
-+-------------+</tt></td>
-</tr></tbody></table>
-
-<p>박스 하나는 안에 있는 값이 무엇이든 간에 스칼라로 취급한다. 박스는 그 안에 일반적인 배열(예를 들면 숫자로 이루어진 리스트 같은 거)을 넣을 수 있다. 따라서 A는 스칼라의 리스트이다. (A의 아이템들은 각각이 스칼라는 말이다.)</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt> A </tt></td>
-<td><tt>$ A</tt></td>
-<td><tt>s =: 1 { A</tt></td>
-<td><tt> # $ s</tt></td>
-</tr><tr valign="TOP">
-<td><tt>+-------------+--+<br>
-|The answer is|42|<br>
-+-------------+--+</tt></td>
-<td><tt>2</tt></td>
-<td><tt>+--+<br>
-|42|<br>
-+--+</tt></td>
-<td><tt>0</tt></td>
-</tr></tbody></table>
-
-<p>박스로 이루어진 배열의 주목적은 다른 종류의 값들을 하나의 변수에 집어넣는 것이다. 예를 들어 구입 한 물건의 자세한 사항들(구매 날짜, 가격, 설명)을 담은 변수는 박스의 리스트로 나타낼 수 있다.</p>
-
-<pre><code>   P =: 18 12 1998  ;  1.99  ;  'baked beans'
-   P
-+----------+----+-----------+
-|18 12 1998|1.99|baked beans|
-+----------+----+-----------+
-</code></pre>
-
-<p>"Link"와 "Append"의 차이점에 주목해야 한다. "Link"가 다른 종류의 값들을 합치는 반면 "Append"가 합치는 값들은 언제나 같은 종류이다. 즉 "Append" 함수에 주어지는 두 인자는 반드시 둘 다 숫자로 이루어진 배열이거나 둘 다 문자로 이루어진 배열이어야 한다. 아니면 둘 다 박스로 이루어진 배열이어야 한다. 그게 아니면 에러가 난다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>'answer is'; 42</tt></td>
-<td><tt>'answer is' , 42</tt></td>
-</tr><tr valign="TOP">
-<td><tt>+---------+--+<br>
-|answer is|42|<br>
-+---------+--+</tt></td>
-<td><tt>error</tt></td>
-</tr></tbody></table>
-
-<p>문자열과 숫자를 연결해야 할 때가 있을 수 있다. 예를 들자면 어떤 결과 값과 그에 대한 설명은 같이 보여줘야 할 때가 있다. 그 때 위에서 봤듯이 문자열과 숫자를 "연결(Link)"할 수 있다. 하지만 더 부드러운 표현은 숫자를 문자열로 바꿔서 두 문자열을 연결하는 방식으로 처리하는 것이다. 그러면 결과물은 박스의 리스트가 아니라 문자열이 된다.</p>
-
-<p>숫자를 문자열로 바꾸는 것은 내장 함수인 <code>":</code>("Format")을 이용한다. 아래 예제에서 n은 단일 숫자이고 s는 n을 포맷해서 만든 문자열이다. s는 길이가 2이다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>n =: 42</tt></td>
-<td><tt>s =: ": n</tt></td>
-<td><tt># s</tt></td>
-<td><tt>'answer is ' , s</tt></td>
-</tr><tr valign="TOP">
-<td><tt>42</tt></td>
-<td><tt>42</tt></td>
-<td><tt>2</tt></td>
-<td><tt>answer is 42</tt></td>
-</tr></tbody></table>
-
-<p>"Format"에 대해서 더 알고 싶다면 19장을 보면 된다. 다시 박스로 돌아가도록 하자. 박스는 값이 상자로 둘러싸고 있는 형태이기 때문에, 박스가 화면에 보일 때에는 간단한 표의 형태로 보인다.</p>
-
-<pre><code>   p =: 4 1 $ 1 2 3 4
-   q =: 4 1 $ 3 0 1 1
-
-   2 3 $ ' p ' ; ' q ' ; ' p+q ' ;  p ; q ; p+q
-+---+---+-----+
-| p | q | p+q |
-+---+---+-----+
-|1  |3  |4    |
-|2  |0  |2    |
-|3  |1  |4    |
-|4  |1  |5    |
-+---+---+-----+
-</code></pre>
-
-<h3>2.6.2 박싱과 언박싱(Boxing and Unboxing)</h3>
-
-<p><code>&lt;</code>("Box")라는 내장 함수가 있다. 이 함수는 인자로 들어온 값을 감싸 하나의 박스를 만든다.</p>
-
-<pre><code>   &lt; 'baked beans'
-+-----------+
-|baked beans|
-+-----------+
-</code></pre>
-
-<p>박스는 숫자를 담을 수 있지만, 그 자체로 숫자는 아니다. 박스 안에 있는 값으로 계산 하려면 박스를 열어서 값을 꺼내야 한다. <code>&gt;</code> 함수가 바로 그런 것이다. 이 함수는 "Open"이라고 한다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>b =: &lt; 1 2 3</tt></td>
-<td><tt>&gt; b</tt></td>
-</tr><tr valign="TOP">
-<td><tt>+-----+<br>
-|1 2 3|<br>
-+-----+</tt></td>
-<td><tt>1 2 3</tt></td>
-</tr></tbody></table>
-
-<p><code>&lt;</code>를 깔때기 모양의 그림으로 생각하면 이해하기가 쉽다. 데이터가 넓은 쪽으로 흘러들어 가서 좁은 쪽으로 박스에 담겨 나온다. 나온 박스는 스칼라, 즉 차원이 없다. <code>&gt;</code>도 비슷하게 생각하면 된다. 박스가 스칼라이기 때문에 <code>,</code>함수로 각 박스를 리스트로 묶을 수 있다. 하지만 <code>;</code>함수를 쓰는 게 좀 더 편하다. 이 함수는 박스에 담아 연결해주는 작업을 한 번에 해준다.</p>
-
-<table cellpadding="10" border="1">
-<tbody><tr valign="TOP">
-<td><tt>(&lt; 1 1) , (&lt; 2 2) , (&lt; 3 3)</tt></td>
-<td><tt>1 1 ; 2 2 ; 3 3</tt></td>
-</tr><tr valign="TOP">
-<td><tt>+---+---+---+<br>
-|1 1|2 2|3 3|<br>
-+---+---+---+</tt></td>
-<td><tt>+---+---+---+<br>
-|1 1|2 2|3 3|<br>
-+---+---+---+</tt></td>
-</tr></tbody></table>
-
-<h2>2.7 요약</h2>
-
-<p>결론적으로 J의 모든 데이터 오브젝트는 전부 n 차원 배열(n >= 0)이다. 배열은 숫자로 이루어진 배열일 수도 있고, 문자, 또는 박스로 이루어졌을 수도 있다. (물론 다른 것으로 이루어질 수도 있다.)</p>
-
-<p>2장을 마친다.</p>]]>
     </content>
   </entry>
 </feed>
