@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dogfeet - iamport: python</title>
+    <meta name="description" content="포트가 열렸는지 확인하는 프로그램을 작성했다. 100개쯤되는 포트를 확인해보라고 해서 만들었는데, 이 참에 gevent를 적용해보았다." />
+    <meta name="keywords" content="python,coroutine,gevent,iamport" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <section class="content span10">
+          <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/iamport-python.html" lang="ko-kr">
+  <header>
+    <h1 property="dcterms:title">iamport: python</h1>
+  </header>
+  <footer class="modern-font  small-font">
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">2012 Jun 02</span>
+ | <a href="/site/tagmap.html#python" class="tag">python</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#gevent" class="tag">gevent</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-python.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-python.html"></a></span>
+    <style rel="stylesheet" media="screen, projection" scoped="scoped">
+      #social-buttons {
+  margin-left: 30px;
+}
+    </style>
+    <div id="social-buttons" class="pull-right">
+      <ul class="unstyled">
+        <li>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/iamport-python.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+        </li>
+        <li>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html"></div>
+        </li>
+        <li>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div property="sioc:content">
+    <p>포트가 열렸는지 확인하는 프로그램을 작성했다. 100개쯤되는 포트를 확인해보라고 해서 만들었는데, 이 참에 gevent를 적용해보았다.</p>
+
+<p><img src="/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
+
+<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+
+<p>주 플랫폼이 Java라서 예전엔 이런일을 groovy로 했었는데 python이 훨씬 쉽다.</p>
+
+<h2>iamport</h2>
+
+<p>다음은 포트가 열렸는지 순차적으로 확인하는 프로그램이다.</p>
+
+<pre><code>#!/usr/bin/env python
+
+import socket
+import sys
+import time
+import re
+
+def tryToConnect( argv ):
+    ip=argv[0]
+    port=int(argv[1])
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM )
+
+    try:
+        sock.connect( (ip, port) )
+    except:
+        print ip, port
+
+    sock.close()
+
+if __name__ == '__main__':
+
+    stime=time.time()
+
+    file = open(sys.argv[1])
+
+    jobs = []
+
+    while True:
+        line = file.readline()
+
+        if not line:
+            break
+
+        opts = re.split('\s*', line)
+
+        if len(opts) &gt; 2:
+            job = tryToConnect( opts )
+            jobs.append( job )
+        else:
+            print opts[0]
+
+    file.close()
+
+    etime=time.time()
+
+    print 'elapsed %f' % (etime - stime)
+</code></pre>
+
+<p>테스트할 포트 목록은 다음과 같은 파일을 파라미터로 넘겨주면 된다:</p>
+
+<pre><code>127.0.0.1       22
+127.0.0.1       21
+168.126.63.1    18
+18.18.18.18     18
+18.18.18.18
+74.125.235.180  80
+</code></pre>
+
+<p>그러면 입력 값이 잘못 됐거나 열리지 않는, 아무튼 예외가 발생하는 것만 출력한다. 실행 결과는 다음과 같다:</p>
+
+<pre><code>$ ./iamport.py port_scan 
+127.0.0.1 22
+127.0.0.1 21
+168.126.63.1 18
+18.18.18.18 18
+18.18.18.18
+elapsed 42.215497
+</code></pre>
+
+<p>100개 정도에 한번 해봤는데 27분 걸렸다.</p>
+
+<h2>Coroutine</h2>
+
+<p><a href="/articles/2012/coroutine.html">Coroutine</a>은 정말 유용하다. Python이 처음이라면 다음과 같은 글을 읽는 것이 도움이 된다.</p>
+
+<ul>
+<li><a href="http://blog.dahlia.pe.kr/articles/2009/09/15/python-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EB%B0%98%EB%B3%B5%EC%9E%90%EC%9D%98-%EB%A7%88%EB%B2%95">Python 제너레이터+반복자의 마법</a></li>
+<li><a href="http://pyengine.blogspot.com/2011/07/python-coroutine-1.html">파이썬 코루틴 (python coroutine) - 1</a></li>
+<li><a href="http://pyengine.blogspot.com/2011/07/python-coroutine-2.html">파이썬 코루틴 (python coroutine) - 2</a></li>
+</ul>
+
+<h2>gevent</h2>
+
+<p>gevent를 이해하려면 eventlet을 알아봐야 하고:</p>
+
+<ul>
+<li><a href="http://ricanet.com/new/view.php?id=blog/111007">greenlet은 어떻게 구현했을까?</a></li>
+<li><a href="http://blog.gevent.org/2010/02/27/why-gevent/">Comparing gevent to eventlet</a></li>
+</ul>
+
+<p>gevent의 적용은 너무 쉽다. 사실 세 줄만 바꿔주면 된다:</p>
+
+<ol>
+<li>멍키패칭으로 io api를 비동기+코루틴 방식의 구현체로 바꿔주고.</li>
+<li>job들을 등록(spawn)하고서</li>
+<li>join으로 다 끝나길 기다리면 된다(테스트는 안해봤지만 join이 호출될때 job이 실제로 시작하는 것 같다).</li>
+</ol>
+
+<h3>gevent 버전의 iamport</h3>
+
+<p>아무리 내가 python을 잘 모른다지만 너무 간단하다. 눈이 의심스러울 정도로 간단하다.</p>
+
+<pre><code>#!/usr/bin/env python
+
+import socket
+import sys
+import time
+import re
+import gevent
+import gevent.monkey
+
+def tryToConnect( argv ):
+    ip=argv[0]
+    port=int(argv[1])
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM )
+
+    try:
+        sock.connect( (ip, port) )
+    except:
+        print ip, port
+
+    sock.close()
+
+if __name__ == '__main__':
+
+    stime=time.time()
+
+    #멍키패칭
+    gevent.monkey.patch_all()
+
+    file = open(sys.argv[1])
+
+    jobs = []
+
+    while True:
+        line = file.readline()
+
+        if not line:
+            break
+
+        opts = re.split('\s*', line)
+
+        if len(opts) &gt; 2:
+            #job을 spawn
+            job = gevent.spawn(tryToConnect, opts )
+            jobs.append( job )
+        else:
+            print opts[0]
+
+    file.close()
+
+    #spawn한 job이 모두 종료할 때까지 join
+    gevent.joinall( jobs )
+
+    etime=time.time()
+
+    print 'elapsed %f' % (etime - stime)
+</code></pre>
+
+<p>27분 걸렸던게 27초만에 끝났다. 만세.</p>
+  </div>
+</article>
+<section id="comments">
+  <h3>Feedback</h3>
+  <div class="row">
+<div id="disqus_thread" class="well span10 offset1"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2012/iamport-python.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-num-posts="1"></div>
+  </div>  </div>
+</section>
+
+        </section>
+        <aside class="sidebar span2">
+          
+        </aside>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>
