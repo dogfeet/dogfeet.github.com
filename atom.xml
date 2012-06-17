@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-06-10T03:43:59Z</updated>
+  <updated>2012-06-17T12:08:24Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Yongjae Choi</name>
@@ -17,6 +17,165 @@
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
+  <entry>
+    <title><![CDATA[ iamport: nodejs ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" />
+    <updated>2012-06-16T15:00:00Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/iamport-nodejs.html</id>
+    <content type="html">
+<![CDATA[
+<p><a href="/articles/2012/iamport-python.html">iamport: python</a>에서 100개쯤되는 포트를 확인해보려고 포트가 열렸는지 확인하는 프로그램을 python으로 작성했었다. <a href="https://github.com/laverdet/node-fibers">node-fibers</a>를 살펴보면서 iamport를 nodejs로 포팅해봤다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
+
+<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+
+<h2>iamport: CPS</h2>
+
+<p>다음은 포트가 열렸는지 <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a> 방식으로 확인하는 프로그램이다:</p>
+
+<pre><code>#!/usr/bin/env node
+
+var net = require('net');
+var fs = require('fs');
+
+var stime=new Date().getTime();
+var done=0;
+
+function tryToConnect( ip, port ){
+    done++;
+
+    var socket = net.createConnection(port, ip);
+
+    socket.on('error', function(err){
+        console.log( ip + ' ' + port );
+    }).on('connect', function(connect) {
+        socket.destroy();
+    }).on('close', function(had_error){
+        done--;
+
+        if(done == 0 ){
+            var etime=new Date().getTime();
+
+            console.log( "elapsed(ms) " + (etime - stime)/1000 );
+        }
+    });
+}
+
+fs.readFile(process.argv[2], 'utf-8', function(err, data){
+    var lines = data.split('\n');
+
+    lines.forEach(function(line){
+        if( line.trim().length &lt; 1 ) return;
+        var opts=line.match(/[0-9\.]+/g);
+
+        if( opts &amp;&amp; opts.length &gt; 1 ) {
+            tryToConnect(opts[0], opts[1]);
+        } else {
+            console.log(line);
+        }
+    });
+});
+</code></pre>
+
+<p>테스트할 포트 목록은 다음과 같은 파일을 파라미터로 넘겨주면 된다:</p>
+
+<pre><code>127.0.0.1       22
+127.0.0.1       21
+168.126.63.1    18
+18.18.18.18     18
+18.18.18.18
+74.125.235.180  80
+</code></pre>
+
+<p>그러면 입력 값이 잘못 됐거나 열리지 않는, 아무튼 예외가 발생하는 것만 출력한다. 실행 결과는 다음과 같다:</p>
+
+<pre><code>$ ./iamport.js port_scan 
+18.18.18.18
+127.0.0.1 21
+127.0.0.1 22
+18.18.18.18 18
+168.126.63.1 18
+elapsed(ms) 21.047
+</code></pre>
+
+<h2>iamport: fiber</h2>
+
+<p><a href="https://github.com/laverdet/node-fibers">node-fibers</a>의 Future을 적용한 예이다. 비동기 API를 Wrapping하는 다른 시도도 있지만 그냥 Future를 사용했다:</p>
+
+<pre><code>#!/usr/bin/env node
+
+var net = require('net');
+var fs = require('fs');
+var Future = require('fibers/future'), wait = Future.wait;
+
+var stime=new Date().getTime();
+
+//api(..., callback(err,data))라는 컨벤션을 따라야 한다.
+function tryToConnect( ip, port, callback ){
+
+    var socket = net.createConnection(port, ip);
+
+    socket.on('error', function(err){
+        console.log( ip + ' ' + port );
+        callback(err, null);
+    }).on('connect', function(connect) {
+        socket.destroy();
+        callback(null, connect);
+    });
+}
+
+//Function.length를 이용해서 callback 파라미터의 위치를 자동으로 찾는다.
+//엄밀히 말하면 마지막 파라미터를 callback으로 가정함
+var connect = Future.wrap( tryToConnect );
+
+//readFile의 프로토타입은 readfile( port, [ip], [callback])이고
+//fs.readFile은 callback 파라미터의 위치가 동적이기 때문에
+//명시적으로 선언한게 아니라 arguments를 이용했다.
+//그래서 Function.legnth로 callback의 위치를 알 수 없다.
+//두번째 파라미터 2는 callback의 위치를 알려주는 것이다.
+var readFile = Future.wrap( fs.readFile, 2 );
+
+Fiber(function(){
+    var data = readFile(process.argv[2], 'utf-8').wait();
+    var lines = data.split('\n');
+    var jobs = [];
+
+    lines.forEach(function(line){
+        if( line.trim().length &lt; 1 ) return;
+
+        var opts=line.match(/[0-9\.]+/g);
+
+        if( opts &amp;&amp; opts.length &gt; 1 ) {
+            jobs.push( connect(opts[0], opts[1]) );
+        } else {
+            console.log(line);
+        }
+    });
+
+    //wait에는 Fiber 객체가 아니라 Future 객체가 필요하다.
+    wait(jobs);
+
+    var etime=new Date().getTime();
+
+    console.log( "elapsed(ms) " + (etime - stime)/1000 );
+}).run();
+</code></pre>
+
+<p><a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a>이나 <a href="https://github.com/laverdet/node-fibers">node-fibers</a>나 성능상에 차이날 이유가 없다. 실행 결과는 다음과 같다:</p>
+
+<pre><code>$ ./iamport-fiber.js port_scan 
+18.18.18.18
+127.0.0.1 21
+127.0.0.1 22
+168.126.63.1 18
+18.18.18.18 18
+elapsed(ms) 21.093
+</code></pre>
+
+<p>gevent와 같은 구현체가 등장하면 쓸만 할지도 모르겠지만 node에서 Coroutine은 괜한 욕심일지도 모르겠다. 그래도 node-fiber를 좀 더 쉽게 사용할 수 있도록 만들려는 시도들이 있다. <a href="https://github.com/lm1/node-fiberize">fiberize</a>, <a href="https://github.com/lm1/node-fibers-promise">fibers-promise</a>, <a href="https://github.com/0ctave/node-sync">node-sync</a>를 참고하면 node-fiber를 사용하는데 도움이 될 것이다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ nodejs: node-fibers ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-fibers.html" />
@@ -1907,174 +2066,6 @@ npm ls --global --parseable --long --loglevel info
 <p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.<br />이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.</p>
 
 <p>이렇게 제 3장이 끝났다.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Git: git-svn ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/git-svn.html" />
-    <updated>2012-04-28T15:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/git-svn.html</id>
-    <content type="html">
-<![CDATA[
-<p>Progit 8장에 설명된 'git-svn'에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/git-svn/et.jpg" alt="et" title="" /></p>
-
-<p>GitHub는 <a href="http://hg-git.github.com/">git server + hg client</a>, <a href="https://github.com/blog/966-improved-subversion-client-support">git server + svn client</a> 조합도 만들었는데 쓰는 사람이 있을까?</p>
-
-<h2>주요 명령어 정리</h2>
-
-<p>SVN 처럼 로그를 보거나 등등의 기능이 많지만, 어차피 안 쓸 것 같아서 정리하지 않는다. SVN을 Git으로 마이그레이션할 때 필요한 명령어도 정리하지 않았다.</p>
-
-<h3>clone:</h3>
-
-<pre><code>git svn clone url -s
-</code></pre>
-
-<p>-s는 표준레이아웃인 <code>trunk, branches, tags</code>를 사용한다는 의미다. 표준레이아웃을 사용하지 않으면 <code>-T trunk -b branches -t tags</code>라고 직접 알려주면 된다.</p>
-
-<p>trunk, branches, tags는 모두 Git 브랜치로 만들어진다. trunk와 branches는 같은 이름으로 만들어지지만, tags는 앞에 <code>tags/</code>라고 붙는다.</p>
-
-<p>progit 책에 나오는 <code><a href='http://progit-example.googlecode.com/svn/'><a href='http://progit-example.googlecode.com/svn/'>http://progit-example.googlecode.com/svn/</a></a></code>을 적용해보면 다음과 같이 만들어진다:</p>
-
-<pre><code>└─▪ git br -av
-* master                        5925d95 Support HP C++ on Tru64.
-  remotes/my-calc-branch        a52ad75 created a branch
-  remotes/tags/2.0.2            fd8e73e Tag release 2.0.2.
-  remotes/tags/release-2.0.1    60feb5c Tag the 2.0.1 release.
-  remotes/tags/release-2.0.2    85bac46 Set version to 2.0.2 in release branch.
-  remotes/tags/release-2.0.2rc1 168051e Update version number in 2.0.2rc1 release branch.
-  remotes/trunk                 5925d95 Support HP C++ on Tru64
-</code></pre>
-
-<p>SVN 브랜치는 당연히 Git 브랜치로 만들어지지만 SVN의 tag도 Git의 브랜치로 만들어진다.</p>
-
-<h3>fetch:</h3>
-
-<p><code>git fetch</code>에 대응되는 명령어:</p>
-
-<pre><code>git svn fetch
-</code></pre>
-
-<p>trunk가 master로 자동으로 Fast-Forward Merge 됐으면 좋겠다. </p>
-
-<p><code>git-svn</code> 프로젝트이면 trunk를 master로 Fast-Forware Merge하도록 <a href="https://github.com/pismute/git-tles">git-ff</a>를 수정했다. 이 브랜치만 Merge한다. svn에서 브랜치를 쓰고 싶지 않다.</p>
-
-<h3>push:</h3>
-
-<p><code>git push</code>에 대응하는 명령어:</p>
-
-<pre><code>git svn dcommit
-</code></pre>
-
-<p>svn은 히스토리가 평평하니까 이것만 주의하면 된다.</p>
-
-<h3>annotate:</h3>
-
-<p>어떤 놈이 잘못 고쳤는지 찾아보는 명령어:</p>
-
-<pre><code>git svn blame [FILE] 
-</code></pre>
-
-<h3>.gitignore:</h3>
-
-<p><code>.gitignore</code>를 만들어 넣으면 svn 서버에 Push된다. 다른 사람 몰래 혼자 쓰고 싶으면 <code>.git/info/exclude</code>에 만들면된다. <code>.gitignore</code>랑 똑같고 해당 저장소에만 적용되며 Push할 수 없다:</p>
-
-<pre><code>git svn show-ignore &gt; .git/info/exclude
-</code></pre>
-
-<h2>Merge</h2>
-
-<p>SVN의 히스토리는 항상 일직선이기 때문에 SVN에 Push할 브랜치는 항상 Fast-Forward로 Merge해야 한다. 그렇지 않으면 알아서 펴주기 때문에 히스토리 모양이 원하는 모양이랑 다를 수 있다.</p>
-
-<h2>브랜치</h2>
-
-<p>SVN의 히스토리는 항상 평평하다. 브랜치 별로 히스토리가 다르게 관리하는 것이 아니라 한 히스토리에서 trunk. branches, tags를 모두 관리한다. 이점을 꼭 기억해야 한다.</p>
-
-<p>SVN 브랜치는 항상 Long-Running 브랜치로 사용한다. Topic 브랜치는 git-svn이 아니라 그냥 git을 사용할 때와 다를 바 없다. 단지 SVN 브랜치를 Tracking하는 Long-Running 브랜치에 Merge할 때 쫙 펴주기만 하면 된다.</p>
-
-<p>문제는 SVN 브랜치를 Git에서 서로 Merge하는 데 있다. 그냥 Fetch해서 평평한 히스토리를 유지하면서 Push하는 것이 아니라 SVN 브랜치를 Git에서 Merge하면 어떨까? 이제 이걸 알아보자.</p>
-
-<h3>일단 SVN 저장소를 하나 준비하고</h3>
-
-<p>일단 SVN 저장소를 하나 준비하고:</p>
-
-<p><img src="/articles/2012/git-svn/svn-repository.png" alt="svn-repository.png" title="" /></p>
-
-<p>Git으로 클론한다. 클론하고 나서 <code>git branch -av</code>를 하면 다음과 같다:</p>
-
-<pre><code>* master             92a713a from trunk
-  remotes/dogfeet    e5334ef Add from dogfeet
-  remotes/tags/1.0.0 2ec86a0 tag 1.0.0
-  remotes/trunk      92a713a from trunk
-</code></pre>
-
-<p>master는 remotes/trunk를 트랙킹하고 SVN 브랜치인 'dogfeet'과 SVN 태그인 '1.0.0'이 Git에서는 모두 브랜치로 만들어진다. 그리고 원래 리모트 트래킹 브랜치는 <code>remotes/origin/master</code> 같은 패턴으로 이름 지어지는데 리모트 없이 <code>remotes/trunk</code> 형식으로 이름 지어진다.</p>
-
-<p>SVN 히스토리:</p>
-
-<p><img src="/articles/2012/git-svn/history.png" alt="history.png" title="" /></p>
-
-<p>master 히스토리:</p>
-
-<pre><code>* 92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
-* 12bf5f1 - Initial structure. (2 hours ago)
-</code></pre>
-
-<p>dogfeet 히스토리:</p>
-
-<pre><code>* e5334ef - (dogfeet) Add from dogfeet (2 hours ago)
-* 86cdd49 - branch dogfeet (2 hours ago)
-* 92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
-* 12bf5f1 - Initial structure. (2 hours ago)
-</code></pre>
-
-<h3>이제 Git에서 커밋을 하나씩하고</h3>
-
-<p>master에 커밋을 하나 하고:</p>
-
-<pre><code>* 4c549fb - (master) Add from_git_master (4 minutes ago)
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
-
-<p>dogfeet에도 커밋을 하나 하고:</p>
-
-<pre><code>* 904a4c0 - (HEAD, local_dogfeet) Add from_git_dogfeet (70 seconds ago)
-* e5334ef - (dogfeet) Add from dogfeet (23 hours ago)
-* 86cdd49 - branch dogfeet (23 hours ago)
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
-
-<p>dogfeet을 master에 Merge한다:</p>
-
-<pre><code>*   8365b59 - (HEAD, master) Merge branch 'local_dogfeet' (2 seconds ago)
-|\  
-| * 904a4c0 - (local_dogfeet) Add from_git_dogfeet (2 minutes ago)
-| * e5334ef - (dogfeet) Add from dogfeet (23 hours ago)
-| * 86cdd49 - branch dogfeet (23 hours ago)
-* | 4c549fb - Add from_git_master (5 minutes ago)
-|/  
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
-
-<p>이걸 SVN에 Push하면 SVN 히스토리는 다음과 같아진다:</p>
-
-<p><img src="/articles/2012/git-svn/history-after-merge.png" alt="history-after-merge.png" title="" /></p>
-
-<p>그러니까 이렇게 Merge 커밋이 있는 히스토리를 SVN에 Push하면 히스토리가 순서가 보장되지 않는다. 히스토리 순서를 보장하려면 Fast-Forward Merge로 펴놓고 Push해야 한다.</p>
-
-<p>그렇다고 Rebase를 해서 Fast-Forward Merge를 하면 같은 커밋이 두 번 들어가게 될 수도 있으니 절대로 SVN에 올라간 커밋은 Rebase하면 안된다. 그러니까 SVN에 Push한 커밋을 Rebase할 바엔 그냥 Merge Commit을 남기는 게 낫다고 볼 수 있다.</p>
-
-<h3>브랜치 결론.</h3>
-
-<p>SVN 세상에서는 히스트리가 항상 평평하고 브랜치도 디렉토리로 관리한다. 그러니까 이점을 명확히 이해하고 있어야 혼란스럽지 않다.</p>
-
-<p>SVN의 브랜치를 Git에서 Merge하는 것은 사실 조금 위험하다. Merge Commit 있는 Git 히스토리를 SVN에 Push하면 커밋 순서는 보장되지 않을 것이고 그렇다고 SVN에 이미 커밋된 것을 Rebase할 수도 없다. 하지만 Topic 브랜치를 만들어 작업하고 히스토리를 평평하게 펴서 SVN에 Push하면 쓸만하다.</p>
-
-<p>그리고 SVN 히스토리가 망가질 수 있다는 단점은 지나친 기우일 수 있다. 오픈 소스 프로젝트라면 히스토리를 더럽히는 것이 당연히 부끄럽겠지만, 원래 커밋 메시지도 없는 히스토리라면 그냥 커밋 몇 개 더 만들어도 괜찮지 않을까? 취미로 하는 프로젝트를 빼고 난 아직 한번도 히스토리에 정성을 쏳는(이라고 쓰고 커밋 메시지를 잘 남기는 이라고 읽는다) 프로젝트를 해보지 못했다.</p>]]>
     </content>
   </entry>
 </feed>

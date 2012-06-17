@@ -2,17 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.com</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/iamport-nodejs.html</loc>
+    <lastmod>2012-06-16T15:00:00Z</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/nodejs-fibers/puton-fiber.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/atelier.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/nodejs-fibers/puton-fiber.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -22,12 +27,12 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/iamport/iamport.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/coroutine/source-code.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -36,13 +41,13 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2012/nodejs-modules/hat-girl.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown/keyboard.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown/keyboard.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/nodejs-modules/hat-girl.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -61,513 +66,513 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/styles/style.css</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag03.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/git-branching-model.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2009/1238754840/Picture1.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/ubuntu-desktop/ubuntu.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/proxy-auto-config/pac.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/yammer-progit.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/writeroom.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/ibooks.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2012/progit/gitx-progit.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/styles/style.css</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/bash-profile/bash-computer.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2011/git-diff/christmas-in-jelly-village.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2010/1274067840/20090417143744__HVLRW.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2009/1253444040/jpetstoreBeans.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning-j-chapter2/j-code.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/translation-flow/translation-flow.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/smacss/smacss.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/ubdic.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/mbp.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/progit/mbp-cafe.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo-a.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning-j-chapter1/j-code.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/ladybucks/option.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/LiEI3.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/FgOPu.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/5Euiy.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo-t.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-svn/et.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-global-ignore/ignorelo.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-ff/git-ff-result.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-conflict/creation-of-adam.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/captive-network/panera-captive.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/kindle-fire/kindle-fire-price.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-mergediff/savage-chikens-catoon.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/hotfix-branches.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/centr-decentr.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2009/1238754840/Picture2.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/translation-flow/topics--ko.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--master.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko-build.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko-base.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/smacss/icon-menu2.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/smacss/icon-menu.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/proxy-auto-config/pacman.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/progit/tran.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/optimize-browser-rendering/google-page-speed.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/npm/npm.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/sitemap.xml</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/nodejs-mocha/mocha-test.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/authors/yongjae-choi.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/jcode.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag08.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag06.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag05.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag04.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag03.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag02.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag01.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/ladybucks/intro.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/ladybucks/extensions.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/by-example-continuation-passing-style-in-javascript/279433682_23ac618518.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/VWFCB.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/Qyyh5.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/oksQI.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/naZ6I.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/fI9qT.gif</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/bbNRs.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github/aAd2v.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/todoly.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/checkouted.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/behind.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/coffeekup.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/base_branch.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-todo/ahead.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-svn/svn-repository.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-svn/history.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/git-svn/history-after-merge.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/first-speach/first-speach.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/progit/jenkins-progit.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/git.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/captive-network/mac-captive.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/captive-network/firstwifi.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/bash-completion/tab-key.jpeg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/progit/progit.book-big</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/progit/git-.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/archive.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/github-flow/contact-github.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2012/ladybucks/success.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-merge/thousand_sunny_ship.jpg</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-flow/example_history.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-flow/branching_flow.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/merge-without-ff.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/main-branches.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo-r.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/feature_branches.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/learning-j-chapter2/j-code.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271653140/class_diagram_part_1.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/learning-j-chapter1/j-code.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2010/1271648700/initial-class_diagram.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/articles/2012/ladybucks/option.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/LiEI3.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/FgOPu.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/5Euiy.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo-t.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-ff/git-ff-result.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-svn/et.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-global-ignore/ignorelo.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-conflict/creation-of-adam.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/captive-network/panera-captive.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/kindle-fire/kindle-fire-price.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/git-mergediff/savage-chikens-catoon.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/hotfix-branches.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/centr-decentr.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2009/1238754840/Picture2.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/translation-flow/topics--ko.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--master.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko-build.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/translation-flow/progit-master--ko-base.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/smacss/icon-menu2.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/smacss/icon-menu.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/proxy-auto-config/pacman.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/progit/tran.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/optimize-browser-rendering/google-page-speed.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/npm/npm.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/articles/2012/npm/npm-config.png</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/nodejs-mocha/mocha-test.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/sitemap.xml</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/jcode.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag08.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag06.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag05.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag04.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2009/1238754840/Picture1.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag02.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/learning_j_chapter3/diag01.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/ladybucks/intro.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/ladybucks/extensions.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/tagmap.html</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/VWFCB.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/Qyyh5.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/oksQI.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/naZ6I.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/fI9qT.gif</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/bbNRs.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/banner_ul2.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github/aAd2v.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/todoly.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-svn/history-after-merge.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/checkouted.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/coffeekup.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/behind.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/base_branch.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/ahead.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-svn/svn-repository.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-svn/history.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/first-speach/first-speach.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/site/archive.html</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/git.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/captive-network/mac-captive.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/captive-network/firstwifi.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/bash-completion/tab-key.jpeg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/progit/progit.book-big</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/progit/git-.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/progit/gitx-progit.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/github-flow/contact-github.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/progit/jenkins-progit.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/by-example-continuation-passing-style-in-javascript/279433682_23ac618518.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/git-merge/thousand_sunny_ship.jpg</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/git-flow/example_history.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/git-flow/branching_flow.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/merge-without-ff.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/main-branches.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/git-todo/git-todo-a.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2011/a-successful-git-branching-model/feature_branches.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2010/1271653140/class_diagram_part_1.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2010/1271648700/initial-class_diagram.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/authors/yongjae-choi.html</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.com/articles/2012/ladybucks/success.png</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -621,12 +626,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2012/how-to-github.html</loc>
+    <loc>http://dogfeet.github.com/articles/2012/smacss-part2.html</loc>
     <lastmod>2012-03-31T15:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2012/smacss-part2.html</loc>
+    <loc>http://dogfeet.github.com/articles/2012/how-to-github.html</loc>
     <lastmod>2012-03-31T15:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -646,18 +651,18 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/authors/sean-lee.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/styles/markdown.css</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/styles/markdown.css</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <loc>http://dogfeet.github.com/authors/sean-lee.html</loc>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/authors/changwoo-park.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -712,7 +717,7 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/site/about.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -782,7 +787,7 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/scripts/script.js</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -791,12 +796,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/bash-it.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/git-helpers.html</loc>
     <lastmod>2011-12-01T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -811,12 +816,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/cake.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/coffee-kup.html</loc>
     <lastmod>2011-11-21T16:06:05Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -851,12 +856,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317888540.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317873491.html</loc>
     <lastmod>2011-10-06T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -876,12 +881,12 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>http://dogfeet.github.com/articles/2011/1317342420.html</loc>
+    <loc>http://dogfeet.github.com/articles/2011/1317370500.html</loc>
     <lastmod>2011-09-30T00:00:00Z</lastmod>
     <changefreq>never</changefreq>
   </url>
@@ -1167,12 +1172,12 @@
   </url>
   <url>
     <loc>http://dogfeet.github.com/index.html</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.com/atom.xml</loc>
-    <lastmod>2012-06-10T03:43:59Z</lastmod>
+    <lastmod>2012-06-17T12:08:24Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

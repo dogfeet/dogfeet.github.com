@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - tav:Brain-free command-line options parser</title>
-    <meta name="description" content="tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다." />
-    <meta name="keywords" content="nodejs,JavaScript,tav,cli" />
+    <title>dogfeet - iamport: nodejs</title>
+    <meta name="description" content="iamport: python에서 100개쯤되는 포트를 확인해보려고 포트가 열렸는지 확인하는 프로그램을 python으로 작성했었다. node-fibers를 살펴보면서 iamport를 nodejs로 포팅해봤다." />
+    <meta name="keywords" content="nodejs,coroutine,fiber,iamport" />
     <meta name="author" content="Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -91,14 +91,14 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2011/1319251876.html" lang="ko-kr">
+<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/iamport-nodejs.html" lang="ko-kr">
   <header>
-    <h1 property="dcterms:title">tav:Brain-free command-line options parser</h1>
+    <h1 property="dcterms:title">iamport: nodejs</h1>
   </header>
   <footer class="modern-font  small-font">
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">2011 Oct 22</span>
- | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#tav" class="tag">tav</a> <a href="/site/tagmap.html#cli" class="tag">cli</a> | <span><a href="/articles/2011/1319251876.html#disqus_thread" data-disqus-identifier="/articles/2011/1319251876.html"></a></span>
+ | <span property="dc:created">2012 Jun 17</span>
+ | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#fiber" class="tag">fiber</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-nodejs.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-nodejs.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -107,84 +107,168 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1319251876.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1319251876.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1319251876.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다.</p>
+    <p><a href="/articles/2012/iamport-python.html">iamport: python</a>에서 100개쯤되는 포트를 확인해보려고 포트가 열렸는지 확인하는 프로그램을 python으로 작성했었다. <a href="https://github.com/laverdet/node-fibers">node-fibers</a>를 살펴보면서 iamport를 nodejs로 포팅해봤다.</p>
 
-<h2>tav</h2>
+<p><img src="/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
 
-<p>다음과 같이 대충 만들고:</p>
+<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
 
-<pre><code>#!/usr/bin/env node
-var opts = require('tav').set();
-console.log(opts, opts.args);
-</code></pre>
+<h2>iamport: CPS</h2>
 
-<p>라고 만들고 나서 대충 실행하면:</p>
-
-<pre><code>#!/usr/bin/env bash
-$node app.js --host=localhost --port=8080 --debug arg1 arg2
-{ host: 'localhost', port: 8080, debug: true } [ 'arg1', 'arg2' ]
-</code></pre>
-
-<p>된다.</p>
-
-<p>규칙도 정의할 수 있는데 다음과 같이 만들고:</p>
+<p>다음은 포트가 열렸는지 <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a> 방식으로 확인하는 프로그램이다:</p>
 
 <pre><code>#!/usr/bin/env node
-var opts = require('tav').set({
-    //value가 없기 때문에 host는 required 옵션이다.
-    host: {
-        note: 'Hostname'
-    },
-    //value가 있기 때문에 port는 optional 옵션이다.
-    port: {
-        note: 'Binding port',
-        value: 80
-    },
-    debug : {
-        note : 'Debug this',
-        value : false
-    }
-    //여기에 정의되지 않는 정의하지 않은 옵션은 unexpected이다.
-}, "Very cool app");
-console.log(opts);
+
+var net = require('net');
+var fs = require('fs');
+
+var stime=new Date().getTime();
+var done=0;
+
+function tryToConnect( ip, port ){
+    done++;
+
+    var socket = net.createConnection(port, ip);
+
+    socket.on('error', function(err){
+        console.log( ip + ' ' + port );
+    }).on('connect', function(connect) {
+        socket.destroy();
+    }).on('close', function(had_error){
+        done--;
+
+        if(done == 0 ){
+            var etime=new Date().getTime();
+
+            console.log( "elapsed(ms) " + (etime - stime)/1000 );
+        }
+    });
+}
+
+fs.readFile(process.argv[2], 'utf-8', function(err, data){
+    var lines = data.split('\n');
+
+    lines.forEach(function(line){
+        if( line.trim().length &lt; 1 ) return;
+        var opts=line.match(/[0-9\.]+/g);
+
+        if( opts &amp;&amp; opts.length &gt; 1 ) {
+            tryToConnect(opts[0], opts[1]);
+        } else {
+            console.log(line);
+        }
+    });
+});
 </code></pre>
 
-<p>정의한대로 usage를 자동으로 구성해준다. <code>--help</code> 옵션을 주면 전체 볼 수 있다. <code>--help</code>가 없으면 그때그때 필요한 것만 보여준다.</p>
+<p>테스트할 포트 목록은 다음과 같은 파일을 파라미터로 넘겨주면 된다:</p>
 
-<pre><code>$node app.js --host=localhost --debug arg1 arg2 --help
-Very cool app
-
-Hostname
-    --host *required
-Binding port
-    --port
-Debug this
-    --debug
-Help. This message.
-    --help
+<pre><code>127.0.0.1       22
+127.0.0.1       21
+168.126.63.1    18
+18.18.18.18     18
+18.18.18.18
+74.125.235.180  80
 </code></pre>
 
-<p>옵션의 속성으로 <code>Required</code>, <code>Unexpected</code>, <code>Optional</code>가 있다.</p>
+<p>그러면 입력 값이 잘못 됐거나 열리지 않는, 아무튼 예외가 발생하는 것만 출력한다. 실행 결과는 다음과 같다:</p>
 
-<ul>
-<li>Required: 꼭 입력해야 하는 옵션입니다.</li>
-<li>Unexpected: 넣으면 안돼는 것입니다.</li>
-<li>Optional: 생략 가능한 것입니다.</li>
-</ul>
+<pre><code>$ ./iamport.js port_scan 
+18.18.18.18
+127.0.0.1 21
+127.0.0.1 22
+18.18.18.18 18
+168.126.63.1 18
+elapsed(ms) 21.047
+</code></pre>
 
-<p>나이스한 컨벤션을 이용해서 정말 간단하게 구현했다. tav는 페니키아어로 mark, sign이라는 뜻이다. 에로틱한 이름이 어울릴 것 같은데 수학적이다.--;</p>
+<h2>iamport: fiber</h2>
+
+<p><a href="https://github.com/laverdet/node-fibers">node-fibers</a>의 Future을 적용한 예이다. 비동기 API를 Wrapping하는 다른 시도도 있지만 그냥 Future를 사용했다:</p>
+
+<pre><code>#!/usr/bin/env node
+
+var net = require('net');
+var fs = require('fs');
+var Future = require('fibers/future'), wait = Future.wait;
+
+var stime=new Date().getTime();
+
+//api(..., callback(err,data))라는 컨벤션을 따라야 한다.
+function tryToConnect( ip, port, callback ){
+
+    var socket = net.createConnection(port, ip);
+
+    socket.on('error', function(err){
+        console.log( ip + ' ' + port );
+        callback(err, null);
+    }).on('connect', function(connect) {
+        socket.destroy();
+        callback(null, connect);
+    });
+}
+
+//Function.length를 이용해서 callback 파라미터의 위치를 자동으로 찾는다.
+//엄밀히 말하면 마지막 파라미터를 callback으로 가정함
+var connect = Future.wrap( tryToConnect );
+
+//readFile의 프로토타입은 readfile( port, [ip], [callback])이고
+//fs.readFile은 callback 파라미터의 위치가 동적이기 때문에
+//명시적으로 선언한게 아니라 arguments를 이용했다.
+//그래서 Function.legnth로 callback의 위치를 알 수 없다.
+//두번째 파라미터 2는 callback의 위치를 알려주는 것이다.
+var readFile = Future.wrap( fs.readFile, 2 );
+
+Fiber(function(){
+    var data = readFile(process.argv[2], 'utf-8').wait();
+    var lines = data.split('\n');
+    var jobs = [];
+
+    lines.forEach(function(line){
+        if( line.trim().length &lt; 1 ) return;
+
+        var opts=line.match(/[0-9\.]+/g);
+
+        if( opts &amp;&amp; opts.length &gt; 1 ) {
+            jobs.push( connect(opts[0], opts[1]) );
+        } else {
+            console.log(line);
+        }
+    });
+
+    //wait에는 Fiber 객체가 아니라 Future 객체가 필요하다.
+    wait(jobs);
+
+    var etime=new Date().getTime();
+
+    console.log( "elapsed(ms) " + (etime - stime)/1000 );
+}).run();
+</code></pre>
+
+<p><a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a>이나 <a href="https://github.com/laverdet/node-fibers">node-fibers</a>나 성능상에 차이날 이유가 없다. 실행 결과는 다음과 같다:</p>
+
+<pre><code>$ ./iamport-fiber.js port_scan 
+18.18.18.18
+127.0.0.1 21
+127.0.0.1 22
+168.126.63.1 18
+18.18.18.18 18
+elapsed(ms) 21.093
+</code></pre>
+
+<p>gevent와 같은 구현체가 등장하면 쓸만 할지도 모르겠지만 node에서 Coroutine은 괜한 욕심일지도 모르겠다. 그래도 node-fiber를 좀 더 쉽게 사용할 수 있도록 만들려는 시도들이 있다. <a href="https://github.com/lm1/node-fiberize">fiberize</a>, <a href="https://github.com/lm1/node-fibers-promise">fibers-promise</a>, <a href="https://github.com/0ctave/node-sync">node-sync</a>를 참고하면 node-fiber를 사용하는데 도움이 될 것이다.</p>
   </div>
 </article>
 <section id="related">
@@ -192,52 +276,16 @@ Help. This message.
   <div class="alert alert-info">
     <ul>
       <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+        <span>Jun 02 2012</span>
+&raquo;        <a href="/articles/2012/iamport-python.html">iamport: python</a>
       </li>
       <li>
         <span>Jul 05 2011</span>
 &raquo;        <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
       </li>
       <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
-      </li>
-      <li>
-        <span>Sep 28 2011</span>
-&raquo;        <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-      </li>
-      <li>
-        <span>Sep 29 2011</span>
-&raquo;        <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-      </li>
-      <li>
-        <span>Sep 30 2011</span>
-&raquo;        <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-      </li>
-      <li>
-        <span>Oct 04 2011</span>
-&raquo;        <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-      </li>
-      <li>
-        <span>Oct 05 2011</span>
-&raquo;        <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
-      </li>
-      <li>
-        <span>Sep 27 2011</span>
-&raquo;        <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
-      </li>
-      <li>
-        <span>Oct 06 2011</span>
-&raquo;        <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-      </li>
-      <li>
-        <span>Jun 17 2012</span>
-&raquo;        <a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
       </li>
       <li>
         <span>Jun 10 2012</span>
@@ -268,7 +316,7 @@ Help. This message.
 <div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2011/1319251876.html';
+    var disqus_identifier = '/articles/2012/iamport-nodejs.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -276,8 +324,8 @@ Help. This message.
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
-  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1319251876.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/1319251876.html" data-num-posts="1"></div>
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" data-num-posts="1"></div>
   </div>  </div>
 </section>
 
