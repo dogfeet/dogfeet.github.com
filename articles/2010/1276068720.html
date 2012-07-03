@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - SSMA를 써보고 나서</title>
-    <meta name="description" content="SSMA(Sql Server Migration Assistant)를 사용해볼 기회가 생겼다. 이글은 SSMA를 8.5일 사용해본 사용기이다." />
-    <meta name="keywords" content="SSMA,Groovy,gsql,Oracle,SQLServer" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2010/1276068720.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2010/1276068720.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">SSMA를 써보고 나서</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2010 Jun 09</span>
  | <a href="/site/tagmap.html#ssma" class="tag">SSMA</a> <a href="/site/tagmap.html#groovy" class="tag">Groovy</a> <a href="/site/tagmap.html#gsql" class="tag">gsql</a> <a href="/site/tagmap.html#oracle" class="tag">Oracle</a> <a href="/site/tagmap.html#sqlserver" class="tag">SQLServer</a> | <span><a href="/articles/2010/1276068720.html#disqus_thread" data-disqus-identifier="/articles/2010/1276068720.html"></a></span>
@@ -164,27 +164,27 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
       <li>
-        <span>Aug 19 2008</span>
-&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
-      </li>
-      <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
-      </li>
-      <li>
-        <span>Dec 02 2009</span>
-&raquo;        <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
 &raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+        <span>Dec 02 2009</span>
+&raquo;        <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
+      </li>
+      <li>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+      </li>
+      <li>
+        <span>Aug 19 2008</span>
+&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
       </li>
     </ul>
   </div>
@@ -209,7 +209,7 @@
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

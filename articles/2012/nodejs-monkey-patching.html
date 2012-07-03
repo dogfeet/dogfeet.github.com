@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - nodejs에서의 멍키 패칭</title>
-    <meta name="description" content="JavaScript에서 멍키 패칭이 가능할까? 'require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다." />
-    <meta name="keywords" content="nodejs,Monkey Patching" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/nodejs-monkey-patching.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2012/nodejs-monkey-patching.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">nodejs에서의 멍키 패칭</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 24</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#monkey patching" class="tag">Monkey Patching</a> | <span><a href="/articles/2012/nodejs-monkey-patching.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-monkey-patching.html"></a></span>
@@ -123,7 +123,7 @@
 
 <p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch" title="" /></p>
 
-<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'><a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a></a>)</p>
+<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
 
 <h2>require</h2>
 
@@ -214,16 +214,8 @@ function require(path) {
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
-      <li>
-        <span>Jul 05 2011</span>
-&raquo;        <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
-      </li>
-      <li>
-        <span>Oct 22 2011</span>
-&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
-      </li>
       <li>
         <span>Jun 17 2012</span>
 &raquo;        <a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a>
@@ -231,10 +223,6 @@ function require(path) {
       <li>
         <span>Jun 10 2012</span>
 &raquo;        <a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a>
-      </li>
-      <li>
-        <span>Apr 15 2012</span>
-&raquo;        <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
       </li>
       <li>
         <span>May 13 2012</span>
@@ -245,8 +233,20 @@ function require(path) {
 &raquo;        <a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a>
       </li>
       <li>
+        <span>Apr 15 2012</span>
+&raquo;        <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
+      </li>
+      <li>
         <span>Feb 25 2012</span>
 &raquo;        <a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a>
+      </li>
+      <li>
+        <span>Oct 22 2011</span>
+&raquo;        <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
+      </li>
+      <li>
+        <span>Jul 05 2011</span>
+&raquo;        <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
       </li>
     </ul>
   </div>
@@ -271,7 +271,7 @@ function require(path) {
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

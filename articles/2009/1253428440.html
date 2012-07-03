@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Spring MVC and iBatis Example - jPetStore 분석 (1)</title>
-    <meta name="description" content="Spring MVC와 iBatis를 이해하기 위해 jPetStore를 분석해본다. 그 첫번째 시간" />
-    <meta name="keywords" content="Java,Spring,iBATIS,jPetStore,Spring MVC" />
-    <meta name="author" content="Sean Lee" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2009/1253428440.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2009/1253428440.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">Spring MVC and iBatis Example - jPetStore 분석 (1)</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
  | <span property="dc:created">2009 Sep 20</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#ibatis" class="tag">iBATIS</a> <a href="/site/tagmap.html#jpetstore" class="tag">jPetStore</a> <a href="/site/tagmap.html#spring mvc" class="tag">Spring MVC</a> | <span><a href="/articles/2009/1253428440.html#disqus_thread" data-disqus-identifier="/articles/2009/1253428440.html"></a></span>
@@ -142,7 +142,7 @@
 <li>iBatis (Persistance layer) - web application layer에서 database의 데이터를 사용할 때 쉽게 쓸 수 있도록 도와준다.</li>
 </ul>
 
-<p>내부 설정과 코드를 살펴보기 전에, 실행부터 해보자. jpetstore 디렉토리로 이동하여 ‘ant warfile’을 하면 warfile이 생성된다. (<a href="http://ant.apache.org">Ant</a>가 설치되어 있어야 한다) 생성된 war파일을 Container에 Load해본다. 예를 들어 <a href="http://tomcat.apache.org/">Apache Tomcat</a>의 경우, webapps 폴더에 복사하고, <a href='http://localhost:8080/jpetstore/'><a href='http://localhost:8080/jpetstore/'>http://localhost:8080/jpetstore/</a></a> 주소로 접속하여 jpetstore의 페이지가 뜨는 것을 확인한다.</p>
+<p>내부 설정과 코드를 살펴보기 전에, 실행부터 해보자. jpetstore 디렉토리로 이동하여 ‘ant warfile’을 하면 warfile이 생성된다. (<a href="http://ant.apache.org">Ant</a>가 설치되어 있어야 한다) 생성된 war파일을 Container에 Load해본다. 예를 들어 <a href="http://tomcat.apache.org/">Apache Tomcat</a>의 경우, webapps 폴더에 복사하고, <a href='http://localhost:8080/jpetstore/'>http://localhost:8080/jpetstore/</a> 주소로 접속하여 jpetstore의 페이지가 뜨는 것을 확인한다.</p>
 
 <pre><code>SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/samples/jpetstore$ ls -al
 total 48
@@ -188,35 +188,23 @@ SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/sample
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
+      <li>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+      </li>
       <li>
         <span>Jan 14 2010</span>
 &raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
-      <li>
-        <span>Jul 29 2010</span>
-&raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
         <span>May 04 2010</span>
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
       </li>
       <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-      </li>
-      <li>
         <span>Apr 27 2010</span>
 &raquo;        <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
-      </li>
-      <li>
-        <span>Nov 10 2009</span>
-&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
       </li>
       <li>
         <span>Apr 20 2010</span>
@@ -224,19 +212,19 @@ SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/sample
       </li>
       <li>
         <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
+&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
       </li>
       <li>
         <span>Jan 17 2010</span>
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>Jul 29 2010</span>
+&raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
@@ -247,12 +235,24 @@ SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/sample
 &raquo;        <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
       </li>
       <li>
+        <span>Nov 10 2009</span>
+&raquo;        <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+      </li>
+      <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
         <span>Apr 03 2009</span>
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
         <span>Aug 19 2008</span>
@@ -281,7 +281,7 @@ SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/sample
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

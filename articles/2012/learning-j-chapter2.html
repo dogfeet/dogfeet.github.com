@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - J언어 배우기 - 제 2장: 리스트와 테이블</title>
-    <meta name="description" content="Learning J의 Chapter2 를 번역했다. 이번엔 리스트와 테이블에 관한 내용이다. 굉장히 기초적이고 중요한 내용이다. 특히 배열의 차원(dimension)에 관한 이야기는 나중에 나올 랭크라는 개념을 이해하기 위한 초석이므로 예제들을 잘 봐야 한다. 눈에 보이는 데이터가 같다고 해서 같은 데이터가 아니라는 것도 중요하다. 지금 말하고 있는 게 무슨 말인지 모르겠다면 이번 챕터를 읽도록 하자." />
-    <meta name="keywords" content="J,jsoftware,language,J언어" />
-    <meta name="author" content="Yongjae Choi" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/learning-j-chapter2.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter2.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">J언어 배우기 - 제 2장: 리스트와 테이블</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
  | <span property="dc:created">2012 Apr 17</span>
  | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">J언어</a> | <span><a href="/articles/2012/learning-j-chapter2.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter2.html"></a></span>
@@ -788,7 +788,7 @@ pig</tt></td>
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
       <li>
         <span>May 01 2012</span>
@@ -821,7 +821,7 @@ pig</tt></td>
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

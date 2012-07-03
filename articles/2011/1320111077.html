@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - keychain for ssh login</title>
-    <meta name="description" content="얼마 전에 ssh_agent에 관한 글을 썼다. 그 후 나름 만족하고 있었는데, bash_it 플러그인으로 만들어서 편리하다라고 생각하고 있었는데, 약 5~6년간 이렇게 사용해 왔는데, keychain이라는 걸 발견했다." />
-    <meta name="keywords" content="keychain" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2011/1320111077.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2011/1320111077.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">keychain for ssh login</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2011 Nov 01</span>
  | <a href="/site/tagmap.html#keychain" class="tag">keychain</a> | <span><a href="/articles/2011/1320111077.html#disqus_thread" data-disqus-identifier="/articles/2011/1320111077.html"></a></span>
@@ -159,7 +159,7 @@ source ~/.keychain/$(hostname)-sh
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

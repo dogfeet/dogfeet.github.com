@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Simplest Spring 3 Application, 초간단 Spring 3 어플</title>
-    <meta name="description" content="Ioc.java" />
-    <meta name="keywords" content="Java,Spring" />
-    <meta name="author" content="Sean Lee" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2009/1257843480.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2009/1257843480.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">Simplest Spring 3 Application, 초간단 Spring 3 어플</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
  | <span property="dc:created">2009 Nov 10</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> | <span><a href="/articles/2009/1257843480.html#disqus_thread" data-disqus-identifier="/articles/2009/1257843480.html"></a></span>
@@ -151,11 +151,11 @@ public class Ioc {
 <h2>beans.xml</h2>
 
 <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;beans xmlns="<a href='http://www.springframework.org/schema/beans'><a href='http://www.springframework.org/schema/beans'>http://www.springframework.org/schema/beans</a></a>"
-       xmlns:xsi="<a href='http://www.w3.org/2001/XMLSchema-instance'><a href='http://www.w3.org/2001/XMLSchema-instance'>http://www.w3.org/2001/XMLSchema-instance</a></a>"
+&lt;beans xmlns="<a href='http://www.springframework.org/schema/beans'>http://www.springframework.org/schema/beans</a>"
+       xmlns:xsi="<a href='http://www.w3.org/2001/XMLSchema-instance'>http://www.w3.org/2001/XMLSchema-instance</a>"
        xsi:schemaLocation="
-                <a href='http://www.springframework.org/schema/beans'><a href='http://www.springframework.org/schema/beans'>http://www.springframework.org/schema/beans</a></a>
-                <a href='http://www.springframework.org/schema/beans/spring-beans.xsd'><a href='http://www.springframework.org/schema/beans/spring-beans.xsd'>http://www.springframework.org/schema/beans/spring-beans.xsd</a></a>"&gt;
+                <a href='http://www.springframework.org/schema/beans'>http://www.springframework.org/schema/beans</a>
+                <a href='http://www.springframework.org/schema/beans/spring-beans.xsd'>http://www.springframework.org/schema/beans/spring-beans.xsd</a>"&gt;
 
 
     &lt;bean id="calendar" class="java.util.GregorianCalendar" /&gt;
@@ -191,31 +191,19 @@ Tue Nov 10 17:49:14 KST 2009
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
-      <li>
-        <span>Jan 14 2010</span>
-&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-      </li>
       <li>
         <span>Jul 29 2010</span>
 &raquo;        <a href="/articles/2010/1280382600.html">와우 war overlay</a>
       </li>
       <li>
+        <span>May 11 2010</span>
+&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+      </li>
+      <li>
         <span>May 04 2010</span>
 &raquo;        <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-      </li>
-      <li>
-        <span>Sep 20 2009</span>
-&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-      </li>
-      <li>
-        <span>Sep 23 2009</span>
-&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
       </li>
       <li>
         <span>Apr 27 2010</span>
@@ -227,19 +215,19 @@ Tue Nov 10 17:49:14 KST 2009
       </li>
       <li>
         <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
+&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
       </li>
       <li>
         <span>Apr 19 2010</span>
-&raquo;        <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+&raquo;        <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
       </li>
       <li>
         <span>Jan 17 2010</span>
 &raquo;        <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
       </li>
       <li>
-        <span>Jan 02 2009</span>
-&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        <span>Jan 14 2010</span>
+&raquo;        <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
       </li>
       <li>
         <span>Dec 27 2009</span>
@@ -250,12 +238,24 @@ Tue Nov 10 17:49:14 KST 2009
 &raquo;        <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
       </li>
       <li>
+        <span>Sep 23 2009</span>
+&raquo;        <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+      </li>
+      <li>
+        <span>Sep 20 2009</span>
+&raquo;        <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+      </li>
+      <li>
         <span>Apr 03 2009</span>
 &raquo;        <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
       </li>
       <li>
-        <span>May 11 2010</span>
-&raquo;        <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+        <span>Jan 02 2009</span>
+&raquo;        <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
       </li>
       <li>
         <span>Aug 19 2008</span>
@@ -284,7 +284,7 @@ Tue Nov 10 17:49:14 KST 2009
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

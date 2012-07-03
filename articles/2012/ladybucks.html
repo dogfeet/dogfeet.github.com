@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Ladybucks: A Chrome extension for Starbucks WI-FI</title>
-    <meta name="description" content="Ladybucks는 Chrome extension으로 스타벅스에서 WI-FI를 편하게 사용하기 위해 만들었다. 단순히 스타벅스에서 요구하는 정보를 저장했다가 해당 페이지가 뜨면 정해진 페이지 흐름대로 자동으로 입력하고 처리해준다." />
-    <meta name="keywords" content="Starbucks,Ladybucks,Backbone.js,Chrome Extension" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/ladybucks.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2012/ladybucks.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">Ladybucks: A Chrome extension for Starbucks WI-FI</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Feb 09</span>
  | <a href="/site/tagmap.html#starbucks" class="tag">Starbucks</a> <a href="/site/tagmap.html#ladybucks" class="tag">Ladybucks</a> <a href="/site/tagmap.html#backbone.js" class="tag">Backbone.js</a> <a href="/site/tagmap.html#chrome extension" class="tag">Chrome Extension</a> | <span><a href="/articles/2012/ladybucks.html#disqus_thread" data-disqus-identifier="/articles/2012/ladybucks.html"></a></span>
@@ -135,7 +135,7 @@
 
 <h3>20120606 업데이트</h3>
 
-<p><a href="https://twitter.com/#!/lnyarl">@lnyarl</a>군이 웹 스토어에 등록함. <a href="https://chrome.google.com/webstore/detail/fnpekdnicnempagdlmphknomnopaognh?hl=ko&amp;gl=001">클릭</a></p>
+<p><a href="https://twitter.com/#!/lnyarl군이">@lnyarl군이</a> 웹 스토어에 등록함. <a href="https://chrome.google.com/webstore/detail/fnpekdnicnempagdlmphknomnopaognh?hl=ko&amp;gl=001">클릭</a></p>
 
 <h2>사용하기</h2>
 
@@ -172,7 +172,7 @@
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

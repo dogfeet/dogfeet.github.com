@@ -91,14 +91,14 @@
 })();
 
 </script>
-<article id="post" typeof="sioc:post" about="/articles/2012/iamport-python.html" lang="ko-kr" .post .undefined>
+<article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr" .post .undefined>
   <header>
-    <h1 property="dcterms:title">iamport: python</h1>
+    <h1 property="dcterms:title">sbt: Getting Started Guide: Setup</h1>
   </header>
   <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
- | <span property="dc:created">2012 Jun 02</span>
- | <a href="/site/tagmap.html#python" class="tag">python</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#gevent" class="tag">gevent</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-python.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-python.html"></a></span>
+ | <span property="dc:created">2012 Jul 03</span>
+ | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-setup.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-setup.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -107,212 +107,134 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/iamport-python.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>포트가 열렸는지 확인하는 프로그램을 작성했다. 100개쯤되는 포트를 확인해보라고 해서 만들었는데, 이 참에 gevent를 적용해보았다.</p>
+    <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">orig-getting-started</a>을 번역한 것이다. </p>
 
-<p><img src="/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
 
-<p>(from <a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a>)</p>
+<h2>Overview</h2>
 
-<p>주 플랫폼이 Java라서 예전엔 이런일을 groovy로 했었는데 python이 훨씬 쉽다.</p>
-
-<h2>iamport</h2>
-
-<p>다음은 포트가 열렸는지 순차적으로 확인하는 프로그램이다.</p>
-
-<pre><code>#!/usr/bin/env python
-
-import socket
-import sys
-import time
-import re
-
-def tryToConnect( argv ):
-    ip=argv[0]
-    port=int(argv[1])
-
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM )
-
-    try:
-        sock.connect( (ip, port) )
-    except:
-        print ip, port
-
-    sock.close()
-
-if __name__ == '__main__':
-
-    stime=time.time()
-
-    file = open(sys.argv[1])
-
-    jobs = []
-
-    while True:
-        line = file.readline()
-
-        if not line:
-            break
-
-        opts = re.split('\s*', line)
-
-        if len(opts) &gt; 2:
-            job = tryToConnect( opts )
-            jobs.append( job )
-        else:
-            print opts[0]
-
-    file.close()
-
-    etime=time.time()
-
-    print 'elapsed %f' % (etime - stime)
-</code></pre>
-
-<p>테스트할 포트 목록은 다음과 같은 파일을 파라미터로 넘겨주면 된다:</p>
-
-<pre><code>127.0.0.1       22
-127.0.0.1       21
-168.126.63.1    18
-18.18.18.18     18
-18.18.18.18
-74.125.235.180  80
-</code></pre>
-
-<p>그러면 입력 값이 잘못 됐거나 열리지 않는, 아무튼 예외가 발생하는 것만 출력한다. 실행 결과는 다음과 같다:</p>
-
-<pre><code>$ ./iamport.py port_scan 
-127.0.0.1 22
-127.0.0.1 21
-168.126.63.1 18
-18.18.18.18 18
-18.18.18.18
-elapsed 42.215497
-</code></pre>
-
-<p>100개 정도에 한번 해봤는데 27분 걸렸다.</p>
-
-<h2>Coroutine</h2>
-
-<p><a href="/articles/2012/coroutine.html">Coroutine</a>은 정말 유용하다. Python이 처음이라면 다음과 같은 글을 읽는 것이 도움이 된다.</p>
+<p>다음과 같은 과정을 거쳐서 sbt 프로젝트를 만든다:</p>
 
 <ul>
-<li><a href="http://blog.dahlia.pe.kr/articles/2009/09/15/python-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EB%B0%98%EB%B3%B5%EC%9E%90%EC%9D%98-%EB%A7%88%EB%B2%95">Python 제너레이터+반복자의 마법</a></li>
-<li><a href="http://pyengine.blogspot.com/2011/07/python-coroutine-1.html">파이썬 코루틴 (python coroutine) - 1</a></li>
-<li><a href="http://pyengine.blogspot.com/2011/07/python-coroutine-2.html">파이썬 코루틴 (python coroutine) - 2</a></li>
+<li>sbt를 설치하고 실행할 스크립트를 만든다.</li>
+<li><a href="/articles/2012/sbt-hello-world.html">hello-world</a> 프로젝트를 만든다.
+<ul><li>프로젝트 디렉토리를 만들고 소스를 넣는다.</li>
+<li>어떻게 빌드할지 정의한다.</li></ul></li>
+<li><a href="/articles/2012/sbt-running.html">running</a>을 통해 sbt를 실행하는 법을 배운다.</li>
+<li><a href="/articles/2012/sbt-sbt-build-definition.html">.sbt-build-definition</a>에서 어떻게 빌드할지 정의하는 법을 배운다.</li>
 </ul>
 
-<h2>gevent</h2>
+<h2>sbt 설치</h2>
 
-<p>gevent를 이해하려면 eventlet을 알아봐야 하고:</p>
+<p><code>sbt-launch.jar</code> 파일과 실행할 스크립트만 있으면 된다.</p>
 
-<ul>
-<li><a href="http://ricanet.com/new/view.php?id=blog/111007">greenlet은 어떻게 구현했을까?</a></li>
-<li><a href="http://blog.gevent.org/2010/02/27/why-gevent/">Comparing gevent to eventlet</a></li>
-</ul>
+<p><em>Note: 다운로드는 <a href="http://www.scala-sbt.org/download.html">다운로드 페이지</a>에서 할 수 있다.</em></p>
 
-<p>gevent의 적용은 너무 쉽다. 사실 세 줄만 바꿔주면 된다:</p>
+<h3>Yum</h3>
 
-<ol>
-<li>멍키패칭으로 io api를 비동기+코루틴 방식의 구현체로 바꿔주고.</li>
-<li>job들을 등록(spawn)하고서</li>
-<li>join으로 다 끝나길 기다리면 된다(테스트는 안해봤지만 join이 호출될때 job이 실제로 시작하는 것 같다).</li>
-</ol>
+<p><a href="http://rpm.typesafe.com">Typesafe Yum 레파지토리</a>에 yum 패키지가 있다. <a href="http://rpm.typesafe.com/typesafe-repo-2.0.0-1.noarch.rpm">레파지토리 rpm 패키지</a>를 설치하면 typesafe yum 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
 
-<h3>gevent 버전의 iamport</h3>
-
-<p>아무리 내가 python을 잘 모른다지만 너무 간단하다. 눈이 의심스러울 정도로 간단하다.</p>
-
-<pre><code>#!/usr/bin/env python
-
-import socket
-import sys
-import time
-import re
-import gevent
-import gevent.monkey
-
-def tryToConnect( argv ):
-    ip=argv[0]
-    port=int(argv[1])
-
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM )
-
-    try:
-        sock.connect( (ip, port) )
-    except:
-        print ip, port
-
-    sock.close()
-
-if __name__ == '__main__':
-
-    stime=time.time()
-
-    #멍키패칭
-    gevent.monkey.patch_all()
-
-    file = open(sys.argv[1])
-
-    jobs = []
-
-    while True:
-        line = file.readline()
-
-        if not line:
-            break
-
-        opts = re.split('\s*', line)
-
-        if len(opts) &gt; 2:
-            #job을 spawn
-            job = gevent.spawn(tryToConnect, opts )
-            jobs.append( job )
-        else:
-            print opts[0]
-
-    file.close()
-
-    #spawn한 job이 모두 종료할 때까지 join
-    gevent.joinall( jobs )
-
-    etime=time.time()
-
-    print 'elapsed %f' % (etime - stime)
+<pre><code>yum install sbt
 </code></pre>
 
-<p>27분 걸렸던게 27초만에 끝났다. 만세.</p>
+<p>sbt의 최신 버전이 설치된다.</p>
+
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
+
+<h2>Apt</h2>
+
+<p><a href="http://apt.typesafe.com">Typesafe Debian 레파지토리</a>에 sbt Debian 패키지가 있다. <a href="http://apt.typesafe.com/repo-deb-build-0002.deb">레파지토리 deb 패키지</a>를 설치하면 typesafe debian 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
+
+<pre><code>apt-get install sbt
+</code></pre>
+
+<p>sbt의 최신 버전이 설치된다.</p>
+
+<p>sbt 없으면 레파지토리에서 정보를 업데이트한다:</p>
+
+<pre><code>apt-get update
+</code></pre>
+
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
+
+<h2>Gentoo</h2>
+
+<p>공식 소스 안에는 sbt용 ebuild 스크립트가 없다. 하지만 <a href='https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin'>https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin</a> 에 sbt를 머지하는 ebuild 스크립트가 있다. 다음과 같이 ebuild 스크립트로 sbt를 머지한다:</p>
+
+<pre><code>mkdir -p /usr/local/portage &amp;&amp; cd /usr/local/portage
+git clone git://github.com/whiter4bbit/overlays.git
+echo "PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay" &gt;&gt; /etc/make.conf
+emerge sbt-bin
+</code></pre>
+
+<h2>Mac</h2>
+
+<p><a href="http://macports.org/">MacPorts</a>로 설치한다:</p>
+
+<pre><code>$ sudo port install sbt
+</code></pre>
+
+<p><a href="http://mxcl.github.com/homebrew/">HomeBrew</a>로 설치할 수 있다:</p>
+
+<pre><code>$ brew install sbt
+</code></pre>
+
+<p>sbt-launch.jar를 직접 다운로드할 필요 없다:</p>
+
+<h2>Windows</h2>
+
+<p><a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt-launcher/0.11.3/sbt.msi">msi</a>를 다운로드한다:</p>
+
+<p><em>아니면</em></p>
+
+<p><code>sbt.bat</code> 배치 파일을 만든다:</p>
+
+<pre><code>set SCRIPT_DIR=%~dp0
+java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*
+</code></pre>
+
+<p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 'sbt'라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.</p>
+
+<h2>Unix</h2>
+
+<p><a href="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.11.3-2/sbt-launch.jar">sbt-launch.jar</a>를 다운로드해서 <code>~/bin</code> 디렉토리에 넣는다.</p>
+
+<p>이 jar 파일을 실행하는 스크립트를 'sbt'라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:</p>
+
+<pre><code>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar `dirname $0`/sbt-launch.jar "$@"
+</code></pre>
+
+<p>그리고 스크립트를 실행할 수 있게 만든다:</p>
+
+<pre><code>$ chmod u+x ~/bin/sbt
+</code></pre>
+
+<h2>팁, 노트</h2>
+
+<p>문제가 생겨서 <code>sbt</code>가 실행이 안되면 <a href="https://github.com/harrah/xsbt/wiki/Setup-Notes">설치 노트</a>를 확인하라. 터미널 엔코딩, HTTP 프록시, JVM 옵션 등에 대해 나와 있다.</p>
+
+<p>꼼꼼하게 만들어진 쉘 스크립트있어서 이 스크립트로 sbt를 설치할 수 있다: <a href='https://github.com/paulp/sbt-extras(루트'>https://github.com/paulp/sbt-extras(루트</a> 디렉토리에 있는 sbt 파일). 이 스크립트로 설치하면 패키지로 설치하는 것처럼 원하는 버전의 sbt를 설치할 수 있다. 설치할 sbt의 버전을 선택한다든지 하는 유용한 커맨드 라인이 있다.</p>
   </div>
 </article>
-<section id="related">
-  <h3>Related Posts</h3>
-  <div class="alert" alert-info>
-    <ul>
-      <li>
-        <span>Jun 17 2012</span>
-&raquo;        <a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a>
-      </li>
-    </ul>
-  </div>
-</section>
 <section id="comments">
   <h3>Feedback</h3>
   <div class="row">
 <div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2012/iamport-python.html';
+    var disqus_identifier = '/articles/2012/sbt-getting-started-setup.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -320,8 +242,8 @@ if __name__ == '__main__':
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
-  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/iamport-python.html" data-num-posts="1"></div>
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-num-posts="1"></div>
   </div>  </div>
 </section>
 

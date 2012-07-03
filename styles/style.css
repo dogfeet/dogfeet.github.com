@@ -3,7 +3,13 @@
 }
 
 @media (min-width: 980px) {
-    body { padding-top: 40px; }
+    body {
+        padding-top: 0;
+    }
+
+    #search-form{
+        margin: 7px 0 0px;
+    }
 }
 
 .container-fluid > .sidebar, .container-fluid > .content {

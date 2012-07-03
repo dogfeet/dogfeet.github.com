@@ -9,7 +9,7 @@
     <title>dogfeet - 개발새발</title>
     <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
     <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="Yongjae Choi, Sean Lee, Changwoo Park" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,14 +71,33 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <article class="post">
+  <header>
+    <a href="/articles/2012/sbt-getting-started-setup.html">
+      <h1>sbt: Getting Started Guide: Setup</h1>
+    </a>
+  </header>
+  <footer class="modern-font" .small-font>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">2012 Jul 03</span>
+ | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-setup.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-setup.html"></a></span>
+  </footer>
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">orig-getting-started</a>을 번역한 것이다. </p>
+
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+
+  <p>
+    <a class="btn" href="/articles/2012/sbt-getting-started-setup.html">Read more &raquo;</a>
+  </p>
+</article>
+<article class="post">
   <header>
     <a href="/articles/2012/nodejs-monkey-patching.html">
       <h1>nodejs에서의 멍키 패칭</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 24</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#monkey patching" class="tag">Monkey Patching</a> | <span><a href="/articles/2012/nodejs-monkey-patching.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-monkey-patching.html"></a></span>
@@ -87,7 +106,7 @@
 
 <p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch" title="" /></p>
 
-<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'><a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a></a>)</p>
+<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
 
   <p>
     <a class="btn" href="/articles/2012/nodejs-monkey-patching.html">Read more &raquo;</a>
@@ -99,7 +118,7 @@
       <h1>iamport: nodejs</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 17</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#fiber" class="tag">fiber</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-nodejs.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-nodejs.html"></a></span>
@@ -108,7 +127,7 @@
 
 <p><img src="/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
 
-<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+<p>(from <a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a>)</p>
 
   <p>
     <a class="btn" href="/articles/2012/iamport-nodejs.html">Read more &raquo;</a>
@@ -120,7 +139,7 @@
       <h1>nodejs: node-fibers</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 10</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#node-fibers" class="tag">node-fibers</a> | <span><a href="/articles/2012/nodejs-fibers.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-fibers.html"></a></span>
@@ -129,7 +148,7 @@
 
 <p><img src="/articles/2012/nodejs-fibers/puton-fiber.jpg" alt="fiberware" title="" /></p>
 
-<p>(from <a href='http://www.fiberbaya.blogspot.kr/'><a href='http://www.fiberbaya.blogspot.kr/'>http://www.fiberbaya.blogspot.kr/</a></a>)</p>
+<p>(from <a href='http://www.fiberbaya.blogspot.kr/'>http://www.fiberbaya.blogspot.kr/</a>)</p>
 
   <p>
     <a class="btn" href="/articles/2012/nodejs-fibers.html">Read more &raquo;</a>
@@ -141,7 +160,7 @@
       <h1>iamport: python</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 02</span>
  | <a href="/site/tagmap.html#python" class="tag">python</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#gevent" class="tag">gevent</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-python.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-python.html"></a></span>
@@ -150,7 +169,7 @@
 
 <p><img src="/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
 
-<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+<p>(from <a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a>)</p>
 
 <p>주 플랫폼이 Java라서 예전엔 이런일을 groovy로 했었는데 python이 훨씬 쉽다.</p>
 
@@ -164,7 +183,7 @@
       <h1>Coroutine</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 27</span>
  | <a href="/site/tagmap.html#coroutine" class="tag">Coroutine</a> <a href="/site/tagmap.html#wikipedia" class="tag">Wikipedia</a> | <span><a href="/articles/2012/coroutine.html#disqus_thread" data-disqus-identifier="/articles/2012/coroutine.html"></a></span>
@@ -183,7 +202,7 @@
       <h1>dogfeet-flavored-markdown</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 20</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">Nodejs</a> <a href="/site/tagmap.html#markdown" class="tag">Markdown</a> <a href="/site/tagmap.html#docpad" class="tag">Docpad</a> <a href="/site/tagmap.html#github" class="tag">Github</a> <a href="/site/tagmap.html#dogfeet" class="tag">Dogfeet</a> | <span><a href="/articles/2012/dogfeet-flavored-markdown.html#disqus_thread" data-disqus-identifier="/articles/2012/dogfeet-flavored-markdown.html"></a></span>
@@ -206,7 +225,7 @@
       <h1>nodejs: modules</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 13</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#doc" class="tag">doc</a> <a href="/site/tagmap.html#module" class="tag">module</a> <a href="/site/tagmap.html#uniquenoun" class="tag">uniquenoun</a> | <span><a href="/articles/2012/nodejs-modules.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-modules.html"></a></span>
@@ -231,7 +250,7 @@
       <h1>nodejs: npm config</h1>
     </a>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 05</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#npm" class="tag">npm</a> <a href="/site/tagmap.html#config" class="tag">config</a> | <span><a href="/articles/2012/nodejs-npm-config.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-npm-config.html"></a></span>
@@ -244,33 +263,12 @@
     <a class="btn" href="/articles/2012/nodejs-npm-config.html">Read more &raquo;</a>
   </p>
 </article>
-<article class="post">
-  <header>
-    <a href="/articles/2012/the-game-of-go_a-programmers-perspective.html">
-      <h1>프로그래머 관점에서의 바둑</h1>
-    </a>
-  </header>
-  <footer class="modern-font  small-font">
-<span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
- | <span property="dc:created">2012 May 01</span>
- | <a href="/site/tagmap.html#go" class="tag">go</a> <a href="/site/tagmap.html#바둑" class="tag">바둑</a> <a href="/site/tagmap.html#programmer" class="tag">programmer</a> <a href="/site/tagmap.html#computing" class="tag">computing</a> | <span><a href="/articles/2012/the-game-of-go_a-programmers-perspective.html#disqus_thread" data-disqus-identifier="/articles/2012/the-game-of-go_a-programmers-perspective.html"></a></span>
-  </footer>
-<p>이 글은 Louis Chatriot이 자신의 블로그에 쓴 <a href="http://needforair.com/blog/2012/04/18/game-of-go/">The Game of Go: A Programmer's Perspective</a>를 번역한 것이다.</p>
-
-<p>AI 프로그래머가 바라 봤을 때 바둑은 매우 흥미로운 게임이다. 컴퓨터가 실력 좋은 바둑 기사를 이기는게 매우 어렵고, 많은 연구자가 이 문제에 도전하기 때문이다. 모순적이게도 랜덤하게 돌을 놓는 것이 컴퓨터에겐 더 좋은 전략이다.</p>
-
-<p><a href="http://www.flickr.com/photos/obli/322662164/" title="COPA EMBAJADOR DE COREA 2006 by oblivionz, on Flickr"><img src="http://farm1.staticflickr.com/134/322662164_0260e91add.jpg" width="250" height="166" alt="COPA EMBAJADOR DE COREA 2006"></a><br />by <a href="http://www.flickr.com/photos/obli/">oblivionz</a></p>
-
-  <p>
-    <a class="btn" href="/articles/2012/the-game-of-go_a-programmers-perspective.html">Read more &raquo;</a>
-  </p>
-</article>
 <p>
   <a class="btn info right" href="/site/archive.html">go to Archive &raquo;</a>
 </p>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

@@ -9,7 +9,7 @@
     <title>dogfeet - 개발새발</title>
     <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
     <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="Yongjae Choi, Sean Lee, Changwoo Park" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <style rel="stylesheet" media="screen, projection" scoped="scoped">
   #tagmap {
   margin-left: 10px;
@@ -155,32 +155,32 @@
       </ul>
     </div>
     <div id="bash" class="span4">
-      <h4>bash</h4>
+      <h4>Bash</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1318481700.html">ssh-agent, bash-it plugin</a>
+          <a href="/articles/2012/bash-profile.html">Bash: .profile, .bash_profile, .bashrc</a>
         </li>
         <li>
           <a href="/articles/2012/bash-completion.html">Bash: 자동완성</a>
         </li>
         <li>
-          <a href="/articles/2012/bash-profile.html">Bash: .profile, .bash_profile, .bashrc</a>
+          <a href="/articles/2011/1318481700.html">ssh-agent, bash-it plugin</a>
         </li>
       </ul>
     </div>
   </div>
   <div id="tagmap" class="row">
     <div id="bash-it" class="span4">
-      <h4>bash-it</h4>
+      <h4>Bash-it</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1318481700.html">ssh-agent, bash-it plugin</a>
+          <a href="/articles/2011/bash-it.html">Bash-it</a>
         </li>
         <li>
           <a href="/articles/2011/1319732160.html">bash-it-a-day, custom plugin.</a>
         </li>
         <li>
-          <a href="/articles/2011/bash-it.html">Bash-it</a>
+          <a href="/articles/2011/1318481700.html">ssh-agent, bash-it plugin</a>
         </li>
       </ul>
     </div>
@@ -206,13 +206,13 @@
       <h4>Branch</h4>
       <ul>
         <li>
-          <a href="/articles/2011/git-merge.html">Git:merge</a>
+          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
         </li>
         <li>
           <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
         </li>
         <li>
-          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+          <a href="/articles/2011/git-merge.html">Git:merge</a>
         </li>
       </ul>
     </div>
@@ -238,10 +238,10 @@
       <h4>C</h4>
       <ul>
         <li>
-          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+          <a href="/articles/2009/1251975360.html">기본 xmlns(namespace)가 정의된 문서 XPath로 읽기</a>
         </li>
         <li>
-          <a href="/articles/2009/1251975360.html">기본 xmlns(namespace)가 정의된 문서 XPath로 읽기</a>
+          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
         </li>
       </ul>
     </div>
@@ -297,7 +297,7 @@
         </li>
       </ul>
     </div>
-    <div id="chaker nakhli" class="span4">
+    <div id="chaker" nakhli.span4>
       <h4>Chaker Nakhli</h4>
       <ul>
         <li>
@@ -323,7 +323,7 @@
         </li>
       </ul>
     </div>
-    <div id="chrome extension" class="span4">
+    <div id="chrome" extension.span4>
       <h4>Chrome Extension</h4>
       <ul>
         <li>
@@ -371,19 +371,19 @@
       <h4>Cocoa</h4>
       <ul>
         <li>
-          <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
+          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
         </li>
         <li>
           <a href="/articles/2010/1275352080.html">iPhone Unit Testing</a>
         </li>
         <li>
-          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
+          <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
+        </li>
+        <li>
+          <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
+        </li>
+        <li>
+          <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
         </li>
       </ul>
     </div>
@@ -391,10 +391,10 @@
       <h4>CoffeeKup</h4>
       <ul>
         <li>
-          <a href="/articles/2011/coffee-kup.html">CoffeeKup &lt;☕/&gt;</a>
+          <a href="/articles/2011/docpad.html">Docpad</a>
         </li>
         <li>
-          <a href="/articles/2011/docpad.html">Docpad</a>
+          <a href="/articles/2011/coffee-kup.html">CoffeeKup &lt;☕/&gt;</a>
         </li>
       </ul>
     </div>
@@ -472,16 +472,16 @@
       </ul>
     </div>
     <div id="coroutine" class="span4">
-      <h4>Coroutine</h4>
+      <h4>coroutine</h4>
       <ul>
-        <li>
-          <a href="/articles/2012/coroutine.html">Coroutine</a>
-        </li>
         <li>
           <a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a>
         </li>
         <li>
           <a href="/articles/2012/iamport-python.html">iamport: python</a>
+        </li>
+        <li>
+          <a href="/articles/2012/coroutine.html">Coroutine</a>
         </li>
       </ul>
     </div>
@@ -507,20 +507,20 @@
       <h4>CSS</h4>
       <ul>
         <li>
-          <a href="/articles/2012/optimize-browser-rendering.html">Optimize browser rendering</a>
+          <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
         </li>
         <li>
           <a href="/articles/2012/smacss-icon-module.html">SMACSS:The Icon Module</a>
         </li>
         <li>
-          <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
+          <a href="/articles/2012/smacss.html">SMACSS: Brief Notes - Part 1</a>
         </li>
         <li>
-          <a href="/articles/2012/smacss.html">SMACSS: Brief Notes - Part 1</a>
+          <a href="/articles/2012/optimize-browser-rendering.html">Optimize browser rendering</a>
         </li>
       </ul>
     </div>
-    <div id="css sprite" class="span4">
+    <div id="css" sprite.span4>
       <h4>CSS Sprite</h4>
       <ul>
         <li>
@@ -568,10 +568,10 @@
       <h4>diff</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1316924580.html">diff::Unified format</a>
+          <a href="/articles/2011/git-diff.html">Git:diff</a>
         </li>
         <li>
-          <a href="/articles/2011/git-diff.html">Git:diff</a>
+          <a href="/articles/2011/1316924580.html">diff::Unified format</a>
         </li>
       </ul>
     </div>
@@ -605,10 +605,10 @@
       <h4>Docpad</h4>
       <ul>
         <li>
-          <a href="/articles/2011/docpad.html">Docpad</a>
+          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
         </li>
         <li>
-          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
+          <a href="/articles/2011/docpad.html">Docpad</a>
         </li>
       </ul>
     </div>
@@ -660,13 +660,13 @@
       <h4>Eclipse</h4>
       <ul>
         <li>
-          <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
+          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
         </li>
         <li>
           <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
         </li>
         <li>
-          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+          <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
         </li>
       </ul>
     </div>
@@ -676,13 +676,13 @@
       <h4>ECMAScript</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
-        </li>
-        <li>
           <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
         </li>
         <li>
           <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
         </li>
       </ul>
     </div>
@@ -742,10 +742,10 @@
       <h4>ES5</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
+          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
         </li>
         <li>
-          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
         </li>
       </ul>
     </div>
@@ -815,73 +815,73 @@
       <h4>git</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1316924580.html">diff::Unified format</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
-        </li>
-        <li>
-          <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
-        </li>
-        <li>
-          <a href="/articles/2011/bash-it.html">Bash-it</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-diff.html">Git:diff</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-merge.html">Git:merge</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
-        </li>
-        <li>
-          <a href="/articles/2011/git-refs.html">Git:refs</a>
-        </li>
-        <li>
-          <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-        </li>
-        <li>
-          <a href="/articles/2011/progit.html">progit</a>
-        </li>
-        <li>
-          <a href="/articles/2012/first-speach.html">KTH 발표</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-conflict.html">Git:conflict</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-ff.html">Git: git-ff</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
-        </li>
-        <li>
           <a href="/articles/2012/git-svn.html">Git: git-svn</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
-        </li>
-        <li>
-          <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
         </li>
         <li>
           <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
         </li>
         <li>
+          <a href="/articles/2012/first-speach.html">KTH 발표</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-ff.html">Git: git-ff</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
+        </li>
+        <li>
           <a href="/articles/2012/progit.html">progit</a>
+        </li>
+        <li>
+          <a href="/articles/2012/git-conflict.html">Git:conflict</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-diff.html">Git:diff</a>
+        </li>
+        <li>
+          <a href="/articles/2011/github-flow.html">GitHub Flow</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-merge.html">Git:merge</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+        </li>
+        <li>
+          <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-refs.html">Git:refs</a>
+        </li>
+        <li>
+          <a href="/articles/2011/git-helpers.html">Git:git 도우미</a>
+        </li>
+        <li>
+          <a href="/articles/2011/bash-it.html">Bash-it</a>
+        </li>
+        <li>
+          <a href="/articles/2011/progit.html">progit</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1316924580.html">diff::Unified format</a>
         </li>
       </ul>
     </div>
@@ -889,27 +889,27 @@
       <h4>git-flow</h4>
       <ul>
         <li>
+          <a href="/articles/2011/git-flow.html">Git:git-flow</a>
+        </li>
+        <li>
           <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
         </li>
         <li>
           <a href="/articles/2011/bash-it.html">Bash-it</a>
         </li>
-        <li>
-          <a href="/articles/2011/git-flow.html">Git:git-flow</a>
-        </li>
       </ul>
     </div>
     <div id="github" class="span4">
-      <h4>github</h4>
+      <h4>Github</h4>
       <ul>
-        <li>
-          <a href="/articles/2011/github-flow.html">GitHub Flow</a>
-        </li>
         <li>
           <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
         </li>
         <li>
           <a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a>
+        </li>
+        <li>
+          <a href="/articles/2011/github-flow.html">GitHub Flow</a>
         </li>
       </ul>
     </div>
@@ -931,7 +931,7 @@
         </li>
       </ul>
     </div>
-    <div id="google page speed" class="span4">
+    <div id="google" page speed.span4>
       <h4>Google Page Speed</h4>
       <ul>
         <li>
@@ -945,19 +945,19 @@
       <h4>Grails</h4>
       <ul>
         <li>
-          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
-        </li>
-        <li>
-          <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1238601780.html">Building Grails Documentation for Korean</a>
+          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
         </li>
         <li>
           <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
         </li>
         <li>
-          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+          <a href="/articles/2009/1238601780.html">Building Grails Documentation for Korean</a>
+        </li>
+        <li>
+          <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
+        </li>
+        <li>
+          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
         </li>
       </ul>
     </div>
@@ -965,19 +965,19 @@
       <h4>Groovy</h4>
       <ul>
         <li>
-          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+          <a href="/articles/2010/1276068720.html">SSMA를 써보고 나서</a>
         </li>
         <li>
           <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
         </li>
         <li>
-          <a href="/articles/2010/1276068720.html">SSMA를 써보고 나서</a>
+          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        </li>
+        <li>
+          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
         </li>
       </ul>
     </div>
@@ -999,7 +999,7 @@
         </li>
       </ul>
     </div>
-    <div id="guillermo rauch" class="span4">
+    <div id="guillermo" rauch.span4>
       <h4>Guillermo Rauch</h4>
       <ul>
         <li>
@@ -1076,32 +1076,32 @@
   </div>
   <div id="tagmap" class="row">
     <div id="iphone" class="span4">
-      <h4>iPhone</h4>
+      <h4>iphone</h4>
       <ul>
         <li>
-          <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
+          <a href="/articles/2011/1294884600.html">iOS 4.3 - 새로운 기능 (Beta)</a>
         </li>
         <li>
-          <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
+          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
         </li>
         <li>
-          <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
+          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
         </li>
         <li>
           <a href="/articles/2010/1275352080.html">iPhone Unit Testing</a>
         </li>
         <li>
-          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
+          <a href="/articles/2010/1275286380.html">RGB(HTML) to UIColor</a>
         </li>
         <li>
-          <a href="/articles/2010/1278573840.html">Build iPhone Project in Command Line</a>
+          <a href="/articles/2010/1271748360.html">iPhone SDK 4, contains project error.</a>
         </li>
         <li>
-          <a href="/articles/2011/1294884600.html">iOS 4.3 - 새로운 기능 (Beta)</a>
+          <a href="/articles/2010/1265361600.html">UIView를 Touch해서 Keyboard없애기</a>
         </li>
       </ul>
     </div>
-    <div id="iphone sdk4" class="span4">
+    <div id="iphone" sdk4.span4>
       <h4>iphone sdk4</h4>
       <ul>
         <li>
@@ -1131,13 +1131,13 @@
       <h4>J</h4>
       <ul>
         <li>
-          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
+          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
         </li>
         <li>
           <a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a>
         </li>
         <li>
-          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
+          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
         </li>
       </ul>
     </div>
@@ -1145,37 +1145,19 @@
       <h4>Java</h4>
       <ul>
         <li>
-          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
+          <a href="/articles/2010/1280382600.html">와우 war overlay</a>
         </li>
         <li>
-          <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+          <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
         </li>
         <li>
-          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
         </li>
         <li>
-          <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
         </li>
         <li>
-          <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
+          <a href="/articles/2010/1271743080.html">Spring Finance</a>
         </li>
         <li>
           <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
@@ -1184,19 +1166,37 @@
           <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
         </li>
         <li>
-          <a href="/articles/2010/1271743080.html">Spring Finance</a>
+          <a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a>
         </li>
         <li>
-          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
         </li>
         <li>
-          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+          <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
         </li>
         <li>
-          <a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a>
+          <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
         </li>
         <li>
-          <a href="/articles/2010/1280382600.html">와우 war overlay</a>
+          <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a>
+        </li>
+        <li>
+          <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
         </li>
       </ul>
     </div>
@@ -1211,69 +1211,69 @@
       </ul>
     </div>
     <div id="javascript" class="span4">
-      <h4>JavaScript</h4>
+      <h4>javascript</h4>
       <ul>
+        <li>
+          <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">예제로 설명하는 자바스크립트에서의 Continuation-passing style</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+        </li>
         <li>
           <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
         </li>
         <li>
           <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
         </li>
-        <li>
-          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
-        </li>
-        <li>
-          <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">예제로 설명하는 자바스크립트에서의 Continuation-passing style</a>
-        </li>
       </ul>
     </div>
-    <div id="javascript standard" class="span4">
+    <div id="javascript" standard.span4>
       <h4>JavaScript Standard</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
+          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
         </li>
         <li>
-          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+          <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
         </li>
         <li>
           <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
         </li>
         <li>
-          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
         </li>
         <li>
-          <a href="/articles/2011/1317888540.html">JavaScript Standard</a>
+          <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
         </li>
       </ul>
     </div>
@@ -1295,29 +1295,29 @@
         </li>
       </ul>
     </div>
-    <div id="john resig" class="span4">
+    <div id="john" resig.span4>
       <h4>John Resig</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
         </li>
         <li>
           <a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a>
         </li>
         <li>
-          <a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a>
+          <a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a>
         </li>
       </ul>
     </div>
   </div>
   <div id="tagmap" class="row">
-    <div id="jonathan snook" class="span4">
+    <div id="jonathan" snook.span4>
       <h4>Jonathan Snook</h4>
       <ul>
         <li>
@@ -1329,16 +1329,16 @@
       </ul>
     </div>
     <div id="jpetstore" class="span4">
-      <h4>jPetStore</h4>
+      <h4>Jpetstore</h4>
       <ul>
+        <li>
+          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+        </li>
         <li>
           <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
         </li>
         <li>
           <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
         </li>
       </ul>
     </div>
@@ -1346,40 +1346,40 @@
       <h4>jsoftware</h4>
       <ul>
         <li>
-          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
+          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
         </li>
         <li>
           <a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a>
         </li>
         <li>
-          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
+          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
         </li>
       </ul>
     </div>
   </div>
   <div id="tagmap" class="row">
     <div id="jsp" class="span4">
-      <h4>Jsp</h4>
+      <h4>JSP</h4>
       <ul>
         <li>
-          <a href="/articles/2008/1220695860.html">Enum을 JSP 페이지에 노출 시키기</a>
+          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
         </li>
         <li>
-          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
+          <a href="/articles/2008/1220695860.html">Enum을 JSP 페이지에 노출 시키기</a>
         </li>
       </ul>
     </div>
     <div id="j언어" class="span4">
-      <h4>j언어</h4>
+      <h4>J언어</h4>
       <ul>
         <li>
-          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
+          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
         </li>
         <li>
           <a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a>
         </li>
         <li>
-          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
+          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
         </li>
       </ul>
     </div>
@@ -1431,13 +1431,13 @@
       <h4>language</h4>
       <ul>
         <li>
-          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
+          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
         </li>
         <li>
           <a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a>
         </li>
         <li>
-          <a href="/articles/2012/learning-j-chapter3.html">J언어 배우기 - 제 3장: 함수 정의하기</a>
+          <a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a>
         </li>
       </ul>
     </div>
@@ -1481,10 +1481,10 @@
       <h4>Markdown</h4>
       <ul>
         <li>
-          <a href="/articles/2011/docpad.html">Docpad</a>
+          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
         </li>
         <li>
-          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
+          <a href="/articles/2011/docpad.html">Docpad</a>
         </li>
       </ul>
     </div>
@@ -1492,10 +1492,10 @@
       <h4>Maven</h4>
       <ul>
         <li>
-          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
         </li>
         <li>
-          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
         </li>
       </ul>
     </div>
@@ -1535,7 +1535,7 @@
     </div>
   </div>
   <div id="tagmap" class="row">
-    <div id="monkey patching" class="span4">
+    <div id="monkey" patching.span4>
       <h4>Monkey Patching</h4>
       <ul>
         <li>
@@ -1577,20 +1577,20 @@
         </li>
       </ul>
     </div>
-    <div id="new in javascript" class="span4">
+    <div id="new" in javascript.span4>
       <h4>New In JavaScript</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
         </li>
         <li>
           <a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a>
         </li>
         <li>
-          <a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a>
+          <a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a>
         </li>
       </ul>
     </div>
@@ -1608,13 +1608,7 @@
       <h4>nodejs</h4>
       <ul>
         <li>
-          <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
-        </li>
-        <li>
-          <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
-        </li>
-        <li>
-          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
+          <a href="/articles/2012/nodejs-monkey-patching.html">nodejs에서의 멍키 패칭</a>
         </li>
         <li>
           <a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a>
@@ -1623,19 +1617,25 @@
           <a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a>
         </li>
         <li>
-          <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
+          <a href="/articles/2012/dogfeet-flavored-markdown.html">dogfeet-flavored-markdown</a>
         </li>
         <li>
           <a href="/articles/2012/nodejs-modules.html">nodejs: modules</a>
         </li>
         <li>
-          <a href="/articles/2012/nodejs-monkey-patching.html">nodejs에서의 멍키 패칭</a>
-        </li>
-        <li>
           <a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a>
         </li>
         <li>
+          <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
+        </li>
+        <li>
           <a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a>
+        </li>
+        <li>
+          <a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a>
         </li>
       </ul>
     </div>
@@ -1708,10 +1708,10 @@
       <h4>Oracle</h4>
       <ul>
         <li>
-          <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
+          <a href="/articles/2010/1276068720.html">SSMA를 써보고 나서</a>
         </li>
         <li>
-          <a href="/articles/2010/1276068720.html">SSMA를 써보고 나서</a>
+          <a href="/articles/2009/1259735220.html">Oracle: 테이블을 삭제하는 쿼리를 생성하는 쿼리--;</a>
         </li>
       </ul>
     </div>
@@ -1759,7 +1759,7 @@
     </div>
   </div>
   <div id="tagmap" class="row">
-    <div id="pecha kucha" class="span4">
+    <div id="pecha" kucha.span4>
       <h4>pecha kucha</h4>
       <ul>
         <li>
@@ -1831,13 +1831,13 @@
       <h4>progit</h4>
       <ul>
         <li>
-          <a href="/articles/2011/progit.html">progit</a>
-        </li>
-        <li>
           <a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a>
         </li>
         <li>
           <a href="/articles/2012/progit.html">progit</a>
+        </li>
+        <li>
+          <a href="/articles/2011/progit.html">progit</a>
         </li>
       </ul>
     </div>
@@ -1852,13 +1852,13 @@
       </ul>
     </div>
     <div id="programming" class="span4">
-      <h4>Programming</h4>
+      <h4>programming</h4>
       <ul>
         <li>
-          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+          <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">예제로 설명하는 자바스크립트에서의 Continuation-passing style</a>
         </li>
         <li>
-          <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">예제로 설명하는 자바스크립트에서의 Continuation-passing style</a>
+          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
         </li>
       </ul>
     </div>
@@ -1888,7 +1888,7 @@
         </li>
       </ul>
     </div>
-    <div id="pull request" class="span4">
+    <div id="pull" request.span4>
       <h4>Pull Request</h4>
       <ul>
         <li>
@@ -1899,13 +1899,13 @@
   </div>
   <div id="tagmap" class="row">
     <div id="python" class="span4">
-      <h4>Python</h4>
+      <h4>python</h4>
       <ul>
         <li>
-          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
+          <a href="/articles/2012/iamport-python.html">iamport: python</a>
         </li>
         <li>
-          <a href="/articles/2012/iamport-python.html">iamport: python</a>
+          <a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a>
         </li>
       </ul>
     </div>
@@ -1917,7 +1917,7 @@
         </li>
       </ul>
     </div>
-    <div id="remote tracking branch" class="span4">
+    <div id="remote" tracking branch.span4>
       <h4>Remote Tracking Branch</h4>
       <ul>
         <li>
@@ -1936,16 +1936,16 @@
       </ul>
     </div>
     <div id="review" class="span4">
-      <h4>review</h4>
+      <h4>Review</h4>
       <ul>
-        <li>
-          <a href="/articles/2011/kinde-fire.html">심심한 Kindle Fire</a>
-        </li>
         <li>
           <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
         </li>
         <li>
           <a href="/articles/2012/smacss.html">SMACSS: Brief Notes - Part 1</a>
+        </li>
+        <li>
+          <a href="/articles/2011/kinde-fire.html">심심한 Kindle Fire</a>
         </li>
       </ul>
     </div>
@@ -1985,6 +1985,14 @@
     </div>
   </div>
   <div id="tagmap" class="row">
+    <div id="sbt" class="span4">
+      <h4>sbt</h4>
+      <ul>
+        <li>
+          <a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a>
+        </li>
+      </ul>
+    </div>
     <div id="scheme" class="span4">
       <h4>scheme</h4>
       <ul>
@@ -1993,7 +2001,7 @@
         </li>
       </ul>
     </div>
-    <div id="scott chacon" class="span4">
+    <div id="scott" chacon.span4>
       <h4>scott chacon</h4>
       <ul>
         <li>
@@ -2001,6 +2009,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="selectnodes" class="span4">
       <h4>selectnodes</h4>
       <ul>
@@ -2009,8 +2019,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="selector" class="span4">
       <h4>Selector</h4>
       <ul>
@@ -2027,6 +2035,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="should" class="span4">
       <h4>Should</h4>
       <ul>
@@ -2035,16 +2045,14 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="smacss" class="span4">
       <h4>SMACSS</h4>
       <ul>
         <li>
-          <a href="/articles/2012/smacss-icon-module.html">SMACSS:The Icon Module</a>
+          <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
         </li>
         <li>
-          <a href="/articles/2012/smacss-part2.html">SMACSS: Brief Notes - Part 2</a>
+          <a href="/articles/2012/smacss-icon-module.html">SMACSS:The Icon Module</a>
         </li>
         <li>
           <a href="/articles/2012/smacss.html">SMACSS: Brief Notes - Part 1</a>
@@ -2055,43 +2063,17 @@
       <h4>Spring</h4>
       <ul>
         <li>
-          <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
-        </li>
-        <li>
-          <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1271743080.html">Spring Finance</a>
-        </li>
-        <li>
-          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
+          <a href="/articles/2010/1280382600.html">와우 war overlay</a>
         </li>
         <li>
           <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
         </li>
         <li>
-          <a href="/articles/2010/1280382600.html">와우 war overlay</a>
+          <a href="/articles/2010/1272334320.html">Dev Environment in Maven</a>
         </li>
-      </ul>
-    </div>
-    <div id="spring finance" class="span4">
-      <h4>Spring Finance</h4>
-      <ul>
+        <li>
+          <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        </li>
         <li>
           <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
         </li>
@@ -2099,23 +2081,49 @@
           <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
         </li>
         <li>
-          <a href="/articles/2010/1271743080.html">Spring Finance</a>
+          <a href="/articles/2010/1263483780.html">Show Bean List in JSP</a>
         </li>
-      </ul>
-    </div>
-  </div>
-  <div id="tagmap" class="row">
-    <div id="spring mvc" class="span4">
-      <h4>Spring MVC</h4>
-      <ul>
+        <li>
+          <a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+        </li>
         <li>
           <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
         </li>
         <li>
           <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
         </li>
+      </ul>
+    </div>
+  </div>
+  <div id="tagmap" class="row">
+    <div id="spring" finance.span4>
+      <h4>Spring Finance</h4>
+      <ul>
+        <li>
+          <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        </li>
+        <li>
+          <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
+        </li>
+        <li>
+          <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
+        </li>
+      </ul>
+    </div>
+    <div id="spring" mvc.span4>
+      <h4>Spring MVC</h4>
+      <ul>
         <li>
           <a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a>
+        </li>
+        <li>
+          <a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a>
         </li>
       </ul>
     </div>
@@ -2127,6 +2135,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="ssh-agent" class="span4">
       <h4>ssh-agent</h4>
       <ul>
@@ -2135,8 +2145,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="ssma" class="span4">
       <h4>SSMA</h4>
       <ul>
@@ -2153,22 +2161,22 @@
         </li>
       </ul>
     </div>
-    <div id="stefan schmidt" class="span4">
+  </div>
+  <div id="tagmap" class="row">
+    <div id="stefan" schmidt.span4>
       <h4>Stefan Schmidt</h4>
       <ul>
+        <li>
+          <a href="/articles/2010/1271743080.html">Spring Finance</a>
+        </li>
         <li>
           <a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a>
         </li>
         <li>
           <a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a>
         </li>
-        <li>
-          <a href="/articles/2010/1271743080.html">Spring Finance</a>
-        </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="sts" class="span4">
       <h4>STS</h4>
       <ul>
@@ -2185,6 +2193,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="tav" class="span4">
       <h4>tav</h4>
       <ul>
@@ -2193,8 +2203,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="teamcity" class="span4">
       <h4>TeamCity</h4>
       <ul>
@@ -2211,22 +2219,22 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="test" class="span4">
-      <h4>test</h4>
+      <h4>Test</h4>
       <ul>
         <li>
-          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
+          <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
         </li>
         <li>
           <a href="/articles/2010/1275352080.html">iPhone Unit Testing</a>
         </li>
         <li>
-          <a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a>
+          <a href="/articles/2010/1272949440.html">m2eclipse test practice</a>
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="textmate" class="span4">
       <h4>TextMate</h4>
       <ul>
@@ -2243,6 +2251,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="thread" class="span4">
       <h4>Thread</h4>
       <ul>
@@ -2251,8 +2261,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="tlb" class="span4">
       <h4>TLB</h4>
       <ul>
@@ -2265,13 +2273,15 @@
       <h4>Todo</h4>
       <ul>
         <li>
-          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
+          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
         </li>
         <li>
-          <a href="/articles/2012/git-todo.html">Git:Todo Plugin</a>
+          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="tracker" class="span4">
       <h4>tracker</h4>
       <ul>
@@ -2280,16 +2290,14 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
-    <div id="tracking branch" class="span4">
+    <div id="tracking" branch.span4>
       <h4>Tracking Branch</h4>
       <ul>
         <li>
-          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
+          <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
         </li>
         <li>
-          <a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>
+          <a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a>
         </li>
       </ul>
     </div>
@@ -2301,6 +2309,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="typelibrary" class="span4">
       <h4>typelibrary</h4>
       <ul>
@@ -2309,8 +2319,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="ubuntu" class="span4">
       <h4>ubuntu</h4>
       <ul>
@@ -2319,7 +2327,7 @@
         </li>
       </ul>
     </div>
-    <div id="unified format" class="span4">
+    <div id="unified" format.span4>
       <h4>unified format</h4>
       <ul>
         <li>
@@ -2327,6 +2335,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="uniquenoun" class="span4">
       <h4>uniquenoun</h4>
       <ul>
@@ -2335,8 +2345,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="utf-8" class="span4">
       <h4>UTF-8</h4>
       <ul>
@@ -2353,6 +2361,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="vi" class="span4">
       <h4>vi</h4>
       <ul>
@@ -2361,9 +2371,7 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
-    <div id="virtual class" class="span4">
+    <div id="virtual" class.span4>
       <h4>virtual class</h4>
       <ul>
         <li>
@@ -2379,6 +2387,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="work" class="span4">
       <h4>work</h4>
       <ul>
@@ -2387,19 +2397,17 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="workflow" class="span4">
       <h4>Workflow</h4>
       <ul>
         <li>
-          <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
+          <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
         </li>
         <li>
           <a href="/articles/2011/git-flow.html">Git:git-flow</a>
         </li>
         <li>
-          <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+          <a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a>
         </li>
       </ul>
     </div>
@@ -2411,6 +2419,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="xcode" class="span4">
       <h4>Xcode</h4>
       <ul>
@@ -2419,8 +2429,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="xe" class="span4">
       <h4>xe</h4>
       <ul>
@@ -2437,6 +2445,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="xmlns" class="span4">
       <h4>xmlns</h4>
       <ul>
@@ -2445,8 +2455,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="xpath" class="span4">
       <h4>xpath</h4>
       <ul>
@@ -2463,6 +2471,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="‘git-tles’" class="span4">
       <h4>‘git-tles’</h4>
       <ul>
@@ -2471,8 +2481,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="개발자" class="span4">
       <h4>개발자</h4>
       <ul>
@@ -2489,6 +2497,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="고객" class="span4">
       <h4>고객</h4>
       <ul>
@@ -2497,8 +2507,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="구구단" class="span4">
       <h4>구구단</h4>
       <ul>
@@ -2515,6 +2523,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="깃헙" class="span4">
       <h4>깃헙</h4>
       <ul>
@@ -2523,8 +2533,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="독서" class="span4">
       <h4>독서</h4>
       <ul>
@@ -2541,6 +2549,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="바둑" class="span4">
       <h4>바둑</h4>
       <ul>
@@ -2549,8 +2559,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="박재호" class="span4">
       <h4>박재호</h4>
       <ul>
@@ -2567,6 +2575,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="번갈아읽기" class="span4">
       <h4>번갈아읽기</h4>
       <ul>
@@ -2575,8 +2585,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="번역" class="span4">
       <h4>번역</h4>
       <ul>
@@ -2591,7 +2599,7 @@
         </li>
       </ul>
     </div>
-    <div id="소프트웨어 컨플릭트" class="span4">
+    <div id="소프트웨어" 컨플릭트.span4>
       <h4>소프트웨어 컨플릭트</h4>
       <ul>
         <li>
@@ -2599,6 +2607,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="오픈소스" class="span4">
       <h4>오픈소스</h4>
       <ul>
@@ -2607,8 +2617,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="요구사항" class="span4">
       <h4>요구사항</h4>
       <ul>
@@ -2625,6 +2633,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="자바" class="span4">
       <h4>자바</h4>
       <ul>
@@ -2633,8 +2643,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="책읽기" class="span4">
       <h4>책읽기</h4>
       <ul>
@@ -2651,6 +2659,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div id="tagmap" class="row">
     <div id="프로그래밍" class="span4">
       <h4>프로그래밍</h4>
       <ul>
@@ -2659,8 +2669,6 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div id="tagmap" class="row">
     <div id="학부" class="span4">
       <h4>학부</h4>
       <ul>
@@ -2684,7 +2692,7 @@
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - CoffeeKup &lt;☕/&gt;</title>
-    <meta name="description" content="CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. Docpad는 전부 지원하지만 CoffeeKup을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다." />
-    <meta name="keywords" content="CoffeeKup,CoffeeScript" />
-    <meta name="author" content="Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2011/coffee-kup.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2011/coffee-kup.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">CoffeeKup &lt;☕/&gt;</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2011 Nov 22</span>
  | <a href="/site/tagmap.html#coffeekup" class="tag">CoffeeKup</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a> | <span><a href="/articles/2011/coffee-kup.html#disqus_thread" data-disqus-identifier="/articles/2011/coffee-kup.html"></a></span>
@@ -209,7 +209,7 @@ say 'Hello World'
 
 <p>html5을 templating 예제는 <a href="http://coffeekup.org/">CoffeeKup</a>페이지에도 나온다 xml 예제를 보자 </p>
 
-<pre><code>homeUrl='<a href='http://dogfeet.github.com'><a href='http://dogfeet.github.com'>http://dogfeet.github.com</a></a>'
+<pre><code>homeUrl='<a href='http://dogfeet.github.com'>http://dogfeet.github.com</a>'
 
 anEntry = (document) -&gt;
   tag 'entry', -&gt;
@@ -220,7 +220,7 @@ anEntry = (document) -&gt;
     tag 'content', type: 'html', -&gt; document.contentRendered
 
 text '&lt;?xml version="1.0" encoding="utf-8"?&gt;\n'
-tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'><a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005/Atom</a></a>', -&gt;
+tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'>http://www.w3.org/2005/Atom</a>', -&gt;
   title 'dogfeet.github.com'
   tag 'link', href: "#{homeUrl}/atom.xml", rel: 'self'
   tag 'link', href: homeUrl
@@ -239,15 +239,15 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'><a href='http://www.w3
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
-      <li>
-        <span>Nov 22 2011</span>
-&raquo;        <a href="/articles/2011/cake.html">Cake</a>
-      </li>
       <li>
         <span>Nov 26 2011</span>
 &raquo;        <a href="/articles/2011/docpad.html">Docpad</a>
+      </li>
+      <li>
+        <span>Nov 22 2011</span>
+&raquo;        <a href="/articles/2011/cake.html">Cake</a>
       </li>
     </ul>
   </div>
@@ -272,7 +272,7 @@ tag 'feed', xmlns: '<a href='http://www.w3.org/2005/Atom'><a href='http://www.w3
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

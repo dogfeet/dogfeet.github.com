@@ -3,24 +3,140 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-06-24T07:47:48Z</updated>
+  <updated>2012-07-03T19:39:39.712Z</updated>
   <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Yongjae Choi</name>
-    <email>mage@weaveus.com</email>
-  </author>
   <author>
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
+  </author>
+  <author>
+    <name>Yongjae Choi</name>
+    <email>mage@weaveus.com</email>
   </author>
   <author>
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
   <entry>
+    <title><![CDATA[ sbt: Getting Started Guide: Setup ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" />
+    <updated>2012-07-02T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">orig-getting-started</a>을 번역한 것이다. </p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+
+<h2>Overview</h2>
+
+<p>다음과 같은 과정을 거쳐서 sbt 프로젝트를 만든다:</p>
+
+<ul>
+<li>sbt를 설치하고 실행할 스크립트를 만든다.</li>
+<li><a href="/articles/2012/sbt-hello-world.html">hello-world</a> 프로젝트를 만든다.
+<ul><li>프로젝트 디렉토리를 만들고 소스를 넣는다.</li>
+<li>어떻게 빌드할지 정의한다.</li></ul></li>
+<li><a href="/articles/2012/sbt-running.html">running</a>을 통해 sbt를 실행하는 법을 배운다.</li>
+<li><a href="/articles/2012/sbt-sbt-build-definition.html">.sbt-build-definition</a>에서 어떻게 빌드할지 정의하는 법을 배운다.</li>
+</ul>
+
+<h2>sbt 설치</h2>
+
+<p><code>sbt-launch.jar</code> 파일과 실행할 스크립트만 있으면 된다.</p>
+
+<p><em>Note: 다운로드는 <a href="http://www.scala-sbt.org/download.html">다운로드 페이지</a>에서 할 수 있다.</em></p>
+
+<h3>Yum</h3>
+
+<p><a href="http://rpm.typesafe.com">Typesafe Yum 레파지토리</a>에 yum 패키지가 있다. <a href="http://rpm.typesafe.com/typesafe-repo-2.0.0-1.noarch.rpm">레파지토리 rpm 패키지</a>를 설치하면 typesafe yum 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
+
+<pre><code>yum install sbt
+</code></pre>
+
+<p>sbt의 최신 버전이 설치된다.</p>
+
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
+
+<h2>Apt</h2>
+
+<p><a href="http://apt.typesafe.com">Typesafe Debian 레파지토리</a>에 sbt Debian 패키지가 있다. <a href="http://apt.typesafe.com/repo-deb-build-0002.deb">레파지토리 deb 패키지</a>를 설치하면 typesafe debian 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
+
+<pre><code>apt-get install sbt
+</code></pre>
+
+<p>sbt의 최신 버전이 설치된다.</p>
+
+<p>sbt 없으면 레파지토리에서 정보를 업데이트한다:</p>
+
+<pre><code>apt-get update
+</code></pre>
+
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
+
+<h2>Gentoo</h2>
+
+<p>공식 소스 안에는 sbt용 ebuild 스크립트가 없다. 하지만 <a href='https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin'>https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin</a> 에 sbt를 머지하는 ebuild 스크립트가 있다. 다음과 같이 ebuild 스크립트로 sbt를 머지한다:</p>
+
+<pre><code>mkdir -p /usr/local/portage &amp;&amp; cd /usr/local/portage
+git clone git://github.com/whiter4bbit/overlays.git
+echo "PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay" &gt;&gt; /etc/make.conf
+emerge sbt-bin
+</code></pre>
+
+<h2>Mac</h2>
+
+<p><a href="http://macports.org/">MacPorts</a>로 설치한다:</p>
+
+<pre><code>$ sudo port install sbt
+</code></pre>
+
+<p><a href="http://mxcl.github.com/homebrew/">HomeBrew</a>로 설치할 수 있다:</p>
+
+<pre><code>$ brew install sbt
+</code></pre>
+
+<p>sbt-launch.jar를 직접 다운로드할 필요 없다:</p>
+
+<h2>Windows</h2>
+
+<p><a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt-launcher/0.11.3/sbt.msi">msi</a>를 다운로드한다:</p>
+
+<p><em>아니면</em></p>
+
+<p><code>sbt.bat</code> 배치 파일을 만든다:</p>
+
+<pre><code>set SCRIPT_DIR=%~dp0
+java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*
+</code></pre>
+
+<p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 'sbt'라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.</p>
+
+<h2>Unix</h2>
+
+<p><a href="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.11.3-2/sbt-launch.jar">sbt-launch.jar</a>를 다운로드해서 <code>~/bin</code> 디렉토리에 넣는다.</p>
+
+<p>이 jar 파일을 실행하는 스크립트를 'sbt'라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:</p>
+
+<pre><code>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar `dirname $0`/sbt-launch.jar "$@"
+</code></pre>
+
+<p>그리고 스크립트를 실행할 수 있게 만든다:</p>
+
+<pre><code>$ chmod u+x ~/bin/sbt
+</code></pre>
+
+<h2>팁, 노트</h2>
+
+<p>문제가 생겨서 <code>sbt</code>가 실행이 안되면 <a href="https://github.com/harrah/xsbt/wiki/Setup-Notes">설치 노트</a>를 확인하라. 터미널 엔코딩, HTTP 프록시, JVM 옵션 등에 대해 나와 있다.</p>
+
+<p>꼼꼼하게 만들어진 쉘 스크립트있어서 이 스크립트로 sbt를 설치할 수 있다: <a href='https://github.com/paulp/sbt-extras(루트'>https://github.com/paulp/sbt-extras(루트</a> 디렉토리에 있는 sbt 파일). 이 스크립트로 설치하면 패키지로 설치하는 것처럼 원하는 버전의 sbt를 설치할 수 있다. 설치할 sbt의 버전을 선택한다든지 하는 유용한 커맨드 라인이 있다.</p>]]>
+    </content>
+  </entry>
+  <entry>
     <title><![CDATA[ nodejs에서의 멍키 패칭 ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" />
-    <updated>2012-06-23T15:00:00Z</updated>
+    <updated>2012-06-23T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html</id>
     <content type="html">
 <![CDATA[
@@ -28,7 +144,7 @@
 
 <p><img src="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch" title="" /></p>
 
-<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'><a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a></a>)</p>
+<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
 
 <h2>require</h2>
 
@@ -120,7 +236,7 @@ function require(path) {
   <entry>
     <title><![CDATA[ iamport: nodejs ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/iamport-nodejs.html" />
-    <updated>2012-06-16T15:00:00Z</updated>
+    <updated>2012-06-16T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/iamport-nodejs.html</id>
     <content type="html">
 <![CDATA[
@@ -128,7 +244,7 @@ function require(path) {
 
 <p><img src="http://dogfeet.github.com/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
 
-<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+<p>(from <a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a>)</p>
 
 <h2>iamport: CPS</h2>
 
@@ -279,7 +395,7 @@ elapsed(ms) 21.093
   <entry>
     <title><![CDATA[ nodejs: node-fibers ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-fibers.html" />
-    <updated>2012-06-09T15:00:00Z</updated>
+    <updated>2012-06-09T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/nodejs-fibers.html</id>
     <content type="html">
 <![CDATA[
@@ -287,7 +403,7 @@ elapsed(ms) 21.093
 
 <p><img src="http://dogfeet.github.com/articles/2012/nodejs-fibers/puton-fiber.jpg" alt="fiberware" title="" /></p>
 
-<p>(from <a href='http://www.fiberbaya.blogspot.kr/'><a href='http://www.fiberbaya.blogspot.kr/'>http://www.fiberbaya.blogspot.kr/</a></a>)</p>
+<p>(from <a href='http://www.fiberbaya.blogspot.kr/'>http://www.fiberbaya.blogspot.kr/</a>)</p>
 
 <h2>node-fibers</h2>
 
@@ -446,7 +562,7 @@ fs.readdir('.', function(err, fileNames){
   <entry>
     <title><![CDATA[ iamport: python ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/iamport-python.html" />
-    <updated>2012-06-01T15:00:00Z</updated>
+    <updated>2012-06-01T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/iamport-python.html</id>
     <content type="html">
 <![CDATA[
@@ -454,7 +570,7 @@ fs.readdir('.', function(err, fileNames){
 
 <p><img src="http://dogfeet.github.com/articles/2012/iamport/iamport.jpg" alt="iamport" title="" /></p>
 
-<p>(from <a href='http://www.portofamsterdam.com/'><a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a></a>)</p>
+<p>(from <a href='http://www.portofamsterdam.com/'>http://www.portofamsterdam.com/</a>)</p>
 
 <p>주 플랫폼이 Java라서 예전엔 이런일을 groovy로 했었는데 python이 훨씬 쉽다.</p>
 
@@ -629,7 +745,7 @@ if __name__ == '__main__':
   <entry>
     <title><![CDATA[ Coroutine ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/coroutine.html" />
-    <updated>2012-05-26T15:00:00Z</updated>
+    <updated>2012-05-26T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/coroutine.html</id>
     <content type="html">
 <![CDATA[
@@ -843,7 +959,7 @@ subroutine dispatcher
   <entry>
     <title><![CDATA[ dogfeet-flavored-markdown ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" />
-    <updated>2012-05-19T15:00:00Z</updated>
+    <updated>2012-05-19T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html</id>
     <content type="html">
 <![CDATA[
@@ -864,14 +980,14 @@ subroutine dispatcher
 * User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
 * #Num: #1
 * User/#Num: mojombo#1
-* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a>
+* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>
 </code></pre>
 
 <p>하지만 실제로 작동하는 것은 '사용자/저장소' 패턴이 명시된 다음의 두 경우 뿐이다:</p>
 
 <ul>
 <li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a></li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
 </ul>
 
 <p>나머지 패턴도 동작하게 하려면 '사용자/저장소' 정보가 필요하다. github-flavored-markdown의 용법은 다음과 같은데 인자로 '사용자/저장소'를 넘겨줄 수 있다:</p>
@@ -880,7 +996,7 @@ subroutine dispatcher
 ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 // returns:
 // '&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; GHM.  '+
-// '&lt;a href=\'<a href='http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt'><a href='http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt'>http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt</a></a>;'
+// '&lt;a href=\'<a href='http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt'>http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt</a>;'
 </code></pre>
 
 <p>그러면 나머지 패턴도 해당 저장소에 대한 GitHub 링크가 생성된다:</p>
@@ -900,7 +1016,7 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 
 <ul>
 <li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a></li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
 </ul>
 
 <p>대신 <code>@mention</code>과 <code>#hash</code>를 추가 했다. 정확한 패턴은 다음과 같다:</p>
@@ -914,9 +1030,9 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 
 <p>이 규칙이 중요할 때가 있는데, <code>#</code>으로 Heading을 표현하는 Markdown에서 중요하다. 줄 맨앞에서 <code>#Heading</code>이라고 표현하면 DFM가 처리하는 것이 아니라 showdown 엔진이 처리하기 때문에 링크가 생성되지 않고 <code>&lt;h1&gt;Heading&lt;/h1&gt;</code>이라고 해석된다. 이 것은 해석하는 순서의 문제다.</p>
 
-<p>그리고 <code>&lt;code&gt;</code> 블럭과 <code>&lt;a&gt;</code> 블럭에 있는 것은 무시한다. 간단히 말하면 <code>@mention</code>과 <a href="https://twitter.com/#!/mention">@mention</a>의 차이이고 <a href="http://twitter.com"><a href="https://twitter.com/#!/twitter">@twitter</a></a>와 <a href="https://twitter.com/#!/twitter">@twitter</a> 의 차이다. 원문은 다음과 같다:</p>
+<p>그리고 <code>&lt;code&gt;</code> 블럭과 <code>&lt;a&gt;</code> 블럭에 있는 것은 무시한다. 간단히 말하면 <code>@mention</code>과 <a href="https://twitter.com/#!/mention의">@mention의</a> 차이이고 <a href="http://twitter.com"><a href="https://twitter.com/#!/twitter">@twitter</a></a>와 <a href="https://twitter.com/#!/twitter">@twitter</a> 의 차이다. 원문은 다음과 같다:</p>
 
-<pre><code>그리고 `&lt;code&gt;` 블럭과 `&lt;a&gt;` 블럭에 있는 것은 무시한다. 간단히 말하면 `@mention`과 @mention의 차이이고 [@twitter](<a href='http://twitter.com)와'><a href='http://twitter.com)와'>http://twitter.com)와</a></a> @twitter 의 차이다. 원문은 다음과 같다:
+<pre><code>그리고 `&lt;code&gt;` 블럭과 `&lt;a&gt;` 블럭에 있는 것은 무시한다. 간단히 말하면 `@mention`과 @mention의 차이이고 [@twitter](<a href='http://twitter.com)와'>http://twitter.com)와</a> @twitter 의 차이다. 원문은 다음과 같다:
 </code></pre>
 
 <h3>예제</h3>
@@ -928,7 +1044,7 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 <li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
 <li><a href="/site/tagmap.html#Num">#Num</a>: <a href="/site/tagmap.html#1">#1</a></li>
 <li>User/#Num: mojombo#1</li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a>, <code><a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a></code></li>
+<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, <code><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></code></li>
 <li><a href="https://twitter.com/#!/pismute">@pismute</a></li>
 <li><a href="/site/tagmap.html#EveryoneIsBeautiful">#EveryoneIsBeautiful</a> <code>, #EveryoneIsBeautiful,#EveryoneIsBeautiful</code></li>
 <li><a href="/site/tagmap.html#한글">#한글</a> <code>, #한글,#한글</code></li>
@@ -943,7 +1059,7 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 * User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
 * #Num: #1
 * User/#Num: mojombo#1
-* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a>, `<a href='http://github.com/mojombo/god/issues/#issue/1'><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></a>`
+* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, `<a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>`
 * @pismute
 * #EveryoneIsBeautiful `, #EveryoneIsBeautiful,#EveryoneIsBeautiful`
 * #한글 `, #한글,#한글`
@@ -986,8 +1102,8 @@ module.exports = (BasePlugin) -&gt;
 
         templates:
             '@': ( key ) -&gt;
-                ['&lt;a href="<a href='https://twitter.com/#!/'><a href='https://twitter.com/#!/'>https://twitter.com/#!/</a></a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
-                #['&lt;a href="<a href='https://github.com/'><a href='https://github.com/'>https://github.com/</a></a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
+                ['&lt;a href="<a href='https://twitter.com/#!/'>https://twitter.com/#!/</a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
+                #['&lt;a href="<a href='https://github.com/'>https://github.com/</a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
             '#': ( key ) -&gt;
                 ['&lt;a href="/site/tagmap.html#', key, '"&gt;#', key, '&lt;/a&gt;'].join('')
 
@@ -1018,7 +1134,7 @@ module.exports = (BasePlugin) -&gt;
   <entry>
     <title><![CDATA[ nodejs: modules ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-modules.html" />
-    <updated>2012-05-12T15:00:00Z</updated>
+    <updated>2012-05-12T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/nodejs-modules.html</id>
     <content type="html">
 <![CDATA[
@@ -1432,7 +1548,7 @@ NODE_MODULES_PATHS(START)
   <entry>
     <title><![CDATA[ nodejs: npm config ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/nodejs-npm-config.html" />
-    <updated>2012-05-04T15:00:00Z</updated>
+    <updated>2012-05-04T15:00:00.000Z</updated>
     <id>http://dogfeet.github.com/articles/2012/nodejs-npm-config.html</id>
     <content type="html">
 <![CDATA[
@@ -1585,61 +1701,6 @@ npm ls --global --parseable --long --loglevel info
 
 <pre><code>npm config set foo:port 80
 </code></pre>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ 프로그래머 관점에서의 바둑 ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/the-game-of-go_a-programmers-perspective.html" />
-    <updated>2012-05-01T00:00:00Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/the-game-of-go_a-programmers-perspective.html</id>
-    <content type="html">
-<![CDATA[
-<p>이 글은 Louis Chatriot이 자신의 블로그에 쓴 <a href="http://needforair.com/blog/2012/04/18/game-of-go/">The Game of Go: A Programmer's Perspective</a>를 번역한 것이다.</p>
-
-<p>AI 프로그래머가 바라 봤을 때 바둑은 매우 흥미로운 게임이다. 컴퓨터가 실력 좋은 바둑 기사를 이기는게 매우 어렵고, 많은 연구자가 이 문제에 도전하기 때문이다. 모순적이게도 랜덤하게 돌을 놓는 것이 컴퓨터에겐 더 좋은 전략이다.</p>
-
-<p><a href="http://www.flickr.com/photos/obli/322662164/" title="COPA EMBAJADOR DE COREA 2006 by oblivionz, on Flickr"><img src="http://farm1.staticflickr.com/134/322662164_0260e91add.jpg" width="250" height="166" alt="COPA EMBAJADOR DE COREA 2006"></a><br />by <a href="http://www.flickr.com/photos/obli/">oblivionz</a></p>
-
-<h2>바둑: 엄청나게 간단한 개요</h2>
-
-<p>바둑은 아시아에선 대중적인 게임이지만 서양에는 많이 알려지지 않았다. 바둑은 체스와 비슷하게 두 명이서 차례를 바꿔가며 바둑판에 돌을 놓는 전략게임이다. 체스와 바둑이 완전 다른 점은 두 개 정도있다.</p>
-
-<ul>
-<li>바둑에선 바둑판이 비어있는 상태로 시작하고 차례를 바꿔가며 돌을 놓는다. 반면 체스는 말을 놓고 시작하며 상대편의 말을 쓰러트려야 하는 게임이다.</li>
-<li>게임 <a href="http://senseis.xmp.net/?RulesOfGoIntroductory">규칙</a>은 체스보다 바둑이 더 간단하다. 체스는 6개의 다른 말이 있지만, 바둑은 한 종류의 돌만 놓으면 된다.</li>
-</ul>
-
-<p><a href="http://senseis.xmp.net/?RulesOfGoIntroductory">여기</a>에서 배울 수 있고 <a href="http://www.gokgs.com/">여기</a>에서 바둑을 둘 수 있으니 확인해보라고 하고 싶다.</p>
-
-<h2>체스와의 복잡도 비교</h2>
-
-<p>규칙이 단순할지라도 좋은 바둑 프로그램을 만드는것은 매우 어렵다고 증명되어있다. 정말로 가장 뛰어난 체스 프로그램은 가장 뛰어난 체스 플레이어를 이기는게 가능했다. 1997년에 딥 블루가 게리 카스파로프(Gary Kasparov)를 이겼다. 하지만 가장 뛰어난 바둑 프로그램은 그냥 강한 아마추어에게 참패했다. 그리고 강한 아마추어는 프로 기사보다 엄청 약하다. 이런 일이 가능한 것에는 세가지 주된 이유가 있다.</p>
-
-<ul>
-<li><strong>게임-트리 복잡도</strong> : 체스에는 <a href="http://en.wikipedia.org/wiki/Shannon_number">10^123개의 게임</a>이 있다. 바둑에 있어서는 <a href="http://en.wikipedia.org/wiki/Go_and_mathematics">여러 추정치</a>가 나올 수 있지만, <a href="http://www.usgo.org/resources/topten.html">미국 바둑 협회 계산으로는 10^700개의 가능한 게임</a>이 있다고 한다. 바둑에는 플레이어에게 주어진 턴이 더 많고(평균적으로 200 대 50) 각각의 턴에서 돌을 놓을 수 있는 경우의 수(350 대 50)가 바둑이 더 많기에 바둑의 게임 수가 더 많다.</li>
-<li><strong><a href="http://en.wikipedia.org/wiki/Evaluation_function">훌륭한 휴리스틱의 부족</a></strong> : 체스 프로그램은 어떤 행동이 다른 행동보다 좋은 것인지 꽤나 빠르고 정확하게 판단할 수 있다. 반대로 바둑에 대해선 아직 좋은 휴리스틱이 발견되지 않았다.</li>
-<li><strong>패턴 인식</strong> : 뛰어난 바둑 기사라는건 판에 놓여진 돌이 만드는 모양을 인식하는 것에 달려있다. 게임을 하는 도중에 컴퓨터가 그 모양을 인식 하기엔 너무 많은 시간이 든다. <a href="http://curiosity.discovery.com/question/humans-better-than-computers">사람은 컴퓨터보다 훨씬 빠르다.</a></li>
-</ul>
-
-<h2>지금까지의 바둑 프로그램을 넘어설 핵심 아이디어</h2>
-
-<p>바둑 알고리즘 연구가 흥미로운 이유가 이런 복잡도가 있기 때문이다. 우리는 몇 년전 스팩타클한 성능 향상을 보인 <a href="http://www.lri.fr/~teytaud/mogo.html">MoGo</a>라는 이름이 프로그램을 보았다. MoGo의 핵심 아이디어는 이렇다.</p>
-
-<ul>
-<li><strong>랜덤 게임을 이용한 위치 선정</strong> : 역설적이게도 지금까지 알아낸 돌을 놓을 위치를 알아내는 최고의 방법은 현재 상태에서 시작해 각각의 선수가 바둑판에 랜덤으로 돌을 놓는 수많은 경기를 진행해 보는것 이다. 바둑판 위, 한 위치의 점수는 단순히 랜덤 게임들이 이긴 확률이다.</li>
-<li>브랜칭 팩터(각 턴마다 가능한 행동-돌을 놓는 등-의 경우의 수)를 줄이기 위해 <strong>'<a href="http://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit</a> 알고리즘'를 이용</strong>한다. 목표는 탐색(새로운 행동을 하는 것)과 개척(이미 알고 있는 행동 중에 최적의 하나를 찾아내는 것) 사이에 트레이드 오프를 최적화 하는 것이다. 컴퓨터는 처음에 가능한 모든 행동에 대해 사전 확률 분포를 만든다. 이 분포에 따라 하나를 고르고 그에 상응하는 위치를 기반으로 랜덤 게임을 돌린다. 그리고 결과를 이용해 그 행동에 대한 확률을 업데이트한다. 그리고 업데이트된 분포를 이용해 다음 가능한 수를 선택한다. 그렇게 계속 해나간다.</li>
-<li><strong>작은 전문 지식을 이용</strong> : 'multi-armed bandit'에서 쓰이는 사전 분포는 적은 노력으로 멍청한 행동을 피하는 용도로 사용한다. 게임을 시작하면 고전적인 시작 위치를 선호한다. 그리고 랜덤 게임을 하는데 사실 이 랜덤 게임은 완전한 랜덤이 아니다. 간단한 패턴에 따라 특정 행동들은 제거하기 때문이다. 그렇게 몇가지를 제거한다 해도 전문 지식은 탐사 알고리즘 부분의 정말 작은 상처 하나에 불과하다.</li>
-<li><strong>병렬화</strong> : MoGo같은 프로그램은 컴퓨터 클러스터에서 더 나은 성능을 보인다. 랜덤 게임 부분이 여러개의 CPU에서 돌 수 있기 때문이다. <a href="http://en.wikipedia.org/wiki/Amdahl's_law">성능 향상</a>은 약 8배 정도이다.</li>
-<li><strong>강화된 학습</strong> : MoGo는 게임을 진행하는 동안이나 랜덤 게임을 진행하는 동안 계속 학습한다. 잘못된 결과를 가져오는 행동을 했을때 그 행동에 더 작은 확률을 부여한다.</li>
-</ul>
-
-<p><a href="http://www.pleinsud.u-psud.fr/specialR2008/en/12_GOthique.pdf">이 글</a>에 MoGo에 대해 더 많은 자료가 있다.</p>
-
-<h2>현재 컴퓨터의 성능</h2>
-
-<p>오늘날 바둑 프로그램은 조그마한 게임 판에서 프로 바둑 기사를 이기고 잘하는 아마추어 기사를 정식 바둑판에서 이기는 수준이다. 이건 굉장한 성과이지만 정식 바둑판에서 프로 바둑 기사를 상대하기 까지는 너무 먼 여정이 남아있다.</p>
-
-<p><em>난 그리 실력이 좋지 않을지 모르겠지만, 스스로 바둑 플레이어라고 말한다. 2008년에 컴퓨터 공학 연구실에 인턴으로 있을 때, 한 2달 정도 MoGo를 사용했었다.<br />이 글을 검토해준 <a href="http://www.linkedin.com/pub/arpad-rimmel/b/9a7/847">Arpad Rimmel</a>에게 감사의 말을 전한다. 그는 박사과정을 지내는 중 3년 정도 MoGo를 사용했다.</em></p>]]>
     </content>
   </entry>
 </feed>

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Building Grails Documentation for Korean</title>
-    <meta name="description" content="이 글은 Grails Documenttaion에 대한 노트이다. 어떻게 구성돼 있고 어떻게 빌드하는지 설명한다." />
-    <meta name="keywords" content="Grails" />
-    <meta name="author" content="Sean Lee" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2009/1238601780.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2009/1238601780.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">Building Grails Documentation for Korean</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
  | <span property="dc:created">2009 Apr 01</span>
  | <a href="/site/tagmap.html#grails" class="tag">Grails</a> | <span><a href="/articles/2009/1238601780.html#disqus_thread" data-disqus-identifier="/articles/2009/1238601780.html"></a></span>
@@ -123,7 +123,7 @@
 
 <h2>Grails Documentation Project의 구조</h2>
 
-<p>Grails Documentation Proejct는 HTML형식의 Grails Documentation을 만드는 프로젝트다. 그 결과물은 Grails User Guide로서 <a href="http://grails.org/doc/1.1/"><a href='http://grails.org/doc/1.1/'><a href='http://grails.org/doc/1.1/'>http://grails.org/doc/1.1/</a></a></a> 페이지에서 확인 할 수 있다. 버전에 따라 문서가 업데이트 되므로 원본문서는 Documentation페이지(<a href="http://grails.org/Documentation"><a href='http://grails.org/Documentation'><a href='http://grails.org/Documentation'>http://grails.org/Documentation</a></a></a>)에서 User Guide항목에서 확인 할 수있다.</p>
+<p>Grails Documentation Proejct는 HTML형식의 Grails Documentation을 만드는 프로젝트다. 그 결과물은 Grails User Guide로서 <a href="http://grails.org/doc/1.1/"><a href='http://grails.org/doc/1.1/'>http://grails.org/doc/1.1/</a></a> 페이지에서 확인 할 수 있다. 버전에 따라 문서가 업데이트 되므로 원본문서는 Documentation페이지(<a href="http://grails.org/Documentation"><a href='http://grails.org/Documentation'>http://grails.org/Documentation</a></a>)에서 User Guide항목에서 확인 할 수있다.</p>
 
 <p>문서화는 크게 Guide와 Reference로 그리고 나머지 나뉜다.</p>
 
@@ -147,23 +147,23 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
       <li>
-        <span>Aug 19 2008</span>
-&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
-      </li>
-      <li>
-        <span>Aug 26 2008</span>
-&raquo;        <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
+        <span>Dec 27 2009</span>
+&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
       </li>
       <li>
         <span>Nov 10 2009</span>
 &raquo;        <a href="/articles/2009/1257832500.html">Grails 1.2 M4</a>
       </li>
       <li>
-        <span>Dec 27 2009</span>
-&raquo;        <a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a>
+        <span>Aug 26 2008</span>
+&raquo;        <a href="/articles/2008/1219754880.html">Gails + eclipse에서의 에러</a>
+      </li>
+      <li>
+        <span>Aug 19 2008</span>
+&raquo;        <a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a>
       </li>
     </ul>
   </div>
@@ -188,7 +188,7 @@
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>

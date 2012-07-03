@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - Pro Git 번역 회고</title>
-    <meta name="description" content="허접하게 나마 Pro Git을 번역했다. 시간도 부족하고 경험도 부족했다. 부족한 점을 극복하기 위해 번역관련 책도 사서 읽고 새로운 도구와 방법도 찾아서 익혔다. 이 포스트에서는 어떻게 번역을 했는지 그리고 무엇을 배웠는지 얘기하고자 한다." />
-    <meta name="keywords" content="회고,retrospection,progit,번역" />
-    <meta name="author" content="Sean Lee, Changwoo Park" />
+    <title>dogfeet - 개발새발</title>
+    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
+    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
+    <meta name="author" content="Sean Lee, Yongjae Choi, Changwoo Park" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -34,7 +34,7 @@
   </head>
   <body>
 <!--Topbar-->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar" navbar-fixed-top>
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -60,9 +60,9 @@
                 </a>
               </li>
             </ul>
-            <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
               <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input class="search-query" type="text" name="q" results="0" placeholder="Search" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
             </form>
           </div>
         </div>
@@ -71,7 +71,7 @@
 <!--Markup-->
     <div class="container-fluid">
       <div class="row-fluid">
-        <section class="content span10">
+        <section class="content" span10>
           <script src="http://platform.twitter.com/widgets.js"></script>
 <script>
   //facebook
@@ -91,11 +91,11 @@
 })();
 
 </script>
-<article id="post " class="post  undefined" typeof="sioc:post" about="/articles/2012/progit-retro.html" lang="ko-kr">
+<article id="post" typeof="sioc:post" about="/articles/2012/progit-retro.html" lang="ko-kr" .post .undefined>
   <header>
     <h1 property="dcterms:title">Pro Git 번역 회고</h1>
   </header>
-  <footer class="modern-font  small-font">
+  <footer class="modern-font" .small-font>
 <span>by <a href="/authors/sean-lee.html">Sean Lee</a>, <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jan 15</span>
  | <a href="/site/tagmap.html#회고" class="tag">회고</a> <a href="/site/tagmap.html#retrospection" class="tag">retrospection</a> <a href="/site/tagmap.html#progit" class="tag">progit</a> <a href="/site/tagmap.html#번역" class="tag">번역</a> | <span><a href="/articles/2012/progit-retro.html#disqus_thread" data-disqus-identifier="/articles/2012/progit-retro.html"></a></span>
@@ -193,7 +193,7 @@
 
 <p><img alt="Translation" width="500" src="/articles/2012/progit/tran.jpg" /></p>
 
-<p style="text-align: center; font-size: 80%">출처: [casaubon](<a href='http://casaubon.tv'><a href='http://casaubon.tv'>http://casaubon.tv</a></a>)</p>
+<p style="text-align: center; font-size: 80%">출처: [casaubon](<a href='http://casaubon.tv'>http://casaubon.tv</a>)</p>
 
 <p><strong>Lee</strong> &raquo; 영어의 표현을 틀리지 않게 이해하는 것도 어려웠지만, 한글로 옮겨적는 것이 더 어려웠다. 용어번역표를 제대로 정리하지 못해서 전체적으로 어휘 일관성을 지키지 못한 점도 많이 부끄럽다.</p>
 
@@ -214,16 +214,8 @@
 </article>
 <section id="related">
   <h3>Related Posts</h3>
-  <div class="alert alert-info">
+  <div class="alert" alert-info>
     <ul>
-      <li>
-        <span>Jan 08 2012</span>
-&raquo;        <a href="/articles/2012/progit.html">progit</a>
-      </li>
-      <li>
-        <span>Nov 30 2011</span>
-&raquo;        <a href="/articles/2011/progit.html">progit</a>
-      </li>
       <li>
         <span>Mar 30 2012</span>
 &raquo;        <a href="/articles/2012/first-speach.html">KTH 발표</a>
@@ -231,6 +223,14 @@
       <li>
         <span>Feb 02 2012</span>
 &raquo;        <a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a>
+      </li>
+      <li>
+        <span>Jan 08 2012</span>
+&raquo;        <a href="/articles/2012/progit.html">progit</a>
+      </li>
+      <li>
+        <span>Nov 30 2011</span>
+&raquo;        <a href="/articles/2011/progit.html">progit</a>
       </li>
     </ul>
   </div>
@@ -255,7 +255,7 @@
 </section>
 
         </section>
-        <aside class="sidebar span2">
+        <aside class="sidebar" span2>
           
         </aside>
       </div>
