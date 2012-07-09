@@ -91,14 +91,14 @@
 })();
 
 </script>
-<article id="post" typeof="sioc:post" about="/articles/2009/1237194420.html" lang="ko-kr" .post .undefined>
+<article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-hello.html" lang="ko-kr" .post .undefined>
   <header>
-    <h1 property="dcterms:title">TLB file to DLL</h1>
+    <h1 property="dcterms:title">sbt: Getting Started Guide: Hellow, World</h1>
   </header>
   <footer class="modern-font" .small-font>
-<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
- | <span property="dc:created">2009 Mar 16</span>
- | <a href="/site/tagmap.html#dll" class="tag">dll</a> <a href="/site/tagmap.html#tlb" class="tag">TLB</a> <a href="/site/tagmap.html#typelibrary" class="tag">typelibrary</a> | <span><a href="/articles/2009/1237194420.html#disqus_thread" data-disqus-identifier="/articles/2009/1237194420.html"></a></span>
+<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+ | <span property="dc:created">2012 Jul 08</span>
+ | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-hello.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-hello.html"></a></span>
     <style rel="stylesheet" media="screen, projection" scoped="scoped">
       #social-buttons {
   margin-left: 30px;
@@ -107,35 +107,102 @@
     <div id="social-buttons" class="pull-right">
       <ul class="unstyled">
         <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1237194420.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
+          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-hello.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
         </li>
         <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1237194420.html"></div>
+          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-hello.html"></div>
         </li>
         <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1237194420.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-hello.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
         </li>
       </ul>
     </div>
   </footer>
   <div property="sioc:content">
-    <p>Convert a Type Library file into a DLL file.</p>
+    <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
 
-<pre><code>Prompt&gt; c:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\Tlbimp.exe" mlapp.tlb /out:MLApp
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+
+<h2>소스 코드에 프로젝트 디렉토리 만들기</h2>
+
+<p>어떤 디렉토리에 소스 파일이 하나라도 있으면 그 디렉토리는 sbt 프로젝트라고 할 수 있다. <code>hello</code> 디렉토리를 만들고 그 안에 다음과 같은 <code>hw.scala</code> 파일을 만들어 넣는다:</p>
+
+<pre><code>object Hi {
+    def main(args: Array[String]) = println("Hi!")
+}
 </code></pre>
 
-<p>It generates a MLApp.dll file. (warning. case-sensitive)</p>
+<p><code>hello</code> 디렉토리에서 sbt를 실행하고 sbt 콘솔에서 <code>run</code>을 실행한다. Linux와 OS X에서는 다음과 같이 실행한다:</p>
 
-<p>(windows xp, visual studio 2008, MS.NET Framework 3.5)</p>
+<pre><code>$ mkdir hello
+$ cd hello
+$ echo 'object Hi { def main(args: Array[String]) = println("Hi!") }' &gt; hw.scala
+$ sbt
+...
+&gt; run
+...
+Hi!
+</code></pre>
+
+<p>sbt는 관례에 따라 동작하는 것인데 다음과 같은 것을 찾는다.</p>
+
+<ul>
+<li>Base 디렉토리에 있는 소스</li>
+<li><code>src/main/scala</code> 또는 <code>src/main/java</code>에 있는 소스</li>
+<li><code>src/test/scala</code> 또는 <code>src/test/java</code>에 있는 테스트</li>
+<li><code>src/main/resources</code> 또는 src/test/resources`에 있는 데이터 파일</li>
+<li><code>lib</code>에 있는 jar 파일</li>
+</ul>
+
+<p>sbt는 sbt를 실행하는 데 사용한 Scala 버전으로 프로젝트를 빌드한다.</p>
+
+<p><code>sbt run</code>으로 프로젝트를 실행하거나 <code>sbt console</code> 명령으로 <a href="http://www.scala-lang.org/node/2097">Scala REPL</a>을 연다. <code>sbt console</code>은 프로젝트의 클래스패스에서 실행하는 것이라서 프로젝트 소스를 이용한 Scala 코드를 라이브로 실행 수 있다.</p>
+
+<h2>빌드 정의하기</h2>
+
+<p>프로젝트들은 보통 손으로 설정해줘야 한다. 프로젝트 Base 디렉토리에 <code>build.sbt</code> 파일을 만들고 기본 설정을 한다.</p>
+
+<p>예를 들어, 프로젝트 Base 디렉토리가 <code>hello</code>라면 <code>hello/build.sbt</code> 파일에 다음과 같이 만든다:</p>
+
+<pre><code>name := "hello"
+
+version := "1.0"
+
+scalaVersion := "2.9.1"
+</code></pre>
+
+<p>각 아이템 사이에 빈 줄이 있는데 그냥 보기 좋으라고 넣은 것이 아니다. 아이템 사이에는 꼭 빈 줄을 넣어줘야 한다. <a href="/articles/2012/sbt-getting-started-sbt-build-definition.html">.sbt build definition</a>에서 <code>build.sbt</code> 파일을 작성하는 방법을 자세히 배운다.</p>
+
+<p>프로젝트를 jar 파일로 패키지할 거라면 <code>build.sbt</code> 파일에 버전과 이름 정도는 설정할 것이다.</p>
+
+<h2>sbt 버전 설정하기</h2>
+
+<p><code>hello/project/build.properteis</code> 파일에 어떤 버전의 sbt를 사용할지 명시할 수 있다. 다음과 같이 만든다:</p>
+
+<pre><code>sbt.version=0.11.3
+</code></pre>
+
+<p>0.10 버전부터는 버전이 올라가도 99% 이상 잘 호환된다. 하지만 <code>project/build.properties</code>에 sbt 버전을 명시하면 혹시 모를 문제를 예방할 수 있다.</p>
   </div>
 </article>
+<section id="related">
+  <h3>Related Posts</h3>
+  <div class="alert" alert-info>
+    <ul>
+      <li>
+        <span>Jul 03 2012</span>
+&raquo;        <a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a>
+      </li>
+    </ul>
+  </div>
+</section>
 <section id="comments">
   <h3>Feedback</h3>
   <div class="row">
 <div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
-    var disqus_identifier = '/articles/2009/1237194420.html';
+    var disqus_identifier = '/articles/2012/sbt-getting-started-hello.html';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -143,8 +210,8 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
-  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1237194420.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2009/1237194420.html" data-num-posts="1"></div>
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-hello.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-hello.html" data-num-posts="1"></div>
   </div>  </div>
 </section>
 
