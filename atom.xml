@@ -3,12 +3,8 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-07-16T18:36:33.583Z</updated>
+  <updated>2012-07-25T15:05:23.464Z</updated>
   <id>http://dogfeet.github.com</id>
-  <author>
-    <name>Yongjae Choi</name>
-    <email>mage@weaveus.com</email>
-  </author>
   <author>
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
@@ -17,6 +13,120 @@
     <name>Sean Lee</name>
     <email>sean@weaveus.com</email>
   </author>
+  <author>
+    <name>Yongjae Choi</name>
+    <email>mage@weaveus.com</email>
+  </author>
+  <entry>
+    <title><![CDATA[ sbt: Getting Started Guide: Running ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-running.html" />
+    <updated>2012-07-24T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/sbt-getting-started-running.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+
+<h1>Running</h1>
+
+<p>이 페이지는 이미 설정이 끝난 프로젝트에서 <code>sbt</code> 명령을 사용하는 법을 설명한다. <a href="/articles/2012/sbt-getting-started-setup.html">sbt를 설치</a>했고 <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a>정도는 만들어 봤다고 간주한다.</p>
+
+<h2>Interactive mode</h2>
+
+<p>프로젝트 디렉토리에서 아무런 아규먼트 없이 sbt를 실행한다:</p>
+
+<pre><code>$ sbt
+</code></pre>
+
+<p>아규먼트 없이 sbt를 실행하면 인터랙티브 모드로 실행돼서 커맨드 프롬프트가 나온다. 이 커맨드 프롬프트는 탭 완성과 히스토리까지 지원한다!</p>
+
+<p>예를 들어 sbt 프롬프트에서 <code>compile</code>이라고 실행하고:</p>
+
+<pre><code>&gt; compile
+</code></pre>
+
+<p><code>compile</code>을 다시 실행할 때는, 위 방향키를 누르고 엔터를 친다.</p>
+
+<p><code>run</code>을 입력해서 프로그램을 실행한다.</p>
+
+<p>Unix에서는 Ctrl+D 키를, Windows에서는 Ctrl+Z 키를 누르거나 <code>exit</code>라고 입력하면 인터랙티브 모드를 빠져나온다.</p>
+
+<h2>Batch mode</h2>
+
+<p>sbt를 배치 모드로 실행할 수도 있다. 스페이스로 구분해서 목록을 죽 나열하고 sbt 아규먼트로 넘기면 된다. sbt의 아규먼트는 sbt 명령과 그 명령의 아규먼트를 의미한다. sbt 명령어와 해당 명령의 아규먼트는 따옴표(<code>"</code>)로 묶어서 아규먼트 하나로 만든다:</p>
+
+<pre><code>$ sbt clean compile "test-only TestA TestB"
+</code></pre>
+
+<p>이 예제에서는 <code>test-only</code> 명령에 <code>TestA와</code>TestB<code>아규먼트를 넘기면 입력한 sbt 명령어 순으로</code>clean<code>,</code>compile<code>,</code>test-only`가 실행된다.</p>
+
+<h2>Continuous build and test</h2>
+
+<p>소스 파일이 수정될 때 자동으로 컴파일하고 테스트를 실행하게 할 수 있으니 수정-컴파일-테스트 과정에 드는 시간을 절약할 수 있다.</p>
+
+<p>명령을 실행할 때 앞에 <code>~</code> 라고 적어주면 소스 파일이 변경될 때마다 명령어가 실행된다. 예를 들어, 인터랙티브 모드에서는 다음과 같이 실행한다:</p>
+
+<pre><code>&gt; ~ compile
+
+Press enter to stop watching for changes.
+</code></pre>
+
+<p>인터랙티브 모드 뿐만 아니라 배치 모드에서도 <code>~</code>를 사용할 수 있다.</p>
+
+<p>자세한 내용은 <a href="https://github.com/harrah/xsbt/wiki/Triggered-Execution">Triggered Execution</a>에서 있다.</p>
+
+<h2>Common commands</h2>
+
+<p>다음은 자주 사용하는 sbt 명령어다. 나머지 sbt 명령어는 <a href="https://github.com/harrah/xsbt/wiki/Command-Line-Reference">Command Line Reference</a>에서 설명한다.</p>
+
+<ul>
+<li><code>clean</code>
+<code>target</code> 디렉토리에 생성한 파일을 모두 삭제한다.</li>
+<li><code>compile</code>
+<code>src/main/scala</code>와 <code>src/main/java</code> 디렉토리에 있는 소스를 컴파일한다.</li>
+<li><code>test</code>
+테스트를 전부 컴파일하고 실행한다.</li>
+<li><code>console</code>
+컴파일한 소스와 모든 의존성을 자동으로 클래스패스에 포함시켜서 Scala 인터프리터를 실행한다. sbt 콘솔에서 <code>:quit</code>를 입력하거나 Ctrl+D(Unix) 키나 Ctrl+Z(Windows)를 누르면 빠져나온다.</li>
+<li><code>run &lt;argument&gt;*</code>
+<code>sbt</code>가 실행되고 있는 가상 머신에서 해당 프로젝트의 메인 클래스를 실행한다.</li>
+<li><code>package</code>
+<code>src/main/scala</code>와 <code>src/main/java</code>에 있는 소스 파일을 컴파일한 클래스와 <code>src/main/resources</code>에 있는 파일까지도 전부 포함하는 jar파일을 생성한다. </li>
+<li><code>help &lt;command&gt;</code>
+해당 명령어의 도움말을 보여준다. <command>를 생략하면 모든 명령어에 대한 요약 도움말을 보여준다.</li>
+<li><code>reload</code>
+빌드 정의 파일인 <code>build.sbt</code>, <code>project/*.scala</code>, <code>project/*.sbt</code>을 다시 로드한다. 이 파일을 수정했을 때 필요하다.</li>
+</ul>
+
+<h2>Tab completion</h2>
+
+<p>인터랙티브 모드에서는 탭 자동완성을 사용할 수 있다. 프롬프트에 입력한 게 없을 때에도 탭 자동완성을 사용할 수 있다. 탭 키를 한번 누르면 가능한 데까지 자동완성을 해주고 거기서 한 번더 누르면 그 다음에 선택할 수 있는 모든 명령어를 보여준다.</p>
+
+<h2>History Commands</h2>
+
+<p>인터랙티브 모드에서는 히스토리가 저장되는데 sbt를 종료하거나 재시작할 때도 저장된다. 방향키로 히스토리를 조회할 수 있다. 다음은 히스토리와 관련된 명령이다:</p>
+
+<ul>
+<li><code>!</code>
+히스토리 명령어에 대한 도움말을 보여준다.</li>
+<li><code>!!</code>
+이전 명령어를 실행한다.</li>
+<li><code>!:</code>
+모든 이전 명령어를 보여준다.</li>
+<li><code>!:n</code>
+최근에 실행한 n번째 명령어를 보여준다.</li>
+<li><code>!n</code>
+최근에 실행한 n번째 명령어를 실행한다. <code>!:</code> 명령어는 과거 명령어를 순서에 따라 보여준다.</li>
+<li><code>!-n</code>
+최근에 실행한 n번째 명령어를 실행한다.</li>
+<li><code>!string</code>
+<code>string</code>으로 시작하는 가장 최근 명령어를 실행한다.</li>
+<li><code>!?string</code>
+<code>string</code>이 포함된 가장 최근 명령어를 실행한다.</li>
+</ul>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ sbt: Getting Started Guide: Directory Layout ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html" />
@@ -1094,181 +1204,6 @@ subroutine dispatcher
 <ul>
 <li>Unix pipes – 프로그램끼리 통신하는 데 사용하는 pipe도 Coroutine의 한 종류다.</li>
 </ul>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ dogfeet-flavored-markdown ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html" />
-    <updated>2012-05-19T15:00:00.000Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown.html</id>
-    <content type="html">
-<![CDATA[
-<p>'dogfeet-flavored-markdown'은 Markdown에서 Twitter처럼 <code>@mention</code>, <code>#hash</code>와 같은 표현을 사용하고 싶어서 'github-flavored-markdown'을 수정했다.</p>
-
-<p>아이디어를 정리하고 자료 조사를 끝낸건 3개월 전인데 게으름이 봄바람을 타고와 늦어 졌다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/dogfeet-flavored-markdown/keyboard.png" alt="keyboard" title="" /></p>
-
-<p>이 글을 읽기 전에 <a href="http://github.github.com/github-flavored-markdown/">GitHub의 GitHub-Flavored-Markdown 설명서</a>를 읽어 보는 것이 좋다.</p>
-
-<h2>github-flavored-markdown</h2>
-
-<p>github-flavored-markdown은 다음과 같은 표현을 지원한다.</p>
-
-<pre><code>* SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
-* User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
-* User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
-* #Num: #1
-* User/#Num: mojombo#1
-* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>
-</code></pre>
-
-<p>하지만 실제로 작동하는 것은 '사용자/저장소' 패턴이 명시된 다음의 두 경우 뿐이다:</p>
-
-<ul>
-<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
-</ul>
-
-<p>나머지 패턴도 동작하게 하려면 '사용자/저장소' 정보가 필요하다. github-flavored-markdown의 용법은 다음과 같은데 인자로 '사용자/저장소'를 넘겨줄 수 있다:</p>
-
-<pre><code>var ghm = require("github-flavored-markdown")
-ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
-// returns:
-// '&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; GHM.  '+
-// '&lt;a href=\'<a href='http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt'>http://github.com/isaacs/npm/issues/#issue/2\'&gt;#2&lt;/a&gt;&lt;/p&gt</a>;'
-</code></pre>
-
-<p>그러면 나머지 패턴도 해당 저장소에 대한 GitHub 링크가 생성된다:</p>
-
-<ul>
-<li>SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
-<li>User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
-<li><a href="/site/tagmap.html#Num">#Num</a>: <a href="/site/tagmap.html#1">#1</a></li>
-<li>User/#Num: mojombo#1</li>
-</ul>
-
-<p>하지만 custom 하게 수정이 필요하고, 특히 [Docpad][]의 Markdown 을 수정해서 하드코딩하거나 이 정보를 설정할 수 있도록 수정해야 한다.</p>
-
-<h2>dogfeet-flavored-markdown</h2>
-
-<p>dogfeet-flavored-markdown(이하 DFM)은 DFM에서 '사용자/저장소' 정보가 필요한 나머지 패턴은 삭제했다. 그래서 다음과 같은 패턴만 사용할 수 있다:</p>
-
-<ul>
-<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></li>
-</ul>
-
-<p>대신 <code>@mention</code>과 <code>#hash</code>를 추가 했다. 정확한 패턴은 다음과 같다:</p>
-
-<ul>
-<li>mention - <code>(^|[ \t]+)@([a-zA-Z0-9]+)</code></li>
-<li>hash - <code>(^|[ \t]+)#([ㄱ-ㅎ가-힣a-zA-Z0-9]+)</code></li>
-</ul>
-
-<p>다시 말해서 줄 처음에 시작하는 <code>@mention</code>이나 앞에 공백(space, tab)문자가 있는 것만 인식한다.</p>
-
-<p>이 규칙이 중요할 때가 있는데, <code>#</code>으로 Heading을 표현하는 Markdown에서 중요하다. 줄 맨앞에서 <code>#Heading</code>이라고 표현하면 DFM가 처리하는 것이 아니라 showdown 엔진이 처리하기 때문에 링크가 생성되지 않고 <code>&lt;h1&gt;Heading&lt;/h1&gt;</code>이라고 해석된다. 이 것은 해석하는 순서의 문제다.</p>
-
-<p>그리고 <code>&lt;code&gt;</code> 블럭과 <code>&lt;a&gt;</code> 블럭에 있는 것은 무시한다. 간단히 말하면 <code>@mention</code>과 <a href="https://twitter.com/#!/mention의">@mention의</a> 차이이고 <a href="http://twitter.com"><a href="https://twitter.com/#!/twitter">@twitter</a></a>와 <a href="https://twitter.com/#!/twitter">@twitter</a> 의 차이다. 원문은 다음과 같다:</p>
-
-<pre><code>그리고 `&lt;code&gt;` 블럭과 `&lt;a&gt;` 블럭에 있는 것은 무시한다. 간단히 말하면 `@mention`과 @mention의 차이이고 [@twitter](<a href='http://twitter.com)와'>http://twitter.com)와</a> @twitter 의 차이다. 원문은 다음과 같다:
-</code></pre>
-
-<h3>예제</h3>
-
-<p>이 것은 코드 블럭이 아니라 잘 된다:</p>
-
-<ul>
-<li>User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
-<li>User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a></li>
-<li><a href="/site/tagmap.html#Num">#Num</a>: <a href="/site/tagmap.html#1">#1</a></li>
-<li>User/#Num: mojombo#1</li>
-<li>User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, <code><a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a></code></li>
-<li><a href="https://twitter.com/#!/pismute">@pismute</a></li>
-<li><a href="/site/tagmap.html#EveryoneIsBeautiful">#EveryoneIsBeautiful</a> <code>, #EveryoneIsBeautiful,#EveryoneIsBeautiful</code></li>
-<li><a href="/site/tagmap.html#한글">#한글</a> <code>, #한글,#한글</code></li>
-</ul>
-
-<p>(이글에서는 <code>#hash</code>는 Twitter가 아니라 이 블로그의 tagmap 페이지로 연결된다.)</p>
-
-<p>다음은 코드 블럭이라 DFM은 동작하지 않는다. 하지만 GFM의 것은 코드 블럭의 것도 처리한다. 다시 말하지만 GFM의 것은 코드 블럭에서도 링크를 생성 하지만 Dogfeet에서 추가한 <code>@mention</code>과  <code>#hash</code>는 코드 블럭에서는 링크를 생성하지 않는다:</p>
-
-<pre><code>* SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
-* User@SHA ref: mojombo@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2
-* User/Project@SHA: <a href='http://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2'>mojombo/god@be6a8cc</a>
-* #Num: #1
-* User/#Num: mojombo#1
-* User/Project#Num: <a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>, `<a href='http://github.com/mojombo/god/issues/#issue/1'>mojombo/god#1</a>`
-* @pismute
-* #EveryoneIsBeautiful `, #EveryoneIsBeautiful,#EveryoneIsBeautiful`
-* #한글 `, #한글,#한글`
-</code></pre>
-
-<h3>Coding</h3>
-
-<p>기본적으로 내장된 템플릿은 twitter로 연결된다. 그래서 <code>@mention</code>과 <code>#hash</code>를 클릭하면 twitter로 연결된다. 하지만 바꿀 수 있다.</p>
-
-<pre><code>var templates={
-  '@': function(key){ return ['@@', key].join(''); }
-  , '#': function(key){ return ['##', key].join(''); }
-}
-var dfm = require("dogfeet-flavored-markdown");
-gfm.parse("I **love** @DFM. #DFM", {templates:templates});
-// returns:
-// '&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; @@DFM. ##DFM'
-</code></pre>
-
-<h3>설치</h3>
-
-<p>이 모듈은 npmjs.org에 올릴 계획이 없다. 그러니 다음과 같이 설치해야 한다.</p>
-
-<pre><code>npm install git://github.com/dogfeet/dogfeet-flavored-markdown.git#master
-</code></pre>
-
-<h2>Docpad Plugin</h2>
-
-<p>Docpad Plugin을 만들어서 이 블로그에 했다. 다음은 Docpad Plugin이다:</p>
-
-<pre><code># Export Plugin
-module.exports = (BasePlugin) -&gt;
-    # Define Plugin
-    class DogdownPlugin extends BasePlugin
-        # Plugin name
-        name: 'dogdown'
-
-        # Plugin priority
-        priority: 700 
-
-        templates:
-            '@': ( key ) -&gt;
-                ['&lt;a href="<a href='https://twitter.com/#!/'>https://twitter.com/#!/</a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
-                #['&lt;a href="<a href='https://github.com/'>https://github.com/</a>', key, '"&gt;@', key, '&lt;/a&gt;'].join('')
-            '#': ( key ) -&gt;
-                ['&lt;a href="/site/tagmap.html#', key, '"&gt;#', key, '&lt;/a&gt;'].join('')
-
-        # Render some content
-        render: (opts,next) -&gt;
-            # Prepare
-            {inExtension,outExtension,templateData,content} = opts
-
-            # Check our extensions
-            if inExtension in ['md','markdown'] and outExtension is 'html'
-                # Requires
-                markdown = require('dogfeet-flavored-markdown')
-
-                # Render
-                opts.content = markdown.parse( content, { templates:@templates } ) 
-
-            # Done, return back to DocPad
-            return next()
-</code></pre>
-
-<p>templates을 수정해서 단순히 링크를 생성하는 것외에 통계나 문서의 메타 정보도 구할 수 있지만 그리하진 않았다.</p>
-
-<h2>마치며</h2>
-
-<p>이 모듈의 <a href="https://github.com/dogfeet/dogfeet-flavored-markdown">저장소</a>에 올려 두었다.</p>]]>
     </content>
   </entry>
 </feed>
