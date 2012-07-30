@@ -3,20 +3,187 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.com/atom.xml" rel="self" />
   <link href="http://dogfeet.github.com" />
-  <updated>2012-07-25T15:05:23.464Z</updated>
+  <updated>2012-07-30T13:36:17.568Z</updated>
   <id>http://dogfeet.github.com</id>
   <author>
     <name>Changwoo Park</name>
     <email>pismute@gmail.com</email>
   </author>
   <author>
-    <name>Sean Lee</name>
-    <email>sean@weaveus.com</email>
-  </author>
-  <author>
     <name>Yongjae Choi</name>
     <email>mage@weaveus.com</email>
   </author>
+  <author>
+    <name>Sean Lee</name>
+    <email>sean@weaveus.com</email>
+  </author>
+  <entry>
+    <title><![CDATA[ sbt: Getting Started Guide: .sbt Build Definition ]]></title>
+    <link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" />
+    <updated>2012-07-29T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html</id>
+    <content type="html">
+<![CDATA[
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+
+<h2><code>.sbt</code> Build Definition</h2>
+
+<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt "원리"와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.</p>
+
+<h3><code>.sbt</code> vs. <code>.scala</code> Definition</h3>
+
+<p>sbt 빌드는 base 디렉토리에 <code>.sbt</code> 파일을 만들고 그 파일에 정의한다. <code>.scala</code> 파일은 base 디렉토리 하위에 <code>project</code> 디렉토리에 만들고 거기에 넣는다.</p>
+
+<p>두 파일 중 아무거나 하나만 만들어 사용할 수도 있고 함께 혼용해도 된다. 그래도 <code>.sbt</code> 파일로 할 수 없는 일만 <code>.scala</code> 파일로 구현하고 대부분은 <code>.sbt</code> 파일을 사용하는 것이 바람직하다:</p>
+
+<ul>
+<li>sbt 커스트마이즈하기(설정이나 타스크를 추가한다)</li>
+<li>네스티드(nested) 서브 프로젝트를 정의한다.</li>
+</ul>
+
+<p>이 글은 <code>.sbt</code> 파일만 설명한다. <code>.scala</code> 파일을 사용하는 방법은 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>에서 설명한다.</p>
+
+<h3>What is a build definition?</h3>
+
+<p><em>* 이 부분은 반드시 절대로 꼭 읽어주세요. *</em></p>
+
+<p>sbt는 실제로 빌드하기 전에 프로젝트를 검사하고 빌드 스크립트를 처리한다. 그 전처리를 완료하면 immutable 맵이 하나 생성되는데 그 맵에 빌드 정보가 <code>키/밸류</code> 형태로 들어간다.</p>
+
+<p>예를 들어, 키가 <code>name</code>인 항목의 스트링 밸류는 프로젝트 이름을 의미한다.</p>
+
+<p><em>우리가 만든 빌드 정의가 바로 sbt 맵으로 만들어지는 것이 아니다.</em></p>
+
+<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. '함수형 프로그래밍' 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.  </p>
+
+<p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:</p>
+
+<p><code>scala<br />name := "hello"<br /></code></p>
+
+<p>키가 <code>name</code>이고 밸류가 <code>"hello"</code>인 <code>Setting[String]</code> 객체가 생성되고 sbt 맵에 키가 <code>name</code>인 항목이 있으면 그 항목의 밸류만 교체하고 없으면 해당 항목을 새로 만든다. 다시 말하지만, 이때 변형된 맵은 새로 생성된다.</p>
+
+<p>이 맵이 만들어지는 과정을 살펴보자. sbt는 먼저 Setting 리스트을 정렬한다. 키가 같은 항목들은 하나로 합치고 밸류에서 다른 항목을 사용하고 있으면 그 항목부터 처리한다. 설정 간 의존성이 있으면 의존성부터 해결한다. sbt는 정렬된 <code>Setting</code> 리스트를 하나씩 map으로 변환한다.</p>
+
+<p>요약: <em>빌드 정의는 먼저 <code>Setting[T]</code> 리스트로 만들고 다시 <code>Setting[T]</code> 리스트를 sbt 맵으로 변환한다. <code>T</code>는 각 밸류의 타입이다</em>.</p>
+
+<h3>How <code>build.sbt</code> defines settings</h3>
+
+<p><code>build.sbt</code> 파일의 자료구조는 <code>Seq[Setting[_]]</code>이다. 이 파일은 Scala Expression의 리스트인데 한 줄 띄우는 것으로 구분한다. 각 줄은 리스트의 항목 하나이고 순서대로 처리된다. <code>.scala</code> 파일에서 <code>.sbt</code> 파일의 내용을 <code>Seq(</code>와 <code>)</code>로 감싸고 빈 줄 대신에 콤마를 넣으면 <code>.sbt</code> 파일에서 한 것과 동일한 코드가 된다.</p>
+
+<p>다음은 <code>.sbt</code> 파일 예제이다:</p>
+
+<p>```scala<br />name := "hello"</p>
+
+<p>version := "1.0"</p>
+
+<p>scalaVersion := "2.9.1"<br />```</p>
+
+<p><code>build.sbt</code> 파일은 빈 줄로 구분하는 <code>Setting</code> 객체의 리스트다. 각 <code>Setting</code>은 Scala Expression으로 정의한다. </p>
+
+<p><code>build.sbt</code>에 있는 Expression은 서로서로 독립적이고 문법상으로 Scala Statement가 아니라 Scala Expression이다. 그래서 <code>build.sbt</code> 파일에 Scala Expresion을 정의할 때 그 Expresion 제일 앞에는 <code>val</code>, <code>object</code>, 클래스, 메소드를 정의할 수 없다.</p>
+
+<p>왼쪽에 사용한 <code>name</code>, <code>version</code>, <code>scalaVersion</code>은 <em>키</em>다. 키는 <code>SettingKey[T]</code>, <code>TaskKey[T]</code>, <code>InputKey[T]</code>의 인스턴스이고 <code>T</code>는 밸류의 타입이다. 아래에서 키에 대해서 좀 더 설명한다.</p>
+
+<p>키는 <code>Settings[T]</code>를 리턴하고 이름이 <code>:=</code>인 메소드를 호출한다. 이 메소드는 Java 처럼 호출할 수도 있다:</p>
+
+<p><code>scala<br />name.:=("hello")<br /></code></p>
+
+<p>스칼라에서는 <code>name := "hello"</code>라고 사용해도 메소드를 호출할 수 있다. 스칼라 문법에서는 이렇게 메소드를 호출하는 것도 가능하다.</p>
+
+<p><code>name</code> 키에 있는 <code>:=</code> 메소드는 <code>Setting</code> 객체를 반환한다. 정확한 타입은 <code>Setting[String]</code>이다. <code>name</code> 키의 타입은 <code>SettingKey[String]</code>인데 여기서 <code>String</code>은 <code>name</code> 자체의 타입이다. <code>Setting[String]</code> 인스턴스가 반환되면 <code>name</code>을 키로 해서 sbt 맵에 넣는다. 이 <code>Setting[String]</code> 인스턴스의 값은 <code>"hello"</code>다.</p>
+
+<p>타입을 틀리게 넣으면 컴파일 안 된다:</p>
+
+<p><code>scala<br />name := 42  // will not compile<br /></code></p>
+
+<h3>Settings are separated by blank lines</h3>
+
+<p>다음과 같이 <code>build.sbt</code> 파일을 작성할 수 없다:</p>
+
+<p><code>scala<br />// will NOT work, no blank lines<br />name := "hello"<br />version := "1.0"<br />scalaVersion := "2.9.1"<br /></code></p>
+
+<p>Setting을 구분해 주는 구분자가 필요하다. sbt는 구분자가 있어야 Scala Expression을 구분할 수 있다.</p>
+
+<p><code>.sbt</code> 파일에 구현하는 것은 Scala Expression이지 Scala 프로그램이 아니다. sbt는 각 Scala Expression을 하나씩 잘라서 개별적으로 컴파일한다.</p>
+
+<p>Scala 프로그램을 사용하고 싶으면 <code>.sbt</code> 파일이 아니라 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>로 구현해야 한다. 이때에는 <code>.sbt</code> 파일이 없어도 된다. <code>.scala</code> 파일을 사용하는 방법은 나중에 설명한다. 어떻게 하는지 살짝 들춰보자면 <code>.sbt</code> 파일에서 정의하던 Setting Expression을 <code>.scala</code> 파일에서 <code>Seq[Setting]</code> 자료구조로 정의하면 된다.</p>
+
+<h3>Keys are defined in the Keys object</h3>
+
+<p>빌트인 키는 <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a> 객체에 정의되 있다. <code>build.sbt</code>에는 <code>import sbt.Keys._</code>가 묵시적으로 선언돼 있어서 <code>sbt.Keys.name</code>라고 안 쓰고 <code>name</code>이라고 바로 써도 되는 것이다.</p>
+
+<p>Key를 새로 정의하려면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>이나 <a href="/articles/2012/sbt-getting-started-using-plugins.html">plugin</a>으로 정의해야 한다.</p>
+
+<h3>Other ways to transform settings</h3>
+
+<p><code>:=</code>으로 리플레이스 하는 것이 가장 단순한 변형 방법이지만 다른 방법도 있다. 예를 들어 <code>+=</code>으로도 Setting 밸류를 추가할 수 있다.</p>
+
+<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 '<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>'에서 자세히 설명한다.</p>
+
+<h3>Task Keys</h3>
+
+<p>Key는 세 종류이다:</p>
+
+<ul>
+<li><code>SettingKey[T]</code>: 이 키와 밸류는 딱 한 번 해석한다. 프로젝트를 로드할 때 해석하고 다시 해석하지 않는다.</li>
+<li><code>TaskKey[T]</code>: 이 키와 밸류는 매번 다시 해석한다. 그래서 문제가 될 수도 있다.</li>
+<li><code>InputKey[T]</code>: 이 가이드에서는 <code>InputKey</code>는 설명하지 않는다. 이 가이드를 다 보고 나서 <a href="https://github.com/harrah/xsbt/wiki/Input-Tasks">Input Task</a>를 봐라.</li>
+</ul>
+
+<p><em>타스크</em>를 정의한다고 sbt에 말할 때 <code>TaskKey[T]</code>를 사용한다. <code>compile</code>이나 <code>package</code> 같은 것이 타스크이다. 이 타스크는 <code>Unit</code>을 리턴하거나 해당 타스크와 관련된 어떤 밸류를 리턴한다. 스칼라에서는 <code>Unit</code>이 <code>void</code>다. 예를 들어 <code>package</code> 타스크는 타입이 <code>TaskKey[File]</code>이고 생성할 jar 파일을 리턴한다.</p>
+
+<p>타스크를 실행할 때마다 항상 다시 실행한다. <code>compile</code> 타스크를 실행하면 <code>compile</code> 타스크에 필요한 모든 타스크가 한 번씩 다시 실행된다.</p>
+
+<p>sbt 맵에는 프로젝트 정보가 담겨 있다. <code>name</code> 같은 게 이에 해당하고 항상 고정된 밸류를 저장한다. <code>compile</code>같은 타스크는 고정 값이 아니라 실행 코드이다. 이 실행 코드가 스트링을 리턴한다고 해도 스트링을 얻으려면 항상 다시 실행해야 한다.</p>
+
+<p><em>타스크나 설정이나 키를 사용하는 것은 동일하다.</em> 매번 실행하는 것인지 아닌지가 타스크인지 아닌지를 구분하는 요소이며 이것은 밸류가 아니라 키의 프로퍼티에 해당한다.</p>
+
+<p><code>:=</code>을 사용해서 타스크에 코드를 할당할 수 있다. 이 코드는 매번 실행된다:</p>
+
+<p><code>scala<br />hello := { println("Hello!") }<br /></code></p>
+
+<p>타스크 키로 <code>Setting</code>을 만들 때와 설정 키로 <code>Setting</code> 을 만들 때는 타입이 다르다. <code>taskKey := 42</code> 가 생성하는 결과의 타입은 <code>Setting[Task[T]]</code>이지만 <code>settingKey := 42</code>가 생성하는 결과의 타입은 <code>Setting[T]</code>이다. 타스크는 타스크를 실행해서 <code>T</code> 타입의 밸류를 생성하는 것뿐이고 그 외에는 차이가 없다.</p>
+
+<p>내부적으로 <code>T</code>와 <code>Task[T]</code> 타입이 다른 점이 더 있다. 설정키는 프로젝트를 로드할 때 한 번만 처리하기 때문에 타스크 키에 의존하지 않는다. 곧 읽게 될 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 이 문제를 자세히 다룬다.</p>
+
+<h3>Keys in sbt interactive mode</h3>
+
+<p>대화형 모드에서 타스크 이름을 입력하면 해당 타스크가 실행된다. <code>compile</code>이라는 타스크 키가 있으니까 대화형 모드에서 <code>compile</code>이라고 입력했을 때 compile 타스크가 실행될 수 있다.</p>
+
+<p>타스크 키가 아니라 설정 키를 입력하면 그냥 화면에 그 키의 밸류를 보여준다. <br />타스크 키를 입력하면 타스크가 실행되지만, 그 결과를 보여주진 않는다. 타스크의 결과를 보고 싶으면 <code>show &lt;task name&gt;</code>이라고 입력해야 한다.</p>
+
+<p>키 이름은 Scala 관례에 따라 카멜케이스 방식으로 지어야 하고 sbt 명령어는 <code>하이픈 구분자</code> 방식을 사용한다. <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a>에 정의된 키를 sbt에서 사용할 때는 하이픈 구분자를 사용해야 한다. <code>Keys.scala</code>에 정의한 것 중 한 예를 보자:</p>
+
+<p><code>scala<br />val scalacOptions = TaskKey[Seq[String]]("scalac-options", "Options for the Scala compiler.")<br /></code></p>
+
+<p>sbt에서 타스크를 입력할 때는 <code>scalacOptions</code>이 아니라 <code>scalac-options</code>라고 입력한다.</p>
+
+<p>sbt 대화형 모드에서 <code>inspect &lt;keyname&gt;</code>을 입력하면 입력한 키에 대한 정보를 자세히 보여준다. <code>inspect</code>는 입력한 키의 밸류와 간략한 설명을 보여준다. 물론 처음 보는 정보들까지도 함께 보여준다.</p>
+
+<h3>Imports in <code>build.sbt</code></h3>
+
+<p><code>build.sbt</code> 파일에 import 구문을 사용할 수 있다. import 구문은 한 줄 띄우기를 할 필요가 없다.</p>
+
+<p>다음을 보면 무슨 소린지 한 번에 알 수 있다:</p>
+
+<p><code>scala<br />import sbt._<br />import Process._<br />import Keys._<br /></code></p>
+
+<p>(<a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보면 <code>Build</code>나 <code>Plugin</code> 객체도 임포트해서 사용하는 방법을 설명한다. <code>Build</code>나 <code>Plugin</code> 객체를 임포트해야 하면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보라.)</p>
+
+<h3>Adding library dependencies</h3>
+
+<p>라이브러리 의존성을 추가하는 방법은 두 가지다. 하나는 unmanaged 방식으로 <code>lib/</code> 디렉토리에 jar 파일을 그냥 넣으면 된다. 다른 하나는 managed 방식으로 <code>build.sbt</code> 파일에 다음과 같이 추가한다:</p>
+
+<p><code>scala<br />libraryDependencies += "org.apache.derby" % "derby" % "10.4.1.3"<br /></code></p>
+
+<p>이 것은 버전이 10.4.1.3인 Apache Derby 라이브러리를 managed 방식으로 추가하는 것을 보여준다. </p>
+
+<p><code>libraryDependencies</code>에서는 <code>+=</code>와 <code>%</code> 메소드를 추가로 알아야 한다: <code>+=</code>는 기존의 밸류를 교체하는 것이 아니라 기존의 밸류에 새 밸류를 추가하는 것이다. 자세한 것은 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 설명한다. <code>%</code>는 Ivy 모듈 ID를 조합하는 데 사용하고 자세한 설명은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에 있다.</p>
+
+<p>라이브러리 의존성은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에서 다룰 예정이다. 여기서는 이 정도로 마무리하겠다.</p>]]>
+    </content>
+  </entry>
   <entry>
     <title><![CDATA[ sbt: Getting Started Guide: Running ]]></title>
     <link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-running.html" />
@@ -990,220 +1157,6 @@ if __name__ == '__main__':
 </code></pre>
 
 <p>27분 걸렸던게 27초만에 끝났다. 만세.</p>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Coroutine ]]></title>
-    <link href="http://dogfeet.github.com/articles/2012/coroutine.html" />
-    <updated>2012-05-26T15:00:00.000Z</updated>
-    <id>http://dogfeet.github.com/articles/2012/coroutine.html</id>
-    <content type="html">
-<![CDATA[
-<p>이 글은 <a href="http://en.wikipedia.org/wiki/Coroutine">Wikipedia의 Coroutine</a>을 번역한 것이다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/coroutine/source-code.png" alt="coroutine-python" title="" /></p>
-
-<h2>Coroutine</h2>
-
-<p>Coroutine은 컴퓨터 프로그램에서 엔트리 포인트가 여러 개인 Subroutine이다. 그래서 어디서든지 잠시 멈췄다가 다시 이어서 실행할 수 있다. Coroutine은 <a href="http://en.wikipedia.org/wiki/Cooperative_multitasking#Cooperative_multitasking.2Ftime-sharing">cooperative task</a>, <a href="http://en.wikipedia.org/wiki/Iterator">iterator</a>, <a href="http://en.wikipedia.org/wiki/Lazy_evaluation">infinite list</a> and <a href="http://en.wikipedia.org/wiki/Pipeline_" title="software">pipe</a> 같은 것을 구현하기에 좋다.</p>
-
-<p>"Coroutine"이라는 용어는 Melvin Conway가 1963년에 자신의 논문에서 처음 사용했다.</p>
-
-<h2>Subroutine과 비교</h2>
-
-<p>"Subroutine은 Coroutine 중 한 종류에 불과하다" - Donald Knuth]. Subroutine은 한번 실행하면 다 마칠 때까지 계속 실행되고 한번 호출할 때 한번 리턴한다. Coroutine도 이와 비슷하지만, Yield라는 것으로 빠져나오거나 다른 Coroutine을 호출해서 다시 해당 Coroutine이 하던 일을 이어서 할 수 있다.</p>
-
-<p>그리고 Yield 없이 간단하게 Coroutine을 구현할 수도 있다.</p>
-
-<p>언어를 개발할 때 Subroutine을 구현하려면 Subroutine을 실행하기 전에 스택을 하나 만들어야 한다. 하지만, Coroutine은 다른 Coroutine을 호출할 수 있어서 Continuation을 가지고 구현하는 것이 제일 좋다. Continuation은 스택이 여러 개 필요하기 때문에 보통 가비지컬렉터가 있는 언어에서 구현한다. 스택을 캐시해두거나 미리 할당하는 방식으로 좀 쉽게 Coroutine을 구현할 수 있다.</p>
-
-<p>Coroutine이 얼마나 유용한지 보여 줄 수 있는 예제를 하나 보여주겠다. 소비자-생산자 관계인 Coroutine이 두 개 있다고 가정한다. 한쪽은 아이템을 생성해서 큐에 넣고 다른 쪽은 큐에서 아이템을 꺼내서 사용한다. 그리고 한꺼번에 아이템을 추가하거나 삭제해서 성능을 최적화할 수 있다. 이 내용을 코드로 구현하면 다음과 같다:</p>
-
-<pre><code>var q := new queue
-
-coroutine produce
-    loop
-        while q is not full
-            create some new items
-            add the items to q
-        yield to consume
-
-coroutine consume
-    loop
-        while q is not empty
-            remove some items from q
-            use the items
-        yield to produce
-</code></pre>
-
-<p>큐가 다 차거나 다 비워지면 yield 명령어로 컨트롤를 다른 Coroutine에 양보한다. 그러면 그 Coroutine이 바로 시작한다.</p>
-
-<p>이 예제는 멀티 Thread를 설명할 때 사용하는 예제랑 비슷하게 생겼지만, Thread를 두 개 만들지 않는다: 루틴이 돌다가 yield 구문을 만나면 다른 루틴으로 바로 점프한다.</p>
-
-<h2>Coroutine과 Generator</h2>
-
-<p>Generator도 Subroutine보다 넓은(generalisation) 개념이지만 Generator를 처음 볼 땐 Coroutine보다 후져 보인다. Generator는 기본적으로 Iterator 코드를 단순화할 목적으로 사용하기 때문에 Generator의 yield 구문은 다른 Coroutine으로 점프하는 게 아니라 호출한 상위 루틴으로 값을 넘겨준다. 하지만, Generator로 Coroutine을 구현할 수 있다. Generator를 호출하는 상위 루틴을 'Dispatcher'로(엄밀히 말하자면 <a href="http://en.wikipedia.org/wiki/Trampoline_" title="computing">Trampoline</a>) 구현하면 되는데 한 Generator가 반환한 토큰으로 다른 Generator를 실행한다.</p>
-
-<pre><code>var q := new queue
-
-generator produce
-    loop
-        while q is not full
-            create some new items
-            add the items to q
-        yield consume
-
-generator consume
-    loop
-        while q is not empty
-            remove some items from q
-            use the items
-        yield produce
-
-subroutine dispatcher
-    var d := new dictionary(generator → iterator)
-    d[produce] := start produce
-    d[consume] := start consume
-    var current := produce
-    loop
-        current := next d[current]
-</code></pre>
-
-<p>언어 차원에서 Coroutine을 지원하는 것도 많지만, native Coroutine이 없는 언어에서는 이렇게 많이들 구현한다. 예를 들어, Python 2.5 이전 버전에서는 이와 같은 방법을 사용했다.</p>
-
-<h2>Coroutine의 용도</h2>
-
-<p>Coroutine은 다음과 같은 것을 구현할 때 유용하다:</p>
-
-<ul>
-<li>Subroutine 하나로 구현하는 State-Machine에 유용하다.
-이 머신의 State는 프로시저의 entry/exit point로 결정한다. 이렇게 하면 좀 더 가독성 높은 코드가 된다.</li>
-<li>Concurrency에서 사용하는 Actor 모델에 유용하다. Actor마다 프로시저가 하나 있다(이 프로시저는 다시 여러 개로 나뉜다). 각 Actor는 스스로 스케쥴러에 컨트롤을 반환한다. 그래서 선점형 멀티태스킹 시스템처럼 차례로 실행된다.</li>
-<li>Generator는 IO 처리나 자료구조를 Traverse하는 코드에 유용하다.</li>
-</ul>
-
-<h2>Coroutine을 지원하는 언어들</h2>
-
-<p>Aikido, AngelScript, BCPL, Pascal, BETA, C#, ChucK, D, Dynamic C, Erlang, F#, Factor, GameMonkey, Go, Haskell, High Level Assembly, JavaScript(since 1.7), Icon, Io, Limbo, Lua, Lucid, µC++, MiniD, Modula-2, Nemerle, Perl(Perl 5 with Coro, Perl 6 native[citation needed]), Prolog, Python(since 2.5), Ruby, Sather, Scheme, Self, Simula-67, Squirrel, 스택less Python, SuperCollider, Tcl(since 8.6), urbiscript</p>
-
-<p>Continuation으로도 Coroutine을 구현할 수 있어서 Continuation을 지원하는 언어라면 Coroutine은 쉽게 구현할 수 있다.</p>
-
-<h2>Coroutine 대용으로 쓸 수 있는 것.</h2>
-
-<p>Coroutine은 원래 assembly 수준 기술이지만 일부 high-level 언어에서만 지원한다. Coroutine을 지원하는 언어는 Simula나 Modula-2가 처음이었고 최근에는 Lua나 Go에서도 지원한다.</p>
-
-<p>2003년 당시에는 C나 그 파생언어들이 인기가 높았다. 하지만, 그 언어들은 언어 자체나 표준 라이브러리에서 Coroutine을 지원하지 않았다. Subroutine이 스택을 사용하기 때문에 어려웠다.</p>
-
-<p>그런 이유로 Coroutine 자체는 구현하기 어렵지 않은데도 쓸 수가 없었다. 이렇게 Coroutine을 못 쓸 때는 State 변수나 플래그 같은 것의 조합으로 내부 상태를 관리하는 Subroutine을 만들어 쓸 수 있다. State 변수가 어떠냐에 따라서 전혀 다른 코드가 수행되는 것을 이용하는 것이다. 아니면 복잡한 switch 구문을 많이 써서 explicit state machine을 만드는 방법도 있다. 그렇지만, 이런 방법은 만들기도 어렵고 관리하기도 어렵다.</p>
-
-<p>Thread는 많이 사용하는 언어에서 Coroutine 대용으로 사용한다. Thread는 동시성(simultaneously)이라는 여러 코드가 동시에 실행할 수 있는 기능을 제공한다. C 환경이나 Native로 Thread를 지원하는 다른 언어에서 널리 쓰인다. 많은 프로그래머가 알고 있고, 구현체도 매우 많고, 문서도 넘쳐나고, 지원도 잘된다. 하지만, Thread는 어려운 문제를 다루고 있어서 좀 더 강력하지만 복잡한 내용을 배워야 한다. 그래서 상대적으로 배우기 어렵다. Coroutine은 별로 알아야 할 게 없다. Thread를 사용하는 것은 소 잡는 칼로 닭 잡는 격이다.</p>
-
-<p>Thread와 Coroutine의 가장 중요한 차이는 Thread는 선점형 스케쥴링이지만 Coroutine은 아니라는 것이다. Thread는 아무 데서나 스케쥴이 변경되고 Concurrent하게 실행한다. Thread를 사용하면 Locking할 때 조심해야 한다. 반대로 Coroutine은 스케줄이 변경되는 곳이 정해져 있고 Concurrent하게 실행되지 않는다. Coroutine은 전체적으로 locking이 필요 없다. 보통 이 특징은 event-driven이나 비동기 방식을 설명할 때도 장점으로 설명하는 특징이다.</p>
-
-<p>그리고 Fiber라는 게 있어서 Coroutine을 구현해 쓸 수 있다. 하지만, Thread와 비교하면 Fiber를 지원하는 시스템은 별로 없다.</p>
-
-<h3>.NET 프레임웤에서 fiber로 Coroutine 구현하기</h3>
-
-<p>.NET 프레임웤 2.0을 개발하면서 Microsoft는 fiber기반 스케줄링을 다룰 수 있도록 CLR(Common Langauge Runtime) 호스팅 API의 설계를 확장했다. 이것은 SQL 서버의 fiber-mode를 사용할 수 있도록 하기 위함이다. 릴리즈할 때에는 시간 제약사항(constraints) 때문에 타스크 스위칭을 지원하는 ICLRTask:SwitchOut을 제거했다. 그래서 타스크를 스위칭에 필요한 fiber API는 현재 .NET 프레임웤에서는 사용할 수 없다.</p>
-
-<h3>Mono에서의 Coroutine</h3>
-
-<p>Mono CLR은 Continuation을 지원하기 때문에 coroutine을 만들 수 있다.</p>
-
-<h3>Java에서의 Coroutine</h3>
-
-<p>Java는 추상화 때문에 Coroutine을 구현하기 어려운데도 구현체가 네 가지나 된다. JVM에서 불가능한 것은 아니다.</p>
-
-<ul>
-<li>JVM 수정 버전들. Native로 Coroutine을 지원하도록 JVM을 Patch할 수 있다. Da Vinci JVM에는 해당 패치가 있다.</li>
-<li>바이트코드 수정 버전들. Coroutine은 Java 바이트코드를 수정해서 구현할 수도 있다. 컴파일할 때 수정할 수도 있고 실행할 때 수정할 수도 있다. <a href="http://code.google.com/p/coroutines/">Java Coroutine</a> 프로젝트가 있다.</li>
-<li>JNI로 구현. 해당 플랫폼용으로 구현된 C 라이브러리로 JVM에서 Coroutine을 사용한다.</li>
-<li>Thread를 이용. 무겁디무거운(heavywight) 쓰레드로 Coroutine 라이브러리를 구현할 수도 있다. 성능은 JVM의 Thread 구현체에 따라 다르다.</li>
-</ul>
-
-<h3>C에서의 Coroutine</h3>
-
-<p>다양한 시도가 있었는데 구현 정도가 다르다. C에서는 Subroutine과 마크로를 사용해서 Coroutine을 구현한다. 이 방법으로 구현한 것 중에서는 Simon Tatham이 구현한 것이 좋다. Tatham은 주석에서 이 방법의 한계를 잘 설명한다. 이 방법은 아직 논쟁`의 여지가 남아 있지만, 코드를 작성하기도 쉽고, 읽기도 쉽고, 관리하기도 쉽다. Tatham이 말하길 "물론, 이 방법은 책에서 말하는 코딩 규칙에 어긋난다. 하지만, 모든 코딩 규칙은 알고리즘의 명확성을 대가로 문법적 명확성을 얻는 방법들이다. 이 방법을 사용하자고 사장에게 말하면 사장는 분명히 그 직원을 건물 밖으로 드래그해버리라고 경비에게 소리칠 것이다"</p>
-
-<p>Coroutine을 구현하는 좀 더 믿음직한 방법이 있는데, 대신 이식성이 떨어지고 특정 프로세서에서만 사용할 수 있다. 어셈블리 수준에서 Coroutine 컨텍스트를 저장했다가 다시 복원하는 기능이 있는 프로세서에서만 사용할 수 있다. 표준 C 라이브러리에는 setjmp와 longjmp 함수가 있어서 Coroutine 비슷하게 구현할 수 있다. 그런데 Harbison과 Steele은 "setjmp와 longjmp 함수로 구현하는 것은 매우 어렵다고 알려져 있다. 프로그래머는 setjmp와 longjmp에 대해 어떠한 가정도 하지 말하야 한다"라고 말한다. Harbison과 Steele이 말한 주의 사항과 제약 사항들은 무엇을 의미하는 걸까? setjmp와 longjmp를 사용해서 Coroutine을 구현했다 한들 다른 환경으로 옮기면 작동하지 않는다. 더욱 나쁜 것은 잘못 구현한 것들도 적지 않다. setjmp/longjmp는 실제로 스택 하나로 구현하는 거라서 제대로 된 Coroutine을 구현할 수 없다. 스택이 하나뿐이기 때문에 엉뚱한 Coroutine이 스택에 있는 변수를 수정해 버릴 수 있다.</p>
-
-<p>그래서 C에서 스택기반 Coroutine을 구현하려면 스택을 만들고 점프할 수 있는 기능이 필요하다. 세 번째는 특정 머신에서만 동작하는 C로(machine-specific C) 작성하는 방법이다. 이 방법은 Coroutine용 컨텍스트가 지원돼야 한다. POSIX나 <a href="http://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%9C%A0%EB%8B%89%EC%8A%A4_%EA%B7%9C%EA%B2%A9">Single UNIX Specification</a>의 C 라이브러리에는 getcontext, setcontext, makecontext, swapcontext같은 루틴이 있다. setcontext류 함수들은 setjmp/longjmp 함수보다 상당히 강력하다. 하지만, 표준을 준수하는 구현체는 흔치않다. 이 방법의 최대 단점은 Coroutine의 스택 크기가 고정돼 있다는 것이다. 그래서 실행 중에 스택 크기는 커지지 않는다. 그래서 사람들은 스택 오버플로우를 예방하는 차원에서 처음부터 너무 큰 스택을 할당하는 경향이 있다.</p>
-
-<p>표준 라이브러리의 한계 때문에 사람들은 직접 Coroutine 라이브리를 만들어 사용한다. Russ Cox가 만든 libtask라는 게 있는데 꽤 좋다. Native C 라이브러리에 context 함수가 있으면 그냥 그걸 사용하고 그게 아니면 자체적으로 구현한 ARM, PowerPC, Sparc, x86용 라이브러리를 사용한다. 그 외 살펴볼 만한 라이브러리로 libpcl, coro, lthread, libCoroutine, libconcurrency, libcoro가 있다.</p>
-
-<h3>C++에서의 Coroutine</h3>
-
-<ul>
-<li>Boost.Coroutine - Giovanni P. Deretta는 "Google Summer of Code 2006" 프로젝트로 이 라이브러리를 만들었다. 이 포터블한 Coroutine 라이브러리는 boost와 C++ 템플릿을 사용해서 만들었다. Boost.Coroutine은 아직 마무리되지 않았고 boost 공식 라이브러리가 아니므로 문서는 boost 싸이트가 아닌 다른 곳에서 호스팅하고 있다.</li>
-<li>Mordor - Mozy는 2010년에 C++ Coroutine 라이브러리를 만들었다. 비동기 I/O를 사용하는 순차(sequential) 프로그래밍 모델처럼 사용할 수 있게 하였다.</li>
-</ul>
-
-<h3>C#에서의 Coroutine</h3>
-
-<ul>
-<li>MindTouch Dream - MindTouch Dream REST 프레임웤은 C# 2.0의 iterator 패턴으로 구현한 Coroutine이 들어 있다.</li>
-<li>Caliburn - WPF용 Caliburn 스크린 패턴 프레임웤은 C# 2.0의 iterator를 사용해서 UI 프로그래밍과 비동기 씨나리오를 좀 더 쉽게 구현할 수 있게 하였다.</li>
-<li>Power Threading Library - Jeffrey Richter가 만든 Power Threading Library에는 AsyncEnumerator라는 게 있다. 그래서 Coroutine 기반으로 비동기 프로그래밍을 쉽게 할 수 있다.</li>
-<li>Sevletat Pieces - Yevhen Bobrov가 만든 Servelat Pieces 프로젝트는 Silverlight WCF 서비스에 비동기를 투명하게(transparent asynchrony) 제공하고 동기 콜을 비동기적으로 호출하는 방법도 제공한다.</li>
-<li><a href="http://msdn.microsoft.com/en-us/library/dscyy5s0(VS.80).aspx">13</a> - .NET 프레임웤은 2.0+ 부터 자체적으로 iterator 패턴과 yield 키워드로 coroutine을 제공한다. </li>
-</ul>
-
-<h3>Python에서의 Coroutine</h3>
-
-<ul>
-<li><a href="http://www.python.org/peps/pep-0342.html">PEP 342</a> - Pythone 2.5에 확장된 Generator를 기반으로 Coroutine 같은 기능을 구현하기 쉬워졌다.</li>
-<li><a href="http://codespeak.net/py/0.9.2/greenlet.html">Greenlets</a></li>
-<li><a href="http://www.async.com.br/projects/kiwi/api/kiwi.tasklet.html">kiwi tasklets</a></li>
-<li><a href="http://pypi.python.org/pypi/multitask">multitask</a></li>
-<li><a href="http://chiral.j4cbo.com/trac">chiral</a></li>
-<li><a href="http://code.google.com/p/cogen">cogen</a></li>
-<li><a href="http://www.kamaelia.org/">Kamaelia</a></li>
-<li><a href="https://github.com/ironport/shrapnel/">Shrapnel</a></li>
-</ul>
-
-<h3>Ruby에서의 Coroutine</h3>
-
-<ul>
-<li>Ruby 1.9은 fiber로 구현한 Coroutine을 지원한다.</li>
-<li><a href="http://liber.sourceforge.net/coroutines.rb">Marc De Scheemaecker가 만든 것도 있다</a></li>
-</ul>
-
-<h3>Perl에서의 Coroutine</h3>
-
-<ul>
-<li><a href="http://search.cpan.org/dist/Coro/">Coro</a></li>
-</ul>
-
-<p>Perl 6 부터 Coroutine을 지원한다.</p>
-
-<h3>Smalltalk에서의 Coroutine</h3>
-
-<p>Smalltalk에서는 실행 스택이 First-class citizen이기 때문에 VM이 지원이나 다른 라이브러리 필요없이 Coroutine을 구현할 수 있다.</p>
-
-<h3>Scheme에서의 Coroutine</h3>
-
-<p>Since Scheme provides full support for continuations, the implementation of coroutines is nearly trivial, requiring only that a queue of continuations be maintained.</p>
-
-<h3>Delphi에서의 Coroutine</h3>
-
-<ul>
-<li>Bart van der Werf가 만든 <a href="http://www.festra.com/wwwboard/messages/12899.html">Coroutine 함수</a>가 있는데 정말 작고 좋다.</li>
-<li>Sergey Antonov는 <a href="http://hallvards.blogspot.com/2007/10/sergey-antonov-implements-yield-for.html">C# Yield를 델파이에서 구현했다</a>.</li>
-</ul>
-
-<h3>assembly에서의 Coroutine</h3>
-
-<p>(이 부분은 이해할 수 없군요)</p>
-
-<p>Machine-dependent assembly languages often provide direct methods for coroutine execution. For example, in MACRO-11, the assembly language of the PDP-11 family of minicomputers, the “classic” coroutine switch is effected by the instruction "JSR PC,@(SP)+" (which assembles as octal "004736") which jumps to the address popped from the stack and pushes the current (i.e that of the next) instruction address onto the stack. On VAXen (in Macro-32) the comparable instruction is "JSB @(SP)+" (which assembles as hex "9E 16" as the assembler shows it (with in effect bytes reversed). Even on a Motorola 6809 there is the instruction "JSR [,S++]", which assembles as (hex) "AD F1"; note the "++", as 2 bytes (of address) are popped from the stack. This instruction is much used in the (standard) 'monitor' Assist 09.</p>
-
-<p>Simply calling back the routine whose address is on the top of the stack, does not, of course, exhaust the possibilities in assembly language(s)!</p>
-
-<h2>See also</h2>
-
-<ul>
-<li>Unix pipes – 프로그램끼리 통신하는 데 사용하는 pipe도 Coroutine의 한 종류다.</li>
-</ul>]]>
     </content>
   </entry>
 </feed>
