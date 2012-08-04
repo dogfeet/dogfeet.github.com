@@ -9,7 +9,7 @@
     <title>dogfeet - 개발새발</title>
     <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
     <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="Changwoo Park, Yongjae Choi, Sean Lee" />
+    <meta name="author" content="Changwoo Park, Sean Lee, Yongjae Choi" />
 <!--Icons-->
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -154,7 +154,8 @@
 
 <p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:</p>
 
-<p><code>scala<br />name := "hello"<br /></code></p>
+<pre><code class="dfm scala">name := "hello"
+</code></pre>
 
 <p>키가 <code>name</code>이고 밸류가 <code>"hello"</code>인 <code>Setting[String]</code> 객체가 생성되고 sbt 맵에 키가 <code>name</code>인 항목이 있으면 그 항목의 밸류만 교체하고 없으면 해당 항목을 새로 만든다. 다시 말하지만, 이때 변형된 맵은 새로 생성된다.</p>
 
@@ -168,11 +169,12 @@
 
 <p>다음은 <code>.sbt</code> 파일 예제이다:</p>
 
-<p>```scala<br />name := "hello"</p>
+<pre><code class="dfm scala">name := "hello"
 
-<p>version := "1.0"</p>
+version := "1.0"
 
-<p>scalaVersion := "2.9.1"<br />```</p>
+scalaVersion := "2.9.1"
+</code></pre>
 
 <p><code>build.sbt</code> 파일은 빈 줄로 구분하는 <code>Setting</code> 객체의 리스트다. 각 <code>Setting</code>은 Scala Expression으로 정의한다. </p>
 
@@ -182,7 +184,8 @@
 
 <p>키는 <code>Settings[T]</code>를 리턴하고 이름이 <code>:=</code>인 메소드를 호출한다. 이 메소드는 Java 처럼 호출할 수도 있다:</p>
 
-<p><code>scala<br />name.:=("hello")<br /></code></p>
+<pre><code class="dfm scala">name.:=("hello")
+</code></pre>
 
 <p>스칼라에서는 <code>name := "hello"</code>라고 사용해도 메소드를 호출할 수 있다. 스칼라 문법에서는 이렇게 메소드를 호출하는 것도 가능하다.</p>
 
@@ -190,13 +193,18 @@
 
 <p>타입을 틀리게 넣으면 컴파일 안 된다:</p>
 
-<p><code>scala<br />name := 42  // will not compile<br /></code></p>
+<pre><code class="dfm scala">name := 42  // will not compile
+</code></pre>
 
 <h3>Settings are separated by blank lines</h3>
 
 <p>다음과 같이 <code>build.sbt</code> 파일을 작성할 수 없다:</p>
 
-<p><code>scala<br />// will NOT work, no blank lines<br />name := "hello"<br />version := "1.0"<br />scalaVersion := "2.9.1"<br /></code></p>
+<pre><code class="dfm scala">// will NOT work, no blank lines
+name := "hello"
+version := "1.0"
+scalaVersion := "2.9.1"
+</code></pre>
 
 <p>Setting을 구분해 주는 구분자가 필요하다. sbt는 구분자가 있어야 Scala Expression을 구분할 수 있다.</p>
 
@@ -250,7 +258,8 @@
 
 <p>키 이름은 Scala 관례에 따라 카멜케이스 방식으로 지어야 하고 sbt 명령어는 <code>하이픈 구분자</code> 방식을 사용한다. <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a>에 정의된 키를 sbt에서 사용할 때는 하이픈 구분자를 사용해야 한다. <code>Keys.scala</code>에 정의한 것 중 한 예를 보자:</p>
 
-<p><code>scala<br />val scalacOptions = TaskKey[Seq[String]]("scalac-options", "Options for the Scala compiler.")<br /></code></p>
+<pre><code class="dfm scala">val scalacOptions = TaskKey[Seq[String]]("scalac-options", "Options for the Scala compiler.")
+</code></pre>
 
 <p>sbt에서 타스크를 입력할 때는 <code>scalacOptions</code>이 아니라 <code>scalac-options</code>라고 입력한다.</p>
 
@@ -262,7 +271,10 @@
 
 <p>다음을 보면 무슨 소린지 한 번에 알 수 있다:</p>
 
-<p><code>scala<br />import sbt._<br />import Process._<br />import Keys._<br /></code></p>
+<pre><code class="dfm scala">import sbt._
+import Process._
+import Keys._
+</code></pre>
 
 <p>(<a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보면 <code>Build</code>나 <code>Plugin</code> 객체도 임포트해서 사용하는 방법을 설명한다. <code>Build</code>나 <code>Plugin</code> 객체를 임포트해야 하면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보라.)</p>
 
