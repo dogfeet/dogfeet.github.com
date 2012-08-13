@@ -1,80 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - 개발새발</title>
-    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
-    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="Changwoo Park, Sean Lee, Yongjae Choi" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>dogfeet - Backbone.js by example - Part 1</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar" navbar-fixed-top>
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
-              <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <section class="content" span10>
-          <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -89,37 +15,12 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-
-</script>
-<article id="post" typeof="sioc:post" about="/articles/2012/backbonejs-by-example.html" lang="ko-kr" .post .undefined>
-  <header>
-    <h1 property="dcterms:title">Backbone.js by example - Part 1</h1>
-  </header>
-  <footer class="modern-font" .small-font>
-<span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/backbonejs-by-example.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Backbone.js by example - Part 1</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
  | <span property="dc:created">2012 Feb 18</span>
  | <a href="/site/tagmap.html#backbone.js" class="tag">backbone.js</a> <a href="/site/tagmap.html#mvc" class="tag">MVC</a> <a href="/site/tagmap.html#chaker nakhli" class="tag">Chaker Nakhli</a> | <span><a href="/articles/2012/backbonejs-by-example.html#disqus_thread" data-disqus-identifier="/articles/2012/backbonejs-by-example.html"></a></span>
-    <style rel="stylesheet" media="screen, projection" scoped="scoped">
-      #social-buttons {
+<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}
-    </style>
-    <div id="social-buttons" class="pull-right">
-      <ul class="unstyled">
-        <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-        </li>
-        <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html"></div>
-        </li>
-        <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <div property="sioc:content">
-    <p><em>이 글은 <a href="http://www.javageneration.com/">Chaker Nakhli</a>의 '<a href="http://www.javageneration.com/?p=839">Backbone.js by example</a>'을 번역한 것이다. Backbone.js를 처음 접하는 사람이 다른 자료를 보기 전에 보면 좋다.</em></p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p><em>이 글은 <a href="http://www.javageneration.com/">Chaker Nakhli</a>의 '<a href="http://www.javageneration.com/?p=839">Backbone.js by example</a>'을 번역한 것이다. Backbone.js를 처음 접하는 사람이 다른 자료를 보기 전에 보면 좋다.</em></p>
 
 <p><a href="http://documentcloud.github.com/backbone/">Backbone.js</a>는 JavaScript MVC 라이브러리다. 클라이언트 코드를 깔끔하고 쉽게 만들고 관리할 수 있도록 도와준다. 나는 Backbone.js가 가볍고(~4.5kb) 내가 애플리케이션 관리하는 방식을 해치지 않아서 좋다. Backbone.js는 심지어 <a href="http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php">Single Page Interfaces</a>나 JavaScript Heavy 애플리케이션에도 사용할 수 있다. Backbone.js로는 클라이언트 코드를 확장하기 쉽고 관리하기도 쉬운 구조를 만들 수 있다.</p>
 
@@ -394,13 +295,7 @@ document.remove(shape); // fires remove event
 
 <p>이 소스는 <a href="https://gist.github.com/1596813">github</a>와 <a href="http://jsfiddle.net/nakhli/td6Eg/5/">jsfiddle</a>에 있다. 그리고 <a href="http://www.javageneration.com/wp-content/uploads/2012/01/editor.html">데모</a>도 있다.</p>
 
-<p>이 튜토리얼은 Backbone.js의 MVC와 이벤트 시스템이 어떻게 생겼는지 보여준다. 앞에서도 언급했지만, 아직 서버와 통신하기, 라우팅에 대해서 다루지 않았다. Backbone.js는 CRUD를 쉽게 처리할 수 있도록 돕는다. 다음 글에서는 이 내용을 다룰 것이다.</p>
-  </div>
-</article>
-<section id="comments">
-  <h3>Feedback</h3>
-  <div class="row">
-<div id="disqus_thread" class="well span10 offset1"></div>
+<p>이 튜토리얼은 Backbone.js의 MVC와 이벤트 시스템이 어떻게 생겼는지 보여준다. 앞에서도 언급했지만, 아직 서버와 통신하기, 라우팅에 대해서 다루지 않았다. Backbone.js는 CRUD를 쉽게 처리할 수 있도록 돕는다. 다음 글에서는 이 내용을 다룰 것이다.</p></div></article><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/backbonejs-by-example.html';
@@ -413,31 +308,13 @@ document.remove(shape); // fires remove event
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-send="true" data-width="450" data-show-faces="true"></div>
     <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/backbonejs-by-example.html" data-num-posts="1"></div>
-  </div>  </div>
-</section>
-
-        </section>
-        <aside class="sidebar" span2>
-          
-        </aside>
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
-      </footer>
-    </div>
-<!--DISQUS-->
-    <script>
-      var disqus_shortname = 'dogfeet-github';
+  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-    </script>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27493298-1']);
   _gaq.push(['_trackPageview']);
@@ -447,7 +324,4 @@ document.remove(shape); // fires remove event
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-}
-    </script>
-  </body>
-</html>
+}</script></body></html>

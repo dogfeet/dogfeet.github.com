@@ -1,80 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>dogfeet - 개발새발</title>
-    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
-    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="Changwoo Park, Sean Lee, Yongjae Choi" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>dogfeet - Login Popup & Captive Network</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Sean Lee" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar" navbar-fixed-top>
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search>
-              <input type="hidden" name="q" value="site:dogfeet.github.com" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <section class="content" span10>
-          <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -89,37 +15,12 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-
-</script>
-<article id="post" typeof="sioc:post" about="/articles/2012/login-popup-captive-network.html" lang="ko-kr" .post .undefined>
-  <header>
-    <h1 property="dcterms:title">Login Popup & Captive Network</h1>
-  </header>
-  <footer class="modern-font" .small-font>
-<span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/login-popup-captive-network.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Login Popup & Captive Network</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Sean Lee</a></span>
  | <span property="dc:created">2012 Feb 27</span>
  | <a href="/site/tagmap.html#login" class="tag">Login</a> <a href="/site/tagmap.html#popup" class="tag">Popup</a> <a href="/site/tagmap.html#captive" class="tag">Captive</a> <a href="/site/tagmap.html#network" class="tag">Network</a> <a href="/site/tagmap.html#ux" class="tag">UX</a> | <span><a href="/articles/2012/login-popup-captive-network.html#disqus_thread" data-disqus-identifier="/articles/2012/login-popup-captive-network.html"></a></span>
-    <style rel="stylesheet" media="screen, projection" scoped="scoped">
-      #social-buttons {
+<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}
-    </style>
-    <div id="social-buttons" class="pull-right">
-      <ul class="unstyled">
-        <li>
-          <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-        </li>
-        <li>
-          <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html"></div>
-        </li>
-        <li>
-          <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <div property="sioc:content">
-    <p>스마트폰이나 노트북을 항상 들고다니는 사람이 늘어남에 따라 모바일AP(즉, 핫스팟)을 이용하는 사람도 많이 늘어났다. 아직 회원가입이나 인증하지 않은 접속장치가 핫스팟에 접속하고 인터넷을 하면 핫스팟 제공자의 안내페이지나 로그인 페이지가 뜬다.</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>스마트폰이나 노트북을 항상 들고다니는 사람이 늘어남에 따라 모바일AP(즉, 핫스팟)을 이용하는 사람도 많이 늘어났다. 아직 회원가입이나 인증하지 않은 접속장치가 핫스팟에 접속하고 인터넷을 하면 핫스팟 제공자의 안내페이지나 로그인 페이지가 뜬다.</p>
 
 <p><img src="/articles/2012/captive-network/firstwifi.jpg" alt="firstwifi" title="" /></p>
 
@@ -178,13 +79,7 @@ Success
 
 <h2>사족</h2>
 
-<p>Captive Network에서 인증을 하지 않으면 원하는 사이트에 접근할 수 없고 접속할 수 있는 포트 또한 제한된다. 인증을 거쳐야만 제대로 사용할 수 있다. 하지만 보통 인증을 위하여 DNS 프로토콜 53번 포트는 열려있는 경우가 있으므로 이를 잘 활용해(SSH 터널링, Proxy) 볼 수도 있을 것이다.</p>
-  </div>
-</article>
-<section id="comments">
-  <h3>Feedback</h3>
-  <div class="row">
-<div id="disqus_thread" class="well span10 offset1"></div>
+<p>Captive Network에서 인증을 하지 않으면 원하는 사이트에 접근할 수 없고 접속할 수 있는 포트 또한 제한된다. 인증을 거쳐야만 제대로 사용할 수 있다. 하지만 보통 인증을 위하여 DNS 프로토콜 53번 포트는 열려있는 경우가 있으므로 이를 잘 활용해(SSH 터널링, Proxy) 볼 수도 있을 것이다.</p></div></article><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/login-popup-captive-network.html';
@@ -197,31 +92,13 @@ Success
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-send="true" data-width="450" data-show-faces="true"></div>
     <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/login-popup-captive-network.html" data-num-posts="1"></div>
-  </div>  </div>
-</section>
-
-        </section>
-        <aside class="sidebar" span2>
-          
-        </aside>
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p>
-      </footer>
-    </div>
-<!--DISQUS-->
-    <script>
-      var disqus_shortname = 'dogfeet-github';
+  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';
     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-    </script>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27493298-1']);
   _gaq.push(['_trackPageview']);
@@ -231,7 +108,4 @@ Success
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-}
-    </script>
-  </body>
-</html>
+}</script></body></html>
