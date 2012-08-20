@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Meteor: Learn Meteor Fundamentals and Best Practices</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script><article id="post" typeof="sioc:post" about="/articles/2012/meteor-fundametals-and-best-practices.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Meteor: Learn Meteor Fundamentals and Best Practices</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+ | <span property="dc:created">2012 Aug 19</span>
+ | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#andrew scala" class="tag">Andrew Scala</a> | <span><a href="/articles/2012/meteor-fundametals-and-best-practices.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-fundametals-and-best-practices.html"></a></span>
+<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+  margin-left: 30px;
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.</p>
+
+<p><img src="/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt="" title="" /> <strong>Andrew Scala</strong></p>
+
+<h2>Introduction</h2>
+
+<p>이 새롭고 기괴한 <a href="http://meteor.com/">Meteor</a>가 어떻게 동작하는지 알고 싶어 왔는가? 그레이트, 제대로 왔다. 내가 Meteor 프로젝트가 어떻게 생겼는지 보여주고 Meteor 애플리케이션을 만들 때 꼭 기억해야 하는 비법(Best Practices)을 알려 주겠다.</p>
+
+<h2>What is Meteor?</h2>
+
+<p>Meteor에서는 적은 코드로도 엄청난 양의 동적 페이지가 시전된다(create). Meteor는 아직 Beta이고 이 글을 쓰는 시점에서 Meteor는 <code>preview 0.3.8</code> 버전에 불과하다. 그러니 이 글의 내용이 동작하지 않더라도 쫄지 말자.</p>
+
+<p>Meteor는 <a href="http://nodejs.org/">Node.js</a>에서 Javascript로 만들었다. 그래서 우리가 만드는 Meteor 앱도 Javascript로 만들어야 한다. Javascript 공력이 부족하면 <a href="http://bonsaiden.github.com/JavaScript-Garden/ko/">Javascript Garden</a>을 보라. Javscript 내공을 증진하는데 매우 좋다.</p>
+
+<p>Meteor는 <a href="http://www.mongodb.org/">MongoDB</a>를 사용해서 데이터를 저장한다. Meteor는 MongoDB를 직접 쓰지 않고 Minimongo라는 인터페이스를 사용한다. Minimongo는 MongoDB 인터페이스를 많이 지원하지만, 아직 전부 지원하지 못한다. MongoDB가 정확히 어떻게 동작하는지 알 필요는 없지만 적어도 Meteor의 <a href="http://docs.meteor.com/#collections">컬랙션 문서</a>는 보는 게 좋다. 어떻게 해야 하는지 알려준다.</p>
+
+<p>메테오는 현재 <a href="http://handlebarsjs.com/">handlebars</a>을 템플릿 엔진으로 사용한다. 아직은 handlebars밖에 사용할 수 없지만, 조만간에 다른 문파의 템플릿 엔진도 사용할 수 있는 날이 올 것이다.</p>
+
+<p>어찌 됐건 우리는 계속 웹사이트를 만들고 있을 테니 HTML과 CSS의 고수도 돼야 한다.</p>
+
+<h2>The Basics</h2>
+
+<p>Meteor 프로젝트는 대부분 Javascript 파일로 구성된다. 프로젝트 디렉토리 중 아무 데나 <code>*.js</code> 파일을 두면 Meteor가 자동으로 로드해서 실행한다. Meteor 프로젝트에 있는 모든 Javascript 파일은 서버와 클라이언트에 모두 배포된다(꼭 그런 것은 아니고 제외하는 방법이 있다). 이것은 Meteor의 절대 무공(really cool) 중에 하나다. 우리는 모든 것을 Javascript로 개발하고 코드를 한 번만 시전해도(write) 서버와 클라이언트 양쪽에서 사용할 수 있다.</p>
+
+<p>또 다른 Meteor만의 독문 무공으로 <code>*.less</code> 파일을 프로젝트 디렉토리 중 어디엔가 두면 Meteor가 자동으로 컴파일하고 클라이언트에 전송해서 페이지에 포함한다.</p>
+
+<p>그것뿐만 아니라 Meteor 서버 코드와 클라이언트 코드를 구분하는 방법도 제공한다. <code>Meteor.is_server</code>와 <code>Meteor.is_client</code> 플래그로 구분할 수 있다.</p>
+
+<p>다음은 서버코드와 클라이언트 코드를 구분하는 예제다. 브라우저의 Javascript 콘솔에 "Hi. I'm CLIENT"이라는 로그가 찍히고 Meteor 서버에는 "Hi. I'm SERVER"라고 출력된다.</p>
+
+<pre><code class="dfm javascript">// This function is available on both the client and the server.
+var greet = function(name) {
+    console.log("Hi. I'm " + name);
+}
+
+// Everything in here is only run on the server.
+if(Meteor.is_server) {
+    greet("SERVER");
+}
+
+// Everything in here is only run on the client.
+if(Meteor.is_client) {
+    greet("CLIENT");
+}
+</code></pre>
+
+<p>정말 간단하다. 클라이언트와 서버는 코드를 공유하기 쉬워서 재사용성을 극대화할 수 있고 개발 시간이 극적으로 줄어든다.</p>
+
+<h2>Project Structure</h2>
+
+<p>클라이언트와 서버랑 공유하지 않는 코드가 많으면 어떻게 할까. 가문의 독문(private) 알고리즘이 있으면 서버에서만 실행돼야 하고 절대 다른 사람이 보면 안 되니까 클라이언트에 전송되면 안 된다. Meteor는 서버와 클라이언트 코드를 구분하는 "특별" 디렉토리가 두 개 있다. <code>[project_root]/client/</code>와 <code>[project_root]/server/</code>가 그것이다. server 디렉토리에 있는 Javascript는 클라이언트에 전송되지 않고 서버에서만 실행된다. 반대로 client 디렉토리에 있는 코드는 클라이언트에서만 실행된다. <code>Meteor.is_client</code>와 <code>Meteor.is_server</code>를 안 써도 되기 때문에 매우 편리하다. 그냥 코드를 client 디렉토리에 넣으면 클라이언트 코드가 된다.</p>
+
+<p>파일이 어떻게 로드되는지 알려면 다른 것보다 일단 프로젝트 구조를 알아야 한다. 파일이 두 개 있을 때 어떤 파일이 먼저 로드될까? 다음과 같은 순서로 Javascript 파일을 로드한다.</p>
+
+<ol>
+<li><code>[project_root]/lib</code>의 파일이 먼저 로드된다. 라이브러리는 이 디렉토리에 넣는다.</li>
+<li>디렉토리 깊이로 파일을 정렬해서 로드한다. 디렉토리 깊이가 깊은 게 먼저 로드된다.</li>
+<li>파일은 알파벳 순으로 정렬한다.</li>
+<li><code>main.*</code> 파일은 마지막에 로드한다. 다른 스크립트와 라이브러리가 모두 로드되고 나서 로드돼야 하는 코드에 적합하다.</li>
+</ol>
+
+<p>Meteor에는 client/sever 코드를 구분하고 로드 순서를 관리하는데 몇 가지 중요한 디렉토리가 있다:</p>
+
+<ul>
+<li><code>[project_root]/lib/</code> - 이 디렉토리에 있는 파일은 client/server 코드가 시작하기 전에 로드된다.</li>
+<li><code>[project_root]/client/</code> - 이 디렉토리에 있는 파일은 클라이언트인 브라우저에만 전송되고 서버에서는 실행할 수 없다.</li>
+<li><code>[project_root]/server/</code> - 서버에서만 실행하고 클라이언트에 전송하지 않을 파일은 이 디렉토리에 넣는다.</li>
+<li><code>[project_root]/public/</code> - 정적 파일은 이 디렉토리에 넣는다. image.jpg를 이 디렉토리에 넣고 바로 html에서 사용한다.</li>
+<li><code>[project_root]/.meteor/</code> - Meteor는 사용하는 모듈이 무었인지 등등의 프로젝트 관리 정보를 여기에 둔다. <strong>개발자가 직접 이 디렉토리를 건드리지 않아도 된다</strong>.</li>
+</ul>
+
+<h2>Reactivity</h2>
+
+<p>Meteor는 데이터가 변경되면 화면에 다시 반영해야 하는 노력을 줄여 준다. "Reactive" 데이터 소스와 컨텍스트를 사용해서 구현한다. Reactive 컨텍스트는 Reactive 데이터 소스를 사용하고 필요하면 다시 실행되는 함수다. 처음에는 이 말을 받아들이는 게 쉽지 않을 것이다. 다음 예제가 명백하게 해줄 것이다.</p>
+
+<p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.</p>
+
+<pre><code class="dfm html">&lt;html&gt;
+  &lt;head&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {{&gt; cool_dude }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<pre><code class="dfm html">&lt;template name="cool_dude"&gt;
+  &lt;p class="important"&gt;{{ name }} sure is one cool dude!&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+
+<pre><code class="dfm javascript">// On the client:
+Template.cool_dude.name = function() {
+    return "Andrew Scala";
+};
+</code></pre>
+
+<p>페이지를 렌더링하면 "Andrew Scala sure is one cool dude!"라고 출력된다. 뭐, 참말이다.</p>
+
+<p>템플릿은 Reactive 컨텍스트다. 템플릿을 렌더링할 때 Reactive 데이터 소스를 사용하면 그 데이터 소스가 변경될 때 다시 렌더링한다. 클라이언트의 <code>Session</code> 객체는 Reactive 데이터 소스다. 클라이언트 <code>Session</code> 객체는 키-밸류 형태로 클라이언트에 정보를 저장한다. 그리고 페이지가 새로 고쳐지면 날아간다.</p>
+
+<p>Reactive 데이터 소스를 사용해서 템플릿 컨텍스트를 변경해보자:</p>
+
+<pre><code class="dfm javascript">// When the app starts,
+// associate the key "username" with the string "Andrew Scala"
+Meteor.startup(function() {
+    Session.set("username", "Andrew Scala");
+});
+
+Template.cool_dude.name = function() {
+    return Session.get("username");
+};
+</code></pre>
+
+<p>템플릿은 Session에 있는 <code>"username"</code>의 값을 가져다가 템플릿 변수 <code>name</code>에 넣는다. 이제 Reactive 컨텍스트에 Reactive 데이터 소스가 있는 상태가 됐다. Session의 <code>"username"</code> 값이 변하면 템플릿은 새 값을 이용해서 자동으로 다시 렌더링힌다. <code>"username"</code> 값을 바꿔보자:</p>
+
+<pre><code class="dfm javascript">Session.set("username", "Bill Murray");
+</code></pre>
+
+<p>이 함수를 호출하자마자(어디서 호출하던 위치는 상관없다) 페이지는 "Bill Murray sure is one cool dude!"로 변경된다. 뭐, 이 말도 참말이다.</p>
+
+<p>Reactive 컨텍스트와 데이터 소스가 궁금하면 Meteor의 <a href="http://docs.meteor.com/#reactivity">Reactivity 문서</a>를 봐라.</p>
+
+<h2>Publish/Subscribe</h2>
+
+<p><strong><em>Note:</em></strong> 프로젝트 루트 디렉토리에서 <code>$ meteor remove autopublish</code>를 꼭 실행해야 한다. Meteor는 기본적으로 모든 데이터를 Publish하는데 이 것은 사파의 사술이다(poor practice).</p>
+
+<p>서버는 클라이언트가 사용할 데이터를 Publish하고 클라이언트는 그 데이터를 Subscribe한다. 처음부터 서버가 데이터를 Publish하고 클라이언트가 Subscribe하는 관계를 이해하긴 어렵다. </p>
+
+<p>경험에 의하면 **</p>
+
+<p>채팅 프로그램이라면 클라이언트는 자기가 참여 중인 채널에서만 메시지를 받아야지 다른 체널의 메시지를 받지 않아야 한다. 사용자 정보도 마찬가지다.</p>
+
+<p>다음 예제는 좀 엉성하다. 클라이언트는 데이터베이스의 모든 메시지를 받는다:</p>
+
+<pre><code class="dfm javascript">var Messages = new Meteor.Collection("messages");
+
+if(Meteor.is_server) {
+    Meteor.publish("messages", function() {
+        return Messages.find({});
+    });
+}
+
+if(Meteor.is_client) {
+    Meteor.subscribe("messages");
+}
+</code></pre>
+
+<p>클라이언트는 이제 <code>Messages.find({})</code>를 호출해서 데이터베이스의 모든 메시지를 볼 수 있다. 저질(Bad).</p>
+
+<p>(역주, 클라이언트에서 실행하는 find()는 서버에 요청하지 않고 Minimongo 캐시에서 찾는다. 그러니까, 서버에서 Publish한 데이터는 자동으로 로컬에 캐시되고, 클라이언트에서 find()를 실행하면 그 캐시에서 찾는 구조다. )</p>
+
+<p>Subscribe할 때 파라미터를 명시하면 이 문제를 해결할 수 있다. 모든 메시지에 대해서 Subscribe하는 것이 아니라 실질적으로 필요한 것만 Subscribe한다. <code>"cool_people_channel"</code> 채널에 있는 메시지만 받게 고쳐보자:</p>
+
+<pre><code class="dfm javascript">var Messages = new Meteor.Collection("messages");
+
+if(Meteor.is_server) {
+    Meteor.publish("messages", function(channel_name) {
+        return Messages.find({channel: channel_name});
+    });
+}
+
+if(Meteor.is_client) {
+    Meteor.subscribe("messages", "cool_people_channel");
+}
+</code></pre>
+
+<p>이제 클라이언트가 연결하고 메시지를 가져올 때 <code>"cool_people_channel"</code> 채널에 있는 것만 가져온다.</p>
+
+<p><code>"cool_people_channel"</code> 채널에 있는 메시지만 보는 것으로는 충분하지 않다. 다른 채널의 메시지도 이용할 수 있어야 한다. Meteor의 "Reactivity" 이용하면 Session 값에 따라서 동적으로 Subscibe하도록 만들 수 있다.</p>
+
+<pre><code class="dfm javascript">var Messages = new Meteor.Collection("messages");
+
+if(Meteor.is_server) {
+    Meteor.publish("messages", function(channel_name) {
+        return Messages.find({channel: channel_name});
+    });
+}
+
+if(Meteor.is_client) {
+    Session.set("current_channel", "cool_people_channel");
+
+    Meteor.autosubscribe(function() {
+        Meteor.subscribe("messages", Session.get("current_channel"));
+    });
+}
+</code></pre>
+
+<p><a href="http://docs.meteor.com/#Meteor_autosubscribe">Meteor.autosubscribe</a>는 Reactive 컨텍스트다. 그래서 그 안에서 사용한 Reactive 데이터 소스가 변경되면 다시 실행된다. <code>"current_channel"</code>라는 Session 변수에 무슨 채널인지 저장하고 있고 그 값이 바뀌면 Subscription은 갱신되고 다른 메시지도 받게 된다. 만약 사용자가 "breakfast talk"라는 채널로 바꾸려면 <code>Session.set("current_channel", "breakfast_talk")</code>라고 실행해주면 된다. 그러면 autosubscribe의 Reactive 컨텍스트 함수가 다시 실행돼서 이제는 "breakfast_talk" 채널의 메시지를 보게 된다.</p>
+
+<p>클라이언트에 컬렉션을 전부 Publish해야 할 때도 있을 수도 있는데 정말 그게 필요한지 한 번 더 생각해보길 바란다. 그리고 컬렉션의 도큐먼트를 전부 전송하기보다 특정 필드만 전송하는 게 더 낫다.</p>
+
+<h2>Server Methods</h2>
+
+<p>클라이언트에서는 데이터베이스에 있는 데이터를 읽어오는 것 말고는 아무것도 하지 않는 것이 좋다. 그러면 클라이언트는 정보를 어떻게 저장해야 할지 궁금해진다. Meteor 서버의 <a href="http://docs.meteor.com/#methods_header">Method</a>를 사용해서 이 문제를 해결한다. 데이터를 수정하는 것과 같이 위험한 일은 꼭 Method를 이용한다. 서버에 함수를 정의하고 나서 클라이언트에서 그 함수를 호출해서 리턴 값을 받는다. 이게 핵심 아이디어다. 그러면 클라이언트에서는 그 함수가 어떻게 구현됐는지 알 수 없고 다른 방법으로 데이터를 수정하지도 않는다. 그리고 서버는 잘 동작할 것이다.</p>
+
+<p>서버 코드에 <code>create_user</code>라는 Method를 만든다. 이 Method는 데이터베이스에 사용자를 추가하는 Method이고 사용자 이름을 아규먼트로 받는다. 사용자를 추가하고 나중에 도큐먼트를 가져올 수 있도록 도큐먼트 ID를 반환한다. </p>
+
+<pre><code class="dfm javascript">if(Meteor.is_server) {
+    Meteor.methods({
+        create_user: function(username) {
+            console.log("CREATING USER");
+            var USER_id = Users.insert({name: username});
+            return user_id;
+        },
+    });
+}
+
+// Remember, the client's browser only ever sees the code below:
+if(Meteor.is_client) {
+    var username = "Andrew Scala";
+
+    Meteor.call("create_user", username, function(error, user_id) {
+        Session.set("user_id", user_id);
+    });
+}
+</code></pre>
+
+<p>이 예제에서, <code>user_id</code>를 받아서 클라이언트 Session에 넣는다. 그러면 user_id를 사용하는 템플릿은 자동으로 업데이트된다.</p>
+
+<h2>Protecting your data</h2>
+
+<p>클라이언트 앱에서 Javascript 콘솔을 열고 <strong>데이터베이스 쿼리를 실행할 수 있다</strong>. 이것은 정말 구리다. Meteor 앱에 접속해서 콘솔을 열고 <code>Users.remove({})</code>라고 실행하면 사용자 데이터가 전부 날아간다.</p>
+
+<p>언젠가는 Meteor가 뭔가 해결책을 제시하겠지만, 지금은 그렇다. 다음은 Meteor의 <a href="http://madewith.meteor.com">madewith</a> 사이트의 [소스][<a href='https://github.com/Meteor/madewith]에서'>https://github.com/Meteor/madewith]에서</a> 발췌한 것이다. 이 코드는 클라이언트에서 insert/update/remote 할 수 없게 한다. 다음 코드를 서버 쪽 아무 데나 넣으면 된다:</p>
+
+<pre><code class="dfm javascript">// Relies on underscore.js. In your project directory:
+// $ meteor add underscore
+Meteor.startup(function() {
+    var collections = ['collection_name_1', 'collection_name_2'];
+
+    _.each(collections, function(collection) {
+        _.each(['insert', 'update', 'remove'], function(method) {
+            Meteor.default_server.method_handlers['/' + collection + '/' + method] = function() {};
+        });
+    });
+});
+</code></pre>
+
+<h2>Stay Tuned</h2>
+
+<p>이것으로 Meteor 앱을 만들 준비가 다 됐을까? 기다려라. 두 번째 글, Meteor 앱을 완성하는 방법에 대한 비급을 기대하시라.</p>
+
+<p>이 글이 도움됐는지 알려주면 감사하겠다.</p>
+
+<p>Cheers,</p>
+
+<p>Andrew Scala</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Aug 03 2012</span>&raquo;<a href="/articles/2012/meteor-for-windows.html">Meteor: Windows에 설치하기</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2012/meteor-fundametals-and-best-practices.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" data-num-posts="1"></div>
+  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}</script></body></html>
