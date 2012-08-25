@@ -1,5 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-08-20T21:36:23.988Z</updated><id>http://dogfeet.github.com</id><author><name>changwoo-park.html.md</name><email>pismute@gmail.com</email></author><author><name>sean-lee.html.md</name><email>sean@weaveus.com</email></author><author><name>yongjae-choi.html.md</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ Meteor: Learn Meteor Fundamentals and Best Practices ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" /><updated>2012-08-18T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-08-25T06:59:24.613Z</updated><id>http://dogfeet.github.com</id><author><name>changwoo-park.html.md</name><email>pismute@gmail.com</email></author><author><name>sean-lee.html.md</name><email>sean@weaveus.com</email></author><author><name>yongjae-choi.html.md</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ Git: 델타와 스냅샷 ]]></title><link href="http://dogfeet.github.com/articles/2012/git-delta.html" /><updated>2012-08-24T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-delta.html</id><content type="html"><![CDATA[
+<p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg).</p>
+
+<p><img src="http://dogfeet.github.com/articles/2012/git-delta/crime-and-sin.jpeg" alt="" title="" /></p>
+
+<p>이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 Merge/Rebase 명령어가 실제로는 델타를 구해서 적용하는 것을 설명하고자 한다.</p>
+
+<h2>델타</h2>
+
+<p>옛날 옛적에 리눅스 커널을 직접 빌드해야 했던 시절, 돈이 없어 샀던 싸구려 하드웨어 덕에 patch 파일을 받아서 직접 패치해야 했었다. diff와 patch 의 의미, 사용하는 이유 등을 이해한 것은 나중이었지만 내가 처음 접한 것은 그때였다.</p>
+
+<p>과거에는 오픈소스 프로젝트를 <a href="http://kldp.org/node/28938">diff와 patch</a>로 개발했다. 코드를 수정하고 diff 프로그램으로 델타를 만들어서 메일로 보내면 관리자는 그 델타를 받아서 patch 프로그램으로 메인 코드에 적용했다. 비교할 수는 없지만, 선구자들은 우리가 git과 github을 통해서 하는 일들을 <a href="http://kldp.org/node/28938">diff와 patch</a>, 메일, 웹, ftp 같은 것으로 해냈다.</p>
+
+<p>리누스 토발즈는 오랫동안 그렇게 일해 왔고 그 경험을 살려 Git을 만들었다. 이제는 Git(Mercurial, SVN, 등등) 덕에 많은 것이 자동화됐다.</p>
+
+<p>코드를 수정해서 github나 어딘가에 올리고 알려주면 그대로 가져가 적용할 수 있다. 메일로 보내는 방법도 아직 유효하고 git-am 같이 mailbox를 이용하는 Command가 내장돼 있어 더욱 편리하다.</p>
+
+<p>다음 그림은 <a href="http://marklodato.github.com/visual-git-guide/index-ko.html">Visual Git Guide</a>의 그림으로 <code>git diff</code> 명령을 설명하는 그림이다. VCS 없이 델타를 구할 생각을 하면 정말 끔찍하다. VCS 없이 코드를 공유했던 사람들은 정말 존경스럽다.</p>
+
+<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff" title="" /><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+
+<h2>Git의 저장 방식</h2>
+
+<p>히스토리는 개념적으로 스냅샷의 연속이자 델타의 연속이기도 하다. Git은 각 시점의 스냅샷을 저장하기도 하지만 그 스냅샷 사이의 델타를 저장하기도 한다.</p>
+
+<p>커밋을 하면 그 시점의 스냅샷이 저장되는 것이고 그 커밋과 부모의 커밋을 비교(diff)하면 델타를 얻을 수 있다. 커밋은 영구적으로 저장하는 것이기 때문에 언제든지 Checkout해서 그 시점의 스냅샷을 얻을 수 있고 비교해서(diff) 델타를 얻을 수도 있다.</p>
+
+<p>우리가 커밋을 하면 Git은 기본적으로 스냅샷을 저장한다. 이 말의 뜻은 snapshot.txt 파일을 처음 커밋하면 rev1에 snapshot.txt 파일이 저장된다. 그리고 그 파일을 수정해서 다시 커밋하면 rev2가 저장된다. 이때 rev2에 수정한 파일이 통째로 저장된다. <code>.git</code> 저장소에 rev1 때의 snapshot.txt 파일과 rev2 때의 snapshot.txt 파일이 통째로 저장된다.</p>
+
+<p>이것을 그림으로 표현하면 다음과 같다:</p>
+
+<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot" title="" /></p>
+
+<p>이 방식으로 저장하면 1k 짜리를 한 글자씩 고쳐서 10번 수정하면 10k가 된다. Git은 처음에는 성능과 편리성을 위해 이 방식으로 저장하고 적절한 시점에 GC(Garbage Collection)가 실행되면 다음과 같이 저장한다:</p>
+
+<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta" title="" /></p>
+
+<p>마지막 버전의 파일 하나만 통째로 저장하고 이전 버전들은 델타(diff 파일)를 저장한다. 이 그림에서 rev6를 요구하면 rev6의 파일을 그대로 반환한다. 하지만, rev4를 요구하면 rev6 파일에 rev5, rev4의 델타를 적용해서 반환한다.</p>
+
+<p>마지막 버전의 파일이 스냅샷인 이유는 우리가 질의하는 파일은 대부분 마지막 버전의 파일이기 때문이다. 평소에는 델타를 적용할 필요가 없어서 빠르다. Git을 정말 꼼꼼하게 설계했음을 보여주는 대목이다.</p>
+
+<p>이렇게 저장하기 때문에 1k 짜리를 한 글자씩 10번 수정해서 커밋해도 거의 1k이다. GC가 수행되면 이렇게 델타로 저장할 뿐만 아니라 gzip으로 압축하기 때문에 실제로 저장하는 용량은 더욱 적다. Git은 이런 기법을 통해서 '<a href="http://pismute.github.com/whygitisbetter">저장소 크기가 가장 작다</a>'라고 주장한다.</p>
+
+<p>우리가 종종 Git과 비교하는 Mercurial도 델타로 저장한다. 다음 그림은 Mercurial이 저장하는 방식이다:</p>
+
+<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta" title="" /></p>
+
+<p>Mercurial은 처음에 스냅샷을 저장하고 그다음 버전부터는 델타를 저장한다. 그래서 최신 버전의 파일이 요구하면 첫 스냅샷 파일과 최근까지의 델타를 적용해서 반환한다<a href="http://pycon-hg-git.heroku.com/">2</a>.</p>
+
+<h2>델타의 적용: Merge, Rebase, Cherry-pick, ...</h2>
+
+<p>Git의 그 수 많은 명령어는 우리가 과거에 수동으로 했던 diff &amp; patch 작업을 자동/반자동으로 해주는 것이라고 이해할 수 있다.</p>
+
+<p><strong>Merge</strong>:</p>
+
+<p>Branch를 만들면 Merge Base를 자동으로 기록했다가 나중에 Merge를 하면 두 스냅샷을 기준으로 diff 프로그램을 이용해서 델타를 만들고 한쪽 브랜치에 patch 프로그램으로 적용하는 것과 같다. Merge는 이런 과정이고 Git의 Merge는 그동안 수동으로 했었어야 했던 일을 자동으로 해준다.</p>
+
+<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge" title="" /><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+
+<p>SVN의 Merge도 결국 이런 것인데 SVN의 경우는 Merge Base를 자동으로 기록해주지 않아서 사람이 수동으로 메모했다가 Merge해야 하고 2-way Merge와 3-way Merge의 차이도 있다.</p>
+
+<p><strong>Rebase</strong>:</p>
+
+<p>Rebase는 Merge와 비슷하다. 델타를 만들어 적용하는 것은 같지만 히스토리를 구성하는 게 다르다. Merge 커밋을 만드는 것이 아니라 한쪽 브랜치를 <code>base</code>로 만든다. 커밋 순서를 배열한다고 생각하면 된다.</p>
+
+<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase" title="" /><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+
+<p><strong>Cherry-pick</strong>:</p>
+
+<p>Cherry-pick은 특정 커밋과 그 커밋의 부모와의 델타를 구해서(그러니까 해당 커밋의 델타만) 현 브랜치에 적용하는 것이다. 고른 커밋 하나에 대해서면 Rebase하는 것이다:</p>
+
+<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick" title="" /><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>]]>
+</content></entry><entry><title><![CDATA[ Meteor: Learn Meteor Fundamentals and Best Practices ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" /><updated>2012-08-18T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html</id><content type="html"><![CDATA[
 <p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.</p>
 
 <p><img src="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt="" title="" /> <strong>Andrew Scala</strong></p>
@@ -371,6 +443,10 @@ Meteor.startup(function() {
 
 <p><img src="http://dogfeet.github.com/articles/2012/meteor/meteor.jpg" alt="" title="" /></p>
 
+<p><strong>UPDATE</strong>:</p>
+
+<p>Window용 Meteor를 배포하는 페이지가 나타났어요. <a href="http://win.meteor.com/"><a href='http://win.meteor.com/'>http://win.meteor.com/</a></a></p>
+
 <h2>Meteor</h2>
 
 <p>Meteor가 무엇인지는 <a href="https://twitter.com/rkjun">@rkjun</a>님의 '<a href="http://rkjun.wordpress.com/2012/06/04/meteor-js-preview-0-3-6-intro/">자바스크립트기반 웹플랫폼 Meteor.js 란 무엇인가</a>'읽어보면 좋다.</p>
@@ -391,7 +467,7 @@ Meteor.startup(function() {
 
 <p><a href="https://github.com/meteor/meteor/pull/162">Windows support for Meteor</a></p>
 
-<p><a href="https://dl.dropbox.com/s/8g6o0edqhqmzly1/Meteor.msi?dl=1">meteor.msi</a> 다운 로드해서 설치하고 path만 걸어 주면 된다. node도 들어 있기 때문에 기존에 사용하던 node와 엉키지 않도록 Path를 잘 걸어준다. 'c:\Meteor'에 설치했으면 다음과 같이 설정한다:</p>
+<p><a href="http://win.meteor.com/">meteor.msi</a> 다운 로드해서 설치하고 path만 걸어 주면 된다. node도 들어 있기 때문에 기존에 사용하던 node와 엉키지 않도록 Path를 잘 걸어준다. 'c:\Meteor'에 설치했으면 다음과 같이 설정한다:</p>
 
 <pre><code>set PATH=c:\Meteor;c:\Meteor\bin;%PATH%
 </code></pre>
@@ -912,96 +988,4 @@ java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*
 <p>문제가 생겨서 <code>sbt</code>가 실행이 안되면 <a href="https://github.com/harrah/xsbt/wiki/Setup-Notes">설치 노트</a>를 확인하라. 터미널 엔코딩, HTTP 프록시, JVM 옵션 등에 대해 나와 있다.</p>
 
 <p>꼼꼼하게 만들어진 쉘 스크립트가 있어서 이 스크립트로 sbt를 설치할 수 있다: <a href='https://github.com/paulp/sbt-extras'>https://github.com/paulp/sbt-extras</a> (루트 디렉토리에 있는 sbt 파일). 이 스크립트로 설치하면 패키지로 설치하는 것처럼 원하는 버전의 sbt를 설치할 수 있다. 설치할 sbt의 버전을 선택한다든지 하는 유용한 옵션이 있다.</p>]]>
-</content></entry><entry><title><![CDATA[ nodejs에서의 멍키 패칭 ]]></title><link href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" /><updated>2012-06-23T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html</id><content type="html"><![CDATA[
-<p>JavaScript에서 멍키 패칭이 가능할까? 'require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch" title="" /></p>
-
-<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
-
-<h2>require</h2>
-
-<p>소스에서 require를 사용할 수 있는 이유는 다음과 같은 코드로 wrapper되기 때문이다. 다음 코드는 node/src/node.js에 있는(node 소스) 코드다:</p>
-
-<pre><code>NativeModule.wrapper = [
-    '(function (exports, require, module, __filename, __dirname) { ',
-    '\n});'
-];
-</code></pre>
-
-<p>소스에서 exports, require, module, __filename, __dirname 변수를 사용할 수 있는 이유는 우리가 구현하는 모듈이 이 wrapper의 바디에 해당되기 때문이다.</p>
-
-<p>모든 모듈은 Module 객체이다. <code>require('fs')</code>라고 호출하면 fs.js를 로드해서 Module 객체 인스턴스로 만들어서 반환한다. <code>node/lib/module.js</code> 코드를 보면 모든 모듈은 Module 객체로 만드는 부분이 있다.</p>
-
-<pre><code>var module = new Module(filename, parent);
-</code></pre>
-
-<p>require는 module 객체 자체를 반환하는 것이 아니라 <code>module.exports</code>를 반환한다. 그래서 require로 Module 객체에 접근할 수 없다. </p>
-
-<p>module 객체에는 해당 모듈에 필요한 정보를 담고 있으면서 _cached 프로퍼티에 캐시된다. 실제 module.js 소스를 보자:</p>
-
-<pre><code>var cachedModule = Module._cache[filename];
-if (cachedModule) {
-    return cachedModule.exports;
-}
-</code></pre>
-
-<p>require가 호출되면 먼저 _cache에 등록는지 확인하고 캐시한 것을 반환한다. 즉, 해당 모듈 객체는 딱 하나만 만든다. 이 것은 API 문서에도 잘 나와 있다.</p>
-
-<h3>Module.prototype.require</h3>
-
-<p>그럼 require는 어딨는 걸까? 뭘 고쳐야 require 호출을 가로챌 수 있을까? 우리가 호출하는 require는 다음과 같은 위치에 있다:</p>
-
-<pre><code>Module.prototype.require = function(path) {
-  return Module._load(path, this);
-};
-</code></pre>
-
-<p>메인 모듈(실행하는 스크립트)뿐만 아니라 모든 모듈 객체의 prototype에 있는 require를 호출한다. 그리고 저걸 바꿔주는 모듈을 만들면 내가 만든 require 함수가 호출되도록 할 수 있다.</p>
-
-<h2>멍키 패칭</h2>
-
-<p>require 함수를 바꾸는 mp.js 모듈을 만든다:</p>
-
-<pre><code>var Module = require('module');
-
-// orig 함수를 두는 위치는 아무 의미없다--;
-// 그냥 prototype._require__에 넣은 것이다. 실제로 사용하려면 문제가 될 수 있다.
-Module.prototype.__require__ = Module.prototype.require;
-Module.prototype.require = function fevent_require(id) {
-
-    //여기에 멍키 패칭 코드를 넣을 수 있다.
-    //fs나 net 모듈 같은 걸 수정할 수 있다.
-    console.log('called require');
-
-    return this.__require__(id);
-}
-</code></pre>
-
-<p>mp.js 모듈을 사용해보자:</p>
-
-<pre><code>require('fs');
-
-require('./mp');
-
-require('fs'); //called require
-require('net'); //called require
-</code></pre>
-
-<p>잘된다.</p>
-
-<p>그런데 여기서 한가지 의문이 든다. Module.prototype.require를 수정했지만 <code>(function (exports, require, module, __filename, __dirname)</code>라는 wrapper를 통해 파라미터로 넘겨진 require의 레퍼런스는 그대로 인데도 잘 수행된다.</p>
-
-<p>이 wrapper를 통해 넘겨진 함수는 다음과 같다:</p>
-
-<pre><code>var self = this;
-//....
-function require(path) {
-    return self.require(path);
-}
-</code></pre>
-
-<p>그래서 해당 모듈의 require 함수가 호출되는 것이기 때문에 잘된다.</p>
-
-<p>require 함수를 바꿀 수 있으니 이제 원하는 모듈을 멍키 패칭할 수 있다. 이 방법의 안정성은 좀 더 다듬어야 하고--; 멍키 패칭이 필요한 이유도 아직 없지만--;; 가능하긴 하다는 것을 알아 보았다.</p>]]>
 </content></entry></feed>
