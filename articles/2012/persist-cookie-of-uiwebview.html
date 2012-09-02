@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - UIWebView 쿠기 유지하기</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Sean Lee" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script><article id="post" typeof="sioc:post" about="/articles/2012/persist-cookie-of-uiwebview.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">UIWebView 쿠기 유지하기</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Sean Lee</a></span>
+ | <span property="dc:created">2012 Aug 27</span>
+ | <a href="/site/tagmap.html#uiwebview" class="tag">uiwebview</a> <a href="/site/tagmap.html#ios" class="tag">ios</a> <a href="/site/tagmap.html#cookie" class="tag">cookie</a> <a href="/site/tagmap.html#쿠키" class="tag">쿠키</a> | <span><a href="/articles/2012/persist-cookie-of-uiwebview.html#disqus_thread" data-disqus-identifier="/articles/2012/persist-cookie-of-uiwebview.html"></a></span>
+<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+  margin-left: 30px;
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.</p>
+
+<p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.</p>
+
+<p><img src="http://farm1.staticflickr.com/182/403856634_db35669863.jpg" width="500" height="375" alt="cookies do not always wish to remain stacked."><br /><em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em></p>
+
+<h2>애플리케이션 종료시 쿠키 저장</h2>
+
+<p>우선 애플리케이션이 종료되는 이벤트를 잡아야 한다. 현재 멀티태스킹이 지원되는 SDK를 사용하여 애플리케이션을 만든 경우 Application Delegate의 아래 메소드가 호출된다.</p>
+
+<pre><code>- (void)applicationDidEnterBackground:(UIApplication *)application
+</code></pre>
+
+<p>멀티태스킹이 지원되기 이전 버전의 SDK나 멀티태스킹을 사용하지 않도록 설정한 애플리케이션은 다음고 같은 메소드에서 종료 이벤트를 잡을 수 있다.</p>
+
+<pre><code>- (void)applicationWillTerminate:(UIApplication *)application
+</code></pre>
+
+<p>쿠키 정보를 저장할 때 UIWebView 인스턴스는 필요 없다 [<a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSHTTPCookieStorage_Class/Reference/Reference.html">NSHTTPCookieStorage</a> sharedHTTPCookieStorage] 메소드를 호출하면<br />애플리케이션에게 할당된 쿠키 저장소를 반환받는다. 즉 시스템 브라우저인 Safari나 다른 애플리케이션과 공유하지 않는 애플리케이션만의 쿠키 저장소이다. (iOS는 쿠키를 공유하지 않지만 Mac OS는 쿠키를 공유한다)</p>
+
+<pre><code>{
+    NSLog(@"%@", @"PersisteWebCookie");
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
+    [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"MySavedCookies"];
+    NSLog(@"%@", @"PersisteWebCookie Saved");
+}
+</code></pre>
+
+<p>저장소에 현재 저장된 쿠키를 배열로(NSArray) 받아와서 NSUserDefaults에 저장할 수 있도록 NSKeyedArchiver를 통해 NSData 인스턴스로 변환한다. 키 값은 <strong>MySavedCookies</strong>를 사용하여 NSUserDefaults에 저장해둔다.</p>
+
+<p>일반적으로 쿠키는 브라우저나 애플리케이션이 종료되면(iOS의 경우 홈버튼을 더블탭 하여 마이너스 아이콘으로 종료시키면) 쿠키 정보가 삭제된다. 하지만 위와 같이 저장한 쿠키 정보는 애플리케이션을 다시 실행시켰을 때 복구할 수 있다.</p>
+
+<h2>애플리케이션으로 돌아왔을 때</h2>
+
+<p>애플리케이션이 백그라운드에서 돌아오거나 다시 실행되는 이벤트는 보통 다음 Application Delegate의 메소드에서 처리한다.</p>
+
+<pre><code>- (BOOL)application:(UIApplication *)application 
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+</code></pre>
+
+<p>쿠키를 다시 되살리는 방법은 저장하는 순서의 반대로 한다. 키 값을 <strong>MySavedCookies</strong>로 하여 NSUserDefaults로부터 데이터를 꺼내오고 배열로 만든 후 하나씩 다시 쿠키 저장소에 저장한다.</p>
+
+<pre><code>{
+    NSLog(@"%@", @"PersisteWebCookie");
+    NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:@"MySavedCookies"];
+    if([cookiesdata length]) {
+        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
+        NSHTTPCookie *cookie;
+
+        for (cookie in cookies) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        }
+    }
+    NSLog(@"%@", @"PersisteWebCookie Restored");
+}
+</code></pre></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jan 13 2011</span>&raquo;<a href="/articles/2011/1294884600.html">iOS 4.3 - 새로운 기능 (Beta)</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2012/persist-cookie-of-uiwebview.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html" data-num-posts="1"></div>
+  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}</script></body></html>
