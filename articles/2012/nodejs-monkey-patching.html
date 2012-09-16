@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - nodejs에서의 멍키 패칭</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,102 +15,105 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-monkey-patching.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs에서의 멍키 패칭</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-monkey-patching.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs에서의 멍키 패칭</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 24</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#monkey patching" class="tag">Monkey Patching</a> | <span><a href="/articles/2012/nodejs-monkey-patching.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-monkey-patching.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>JavaScript에서 멍키 패칭이 가능할까? 'require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다.</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/nodejs-monkey-patching.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>JavaScript에서 멍키 패칭이 가능할까? 'require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다.
 
-<p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch" title="" /></p>
+</p>
+<p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch">
 
-<p>(from <a href='http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html'>http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
+</p>
+<p>(from <a href="http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html">http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)
 
+</p>
 <h2>require</h2>
+<p>소스에서 require를 사용할 수 있는 이유는 다음과 같은 코드로 wrapper되기 때문이다. 다음 코드는 node/src/node.js에 있는(node 소스) 코드다:
 
-<p>소스에서 require를 사용할 수 있는 이유는 다음과 같은 코드로 wrapper되기 때문이다. 다음 코드는 node/src/node.js에 있는(node 소스) 코드다:</p>
-
+</p>
 <pre><code>NativeModule.wrapper = [
-    '(function (exports, require, module, __filename, __dirname) { ',
-    '\n});'
-];
-</code></pre>
+    <span class="comment">'(function (exports, require, module, __filename, __dirname) { ',</span>
+    <span class="comment">'\n});'</span>
+];</code></pre>
+<p>소스에서 exports, require, module, <strong>filename, </strong>dirname 변수를 사용할 수 있는 이유는 우리가 구현하는 모듈이 이 wrapper의 바디에 해당되기 때문이다.
 
-<p>소스에서 exports, require, module, __filename, __dirname 변수를 사용할 수 있는 이유는 우리가 구현하는 모듈이 이 wrapper의 바디에 해당되기 때문이다.</p>
+</p>
+<p>모든 모듈은 Module 객체이다. <code>require(&#39;fs&#39;)</code>라고 호출하면 fs.js를 로드해서 Module 객체 인스턴스로 만들어서 반환한다. <code>node/lib/module.js</code> 코드를 보면 모든 모듈은 Module 객체로 만드는 부분이 있다.
 
-<p>모든 모듈은 Module 객체이다. <code>require('fs')</code>라고 호출하면 fs.js를 로드해서 Module 객체 인스턴스로 만들어서 반환한다. <code>node/lib/module.js</code> 코드를 보면 모든 모듈은 Module 객체로 만드는 부분이 있다.</p>
+</p>
+<pre><code><span class="keyword">var</span> module = <span class="keyword">new</span> Module(filename, <span class="keyword">parent</span>);</code></pre>
+<p>require는 module 객체 자체를 반환하는 것이 아니라 <code>module.exports</code>를 반환한다. 그래서 require로 Module 객체에 접근할 수 없다. 
 
-<pre><code>var module = new Module(filename, parent);
-</code></pre>
+</p>
+<p>module 객체에는 해당 모듈에 필요한 정보를 담고 있으면서 _cached 프로퍼티에 캐시된다. 실제 module.js 소스를 보자:
 
-<p>require는 module 객체 자체를 반환하는 것이 아니라 <code>module.exports</code>를 반환한다. 그래서 require로 Module 객체에 접근할 수 없다. </p>
+</p>
+<pre><code>var cached<span class="variable">Module</span> = <span class="variable">Module</span>.<span class="variable">_</span>cache[filename];
+<span class="function"><span class="title">if</span> <span class="params">(cached<span class="variable">Module</span>)</span> {
+    <span class="title">return</span> <span class="title">cachedModule</span>.<span class="title">exports</span>;
+}</code></pre>
+<p>require가 호출되면 먼저 _cache에 등록는지 확인하고 캐시한 것을 반환한다. 즉, 해당 모듈 객체는 딱 하나만 만든다. 이 것은 API 문서에도 잘 나와 있다.
 
-<p>module 객체에는 해당 모듈에 필요한 정보를 담고 있으면서 _cached 프로퍼티에 캐시된다. 실제 module.js 소스를 보자:</p>
-
-<pre><code>var cachedModule = Module._cache[filename];
-if (cachedModule) {
-    return cachedModule.exports;
-}
-</code></pre>
-
-<p>require가 호출되면 먼저 _cache에 등록는지 확인하고 캐시한 것을 반환한다. 즉, 해당 모듈 객체는 딱 하나만 만든다. 이 것은 API 문서에도 잘 나와 있다.</p>
-
+</p>
 <h3>Module.prototype.require</h3>
+<p>그럼 require는 어딨는 걸까? 뭘 고쳐야 require 호출을 가로챌 수 있을까? 우리가 호출하는 require는 다음과 같은 위치에 있다:
 
-<p>그럼 require는 어딨는 걸까? 뭘 고쳐야 require 호출을 가로챌 수 있을까? 우리가 호출하는 require는 다음과 같은 위치에 있다:</p>
+</p>
+<pre><code>Module<span class="variable">.prototype</span><span class="variable">.require</span> = function(path) {
+  <span class="keyword">return</span> Module<span class="variable">._load</span>(path, <span class="keyword">this</span>);
+};</code></pre>
+<p>메인 모듈(실행하는 스크립트)뿐만 아니라 모든 모듈 객체의 prototype에 있는 require를 호출한다. 그리고 저걸 바꿔주는 모듈을 만들면 내가 만든 require 함수가 호출되도록 할 수 있다.
 
-<pre><code>Module.prototype.require = function(path) {
-  return Module._load(path, this);
-};
-</code></pre>
-
-<p>메인 모듈(실행하는 스크립트)뿐만 아니라 모든 모듈 객체의 prototype에 있는 require를 호출한다. 그리고 저걸 바꿔주는 모듈을 만들면 내가 만든 require 함수가 호출되도록 할 수 있다.</p>
-
+</p>
 <h2>멍키 패칭</h2>
+<p>require 함수를 바꾸는 mp.js 모듈을 만든다:
 
-<p>require 함수를 바꾸는 mp.js 모듈을 만든다:</p>
+</p>
+<pre><code><span class="keyword">var</span> Module = <span class="keyword">require</span>(<span class="string">'module'</span>);
 
-<pre><code>var Module = require('module');
+<span class="comment">// orig 함수를 두는 위치는 아무 의미없다--;</span>
+<span class="comment">// 그냥 prototype._require__에 넣은 것이다. 실제로 사용하려면 문제가 될 수 있다.</span>
+Module.prototype.__require__ = Module.prototype.<span class="keyword">require</span>;
+Module.prototype.<span class="keyword">require</span> = <span class="function"><span class="keyword">function</span> <span class="title">fevent_require</span><span class="params">(id)</span> {</span>
 
-// orig 함수를 두는 위치는 아무 의미없다--;
-// 그냥 prototype._require__에 넣은 것이다. 실제로 사용하려면 문제가 될 수 있다.
-Module.prototype.__require__ = Module.prototype.require;
-Module.prototype.require = function fevent_require(id) {
+    <span class="comment">//여기에 멍키 패칭 코드를 넣을 수 있다.</span>
+    <span class="comment">//fs나 net 모듈 같은 걸 수정할 수 있다.</span>
+    console.log(<span class="string">'called require'</span>);
 
-    //여기에 멍키 패칭 코드를 넣을 수 있다.
-    //fs나 net 모듈 같은 걸 수정할 수 있다.
-    console.log('called require');
+    <span class="keyword">return</span> <span class="keyword">this</span>.__require__(id);
+}</code></pre>
+<p>mp.js 모듈을 사용해보자:
 
-    return this.__require__(id);
-}
-</code></pre>
+</p>
+<pre><code><span class="keyword">require</span>(<span class="string">'fs'</span>);
 
-<p>mp.js 모듈을 사용해보자:</p>
+<span class="keyword">require</span>(<span class="string">'./mp'</span>);
 
-<pre><code>require('fs');
+<span class="keyword">require</span>(<span class="string">'fs'</span>); <span class="regexp">//called</span> <span class="keyword">require</span>
+<span class="keyword">require</span>(<span class="string">'net'</span>); <span class="regexp">//called</span> <span class="keyword">require</span></code></pre>
+<p>잘된다.
 
-require('./mp');
+</p>
+<p>그런데 여기서 한가지 의문이 든다. Module.prototype.require를 수정했지만 <code>(function (exports, require, module, __filename, __dirname) </code>라는 wrapper를 통해 파라미터로 넘겨진 require의 레퍼런스는 그대로 인데도 잘 수행된다.
 
-require('fs'); //called require
-require('net'); //called require
-</code></pre>
+</p>
+<p>이 wrapper를 통해 넘겨진 함수는 다음과 같다:
 
-<p>잘된다.</p>
+</p>
+<pre><code><span class="keyword">var</span> <span class="keyword">self</span> = <span class="keyword">this</span>;
+<span class="comment">//....</span>
+<span class="function"><span class="keyword">function</span> <span class="title">require</span><span class="params">(path)</span> {</span>
+    <span class="keyword">return</span> <span class="keyword">self</span>.<span class="keyword">require</span>(path);
+}</code></pre>
+<p>그래서 해당 모듈의 require 함수가 호출되는 것이기 때문에 잘된다.
 
-<p>그런데 여기서 한가지 의문이 든다. Module.prototype.require를 수정했지만 <code>(function (exports, require, module, __filename, __dirname)</code>라는 wrapper를 통해 파라미터로 넘겨진 require의 레퍼런스는 그대로 인데도 잘 수행된다.</p>
+</p>
+<p>require 함수를 바꿀 수 있으니 이제 원하는 모듈을 멍키 패칭할 수 있다. 이 방법의 안정성은 좀 더 다듬어야 하고--; 멍키 패칭이 필요한 이유도 아직 없지만--;; 가능하긴 하다는 것을 알아 보았다.
 
-<p>이 wrapper를 통해 넘겨진 함수는 다음과 같다:</p>
-
-<pre><code>var self = this;
-//....
-function require(path) {
-    return self.require(path);
-}
-</code></pre>
-
-<p>그래서 해당 모듈의 require 함수가 호출되는 것이기 때문에 잘된다.</p>
-
-<p>require 함수를 바꿀 수 있으니 이제 원하는 모듈을 멍키 패칭할 수 있다. 이 방법의 안정성은 좀 더 다듬어야 하고--; 멍키 패칭이 필요한 이유도 아직 없지만--;; 가능하긴 하다는 것을 알아 보았다.</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jun 17 2012</span>&raquo;<a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a></li><li><span>Jun 10 2012</span>&raquo;<a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a></li><li><span>May 13 2012</span>&raquo;<a href="/articles/2012/nodejs-modules.html">nodejs: modules</a></li><li><span>May 05 2012</span>&raquo;<a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a></li><li><span>Apr 15 2012</span>&raquo;<a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a></li><li><span>Feb 25 2012</span>&raquo;<a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a></li><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Jul 05 2011</span>&raquo;<a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jun 17 2012</span>&raquo;<a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a></li><li><span>Jun 10 2012</span>&raquo;<a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a></li><li><span>May 13 2012</span>&raquo;<a href="/articles/2012/nodejs-modules.html">nodejs: modules</a></li><li><span>May 05 2012</span>&raquo;<a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a></li><li><span>Apr 15 2012</span>&raquo;<a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a></li><li><span>Feb 25 2012</span>&raquo;<a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a></li><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Jul 05 2011</span>&raquo;<a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/nodejs-monkey-patching.html';

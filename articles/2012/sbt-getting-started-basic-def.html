@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - sbt: Getting Started Guide: .sbt Build Definition</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,183 +15,207 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-basic-def.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: .sbt Build Definition</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-basic-def.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: .sbt Build Definition</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 30</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-basic-def.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-basic-def.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. 
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt">
 
+</p>
 <h2><code>.sbt</code> Build Definition</h2>
+<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt "원리"와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.
 
-<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt "원리"와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.</p>
-
+</p>
 <h3><code>.sbt</code> vs. <code>.scala</code> Definition</h3>
+<p>sbt 빌드는 base 디렉토리에 <code>.sbt</code> 파일을 만들고 그 파일에 정의한다. <code>.scala</code> 파일은 base 디렉토리 하위에 <code>project</code> 디렉토리에 만들고 거기에 넣는다.
 
-<p>sbt 빌드는 base 디렉토리에 <code>.sbt</code> 파일을 만들고 그 파일에 정의한다. <code>.scala</code> 파일은 base 디렉토리 하위에 <code>project</code> 디렉토리에 만들고 거기에 넣는다.</p>
+</p>
+<p>두 파일 중 아무거나 하나만 만들어 사용할 수도 있고 함께 혼용해도 된다. 그래도 <code>.sbt</code> 파일로 할 수 없는 일만 <code>.scala</code> 파일로 구현하고 대부분은 <code>.sbt</code> 파일을 사용하는 것이 바람직하다:
 
-<p>두 파일 중 아무거나 하나만 만들어 사용할 수도 있고 함께 혼용해도 된다. 그래도 <code>.sbt</code> 파일로 할 수 없는 일만 <code>.scala</code> 파일로 구현하고 대부분은 <code>.sbt</code> 파일을 사용하는 것이 바람직하다:</p>
-
+</p>
 <ul>
 <li>sbt 커스트마이즈하기(설정이나 타스크를 추가한다)</li>
 <li>네스티드(nested) 서브 프로젝트를 정의한다.</li>
 </ul>
+<p>이 글은 <code>.sbt</code> 파일만 설명한다. <code>.scala</code> 파일을 사용하는 방법은 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>에서 설명한다.
 
-<p>이 글은 <code>.sbt</code> 파일만 설명한다. <code>.scala</code> 파일을 사용하는 방법은 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>에서 설명한다.</p>
-
+</p>
 <h3>What is a build definition?</h3>
+<p><strong> 이 부분은 반드시 절대로 꼭 읽어주세요. </strong>
 
-<p><em>* 이 부분은 반드시 절대로 꼭 읽어주세요. *</em></p>
+</p>
+<p>sbt는 실제로 빌드하기 전에 프로젝트를 검사하고 빌드 스크립트를 처리한다. 그 전처리를 완료하면 immutable 맵이 하나 생성되는데 그 맵에 빌드 정보가 <code>키/밸류</code> 형태로 들어간다.
 
-<p>sbt는 실제로 빌드하기 전에 프로젝트를 검사하고 빌드 스크립트를 처리한다. 그 전처리를 완료하면 immutable 맵이 하나 생성되는데 그 맵에 빌드 정보가 <code>키/밸류</code> 형태로 들어간다.</p>
+</p>
+<p>예를 들어, 키가 <code>name</code>인 항목의 스트링 밸류는 프로젝트 이름을 의미한다.
 
-<p>예를 들어, 키가 <code>name</code>인 항목의 스트링 밸류는 프로젝트 이름을 의미한다.</p>
+</p>
+<p><em>우리가 만든 빌드 정의가 바로 sbt 맵으로 만들어지는 것이 아니다.</em>
 
-<p><em>우리가 만든 빌드 정의가 바로 sbt 맵으로 만들어지는 것이 아니다.</em></p>
+</p>
+<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. '함수형 프로그래밍' 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.  
 
-<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. '함수형 프로그래밍' 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.  </p>
+</p>
+<p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:
 
-<p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:</p>
+</p>
+<pre><code class="lang-scala">name := <span class="string">"hello"</span></code></pre>
+<p>키가 <code>name</code>이고 밸류가 <code>&quot;hello&quot;</code>인 <code>Setting[String]</code> 객체가 생성되고 sbt 맵에 키가 <code>name</code>인 항목이 있으면 그 항목의 밸류만 교체하고 없으면 해당 항목을 새로 만든다. 다시 말하지만, 이때 변형된 맵은 새로 생성된다.
 
-<pre><code class="dfm scala">name := "hello"
-</code></pre>
+</p>
+<p>이 맵이 만들어지는 과정을 살펴보자. sbt는 먼저 Setting 리스트을 정렬한다. 키가 같은 항목들은 하나로 합치고 밸류에서 다른 항목을 사용하고 있으면 그 항목부터 처리한다. 설정 간 의존성이 있으면 의존성부터 해결한다. sbt는 정렬된 <code>Setting</code> 리스트를 하나씩 map으로 변환한다.
 
-<p>키가 <code>name</code>이고 밸류가 <code>"hello"</code>인 <code>Setting[String]</code> 객체가 생성되고 sbt 맵에 키가 <code>name</code>인 항목이 있으면 그 항목의 밸류만 교체하고 없으면 해당 항목을 새로 만든다. 다시 말하지만, 이때 변형된 맵은 새로 생성된다.</p>
+</p>
+<p>요약: <em>빌드 정의는 먼저 <code>Setting[T]</code> 리스트로 만들고 다시 <code>Setting[T]</code> 리스트를 sbt 맵으로 변환한다. <code>T</code>는 각 밸류의 타입이다</em>.
 
-<p>이 맵이 만들어지는 과정을 살펴보자. sbt는 먼저 Setting 리스트을 정렬한다. 키가 같은 항목들은 하나로 합치고 밸류에서 다른 항목을 사용하고 있으면 그 항목부터 처리한다. 설정 간 의존성이 있으면 의존성부터 해결한다. sbt는 정렬된 <code>Setting</code> 리스트를 하나씩 map으로 변환한다.</p>
-
-<p>요약: <em>빌드 정의는 먼저 <code>Setting[T]</code> 리스트로 만들고 다시 <code>Setting[T]</code> 리스트를 sbt 맵으로 변환한다. <code>T</code>는 각 밸류의 타입이다</em>.</p>
-
+</p>
 <h3>How <code>build.sbt</code> defines settings</h3>
+<p><code>build.sbt</code> 파일의 자료구조는 <code>Seq[Setting[_]]</code>이다. 이 파일은 Scala Expression의 리스트인데 한 줄 띄우는 것으로 구분한다. 각 줄은 리스트의 항목 하나이고 순서대로 처리된다. <code>.scala</code> 파일에서 <code>.sbt</code> 파일의 내용을 <code>Seq(</code>와 <code>)</code>로 감싸고 빈 줄 대신에 콤마를 넣으면 <code>.sbt</code> 파일에서 한 것과 동일한 코드가 된다.
 
-<p><code>build.sbt</code> 파일의 자료구조는 <code>Seq[Setting[_]]</code>이다. 이 파일은 Scala Expression의 리스트인데 한 줄 띄우는 것으로 구분한다. 각 줄은 리스트의 항목 하나이고 순서대로 처리된다. <code>.scala</code> 파일에서 <code>.sbt</code> 파일의 내용을 <code>Seq(</code>와 <code>)</code>로 감싸고 빈 줄 대신에 콤마를 넣으면 <code>.sbt</code> 파일에서 한 것과 동일한 코드가 된다.</p>
+</p>
+<p>다음은 <code>.sbt</code> 파일 예제이다:
 
-<p>다음은 <code>.sbt</code> 파일 예제이다:</p>
+</p>
+<pre><code class="lang-scala">name := <span class="string">"hello"</span>
 
-<pre><code class="dfm scala">name := "hello"
+version := <span class="string">"1.0"</span>
 
-version := "1.0"
+scalaVersion := <span class="string">"2.9.1"</span></code></pre>
+<p><code>build.sbt</code> 파일은 빈 줄로 구분하는 <code>Setting</code> 객체의 리스트다. 각 <code>Setting</code>은 Scala Expression으로 정의한다. 
 
-scalaVersion := "2.9.1"
-</code></pre>
+</p>
+<p><code>build.sbt</code>에 있는 Expression은 서로서로 독립적이고 문법상으로 Scala Statement가 아니라 Scala Expression이다. 그래서 <code>build.sbt</code> 파일에 Scala Expresion을 정의할 때 그 Expresion 제일 앞에는 <code>val</code>, <code>object</code>, 클래스, 메소드를 정의할 수 없다.
 
-<p><code>build.sbt</code> 파일은 빈 줄로 구분하는 <code>Setting</code> 객체의 리스트다. 각 <code>Setting</code>은 Scala Expression으로 정의한다. </p>
+</p>
+<p>왼쪽에 사용한 <code>name</code>, <code>version</code>, <code>scalaVersion</code>은 <em>키</em>다. 키는 <code>SettingKey[T]</code>, <code>TaskKey[T]</code>, <code>InputKey[T]</code>의 인스턴스이고 <code>T</code>는 밸류의 타입이다. 아래에서 키에 대해서 좀 더 설명한다.
 
-<p><code>build.sbt</code>에 있는 Expression은 서로서로 독립적이고 문법상으로 Scala Statement가 아니라 Scala Expression이다. 그래서 <code>build.sbt</code> 파일에 Scala Expresion을 정의할 때 그 Expresion 제일 앞에는 <code>val</code>, <code>object</code>, 클래스, 메소드를 정의할 수 없다.</p>
+</p>
+<p>키는 <code>Settings[T]</code>를 리턴하고 이름이 <code>:=</code>인 메소드를 호출한다. 이 메소드는 Java 처럼 호출할 수도 있다:
 
-<p>왼쪽에 사용한 <code>name</code>, <code>version</code>, <code>scalaVersion</code>은 <em>키</em>다. 키는 <code>SettingKey[T]</code>, <code>TaskKey[T]</code>, <code>InputKey[T]</code>의 인스턴스이고 <code>T</code>는 밸류의 타입이다. 아래에서 키에 대해서 좀 더 설명한다.</p>
+</p>
+<pre><code class="lang-scala">name.:=(<span class="string">"hello"</span>)</code></pre>
+<p>스칼라에서는 <code>name := &quot;hello&quot;</code>라고 사용해도 메소드를 호출할 수 있다. 스칼라 문법에서는 이렇게 메소드를 호출하는 것도 가능하다.
 
-<p>키는 <code>Settings[T]</code>를 리턴하고 이름이 <code>:=</code>인 메소드를 호출한다. 이 메소드는 Java 처럼 호출할 수도 있다:</p>
+</p>
+<p><code>name</code> 키에 있는 <code>:=</code> 메소드는 <code>Setting</code> 객체를 반환한다. 정확한 타입은 <code>Setting[String]</code>이다. <code>name</code> 키의 타입은 <code>SettingKey[String]</code>인데 여기서 <code>String</code>은 <code>name</code> 자체의 타입이다. <code>Setting[String]</code> 인스턴스가 반환되면 <code>name</code>을 키로 해서 sbt 맵에 넣는다. 이 <code>Setting[String]</code> 인스턴스의 값은 <code>&quot;hello&quot;</code>다.
 
-<pre><code class="dfm scala">name.:=("hello")
-</code></pre>
+</p>
+<p>타입을 틀리게 넣으면 컴파일 안 된다:
 
-<p>스칼라에서는 <code>name := "hello"</code>라고 사용해도 메소드를 호출할 수 있다. 스칼라 문법에서는 이렇게 메소드를 호출하는 것도 가능하다.</p>
-
-<p><code>name</code> 키에 있는 <code>:=</code> 메소드는 <code>Setting</code> 객체를 반환한다. 정확한 타입은 <code>Setting[String]</code>이다. <code>name</code> 키의 타입은 <code>SettingKey[String]</code>인데 여기서 <code>String</code>은 <code>name</code> 자체의 타입이다. <code>Setting[String]</code> 인스턴스가 반환되면 <code>name</code>을 키로 해서 sbt 맵에 넣는다. 이 <code>Setting[String]</code> 인스턴스의 값은 <code>"hello"</code>다.</p>
-
-<p>타입을 틀리게 넣으면 컴파일 안 된다:</p>
-
-<pre><code class="dfm scala">name := 42  // will not compile
-</code></pre>
-
+</p>
+<pre><code class="lang-scala">name := <span class="number">42</span>  <span class="comment">// will not compile</span></code></pre>
 <h3>Settings are separated by blank lines</h3>
+<p>다음과 같이 <code>build.sbt</code> 파일을 작성할 수 없다:
 
-<p>다음과 같이 <code>build.sbt</code> 파일을 작성할 수 없다:</p>
+</p>
+<pre><code class="lang-scala"><span class="comment">// will NOT work, no blank lines</span>
+name := <span class="string">"hello"</span>
+version := <span class="string">"1.0"</span>
+scalaVersion := <span class="string">"2.9.1"</span></code></pre>
+<p>Setting을 구분해 주는 구분자가 필요하다. sbt는 구분자가 있어야 Scala Expression을 구분할 수 있다.
 
-<pre><code class="dfm scala">// will NOT work, no blank lines
-name := "hello"
-version := "1.0"
-scalaVersion := "2.9.1"
-</code></pre>
+</p>
+<p><code>.sbt</code> 파일에 구현하는 것은 Scala Expression이지 Scala 프로그램이 아니다. sbt는 각 Scala Expression을 하나씩 잘라서 개별적으로 컴파일한다.
 
-<p>Setting을 구분해 주는 구분자가 필요하다. sbt는 구분자가 있어야 Scala Expression을 구분할 수 있다.</p>
+</p>
+<p>Scala 프로그램을 사용하고 싶으면 <code>.sbt</code> 파일이 아니라 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>로 구현해야 한다. 이때에는 <code>.sbt</code> 파일이 없어도 된다. <code>.scala</code> 파일을 사용하는 방법은 나중에 설명한다. 어떻게 하는지 살짝 들춰보자면 <code>.sbt</code> 파일에서 정의하던 Setting Expression을 <code>.scala</code> 파일에서 <code>Seq[Setting]</code> 자료구조로 정의하면 된다.
 
-<p><code>.sbt</code> 파일에 구현하는 것은 Scala Expression이지 Scala 프로그램이 아니다. sbt는 각 Scala Expression을 하나씩 잘라서 개별적으로 컴파일한다.</p>
-
-<p>Scala 프로그램을 사용하고 싶으면 <code>.sbt</code> 파일이 아니라 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>로 구현해야 한다. 이때에는 <code>.sbt</code> 파일이 없어도 된다. <code>.scala</code> 파일을 사용하는 방법은 나중에 설명한다. 어떻게 하는지 살짝 들춰보자면 <code>.sbt</code> 파일에서 정의하던 Setting Expression을 <code>.scala</code> 파일에서 <code>Seq[Setting]</code> 자료구조로 정의하면 된다.</p>
-
+</p>
 <h3>Keys are defined in the Keys object</h3>
+<p>빌트인 키는 <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a> 객체에 정의되 있다. <code>build.sbt</code>에는 <code>import sbt.Keys._</code>가 묵시적으로 선언돼 있어서 <code>sbt.Keys.name</code>라고 안 쓰고 <code>name</code>이라고 바로 써도 되는 것이다.
 
-<p>빌트인 키는 <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a> 객체에 정의되 있다. <code>build.sbt</code>에는 <code>import sbt.Keys._</code>가 묵시적으로 선언돼 있어서 <code>sbt.Keys.name</code>라고 안 쓰고 <code>name</code>이라고 바로 써도 되는 것이다.</p>
+</p>
+<p>Key를 새로 정의하려면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>이나 <a href="/articles/2012/sbt-getting-started-using-plugins.html">plugin</a>으로 정의해야 한다.
 
-<p>Key를 새로 정의하려면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>이나 <a href="/articles/2012/sbt-getting-started-using-plugins.html">plugin</a>으로 정의해야 한다.</p>
-
+</p>
 <h3>Other ways to transform settings</h3>
+<p><code>:=</code>으로 리플레이스 하는 것이 가장 단순한 변형 방법이지만 다른 방법도 있다. 예를 들어 <code>+=</code>으로도 Setting 밸류를 추가할 수 있다.
 
-<p><code>:=</code>으로 리플레이스 하는 것이 가장 단순한 변형 방법이지만 다른 방법도 있다. 예를 들어 <code>+=</code>으로도 Setting 밸류를 추가할 수 있다.</p>
+</p>
+<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 '<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>'에서 자세히 설명한다.
 
-<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 '<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>'에서 자세히 설명한다.</p>
-
+</p>
 <h3>Task Keys</h3>
+<p>Key는 세 종류이다:
 
-<p>Key는 세 종류이다:</p>
-
+</p>
 <ul>
 <li><code>SettingKey[T]</code>: 이 키와 밸류는 딱 한 번 해석한다. 프로젝트를 로드할 때 해석하고 다시 해석하지 않는다.</li>
 <li><code>TaskKey[T]</code>: 이 키와 밸류는 매번 다시 해석한다. 그래서 문제가 될 수도 있다.</li>
 <li><code>InputKey[T]</code>: 이 가이드에서는 <code>InputKey</code>는 설명하지 않는다. 이 가이드를 다 보고 나서 <a href="https://github.com/harrah/xsbt/wiki/Input-Tasks">Input Task</a>를 봐라.</li>
 </ul>
+<p><em>타스크</em>를 정의한다고 sbt에 말할 때 <code>TaskKey[T]</code>를 사용한다. <code>compile</code>이나 <code>package</code> 같은 것이 타스크이다. 이 타스크는 <code>Unit</code>을 리턴하거나 해당 타스크와 관련된 어떤 밸류를 리턴한다. 스칼라에서는 <code>Unit</code>이 <code>void</code>다. 예를 들어 <code>package</code> 타스크는 타입이 <code>TaskKey[File]</code>이고 생성할 jar 파일을 리턴한다.
 
-<p><em>타스크</em>를 정의한다고 sbt에 말할 때 <code>TaskKey[T]</code>를 사용한다. <code>compile</code>이나 <code>package</code> 같은 것이 타스크이다. 이 타스크는 <code>Unit</code>을 리턴하거나 해당 타스크와 관련된 어떤 밸류를 리턴한다. 스칼라에서는 <code>Unit</code>이 <code>void</code>다. 예를 들어 <code>package</code> 타스크는 타입이 <code>TaskKey[File]</code>이고 생성할 jar 파일을 리턴한다.</p>
+</p>
+<p>타스크를 실행할 때마다 항상 다시 실행한다. <code>compile</code> 타스크를 실행하면 <code>compile</code> 타스크에 필요한 모든 타스크가 한 번씩 다시 실행된다.
 
-<p>타스크를 실행할 때마다 항상 다시 실행한다. <code>compile</code> 타스크를 실행하면 <code>compile</code> 타스크에 필요한 모든 타스크가 한 번씩 다시 실행된다.</p>
+</p>
+<p>sbt 맵에는 프로젝트 정보가 담겨 있다. <code>name</code> 같은 게 이에 해당하고 항상 고정된 밸류를 저장한다. <code>compile</code>같은 타스크는 고정 값이 아니라 실행 코드이다. 이 실행 코드가 스트링을 리턴한다고 해도 스트링을 얻으려면 항상 다시 실행해야 한다.
 
-<p>sbt 맵에는 프로젝트 정보가 담겨 있다. <code>name</code> 같은 게 이에 해당하고 항상 고정된 밸류를 저장한다. <code>compile</code>같은 타스크는 고정 값이 아니라 실행 코드이다. 이 실행 코드가 스트링을 리턴한다고 해도 스트링을 얻으려면 항상 다시 실행해야 한다.</p>
+</p>
+<p><em>타스크나 설정이나 키를 사용하는 것은 동일하다.</em> 매번 실행하는 것인지 아닌지가 타스크인지 아닌지를 구분하는 요소이며 이것은 밸류가 아니라 키의 프로퍼티에 해당한다.
 
-<p><em>타스크나 설정이나 키를 사용하는 것은 동일하다.</em> 매번 실행하는 것인지 아닌지가 타스크인지 아닌지를 구분하는 요소이며 이것은 밸류가 아니라 키의 프로퍼티에 해당한다.</p>
+</p>
+<p><code>:=</code>을 사용해서 타스크에 코드를 할당할 수 있다. 이 코드는 매번 실행된다:
 
-<p><code>:=</code>을 사용해서 타스크에 코드를 할당할 수 있다. 이 코드는 매번 실행된다:</p>
+</p>
+<pre><code class="lang-scala">hello := { println(<span class="string">"Hello!"</span>) }</code></pre>
+<p>타스크 키로 <code>Setting</code>을 만들 때와 설정 키로 <code>Setting</code> 을 만들 때는 타입이 다르다. <code>taskKey := 42</code> 가 생성하는 결과의 타입은 <code>Setting[Task[T]]</code>이지만 <code>settingKey := 42</code>가 생성하는 결과의 타입은 <code>Setting[T]</code>이다. 타스크는 타스크를 실행해서 <code>T</code> 타입의 밸류를 생성하는 것뿐이고 그 외에는 차이가 없다.
 
-<pre><code class="dfm scala">hello := { println("Hello!") }
-</code></pre>
+</p>
+<p>내부적으로 <code>T</code>와 <code>Task[T]</code> 타입이 다른 점이 더 있다. 설정키는 프로젝트를 로드할 때 한 번만 처리하기 때문에 타스크 키에 의존하지 않는다. 곧 읽게 될 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 이 문제를 자세히 다룬다.
 
-<p>타스크 키로 <code>Setting</code>을 만들 때와 설정 키로 <code>Setting</code> 을 만들 때는 타입이 다르다. <code>taskKey := 42</code> 가 생성하는 결과의 타입은 <code>Setting[Task[T]]</code>이지만 <code>settingKey := 42</code>가 생성하는 결과의 타입은 <code>Setting[T]</code>이다. 타스크는 타스크를 실행해서 <code>T</code> 타입의 밸류를 생성하는 것뿐이고 그 외에는 차이가 없다.</p>
-
-<p>내부적으로 <code>T</code>와 <code>Task[T]</code> 타입이 다른 점이 더 있다. 설정키는 프로젝트를 로드할 때 한 번만 처리하기 때문에 타스크 키에 의존하지 않는다. 곧 읽게 될 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 이 문제를 자세히 다룬다.</p>
-
+</p>
 <h3>Keys in sbt interactive mode</h3>
+<p>대화형 모드에서 타스크 이름을 입력하면 해당 타스크가 실행된다. <code>compile</code>이라는 타스크 키가 있으니까 대화형 모드에서 <code>compile</code>이라고 입력했을 때 compile 타스크가 실행될 수 있다.
 
-<p>대화형 모드에서 타스크 이름을 입력하면 해당 타스크가 실행된다. <code>compile</code>이라는 타스크 키가 있으니까 대화형 모드에서 <code>compile</code>이라고 입력했을 때 compile 타스크가 실행될 수 있다.</p>
+</p>
+<p>타스크 키가 아니라 설정 키를 입력하면 그냥 화면에 그 키의 밸류를 보여준다. 
+타스크 키를 입력하면 타스크가 실행되지만, 그 결과를 보여주진 않는다. 타스크의 결과를 보고 싶으면 <code>show &lt;task name&gt;</code>이라고 입력해야 한다.
 
-<p>타스크 키가 아니라 설정 키를 입력하면 그냥 화면에 그 키의 밸류를 보여준다. <br />타스크 키를 입력하면 타스크가 실행되지만, 그 결과를 보여주진 않는다. 타스크의 결과를 보고 싶으면 <code>show &lt;task name&gt;</code>이라고 입력해야 한다.</p>
+</p>
+<p>키 이름은 Scala 관례에 따라 카멜케이스 방식으로 지어야 하고 sbt 명령어는 <code>하이픈 구분자</code> 방식을 사용한다. <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a>에 정의된 키를 sbt에서 사용할 때는 하이픈 구분자를 사용해야 한다. <code>Keys.scala</code>에 정의한 것 중 한 예를 보자:
 
-<p>키 이름은 Scala 관례에 따라 카멜케이스 방식으로 지어야 하고 sbt 명령어는 <code>하이픈 구분자</code> 방식을 사용한다. <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a>에 정의된 키를 sbt에서 사용할 때는 하이픈 구분자를 사용해야 한다. <code>Keys.scala</code>에 정의한 것 중 한 예를 보자:</p>
+</p>
+<pre><code class="lang-scala"><span class="keyword">val</span> scalacOptions = TaskKey[Seq[String]](<span class="string">"scalac-options"</span>, <span class="string">"Options for the Scala compiler."</span>)</code></pre>
+<p>sbt에서 타스크를 입력할 때는 <code>scalacOptions</code>이 아니라 <code>scalac-options</code>라고 입력한다.
 
-<pre><code class="dfm scala">val scalacOptions = TaskKey[Seq[String]]("scalac-options", "Options for the Scala compiler.")
-</code></pre>
+</p>
+<p>sbt 대화형 모드에서 <code>inspect &lt;keyname&gt;</code>을 입력하면 입력한 키에 대한 정보를 자세히 보여준다. <code>inspect</code>는 입력한 키의 밸류와 간략한 설명을 보여준다. 물론 처음 보는 정보들까지도 함께 보여준다.
 
-<p>sbt에서 타스크를 입력할 때는 <code>scalacOptions</code>이 아니라 <code>scalac-options</code>라고 입력한다.</p>
-
-<p>sbt 대화형 모드에서 <code>inspect &lt;keyname&gt;</code>을 입력하면 입력한 키에 대한 정보를 자세히 보여준다. <code>inspect</code>는 입력한 키의 밸류와 간략한 설명을 보여준다. 물론 처음 보는 정보들까지도 함께 보여준다.</p>
-
+</p>
 <h3>Imports in <code>build.sbt</code></h3>
+<p><code>build.sbt</code> 파일에 import 구문을 사용할 수 있다. import 구문은 한 줄 띄우기를 할 필요가 없다.
 
-<p><code>build.sbt</code> 파일에 import 구문을 사용할 수 있다. import 구문은 한 줄 띄우기를 할 필요가 없다.</p>
+</p>
+<p>다음을 보면 무슨 소린지 한 번에 알 수 있다:
 
-<p>다음을 보면 무슨 소린지 한 번에 알 수 있다:</p>
+</p>
+<pre><code class="lang-scala"><span class="keyword">import</span> sbt._
+<span class="keyword">import</span> Process._
+<span class="keyword">import</span> Keys._</code></pre>
+<p>(<a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보면 <code>Build</code>나 <code>Plugin</code> 객체도 임포트해서 사용하는 방법을 설명한다. <code>Build</code>나 <code>Plugin</code> 객체를 임포트해야 하면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보라.)
 
-<pre><code class="dfm scala">import sbt._
-import Process._
-import Keys._
-</code></pre>
-
-<p>(<a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보면 <code>Build</code>나 <code>Plugin</code> 객체도 임포트해서 사용하는 방법을 설명한다. <code>Build</code>나 <code>Plugin</code> 객체를 임포트해야 하면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보라.)</p>
-
+</p>
 <h3>Adding library dependencies</h3>
+<p>라이브러리 의존성을 추가하는 방법은 두 가지다. 하나는 unmanaged 방식으로 <code>lib/</code> 디렉토리에 jar 파일을 그냥 넣으면 된다. 다른 하나는 managed 방식으로 <code>build.sbt</code> 파일에 다음과 같이 추가한다:
 
-<p>라이브러리 의존성을 추가하는 방법은 두 가지다. 하나는 unmanaged 방식으로 <code>lib/</code> 디렉토리에 jar 파일을 그냥 넣으면 된다. 다른 하나는 managed 방식으로 <code>build.sbt</code> 파일에 다음과 같이 추가한다:</p>
+</p>
+<pre><code class="lang-scala">libraryDependencies += <span class="string">"org.apache.derby"</span> % <span class="string">"derby"</span> % <span class="string">"10.4.1.3"</span></code></pre>
+<p>이 것은 버전이 10.4.1.3인 Apache Derby 라이브러리를 managed 방식으로 추가하는 것을 보여준다. 
 
-<pre><code class="dfm scala">libraryDependencies += "org.apache.derby" % "derby" % "10.4.1.3"
-</code></pre>
+</p>
+<p><code>libraryDependencies</code>에서는 <code>+=</code>와 <code>%</code> 메소드를 추가로 알아야 한다: <code>+=</code>는 기존의 밸류를 교체하는 것이 아니라 기존의 밸류에 새 밸류를 추가하는 것이다. 자세한 것은 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 설명한다. <code>%</code>는 Ivy 모듈 ID를 조합하는 데 사용하고 자세한 설명은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에 있다.
 
-<p>이 것은 버전이 10.4.1.3인 Apache Derby 라이브러리를 managed 방식으로 추가하는 것을 보여준다. </p>
+</p>
+<p>라이브러리 의존성은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에서 다룰 예정이다. 여기서는 이 정도로 마무리하겠다.
 
-<p><code>libraryDependencies</code>에서는 <code>+=</code>와 <code>%</code> 메소드를 추가로 알아야 한다: <code>+=</code>는 기존의 밸류를 교체하는 것이 아니라 기존의 밸류에 새 밸류를 추가하는 것이다. 자세한 것은 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 설명한다. <code>%</code>는 Ivy 모듈 ID를 조합하는 데 사용하고 자세한 설명은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에 있다.</p>
-
-<p>라이브러리 의존성은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에서 다룰 예정이다. 여기서는 이 정도로 마무리하겠다.</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 16 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-directory-layout.html">sbt: Getting Started Guide: Directory Layout</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li><li><span>Jul 03 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 16 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-directory-layout.html">sbt: Getting Started Guide: Directory Layout</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li><li><span>Jul 03 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/sbt-getting-started-basic-def.html';

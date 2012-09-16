@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: git-svn</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,170 +15,174 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-svn.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: git-svn</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-svn.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: git-svn</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Apr 29</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#svn" class="tag">svn</a> | <span><a href="/articles/2012/git-svn.html#disqus_thread" data-disqus-identifier="/articles/2012/git-svn.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-svn.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-svn.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-svn.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Progit 8장에 설명된 'git-svn'에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다.</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-svn.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-svn.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-svn.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Progit 8장에 설명된 'git-svn'에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다.
 
-<p><img src="/articles/2012/git-svn/et.jpg" alt="et" title="" /></p>
+</p>
+<p><img src="/articles/2012/git-svn/et.jpg" alt="et">
 
-<p>GitHub는 <a href="http://hg-git.github.com/">git server + hg client</a>, <a href="https://github.com/blog/966-improved-subversion-client-support">git server + svn client</a> 조합도 만들었는데 쓰는 사람이 있을까?</p>
+</p>
+<p>GitHub는 <a href="http://hg-git.github.com/">git server + hg client</a>, <a href="https://github.com/blog/966-improved-subversion-client-support">git server + svn client</a> 조합도 만들었는데 쓰는 사람이 있을까?
 
+</p>
 <h2>주요 명령어 정리</h2>
+<p>SVN 처럼 로그를 보거나 등등의 기능이 많지만, 어차피 안 쓸 것 같아서 정리하지 않는다. SVN을 Git으로 마이그레이션할 때 필요한 명령어도 정리하지 않았다.
 
-<p>SVN 처럼 로그를 보거나 등등의 기능이 많지만, 어차피 안 쓸 것 같아서 정리하지 않는다. SVN을 Git으로 마이그레이션할 때 필요한 명령어도 정리하지 않았다.</p>
-
+</p>
 <h3>clone:</h3>
+<pre><code><span class="title">git</span> svn clone url -s</code></pre>
+<p>-s는 표준레이아웃인 <code>trunk, branches, tags</code>를 사용한다는 의미다. 표준레이아웃을 사용하지 않으면 <code>-T trunk -b branches -t tags</code>라고 직접 알려주면 된다.
 
-<pre><code>git svn clone url -s
-</code></pre>
+</p>
+<p>trunk, branches, tags는 모두 Git 브랜치로 만들어진다. trunk와 branches는 같은 이름으로 만들어지지만, tags는 앞에 <code>tags/</code>라고 붙는다.
 
-<p>-s는 표준레이아웃인 <code>trunk, branches, tags</code>를 사용한다는 의미다. 표준레이아웃을 사용하지 않으면 <code>-T trunk -b branches -t tags</code>라고 직접 알려주면 된다.</p>
+</p>
+<p>progit 책에 나오는 <code>http://progit-example.googlecode.com/svn/</code>을 적용해보면 다음과 같이 만들어진다:
 
-<p>trunk, branches, tags는 모두 Git 브랜치로 만들어진다. trunk와 branches는 같은 이름으로 만들어지지만, tags는 앞에 <code>tags/</code>라고 붙는다.</p>
-
-<p>progit 책에 나오는 <code><a href='http://progit-example.googlecode.com/svn/'>http://progit-example.googlecode.com/svn/</a></code>을 적용해보면 다음과 같이 만들어진다:</p>
-
+</p>
 <pre><code>└─▪ git br -av
-* master                        5925d95 Support HP C++ on Tru64.
+* master                        <span class="number">5925</span>d95 Support HP C++ <span class="keyword">on</span> Tru64.
   remotes/my-calc-branch        a52ad75 created a branch
-  remotes/tags/2.0.2            fd8e73e Tag release 2.0.2.
-  remotes/tags/release-2.0.1    60feb5c Tag the 2.0.1 release.
-  remotes/tags/release-2.0.2    85bac46 Set version to 2.0.2 in release branch.
-  remotes/tags/release-2.0.2rc1 168051e Update version number in 2.0.2rc1 release branch.
-  remotes/trunk                 5925d95 Support HP C++ on Tru64
-</code></pre>
+  remotes/tags/<span class="number">2.0</span><span class="number">.2</span>            fd8e73e Tag <span class="keyword">release</span> <span class="number">2.0</span><span class="number">.2</span>.
+  remotes/tags/<span class="keyword">release</span>-<span class="number">2.0</span><span class="number">.1</span>    <span class="number">60</span>feb5c Tag the <span class="number">2.0</span><span class="number">.1</span> <span class="keyword">release</span>.
+  remotes/tags/<span class="keyword">release</span>-<span class="number">2.0</span><span class="number">.2</span>    <span class="number">85</span>bac46 Set version <span class="keyword">to</span> <span class="number">2.0</span><span class="number">.2</span> <span class="keyword">in</span> <span class="keyword">release</span> branch.
+  remotes/tags/<span class="keyword">release</span>-<span class="number">2.0</span><span class="number">.2</span>rc1 <span class="number">168051</span>e Update version number <span class="keyword">in</span> <span class="number">2.0</span><span class="number">.2</span>rc1 <span class="keyword">release</span> branch.
+  remotes/trunk                 <span class="number">5925</span>d95 Support HP C++ <span class="keyword">on</span> Tru64</code></pre>
+<p>SVN 브랜치는 당연히 Git 브랜치로 만들어지지만 SVN의 tag도 Git의 브랜치로 만들어진다.
 
-<p>SVN 브랜치는 당연히 Git 브랜치로 만들어지지만 SVN의 tag도 Git의 브랜치로 만들어진다.</p>
-
+</p>
 <h3>fetch:</h3>
+<p><code>git fetch</code>에 대응되는 명령어:
 
-<p><code>git fetch</code>에 대응되는 명령어:</p>
+</p>
+<pre><code><span class="title">git</span> svn fetch</code></pre>
+<p>trunk가 master로 자동으로 Fast-Forward Merge 됐으면 좋겠다. 
 
-<pre><code>git svn fetch
-</code></pre>
+</p>
+<p><code>git-svn</code> 프로젝트이면 trunk를 master로 Fast-Forware Merge하도록 <a href="https://github.com/pismute/git-tles">git-ff</a>를 수정했다. 이 브랜치만 Merge한다. svn에서 브랜치를 쓰고 싶지 않다.
 
-<p>trunk가 master로 자동으로 Fast-Forward Merge 됐으면 좋겠다. </p>
-
-<p><code>git-svn</code> 프로젝트이면 trunk를 master로 Fast-Forware Merge하도록 <a href="https://github.com/pismute/git-tles">git-ff</a>를 수정했다. 이 브랜치만 Merge한다. svn에서 브랜치를 쓰고 싶지 않다.</p>
-
+</p>
 <h3>push:</h3>
+<p><code>git push</code>에 대응하는 명령어:
 
-<p><code>git push</code>에 대응하는 명령어:</p>
+</p>
+<pre><code><span class="title">git</span> svn dcommit</code></pre>
+<p>svn은 히스토리가 평평하니까 이것만 주의하면 된다.
 
-<pre><code>git svn dcommit
-</code></pre>
-
-<p>svn은 히스토리가 평평하니까 이것만 주의하면 된다.</p>
-
+</p>
 <h3>annotate:</h3>
+<p>어떤 놈이 잘못 고쳤는지 찾아보는 명령어:
 
-<p>어떤 놈이 잘못 고쳤는지 찾아보는 명령어:</p>
-
-<pre><code>git svn blame [FILE] 
-</code></pre>
-
+</p>
+<pre><code><span class="title">git</span> svn blame [FILE] </code></pre>
 <h3>.gitignore:</h3>
+<p><code>.gitignore</code>를 만들어 넣으면 svn 서버에 Push된다. 다른 사람 몰래 혼자 쓰고 싶으면 <code>.git/info/exclude</code>에 만들면된다. <code>.gitignore</code>랑 똑같고 해당 저장소에만 적용되며 Push할 수 없다:
 
-<p><code>.gitignore</code>를 만들어 넣으면 svn 서버에 Push된다. 다른 사람 몰래 혼자 쓰고 싶으면 <code>.git/info/exclude</code>에 만들면된다. <code>.gitignore</code>랑 똑같고 해당 저장소에만 적용되며 Push할 수 없다:</p>
-
-<pre><code>git svn show-ignore &gt; .git/info/exclude
-</code></pre>
-
+</p>
+<pre><code><span class="title">git</span> svn show-ignore > .git/info/exclude</code></pre>
 <h2>Merge</h2>
+<p>SVN의 히스토리는 항상 일직선이기 때문에 SVN에 Push할 브랜치는 항상 Fast-Forward로 Merge해야 한다. 그렇지 않으면 알아서 펴주기 때문에 히스토리 모양이 원하는 모양이랑 다를 수 있다.
 
-<p>SVN의 히스토리는 항상 일직선이기 때문에 SVN에 Push할 브랜치는 항상 Fast-Forward로 Merge해야 한다. 그렇지 않으면 알아서 펴주기 때문에 히스토리 모양이 원하는 모양이랑 다를 수 있다.</p>
-
+</p>
 <h2>브랜치</h2>
+<p>SVN의 히스토리는 항상 평평하다. 브랜치 별로 히스토리가 다르게 관리하는 것이 아니라 한 히스토리에서 trunk. branches, tags를 모두 관리한다. 이점을 꼭 기억해야 한다.
 
-<p>SVN의 히스토리는 항상 평평하다. 브랜치 별로 히스토리가 다르게 관리하는 것이 아니라 한 히스토리에서 trunk. branches, tags를 모두 관리한다. 이점을 꼭 기억해야 한다.</p>
+</p>
+<p>SVN 브랜치는 항상 Long-Running 브랜치로 사용한다. Topic 브랜치는 git-svn이 아니라 그냥 git을 사용할 때와 다를 바 없다. 단지 SVN 브랜치를 Tracking하는 Long-Running 브랜치에 Merge할 때 쫙 펴주기만 하면 된다.
 
-<p>SVN 브랜치는 항상 Long-Running 브랜치로 사용한다. Topic 브랜치는 git-svn이 아니라 그냥 git을 사용할 때와 다를 바 없다. 단지 SVN 브랜치를 Tracking하는 Long-Running 브랜치에 Merge할 때 쫙 펴주기만 하면 된다.</p>
+</p>
+<p>문제는 SVN 브랜치를 Git에서 서로 Merge하는 데 있다. 그냥 Fetch해서 평평한 히스토리를 유지하면서 Push하는 것이 아니라 SVN 브랜치를 Git에서 Merge하면 어떨까? 이제 이걸 알아보자.
 
-<p>문제는 SVN 브랜치를 Git에서 서로 Merge하는 데 있다. 그냥 Fetch해서 평평한 히스토리를 유지하면서 Push하는 것이 아니라 SVN 브랜치를 Git에서 Merge하면 어떨까? 이제 이걸 알아보자.</p>
-
+</p>
 <h3>일단 SVN 저장소를 하나 준비하고</h3>
+<p>일단 SVN 저장소를 하나 준비하고:
 
-<p>일단 SVN 저장소를 하나 준비하고:</p>
+</p>
+<p><img src="/articles/2012/git-svn/svn-repository.png" alt="svn-repository.png">
 
-<p><img src="/articles/2012/git-svn/svn-repository.png" alt="svn-repository.png" title="" /></p>
+</p>
+<p>Git으로 클론한다. 클론하고 나서 <code>git branch -av</code>를 하면 다음과 같다:
 
-<p>Git으로 클론한다. 클론하고 나서 <code>git branch -av</code>를 하면 다음과 같다:</p>
+</p>
+<pre><code>* master             <span class="number">92</span>a713a <span class="keyword">from</span> trunk
+  remotes/dogfeet    e5334ef Add <span class="keyword">from</span> dogfeet
+  remotes/tags/<span class="number">1.0</span><span class="number">.0</span> <span class="number">2</span>ec86a0 tag <span class="number">1.0</span><span class="number">.0</span>
+  remotes/trunk      <span class="number">92</span>a713a <span class="keyword">from</span> trunk</code></pre>
+<p>master는 remotes/trunk를 트랙킹하고 SVN 브랜치인 'dogfeet'과 SVN 태그인 '1.0.0'이 Git에서는 모두 브랜치로 만들어진다. 그리고 원래 리모트 트래킹 브랜치는 <code>remotes/origin/master</code> 같은 패턴으로 이름 지어지는데 리모트 없이 <code>remotes/trunk</code> 형식으로 이름 지어진다.
 
-<pre><code>* master             92a713a from trunk
-  remotes/dogfeet    e5334ef Add from dogfeet
-  remotes/tags/1.0.0 2ec86a0 tag 1.0.0
-  remotes/trunk      92a713a from trunk
-</code></pre>
+</p>
+<p>SVN 히스토리:
 
-<p>master는 remotes/trunk를 트랙킹하고 SVN 브랜치인 'dogfeet'과 SVN 태그인 '1.0.0'이 Git에서는 모두 브랜치로 만들어진다. 그리고 원래 리모트 트래킹 브랜치는 <code>remotes/origin/master</code> 같은 패턴으로 이름 지어지는데 리모트 없이 <code>remotes/trunk</code> 형식으로 이름 지어진다.</p>
+</p>
+<p><img src="/articles/2012/git-svn/history.png" alt="history.png">
 
-<p>SVN 히스토리:</p>
+</p>
+<p>master 히스토리:
 
-<p><img src="/articles/2012/git-svn/history.png" alt="history.png" title="" /></p>
+</p>
+<pre><code><span class="bullet">* </span>92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
+<span class="bullet">* </span>12bf5f1 - Initial structure. (2 hours ago)</code></pre>
+<p>dogfeet 히스토리:
 
-<p>master 히스토리:</p>
-
-<pre><code>* 92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
-* 12bf5f1 - Initial structure. (2 hours ago)
-</code></pre>
-
-<p>dogfeet 히스토리:</p>
-
-<pre><code>* e5334ef - (dogfeet) Add from dogfeet (2 hours ago)
-* 86cdd49 - branch dogfeet (2 hours ago)
-* 92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
-* 12bf5f1 - Initial structure. (2 hours ago)
-</code></pre>
-
+</p>
+<pre><code><span class="bullet">* </span>e5334ef - (dogfeet) Add from dogfeet (2 hours ago)
+<span class="bullet">* </span>86cdd49 - branch dogfeet (2 hours ago)
+<span class="bullet">* </span>92a713a - (HEAD, trunk, master) from trunk (2 hours ago)
+<span class="bullet">* </span>12bf5f1 - Initial structure. (2 hours ago)</code></pre>
 <h3>이제 Git에서 커밋을 하나씩하고</h3>
+<p>master에 커밋을 하나 하고:
 
-<p>master에 커밋을 하나 하고:</p>
+</p>
+<pre><code><span class="bullet">* </span>4c549fb - (master) Add from<span class="emphasis">_git_</span>master (4 minutes ago)
+<span class="bullet">* </span>92a713a - (trunk) from trunk (23 hours ago)
+<span class="bullet">* </span>12bf5f1 - Initial structure. (23 hours ago)</code></pre>
+<p>dogfeet에도 커밋을 하나 하고:
 
-<pre><code>* 4c549fb - (master) Add from_git_master (4 minutes ago)
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
+</p>
+<pre><code><span class="bullet">* </span>904a4c0 - (HEAD, local<span class="emphasis">_dogfeet) Add from_</span>git_dogfeet (70 seconds ago)
+<span class="bullet">* </span>e5334ef - (dogfeet) Add from dogfeet (23 hours ago)
+<span class="bullet">* </span>86cdd49 - branch dogfeet (23 hours ago)
+<span class="bullet">* </span>92a713a - (trunk) from trunk (23 hours ago)
+<span class="bullet">* </span>12bf5f1 - Initial structure. (23 hours ago)</code></pre>
+<p>dogfeet을 master에 Merge한다:
 
-<p>dogfeet에도 커밋을 하나 하고:</p>
+</p>
+<pre><code>*   <span class="number">8365</span>b59 - (HEAD, master) Merge branch 'local_dogfeet' (<span class="number">2</span> seconds ago)
+<span class="string">|\  </span>
+<span class="string">| * 904a4c0 - (local_dogfeet) Add from_git_dogfeet (2 minutes ago)</span>
+<span class="string">| * e5334ef - (dogfeet) Add from dogfeet (23 hours ago)</span>
+<span class="string">| * 86cdd49 - branch dogfeet (23 hours ago)</span>
+* <span class="string">| 4c549fb - Add from_git_master (5 minutes ago)</span>
+<span class="string">|/  </span>
+* <span class="number">92</span>a713a - (trunk) from trunk (<span class="number">23</span> hours ago)
+* <span class="number">12</span>bf5f1 - Initial structure. (<span class="number">23</span> hours ago)</code></pre>
+<p>이걸 SVN에 Push하면 SVN 히스토리는 다음과 같아진다:
 
-<pre><code>* 904a4c0 - (HEAD, local_dogfeet) Add from_git_dogfeet (70 seconds ago)
-* e5334ef - (dogfeet) Add from dogfeet (23 hours ago)
-* 86cdd49 - branch dogfeet (23 hours ago)
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
+</p>
+<p><img src="/articles/2012/git-svn/history-after-merge.png" alt="history-after-merge.png">
 
-<p>dogfeet을 master에 Merge한다:</p>
+</p>
+<p>그러니까 이렇게 Merge 커밋이 있는 히스토리를 SVN에 Push하면 히스토리가 순서가 보장되지 않는다. 히스토리 순서를 보장하려면 Fast-Forward Merge로 펴놓고 Push해야 한다.
 
-<pre><code>*   8365b59 - (HEAD, master) Merge branch 'local_dogfeet' (2 seconds ago)
-|\  
-| * 904a4c0 - (local_dogfeet) Add from_git_dogfeet (2 minutes ago)
-| * e5334ef - (dogfeet) Add from dogfeet (23 hours ago)
-| * 86cdd49 - branch dogfeet (23 hours ago)
-* | 4c549fb - Add from_git_master (5 minutes ago)
-|/  
-* 92a713a - (trunk) from trunk (23 hours ago)
-* 12bf5f1 - Initial structure. (23 hours ago)
-</code></pre>
+</p>
+<p>그렇다고 Rebase를 해서 Fast-Forward Merge를 하면 같은 커밋이 두 번 들어가게 될 수도 있으니 절대로 SVN에 올라간 커밋은 Rebase하면 안된다. 그러니까 SVN에 Push한 커밋을 Rebase할 바엔 그냥 Merge Commit을 남기는 게 낫다고 볼 수 있다.
 
-<p>이걸 SVN에 Push하면 SVN 히스토리는 다음과 같아진다:</p>
-
-<p><img src="/articles/2012/git-svn/history-after-merge.png" alt="history-after-merge.png" title="" /></p>
-
-<p>그러니까 이렇게 Merge 커밋이 있는 히스토리를 SVN에 Push하면 히스토리가 순서가 보장되지 않는다. 히스토리 순서를 보장하려면 Fast-Forward Merge로 펴놓고 Push해야 한다.</p>
-
-<p>그렇다고 Rebase를 해서 Fast-Forward Merge를 하면 같은 커밋이 두 번 들어가게 될 수도 있으니 절대로 SVN에 올라간 커밋은 Rebase하면 안된다. 그러니까 SVN에 Push한 커밋을 Rebase할 바엔 그냥 Merge Commit을 남기는 게 낫다고 볼 수 있다.</p>
-
+</p>
 <h3>브랜치 결론.</h3>
+<p>SVN 세상에서는 히스트리가 항상 평평하고 브랜치도 디렉토리로 관리한다. 그러니까 이점을 명확히 이해하고 있어야 혼란스럽지 않다.
 
-<p>SVN 세상에서는 히스트리가 항상 평평하고 브랜치도 디렉토리로 관리한다. 그러니까 이점을 명확히 이해하고 있어야 혼란스럽지 않다.</p>
+</p>
+<p>SVN의 브랜치를 Git에서 Merge하는 것은 사실 조금 위험하다. Merge Commit 있는 Git 히스토리를 SVN에 Push하면 커밋 순서는 보장되지 않을 것이고 그렇다고 SVN에 이미 커밋된 것을 Rebase할 수도 없다. 하지만 Topic 브랜치를 만들어 작업하고 히스토리를 평평하게 펴서 SVN에 Push하면 쓸만하다.
 
-<p>SVN의 브랜치를 Git에서 Merge하는 것은 사실 조금 위험하다. Merge Commit 있는 Git 히스토리를 SVN에 Push하면 커밋 순서는 보장되지 않을 것이고 그렇다고 SVN에 이미 커밋된 것을 Rebase할 수도 없다. 하지만 Topic 브랜치를 만들어 작업하고 히스토리를 평평하게 펴서 SVN에 Push하면 쓸만하다.</p>
+</p>
+<p>그리고 SVN 히스토리가 망가질 수 있다는 단점은 지나친 기우일 수 있다. 오픈 소스 프로젝트라면 히스토리를 더럽히는 것이 당연히 부끄럽겠지만, 원래 커밋 메시지도 없는 히스토리라면 그냥 커밋 몇 개 더 만들어도 괜찮지 않을까? 취미로 하는 프로젝트를 빼고 난 아직 한번도 히스토리에 정성을 쏳는(이라고 쓰고 커밋 메시지를 잘 남기는 이라고 읽는다) 프로젝트를 해보지 못했다.
 
-<p>그리고 SVN 히스토리가 망가질 수 있다는 단점은 지나친 기우일 수 있다. 오픈 소스 프로젝트라면 히스토리를 더럽히는 것이 당연히 부끄럽겠지만, 원래 커밋 메시지도 없는 히스토리라면 그냥 커밋 몇 개 더 만들어도 괜찮지 않을까? 취미로 하는 프로젝트를 빼고 난 아직 한번도 히스토리에 정성을 쏳는(이라고 쓰고 커밋 메시지를 잘 남기는 이라고 읽는다) 프로젝트를 해보지 못했다.</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-svn.html';

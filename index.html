@@ -1,83 +1,107 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - 개발새발</title><meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." /><meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" /><meta name="author" content="changwoo-park.html.md, sean-lee.html.md, yongjae-choi.html.md" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><article class="post"><header><a href="/articles/2012/maven-scala-plugin.html"><h1>Maven에서 스크립트 사용하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><article class="post"><header><a href="/articles/2012/meteor-docs-ko.html"><h1>Meteor 한글 문서</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a>, <a href="/authors/yongjae-choi.html">Yongjae Choi</a>, <a href="/authors/sean-lee.html">Sean Lee</a></span>
+ | <span property="dc:created">2012 Sep 16</span>
+ | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#node" class="tag">node</a> | <span><a href="/articles/2012/meteor-docs-ko.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-docs-ko.html"></a></span>
+</footer><p><a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a>와 함께 Meteor 문서를 번역했습니다.
+
+</p>
+<p><img src="/articles/2012/meteor/nodejs-framework-comparison.png" alt="">
+
+</p>
+<p><a class="btn" href="/articles/2012/meteor-docs-ko.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/understanding-css3-2d-transforms.html"><h1>Understanding CSS3 2D Transforms</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
+ | <span property="dc:created">2012 Sep 10</span>
+ | <a href="/site/tagmap.html#2d" class="tag">2d</a> <a href="/site/tagmap.html#transform" class="tag">transform</a> <a href="/site/tagmap.html#css" class="tag">css</a> <a href="/site/tagmap.html#translation" class="tag">translation</a> | <span><a href="/articles/2012/understanding-css3-2d-transforms.html#disqus_thread" data-disqus-identifier="/articles/2012/understanding-css3-2d-transforms.html"></a></span>
+</footer><p>이 글은 Klemen Slavič의 <a href="http://msdn.microsoft.com/en-us/magazine/gg709742.aspx">Understanding CSS3 2D Transforms</a>를 번역한 글이다. 최근 CSS의 transform으로 DOM 객체를 이동시키는데 좌표이동이 헷갈려 정리하고 지나가려 한다. 2011년 3월의 글이라 현재는 다 구현되었는데 글에서는 구현 중으로 표현할 수도 있으니 혼란스러워하지 말길 바란다.
+
+</p>
+<p><img src="/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime">
+
+</p>
+<p><a class="btn" href="/articles/2012/understanding-css3-2d-transforms.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/maven-scala-plugin.html"><h1>Maven에서 스크립트 사용하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Sep 02</span>
  | <a href="/site/tagmap.html#maven" class="tag">maven</a> <a href="/site/tagmap.html#scala" class="tag">scala</a> <a href="/site/tagmap.html#plugin" class="tag">plugin</a> | <span><a href="/articles/2012/maven-scala-plugin.html#disqus_thread" data-disqus-identifier="/articles/2012/maven-scala-plugin.html"></a></span>
-</footer><p>기본적으로 Maven에는 로직을 넣을 수 없다. 로직이 있으면 있는 대로 없으면 없는 대로 장단점이 있어서 일률적으로 '좋다', '나쁘다.'라고 말할 수 없다. 하지만, 나는 로직을 넣을 수 있는 것이 더 좋다. Ant도 그렇지만 Maven으로 프로젝트를 관리하다 보면 답답할 때가 잦다. 특히 자주 저지르는 실수를 검증하는 코드는 넣고 싶을 때가 잦다(항상 틀린 걸 또 틀리니까!).</p>
+</footer><p>기본적으로 Maven에는 로직을 넣을 수 없다. 로직이 있으면 있는 대로 없으면 없는 대로 장단점이 있어서 일률적으로 '좋다', '나쁘다.'라고 말할 수 없다. 하지만, 나는 로직을 넣을 수 있는 것이 더 좋다. Ant도 그렇지만 Maven으로 프로젝트를 관리하다 보면 답답할 때가 잦다. 특히 자주 저지르는 실수를 검증하는 코드는 넣고 싶을 때가 잦다(항상 틀린 걸 또 틀리니까!).
 
-<p>Maven에 Plugin으로 스크립트를 Embed할 방법이 있는데 <a href="http://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a>, <a href="http://groovy.codehaus.org/GMaven">gmaven-plugin</a>, <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/">maven-scala-plugin</a>이 쓸만하다:</p>
+</p>
+<p>Maven에 Plugin으로 스크립트를 Embed할 방법이 있는데 <a href="http://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a>, <a href="http://groovy.codehaus.org/GMaven">gmaven-plugin</a>, <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/">maven-scala-plugin</a>이 쓸만하다:
 
+</p>
 <ul>
 <li><code>maven-antrun-plugin</code>: run 골을 이용해서 ant 스크립트를 실행할 수 있다.</li>
 <li><code>gmaven-plugin</code>: execute 골을 이용해서 groovy 스크립트를 실행할 수 있다.</li>
 <li><code>maven-scala-plugin</code>: script 골을 이용해서 scala 스크립트를 실행할 수 있다.</li>
 </ul>
+<p><img src="/articles/2012/maven/maple.jpeg" alt="maple">
+(from <a href="http://www.talismancoins.com/servlet/detail?no=920">http://www.talismancoins.com/servlet/detail?no=920</a>)
 
-<p><img src="/articles/2012/maven/maple.jpeg" alt="maple" title="" /><br />(from <a href='http://www.talismancoins.com/servlet/detail?no=920'>http://www.talismancoins.com/servlet/detail?no=920</a>)</p>
-
-<p><a class="btn" href="/articles/2012/maven-scala-plugin.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/persist-cookie-of-uiwebview.html"><h1>UIWebView 쿠기 유지하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Sean Lee</a></span>
+</p>
+<p><a class="btn" href="/articles/2012/maven-scala-plugin.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/persist-cookie-of-uiwebview.html"><h1>UIWebView 쿠기 유지하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
  | <span property="dc:created">2012 Aug 27</span>
  | <a href="/site/tagmap.html#uiwebview" class="tag">uiwebview</a> <a href="/site/tagmap.html#ios" class="tag">ios</a> <a href="/site/tagmap.html#cookie" class="tag">cookie</a> <a href="/site/tagmap.html#쿠키" class="tag">쿠키</a> | <span><a href="/articles/2012/persist-cookie-of-uiwebview.html#disqus_thread" data-disqus-identifier="/articles/2012/persist-cookie-of-uiwebview.html"></a></span>
-</footer><p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.</p>
+</footer><p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.
 
-<p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.</p>
+</p>
+<p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.
 
-<p><img src="http://farm1.staticflickr.com/182/403856634_db35669863.jpg" width="500" height="375" alt="cookies do not always wish to remain stacked."><br /><em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em></p>
+</p>
+<p><img src="http://farm1.staticflickr.com/182/403856634_db35669863.jpg" width="500" height="375" alt="cookies do not always wish to remain stacked.">
+<em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em>
 
-<p><a class="btn" href="/articles/2012/persist-cookie-of-uiwebview.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/git-delta.html"><h1>Git: 델타와 스냅샷</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</p>
+<p><a class="btn" href="/articles/2012/persist-cookie-of-uiwebview.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/git-delta.html"><h1>Git: 델타와 스냅샷</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Aug 25</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#delta" class="tag">delta</a> <a href="/site/tagmap.html#diff" class="tag">diff</a> <a href="/site/tagmap.html#patch" class="tag">patch</a> | <span><a href="/articles/2012/git-delta.html#disqus_thread" data-disqus-identifier="/articles/2012/git-delta.html"></a></span>
-</footer><p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.</p>
+</footer><p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.
 
-<p><img src="/articles/2012/git-delta/crime-and-sin.jpeg" alt="" title="" /></p>
+</p>
+<p><img src="/articles/2012/git-delta/crime-and-sin.jpeg" alt="">
 
-<p><a class="btn" href="/articles/2012/git-delta.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/meteor-fundametals-and-best-practices.html"><h1>Meteor: Learn Meteor Fundamentals and Best Practices</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+
+</p>
+<p><a class="btn" href="/articles/2012/git-delta.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/meteor-fundametals-and-best-practices.html"><h1>Meteor: Learn Meteor Fundamentals and Best Practices</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Aug 19</span>
  | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#andrew scala" class="tag">Andrew Scala</a> | <span><a href="/articles/2012/meteor-fundametals-and-best-practices.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-fundametals-and-best-practices.html"></a></span>
-</footer><p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.</p>
+</footer><p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.
 
-<p><img src="/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt="" title="" /> <strong>Andrew Scala</strong></p>
+</p>
+<p><img src="/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt=""> <strong>Andrew Scala</strong>
 
-<p><a class="btn" href="/articles/2012/meteor-fundametals-and-best-practices.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/git-merge-rebase.html"><h1>Git: Rebase는 언제 어떻게 해야 할까?</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</p>
+<p><a class="btn" href="/articles/2012/meteor-fundametals-and-best-practices.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/git-merge-rebase.html"><h1>Git: Rebase는 언제 어떻게 해야 할까?</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Aug 12</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#rebase" class="tag">Rebase</a> | <span><a href="/articles/2012/git-merge-rebase.html#disqus_thread" data-disqus-identifier="/articles/2012/git-merge-rebase.html"></a></span>
-</footer><p>처음에는 Rebase를 왜 해야 하고 언제 어떻게 해야 하는지 좀 헷갈린다. 헷갈리는 이유는 정답이 없고 미묘함이 있어서인데 그래도 대략적인 가이드가 있으면 좋겠다 싶어서 정리해보았다.</p>
+</footer><p>처음에는 Rebase를 왜 해야 하고 언제 어떻게 해야 하는지 좀 헷갈린다. 헷갈리는 이유는 정답이 없고 미묘함이 있어서인데 그래도 대략적인 가이드가 있으면 좋겠다 싶어서 정리해보았다.
 
-<p><img src="/articles/2012/git-merge-rebase/git-rebase.jpeg" alt="git-" title="" /></p>
+</p>
+<p><img src="/articles/2012/git-merge-rebase/git-rebase.jpeg" alt="git-">
 
-<p><a class="btn" href="/articles/2012/git-merge-rebase.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/meteor-for-windows.html"><h1>Meteor: Windows에 설치하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</p>
+<p><a class="btn" href="/articles/2012/git-merge-rebase.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/meteor-for-windows.html"><h1>Meteor: Windows에 설치하기</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Aug 03</span>
  | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#node" class="tag">node</a> | <span><a href="/articles/2012/meteor-for-windows.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-for-windows.html"></a></span>
-</footer><p>Rod Johnson에 Meteor에 합류했다기에 자료를 좀 찾아봤다.</p>
+</footer><p>Rod Johnson에 Meteor에 합류했다기에 자료를 좀 찾아봤다.
 
-<p><img src="/articles/2012/meteor/meteor.jpg" alt="" title="" /></p>
+</p>
+<p><img src="/articles/2012/meteor/meteor.jpg" alt="">
 
-<p><strong>UPDATE</strong>:</p>
+</p>
+<p><strong>UPDATE</strong>:
 
-<p>Window용 Meteor를 배포하는 페이지가 나타났어요. <a href="http://win.meteor.com/"><a href='http://win.meteor.com/'>http://win.meteor.com/</a></a></p>
+</p>
+<p>Window용 Meteor를 배포하는 페이지가 나타났어요. <a href="http://win.meteor.com/"><a href="http://win.meteor.com/">http://win.meteor.com/</a></a>
 
-<p><a class="btn" href="/articles/2012/meteor-for-windows.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/sbt-getting-started-basic-def.html"><h1>sbt: Getting Started Guide: .sbt Build Definition</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</p>
+<p><a class="btn" href="/articles/2012/meteor-for-windows.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/sbt-getting-started-basic-def.html"><h1>sbt: Getting Started Guide: .sbt Build Definition</h1></a></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 30</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-basic-def.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-basic-def.html"></a></span>
-</footer><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
+</footer><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. 
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt">
 
-<p><a class="btn" href="/articles/2012/sbt-getting-started-basic-def.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/sbt-getting-started-running.html"><h1>sbt: Getting Started Guide: Running</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
- | <span property="dc:created">2012 Jul 25</span>
- | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-running.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-running.html"></a></span>
-</footer><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
-
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
-
-<p><a class="btn" href="/articles/2012/sbt-getting-started-running.html">Read more &raquo;</a></p></article><article class="post"><header><a href="/articles/2012/sbt-getting-started-directory-layout.html"><h1>sbt: Getting Started Guide: Directory Layout</h1></a></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
- | <span property="dc:created">2012 Jul 16</span>
- | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-directory-layout.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-directory-layout.html"></a></span>
-</footer><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
-
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
-
-<p><a class="btn" href="/articles/2012/sbt-getting-started-directory-layout.html">Read more &raquo;</a></p></article><p><a class="btn info right" href="/site/archive.html">go to Archive &raquo;</a></p></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+</p>
+<p><a class="btn" href="/articles/2012/sbt-getting-started-basic-def.html">Read more &raquo;</a></p></article><p><a class="btn info right" href="/site/archive.html">go to Archive &raquo;</a></p></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: Global Ignore</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,47 +15,50 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-global-ignore.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: Global Ignore</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-global-ignore.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: Global Ignore</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Feb 10</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#gitignore" class="tag">gitignore</a> | <span><a href="/articles/2012/git-global-ignore.html#disqus_thread" data-disqus-identifier="/articles/2012/git-global-ignore.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-global-ignore.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-global-ignore.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-global-ignore.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>GitHub에서 관리하는 <code>.gitignore</code> 패턴 템플릿이 있어 소개한다.</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-global-ignore.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-global-ignore.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-global-ignore.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>GitHub에서 관리하는 <code>.gitignore</code> 패턴 템플릿이 있어 소개한다.
 
-<p><img src="/articles/2012/git-global-ignore/ignorelo.png" alt="무시로" title="" /></p>
+</p>
+<p><img src="/articles/2012/git-global-ignore/ignorelo.png" alt="무시로">
 
+</p>
 <h2>gitignore</h2>
+<p>파일을 무시하는 패턴을 설정하는 방법은 세 가지이다:
 
-<p>파일을 무시하는 패턴을 설정하는 방법은 세 가지이다:</p>
-
+</p>
 <ol>
 <li><code>.git/info/exclude</code>는 해당 저장소에만 적용되고 전송되지 않는다. 그러니까 Clone되지 않고 Push할 수 없다.</li>
 <li><code>.gitignore</code>는 해당 저장소에만 적용되지만 전송된다.</li>
 <li><code>core.exlcudesfile</code> 설정</li>
 </ol>
+<p>파일 형식은 모두 같고, 세 파일은 있는 대로 동시에 적용될 수 있다. 우선순위는 나열한 순서대로다.
 
-<p>파일 형식은 모두 같고, 세 파일은 있는 대로 동시에 적용될 수 있다. 우선순위는 나열한 순서대로다.</p>
+</p>
+<p><code>core.exlcudesfile</code> 설정은 다음과 같다:
 
-<p><code>core.exlcudesfile</code> 설정은 다음과 같다:</p>
-
-<pre><code>$ git config --global core.excludesfile ~/.global_ignore
-</code></pre>
-
+</p>
+<pre><code><span class="variable">$ </span>git config --global core.excludesfile ~<span class="regexp">/.global_ignore</code></pre>
 <h2>gitignore 프로젝트</h2>
+<p>Github는 친절하게도 '언어 및 환경'마다 권장 gitignore 파일 템플릿을 모아 두었다. GitHub의 <a href="https://github.com/github/gitignore">gitignore 저장소</a>에 가서 Clone하고 필요한 템플릿을 사용해보자.
 
-<p>Github는 친절하게도 '언어 및 환경'마다 권장 gitignore 파일 템플릿을 모아 두었다. GitHub의 <a href="https://github.com/github/gitignore">gitignore 저장소</a>에 가서 Clone하고 필요한 템플릿을 사용해보자.</p>
+</p>
+<p>저장소에는 루트 디렉토리에 있는 것과 <code>Global/</code> 디렉토리에 있는 것으로 나누어져 있는데 Global/ 디렉토리에 있는 것은 'OS-specific, editor-specific'인 것이다.
 
-<p>저장소에는 루트 디렉토리에 있는 것과 <code>Global/</code> 디렉토리에 있는 것으로 나누어져 있는데 Global/ 디렉토리에 있는 것은 'OS-specific, editor-specific'인 것이다.</p>
+</p>
+<p>예를 들어 자바라면 다음과 같이 한다:
 
-<p>예를 들어 자바라면 다음과 같이 한다:</p>
-
-<pre><code>$ cat Maven.gitignore &gt;&gt; ~/.global_ignore
-$ cat Java.gitignore &gt;&gt; ~/.global_ignore
-$ cat Global/Eclipse.gitignore &gt;&gt; ~/.global_ignore
-$ cat Global/vim.gitignore &gt;&gt; ~/.global_ignore
-$ cat Global/OSX.gitignore &gt;&gt; ~/.global_ignore
-$ git config --global core.excludesfile ~/.global_ignore
-</code></pre></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Mar 03 2012</span>&raquo;<a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+<pre><code>$ cat Maven<span class="variable">.gitignore</span> >> ~/<span class="variable">.global_ignore</span>
+$ cat Java<span class="variable">.gitignore</span> >> ~/<span class="variable">.global_ignore</span>
+$ cat Global/Eclipse<span class="variable">.gitignore</span> >> ~/<span class="variable">.global_ignore</span>
+$ cat Global/vim<span class="variable">.gitignore</span> >> ~/<span class="variable">.global_ignore</span>
+$ cat Global/OSX<span class="variable">.gitignore</span> >> ~/<span class="variable">.global_ignore</span>
+$ git config --global core<span class="variable">.excludesfile</span> ~/<span class="variable">.global_ignore</span></code></pre>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Mar 03 2012</span>&raquo;<a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-global-ignore.html';

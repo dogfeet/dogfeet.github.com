@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git:mergetool, difftool</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,125 +15,118 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:mergetool, difftool</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:mergetool, difftool</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 17</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#diffmerge" class="tag">diffmerge</a> | <span><a href="/articles/2011/git-mergediff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-mergediff.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/git-mergediff.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>보통은 Git에 기본으로 들어 있는 도구로도 충분하다. 기본 도구는 빠르고 간결해서 좋다. 하지만 가끔씩 Visual 도구가 필요하다.
 
-<p>먼저 <a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a>를 보고 도구를 골라보자. 이 리뷰는 정말 훌륭하다. 나는 무료이고 Mac, Linux, Window를 지원하는 <a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a>를 골랐다. 이 글은 DiffMerge를 기준으로 설명한다. </p>
+</p>
+<p>먼저 <a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a>를 보고 도구를 골라보자. 이 리뷰는 정말 훌륭하다. 나는 무료이고 Mac, Linux, Window를 지원하는 <a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a>를 골랐다. 이 글은 DiffMerge를 기준으로 설명한다. 
 
-<p><img src="/articles/2011/git-mergediff/savage-chikens-catoon.jpg" alt="diff" title="" /></p>
+</p>
+<p><img src="/articles/2011/git-mergediff/savage-chikens-catoon.jpg" alt="diff">
 
+</p>
 <h2>mergetool</h2>
+<p>다음과 같이 설정한다:
 
-<p>다음과 같이 설정한다:</p>
+</p>
+<pre><code><span class="title">git</span> config <span class="comment">--global merge.tool diffmerge</span>
+<span class="title">git</span> config <span class="comment">--global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"</span>
+<span class="title">git</span> config <span class="comment">--global mergetool.diffmerge.trustExitCode true</span></code></pre>
+<p>각 설정의 의미는 다음과 같다:
 
-<pre><code>git config --global merge.tool diffmerge
-git config --global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"
-git config --global mergetool.diffmerge.trustExitCode true
-</code></pre>
-
-<p>각 설정의 의미는 다음과 같다:</p>
-
+</p>
 <ul>
 <li><code>merge.tool</code>은 Merge 도구를 새로 정의하는 것이다.</li>
 <li><code>mergetool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
 <li><code>mergetool.*.trustExitCode</code>은 해당 Merge 도구의 Exit 코드가 Merge의 성공여부를 나타내면 true로 설정한다.</li>
 </ul>
+<p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:
 
-<p>이렇게 설정된 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
-
+</p>
 <pre><code>[merge]
     tool = diffmerge
-[mergetool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-    trustExitCode = true
-</code></pre>
+[mergetool <span class="string">"diffmerge"</span>]
+    cmd = <span class="regexp">/Applications/</span><span class="constant">DiffMerge</span>.app/<span class="constant">Contents</span>/<span class="constant">MacOS</span>/<span class="constant">DiffMerge</span> --merge --result=<span class="variable">$MERGED</span> <span class="variable">$LOCAL</span> <span class="variable">$BASE</span> <span class="variable">$REMOTE</span>
+    trustExitCode = <span class="keyword">true</span></code></pre>
+<p>이제 <code>git mergetool</code> 명령을 실행하면 DiffMerge가 실행된다.
 
-<p>이제 <code>git mergetool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
-
+</p>
 <h3>mergetool.keepBackup</h3>
+<p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:
 
-<p>Git은 기본적으로 Merge한 후에 원래 파일을 백업한다. 이 백업을 생략하려면 다음과 같이 설정한다:</p>
-
-<pre><code>git config --global mergetool.keepBackup false
-</code></pre>
-
+</p>
+<pre><code><span class="title">git</span> config --global mergetool.keepBackup <span class="built_in">false</span></code></pre>
 <h2>difftool</h2>
+<p>difftool은 다음과 같이 설정한다:
 
-<p>difftool은 다음과 같이 설정한다:</p>
+</p>
+<pre><code><span class="title">git</span> config <span class="comment">--global diff.tool diffmerge</span>
+<span class="title">git</span> config <span class="comment">--global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"</span></code></pre>
+<p>각 설정의 의미는 다음과 같다:
 
-<pre><code>git config --global diff.tool diffmerge
-git config --global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"
-</code></pre>
-
-<p>각 설정의 의미는 다음과 같다:</p>
-
+</p>
 <ul>
 <li><code>diff.tool</code>은 diff 도구를 새로 정의하는 것이다.</li>
 <li><code>difftool.*.cmd</code>가 실제로 실행되는 명령어다.</li>
 </ul>
+<p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:
 
-<p>이렇게 설정한 <code>~/.gitconfig</code> 파일내용은 다음과 같다:</p>
-
+</p>
 <pre><code>[diff]
     tool = diffmerge
-[difftool "diffmerge"]
-    cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge $LOCAL $REMOTE
-</code></pre>
+[difftool <span class="string">"diffmerge"</span>]
+    cmd = <span class="regexp">/Applications/</span><span class="constant">DiffMerge</span>.app/<span class="constant">Contents</span>/<span class="constant">MacOS</span>/<span class="constant">DiffMerge</span> <span class="variable">$LOCAL</span> <span class="variable">$REMOTE</span></code></pre>
+<p><code>git difftool</code> 명령을 실행하면 DiffMerge가 실행된다.
 
-<p><code>git difftool</code> 명령을 실행하면 DiffMerge가 실행된다.</p>
-
+</p>
 <h3>diff.external</h3>
+<p>difftool을 설정했지만 <code>git diff</code> 명령은 여전히 Git에 들어 있는 diff 툴을 사용한다. 
 
-<p>difftool을 설정했지만 <code>git diff</code> 명령은 여전히 Git에 들어 있는 diff 툴을 사용한다. </p>
+</p>
+<p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:
 
-<p><code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용하고 싶으면 먼저 다음과 같이 wrapper를 만든다:</p>
+</p>
+<pre><code><span class="shebang">#!/usr/bin/env bash</span>
+[ $# -eq <span class="number">7</span> ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge <span class="string">"$2"</span> <span class="string">"$5"</span></code></pre>
+<p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:
 
-<pre><code>#!/usr/bin/env bash
-[ $# -eq 7 ] &amp;&amp; /Applications/DiffMerge.app/Contents/MacOS/DiffMerge "$2" "$5"
-</code></pre>
+</p>
+<pre><code>path old-<span class="keyword">file</span> old-hex old-mode <span class="keyword">new</span>-<span class="keyword">file</span> <span class="keyword">new</span>-hex <span class="keyword">new</span>-mode</code></pre>
+<p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.
 
-<p>wrapper 스크립트로 념겨지는 인자는 모두 7개로 다음과 같은 순서로 넘어간다:</p>
+</p>
+<p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:
 
-<pre><code>path old-file old-hex old-mode new-file new-hex new-mode
-</code></pre>
+</p>
+<pre><code><span class="title">git</span> config <span class="comment">--global diff.external mydiff</span></code></pre>
+<p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. 
 
-<p>이 중에서 인자 몇 개만 사용하고 싶으면 wrapper를 꼭 만들어야 한다.</p>
+</p>
+<p>하지만 나는 <code>difftool</code> 명령과 <code>diff</code> 명령을 구분해 두는 게 좋다. 터미널에서 밖에 작업할 수 없는 환경도 많다. 그래서 나는 diff.external 옵션은 사용하지 않는다.
 
-<p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:</p>
-
-<pre><code>git config --global diff.external mydiff
-</code></pre>
-
-<p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. </p>
-
-<p>하지만 나는 <code>difftool</code> 명령과 <code>diff</code> 명령을 구분해 두는 게 좋다. 터미널에서 밖에 작업할 수 없는 환경도 많다. 그래서 나는 diff.external 옵션은 사용하지 않는다.</p>
-
+</p>
 <h2>preset</h2>
+<p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:
 
-<p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:</p>
-
-<pre><code>git config --global merge.tool vimdiff
-</code></pre>
-
+</p>
+<pre><code><span class="title">git</span> config <span class="comment">--global merge.tool vimdiff</span></code></pre>
 <h2>그외</h2>
-
 <ul>
 <li>diff 할때 공백 문자 어떻게 다룰지 설정할 수 있다. </li>
 <li>diff할 수 있도록 바이너리 파일에서 텍스트를 추출할 수 있으면 바이너리 파일도 diff할 수 있다.</li>
 </ul>
-
 <h2>참고</h2>
-
 <ul>
 <li><a href="http://www.sourcegear.com/diffmerge/">DiffMerge</a></li>
 <li><a href="http://ljh131.tistory.com/143">본격 Diff 도구 리뷰</a></li>
 <li><a href="http://adventuresincoding.com/2010/04/how-to-setup-git-to-use-diffmerge">How to setup git to use diffmerge</a></li>
 <li><a href="http://progit.org">progit</a></li>
-</ul></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</ul>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-mergediff.html';

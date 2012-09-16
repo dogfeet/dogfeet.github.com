@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - sbt: Getting Started Guide: Directory Layout</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,69 +15,72 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Directory Layout</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Directory Layout</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 16</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-directory-layout.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-directory-layout.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-directory-layout.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. 
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt">
 
+</p>
 <h3>Base directory</h3>
+<p>sbt에서 "base 디렉토리"는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.
 
-<p>sbt에서 "base 디렉토리"는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.</p>
-
+</p>
 <h2>Source code</h2>
+<p>소스는 <code>hello/hw.scala</code>처럼 프로젝트 base 디렉토리에 넣으면 된다. 하지만 보통은 그냥 넣으면 너무 지저분하기 때문에 정리해서 넣는 규칙이 있다.
 
-<p>소스는 <code>hello/hw.scala</code>처럼 프로젝트 base 디렉토리에 넣으면 된다. 하지만 보통은 그냥 넣으면 너무 지저분하기 때문에 정리해서 넣는 규칙이 있다.</p>
+</p>
+<p>sbt는 기본적으로 <a href="http://maven.apache.org/">Maven</a>과 같은 디렉토리 레이아웃을 사용한다(모든 경로는 base 디렉토리를 기준으로 하는 상대 경로다):
 
-<p>sbt는 기본적으로 <a href="http://maven.apache.org/">Maven</a>과 같은 디렉토리 레이아웃을 사용한다(모든 경로는 base 디렉토리를 기준으로 하는 상대 경로다):</p>
-
+</p>
 <pre><code>src/
   main/
     resources/
-       &lt;files to include in main jar here&gt;
+       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">main</span> <span class="attribute">jar</span> <span class="attribute">here</span>></span>
     scala/
-       &lt;main Scala sources&gt;
+       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>></span>
     java/
-       &lt;main Java sources&gt;
+       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Java</span> <span class="attribute">sources</span>></span>
   test/
     resources
-       &lt;files to include in test jar here&gt;
+       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">test</span> <span class="attribute">jar</span> <span class="attribute">here</span>></span>
     scala/
-       &lt;test Scala sources&gt;
+       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>></span>
     java/
-       &lt;test Java sources&gt;
-</code></pre>
+       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Java</span> <span class="attribute">sources</span>></span></code></pre>
+<p><code>src/</code> 안에 있는 다른 디렉토리와 숨겨진 디렉토리는 무시된다.
 
-<p><code>src/</code> 안에 있는 다른 디렉토리와 숨겨진 디렉토리는 무시된다.</p>
-
+</p>
 <h2>sbt build definition files</h2>
+<p><code>build.sbt</code> 파일은 base 디렉토리에 넣지만 다른 sbt 파일은 <code>project</code> 디렉토리를 만들어 넣는다.
 
-<p><code>build.sbt</code> 파일은 base 디렉토리에 넣지만 다른 sbt 파일은 <code>project</code> 디렉토리를 만들어 넣는다.</p>
+</p>
+<p><code>project</code> 디렉토리에는 <code>.scala</code> 파일을 넣을 수 있고 이 <code>.scala</code> 파일은 <code>.sbt</code> 파일과 함께 빌드를 정의하는데 쓴다. 자세한건 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala Build Definition</a>를 봐라.
 
-<p><code>project</code> 디렉토리에는 <code>.scala</code> 파일을 넣을 수 있고 이 <code>.scala</code> 파일은 <code>.sbt</code> 파일과 함께 빌드를 정의하는데 쓴다. 자세한건 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala Build Definition</a>를 봐라.</p>
+</p>
+<pre><code><span class="title">build</span>.sbt
+<span class="title">project</span>/
+  <span class="type">Build</span>.scala</code></pre>
+<p><code>project/</code> 디렉토리 안쪽에도 <code>.sbt</code> 파일을 넣을 수 있지만 base 디렉토리에 있는 <code>.sbt</code> 파일과 다르다. 이점은 몇 가지 사전지식이 필요하기 때문에 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">나중에</a>에서 설명한다.
 
-<pre><code>build.sbt
-project/
-  Build.scala
-</code></pre>
-
-<p><code>project/</code> 디렉토리 안쪽에도 <code>.sbt</code> 파일을 넣을 수 있지만 base 디렉토리에 있는 <code>.sbt</code> 파일과 다르다. 이점은 몇 가지 사전지식이 필요하기 때문에 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">나중에</a>에서 설명한다.</p>
-
+</p>
 <h2>Build products</h2>
+<p>기본적으로 <code>target</code> 디렉토리에 파일을(컴파일한 클래스, 패키지한 jar 파일, managed 파일, 캐시, 문서) 생성한다.
 
-<p>기본적으로 <code>target</code> 디렉토리에 파일을(컴파일한 클래스, 패키지한 jar 파일, managed 파일, 캐시, 문서) 생성한다.</p>
-
+</p>
 <h2>Configuring version control</h2>
+<p><code>.gitignore</code> 파일에 <code>target/</code> 디렉토리를 추가한다. 다른 버전관리 시스템도 git처럼 <code>target/</code> 디렉토리를 추가해야 한다:
 
-<p><code>.gitignore</code> 파일에 <code>target/</code> 디렉토리를 추가한다. 다른 버전관리 시스템도 git처럼 <code>target/</code> 디렉토리를 추가해야 한다:</p>
+</p>
+<pre><code><span class="attribute">target/</code></pre>
+<p>이름이 <code>/</code>로 끝났다. <code>/</code> 끝나는 이름은 디렉토리만 매치하겠다는 의미다. 그리고 <code>/</code>로 시작하지 않았기 때문에 base 디렉토리에 있는 <code>target/</code> 뿐만 아니라 <code>project/target</code>처럼 하위 디렉토리 안에 있는 디렉토리도 매치된다.
 
-<pre><code>target/
-</code></pre>
-
-<p>이름이 <code>/</code>로 끝났다. <code>/</code> 끝나는 이름은 디렉토리만 매치하겠다는 의미다. 그리고 <code>/</code>로 시작하지 않았기 때문에 base 디렉토리에 있는 <code>target/</code> 뿐만 아니라 <code>project/target</code>처럼 하위 디렉토리 안에 있는 디렉토리도 매치된다.</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 30 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-basic-def.html">sbt: Getting Started Guide: .sbt Build Definition</a></li><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li><li><span>Jul 03 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 30 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-basic-def.html">sbt: Getting Started Guide: .sbt Build Definition</a></li><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li><li><span>Jul 03 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-setup.html">sbt: Getting Started Guide: Setup</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/sbt-getting-started-directory-layout.html';

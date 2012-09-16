@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - New in JavaScript 1.7</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,425 +15,409 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1317201600.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New in JavaScript 1.7</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1317201600.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New in JavaScript 1.7</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2011 Sep 28</span>
  | <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a> | <span><a href="/articles/2011/1317201600.html#disqus_thread" data-disqus-identifier="/articles/2011/1317201600.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317201600.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317201600.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317201600.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Mozilla의 <a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.7">New In JavaScript 1.7</a>를 정리한 것이다. 이 글의 내용은 아직 논쟁중이고 보편적이지 않아서 당장은 별 도움되지 않을 듯...</p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317201600.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317201600.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317201600.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Mozilla의 <a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.7">New In JavaScript 1.7</a>를 정리한 것이다. 이 글의 내용은 아직 논쟁중이고 보편적이지 않아서 당장은 별 도움되지 않을 듯...
 
+</p>
 <h2>Generators and Iterators</h2>
+<p>개인적으로 closure가 있는데 Generator나 Iterator가 유용한지 조금 회이적이다.
 
-<p>개인적으로 closure가 있는데 Generator나 Iterator가 유용한지 조금 회이적이다.</p>
-
+</p>
 <h3>Iterators</h3>
+<p>Iterator는 Iterator() 함수로 만들고:
 
-<p>Iterator는 Iterator() 함수로 만들고:</p>
+</p>
+<pre><code><span class="keyword">var</span> lang = { name: <span class="string">'JavaScript'</span>, birthYear: <span class="number">1995</span> };
+<span class="keyword">var</span> it = Iterator(lang);</code></pre>
+<p>next()를 호출하면 해당 key, value가 반환된다:
 
-<pre><code>var lang = { name: 'JavaScript', birthYear: 1995 };
-var it = Iterator(lang);
-</code></pre>
+</p>
+<pre><code><span class="reserved">var</span> pair = it.next(); <span class="regexp">//</span> Pair <span class="keyword">is</span> [<span class="string">"name"</span>, <span class="string">"JavaScript"</span>]
+pair = it.next(); <span class="regexp">//</span> Pair <span class="keyword">is</span> [<span class="string">"birthYear"</span>, <span class="number">1995</span>]
+pair = it.next(); <span class="regexp">//</span> A StopIteration exception <span class="keyword">is</span> thrown</code></pre>
+<p>next()대신 <code>for..in</code>으로도 사용할 수 있다. 여기에서도 StopIteration 예외가 발생하면 loop이 중지된다:
 
-<p>next()를 호출하면 해당 key, value가 반환된다:</p>
+</p>
+<pre><code><span class="reserved">var</span> it = Iterator(lang);
+  <span class="keyword">for</span> (<span class="reserved">var</span> pair <span class="keyword">in</span> it)
+print(pair); <span class="regexp">//</span> prints each [key, value] pair <span class="keyword">in</span> turn</code></pre>
+<p>key, value pair가 아니라 단순히 key만 iteration하고 싶으면 Interator()의 두번째 인자에 true를 넘긴다:
 
-<pre><code>var pair = it.next(); // Pair is ["name", "JavaScript"]
-pair = it.next(); // Pair is ["birthYear", 1995]
-pair = it.next(); // A StopIteration exception is thrown
-</code></pre>
+</p>
+<pre><code><span class="reserved">var</span> it = Iterator(lang, <span class="literal">true</span>);
+<span class="keyword">for</span> (<span class="reserved">var</span> key <span class="keyword">in</span> it)
+  print(key); <span class="regexp">//</span> prints each key <span class="keyword">in</span> turn</code></pre>
+<p>Iterator()는 Array에도 OK:
 
-<p>next()대신 <code>for..in</code>으로도 사용할 수 있다. 여기에서도 StopIteration 예외가 발생하면 loop이 중지된다:</p>
+</p>
+<pre><code><span class="reserved">var</span> langs = [<span class="string">'JavaScript'</span>, <span class="string">'Python'</span>, <span class="string">'C++'</span>];
+<span class="reserved">var</span> it = Iterator(langs);
+<span class="keyword">for</span> (<span class="reserved">var</span> pair <span class="keyword">in</span> it)
+  print(pair); <span class="regexp">//</span> prints each [index, language] pair <span class="keyword">in</span> turn</code></pre>
+<p>Array에서 Iterator()의 두번째 인자로 true를 주면 index를 iteration한다.
 
-<pre><code>var it = Iterator(lang);
-  for (var pair in it)
-print(pair); // prints each [key, value] pair in turn
-</code></pre>
+</p>
+<pre><code><span class="keyword">var</span> langs = [<span class="string">'JavaScript'</span>, <span class="string">'Python'</span>, <span class="string">'C++'</span>];
+<span class="keyword">var</span> it = Iterator(langs, <span class="keyword">true</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> it)
+  print(i); <span class="comment">// prints 0, then 1, then 2</span></code></pre>
+<p>let 키워드로 block scoped 변수를 만들어 할당할 수 있다:
 
-<p>key, value pair가 아니라 단순히 key만 iteration하고 싶으면 Interator()의 두번째 인자에 true를 넘긴다:</p>
-
-<pre><code>var it = Iterator(lang, true);
-for (var key in it)
-  print(key); // prints each key in turn
-</code></pre>
-
-<p>Iterator()는 Array에도 OK:</p>
-
-<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
-var it = Iterator(langs);
-for (var pair in it)
-  print(pair); // prints each [index, language] pair in turn
-</code></pre>
-
-<p>Array에서 Iterator()의 두번째 인자로 true를 주면 index를 iteration한다.</p>
-
-<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
-var it = Iterator(langs, true);
-for (var i in it)
-  print(i); // prints 0, then 1, then 2
-</code></pre>
-
-<p>let 키워드로 block scoped 변수를 만들어 할당할 수 있다:</p>
-
-<pre><code>var langs = ['JavaScript', 'Python', 'C++'];
-var it = Iterator(langs);
-for (let [i, lang] in it)
-  print(i + ': ' + lang); // prints "0: JavaScript" etc.
-</code></pre>
-
+</p>
+<pre><code><span class="keyword">var</span> langs = [<span class="string">'JavaScript'</span>, <span class="string">'Python'</span>, <span class="string">'C++'</span>];
+<span class="keyword">var</span> it = Iterator(langs);
+<span class="keyword">for</span> (<span class="keyword">let</span> [i, lang] <span class="keyword">in</span> it)
+  print(i + <span class="string">': '</span> + lang); <span class="comment">// prints "0: JavaScript" etc.</span></code></pre>
 <h4>Defining custom iterators</h4>
+<p>특정 범위의 수를 Iteration하는 Interator를 만들어 보자.
 
-<p>특정 범위의 수를 Iteration하는 Interator를 만들어 보자.</p>
+</p>
+<p>먼저 Range 객체를 만들고:
 
-<p>먼저 Range 객체를 만들고:</p>
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Range</span><span class="params">(low, high)</span>{</span>
+  <span class="keyword">this</span>.low = low;
+  <span class="keyword">this</span>.high = high;
+}</code></pre>
+<p>low, high사이의 값을 순서대로 반환하고 끝나면 StopInteration 예외를 던지는 RangeIterator를 만든다:
 
-<pre><code>function Range(low, high){
-  this.low = low;
-  this.high = high;
-}
-</code></pre>
-
-<p>low, high사이의 값을 순서대로 반환하고 끝나면 StopInteration 예외를 던지는 RangeIterator를 만든다:</p>
-
+</p>
 <pre><code>function RangeIterator(range){
-  this.range = range;
-  this.current = this.range.low;
+  <span class="keyword">this</span><span class="variable">.range</span> = range;
+  <span class="keyword">this</span><span class="variable">.current</span> = <span class="keyword">this</span><span class="variable">.range</span><span class="variable">.low</span>;
 }
-RangeIterator.prototype.next = function(){
-  if (this.current &gt; this.range.high)
-    throw StopIteration;
-  else
-    return this.current++;
-};
-</code></pre>
+RangeIterator<span class="variable">.prototype</span><span class="variable">.next</span> = function(){
+  <span class="keyword">if</span> (<span class="keyword">this</span><span class="variable">.current</span> > <span class="keyword">this</span><span class="variable">.range</span><span class="variable">.high</span>)
+    <span class="keyword">throw</span> StopIteration;
+  <span class="keyword">else</span>
+    <span class="keyword">return</span> <span class="keyword">this</span><span class="variable">.current</span>++;
+};</code></pre>
+<p>Range에 RangeIterator를 반환하는 메소드를 추가한다. <strong>iterator</strong>는 이를 위한 특별한 프로퍼티다.
 
-<p>Range에 RangeIterator를 반환하는 메소드를 추가한다. <strong>iterator</strong>는 이를 위한 특별한 프로퍼티다.</p>
+</p>
+<pre><code>Range.prototype.__iterator__ = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="keyword">new</span> RangeIterator(<span class="keyword">this</span>);
+};</code></pre>
+<p>만든 RangeIterator를 써보자:
 
-<pre><code>Range.prototype.__iterator__ = function(){
-  return new RangeIterator(this);
-};
-</code></pre>
-
-<p>만든 RangeIterator를 써보자:</p>
-
-<pre><code>var range = new Range(3, 5);
-for (var i in range)
-  print(i); // prints 3, then 4, then 5 in sequence 
-</code></pre>
-
+</p>
+<pre><code>var <span class="keyword">range</span> = <span class="keyword">new</span> <span class="keyword">Range</span>(<span class="number">3</span>, <span class="number">5</span>);
+<span class="keyword">for</span> (var i <span class="keyword">in</span> <span class="keyword">range</span>)
+  print(i); // prints <span class="number">3</span>, <span class="keyword">then</span> <span class="number">4</span>, <span class="keyword">then</span> <span class="number">5</span> <span class="keyword">in</span> <span class="keyword">sequence</span> </code></pre>
 <h3>Generators: a better way to build Iterators</h3>
+<p>Custom Iterator와 같은 것을 보다 쉽고 간결하게 작성할 수 있다. Generator는 Iterator의 Factory라고 볼 수 있는데 함수에 새로 추가된 yield 키워드를 사용하면 그 함수가 Generator가 된다.
 
-<p>Custom Iterator와 같은 것을 보다 쉽고 간결하게 작성할 수 있다. Generator는 Iterator의 Factory라고 볼 수 있는데 함수에 새로 추가된 yield 키워드를 사용하면 그 함수가 Generator가 된다.</p>
+</p>
+<p>yeild 키워드를 사용하려면 Script Block을 다음과 같이 선언해야 한다:
 
-<p>yeild 키워드를 사용하려면 Script Block을 다음과 같이 선언해야 한다:</p>
+</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"application/JavaScript;version=1.7"</span>/></span><span class="javascript"></span></code></pre>
+<p>Generator()를 호출하면 그 함수가 바로 실행되는 것이 아니라 generator-iterator 객체를 반환한다. 그리고
+반환된 generator-iterator 객체의 next() 메소드를 호출할 때마다 다음 yield까지 실행한다. 함수가 끝나거나
+return되면 StopIteration 예외를 던진다.
 
-<pre><code>&lt;script type="application/JavaScript;version=1.7"/&gt;
-</code></pre>
+</p>
+<p>간단한 예제를 보자:
 
-<p>Generator()를 호출하면 그 함수가 바로 실행되는 것이 아니라 generator-iterator 객체를 반환한다. 그리고<br />반환된 generator-iterator 객체의 next() 메소드를 호출할 때마다 다음 yield까지 실행한다. 함수가 끝나거나<br />return되면 StopIteration 예외를 던진다.</p>
-
-<p>간단한 예제를 보자:</p>
-
-<pre><code>function simpleGenerator(){
-  yield "first";
-  yield "second";
-  yield "third";
-  for (var i = 0; i &lt; 3; i++)
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">simpleGenerator</span><span class="params">()</span>{</span>
+  yield <span class="string">"first"</span>;
+  yield <span class="string">"second"</span>;
+  yield <span class="string">"third"</span>;
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)
     yield i;
 }
 
-var g = simpleGenerator();
-print(g.next()); // prints "first"
-print(g.next()); // prints "second"
-print(g.next()); // prints "third"
-print(g.next()); // prints 0
-print(g.next()); // prints 1
-print(g.next()); // prints 2
-print(g.next()); // StopIteration is thrown
-</code></pre>
+<span class="keyword">var</span> g = simpleGenerator();
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints "first"</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints "second"</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints "third"</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints 0</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints 1</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// prints 2</span>
+<span class="keyword">print</span>(g.next()); <span class="comment">// StopIteration is thrown</span></code></pre>
+<p>위에서 살펴봤던 RangeIterator의 구현을 Range의 prototype의 <strong>iterator</strong> 프로퍼트를 바로 구현하여
+더 간단하게 구현할 수 있다:
 
-<p>위에서 살펴봤던 RangeIterator의 구현을 Range의 prototype의 <strong>iterator</strong> 프로퍼트를 바로 구현하여<br />더 간단하게 구현할 수 있다:</p>
-
-<pre><code>function Range(low, high){
-  this.low = low;
-  this.high = high;
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Range</span><span class="params">(low, high)</span>{</span>
+  <span class="keyword">this</span>.low = low;
+  <span class="keyword">this</span>.high = high;
 }
-Range.prototype.__iterator__ = function(){
-  for (var i = this.low; i &lt;= this.high; i++)
-    yield i;
+Range.prototype.__iterator__ = <span class="keyword">function</span>(){
+  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="keyword">this</span>.low; i &lt;= <span class="keyword">this</span>.high; i++)
+    <span class="keyword">yield</span> i;
 };
-var range = new Range(3, 5);
-for (var i in range)
-  print(i); // prints 3, then 4, then 5 in sequence 
-</code></pre>
+<span class="keyword">var</span> range = <span class="keyword">new</span> Range(<span class="number">3</span>, <span class="number">5</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> range)
+  print(i); <span class="comment">// prints 3, then 4, then 5 in sequence </span></code></pre>
+<p>이전 두 수의 합을 구하는 피보나치 수열을 Generator로 구현해보자:
 
-<p>이전 두 수의 합을 구하는 피보나치 수열을 Generator로 구현해보자:</p>
-
-<pre><code>function fibonacci(){
-  var fn1 = 1;
-  var fn2 = 1;
-  while (1){
-    var current = fn2;
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">()</span>{</span>
+  <span class="keyword">var</span> fn1 = <span class="number">1</span>;
+  <span class="keyword">var</span> fn2 = <span class="number">1</span>;
+  <span class="keyword">while</span> (<span class="number">1</span>){
+    <span class="keyword">var</span> current = fn2;
     fn2 = fn1;
     fn1 = fn1 + current;
     yield current;
   }
 }
 
-var sequence = fibonacci();
-print(sequence.next()); // 1
-print(sequence.next()); // 1
-print(sequence.next()); // 2
-print(sequence.next()); // 3
-print(sequence.next()); // 5
-print(sequence.next()); // 8
-print(sequence.next()); // 13
-</code></pre>
+<span class="keyword">var</span> sequence = fibonacci();
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 2</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 3</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 5</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 8</span>
+<span class="keyword">print</span>(sequence.next()); <span class="comment">// 13</span></code></pre>
+<p>무한 수열을 구하는 것을 만들었지만 수열의 끝나도록 끝을 명시할 수 있다. Generator는 인자를 받을 수 있기 때문에
+fibonacci()에 limit 인자를 추가한다:
 
-<p>무한 수열을 구하는 것을 만들었지만 수열의 끝나도록 끝을 명시할 수 있다. Generator는 인자를 받을 수 있기 때문에<br />fibonacci()에 limit 인자를 추가한다:</p>
-
-<pre><code>function fibonacci(limit){
-  var fn1 = 1;
-  var fn2 = 1;
-  while (1){
-    var current = fn2;
-    fn2 = fn1;
-    fn1 = fn1 + current;
-    if (limit &amp;&amp; current &gt; limit)
+</p>
+<pre><code><span class="title">function</span> fibonacci(limit){
+  <span class="title">var</span> fn1 = <span class="number">1</span>;
+  <span class="title">var</span> fn2 = <span class="number">1</span>;
+  <span class="title">while</span> (<span class="number">1</span>){
+    <span class="title">var</span> current = fn2;
+    <span class="title">fn2</span> = fn1;
+    <span class="title">fn1</span> = fn1 + current;
+    <span class="title">if</span> (limit &amp;&amp; current > limit)
       return;
-    yield current;
-  }
-</code></pre>
+    <span class="title">yield</span> current;
+  }</code></pre>
+<p>위에서도 설명했지만 return하면 결국 StopIteration 예외를 던지는 것이다.
 
-<p>위에서도 설명했지만 return하면 결국 StopIteration 예외를 던지는 것이다.</p>
-
+</p>
 <h4>Advanced generators</h4>
+<p>next()함수를 적어도 한번 호출해서 Iteration을 시작하면 send()를 이용해서 특정 시점으로 강제로 지정할 수
+있습니다. send(whatever)라고 호출하는 것은 이 전의 yield한 값으로 whatever로 사용하는 next()와
+같습니다.
 
-<p>next()함수를 적어도 한번 호출해서 Iteration을 시작하면 send()를 이용해서 특정 시점으로 강제로 지정할 수<br />있습니다. send(whatever)라고 호출하는 것은 이 전의 yield한 값으로 whatever로 사용하는 next()와<br />같습니다.</p>
+</p>
+<p>피보나치 Generator에 send()를 사용해보자:
 
-<p>피보나치 Generator에 send()를 사용해보자:</p>
-
-<pre><code>function fibonacci(){
-  var fn1 = 1;
-  var fn2 = 1;
-  while (1){
-    var current = fn2;
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">()</span>{</span>
+  <span class="keyword">var</span> fn1 = <span class="number">1</span>;
+  <span class="keyword">var</span> fn2 = <span class="number">1</span>;
+  <span class="keyword">while</span> (<span class="number">1</span>){
+    <span class="keyword">var</span> current = fn2;
     fn2 = fn1;
     fn1 = fn1 + current;
-    var reset = yield current;
-    if (reset){
-        fn1 = 1;
-        fn2 = 1;
+    <span class="keyword">var</span> reset = yield current;
+    <span class="keyword">if</span> (reset){
+        fn1 = <span class="number">1</span>;
+        fn2 = <span class="number">1</span>;
     }
   }
 }
 
-var sequence = fibonacci();
-print(sequence.next());     // 1
-print(sequence.next());     // 1
-print(sequence.next());     // 2
-print(sequence.next());     // 3
-print(sequence.next());     // 5
-print(sequence.next());     // 8
-print(sequence.next());     // 13
-print(sequence.send(true)); // 1
-print(sequence.next());     // 1
-print(sequence.next());     // 2
-print(sequence.next());     // 3
-</code></pre>
+<span class="keyword">var</span> sequence = fibonacci();
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 2</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 3</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 5</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 8</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 13</span>
+<span class="keyword">print</span>(sequence.send(<span class="keyword">true</span>)); <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 1</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 2</span>
+<span class="keyword">print</span>(sequence.next());     <span class="comment">// 3</span></code></pre>
+<p>send(undefined)는 next()와 완전히 동일하고 지금 막 만든 Generator에서는(아직 next()를 한번도
+호출하지 않은) 엄한 값이 사용되면 TypeError 예외를 던진다.
 
-<p>send(undefined)는 next()와 완전히 동일하고 지금 막 만든 Generator에서는(아직 next()를 한번도<br />호출하지 않은) 엄한 값이 사용되면 TypeError 예외를 던진다.</p>
+</p>
+<p>Generator를 종료할 때에는 close()를 사용한다:
 
-<p>Generator를 종료할 때에는 close()를 사용한다:</p>
-
+</p>
 <pre><code>var gen = generator();
 
-function driveGenerator() {
-  if (gen.next()) {
-    window.setTimeout(driveGenerator, 0);
-  } else {
+<span class="function"><span class="keyword">function</span> <span class="title">driveGenerator</span><span class="params">()</span> {</span>
+  <span class="keyword">if</span> (<span class="transposed_variable">gen.</span>next()) <span class="cell">{
+    window.setTimeout(driveGenerator, <span class="number">0</span>);
+  }</span> <span class="keyword">else</span> <span class="cell">{
     gen.close();
-  }  
-}
-</code></pre>
-
+  }</span>  
+}</code></pre>
 <h2>Array comprehensions</h2>
+<p>Array Comprehension은 다른 객체를 애용해 새로운 Array를 만들 때 사용할 수 있는 새로운 문법이다. 보통
+map()과 filter()를 사용하는 코드대신 사용된다.
 
-<p>Array Comprehension은 다른 객체를 애용해 새로운 Array를 만들 때 사용할 수 있는 새로운 문법이다. 보통<br />map()과 filter()를 사용하는 코드대신 사용된다.</p>
+</p>
+<p>다음과 같은 코드를:
 
-<p>다음과 같은 코드를:</p>
+</p>
+<pre><code><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
+<span class="keyword">var</span> doubled = numbers.map(<span class="keyword">function</span>(i) { <span class="keyword">return</span> i * <span class="number">2</span>; }); 
+alert(doubled); <span class="comment">// Alerts 2,4,6,8</span></code></pre>
+<p>Array Comprehension으로 바꿀 수 있다:
 
-<pre><code>var numbers = [1, 2, 3, 4];
-var doubled = numbers.map(function(i) { return i * 2; }); 
-alert(doubled); // Alerts 2,4,6,8
-</code></pre>
+</p>
+<pre><code><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
+<span class="keyword">var</span> doubled = [i * <span class="number">2</span> <span class="keyword">for</span> <span class="keyword">each</span> (i <span class="keyword">in</span> numbers)];
+alert(doubled); <span class="comment">// Alerts 2,4,6,8</span></code></pre>
+<p>filter()의 경우에도:
 
-<p>Array Comprehension으로 바꿀 수 있다:</p>
+</p>
+<pre><code><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">30</span>];
+<span class="keyword">var</span> evens = numbers.filter(<span class="keyword">function</span>(i) { <span class="keyword">return</span> i % <span class="number">2</span> == <span class="number">0</span>; });
+alert(evens); <span class="comment">// Alerts 2,22,30</span></code></pre>
+<p>Array Comprehension을 사용할 수 있다:
 
-<pre><code>var numbers = [1, 2, 3, 4];
-var doubled = [i * 2 for each (i in numbers)];
-alert(doubled); // Alerts 2,4,6,8
-</code></pre>
+</p>
+<pre><code><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">30</span>];
+<span class="keyword">var</span> evens = [i <span class="keyword">for</span> <span class="keyword">each</span> (i <span class="keyword">in</span> numbers) <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>)];
+alert(evens); <span class="comment">// Alerts 2,22,30</span></code></pre>
+<p>map()과 filter()가 결합된 코드도 작성할 수 있다:
 
-<p>filter()의 경우에도:</p>
+</p>
+<pre><code><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">30</span>];
+<span class="keyword">var</span> doubledEvens = [i * <span class="number">2</span> <span class="keyword">for</span> <span class="keyword">each</span> (i <span class="keyword">in</span> numbers) <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>)];
+alert(doubledEvens); <span class="comment">// Alerts 4,44,60</span></code></pre>
+<p>Array comprehension을 위한 [] 블럭은 scoping 블럭이다. let 키워드를 사용하여 변수를 정의한 것 처럼
+[] 블럭 밖에서는 사용할 수 없다.
 
-<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
-var evens = numbers.filter(function(i) { return i % 2 == 0; });
-alert(evens); // Alerts 2,22,30
-</code></pre>
+</p>
+<p>Array comprehension을 위해 사용하는 입력 데이터에 Iterator나 Generator도 사용할 수 있다.
 
-<p>Array Comprehension을 사용할 수 있다:</p>
+</p>
+<p>String도 Array처럼 취급할 수 있기 때문에 사용할 수 있다:
 
-<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
-var evens = [i for each (i in numbers) if (i % 2 == 0)];
-alert(evens); // Alerts 2,22,30
-</code></pre>
+</p>
+<pre><code><span class="keyword">var</span> str = <span class="string">'abcdef'</span>;
+<span class="keyword">var</span> consonantsOnlyStr = [c <span class="keyword">for</span> each (c <span class="keyword">in</span> str) <span class="keyword">if</span> (!(/[aeiouAEIOU]/).test(c))  ].<span class="keyword">join</span>(<span class="string">''</span>); <span class="comment">// 'bcdf'</span>
+<span class="keyword">var</span> interpolatedZeros = [c+<span class="string">'0'</span> <span class="keyword">for</span> each (c <span class="keyword">in</span> str) ].<span class="keyword">join</span>(<span class="string">''</span>); <span class="comment">// 'a0b0c0d0e0f0'</span></code></pre>
+<p>Array comprehension의 결과는 Array이기 때문에 join()으로 다시 합쳤다.
 
-<p>map()과 filter()가 결합된 코드도 작성할 수 있다:</p>
-
-<pre><code>var numbers = [1, 2, 3, 21, 22, 30];
-var doubledEvens = [i * 2 for each (i in numbers) if (i % 2 == 0)];
-alert(doubledEvens); // Alerts 4,44,60
-</code></pre>
-
-<p>Array comprehension을 위한 [] 블럭은 scoping 블럭이다. let 키워드를 사용하여 변수를 정의한 것 처럼<br />[] 블럭 밖에서는 사용할 수 없다.</p>
-
-<p>Array comprehension을 위해 사용하는 입력 데이터에 Iterator나 Generator도 사용할 수 있다.</p>
-
-<p>String도 Array처럼 취급할 수 있기 때문에 사용할 수 있다:</p>
-
-<pre><code>var str = 'abcdef';
-var consonantsOnlyStr = [c for each (c in str) if (!(/[aeiouAEIOU]/).test(c))  ].join(''); // 'bcdf'
-var interpolatedZeros = [c+'0' for each (c in str) ].join(''); // 'a0b0c0d0e0f0'
-</code></pre>
-
-<p>Array comprehension의 결과는 Array이기 때문에 join()으로 다시 합쳤다.</p>
-
+</p>
 <h2>Block scope with let</h2>
+<p>let으로 선언한 변수의 lifecycle은 해당 블록이다. var는 Global 변수를 선언하거나 함수의 Local 변수를
+선언하는 것이다.
 
-<p>let으로 선언한 변수의 lifecycle은 해당 블록이다. var는 Global 변수를 선언하거나 함수의 Local 변수를<br />선언하는 것이다.</p>
+</p>
+<p>예제를 보자:
 
-<p>예제를 보자:</p>
+</p>
+<pre><code><span class="reserved">var</span> a = <span class="number">5</span>;
+<span class="reserved">var</span> b = <span class="number">10</span>;
+<span class="keyword">if</span> (a === <span class="number">5</span>) {
+<span class="reserved">let</span> a = <span class="number">4</span>; <span class="regexp">//</span> The scope <span class="keyword">is</span> inside the <span class="keyword">if</span>-block
+  <span class="reserved">var</span> b = <span class="number">1</span>; <span class="regexp">//</span> The scope <span class="keyword">is</span> inside the <span class="reserved">function</span>
 
-<pre><code>var a = 5;
-var b = 10;
-if (a === 5) {
-let a = 4; // The scope is inside the if-block
-  var b = 1; // The scope is inside the function
-
-  console.log(a);  // 4
-  console.log(b);  // 1
+  console.log(a);  <span class="regexp">//</span> <span class="number">4</span>
+  console.log(b);  <span class="regexp">//</span> <span class="number">1</span>
 }
-console.log(a); // 5
-console.log(b); // 1
-</code></pre>
-
+console.log(a); <span class="regexp">//</span> <span class="number">5</span>
+console.log(b); <span class="regexp">//</span> <span class="number">1</span></code></pre>
 <h2>Destructuring assignment</h2>
+<p>Destructuring assignment는 Array 같은 Collection을 통째로 할당하는 것을 말한다.
 
-<p>Destructuring assignment는 Array 같은 Collection을 통째로 할당하는 것을 말한다.</p>
+</p>
+<p>Destructuring assignment를 사용하면 임시 변수는 만들지 않고도 swap할 수 있다:
 
-<p>Destructuring assignment를 사용하면 임시 변수는 만들지 않고도 swap할 수 있다:</p>
+</p>
+<pre><code>var a = <span class="number">1</span><span class="comment">;</span>
+var b = <span class="number">3</span><span class="comment">;</span>
 
-<pre><code>var a = 1;
-var b = 3;
+[a, b] = [b, a]<span class="comment">;</span></code></pre>
+<p>다음과 같이 변수를 할당하는 것도 가능하다:
 
-[a, b] = [b, a];
-</code></pre>
+</p>
+<pre><code>var <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = <span class="number">1</span>;
+<span class="matrix">[i, j]</span> = <span class="matrix">[j, i + j]</span>;</code></pre>
+<p>리턴값을 여러개 넘길 수 있다:
 
-<p>다음과 같이 변수를 할당하는 것도 가능하다:</p>
-
-<pre><code>var i = 0, j = 1;
-[i, j] = [j, i + j];
-</code></pre>
-
-<p>리턴값을 여러개 넘길 수 있다:</p>
-
-<pre><code>function f() {
-  return [1, 2];
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">()</span> {</span>
+  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>];
 }
-var a, b;
+<span class="keyword">var</span> a, b;
 [a, b] = f();
-document.write ("A is " + a + " B is " + b + "&lt;br&gt;\n"); 
-</code></pre>
+document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br>\n"</span>); </code></pre>
+<p>리턴값중에서 몇개는 무시할 수도 있다.
 
-<p>리턴값중에서 몇개는 무시할 수도 있다.</p>
-
-<pre><code>function f() {
-  return [1, 2, 3];
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">()</span> {</span>
+  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
 }
 
-var [a, , b] = f();
-document.write ("A is " + a + " B is " + b + "&lt;br&gt;\n"); 
-</code></pre>
+<span class="keyword">var</span> [a, , b] = f();
+document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br>\n"</span>); </code></pre>
+<p>결과를 Array로도 받을 수 있다.
 
-<p>결과를 Array로도 받을 수 있다.</p>
+</p>
+<pre><code>var a = f()<span class="comment">;</span>
+document<span class="preprocessor">.write</span> (<span class="string">"A is "</span> + a)<span class="comment">;</span></code></pre>
+<p>for loop에서도 사용할 수 있다:
 
-<pre><code>var a = f();
-document.write ("A is " + a);
-</code></pre>
+</p>
+<pre><code><span class="keyword">let</span> obj = <span class="tuple">{ width: <span class="number">3</span>, length: <span class="number">1.5</span>, color: <span class="string">"orange"</span> }</span>;
 
-<p>for loop에서도 사용할 수 있다:</p>
+<span class="function"><span class="title">for</span> <span class="params">(let [name, value] in <span class="variable">Iterator</span>(obj)</span>) {
+  <span class="title">document</span>.<span class="title">write</span> <span class="params">(<span class="string">"Name: "</span> + name + <span class="string">", Value: "</span> + value + <span class="string">"&lt;br>\n"</span>)</span>;
+}</code></pre>
+<p>Array안에 있는 객체의 프로퍼티에 직접 접근할 수도 있다.
 
-<pre><code>let obj = { width: 3, length: 1.5, color: "orange" };
-
-for (let [name, value] in Iterator(obj)) {
-  document.write ("Name: " + name + ", Value: " + value + "&lt;br&gt;\n");
-}
-</code></pre>
-
-<p>Array안에 있는 객체의 프로퍼티에 직접 접근할 수도 있다.</p>
-
+</p>
 <pre><code>var people = [
   {
-    name: "Mike Smith",
-    family: {
-      mother: "Jane Smith",
-      father: "Harry Smith",
-      sister: "Samantha Smith"
+    <span class="method">name:</span> <span class="comment">"Mike Smith"</span>,
+    <span class="method">family:</span> {
+      <span class="method">mother:</span> <span class="comment">"Jane Smith"</span>,
+      <span class="method">father:</span> <span class="comment">"Harry Smith"</span>,
+      <span class="method">sister:</span> <span class="comment">"Samantha Smith"</span>
     },
-    age: 35
+    <span class="method">age:</span> <span class="number">35</span>
   },
   {
-    name: "Tom Jones",
-    family: {
-      mother: "Norah Jones",
-      father: "Richard Jones",
-      brother: "Howard Jones"
+    <span class="method">name:</span> <span class="comment">"Tom Jones"</span>,
+    <span class="method">family:</span> {
+      <span class="method">mother:</span> <span class="comment">"Norah Jones"</span>,
+      <span class="method">father:</span> <span class="comment">"Richard Jones"</span>,
+      <span class="method">brother:</span> <span class="comment">"Howard Jones"</span>
     },
-    age: 25
+    <span class="method">age:</span> <span class="number">25</span>
   }
 ];
 
-for each (let {name: n, family: { father: f } } in people) {
-  document.write ("Name: " + n + ", Father: " + f + "&lt;br&gt;\n");
-} 
-</code></pre>
+for each (let {<span class="method">name:</span> n, <span class="method">family:</span> { <span class="method">father:</span> f } } in people) {
+  document.write (<span class="comment">"Name: "</span> + n + <span class="comment">", Father: "</span> + f + <span class="comment">"&lt;br>\n"</span>);
+} </code></pre>
+<p>함수 인자에서도 사용할 수 있다:
 
-<p>함수 인자에서도 사용할 수 있다:</p>
-
-<pre><code>function userId({id}) {
-  return id;
+</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">userId</span><span class="params">({id})</span> {</span>
+  <span class="keyword">return</span> id;
 }
 
-function whois({displayName: displayName, fullName: {firstName: name}})
-  console.log(displayName + " is " + name);
+<span class="function"><span class="keyword">function</span> <span class="title">whois</span><span class="params">({displayName: displayName, fullName: {firstName: name}})</span>
+  <span class="title">console</span>.<span class="title">log</span><span class="params">(displayName + <span class="string">" is "</span> + name)</span>;
 }
 
-var user = {id: 42, displayName: "jdoe", fullName: {firstName: "John", lastName: "Doe"}};
+<span class="title">var</span> <span class="title">user</span> = {</span>id: <span class="number">42</span>, displayName: <span class="string">"jdoe"</span>, fullName: {firstName: <span class="string">"John"</span>, lastName: <span class="string">"Doe"</span>}};
 
-console.log("userId: " + userId(user));
-whois(user);
-</code></pre>
+console.log(<span class="string">"userId: "</span> + userId(user));
+whois(user);</code></pre>
+<p>정규표현식에도 사용할 수 있다:
 
-<p>정규표현식에도 사용할 수 있다:</p>
-
-<pre><code>var parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
-if (!parsedURL)
-  return null;
-var [, protocol, fullhost, fullpath] = parsedURL;
-</code></pre>
-
+</p>
+<pre><code><span class="keyword">var</span> parsedURL = <span class="regexp">/^(\w+)\:\/\/([^\/]+)\/(.*)$/</span>.exec(url);
+<span class="keyword">if</span> (!parsedURL)
+  <span class="keyword">return</span> <span class="literal">null</span>;
+<span class="keyword">var</span> [, protocol, fullhost, fullpath] = parsedURL;</code></pre>
 <h2>JavaScript 1.7 compatibility</h2>
+<p>브라우저 호환 테이블은 <a href="http://robertnyman.com/javascript/#javascript-1-6-compatibility">여기</a>
 
-<p>브라우저 호환 테이블은 <a href="http://robertnyman.com/javascript/#javascript-1-6-compatibility">여기</a></p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317888540.html">JavaScript Standard</a></li><li><span>Oct 05 2011</span>&raquo;<a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a></li><li><span>Oct 04 2011</span>&raquo;<a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a></li><li><span>Sep 29 2011</span>&raquo;<a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317888540.html">JavaScript Standard</a></li><li><span>Oct 05 2011</span>&raquo;<a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a></li><li><span>Oct 04 2011</span>&raquo;<a href="/articles/2011/1317693360.html">Object.getPrototypeOf</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a></li><li><span>Sep 29 2011</span>&raquo;<a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/1317201600.html';

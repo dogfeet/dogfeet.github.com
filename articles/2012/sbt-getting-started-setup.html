@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - sbt: Getting Started Guide: Setup</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,118 +15,119 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Setup</h1></header><footer class="modern-font" .small-font><span>by <a href="undefined">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Setup</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 03</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-setup.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-setup.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/sbt-getting-started-setup.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. 
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt" title="" /></p>
+</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt">
 
+</p>
 <h2>Overview</h2>
+<p>다음과 같은 과정을 거쳐서 sbt 프로젝트를 만든다:
 
-<p>다음과 같은 과정을 거쳐서 sbt 프로젝트를 만든다:</p>
-
+</p>
 <ul>
 <li>sbt를 설치하고 실행할 스크립트를 만든다.</li>
-<li><a href="/articles/2012/sbt-getting-started-hello.html">hello-world</a> 프로젝트를 만든다.
-<ul><li>프로젝트 디렉토리를 만들고 소스를 넣는다.</li>
-<li>어떻게 빌드할지 정의한다.</li></ul></li>
+<li><a href="/articles/2012/sbt-getting-started-hello.html">hello-world</a> 프로젝트를 만든다.<ul>
+<li>프로젝트 디렉토리를 만들고 소스를 넣는다.</li>
+<li>어떻게 빌드할지 정의한다.</li>
+</ul>
+</li>
 <li><a href="/articles/2012/sbt-getting-started-running.html">running</a>을 통해 sbt를 실행하는 법을 배운다.</li>
 <li><a href="/articles/2012/sbt-getting-started-sbt-build-definition.html">.sbt-build-definition</a>에서 어떻게 빌드할지 정의하는 법을 배운다.</li>
 </ul>
-
 <h2>sbt 설치</h2>
+<p><code>sbt-launch.jar</code> 파일과 실행할 스크립트만 있으면 된다.
 
-<p><code>sbt-launch.jar</code> 파일과 실행할 스크립트만 있으면 된다.</p>
+</p>
+<p><em>Note: 다운로드는 <a href="http://www.scala-sbt.org/download.html">다운로드 페이지</a>에서 할 수 있다.</em>
 
-<p><em>Note: 다운로드는 <a href="http://www.scala-sbt.org/download.html">다운로드 페이지</a>에서 할 수 있다.</em></p>
-
+</p>
 <h3>Yum</h3>
+<p><a href="http://rpm.typesafe.com">Typesafe Yum 레파지토리</a>에 yum 패키지가 있다. <a href="http://rpm.typesafe.com/typesafe-repo-2.0.0-1.noarch.rpm">레파지토리 rpm 패키지</a>를 설치하면 typesafe yum 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:
 
-<p><a href="http://rpm.typesafe.com">Typesafe Yum 레파지토리</a>에 yum 패키지가 있다. <a href="http://rpm.typesafe.com/typesafe-repo-2.0.0-1.noarch.rpm">레파지토리 rpm 패키지</a>를 설치하면 typesafe yum 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
+</p>
+<pre><code><span class="title">yum</span> install sbt</code></pre>
+<p>sbt의 최신 버전이 설치된다.
 
-<pre><code>yum install sbt
-</code></pre>
+</p>
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em>
 
-<p>sbt의 최신 버전이 설치된다.</p>
-
-<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
-
+</p>
 <h2>Apt</h2>
+<p><a href="http://apt.typesafe.com">Typesafe Debian 레파지토리</a>에 sbt Debian 패키지가 있다. <a href="http://apt.typesafe.com/repo-deb-build-0002.deb">레파지토리 deb 패키지</a>를 설치하면 typesafe debian 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:
 
-<p><a href="http://apt.typesafe.com">Typesafe Debian 레파지토리</a>에 sbt Debian 패키지가 있다. <a href="http://apt.typesafe.com/repo-deb-build-0002.deb">레파지토리 deb 패키지</a>를 설치하면 typesafe debian 레파지토리가 승인된 소스 목록에 추가된다. 그리고 다음과 같이 실행한다:</p>
+</p>
+<pre><code>apt-<span class="keyword">get</span> install sbt</code></pre>
+<p>sbt의 최신 버전이 설치된다.
 
-<pre><code>apt-get install sbt
-</code></pre>
+</p>
+<p>sbt 없으면 레파지토리에서 정보를 업데이트한다:
 
-<p>sbt의 최신 버전이 설치된다.</p>
+</p>
+<pre><code>apt-<span class="keyword">get</span> update</code></pre>
+<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em>
 
-<p>sbt 없으면 레파지토리에서 정보를 업데이트한다:</p>
-
-<pre><code>apt-get update
-</code></pre>
-
-<p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em></p>
-
+</p>
 <h2>Gentoo</h2>
+<p>공식 소스 안에는 sbt용 ebuild 스크립트가 없다. 하지만 <a href="https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin">https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin</a> 에 sbt를 머지하는 ebuild 스크립트가 있다. 다음과 같이 ebuild 스크립트로 sbt를 머지한다:
 
-<p>공식 소스 안에는 sbt용 ebuild 스크립트가 없다. 하지만 <a href='https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin'>https://github.com/whiter4bbit/overlays/tree/master/dev-java/sbt-bin</a> 에 sbt를 머지하는 ebuild 스크립트가 있다. 다음과 같이 ebuild 스크립트로 sbt를 머지한다:</p>
-
-<pre><code>mkdir -p /usr/local/portage &amp;&amp; cd /usr/local/portage
-git clone git://github.com/whiter4bbit/overlays.git
-echo "PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay" &gt;&gt; /etc/make.conf
-emerge sbt-bin
-</code></pre>
-
+</p>
+<pre><code><span class="title">mkdir</span> -p /usr/local/portage &amp;&amp; cd /usr/local/portage
+<span class="title">git</span> clone git://github.com/whiter4bbit/overlays.git
+<span class="title">echo</span> <span class="string">"PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay"</span> >> /etc/make.conf
+<span class="title">emerge</span> sbt-bin</code></pre>
 <h2>Mac</h2>
+<p><a href="http://macports.org/">MacPorts</a>로 설치한다:
 
-<p><a href="http://macports.org/">MacPorts</a>로 설치한다:</p>
+</p>
+<pre><code><span class="variable">$ </span>sudo port install sbt</code></pre>
+<p><a href="http://mxcl.github.com/homebrew/">HomeBrew</a>로 설치할 수 있다:
 
-<pre><code>$ sudo port install sbt
-</code></pre>
+</p>
+<pre><code><span class="variable">$ </span>brew install sbt</code></pre>
+<p>sbt-launch.jar를 직접 다운로드할 필요 없다:
 
-<p><a href="http://mxcl.github.com/homebrew/">HomeBrew</a>로 설치할 수 있다:</p>
-
-<pre><code>$ brew install sbt
-</code></pre>
-
-<p>sbt-launch.jar를 직접 다운로드할 필요 없다:</p>
-
+</p>
 <h2>Windows</h2>
+<p><a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt-launcher/0.11.3/sbt.msi">msi</a>를 다운로드한다:
 
-<p><a href="http://scalasbt.artifactoryonline.com/scalasbt/sbt-native-packages/org/scala-sbt/sbt-launcher/0.11.3/sbt.msi">msi</a>를 다운로드한다:</p>
+</p>
+<p><em>아니면</em>
 
-<p><em>아니면</em></p>
+</p>
+<p><code>sbt.bat</code> 배치 파일을 만든다:
 
-<p><code>sbt.bat</code> 배치 파일을 만든다:</p>
+</p>
+<pre><code>set SCRIPT_DIR=<span class="variable">%~</span>dp<span class="number">0</span>
+java -Xmx512M -jar <span class="string">"<span class="variable">%SCRIPT_DIR</span><span class="variable">%sbt</span>-launch.jar"</span> <span class="variable">%*</span></code></pre>
+<p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 'sbt'라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.
 
-<pre><code>set SCRIPT_DIR=%~dp0
-java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*
-</code></pre>
-
-<p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 'sbt'라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.</p>
-
+</p>
 <h2>Unix</h2>
+<p><a href="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.11.3-2/sbt-launch.jar">sbt-launch.jar</a>를 다운로드해서 <code>~/bin</code> 디렉토리에 넣는다.
 
-<p><a href="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.11.3-2/sbt-launch.jar">sbt-launch.jar</a>를 다운로드해서 <code>~/bin</code> 디렉토리에 넣는다.</p>
+</p>
+<p>이 jar 파일을 실행하는 스크립트를 'sbt'라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:
 
-<p>이 jar 파일을 실행하는 스크립트를 'sbt'라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:</p>
+</p>
+<pre><code><span class="title">java</span> -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=<span class="number">384M</span> -jar `dirname <span class="variable">$0</span>`/sbt-launch.jar <span class="string">"$@"</span></code></pre>
+<p>그리고 스크립트를 실행할 수 있게 만든다:
 
-<pre><code>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar `dirname $0`/sbt-launch.jar "$@"
-</code></pre>
-
-<p>그리고 스크립트를 실행할 수 있게 만든다:</p>
-
-<pre><code>$ chmod u+x ~/bin/sbt
-</code></pre>
-
+</p>
+<pre><code><span class="variable">$ </span>chmod u+x ~<span class="regexp">/bin/sbt</span></code></pre>
 <h2>팁, 노트</h2>
+<p>문제가 생겨서 <code>sbt</code>가 실행이 안되면 <a href="https://github.com/harrah/xsbt/wiki/Setup-Notes">설치 노트</a>를 확인하라. 터미널 엔코딩, HTTP 프록시, JVM 옵션 등에 대해 나와 있다.
 
-<p>문제가 생겨서 <code>sbt</code>가 실행이 안되면 <a href="https://github.com/harrah/xsbt/wiki/Setup-Notes">설치 노트</a>를 확인하라. 터미널 엔코딩, HTTP 프록시, JVM 옵션 등에 대해 나와 있다.</p>
+</p>
+<p>꼼꼼하게 만들어진 쉘 스크립트가 있어서 이 스크립트로 sbt를 설치할 수 있다: <a href="https://github.com/paulp/sbt-extras">https://github.com/paulp/sbt-extras</a> (루트 디렉토리에 있는 sbt 파일). 이 스크립트로 설치하면 패키지로 설치하는 것처럼 원하는 버전의 sbt를 설치할 수 있다. 설치할 sbt의 버전을 선택한다든지 하는 유용한 옵션이 있다.
 
-<p>꼼꼼하게 만들어진 쉘 스크립트가 있어서 이 스크립트로 sbt를 설치할 수 있다: <a href='https://github.com/paulp/sbt-extras'>https://github.com/paulp/sbt-extras</a> (루트 디렉토리에 있는 sbt 파일). 이 스크립트로 설치하면 패키지로 설치하는 것처럼 원하는 버전의 sbt를 설치할 수 있다. 설치할 sbt의 버전을 선택한다든지 하는 유용한 옵션이 있다.</p></div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 30 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-basic-def.html">sbt: Getting Started Guide: .sbt Build Definition</a></li><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 16 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-directory-layout.html">sbt: Getting Started Guide: Directory Layout</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</p>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 30 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-basic-def.html">sbt: Getting Started Guide: .sbt Build Definition</a></li><li><span>Jul 25 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-running.html">sbt: Getting Started Guide: Running</a></li><li><span>Jul 16 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-directory-layout.html">sbt: Getting Started Guide: Directory Layout</a></li><li><span>Jul 08 2012</span>&raquo;<a href="/articles/2012/sbt-getting-started-hello.html">sbt: Getting Started Guide: Hello, World</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/sbt-getting-started-setup.html';
