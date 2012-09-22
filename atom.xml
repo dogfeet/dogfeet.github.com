@@ -1,5 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-09-16T03:59:33.865Z</updated><id>http://dogfeet.github.com</id><author><name>changwoo-park.html.md</name><email>pismute@gmail.com</email></author><author><name>sean-lee.html.md</name><email>sean@weaveus.com</email></author><author><name>yongjae-choi.html.md</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ Meteor 한글 문서 ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-docs-ko.html" /><updated>2012-09-15T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-docs-ko.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-09-23T07:22:48.186Z</updated><id>http://dogfeet.github.com</id><author><name>yongjae-choi.html.md</name><email>mage@weaveus.com</email></author><author><name>changwoo-park.html.md</name><email>pismute@gmail.com</email></author><author><name>sean-lee.html.md</name><email>sean@weaveus.com</email></author><entry><title><![CDATA[ Meteor: 스마트 패키지 매니저 "Meteorite" ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" /><updated>2012-09-20T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-meteorite.html</id><content type="html"><![CDATA[
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.
+
+</p>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.
+
+</p>
+<p><img src="http://dogfeet.github.com/articles/2012/meteor/meteorite.png" alt="meteorite">
+
+</p>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.
+
+</p>
+<h2>설치하기</h2>
+<pre><code class="lang-bash">npm install -g meteorite</code></pre>
+<h2>mrt 명령어</h2>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. 'meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:
+
+</p>
+<pre><code class="lang-bash">mrt create myapp</code></pre>
+<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:
+
+</p>
+<pre><code class="lang-javascript">{
+  <span class="string">"meteor"</span>: {
+    <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
+    <span class="string">"branch"</span>: <span class="string">"master"</span>
+  },
+  <span class="string">"packages"</span>: {}
+}</code></pre>
+<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. 
+
+</p>
+<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:
+
+</p>
+<pre><code class="lang-bash">mrt run --port 2222</code></pre>
+<h2>smart.json</h2>
+<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. 
+
+</p>
+<pre><code class="lang-javascript">{
+  <span class="comment">//meteor는 생략할 수 있다.</span>
+  <span class="comment">//생략할 경우 Meteor의 공식 저장소와 master 브랜치가 사용된다.</span>
+  <span class="comment">//meteor.branch와 meteor.git 설정은 다른 브랜치를 사용할 때 쓴다.</span>
+  <span class="string">"meteor"</span>: { 
+    <span class="string">"branch"</span>: <span class="string">"devel"</span>
+  },
+  <span class="comment">//packages에 명시한 패키지는 기본적으로 중앙저장소(atmosphere)에서</span>
+  <span class="comment">//다운로드한다. 여기서는 moment와 fork-me를 다운로드한다.</span>
+  <span class="string">"packages"</span>: {
+    <span class="string">"moment"</span>: <span class="string">"1.7.0"</span>,
+    <span class="string">"fork-me"</span>: {
+      <span class="string">"version"</span>: <span class="string">"0.0.1"</span>
+    },
+    <span class="string">"cool-tool"</span>: {
+      <span class="comment">//atmosphere가 아니라 git 저장소에서 패키지를 가져온다.</span>
+      <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/cool-tool.git"</span>,
+      <span class="comment">//해당 태그의 버전을 가져온다.</span>
+      <span class="string">"tag"</span>: <span class="string">"v0.0.2"</span>
+      <span class="comment">//branch도 된다.</span>
+      <span class="string">"branch"</span>: <span class="string">"master"</span>
+      <span class="comment">//ref도 된다.</span>
+      <span class="string">"ref"</span>: <span class="string">"a137a5eee5"</span>
+    },
+    <span class="string">"another-tool"</span>: {
+      <span class="comment">//atmosphere가 아니라 git 저장소에서 패키지를 가져온다.</span>
+      <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/another-tool.git"</span>
+    },
+    <span class="string">"test-package"</span>: {
+      <span class="comment">//로컬 디스크에 있는 패키지를 가져온다.</span>
+      <span class="string">"path"</span>: <span class="string">"/path/to/local/package"</span>
+    }
+  }
+}</code></pre>
+<ul>
+<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p>
+</li>
+<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p>
+</li>
+<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p>
+</li>
+</ul>
+<pre><code class="lang-javascript">{
+  <span class="string">"meteor"</span>: {
+    <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
+    <span class="string">"branch"</span>: <span class="string">"devel"</span>,
+    <span class="string">"commit"</span>: <span class="string">"de413efe500174999211eff318ad65eb34794d74"</span>
+  },
+  <span class="string">"dependencies"</span>: {
+    <span class="string">"basePackages"</span>: {
+      <span class="string">"moment"</span>: {},
+      <span class="string">"groups"</span>: {}
+    },
+    <span class="string">"packages"</span>: {
+      <span class="string">"moment"</span>: {
+        <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/meteor-moment.git"</span>,
+        <span class="string">"tag"</span>: <span class="string">"v1.7.0"</span>,
+        <span class="string">"commit"</span>: <span class="string">"c64b6ec0e714b9556f4b6643d430b868ba69d3d7"</span>
+      },
+      <span class="string">"groups"</span>: {
+        <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/meteor-groups.git"</span>,
+        <span class="string">"tag"</span>: <span class="string">"v0.0.6"</span>,
+        <span class="string">"commit"</span>: <span class="string">"ee45c3fbdb84313f6f0124ed30e02e101d3829cb"</span>
+      }
+    }
+  }
+}</code></pre>
+<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.
+
+</p>
+<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.
+
+</p>
+<h2>Atmosphere</h2>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. 
+
+</p>
+<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:
+
+</p>
+<pre><code><span class="title">mrt</span> add moment <span class="comment">--version 1.6.2</span></code></pre>
+<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.
+
+</p>
+<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:
+
+</p>
+<pre><code>absolute-url      DEPRECATED: Generate absolute URLs pointing <span class="keyword">to</span> the application
+amplify           Cross browser API <span class="keyword">for</span> Persistant Storage, PubSub <span class="keyword">and</span> Request.
+autopublish       Automatically publish all data <span class="keyword">in</span> the database <span class="keyword">to</span> every client
+backbone          A minimalist client-side MVC framework
+bootstrap         UX/UI framework from Twitter
+code-prettify     Syntax highlighting <span class="keyword">of</span> code, from Google
+coffeescript      Javascript dialect <span class="keyword">with</span> fewer braces <span class="keyword">and</span> semicolons
+email             Send email messages
+force-ssl         Require this application always use transport layer encryption
+groups            Simple system <span class="keyword">for</span> groups
+handlebars        Simple semantic templating language
+htmljs            Easy macros <span class="keyword">for</span> generating DOM elements <span class="keyword">in</span> Javascript
+http              Make HTTP calls <span class="keyword">to</span> remote servers
+jquery            Manipulate the DOM using CSS selectors
+jquery-history    pushState module from the jQuery project
+jquery-layout     Easily create arbitrary multicolumn layouts
+jquery-waypoints  Execute a <span class="function"><span class="keyword">function</span> <span class="title">when</span> <span class="title">the</span> <span class="title">user</span> <span class="title">scrolls</span> <span class="title">past</span> <span class="title">an</span> <span class="title">element</span>
+<span class="title">less</span>              <span class="title">The</span> <span class="title">dynamic</span> <span class="title">stylesheet</span> <span class="title">language</span>.
+<span class="title">madewith</span>          <span class="title">Made</span> <span class="title">With</span> <span class="title">Meteor</span> <span class="title">badge</span>
+<span class="title">moment</span>            <span class="title">Moment</span>.<span class="title">js</span> <span class="title">packaged</span> <span class="title">for</span> <span class="title">Meteor</span>
+<span class="title">sass</span>              <span class="title">Sassy</span> <span class="title">CSS</span> <span class="title">pre</span>-<span class="title">processor</span>.
+<span class="title">showdown</span>          <span class="title">Markdown</span>-<span class="title">to</span>-<span class="title">HTML</span> <span class="title">processor</span>
+<span class="title">spiderable</span>        <span class="title">Makes</span> <span class="title">the</span> <span class="title">application</span> <span class="title">crawlable</span> <span class="title">to</span> <span class="title">web</span> <span class="title">spiders</span>.
+<span class="title">stylus</span>            <span class="title">Expressive</span>, <span class="title">dynamic</span>, <span class="title">robust</span> <span class="title">CSS</span>.
+<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span></code></pre>
+<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.
+
+</p>
+<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.
+
+</p>
+]]>
+</content></entry><entry><title><![CDATA[ Meteor 한글 문서 ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-docs-ko.html" /><updated>2012-09-15T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-docs-ko.html</id><content type="html"><![CDATA[
 <p><a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a>와 함께 Meteor 문서를 번역했습니다.
 
 </p>
@@ -504,7 +664,7 @@
             <span class="tag">&lt;<span class="title">goal</span>></span>execute<span class="tag">&lt;/<span class="title">goal</span>></span>
         <span class="tag">&lt;/<span class="title">goals</span>></span>
         <span class="tag">&lt;<span class="title">configuration</span>></span>
-            <span class="tag">&lt;<span class="title">source</span>></span><span class="cdata">&lt;![CDATA[
+            <span class="tag">&lt;<span class="title">source</span>></span>
             def concat(s1, s2, t) {
                 def java.io.File f1 = new java.io.File(s1)
                 def java.io.File f2 = new java.io.File(s2)
@@ -547,7 +707,7 @@
             concat("target/classes/com/softwareag/de/s/framework/demo/db/derby/initZero.sql",
                 "src/main/db/init0.sql",
                 "target/classes/com/softwareag/de/s/framework/demo/db/hsqldb/init0.sql")
-            ]]></span><span class="tag">&lt;/<span class="title">source</span>></span>
+            <span class="tag">&lt;/<span class="title">source</span>></span>
         <span class="tag">&lt;/<span class="title">configuration</span>></span>
         <span class="tag">&lt;/<span class="title">execution</span>></span>
     <span class="tag">&lt;/<span class="title">executions</span>></span>
@@ -578,7 +738,7 @@
         <span class="tag">&lt;/<span class="title">execution</span>></span>
     <span class="tag">&lt;/<span class="title">executions</span>></span>
     <span class="tag">&lt;<span class="title">configuration</span>></span>
-        <span class="tag">&lt;<span class="title">script</span>></span><span class="javascript"> &lt;![CDATA[
+        <span class="tag">&lt;<span class="title">script</span>></span><span class="javascript">
             import java.io.File
 
             <span class="comment">//필요한 환경 변수가 있는지 검사.</span>
@@ -600,7 +760,7 @@
                     <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException( <span class="string">"["</span> + dir + <span class="string">"] dir not found "</span>)
                 }
             })
-        ]]> </span><span class="tag">&lt;/<span class="title">script</span>></span>
+        </span><span class="tag">&lt;/<span class="title">script</span>></span>
     <span class="tag">&lt;/<span class="title">configuration</span>></span>
 <span class="tag">&lt;/<span class="title">plugin</span>></span></code></pre>
 <p>validate Phase에서 내가 빠트린 것을 점검할 수 있다. 그리고 project 변수를 이용하면 더 많은 것들을 할 수 있다.
@@ -1262,203 +1422,6 @@ Meteor.startup(<span class="keyword">function</span>() {
 
 </p>
 <p>출력메시지는 최신 버전이 아니니 update하라는 얘기인데 <code>meteor update</code>할 수 없다. 그 외에는 잘 동작하는 것 같다. 아마 msi 파일을 다시 배포할 것이라고 생각한다. 
-
-</p>
-]]>
-</content></entry><entry><title><![CDATA[ sbt: Getting Started Guide: .sbt Build Definition ]]></title><link href="http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html" /><updated>2012-07-29T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/sbt-getting-started-basic-def.html</id><content type="html"><![CDATA[
-<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. 
-
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/sbt/sbt.png" alt="sbt">
-
-</p>
-<h2><code>.sbt</code> Build Definition</h2>
-<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt "원리"와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.
-
-</p>
-<h3><code>.sbt</code> vs. <code>.scala</code> Definition</h3>
-<p>sbt 빌드는 base 디렉토리에 <code>.sbt</code> 파일을 만들고 그 파일에 정의한다. <code>.scala</code> 파일은 base 디렉토리 하위에 <code>project</code> 디렉토리에 만들고 거기에 넣는다.
-
-</p>
-<p>두 파일 중 아무거나 하나만 만들어 사용할 수도 있고 함께 혼용해도 된다. 그래도 <code>.sbt</code> 파일로 할 수 없는 일만 <code>.scala</code> 파일로 구현하고 대부분은 <code>.sbt</code> 파일을 사용하는 것이 바람직하다:
-
-</p>
-<ul>
-<li>sbt 커스트마이즈하기(설정이나 타스크를 추가한다)</li>
-<li>네스티드(nested) 서브 프로젝트를 정의한다.</li>
-</ul>
-<p>이 글은 <code>.sbt</code> 파일만 설명한다. <code>.scala</code> 파일을 사용하는 방법은 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>에서 설명한다.
-
-</p>
-<h3>What is a build definition?</h3>
-<p><strong> 이 부분은 반드시 절대로 꼭 읽어주세요. </strong>
-
-</p>
-<p>sbt는 실제로 빌드하기 전에 프로젝트를 검사하고 빌드 스크립트를 처리한다. 그 전처리를 완료하면 immutable 맵이 하나 생성되는데 그 맵에 빌드 정보가 <code>키/밸류</code> 형태로 들어간다.
-
-</p>
-<p>예를 들어, 키가 <code>name</code>인 항목의 스트링 밸류는 프로젝트 이름을 의미한다.
-
-</p>
-<p><em>우리가 만든 빌드 정의가 바로 sbt 맵으로 만들어지는 것이 아니다.</em>
-
-</p>
-<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. '함수형 프로그래밍' 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.  
-
-</p>
-<p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:
-
-</p>
-<pre><code class="lang-scala">name := <span class="string">"hello"</span></code></pre>
-<p>키가 <code>name</code>이고 밸류가 <code>&quot;hello&quot;</code>인 <code>Setting[String]</code> 객체가 생성되고 sbt 맵에 키가 <code>name</code>인 항목이 있으면 그 항목의 밸류만 교체하고 없으면 해당 항목을 새로 만든다. 다시 말하지만, 이때 변형된 맵은 새로 생성된다.
-
-</p>
-<p>이 맵이 만들어지는 과정을 살펴보자. sbt는 먼저 Setting 리스트을 정렬한다. 키가 같은 항목들은 하나로 합치고 밸류에서 다른 항목을 사용하고 있으면 그 항목부터 처리한다. 설정 간 의존성이 있으면 의존성부터 해결한다. sbt는 정렬된 <code>Setting</code> 리스트를 하나씩 map으로 변환한다.
-
-</p>
-<p>요약: <em>빌드 정의는 먼저 <code>Setting[T]</code> 리스트로 만들고 다시 <code>Setting[T]</code> 리스트를 sbt 맵으로 변환한다. <code>T</code>는 각 밸류의 타입이다</em>.
-
-</p>
-<h3>How <code>build.sbt</code> defines settings</h3>
-<p><code>build.sbt</code> 파일의 자료구조는 <code>Seq[Setting[_]]</code>이다. 이 파일은 Scala Expression의 리스트인데 한 줄 띄우는 것으로 구분한다. 각 줄은 리스트의 항목 하나이고 순서대로 처리된다. <code>.scala</code> 파일에서 <code>.sbt</code> 파일의 내용을 <code>Seq(</code>와 <code>)</code>로 감싸고 빈 줄 대신에 콤마를 넣으면 <code>.sbt</code> 파일에서 한 것과 동일한 코드가 된다.
-
-</p>
-<p>다음은 <code>.sbt</code> 파일 예제이다:
-
-</p>
-<pre><code class="lang-scala">name := <span class="string">"hello"</span>
-
-version := <span class="string">"1.0"</span>
-
-scalaVersion := <span class="string">"2.9.1"</span></code></pre>
-<p><code>build.sbt</code> 파일은 빈 줄로 구분하는 <code>Setting</code> 객체의 리스트다. 각 <code>Setting</code>은 Scala Expression으로 정의한다. 
-
-</p>
-<p><code>build.sbt</code>에 있는 Expression은 서로서로 독립적이고 문법상으로 Scala Statement가 아니라 Scala Expression이다. 그래서 <code>build.sbt</code> 파일에 Scala Expresion을 정의할 때 그 Expresion 제일 앞에는 <code>val</code>, <code>object</code>, 클래스, 메소드를 정의할 수 없다.
-
-</p>
-<p>왼쪽에 사용한 <code>name</code>, <code>version</code>, <code>scalaVersion</code>은 <em>키</em>다. 키는 <code>SettingKey[T]</code>, <code>TaskKey[T]</code>, <code>InputKey[T]</code>의 인스턴스이고 <code>T</code>는 밸류의 타입이다. 아래에서 키에 대해서 좀 더 설명한다.
-
-</p>
-<p>키는 <code>Settings[T]</code>를 리턴하고 이름이 <code>:=</code>인 메소드를 호출한다. 이 메소드는 Java 처럼 호출할 수도 있다:
-
-</p>
-<pre><code class="lang-scala">name.:=(<span class="string">"hello"</span>)</code></pre>
-<p>스칼라에서는 <code>name := &quot;hello&quot;</code>라고 사용해도 메소드를 호출할 수 있다. 스칼라 문법에서는 이렇게 메소드를 호출하는 것도 가능하다.
-
-</p>
-<p><code>name</code> 키에 있는 <code>:=</code> 메소드는 <code>Setting</code> 객체를 반환한다. 정확한 타입은 <code>Setting[String]</code>이다. <code>name</code> 키의 타입은 <code>SettingKey[String]</code>인데 여기서 <code>String</code>은 <code>name</code> 자체의 타입이다. <code>Setting[String]</code> 인스턴스가 반환되면 <code>name</code>을 키로 해서 sbt 맵에 넣는다. 이 <code>Setting[String]</code> 인스턴스의 값은 <code>&quot;hello&quot;</code>다.
-
-</p>
-<p>타입을 틀리게 넣으면 컴파일 안 된다:
-
-</p>
-<pre><code class="lang-scala">name := <span class="number">42</span>  <span class="comment">// will not compile</span></code></pre>
-<h3>Settings are separated by blank lines</h3>
-<p>다음과 같이 <code>build.sbt</code> 파일을 작성할 수 없다:
-
-</p>
-<pre><code class="lang-scala"><span class="comment">// will NOT work, no blank lines</span>
-name := <span class="string">"hello"</span>
-version := <span class="string">"1.0"</span>
-scalaVersion := <span class="string">"2.9.1"</span></code></pre>
-<p>Setting을 구분해 주는 구분자가 필요하다. sbt는 구분자가 있어야 Scala Expression을 구분할 수 있다.
-
-</p>
-<p><code>.sbt</code> 파일에 구현하는 것은 Scala Expression이지 Scala 프로그램이 아니다. sbt는 각 Scala Expression을 하나씩 잘라서 개별적으로 컴파일한다.
-
-</p>
-<p>Scala 프로그램을 사용하고 싶으면 <code>.sbt</code> 파일이 아니라 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>로 구현해야 한다. 이때에는 <code>.sbt</code> 파일이 없어도 된다. <code>.scala</code> 파일을 사용하는 방법은 나중에 설명한다. 어떻게 하는지 살짝 들춰보자면 <code>.sbt</code> 파일에서 정의하던 Setting Expression을 <code>.scala</code> 파일에서 <code>Seq[Setting]</code> 자료구조로 정의하면 된다.
-
-</p>
-<h3>Keys are defined in the Keys object</h3>
-<p>빌트인 키는 <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a> 객체에 정의되 있다. <code>build.sbt</code>에는 <code>import sbt.Keys._</code>가 묵시적으로 선언돼 있어서 <code>sbt.Keys.name</code>라고 안 쓰고 <code>name</code>이라고 바로 써도 되는 것이다.
-
-</p>
-<p>Key를 새로 정의하려면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>이나 <a href="/articles/2012/sbt-getting-started-using-plugins.html">plugin</a>으로 정의해야 한다.
-
-</p>
-<h3>Other ways to transform settings</h3>
-<p><code>:=</code>으로 리플레이스 하는 것이 가장 단순한 변형 방법이지만 다른 방법도 있다. 예를 들어 <code>+=</code>으로도 Setting 밸류를 추가할 수 있다.
-
-</p>
-<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 '<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>'에서 자세히 설명한다.
-
-</p>
-<h3>Task Keys</h3>
-<p>Key는 세 종류이다:
-
-</p>
-<ul>
-<li><code>SettingKey[T]</code>: 이 키와 밸류는 딱 한 번 해석한다. 프로젝트를 로드할 때 해석하고 다시 해석하지 않는다.</li>
-<li><code>TaskKey[T]</code>: 이 키와 밸류는 매번 다시 해석한다. 그래서 문제가 될 수도 있다.</li>
-<li><code>InputKey[T]</code>: 이 가이드에서는 <code>InputKey</code>는 설명하지 않는다. 이 가이드를 다 보고 나서 <a href="https://github.com/harrah/xsbt/wiki/Input-Tasks">Input Task</a>를 봐라.</li>
-</ul>
-<p><em>타스크</em>를 정의한다고 sbt에 말할 때 <code>TaskKey[T]</code>를 사용한다. <code>compile</code>이나 <code>package</code> 같은 것이 타스크이다. 이 타스크는 <code>Unit</code>을 리턴하거나 해당 타스크와 관련된 어떤 밸류를 리턴한다. 스칼라에서는 <code>Unit</code>이 <code>void</code>다. 예를 들어 <code>package</code> 타스크는 타입이 <code>TaskKey[File]</code>이고 생성할 jar 파일을 리턴한다.
-
-</p>
-<p>타스크를 실행할 때마다 항상 다시 실행한다. <code>compile</code> 타스크를 실행하면 <code>compile</code> 타스크에 필요한 모든 타스크가 한 번씩 다시 실행된다.
-
-</p>
-<p>sbt 맵에는 프로젝트 정보가 담겨 있다. <code>name</code> 같은 게 이에 해당하고 항상 고정된 밸류를 저장한다. <code>compile</code>같은 타스크는 고정 값이 아니라 실행 코드이다. 이 실행 코드가 스트링을 리턴한다고 해도 스트링을 얻으려면 항상 다시 실행해야 한다.
-
-</p>
-<p><em>타스크나 설정이나 키를 사용하는 것은 동일하다.</em> 매번 실행하는 것인지 아닌지가 타스크인지 아닌지를 구분하는 요소이며 이것은 밸류가 아니라 키의 프로퍼티에 해당한다.
-
-</p>
-<p><code>:=</code>을 사용해서 타스크에 코드를 할당할 수 있다. 이 코드는 매번 실행된다:
-
-</p>
-<pre><code class="lang-scala">hello := { println(<span class="string">"Hello!"</span>) }</code></pre>
-<p>타스크 키로 <code>Setting</code>을 만들 때와 설정 키로 <code>Setting</code> 을 만들 때는 타입이 다르다. <code>taskKey := 42</code> 가 생성하는 결과의 타입은 <code>Setting[Task[T]]</code>이지만 <code>settingKey := 42</code>가 생성하는 결과의 타입은 <code>Setting[T]</code>이다. 타스크는 타스크를 실행해서 <code>T</code> 타입의 밸류를 생성하는 것뿐이고 그 외에는 차이가 없다.
-
-</p>
-<p>내부적으로 <code>T</code>와 <code>Task[T]</code> 타입이 다른 점이 더 있다. 설정키는 프로젝트를 로드할 때 한 번만 처리하기 때문에 타스크 키에 의존하지 않는다. 곧 읽게 될 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 이 문제를 자세히 다룬다.
-
-</p>
-<h3>Keys in sbt interactive mode</h3>
-<p>대화형 모드에서 타스크 이름을 입력하면 해당 타스크가 실행된다. <code>compile</code>이라는 타스크 키가 있으니까 대화형 모드에서 <code>compile</code>이라고 입력했을 때 compile 타스크가 실행될 수 있다.
-
-</p>
-<p>타스크 키가 아니라 설정 키를 입력하면 그냥 화면에 그 키의 밸류를 보여준다. 
-타스크 키를 입력하면 타스크가 실행되지만, 그 결과를 보여주진 않는다. 타스크의 결과를 보고 싶으면 <code>show &lt;task name&gt;</code>이라고 입력해야 한다.
-
-</p>
-<p>키 이름은 Scala 관례에 따라 카멜케이스 방식으로 지어야 하고 sbt 명령어는 <code>하이픈 구분자</code> 방식을 사용한다. <a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html">Keys</a>에 정의된 키를 sbt에서 사용할 때는 하이픈 구분자를 사용해야 한다. <code>Keys.scala</code>에 정의한 것 중 한 예를 보자:
-
-</p>
-<pre><code class="lang-scala"><span class="keyword">val</span> scalacOptions = TaskKey[Seq[String]](<span class="string">"scalac-options"</span>, <span class="string">"Options for the Scala compiler."</span>)</code></pre>
-<p>sbt에서 타스크를 입력할 때는 <code>scalacOptions</code>이 아니라 <code>scalac-options</code>라고 입력한다.
-
-</p>
-<p>sbt 대화형 모드에서 <code>inspect &lt;keyname&gt;</code>을 입력하면 입력한 키에 대한 정보를 자세히 보여준다. <code>inspect</code>는 입력한 키의 밸류와 간략한 설명을 보여준다. 물론 처음 보는 정보들까지도 함께 보여준다.
-
-</p>
-<h3>Imports in <code>build.sbt</code></h3>
-<p><code>build.sbt</code> 파일에 import 구문을 사용할 수 있다. import 구문은 한 줄 띄우기를 할 필요가 없다.
-
-</p>
-<p>다음을 보면 무슨 소린지 한 번에 알 수 있다:
-
-</p>
-<pre><code class="lang-scala"><span class="keyword">import</span> sbt._
-<span class="keyword">import</span> Process._
-<span class="keyword">import</span> Keys._</code></pre>
-<p>(<a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보면 <code>Build</code>나 <code>Plugin</code> 객체도 임포트해서 사용하는 방법을 설명한다. <code>Build</code>나 <code>Plugin</code> 객체를 임포트해야 하면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala build definition</a>를 보라.)
-
-</p>
-<h3>Adding library dependencies</h3>
-<p>라이브러리 의존성을 추가하는 방법은 두 가지다. 하나는 unmanaged 방식으로 <code>lib/</code> 디렉토리에 jar 파일을 그냥 넣으면 된다. 다른 하나는 managed 방식으로 <code>build.sbt</code> 파일에 다음과 같이 추가한다:
-
-</p>
-<pre><code class="lang-scala">libraryDependencies += <span class="string">"org.apache.derby"</span> % <span class="string">"derby"</span> % <span class="string">"10.4.1.3"</span></code></pre>
-<p>이 것은 버전이 10.4.1.3인 Apache Derby 라이브러리를 managed 방식으로 추가하는 것을 보여준다. 
-
-</p>
-<p><code>libraryDependencies</code>에서는 <code>+=</code>와 <code>%</code> 메소드를 추가로 알아야 한다: <code>+=</code>는 기존의 밸류를 교체하는 것이 아니라 기존의 밸류에 새 밸류를 추가하는 것이다. 자세한 것은 <a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>에서 설명한다. <code>%</code>는 Ivy 모듈 ID를 조합하는 데 사용하고 자세한 설명은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에 있다.
-
-</p>
-<p>라이브러리 의존성은 <a href="/articles/2012/sbt-getting-started-library-dependencies.html">Library Dependencies</a>에서 다룰 예정이다. 여기서는 이 정도로 마무리하겠다.
 
 </p>
 ]]>

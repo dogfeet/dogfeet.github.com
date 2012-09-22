@@ -77,7 +77,7 @@
             <span class="tag">&lt;<span class="title">goal</span>></span>execute<span class="tag">&lt;/<span class="title">goal</span>></span>
         <span class="tag">&lt;/<span class="title">goals</span>></span>
         <span class="tag">&lt;<span class="title">configuration</span>></span>
-            <span class="tag">&lt;<span class="title">source</span>></span><span class="cdata">&lt;![CDATA[
+            <span class="tag">&lt;<span class="title">source</span>></span>
             def concat(s1, s2, t) {
                 def java.io.File f1 = new java.io.File(s1)
                 def java.io.File f2 = new java.io.File(s2)
@@ -120,7 +120,7 @@
             concat("target/classes/com/softwareag/de/s/framework/demo/db/derby/initZero.sql",
                 "src/main/db/init0.sql",
                 "target/classes/com/softwareag/de/s/framework/demo/db/hsqldb/init0.sql")
-            ]]></span><span class="tag">&lt;/<span class="title">source</span>></span>
+            <span class="tag">&lt;/<span class="title">source</span>></span>
         <span class="tag">&lt;/<span class="title">configuration</span>></span>
         <span class="tag">&lt;/<span class="title">execution</span>></span>
     <span class="tag">&lt;/<span class="title">executions</span>></span>
@@ -151,7 +151,7 @@
         <span class="tag">&lt;/<span class="title">execution</span>></span>
     <span class="tag">&lt;/<span class="title">executions</span>></span>
     <span class="tag">&lt;<span class="title">configuration</span>></span>
-        <span class="tag">&lt;<span class="title">script</span>></span><span class="javascript"> &lt;![CDATA[
+        <span class="tag">&lt;<span class="title">script</span>></span><span class="javascript">
             import java.io.File
 
             <span class="comment">//필요한 환경 변수가 있는지 검사.</span>
@@ -173,7 +173,7 @@
                     <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException( <span class="string">"["</span> + dir + <span class="string">"] dir not found "</span>)
                 }
             })
-        ]]> </span><span class="tag">&lt;/<span class="title">script</span>></span>
+        </span><span class="tag">&lt;/<span class="title">script</span>></span>
     <span class="tag">&lt;/<span class="title">configuration</span>></span>
 <span class="tag">&lt;/<span class="title">plugin</span>></span></code></pre>
 <p>validate Phase에서 내가 빠트린 것을 점검할 수 있다. 그리고 project 변수를 이용하면 더 많은 것들을 할 수 있다.
