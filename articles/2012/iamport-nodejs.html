@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/iamport-nodejs.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">iamport: nodejs</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/iamport-nodejs.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">iamport: nodejs</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 17</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#fiber" class="tag">fiber</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-nodejs.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-nodejs.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -68,7 +68,7 @@
         <span class="title">if</span>( <span class="title">line</span>.<span class="title">trim</span>().<span class="title">length</span> &lt; 1 ) <span class="title">return</span>;
         <span class="title">var</span> <span class="title">opts</span>=<span class="title">line</span>.<span class="title">match</span>(/[0-9\.]+/<span class="title">g</span>);
 
-        <span class="title">if</span>( <span class="title">opts</span> &amp;&amp; <span class="title">opts</span>.<span class="title">length</span> > 1 ) {
+        <span class="title">if</span>( <span class="title">opts</span> &amp;&amp; <span class="title">opts</span>.<span class="title">length</span> &gt; 1 ) {
             <span class="title">tryToConnect</span>(<span class="title">opts</span>[0], <span class="title">opts</span>[1]);
         }</span> else <span class="container">{
             <span class="title">console</span>.<span class="title">log</span>(<span class="title">line</span>);
@@ -141,7 +141,7 @@ Fiber(<span class="keyword">function</span>(){
 
         <span class="keyword">var</span> opts=line.match(<span class="regexp">/[0-9\.]+/g</span>);
 
-        <span class="keyword">if</span>( opts &amp;&amp; opts.length > <span class="number">1</span> ) {
+        <span class="keyword">if</span>( opts &amp;&amp; opts.length &gt; <span class="number">1</span> ) {
             jobs.push( connect(opts[<span class="number">0</span>], opts[<span class="number">1</span>]) );
         } <span class="keyword">else</span> {
             console.log(line);

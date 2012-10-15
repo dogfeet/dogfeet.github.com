@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/optimize-browser-rendering.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Optimize browser rendering</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/optimize-browser-rendering.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Optimize browser rendering</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jan 27</span>
  | <a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#selector" class="tag">Selector</a> <a href="/site/tagmap.html#performance" class="tag">Performance</a> <a href="/site/tagmap.html#google page speed" class="tag">Google Page Speed</a> | <span><a href="/articles/2012/optimize-browser-rendering.html#disqus_thread" data-disqus-identifier="/articles/2012/optimize-browser-rendering.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -52,12 +52,12 @@
 
 </p>
 <h4>Child 셀렉터</h4>
-<pre><code>ul > li > a {<span class="keyword">...</span>}</code></pre>
+<pre><code>ul &gt; li &gt; a {<span class="keyword">...</span>}</code></pre>
 <p>Child 셀렉터도 비효율적이다. 브라우저가 엘리먼트를 Evaluate할 때마다 노드를 하나 더 Evaluate해야 한다. 다시 말해서 Child 셀렉터를 사용한 Rule은 비용이 두 배 더 든다. 게다가 Key 셀렉터가 가리키는 엘리먼트가 많을수록 더 많은 엘리먼트를 Evaluate해야 한다. 비효율적이지만 Descendant 셀렉터 보다는 훨씬 빨라서 꽤 사용되는 편이다.
 
 </p>
 <h4>쓸데없이 셀렉터를 더 사용할 때</h4>
-<pre><code>ul<span class="comment">#top_blue_nav {...}</span></code></pre>
+<pre><code><span class="comment">ul#top_blue_nav</span> <span class="comment">{</span>.<span class="string">.</span><span class="string">.</span><span class="comment">}</code></pre>
 <p>정의에 따르면 ID 셀렉터는 중복될 수 없다. 그래서 class나 tag 셀렉터와 함께 사용하면 필요 없는 Evaluate을 추가로 하게 만든다. 노파심을 달래줄 뿐 하지 않아도 될 Evaluate만 더 하는 것이다.
 
 </p>
@@ -154,7 +154,7 @@
 <p>HTML meta tag에 명시하는 예제:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html;charset=UTF-8"</span> /></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html;charset=UTF-8"</span> /&gt;</span></code></pre>
 <h2>결론</h2>
 <p><a href="http://code.google.com/speed/page-speed/">Google Page Speed</a>를 한번 돌려보자. 굉장히 잘 만들었다. 문제가 무엇인지 알려주고 어떻게 해결해야 하는지도 알려준다.
 

@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-tracking-vs-remote-tracking.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: Remote Tracking Branch vs Tracking Branch</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-tracking-vs-remote-tracking.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: Remote Tracking Branch vs Tracking Branch</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Mar 03</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#tracking branch" class="tag">Tracking Branch</a> <a href="/site/tagmap.html#remote tracking branch" class="tag">Remote Tracking Branch</a> | <span><a href="/articles/2012/git-tracking-vs-remote-tracking.html#disqus_thread" data-disqus-identifier="/articles/2012/git-tracking-vs-remote-tracking.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -80,7 +80,7 @@ branch<span class="variable">.master</span><span class="variable">.merge</span>=
 <p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:
 
 </p>
-<pre><code><span class="title">git</span> branch <span class="comment">--set-upstream master origin/master</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">set</span>-<span class="comment">upstream</span> <span class="comment">master</span> <span class="comment">origin/master</code></pre>
 <h3>쓰임새</h3>
 <p>Tracking 브랜치 정보는 로컬 브랜치와 리모트 브랜치 사이의 연결 정보이고 설정에 저장된다. Git은 이 정보를 이용해서 몇 가지 정보를 제공한다.
 

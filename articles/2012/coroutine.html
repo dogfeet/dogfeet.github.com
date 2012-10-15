@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/coroutine.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Coroutine</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/coroutine.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Coroutine</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 27</span>
  | <a href="/site/tagmap.html#coroutine" class="tag">Coroutine</a> <a href="/site/tagmap.html#wikipedia" class="tag">Wikipedia</a> | <span><a href="/articles/2012/coroutine.html#disqus_thread" data-disqus-identifier="/articles/2012/coroutine.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -71,29 +71,29 @@ coroutine consume
 <p>Generator도 Subroutine보다 넓은(generalisation) 개념이지만 Generator를 처음 볼 땐 Coroutine보다 후져 보인다. Generator는 기본적으로 Iterator 코드를 단순화할 목적으로 사용하기 때문에 Generator의 yield 구문은 다른 Coroutine으로 점프하는 게 아니라 호출한 상위 루틴으로 값을 넘겨준다. 하지만, Generator로 Coroutine을 구현할 수 있다. Generator를 호출하는 상위 루틴을 'Dispatcher'로(엄밀히 말하자면 <a href="http://en.wikipedia.org/wiki/Trampoline_(computing)">Trampoline</a>) 구현하면 되는데 한 Generator가 반환한 토큰으로 다른 Generator를 실행한다.
 
 </p>
-<pre><code>var q := <span class="keyword">new</span> queue
+<pre><code>var q := new queue
 
 generator produce
-    <span class="keyword">loop</span>
-        <span class="keyword">while</span> q <span class="keyword">is</span> <span class="keyword">not</span> full
-            create some <span class="keyword">new</span> items
-            add the items <span class="keyword">to</span> q
+    loop
+        while q is not full
+            <span class="operator"><span class="keyword">create</span> <span class="keyword">some</span> new items
+            <span class="keyword">add</span> the items <span class="keyword">to</span> q
         yield consume
 
 generator consume
-    <span class="keyword">loop</span>
-        <span class="keyword">while</span> q <span class="keyword">is</span> <span class="keyword">not</span> empty
-            remove some items from q
-            <span class="keyword">use</span> the items
+    loop
+        while q <span class="keyword">is</span> <span class="keyword">not</span> empty
+            remove <span class="keyword">some</span> items <span class="keyword">from</span> q
+            use the items
         yield produce
 
 subroutine dispatcher
-    var d := <span class="keyword">new</span> dictionary(generator → iterator)
-    d[produce] := start produce
-    d[consume] := start consume
-    var current := produce
-    <span class="keyword">loop</span>
-        current := <span class="keyword">next</span> d[current]</code></pre>
+    var d := new dictionary(generator → iterator)
+    d[produce] := <span class="keyword">start</span> produce
+    d[consume] := <span class="keyword">start</span> consume
+    var <span class="keyword">current</span> := produce
+    loop
+        <span class="keyword">current</span> := <span class="keyword">next</span> d[<span class="keyword">current</span>]</code></pre>
 <p>언어 차원에서 Coroutine을 지원하는 것도 많지만, native Coroutine이 없는 언어에서는 이렇게 많이들 구현한다. 예를 들어, Python 2.5 이전 버전에서는 이와 같은 방법을 사용했다.
 
 </p>

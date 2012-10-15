@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1260510300.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">간단한 Thread 코드 C#</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1260510300.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">간단한 Thread 코드 C#</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Dec 11</span>
  | <a href="/site/tagmap.html#c#" class="tag">C#</a> <a href="/site/tagmap.html#thread" class="tag">Thread</a> | <span><a href="/articles/2009/1260510300.html#disqus_thread" data-disqus-identifier="/articles/2009/1260510300.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -26,7 +26,7 @@
     ProxyServer proxyServer = ProxyServer<span class="preprocessor">.CreateProxyServer</span>(ProxyServerConfig<span class="preprocessor">.PrivateAddressRangeConfigSingle</span>)<span class="comment">;</span>
     controlServer<span class="preprocessor">.ProxyServer</span> = proxyServer<span class="comment">;</span>
 
-    new Thread(() =>
+    new Thread(() =&gt;
     {
       Thread<span class="preprocessor">.Sleep</span>(<span class="number">1000</span>)<span class="comment">;</span>
       Console<span class="preprocessor">.WriteLine</span>(<span class="string">"receive ACK"</span>)<span class="comment">;</span>

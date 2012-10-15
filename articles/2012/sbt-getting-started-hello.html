@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-hello.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Hello, World</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-hello.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Hello, World</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 08</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-hello.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-hello.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -31,17 +31,17 @@
 
 </p>
 <pre><code>object <span class="constant">Hi</span> {
-    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(args<span class="symbol">:</span> <span class="constant">Array</span>[<span class="constant">String</span>])</span> </span>= println(<span class="string">"Hi!"</span>)
+    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(<span class="symbol">args:</span> <span class="constant">Array</span>[<span class="constant">String</span>])</span> </span>= println(<span class="string">"Hi!"</span>)
 }</code></pre>
 <p><code>hello</code> 디렉토리에서 sbt를 실행하고 sbt 콘솔에서 <code>run</code>을 실행한다. Linux와 OS X에서는 다음과 같이 실행한다:
 
 </p>
 <pre><code>$ mkdir hello
 $ cd hello
-$ echo <span class="string">'object Hi { def main(args: Array[String]) = println("Hi!") }'</span> > hw.scala
+$ echo <span class="string">'object Hi { def main(args: Array[String]) = println("Hi!") }'</span> &gt; hw.scala
 $ sbt
 <span class="keyword">...</span>
-> run
+&gt; run
 <span class="keyword">...</span>
 Hi!</code></pre>
 <p>sbt는 관례에 따라 동작하는 것인데 다음과 같은 것을 찾는다.

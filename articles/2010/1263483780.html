@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1263483780.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Show Bean List in JSP</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1263483780.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Show Bean List in JSP</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2010 Jan 14</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#jsp" class="tag">JSP</a> | <span><a href="/articles/2010/1263483780.html#disqus_thread" data-disqus-identifier="/articles/2010/1263483780.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -24,49 +24,49 @@
 
 </p>
 <h2>bean list</h2>
-<pre><code><span class="xml"><span class="vbscript">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %></span>
+<pre><code><span class="xml"><span class="vbscript">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span>
 
-<span class="vbscript">&lt;%@ page import=<span class="string">"java.util.*"</span> %></span>
-<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.context.ApplicationContext"</span> %></span>
-<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.web.context.support.WebApplicationContextUtils"</span> %></span>
-<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.web.servlet.support.RequestContextUtils"</span> %></span>
+<span class="vbscript">&lt;%@ page import=<span class="string">"java.util.*"</span> %&gt;</span>
+<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.context.ApplicationContext"</span> %&gt;</span>
+<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.web.context.support.WebApplicationContextUtils"</span> %&gt;</span>
+<span class="vbscript">&lt;%@ page import=<span class="string">"org.springframework.web.servlet.support.RequestContextUtils"</span> %&gt;</span>
 
 <span class="vbscript">&lt;%
 ApplicationContext context = RequestContextUtils.getWebApplicationContext(<span class="built_in">request</span>);
 <span class="built_in">String</span>[] beanNames = context.getBeanDefinitionNames();
-ArrayList&lt;<span class="keyword">Class</span>> beanClasses = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">Class</span>>();
+ArrayList&lt;<span class="keyword">Class</span>&gt; beanClasses = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">Class</span>&gt;();
 <span class="keyword">for</span> (<span class="built_in">String</span> beanName: beanNames) {
     beanClasses.add(context.getBean(beanName).getClass());
 }
-%></span>
+%&gt;</span>
 
-<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"context"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=context%>"</span> /></span>
-<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"beanNames"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=beanNames%>"</span> /></span>
-<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"beanClasses"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=beanClasses%>"</span> /></span>
+<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"context"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=context%&gt;"</span> /&gt;</span>
+<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"beanNames"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=beanNames%&gt;"</span> /&gt;</span>
+<span class="tag">&lt;<span class="title">c:set</span> <span class="attribute">var</span>=<span class="value">"beanClasses"</span> <span class="attribute">value</span>=<span class="value">"&lt;%=beanClasses%&gt;"</span> /&gt;</span>
 
-<span class="tag">&lt;<span class="title">html</span>></span>
-<span class="tag">&lt;<span class="title">head</span>></span>
-    <span class="tag">&lt;<span class="title">title</span>></span>Spring<span class="tag">&lt;/<span class="title">title</span>></span>
-<span class="tag">&lt;/<span class="title">head</span>></span>
-<span class="tag">&lt;<span class="title">body</span>></span>
-<span class="tag">&lt;<span class="title">h1</span>></span>Spring Context<span class="tag">&lt;/<span class="title">h1</span>></span>
-<span class="tag">&lt;<span class="title">ul</span>></span>
-    <span class="tag">&lt;<span class="title">li</span>></span>ApplicationContext: </span><span class="variable">${context.displayName}</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>
-<span class="tag">&lt;<span class="title">li</span>></span></span><span class="variable">${context.class.name}</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>></span>
-<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;<span class="title">h1</span>></span>Beans<span class="tag">&lt;/<span class="title">h1</span>></span>
-<span class="tag">&lt;<span class="title">ul</span>></span>
-<span class="tag">&lt;<span class="title">c:forEach</span> <span class="attribute">var</span>=<span class="value">"item"</span> <span class="attribute">items</span>=<span class="value">"</span><span class="variable">${beanNames}</span><span class="xml">" varStatus="status">
-<span class="tag">&lt;<span class="title">li</span>></span><span class="tag">&lt;<span class="title">b</span>></span></span><span class="variable">${item}</span><span class="xml"><span class="tag">&lt;/<span class="title">b</span>></span><span class="tag">&lt;/<span class="title">li</span>></span>
-<span class="tag">&lt;<span class="title">ul</span>></span>
-<span class="tag">&lt;<span class="title">li</span>></span></span><span class="variable">${beanClasses</span><span class="xml">[status.index].name}<span class="tag">&lt;/<span class="title">li</span>></span>
-<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">c:forEach</span>></span>
-<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">body</span>></span>
-<span class="tag">&lt;/<span class="title">html</span>></span></span></code></pre>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Spring<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h1</span>&gt;</span>Spring Context<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>ApplicationContext: </span><span class="variable">${context.displayName}</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span></span><span class="variable">${context.class.name}</span><span class="xml"><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h1</span>&gt;</span>Beans<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;<span class="title">c:forEach</span> <span class="attribute">var</span>=<span class="value">"item"</span> <span class="attribute">items</span>=<span class="value">"</span><span class="variable">${beanNames}</span><span class="xml">" varStatus="status"&gt;
+<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span></span><span class="variable">${item}</span><span class="xml"><span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span></span><span class="variable">${beanClasses</span><span class="xml">[status.index].name}<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">c:forEach</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></span></code></pre>
 </div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jul 29 2010</span>&raquo;<a href="/articles/2010/1280382600.html">와우 war overlay</a></li><li><span>May 11 2010</span>&raquo;<a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a></li><li><span>May 04 2010</span>&raquo;<a href="/articles/2010/1272949440.html">m2eclipse test practice</a></li><li><span>Apr 27 2010</span>&raquo;<a href="/articles/2010/1272334320.html">Dev Environment in Maven</a></li><li><span>Apr 20 2010</span>&raquo;<a href="/articles/2010/1271743080.html">Spring Finance</a></li><li><span>Apr 19 2010</span>&raquo;<a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a></li><li><span>Apr 19 2010</span>&raquo;<a href="/articles/2010/1271653140.html">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</a></li><li><span>Jan 17 2010</span>&raquo;<a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a></li><li><span>Dec 27 2009</span>&raquo;<a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257832500.html">Grails 1.2 M4</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a></li><li><span>Sep 23 2009</span>&raquo;<a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a></li><li><span>Apr 03 2009</span>&raquo;<a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a></li><li><span>Jan 02 2009</span>&raquo;<a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a></li><li><span>Aug 19 2008</span>&raquo;<a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';

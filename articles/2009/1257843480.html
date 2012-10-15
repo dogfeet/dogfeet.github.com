@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1257843480.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Simplest Spring 3 Application, 초간단 Spring 3 어플</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1257843480.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Simplest Spring 3 Application, 초간단 Spring 3 어플</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Nov 10</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> | <span><a href="/articles/2009/1257843480.html#disqus_thread" data-disqus-identifier="/articles/2009/1257843480.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -47,23 +47,23 @@ import org<span class="variable">.springframework</span><span class="variable">.
     }
 } </code></pre>
 <h2>beans.xml</h2>
-<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="tag">&lt;<span class="title">beans</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.springframework.org/schema/beans"</span>
        <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span>
        <span class="attribute">xsi:schemaLocation</span>=<span class="value">"
                 http://www.springframework.org/schema/beans
-                http://www.springframework.org/schema/beans/spring-beans.xsd"</span>></span>
+                http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span>
 
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"calendar"</span> <span class="attribute">class</span>=<span class="value">"java.util.GregorianCalendar"</span> /></span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"calendar"</span> <span class="attribute">class</span>=<span class="value">"java.util.GregorianCalendar"</span> /&gt;</span>
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"date"</span> <span class="attribute">class</span>=<span class="value">"java.util.Date"</span> /></span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"date"</span> <span class="attribute">class</span>=<span class="value">"java.util.Date"</span> /&gt;</span>
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"ioc"</span> <span class="attribute">class</span>=<span class="value">"Ioc"</span>></span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"ioc"</span> <span class="attribute">class</span>=<span class="value">"Ioc"</span>&gt;</span>
 
-    <span class="tag">&lt;/<span class="title">bean</span>></span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
 
-<span class="tag">&lt;/<span class="title">beans</span>></span> </code></pre>
+<span class="tag">&lt;/<span class="title">beans</span>&gt;</span> </code></pre>
 <h2>library files</h2>
 <ul>
 <li>commons-logging.jar</li>

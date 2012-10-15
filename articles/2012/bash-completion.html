@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/bash-completion.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Bash: 자동완성</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/bash-completion.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Bash: 자동완성</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Mar 18</span>
  | <a href="/site/tagmap.html#bash" class="tag">bash</a> <a href="/site/tagmap.html#completion" class="tag">Completion</a> | <span><a href="/articles/2012/bash-completion.html#disqus_thread" data-disqus-identifier="/articles/2012/bash-completion.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -43,13 +43,13 @@
 <p><a href="http://packages.debian.org/bash">Debian bash package</a>는 <code>/etc/bash_completion</code>이라는 Completion 파일이 있고 이 파일에는 일반적인 명령어에 대한 Completion이 정의돼 있다. 아직 사용하고 있지 않으면 ". /etc/bash_completion"라고 실행해서 바로 사용하자:
 
 </p>
-<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>. <span class="regexp">/etc/bash</span>_completion
-skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span></code></pre>
+<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:~</span><span class="variable">$ </span>. <span class="regexp">/etc/bash</span>_completion
+skx<span class="variable">@lappy</span><span class="symbol">:~</span><span class="variable">$ </span></code></pre>
 <p>이걸 한 번만 해주면 다양한 명령어에 Completion을 이용할 수 있다:
 
 </p>
-<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>apt-get upd[<span class="constant">TAB</span>]
-skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>apt-get upg[<span class="constant">TAB</span>]</code></pre>
+<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:~</span><span class="variable">$ </span>apt-get upd[<span class="constant">TAB</span>]
+skx<span class="variable">@lappy</span><span class="symbol">:~</span><span class="variable">$ </span>apt-get upg[<span class="constant">TAB</span>]</code></pre>
 <p>그런데, 어떻게 만들지? 직접 만들고 싶은데. Completion 루틴은 'complete' 같은 bash 내부 명령어 몇 개를 조합해서 만든다. 이 루틴을 만들어 .bash_profile에 넣거나 별도의 파일로 만들어 /etc/bash_completion.d/에 넣을 수 있다.
 
 </p>
@@ -65,7 +65,7 @@ skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class
 <p>다음과 같이 complete 명령을 실행해 주면 위 명령에서 hostname 부분을 Completion할 수 있다:
 
 </p>
-<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>complete -<span class="constant">F</span> _known_hosts xvncviewer</code></pre>
+<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:~</span><span class="variable">$ </span>complete -<span class="constant">F</span> _known_hosts xvncviewer</code></pre>
 <p>이 complete 명령을 한번 실행하고 [TAB]을 입력하면 다음과 같이 보여 줄 거다:
 
 </p>
@@ -141,9 +141,9 @@ complete -F _foo foo</code></pre>
 <p>그리고 나서 이 파일만 읽어들여 테스트해본다: 
 
 </p>
-<pre><code>skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>. <span class="regexp">/etc/bash</span>_completion.d/foo
-skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class="variable">$ </span>foo --[<span class="constant">TAB</span>]
---help     --verbose  --version  </code></pre>
+<pre><code><span class="comment">skx@lappy:~$</span> <span class="string">.</span> <span class="comment">/etc/bash_completion</span>.<span class="comment">d/foo</span>
+<span class="comment">skx@lappy:~$</span> <span class="comment">foo</span> <span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">TAB</span>]
+<span class="literal">-</span><span class="literal">-</span><span class="comment">help</span>     <span class="literal">-</span><span class="literal">-</span><span class="comment">verbose</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>  </code></pre>
 <p>한번 해보면 인자가 자동으로 완성되는 것을 볼 수 있다. 그리고 예를 들어, "foo --h[TAB]"라고 입력하면 '--help' 옵션을 자동으로 완성해준다
 
 </p>
@@ -168,16 +168,16 @@ skx<span class="variable">@lappy</span><span class="symbol">:</span>~<span class
 <p>여기서 변수 대신 실제 값을 넣어보면 이 명령이 실제로 어떻게 동작하는지 이해하기 쉬울 것이다:
 
 </p>
-<pre><code><span class="title">compgen</span> -<span class="type">W</span> <span class="string">"--help --verbose --version"</span> <span class="comment">-- "userinput"</span></code></pre>
+<pre><code><span class="comment">compgen</span> <span class="literal">-</span><span class="comment">W</span> <span class="comment">"</span>-<span class="literal">-</span><span class="comment">help</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">verbose</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version"</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">"userinput"</code></pre>
 <p>compgen은 "--help --verbose --version" 중에서 "${cur}"와 일치하는 것을 찾아 리턴한다. 잘 이해가 안되면 바로 셸에서 이 명령을 직접 실행해 보면 알 수 있다:
 
 </p>
-<pre><code><span class="title">skx</span>@lappy:~$ compgen -<span class="type">W</span> <span class="string">"--help --verbose --version"</span> <span class="comment">-- --</span>
-<span class="comment">--help</span>
-<span class="comment">--verbose</span>
-<span class="comment">--version</span>
-<span class="title">skx</span>@lappy:~$ compgen -<span class="type">W</span> <span class="string">"--help --verbose --version"</span> <span class="comment">-- --h</span>
-<span class="comment">--help</span></code></pre>
+<pre><code><span class="comment">skx@lappy:~$</span> <span class="comment">compgen</span> <span class="literal">-</span><span class="comment">W</span> <span class="comment">"</span>-<span class="literal">-</span><span class="comment">help</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">verbose</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version"</span> <span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">help</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">verbose</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>
+<span class="comment">skx@lappy:~$</span> <span class="comment">compgen</span> <span class="literal">-</span><span class="comment">W</span> <span class="comment">"</span>-<span class="literal">-</span><span class="comment">help</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">verbose</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version"</span> <span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">h</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">help</code></pre>
 <p>"--"라고 입력하면 세 옵션 모두 일치하므로 전부 반환된다. 하지만 "--h"만 입력하면 "--help"만 일치하므로 --help만 반환한다.
 
 </p>
@@ -276,7 +276,7 @@ complete -F _xm xm</code></pre>
 <p>"console" operation에 사용하는 목록은 다음과 같은 명령으로 만든다:
 
 </p>
-<pre><code>xm list --long | <span class="keyword">grep</span> \(name | <span class="keyword">grep</span> -v Domain-<span class="number">0</span> | awk <span class="string">'{ print $2 }'</span> | <span class="keyword">tr</span> -d \)</code></pre>
+<pre><code><span class="comment">xm</span> <span class="comment">list</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">long</span> <span class="comment">|</span> <span class="comment">grep</span> <span class="comment">\(name</span> <span class="comment">|</span> <span class="comment">grep</span> <span class="literal">-</span><span class="comment">v</span> <span class="comment">Domain</span>-<span class="comment">0</span> <span class="comment">|</span> <span class="comment">awk</span> <span class="comment">'{</span> <span class="comment">print</span> <span class="comment">$2</span> <span class="comment">}'</span> <span class="comment">|</span> <span class="comment">tr</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">\)</code></pre>
 <p>이 명령은 지금 도는 Xen 시스템의 목록을 반환한다.
 
 </p>

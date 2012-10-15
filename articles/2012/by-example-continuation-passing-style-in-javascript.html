@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/by-example-continuation-passing-style-in-javascript.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">예제로 설명하는 자바스크립트에서의 Continuation-passing style</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/by-example-continuation-passing-style-in-javascript.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">예제로 설명하는 자바스크립트에서의 Continuation-passing style</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
  | <span property="dc:created">2012 Feb 24</span>
  | <a href="/site/tagmap.html#javascript" class="tag">javascript</a> <a href="/site/tagmap.html#cps" class="tag">CPS</a> <a href="/site/tagmap.html#programming" class="tag">programming</a> <a href="/site/tagmap.html#continuation" class="tag">continuation</a> | <span><a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html#disqus_thread" data-disqus-identifier="/articles/2012/by-example-continuation-passing-style-in-javascript.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -248,7 +248,7 @@
 <pre><code>// 요청이 끝날 때까지 블로킹된다:
 var someName = fetch(<span class="string">"./1031/name"</span>) <span class="comment">;</span>
 
-document<span class="preprocessor">.write</span> (<span class="string">"someName: "</span>+ someName +<span class="string">"&lt;br>"</span>) <span class="comment">;</span>
+document<span class="preprocessor">.write</span> (<span class="string">"someName: "</span>+ someName +<span class="string">"&lt;br&gt;"</span>) <span class="comment">;</span>
 
 // 블로킹되지 않는다:
 fetch(<span class="string">"./1030/name"</span>,function(name) {
@@ -289,9 +289,9 @@ fetch(<span class="string">"./1030/name"</span>,function(name) {
 
     <span class="comment">// 경로에서 .. 를 없앤다.</span>
     <span class="keyword">var</span> localPath = u.pathname ;
-    <span class="comment">//  "&lt;dir>/.." => ""</span>
+    <span class="comment">//  "&lt;dir&gt;/.." =&gt; ""</span>
     <span class="keyword">var</span> localPath = localPath.replace(<span class="regexp">/[^/</span>]+\/+[.][.]/g,<span class="string">""</span>) ;
-    <span class="comment">//  ".." => "."</span>
+    <span class="comment">//  ".." =&gt; "."</span>
     <span class="keyword">var</span> localPath = DocRoot + 
     localPath.replace(<span class="regexp">/[.][.]/g</span>,<span class="string">"."</span>) ;
 
@@ -455,28 +455,28 @@ total_fact(-<span class="number">1</span>,function(res) {
 <p>아래의 코드는 이 언어를 CPS로 변환해주는 도구다:
 
 </p>
-<pre><code><span class="list">(<span class="title">define</span><span class="body"> <span class="list">(<span class="title">cps-convert</span><span class="body"> term cont</span>)</span>
+<pre><code><span class="list">(<span class="title">define</span><span class="body"> <span class="list">(<span class="title">cps-convert</span><span class="body"> term cont)</span></span>
     <span class="list">(<span class="title">match</span><span class="body"> term
         [<span class="quoted">`(,f ,e)</span>
-            <span class="comment">; =></span>
-            <span class="list">(<span class="title">let</span><span class="body"> <span class="list">(<span class="body"><span class="list">(<span class="body">$f <span class="list">(<span class="title">gensym</span><span class="body"> 'f</span>)</span></span>)</span>
-                    <span class="list">(<span class="body">$e <span class="list">(<span class="title">gensym</span><span class="body"> 'e</span>)</span></span>)</span></span>)</span>
+            <span class="comment">; =&gt;</span>
+            <span class="list">(<span class="title">let</span><span class="body"> <span class="list">(<span class="body"><span class="list">(<span class="body">$f <span class="list">(<span class="title">gensym</span><span class="body"> 'f)</span></span>)</span></span>
+                    <span class="list">(<span class="body">$e <span class="list">(<span class="title">gensym</span><span class="body"> 'e)</span></span>)</span></span>)</span></span>
                <span class="list">(<span class="title">cps-convert</span><span class="body"> f <span class="quoted">`(lambda (,$f)
                     ,(cps-convert e `(lambda (,$e)
-                        (,$f ,$e ,cont))))</span></span>)</span></span>)</span>]
+                        (,$f ,$e ,cont))))</span>)</span></span>)</span></span>]
 
         [<span class="quoted">`(lambda (,v) ,e)</span>
-            <span class="comment">; =></span>
-             <span class="list">(<span class="title">let</span><span class="body"> <span class="list">(<span class="body"><span class="list">(<span class="body">$k <span class="list">(<span class="title">gensym</span><span class="body"> 'k</span>)</span></span>)</span></span>)</span>
+            <span class="comment">; =&gt;</span>
+             <span class="list">(<span class="title">let</span><span class="body"> <span class="list">(<span class="body"><span class="list">(<span class="body">$k <span class="list">(<span class="title">gensym</span><span class="body"> 'k)</span></span>)</span></span>)</span></span>
                <span class="quoted">`(,cont (lambda (,v ,$k)
-                    ,(cps-convert e $k)))</span></span>)</span>]
+                    ,(cps-convert e $k)))</span>)</span></span>]
 
-        [<span class="list">(<span class="body">? symbol?</span>)</span>
-            <span class="comment">; =></span>
-            <span class="quoted">`(,cont ,term)</span>]</span>)</span></span>)</span>
+        [<span class="list">(<span class="body">? symbol?)</span></span>
+            <span class="comment">; =&gt;</span>
+            <span class="quoted">`(,cont ,term)</span>])</span></span>)</span></span>
 
-<span class="list">(<span class="title">define</span><span class="body"> <span class="list">(<span class="title">cps-convert-program</span><span class="body"> term</span>)</span>
-    <span class="list">(<span class="title">cps-convert</span><span class="body"> term <span class="quoted">'(lambda (ans) ans)</span></span>)</span></span>)</span></code></pre>
+<span class="list">(<span class="title">define</span><span class="body"> <span class="list">(<span class="title">cps-convert-program</span><span class="body"> term)</span></span>
+    <span class="list">(<span class="title">cps-convert</span><span class="body"> term <span class="quoted">'(lambda (ans) ans)</span>)</span></span>)</span></span></code></pre>
 <p>관심 있는 사람은, <a href="http://www.brics.dk/~danvy/">올리비에 댄비(Olivier Danvy)</a>가 효과적인 CPS 변환기에 관한 많은 논문을 써냈으니 참고하길 바란다.
 
 </p>

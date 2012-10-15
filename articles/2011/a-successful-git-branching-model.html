@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/a-successful-git-branching-model.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">A successful git branching model</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/a-successful-git-branching-model.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">A successful git branching model</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 06</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#git-flow" class="tag">git-flow</a> <a href="/site/tagmap.html#workflow" class="tag">Workflow</a> | <span><a href="/articles/2011/a-successful-git-branching-model.html#disqus_thread" data-disqus-identifier="/articles/2011/a-successful-git-branching-model.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -122,14 +122,14 @@ Switched <span class="keyword">to</span> a <span class="keyword">new</span> bran
 <p>어떤 기능이 다 완성돼 다음 배포에 넣기로 했다면 develop 브랜치에 merge한다:
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout develop
-<span class="constant">Switched</span> to branch <span class="string">'develop'</span>
-<span class="variable">$ </span>git merge --no-ff myfeature
-<span class="constant">Updating</span> ea1b82a..<span class="number">05</span>e9557
-(<span class="constant">Summary</span> of changes)
-<span class="variable">$ </span>git branch -d myfeature
-<span class="constant">Deleted</span> branch myfeature (was <span class="number">05</span>e9557).
-<span class="variable">$ </span>git push origin develop</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="comment">develop</span>
+<span class="comment">Switched</span> <span class="comment">to</span> <span class="comment">branch</span> <span class="comment">'develop'</span>
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">merge</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">ff</span> <span class="comment">myfeature</span>
+<span class="comment">Updating</span> <span class="comment">ea1b82a</span>.<span class="string">.</span><span class="comment">05e9557</span>
+<span class="comment">(Summary</span> <span class="comment">of</span> <span class="comment">changes)</span>
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">myfeature</span>
+<span class="comment">Deleted</span> <span class="comment">branch</span> <span class="comment">myfeature</span> <span class="comment">(was</span> <span class="comment">05e9557)</span>.
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">push</span> <span class="comment">origin</span> <span class="comment">develop</code></pre>
 <p>'--no-ff' 옵션을 주면 항상 merge 커밋을 만들어 merge한다. fast-forward로 merge할 수 있어도 fast-forward하지 않는다. 그러면 feature 브랜치에 추가된 모든 커밋이 merge되고 feature 브랜치에서 merge했다는 기록이 커밋 히스토리에 남는다. 그 둘을 비교해보자:
 
 </p>
@@ -162,12 +162,12 @@ Switched <span class="keyword">to</span> a <span class="keyword">new</span> bran
 <p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 '1.1.5'이고 새 버전은 '1.1.6'이나 '2.0'이 아니라 '1.2' 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:
 
 </p>
-<pre><code>$ git checkout -b <span class="keyword">release</span>-<span class="number">1.2</span> develop
-Switched <span class="keyword">to</span> a <span class="keyword">new</span> branch <span class="string">"release-1.2"</span>
-$ ./bump-version.sh <span class="number">1.2</span>
-Files modified successfully, version bumped <span class="keyword">to</span> <span class="number">1.2</span>.
+<pre><code>$ git checkout -b release-<span class="number">1.2</span> develop
+Switched <span class="keyword">to</span> a new branch <span class="string">"release-1.2"</span>
+$ ./bump-<span class="property">version</span>.sh <span class="number">1.2</span>
+Files modified successfully, <span class="property">version</span> bumped <span class="keyword">to</span> <span class="number">1.2</span>.
 $ git commit -a -m <span class="string">"Bumped version number to 1.2"</span>
-[<span class="keyword">release</span>-<span class="number">1.2</span> <span class="number">74</span>d9424] Bumped version number <span class="keyword">to</span> <span class="number">1.2</span>
+[release-<span class="number">1.2</span> <span class="number">74</span>d9424] Bumped <span class="property">version</span> <span class="type">number</span> <span class="keyword">to</span> <span class="number">1.2</span>
 <span class="number">1</span> files changed, <span class="number">1</span> insertions(+), <span class="number">1</span> deletions(-)</code></pre>
 <p>브랜치를 새로 만들고 버전 넘버를 생성했다. <code>bump-version.sh</code>는 버전 넘버가 들어 있는 파일을 전부 수정하는 가상의 쉘 스크립트다. 손으로 직접 수정해도 된다. 중요한 것은 이 시점에 파일을 수정한다는 점이다. 그리고 수정한 파일을 커밋한다.
 
@@ -224,12 +224,12 @@ Deleted branch <span class="keyword">release</span>-<span class="number">1.2</sp
 <p>hotfix 브랜치는 master 브랜치에서 만든다. 예를 들어 현재 운영 버전이 1.2이고 심각한 버그가 발견됐다. develop 브랜치는 아직 불안정하기 때문에 hotfix 브랜치를 만들고 거기서 버그를 잡는다:
 
 </p>
-<pre><code>$ git checkout -b hotfix-<span class="number">1.2</span> master
-Switched to a <span class="keyword">new</span> branch <span class="string">"hotfix-1.2.1"</span>
-$ ./bump-<span class="keyword">version</span>.sh <span class="number">1.2</span>
-Files modified successfully, <span class="keyword">version</span> bumped to <span class="number">1.2</span>.
+<pre><code>$ git checkout -b hotfix-<span class="number">1.2</span><span class="number">.1</span> master
+Switched <span class="keyword">to</span> a new branch <span class="string">"hotfix-1.2.1"</span>
+$ ./bump-<span class="property">version</span>.sh <span class="number">1.2</span><span class="number">.1</span>
+Files modified successfully, <span class="property">version</span> bumped <span class="keyword">to</span> <span class="number">1.2</span><span class="number">.1</span>.
 $ git commit -a -m <span class="string">"Bumped version number to 1.2.1"</span>
-[hotfix-<span class="number">1.2</span> <span class="number">41e61</span>bb] Bumped <span class="keyword">version</span> number to <span class="number">1.2</span>
+[hotfix-<span class="number">1.2</span><span class="number">.1</span> <span class="number">41e61</span>bb] Bumped <span class="property">version</span> <span class="type">number</span> <span class="keyword">to</span> <span class="number">1.2</span><span class="number">.1</span>
 <span class="number">1</span> files changed, <span class="number">1</span> insertions(+), <span class="number">1</span> deletions(-)</code></pre>
 <p>브랜치를 만들고 버전 넘버를 바꾸는 것을 잊으면 안 된다!
 
@@ -237,8 +237,8 @@ $ git commit -a -m <span class="string">"Bumped version number to 1.2.1"</span>
 <p>버그를 해결하고 나서 커밋한다. 한두 개의 커밋으로 해결한다:
 
 </p>
-<pre><code><span class="variable">$ </span>git commit -m <span class="string">"Fixed severe production problem"</span>
-[hotfix-<span class="number">1.2</span>.<span class="number">1</span> abbe5d6] <span class="constant">Fixed</span> severe production problem
+<pre><code>$ git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"Fixed severe production problem"</span>
+[hotfix-<span class="number">1.2</span><span class="number">.1</span> abbe5d6] Fixed severe production problem
 <span class="number">5</span> files changed, <span class="number">32</span> insertions(+), <span class="number">17</span> deletions(-)</code></pre>
 <h5>hotfix 브랜치 마치기</h5>
 <p>버그를 잡았으면 다시 master에 merge하고 다시 develop 브랜치에도 merge해야 한다. 그래야 다음에 배포할 때도 포함된다. release 브랜치를 마치는 방법과 같다.
@@ -270,8 +270,8 @@ erge made by recursive.
 <p>이제 이 임시 브랜치를 삭제한다:
 
 </p>
-<pre><code><span class="variable">$ </span>git branch -d hotfix-<span class="number">1.2</span>.<span class="number">1</span>
-<span class="constant">Deleted</span> branch hotfix-<span class="number">1.2</span>.<span class="number">1</span> (was abbe5d6).</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">hotfix</span>-<span class="comment">1</span>.<span class="comment">2</span>.<span class="comment">1</span>
+<span class="comment">Deleted</span> <span class="comment">branch</span> <span class="comment">hotfix</span>-<span class="comment">1</span>.<span class="comment">2</span>.<span class="comment">1</span> <span class="comment">(was</span> <span class="comment">abbe5d6)</span>.</code></pre>
 <h2>결론</h2>
 <p>이 모델은 전혀 새로운 게 아니다. 이 모델이 제시하는 그림은 내가 프로젝트를 할 때 정말 유용했다. 팀원 모두 머릿속에 같은 그림을 그리고 일할 수 있다. 이 모델은 팀이 브랜치와 배포 프로세스를 이해하고 공유 개발할 수 있도록 도와준다.
 
@@ -282,7 +282,7 @@ erge made by recursive.
 <p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.
 
 </p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/a-successful-git-branching-model.html';

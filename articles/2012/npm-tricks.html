@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/npm-tricks.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: npm-tricks</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/npm-tricks.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: npm-tricks</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Feb 25</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#npm" class="tag">npm</a> <a href="/site/tagmap.html#guillermo rauch" class="tag">Guillermo Rauch</a> | <span><a href="/articles/2012/npm-tricks.html#disqus_thread" data-disqus-identifier="/articles/2012/npm-tricks.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -40,8 +40,8 @@
 <p>Node 0.6부터는 <code>require()</code>로 JSON 파일을 자동으로 읽어 준다. 그래서 쉽게 모듈의 package.json 파일을 이용할 수 있다:
 
 </p>
-<pre><code>// considering the <span class="built_in">module</span> lives <span class="keyword">in</span> lib/<span class="built_in">module</span>.js:
-exports.version = <span class="built_in">require</span>(<span class="string">'../package'</span>).version;</code></pre>
+<pre><code>// <span class="keyword">considering</span> <span class="keyword">the</span> module lives <span class="keyword">in</span> lib/module.js:
+exports.<span class="property">version</span> = require('../package').<span class="property">version</span>;</code></pre>
 <p>특정 모듈의 package.json을 읽어 오려면 다음과 같이 한다:
 
 </p>
@@ -74,19 +74,19 @@ $ npm install</code></pre>
 <p><code>npm install</code>할 때 <code>--production</code> 옵션을 주지 않으면 <code>devDependencies</code>에 있는 모듈을 설치해서 시간을 낭비하게 된다:
 
 </p>
-<pre><code><span class="variable">$ </span>npm install --production</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">production</code></pre>
 <p>설치하면서 발생하는 로그도 볼 수 있는데, 필요한 로그를 골라 볼 수 있다:
 
 </p>
-<pre><code><span class="variable">$ </span>npm install --loglevel warn</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">loglevel</span> <span class="comment">warn</code></pre>
 <h2>Git dependencies</h2>
 <p>NPM에 Publish하는 대신 <code>package.json</code>에 버전 대신 URI를 넣을 수 있다. Private 모듈이든 Public 모듈이든 <code>git://</code>로 시작하는 URI를 명시할 수 있다:
 
 </p>
-<pre><code><span class="string">"dependencies"</span>: {
-    <span class="string">"public"</span>: <span class="string">"git://github.com/user/repo.git#ref"</span>
-    , <span class="string">"private"</span>: <span class="string">"git+ssh://git<span class="variable">@github</span>.com:user/repo.git#ref"</span>
-}</code></pre>
+<pre><code><span class="comment">"dependencies":</span> <span class="comment">{</span>
+    <span class="comment">"public":</span> <span class="comment">"git://github</span>.<span class="comment">com/user/repo</span>.<span class="comment">git#ref"</span>
+    <span class="string">,</span> <span class="comment">"private":</span> <span class="comment">"git</span>+<span class="comment">ssh://git@github</span>.<span class="comment">com:user/repo</span>.<span class="comment">git#ref"</span>
+<span class="comment">}</code></pre>
 <p><code>#ref</code>는 생략할 수 있지만 <code>master</code>같은 브랜치, <code>0.0.1</code>같은 태그, SHA 값을(짧은 SHA도 됨) 넣을 수 있다. 태그로 사용하는 것이 좋은데, <code>npm install</code>이 항상 최신 버전을 사용하도록 하는 태그를 사용하는 것이 좋다.
 
 </p>
@@ -110,16 +110,16 @@ $ npm install</code></pre>
 <p>Makefile을 따로 만들지 않을 거라면 <code>npm run-script</code> 명령어를 사용할 수 있다. <code>package.json</code>의 <code>scripts</code>에 다음과 같이 정의한다:
 
 </p>
-<pre><code>&quot;scripts&quot;: {
-        &quot;test&quot;: &quot;mocha mytest.js&quot;
-          , &quot;build&quot;: &quot;uglify mycode.js
-}</code></pre>
+<pre><code><span class="comment">"scripts":</span> <span class="comment">{</span>
+        <span class="comment">"test":</span> <span class="comment">"mocha</span> <span class="comment">mytest</span>.<span class="comment">js"</span>
+          <span class="string">,</span> <span class="comment">"build":</span> <span class="comment">"uglify</span> <span class="comment">mycode</span>.<span class="comment">js</span>
+<span class="comment">}</code></pre>
 <p>그러면 다음과 같이 실행할 수 있다:
 
 </p>
-<pre><code><span class="variable">$ </span>npm run-script test
-<span class="variable">$ </span>npm run-script build
-<span class="variable">$ </span>npm test <span class="comment"># shortcut for `run-script test`</span></code></pre>
+<pre><code>$ npm <span class="command">run</span>-<span class="keyword">script</span> test
+$ npm <span class="command">run</span>-<span class="keyword">script</span> build
+$ npm test <span class="comment"># shortcut for `run-script test`</span></code></pre>
 <p>게다가, 환경변수 <code>$PATH</code>에 <code>./node_modules/.bin/</code>를 추가하면 어디서나 스크립트를 직접 실행할 수 있다!
 
 </p>

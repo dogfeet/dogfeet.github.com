@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1317086700.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New In JavaScript 1.6</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1317086700.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New In JavaScript 1.6</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Sep 27</span>
  | <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a> | <span><a href="/articles/2011/1317086700.html#disqus_thread" data-disqus-identifier="/articles/2011/1317086700.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -101,7 +101,7 @@ alert(a3.some(isNumber)); <span class="comment">// Alerts false</span></code></p
 
 </p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">isLetter</span><span class="params">(character)</span> <span class="comment">{
-  return (character >= "a" &amp;&amp; character &lt;= "z");
+  return (character &gt;= "a" &amp;&amp; character &lt;= "z");
 }</span>
 
 <span class="title">if</span> <span class="params">(<span class="keyword">Array</span>.prototype.every.call(str, isLetter)</span>)  

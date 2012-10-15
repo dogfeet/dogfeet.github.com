@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/meteor-fundametals-and-best-practices.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Meteor: Learn Meteor Fundamentals and Best Practices</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/meteor-fundametals-and-best-practices.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Meteor: Learn Meteor Fundamentals and Best Practices</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Aug 19</span>
  | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#andrew scala" class="tag">Andrew Scala</a> | <span><a href="/articles/2012/meteor-fundametals-and-best-practices.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-fundametals-and-best-practices.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -106,16 +106,16 @@
 <p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.
 
 </p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">html</span>></span>
-  <span class="tag">&lt;<span class="title">head</span>></span>
-  <span class="tag">&lt;/<span class="title">head</span>></span>
-  <span class="tag">&lt;<span class="title">body</span>></span>
-    <span class="variable">{{> cool_dude }}</span>
-  <span class="tag">&lt;/<span class="title">body</span>></span>
-<span class="tag">&lt;/<span class="title">html</span>></span></code></pre>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>></span>
-  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"important"</span>></span><span class="variable">{{ name }}</span> sure is one cool dude!<span class="tag">&lt;/<span class="title">p</span>></span>
-<span class="tag">&lt;/<span class="title">template</span>></span></code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="variable">{{&gt; cool_dude }}</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"important"</span>&gt;</span><span class="variable">{{ name }}</span> sure is one cool dude!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">template</span>&gt;</span></code></pre>
 <pre><code class="lang-javascript"><span class="comment">// On the client:</span>
 Template.cool_dude.name = <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="string">"Andrew Scala"</span>;

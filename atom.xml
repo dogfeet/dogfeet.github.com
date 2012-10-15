@@ -1,5 +1,349 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-09-28T13:37:21.758Z</updated><id>http://dogfeet.github.com</id><author><name>changwoo-park.html.md</name><email>pismute@gmail.com</email></author><author><name>sean-lee.html.md</name><email>sean@weaveus.com</email></author><author><name>yongjae-choi.html.md</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ Git 인덱스 페이지 프로젝트 dogit ]]></title><link href="http://dogfeet.github.com/articles/2012/dogit.html" /><updated>2012-09-27T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/dogit.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-10-15T15:33:44.124Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ GitHub의 페이지 기능 이용하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/github-pages.html" /><updated>2012-10-10T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/github-pages.html</id><content type="html"><![CDATA[
+<p>GitHub의 Pages 기능을 이용하는 방법에 대해 정리해보고자 한다. <a href="https://twitter.com/pismute">@pismute</a>님의 &#39;한 때 버전 컨트롤, 위키, 블로그를 다 따로 사용했었는데, GitHub를 알고 나서 Git, GitHub으로만 사용하고 있다&#39;는 말을 듣고 블로깅을 GitHub로 해보면 어떨까 하는 생각이 들었다. GitHub의 Page 기능을 이용하면 이 블로그처럼 글을 써서 남길 수 있다.
+GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이지에 있는 Pages의 글</a> 들중 몇 가지만 빼고 한국어로 옮겨봤다.
+
+</p>
+<p><img src="http://dogfeet.github.com/articles/2012/github-pages/github-help.jpg" alt="help">
+
+</p>
+<h2>1. GitHub의 Pages란?</h2>
+<p>GitHub의 Pages란(이하 페이지) GitHub에서 무료로 호스팅하는 공개 웹페이지이다. GitHub에서 제공하는 페이지 제작 도구로 쉽게 페이지를 만들어 공개할 수도 있고, 로컬에서 git을 이용해 수동으로 만들 수도 있다.
+
+</p>
+<h2>2. 사용자와 프로젝트를 위한 페이지</h2>
+<p>우리는 두 가지 타입의 페이지를 만들 수 있다. 사용자 페이지와 프로젝트 페이지가 그것이다. 이 둘은 몇 가지 사항을 빼고는 거의 똑같다. (역자주 : 원문에는 User, Organization and Project Page라고 나와있다. 하지만 User와 Organization을 나누는 것은 계정을 혼자 사용하느냐 여럿이서 사용하느냐에 따른 차이일 뿐이다. 사용 방법에는 아무런 차이가 없으므로 이 글에서는 뭉쳐서 사용자라고만 표기한다.)
+
+</p>
+<h3>사용자 페이지</h3>
+<p>사용자 페이지는 페이지만을 위한 특별한 저장소에 저장한다. 이 저장소의 이름은 계정 이름을 사용한다. 만약 계정이 dogfeet라면 이 조직을 위한 저장소의 이름은 <a href="https://github.com/dogfeet/dogfeet.github.com">dogfeet/dogfeet.github.com</a> 이 된다.
+
+</p>
+<ul>
+<li>저장소의 이름은 반드시 <code>username/username.github.com</code>의 구조를 가진다.</li>
+<li><strong>master</strong> 브랜치의 내용이 곧 페이지에서 보이는 내용이다.</li>
+</ul>
+<blockquote>
+<p><strong>알아둘 것</strong>: 사용자 페이지의 저장소는 반드시 그 자신의 계정 이름밖에 사용하지 못한다. 다시 말해서 <code>joe/bob.github.com</code>식의 저장소는 페이지로 작동하지 않는다.
+
+</p>
+</blockquote>
+<h3>프로젝트 페이지</h3>
+<p>사용자 페이지와는 다르게 <strong>프로젝트 페이지</strong>는 그 프로젝트의 저장소를 그대로 사용한다. (새로 저장소를 만들 필요 없다.) 그렇게 만들어진 페이지는 몇 가지를 제외하고 사용자 페이지와 완전히 똑같다.
+
+</p>
+<ul>
+<li>페이지를 만들거나 퍼블리싱 할 때에 <strong>gh-pages</strong> 브랜치를 사용한다.</li>
+<li>커스텀 도메인을 사용하지 않으면 프로젝트 페이지는 사용자 페이지의 서브 경로로 제공된다. 주소는 <code>username.github.com/projectname</code>의 형태를 띈다.</li>
+<li>커스텀 404 에러 페이지를 사용하려면 커스텀 도메인을 사용해야 한다. 커스텀 도메인을 사용하지 않으면 사용자 페이지의 404 에러 페이지를 사용하게 된다.</li>
+</ul>
+<h2>3. 자동으로 페이지 만들기</h2>
+<p>프로젝트나 사용자의 페이지를 빠르게 만들려면 GitHub에서 제공하는 페이지 제작 도구를 이용한다.
+
+</p>
+<h3>사용자 페이지</h3>
+<p>사용자 페이지를 만들려면 우선 <code>username.github.com</code>이나 <code>orgname.github.com</code>이란 이름의 저장소를 만들어야 한다. 물론 여기서 username이나 orgname은 자기 자신의 github계정 이름이어야 한다. 그렇지 않으면 페이지는 만들어지지 않는다. 저장소의 admin 페이지에 가면 제작 도구를 사용할 수 있다.
+
+</p>
+<h3>프로젝트 페이지</h3>
+<p>모든 프로젝트 저장소에서 페이지를 만들고 퍼블리싱 할 수 있다. 하지만 주의할 것은 비공개 저장소에서 만든 페이지는 공개 페이지가 된다. (비공개 페이지를 만들 수 없다.)
+
+</p>
+<h3>자동 페이지 제작 도구</h3>
+<ol>
+<li><p>저장소의 admin 페이지로 간다.</p>
+<p><img src="/articles/2012/github-pages/repo-actions-admin.png" alt="repo-actions-admin"></p>
+</li>
+<li><p>"Automatic Page Generator" 버튼을 클릭한다.</p>
+<p><img src="/articles/2012/github-pages/pages-automatic-page-generator.png" alt="pages-automatic-page-generator"></p>
+</li>
+<li>마크다운 에디터로 내용을 작성한다.</li>
+<li>"Continue To Layouts" 버튼을 누른다.</li>
+<li><p>제공되는 테마들을 적용해서 미리보기로 확인한다.</p>
+<p><img src="/articles/2012/github-pages/page-generator-picker.png" alt="page-generator-picker"></p>
+</li>
+<li><p>좋아하는 테마를 발견했으면 "Publish"를 클릭한다.</p>
+<p><img src="/articles/2012/github-pages/page-generator-publish.png" alt="page-generator-publish"></p>
+</li>
+</ol>
+<p>페이지가 만들어진 후에 로컬에 복사본을 얻을 수 있다. 프로젝트 페이지를 만들었다면 새로운 브랜치를 fetch 후 checkout 한다.
+
+</p>
+<pre><code><span class="char">$ </span>cd repo
+<span class="char">$ </span>git fetch origin
+<span class="method">remote:</span> <span class="class">Counting</span> <span class="method">objects:</span> <span class="number">92</span>, done.
+<span class="method">remote:</span> <span class="class">Compressing</span> <span class="method">objects:</span> <span class="number">100</span>% (<span class="number">63</span>/<span class="number">63</span>), done.
+<span class="method">remote:</span> <span class="class">Total</span> <span class="number">68</span> (delta <span class="number">41</span>), reused <span class="number">0</span> (delta <span class="number">0</span>)
+<span class="class">Unpacking</span> <span class="method">objects:</span> <span class="number">100</span>% (<span class="number">68</span>/<span class="number">68</span>), done.
+<span class="class">From</span> <span class="method">https:</span>//github.com/user/repo.git
+ * [new branch]      gh-pages     -&gt; origin/gh-pages
+
+<span class="char">$ </span>git checkout gh-pages
+<span class="class">Branch</span> gh-pages set up to track remote branch gh-pages from origin.
+<span class="class">Switched</span> to a new branch <span class="string">'gh-pages'</span></code></pre>
+<p>사용자 페이지를 만들었다면 페이지 코드는 gh-pages 브랜치가 아니라 master 브랜치에 페이지의 코드가 들어있다. 따라서 그냥 master 브랜치를 check out 한 뒤 pull 명령을 내리면 된다.
+
+</p>
+<pre><code>$ cd repo
+$ git checkout master
+Switched to branch <span class="string">'master'</span>
+$ git pull origin master
+remote: Counting objects: <span class="number">92</span>, done.
+remote: Compressing objects: <span class="number">100</span>% (<span class="number">63</span>/<span class="number">63</span>), done.
+remote: Total <span class="number">68</span> (delta <span class="number">41</span>), reused <span class="number">0</span> (delta <span class="number">0</span>)
+Receiving objects: <span class="number">100</span>% (<span class="number">424</span>/<span class="number">424</span>), <span class="number">329.32</span> KiB | <span class="number">178</span> KiB/s, done.
+Resolving deltas: <span class="number">100</span>% (<span class="number">68</span>/<span class="number">68</span>), done.
+From https://github.com/user/repo.git
+ * branch      master     -&gt; FETCH_HEAD
+Updating abc1234..def5678
+Fast-forward
+index.html                                     |  <span class="number">265</span> ++++
+<span class="keyword">...</span>
+<span class="number">98</span> files changed, <span class="number">18123</span> insertions(+), <span class="number">1</span> deletion(-)
+create mode <span class="number">100644</span> index.html
+<span class="keyword">...</span></code></pre>
+<h2>4. 수동으로 페이지 만들기</h2>
+<p>git을 command-line으로 사용해왔다면 수동으로 새로운 페이지를 만드는 건 어렵지 않다.
+
+</p>
+<h3>안전하게 가자</h3>
+<p>프로젝트에 페이지를 만들어 넣으려면 저장소에 "부모가 없는(orphan)" 브랜치를 만들어야 한다. 이걸 하는 가장 안전한 방법은 우선 새로 저장소를 클론하는 것이다.
+
+</p>
+<pre><code>git clone https://github.com/user/repo.git
+Clone our repo
+
+Cloning into <span class="string">'repo'</span><span class="keyword">...</span>
+remote: Counting objects: <span class="number">2791</span>, done.
+remote: Compressing objects: <span class="number">100</span>% (<span class="number">1225</span>/<span class="number">1225</span>), done.
+remote: Total <span class="number">2791</span> (delta <span class="number">1722</span>), reused <span class="number">2513</span> (delta <span class="number">1493</span>)
+Receiving objects: <span class="number">100</span>% (<span class="number">2791</span>/<span class="number">2791</span>), <span class="number">3.77</span> MiB | <span class="number">969</span> KiB/s, done.
+Resolving deltas: <span class="number">100</span>% (<span class="number">1722</span>/<span class="number">1722</span>), done.</code></pre>
+<h3>이제 놀자!</h3>
+<p>깨끗한 저장소를 손에 넣었다. 이제 새로운 브랜치를 만들고 작업 디렉토리와 인덱스의 모든 내용을 지워야 한다.
+
+</p>
+<pre><code>$ cd repo
+
+$ git checkout <span class="comment">--orphan gh-pages</span>
+Creates our branch, without any parents (it<span class="attribute">'s</span> an orphan!)
+
+Switched <span class="keyword">to</span> a <span class="keyword">new</span> branch <span class="attribute">'gh</span>-pages'
+
+git rm -rf .
+Remove <span class="keyword">all</span> files from the old working tree
+
+rm '.gitignore'</code></pre>
+<blockquote>
+<p><strong>알아둘 것</strong>: <code>gh-pages</code> 브랜치는 처음 커밋이 되기 전까지는 <code>git branch</code>의 브랜치 목록에 나타나지 않는다.
+
+</p>
+</blockquote>
+<p>비어있는 작업 디렉토리를 얻었다. 이 안에 내용을 채워넣고 GitHub로 푸시하면 된다. 예를 들자면 다음과 같다.
+
+</p>
+<pre><code><span class="variable">$ </span>echo <span class="string">"My GitHub Page"</span> &gt; index.html
+<span class="variable">$ </span>git add .
+<span class="variable">$ </span>git commit -a -m <span class="string">"First pages commit"</span>
+<span class="variable">$ </span>git push origin gh-pages</code></pre>
+<blockquote>
+<p><strong>알아둘 것</strong>: 최초의 푸시를 한 뒤에 페이지가 보이기까지는 몇 분 정도 기다려야 한다.
+
+</p>
+</blockquote>
+<h2>5. Jekyll과 페이지</h2>
+<p>일반적인 HTML 컨텐츠를 지원하는 차원에서 GitHub의 페이지는 <a href="https://github.com/mojombo/jekyll">Jekyll</a>을 지원한다. (역자주: '지킬 박사와 하이드'의 지킬이다.) Jekyll은 'Tom Preston-Werner'이 제작한 간단한 스태틱 사이트 제네레이터이다. Jekyll을 이용하면 웹사이트 전체에 적용되는 헤더, 푸터를 파일을 여러 번 복제하지 않고도 만들 수 있다. 블로그 기능이나 멋진 템플릿 기능들도 지원한다.
+
+</p>
+<h3>Jekyll 사용하기</h3>
+<p>GitHub의 모든 페이지는 Jekyll로 돌아간다. 일반 HTML 파일 또한 유효한 Jekyll 사이트이기 때문에 이미 가지고 있던 HTML 파일들을 수정하지 않아도 된다. 그냥 전부 HTML 파일이면 괜찮다. <a href="https://github.com/mojombo/jekyll/blob/master/README.textile">README</a>에 Jekyll의 기능들과 그 사용법이 적혀있다.
+
+</p>
+<h3>Jekyll 설정하기</h3>
+<p><code>_config.yml</code> 파일에 Jekyll의 대부분의 설정이 다 들어있다. 퍼머 링크의 스타일이나 마크다운 렌더러를 Maruku에서 RDiscount로 바꿀 수도 있다. 아래와 같은 옵션만 바꾸면 된다.
+
+</p>
+<pre><code><span class="attribute">safe</span>: <span class="string">true</span>
+<span class="attribute">source</span>: <span class="string">&lt;your pages repo&gt;</span>
+<span class="attribute">destination</span>: <span class="string">&lt;the build dir&gt;</span>
+<span class="attribute">lsi</span>: <span class="string">false</span>
+<span class="attribute">pygments</span>: <span class="string">true</span></code></pre>
+<h3>Troubleshooting</h3>
+<p>사이트를 GitHub에 푸시 후에도 Jekyll 사이트가 보이지 않는다면 Jekyll을 로컬에서 돌려보면 여러 오류를 잡을 수 있다. 이 기능을 위해 GitHub에서 사용하는 것과 같은 버전의 Jekyll을 사용하길 바란다.
+
+</p>
+<p>GitHub의 페이지 서버는 Jekyll 버전 0.11.0, Liquid 버전 2.2.2를 사용하고 다음 명령어로 실행을 시킨다.
+
+</p>
+<pre><code><span class="comment">$</span> <span class="comment">jekyll</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">pygments</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">lsi</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">safe</code></pre>
+<p>만약 GitHub에 푸시하고도 페이지가 만들어지지 않으면 '페이지가 안 보여요'가이드를 보라.
+
+</p>
+<h4>Jekyll 끄기</h4>
+<p>Jekyll을 그만 사용하려면 저장소의 루트에 <code>.nojekyll</code>이란 이름의 파일을 만들고 푸시하기만 하면 된다. 
+
+</p>
+<h3>기여하기</h3>
+<p>Jekyll에 필요한 기능이 있으면 주저하지 말고 <a href="https://github.com/mojombo/jekyll">fork</a> 한 뒤에 풀 리퀘스트를 보내면 된다. 이런 건 언제든지 환영한다
+
+</p>
+<h2>6. 페이지에 커스텀 도메인 설정하기</h2>
+<p>GitHub의 페이지에 사용자가 지정하는 도메인 이름을 설정해줄 수 있다.
+
+</p>
+<h3>저장소에 도메인 설정하기.</h3>
+<p>우리가 가지고 있는 도메인이 <code>example.com</code>라 치고 이걸 우리 페이지에 연결해보자. GitHub에게 이 도메인으로 서비스해주세요~ 라고 말하는 건 쉽다. 페이지의 루트에 CNAME 이라는 파일을 하나 만들고 도메인 이름을 적어넣으면 된다.
+
+</p>
+<pre><code><span class="filename">example.com</code></pre>
+<blockquote>
+<p><strong>알아둘 것</strong>: 이 파일을 만들고 GitHub에서 페이지를 성공적으로 만들었다는 알림을 확인한 후에 다음 단계인 'DNS 세팅하기'를 시작해야 한다.
+
+</p>
+</blockquote>
+<p>만약 <strong>사용자 페이지</strong> 저장소에서 작업하고 있다면 이 일은 <strong>master</strong>브랜치에서 해야 하고 <strong>프로젝트 페이지</strong> 저장소라면 <strong>gh-pages</strong>브랜치에서 작업을 해야 한다.
+
+</p>
+<blockquote>
+<p><strong>알아둘 것</strong>: 하나의 페이지에는 하나의 커스텀 도메인만 할당할 수 있다. 만약 같은 페이지에 여러 도메인을 할당하고 싶다면 다른 도메인에서 당신의 페이지로 리다이렉트 해주는 서비스 등을 이용해야 할 것이다.
+
+</p>
+</blockquote>
+<h3>DNS 세팅하기</h3>
+<p>다음은 DNS를 세팅할 차례이다. 세팅은 사용하는 도메인의 종류에 따라서 두 가지 방법으로 나눌 수 있다.
+
+</p>
+<p>아, DNS 변경이 전 세계로 퍼지기까지는 약 하루가 걸린다. 인내를 가지고 기다려야 한다.
+
+</p>
+<h4>Top-level 도메인 (TLD)</h4>
+<p><code>example.com</code>과 같은 TLD은 <strong>A 레코드</strong>가 204.232.175.78를 가리키도록 해야 한다.
+
+</p>
+<pre><code>$ dig example<span class="preprocessor">.com</span> +nostats +nocomments +nocmd
+<span class="preprocessor"># Look up DNS record for example.com</span>
+<span class="comment">;example.com.                    IN      A</span>
+example<span class="preprocessor">.com</span>.             <span class="number">3259</span>    <span class="keyword">IN</span>      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span></code></pre>
+<blockquote>
+<p><strong>경고</strong>: TLD에는 CNAME 레코드를 사용하면 안 된다. CNAME 레코드를 쓰면 해당 도메인의 다른 서비스들(예를 들면 이메일 같은)에 문제가 생길 수 있다.
+
+</p>
+</blockquote>
+<h4>서브 도메인</h4>
+<p>서브 도메인을 할당하려면 <strong>CNAME 레코드</strong>로 사용자 페이지 서브 도메인을 가리키는게 최고다. 이 방법을 이용하면 GitHub 서버의 IP가 바뀌어도 자동으로 조정해준다. CNAME 레코드는 A 레코드 위에 쓸 수도 있다. 하지만 이 정보는 자동으로 업데이트 되지 않는다.
+
+</p>
+<pre><code>$ dig <span class="transposed_variable">www.</span><span class="transposed_variable">example.</span>com +nostats +nocomments +nocmd
+;<span class="transposed_variable">www.</span><span class="transposed_variable">example.</span><span class="transposed_variable">com.</span>                 IN      A
+<span class="transposed_variable">www.</span><span class="transposed_variable">example.</span><span class="transposed_variable">com.</span>          <span class="number">3592</span>    IN      CNAME   <span class="transposed_variable">username.</span><span class="transposed_variable">github.</span><span class="transposed_variable">com.</span>
+<span class="transposed_variable">username.</span><span class="transposed_variable">github.</span><span class="transposed_variable">com.</span>      <span class="number">43192</span>   IN      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span></code></pre>
+<h3>자동 리다이렉트</h3>
+<p>커스텀 도메인을 세팅하면 서버는 자동으로 몇 가지 리다이렉트 기능을 제공한다.
+
+</p>
+<ul>
+<li>사용자 페이지에서는 <code>username.github.com</code> ⇒ <code>example.com</code></li>
+<li>TDL에서는 <code>www.example.com</code> ⇒ <code>example.com</code></li>
+<li>www 서브 도메인을 사용 중이라면 <code>example.com</code> ⇒ <code>www.example.com</code></li>
+</ul>
+<p><code>www</code> ⇔ TLD 리다이렉트가 동작하려면 TLD와 <code>www</code> 서브 도메인 DNS의 레코드가 페이지의 서버를 가리키고 있어야 한다.
+
+</p>
+<blockquote>
+<p><strong>알아둘 것</strong>: 사용자 페이지의 커스텀 도메인은 자체의 커스텀 도메인을 가진 프로젝트 페이지는 제외하고 그 계정 아래에 있는 모든 프로젝트 페이지를 같은 도메인으로 리다이렉트한다.
+
+</p>
+<p><strong>경고</strong>: <code>http://username.github.com/projectname</code>과 같은 프로젝트 페이지의 서브 경로는 프로젝트의 커스텀 도메인으로 리다이렉트 되지 않는다.
+
+</p>
+</blockquote>
+<h3>실제 예제</h3>
+<p><a href="http://github.com/mojombo/mojombo.github.com/">mojombo.github.com</a> 은 <a href="http://tom.preston-werner.com/">tom.preston-werner.com</a> 로 리다이렉트 된다. 커스텀 도메인은 <a href="https://github.com/mojombo/mojombo.github.com/blob/master/CNAME">이 파일</a>에 정의되어 있다.
+
+</p>
+<h3>Troubleshooting</h3>
+<p>커스텀 도메인 설정에 문제가 생기면 <a href="https://help.github.com/articles/my-custom-domain-isn-t-working">이 가이드</a>를 보면 된다.
+
+</p>
+<h2>7. 커스텀 404 페이지</h2>
+<p>404.html 파일을 저장소의 루트에 넣어두면 기존 404페이지 대신 저장소의 404.html 페이지를 보여준다. 404 페이지는 반드시 html 파일이어야 한다.
+
+</p>
+<blockquote>
+<p><strong>알아둘 것</strong>: 커스텀 404 페이지는 페이지 도메인의 루트에 존재해야만 작동한다. 커스텀 도메인을 사용하지 않는 프로젝트 페이지의 커스텀 404 페이지는 동작하지 않는다. (프로젝트 페이지는 루트도메인 외에 프로젝트 이름이 경로에 추가되므로)
+
+</p>
+</blockquote>
+<h3>실제 예제</h3>
+<p><a href="http://github.com/tekkub/tekkub.github.com/blob/master/404.html">Tekkub의 404</a> 페이지는 <a href="http://tekkub.net/404.html">tekkub.net/404.html</a> 에서 볼 수 있다.
+
+</p>
+<h2>8. 페이지가 안 보여요. "unable to run Jekyll!"</h2>
+<p>가끔 페이지는 푸시 후에 빌드에 실패해서 "unable to run jekyll"이라는 에러를 내뱉을 때가 있다. 이 에러가 나올 수 있는 몇몇 원인을 알아보자.
+
+</p>
+<h3>저수준 태그 에러</h3>
+<p>Jekyll은 현재 저수준의 Liquid 태그에 대한 <a href="https://github.com/mojombo/jekyll/issues/425">이슈사항</a>이 있다. 만약 이 기능을 사용한다면 템플릿에 중괄호 등을 이스케이프 시킬 때는 HTML 이스케이프 시퀀스 같은 방법을 사용하는 등의 우회로를 찾아야 한다.
+
+</p>
+<h3>안전하지 않은 플러그인</h3>
+<p>페이지의 서버는 안전하다고 확인되지 않은 플러그인은 빌드하지 않는다. <code>_plugins</code>폴더에 있는 모든 플러그인 또한 이 규칙에 적용받는다.
+이 문제는 두 가지 해결책이 존재한다.
+
+</p>
+<ul>
+<li>안전하지 않은 플러그인을 지운다. 또는</li>
+<li>소스 파일 대신에 페이지를 로컬에서 빌드하고 그 결과 파일을 푸시한다.</li>
+</ul>
+<p>두 번째 해결책이 <a href="http://octopress.org/">Octopress</a>가 취하고 있는 전략이다.
+
+</p>
+<h3>문법 에러</h3>
+<p>때로 타이핑을 잘못 했다던가 하는 이유로 빌드가 실패하는 때도 있다. 이는 <a href="http://jekyllrb.com/">jekyll</a>을 로컬에서 <code>jekyll --safe</code>를 이용해 확실히 잡아야 한다. GitHub에서 사용하는 서버에서 사용하는 jekyll의 버전은 Jekyll과 페이지 섹션에서 알 수 있다.
+
+</p>
+<h3>소스 세팅</h3>
+<p>GitHub의 빌드 서버는 당신의 페이지를 빌드할 때 <code>source</code> 세팅을 덮어쓴다. 만약 당신이 이 세팅을 바꾼다면 페이지가 빌드되지 않을 수도 있다.
+
+</p>
+<h2>9. 프로젝트 페이지 지우기</h2>
+<p>프로젝트 페이지를 없애려면 <code>gh-pages</code> 브랜치를 지우면 된다.
+
+</p>
+<pre><code>$ git push origin <span class="comment">--delete gh-pages</span>
+<span class="operator"><span class="keyword">Delete</span> the gh-pages branch <span class="keyword">from</span> origin
+
+<span class="keyword">To</span> https://github.com/username/repo.git
+- [deleted]         gh-pages</code></pre>
+<h2>10. 브랜치 모델</h2>
+<p>섹션 9 까지는 번역이었고, 10 부터는 dogfeet 블로그에서 사용하는 브랜치 모델에 대해서 설명하려 한다. 어렵지 않으나 중요하므로 얼른 하고 마치자.
+
+</p>
+<h3>draft/* 브랜치</h3>
+<p>모든 글은 각자 하나의 브랜치를 가진다. 이 글은 <code>draft/github-pages</code>라는 브랜치 위에서 작성 중이다. 이 블로그의 모든 글이 <code>draft/</code>라는 접미사를 가진 브랜치를 가지고 있었다. 각 글들은 자신의 브랜치 위에서 작성되고 다른 사람들과 공유하여 리뷰를 받는다. 추가돼야 할 내용이나 오타, 비문 등을 지적받고 다시 고친 뒤에 커밋 한다. 
+글이 완성되면 저장용, 공유용 커밋들을 rebase를 이용해 합쳐서 1~2개의 커밋으로 정리한다. 이는 중앙 저장소의 히스토리를 예쁘게 유지하기 위함이다. 히스토리가 복잡해지면 같이 공유하는 사람에 대한 예의에 어긋난다. (...) 사람마다 다르겠지만 내 경우에 완전한 창작 글은 하나의 커밋으로 합치고 번역 글은 markdown으로 포메팅된 원문이 보존된 커밋 하나와 완성된 번역문 두 개로 정리한다.
+정리가 다 되면 ready 브랜치로 합친다.
+
+</p>
+<h3>ready 브랜치</h3>
+<p>정리된 draft 브랜치는 ready 브랜치로 합친다. dogfeet은 완성된 글을 곧바로 퍼블리싱하지 않고 ready 브랜치에 먼저 저장한다. 그리고는 매 주마다 master 브랜치를 ready 브랜치로 fast-forwording하여 실제 웹페이지로 보이도록 발행한다. 저장은 merge나 rebase를 하는데 둘 중에 어떤 것을 할지는 <a href="/articles/2012/git-merge-rebase.html">이 글</a>을 참고 하길 바란다.
+
+</p>
+<p>master 브랜치는 항상 fast-forwording만 한다.
+
+</p>
+<h3>정리</h3>
+<p>하나의 글을 퍼블리싱 하는 프로세스는 다음과 같다.
+
+</p>
+<ol>
+<li>master 브랜치에서 draft/<어쩌구 저쩌구> 라는 이름으로 새로운 브랜치를 딴다.</li>
+<li>글을 쓰고 커밋을 정리한다. 필요에 따라 서로 리뷰를 부탁하기도 한다.</li>
+<li>ready로 merge 하거나 rebase 시킨다.</li>
+<li>ready 브랜치를 master 브랜치로 fast-forword 한다.</li>
+</ol>
+]]>
+</content></entry><entry><title><![CDATA[ Git 인덱스 페이지 프로젝트 dogit ]]></title><link href="http://dogfeet.github.com/articles/2012/dogit.html" /><updated>2012-09-27T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/dogit.html</id><content type="html"><![CDATA[
 <p>프로젝트 <a href="https://github.com/dogfeet/dogit">dogit</a>(<code>두깃</code>으로 읽는다). Git과 관련된 자료를 일목요연하게 볼 수 있도록 Git 인덱스 페이지를 만들었다. 여기저기 흩어져 있는 자료를 후진 기억력에 의존해 찾으려니 매우 오래걸리고 귀찮았다. 한 번에 전부 설명할 수는 없지만, 한 페이지에서 키워드와 해당 자료의 링크를 넣어 두면 검색해서 찾아 보기 쉬울 것 같았다.
 
 </p>
@@ -134,7 +478,7 @@
 <p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:
 
 </p>
-<pre><code><span class="title">mrt</span> add moment <span class="comment">--version 1.6.2</span></code></pre>
+<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</code></pre>
 <p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.
 
 </p>
@@ -643,13 +987,13 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <p>기본적으로 <code>&lt;target&gt;</code> 타스크의 unless 속성을 이용하면 아주 간단한 로직은 구현할 수 있다. 특정 변수가 있을 때 실행할 배치작업을 쉽게 구현할 수 있다(from <a href="http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition">http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition</a>):
 
 </p>
-<pre><code class="lang-xml"><span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"check-abc"</span>></span>
-    <span class="tag">&lt;<span class="title">available</span> <span class="attribute">file</span>=<span class="value">"abc.txt"</span> <span class="attribute">property</span>=<span class="value">"abc.present"</span>/></span>
-<span class="tag">&lt;/<span class="title">target</span>></span>
+<pre><code class="lang-xml"><span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"check-abc"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">available</span> <span class="attribute">file</span>=<span class="value">"abc.txt"</span> <span class="attribute">property</span>=<span class="value">"abc.present"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">target</span>&gt;</span>
 
-<span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"do-unless-abc"</span> <span class="attribute">depends</span>=<span class="value">"check-abc"</span> <span class="attribute">unless</span>=<span class="value">"abc.present"</span>></span>
+<span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"do-unless-abc"</span> <span class="attribute">depends</span>=<span class="value">"check-abc"</span> <span class="attribute">unless</span>=<span class="value">"abc.present"</span>&gt;</span>
     ...
-<span class="tag">&lt;/<span class="title">target</span>></span></code></pre>
+<span class="tag">&lt;/<span class="title">target</span>&gt;</span></code></pre>
 <p><code>abc.present</code>가 있을 때만 "do-unless-abc" 타스크가 수행된다. 특정 변수가 있을 때 실행하는 것을 조절하는 것뿐이지 로직을 구현할 수 있을 만큼은 아니다. 
 
 </p>
@@ -667,18 +1011,18 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <p>groovy 스크립트를 실행할 수 있기 때문에 Maven 모델에 접근해서 정보를 가져와서 검사할 수 있다. 사용해본지 너무 오래됐고 이제는 <code>maven-scala-plugin</code>만 사용하기 때문에 정확하게 정리할 수는 없지만, 다음과 같이 할 수 있다(from <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html">http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html</a>):
 
 </p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">plugin</span>></span>
-    <span class="tag">&lt;<span class="title">groupId</span>></span>org.codehaus.gmaven<span class="tag">&lt;/<span class="title">groupId</span>></span>
-    <span class="tag">&lt;<span class="title">artifactId</span>></span>gmaven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>></span>
-    <span class="tag">&lt;<span class="title">version</span>></span>1.4<span class="tag">&lt;/<span class="title">version</span>></span>
-    <span class="tag">&lt;<span class="title">executions</span>></span>
-        <span class="tag">&lt;<span class="title">execution</span>></span>
-        <span class="tag">&lt;<span class="title">phase</span>></span>prepare-package<span class="tag">&lt;/<span class="title">phase</span>></span>
-        <span class="tag">&lt;<span class="title">goals</span>></span>
-            <span class="tag">&lt;<span class="title">goal</span>></span>execute<span class="tag">&lt;/<span class="title">goal</span>></span>
-        <span class="tag">&lt;/<span class="title">goals</span>></span>
-        <span class="tag">&lt;<span class="title">configuration</span>></span>
-            <span class="tag">&lt;<span class="title">source</span>></span>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.codehaus.gmaven<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>gmaven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">executions</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">phase</span>&gt;</span>prepare-package<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">goal</span>&gt;</span>execute<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">source</span>&gt;</span>
             def concat(s1, s2, t) {
                 def java.io.File f1 = new java.io.File(s1)
                 def java.io.File f2 = new java.io.File(s2)
@@ -691,7 +1035,7 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
                     throw new IllegalStateException("Source file must exist:" + f1);
                 } else if (l2 == 0) {
                     throw new IllegalStateException("Source file must exist:" + f2); 
-                } else if (lt == 0 || l1 > lt || l2 > lt) {
+                } else if (lt == 0 || l1 &gt; lt || l2 &gt; lt) {
                     java.io.File pd = ft.getParentFile()
 
                     if (pd != null &amp;&amp; !pd.isDirectory() &amp;&amp; !pd.mkdirs()) {
@@ -721,11 +1065,11 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
             concat("target/classes/com/softwareag/de/s/framework/demo/db/derby/initZero.sql",
                 "src/main/db/init0.sql",
                 "target/classes/com/softwareag/de/s/framework/demo/db/hsqldb/init0.sql")
-            <span class="tag">&lt;/<span class="title">source</span>></span>
-        <span class="tag">&lt;/<span class="title">configuration</span>></span>
-        <span class="tag">&lt;/<span class="title">execution</span>></span>
-    <span class="tag">&lt;/<span class="title">executions</span>></span>
-<span class="tag">&lt;/<span class="title">plugin</span>></span></code></pre>
+            <span class="tag">&lt;/<span class="title">source</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">executions</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></code></pre>
 <p>이 예제를 왜 만들었는지는 JOCHEN WIEDMANN의 <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html">글</a>을 참고하라.
 
 </p>
@@ -739,20 +1083,20 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <p>scala를 java처럼 사용해도 충분하다. scala의 현란한 문법은 몰라도 된다.
 
 </p>
-<pre><code class="lang-xml"><span class="tag">&lt;<span class="title">plugin</span>></span>
-    <span class="tag">&lt;<span class="title">groupId</span>></span>org.scala-tools<span class="tag">&lt;/<span class="title">groupId</span>></span>
-    <span class="tag">&lt;<span class="title">artifactId</span>></span>maven-scala-plugin<span class="tag">&lt;/<span class="title">artifactId</span>></span>
-    <span class="tag">&lt;<span class="title">version</span>></span>2.15.2<span class="tag">&lt;/<span class="title">version</span>></span>
-    <span class="tag">&lt;<span class="title">executions</span>></span>
-        <span class="tag">&lt;<span class="title">execution</span>></span>
-            <span class="tag">&lt;<span class="title">phase</span>></span>validate<span class="tag">&lt;/<span class="title">phase</span>></span>
-            <span class="tag">&lt;<span class="title">goals</span>></span>
-                <span class="tag">&lt;<span class="title">goal</span>></span>script<span class="tag">&lt;/<span class="title">goal</span>></span>
-            <span class="tag">&lt;/<span class="title">goals</span>></span>
-        <span class="tag">&lt;/<span class="title">execution</span>></span>
-    <span class="tag">&lt;/<span class="title">executions</span>></span>
-    <span class="tag">&lt;<span class="title">configuration</span>></span>
-        <span class="tag">&lt;<span class="title">script</span>></span><span class="javascript">
+<pre><code class="lang-xml"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.scala-tools<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-scala-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.15.2<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">executions</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>validate<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">goal</span>&gt;</span>script<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">executions</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
             import java.io.File
 
             <span class="comment">//필요한 환경 변수가 있는지 검사.</span>
@@ -768,15 +1112,15 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
             println(project.getName+<span class="string">" is the current project"</span>)
 
             <span class="comment">//필요한 디렉토리가 만들어져 있는지 검사.</span>
-            needDirs.foreach(dir=>{
+            needDirs.foreach(dir=&gt;{
                 val file = <span class="keyword">new</span> File( dir )
                 <span class="keyword">if</span>( !file.exists() ){
                     <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException( <span class="string">"["</span> + dir + <span class="string">"] dir not found "</span>)
                 }
             })
-        </span><span class="tag">&lt;/<span class="title">script</span>></span>
-    <span class="tag">&lt;/<span class="title">configuration</span>></span>
-<span class="tag">&lt;/<span class="title">plugin</span>></span></code></pre>
+        </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></code></pre>
 <p>validate Phase에서 내가 빠트린 것을 점검할 수 있다. 그리고 project 변수를 이용하면 더 많은 것들을 할 수 있다.
 
 </p>
@@ -1038,16 +1382,16 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.
 
 </p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">html</span>></span>
-  <span class="tag">&lt;<span class="title">head</span>></span>
-  <span class="tag">&lt;/<span class="title">head</span>></span>
-  <span class="tag">&lt;<span class="title">body</span>></span>
-    <span class="variable">{{> cool_dude }}</span>
-  <span class="tag">&lt;/<span class="title">body</span>></span>
-<span class="tag">&lt;/<span class="title">html</span>></span></code></pre>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>></span>
-  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"important"</span>></span><span class="variable">{{ name }}</span> sure is one cool dude!<span class="tag">&lt;/<span class="title">p</span>></span>
-<span class="tag">&lt;/<span class="title">template</span>></span></code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="variable">{{&gt; cool_dude }}</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"important"</span>&gt;</span><span class="variable">{{ name }}</span> sure is one cool dude!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">template</span>&gt;</span></code></pre>
 <pre><code class="lang-javascript"><span class="comment">// On the client:</span>
 Template.cool_dude.name = <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="string">"Andrew Scala"</span>;
@@ -1211,173 +1555,6 @@ Meteor.startup(<span class="keyword">function</span>() {
 
 </p>
 <p>Andrew Scala
-</p>
-]]>
-</content></entry><entry><title><![CDATA[ Git: Rebase는 언제 어떻게 해야 할까? ]]></title><link href="http://dogfeet.github.com/articles/2012/git-merge-rebase.html" /><updated>2012-08-12T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-merge-rebase.html</id><content type="html"><![CDATA[
-<p>처음에는 Rebase를 왜 해야 하고 언제 어떻게 해야 하는지 좀 헷갈린다. 헷갈리는 이유는 정답이 없고 미묘함이 있어서인데 그래도 대략적인 가이드가 있으면 좋겠다 싶어서 정리해보았다.
-
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/git-merge-rebase/git-rebase.jpeg" alt="git-">
-
-</p>
-<h2>Social Coding Platform</h2>
-<p>svn이나 다른 VCS 도구 말고 git을 사용해야 하는 이유는 커뮤니케이션이다. 개발이라는 작업은 혼자 하는 게 아니라서 코드를 공유하고, 리뷰하고, 피드백을 받아야 하는데 Git으로 하면 일이 좀 쉬워진다(Git이 쉽다는 것은 아니다).
-
-</p>
-<p>git과 github의 인기는 VCS 본연의 기능뿐만 아니라 커뮤니케이션을 원활하게 할 수 있는 플랫폼이 함께 필요하다는 것을 보여준다. git은 소스관리에도 뛰어난 도구지만 그게 Git만의 장점은 아니다.
-
-</p>
-<p>git은 단순히 VCS가 아니다. 소스관리뿐만 아니라 커뮤니케이션에 필요한 모든 것이 들어 있다. 특히 코드를 공유하는 것은 정말 끝내 준다. Git 이외에 필요한 도구가 별로 없다. 나는 히스토리를 엉망으로 관리하는 프로젝트을 살펴보고자 gitx를 가끔 사용하고 차이를 살펴보고자 diffmerge를 아주 가끔 사용한다. 정말 아주 가끔이다. 한 달에 한 번도 실행하지 않는다.
-
-</p>
-<p>그 외에는 항상 콘솔에서 작업한다. git은 아직도 발전 중이고 코드를 쉽게 공유하는 방법이 계속 통합될 것으로 생각한다. git에는 정말 필요한 모든 것이 통합되고 있어서 언젠가 git으로 문자 메시지로 코드를 보낼 수 있는 날이 올지도 모른다는 상상을 하고 있다.
-
-</p>
-<h2>배려</h2>
-<p>동료는 그녀와 같다. 배려 없이 초대에 응하는 그녀는 없다. 최대한 친절을 베풀어야 그녀를 내 저장소로 초대할 수 있다. 공포를 조장하거나 무턱대고 돈만 살포해서는 진심을 이끌어 낼 수 없다. 스스로 응할 때까지 배려하고 인내해야 한다.
-
-</p>
-<p>코드는 당연히 잘 짜야 한다. 버그는 없을수록 좋고, 주석은 간략하고 명확해야 하고, 변수나 함수이름, 파일이나 디렉토리 구조나 이름 등등…. 중요하지 않은 것이 없다. 좋은 글에는 좋은 문장도 많은 법이다.
-
-</p>
-<p>git도 마찬가지다. 변수 이름을 잘 짓듯이 브랜치 이름도 잘 지어야 한다. 커밋 메시지도 표준 포멧에 따라 잘 지어야 한다. 그리고 히스토리도 예쁘게 만들어야 한다.
-
-</p>
-<h2>Merge vs Rebase</h2>
-<p>Rebase는 히스토리를 단장하는 데 필요하다. 나 혼자 쓰는 저장소에서도 Rebase가 없으면 지저분해서 히스토리를 읽을 수가 없다.
-
-</p>
-<p>잘 정리한 히스토리를 엿보고 싶다면 <a href="https://github.com/isaacs/npm/">npm 저장소</a>를 구경해보는 것이 좋다. <a href="https://twitter.com/izs">@izs</a>님은 완전 git타쿠:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/npm-history.png" alt="npm-history">
-
-</p>
-<p>히스토리가 정말 보기 좋다. github의 'pull request'도 사용하지 않고 죄다 손으로 Merge하는 것 같다.
-
-</p>
-<h3>커밋 vs Merge 커밋</h3>
-<p>Merge와 Rebase를 살펴보기 전에 커밋부터 다시 살펴보자.
-
-</p>
-<p>커밋은 의미의 단위다. 지금 하는 일을 적당하게 한 조각으로 나눠서 커밋한다. 10줄, 100줄처럼 정량적인 단위가 아니다. 고기를 사듯이 '커밋 한 근 주세요.'라고 말할 수 없다. <strong>커밋 하나는 의미 하나다</strong>.
-
-</p>
-<p>커밋 하나하나에도 의미가 있지만 어떤 모듈을 개발한다면 여러 개를 하나로 묶어서 처리할 필요도 있다. 그러니까 여러 개의 커밋을 묶음으로 표현할 수 있는 커밋이 필요하다. 그게 Merge 커밋이다. <strong>Merge 커밋은 일종의 커밋 묶음이다</strong>
-
-</p>
-<p>npm 저장소에 <a href="https://twitter.com/izs">@izs</a>님이 만들어 놓은 Merge 커밋을 보자:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/npm-gyp-history.png" alt="npm-gyp-history">
-
-</p>
-<p><code>1ecd0eb</code>는 gyp를 구현한 커밋들을 묶어 놓은 Merge 커밋이다. gyp 브랜치를 만들어 gyp를 구현하고 master 브랜치로 Merge했다.
-
-
-</p>
-<p>Merge 커밋은 사실 커밋 묶음 나타내는 것이 아니다. 보통 커밋은 Parent가 하나인데 Merge 커밋은 Parent가 여러 개다. 하지만, Parent가 여러 개인 점을 이용해서 커밋 묶음으로 다룰 수 있다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/git-merge.png" alt="git-merge">
-
-</p>
-<p>C6는 Merge 커밋으로 Parent가 두 개다. 
-
-</p>
-<p>Merge 커밋을 Reset하면 관련 커밋이 전부 Reset된다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/git-reset.png" alt="git-reset">
-
-</p>
-<p><code>C3</code>와 <code>C5</code>가 같이 Reset되기 때문에 master 입장에서는 커밋 묶음이 Reset된 것이다.
-
-</p>
-<p>npm 저장소에서 master 브랜치가 Merge 커밋인 <code>1ecd0eb</code>를 가리키는 상태에서 'HEAD~1'으로 Reset하면 gyp 브랜치가 통째로 Reset된다. 그래서 master는 <code>c4eb2fd</code>를 가리킨다.
-
-</p>
-<h2>Merge vs Rebase</h2>
-<p>다음과 같은 브랜치를 Merge, Rebase해보고 그 결과를 비교해보자:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig">
-
-</p>
-<p><code>git merge iss1</code> 명령으로 iss1를 Merge한다. 노란색인 C1은 Merge Base이다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/merge1.png" alt="merge1">
-
-</p>
-<p><code>git merge iss2</code> 명령으로 iss2를 Merge한다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/merge2.png" alt="merge2">
-
-</p>
-<p><code>git merge iss3</code> 명령으로 iss3를 Merge한다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3">
-
-</p>
-<p>iss1, iss2, iss3를 Merge 했다. C9, C10, C11은 Merge 커밋이다. 이 그림에서는 히스토리가 복잡하지 않다고 생각할 수 있지만, 이정도 되는 내용도 콘솔에서 보면 헷갈린다. 한눈에 들어오지 않는다. 이제 Rebase 후 Merge해보자.
-
-</p>
-<p>헷갈릴 수 있으니 원본 브랜치를 다시 한번 보고:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig">
-
-</p>
-<p><code>git checkout iss1</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C1</code>이 아니라 <code>C4</code>가 된다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase1.png" alt="rebase1">
-
-</p>
-<p><code>git checkout master</code>과 <code>git merge iss1</code>를 차례대로 실행해서 Merge한다. Rebase를 하면 항상 Fast-Forward Merge가 가능해진다. 하지만, 무턱대고 Fast-Forward Merge를 하는 것이 아니라 앞서 얘기했듯이 커밋을 묶음으로 관리하고 싶지 않을 때만 Fast-Forward Merge한다. 이 경우는 커밋이 하나이므로 그냥 Fast-Forward Merge한다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase1-merge.png" alt="rebase1-merge">
-
-</p>
-<p><code>git checkout iss2</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>가 아니라 <code>C2&#39;</code>가 된다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase2.png" alt="rebase2">
-
-</p>
-<p><code>git checkout master</code>과 <code>git merge --no-ff iss2</code>를 차례대로 실행해서 Merge한다. <code>--no-ff</code> 옵션은 강제로 Merge 커밋을 남기려고 주는 것이다. iss2 브랜치는 커밋이 두 개고 이 커밋은 iss2를 처리한 결과이므로 커밋 묶음으로 처리하는 것이 낫다(물론, 내용상 --no-ff 옵션을 주는 게 틀릴 수도 있다.):
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase2-merge.png" alt="rebase2-merge">
-
-</p>
-<p><code>git checkout iss3</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>에서 <code>C9</code>이 된다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase3.png" alt="rebase3">
-
-</p>
-<p><code>git checkout master</code>과 <code>git merge --no-ff iss3</code>를 차례대로 실행해서 Merge한다:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/rebase3-merge.png" alt="rebase3-merge">
-
-</p>
-<p>다음 그림은 위에서 Rebase 없이 Merge한 결과다. 한번 비교해보자:
-
-</p>
-<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3">
-
-</p>
-<p>Rebase를 하고 나서 Merge한 것이 훨씬 보기 좋다. 아무리 복잡한 과정을 거쳤어도 한눈에 들어오게 할 수 있다.
-
-</p>
-<h2>마치며</h2>
-<p>Git처럼 히스토리를 다중으로 관리하는 시스템에서 Rebase는 필수다. Mercurial도 Git의 영향을 받아 Rebase를 지원한다. 이글에서는 Rebase가 왜 필요하고 언제 어떻게 해야 하는지 알아봤다.
 </p>
 ]]>
 </content></entry></feed>

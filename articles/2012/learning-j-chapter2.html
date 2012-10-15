@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter2.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어 배우기 - 제 2장: 리스트와 테이블</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter2.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어 배우기 - 제 2장: 리스트와 테이블</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
  | <span property="dc:created">2012 Apr 17</span>
  | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">J언어</a> | <span><a href="/articles/2012/learning-j-chapter2.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter2.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -239,24 +239,24 @@ y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음�
 <p>아래 테이블에 배열에 대한 용어와 함수들을 정리해놓았다.
 
 </p>
-<pre><code>+--------+--------+-----------+------+
-<span class="string">|        | Example| Shape     | Rank |</span>
-+--------+--------+-----------+------+
-<span class="string">|        | x      | $ x       | # $ x|</span>
-+--------+--------+-----------+------+
-<span class="string">| Scalar | 6      | empty list| 0    |</span>
-+--------+--------+-----------+------+
-<span class="string">| List   | 4 5 6  | 3         | 1    |</span>
-+--------+--------+-----------+------+
-<span class="string">| Table  |0 1 2   | 2 3       | 2    |</span>
-<span class="string">|        |3 4 5   |           |      |</span>
-+--------+--------+-----------+------+
-<span class="string">| Report |0  1  2 | 2 2 3     | 3    |</span>
-<span class="string">|        |3  4  5 |           |      |</span>
-<span class="string">|        |        |           |      |</span>
-<span class="string">|        |6  7  8 |           |      |</span>
-<span class="string">|        |9 10 11 |           |      |</span>
-+--------+--------+-----------+------+</code></pre>
+<pre><code><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span>        <span class="comment">|</span> <span class="comment">Example|</span> <span class="comment">Shape</span>     <span class="comment">|</span> <span class="comment">Rank</span> <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span>        <span class="comment">|</span> <span class="comment">x</span>      <span class="comment">|</span> <span class="comment">$</span> <span class="comment">x</span>       <span class="comment">|</span> <span class="comment">#</span> <span class="comment">$</span> <span class="comment">x|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">Scalar</span> <span class="comment">|</span> <span class="comment">6</span>      <span class="comment">|</span> <span class="comment">empty</span> <span class="comment">list|</span> <span class="comment">0</span>    <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">List</span>   <span class="comment">|</span> <span class="comment">4</span> <span class="comment">5</span> <span class="comment">6</span>  <span class="comment">|</span> <span class="comment">3</span>         <span class="comment">|</span> <span class="comment">1</span>    <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">Table</span>  <span class="comment">|0</span> <span class="comment">1</span> <span class="comment">2</span>   <span class="comment">|</span> <span class="comment">2</span> <span class="comment">3</span>       <span class="comment">|</span> <span class="comment">2</span>    <span class="comment">|</span>
+<span class="comment">|</span>        <span class="comment">|3</span> <span class="comment">4</span> <span class="comment">5</span>   <span class="comment">|</span>           <span class="comment">|</span>      <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">Report</span> <span class="comment">|0</span>  <span class="comment">1</span>  <span class="comment">2</span> <span class="comment">|</span> <span class="comment">2</span> <span class="comment">2</span> <span class="comment">3</span>     <span class="comment">|</span> <span class="comment">3</span>    <span class="comment">|</span>
+<span class="comment">|</span>        <span class="comment">|3</span>  <span class="comment">4</span>  <span class="comment">5</span> <span class="comment">|</span>           <span class="comment">|</span>      <span class="comment">|</span>
+<span class="comment">|</span>        <span class="comment">|</span>        <span class="comment">|</span>           <span class="comment">|</span>      <span class="comment">|</span>
+<span class="comment">|</span>        <span class="comment">|6</span>  <span class="comment">7</span>  <span class="comment">8</span> <span class="comment">|</span>           <span class="comment">|</span>      <span class="comment">|</span>
+<span class="comment">|</span>        <span class="comment">|9</span> <span class="comment">10</span> <span class="comment">11</span> <span class="comment">|</span>           <span class="comment">|</span>      <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>위 테이블은 사실 J로 짠 프로그램의 출력물이다. 게다가 저건 위에 작은 챕터를 할애해서 말했던 자료구조인 진짜 "테이블"이다. 이 테이블의 모양은 <code>6 4</code>이다. 하지만 이건 숫자로만 이루어진 테이블이 아니라 문자도 있고, 리스트도 담고 있다. 그럼 이제 숫자가 아닌 걸로 이루어진 배열을 살펴보자
 
 </p>
@@ -536,8 +536,8 @@ pig</tt></td>
 <p>빈 문자 리스트와 빈 숫자 리스트는 같다는 건 알아두어야 한다.
 
 </p>
-<pre><code>   <span class="string">''</span> -<span class="symbol">:</span> <span class="number">0</span> <span class="variable">$ </span><span class="number">0</span>
-<span class="number">1</span></code></pre>
+<pre><code>   <span class="comment">''</span> <span class="literal">-</span><span class="comment">:</span> <span class="comment">0</span> <span class="comment">$</span> <span class="comment">0</span>
+<span class="comment">1</code></pre>
 <p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)
 <code>=</code>("Equal")라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.
 
@@ -572,11 +572,11 @@ pig</tt></td>
 <p><code>;</code>("Link")라는 내장 함수가 있다. 이 함수는 두 인자를 리스트의 형태로 연결한다. 두 인자는 다른 것 이어도 된다. 예를 들어 문자열과 숫자를 연결 할수 있다.
 
 </p>
-<pre><code>   A =: <span class="attribute">'The</span> answer <span class="keyword">is</span>'  ;  <span class="number">42</span>
-   A
-+<span class="comment">-------------+--+</span>
-|The answer <span class="keyword">is</span>|<span class="number">42</span>|
-+<span class="comment">-------------+--+</span></code></pre>
+<pre><code>   <span class="comment">A</span> <span class="comment">=:</span> <span class="comment">'The</span> <span class="comment">answer</span> <span class="comment">is'</span>  <span class="comment">;</span>  <span class="comment">42</span>
+   <span class="comment">A</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|The</span> <span class="comment">answer</span> <span class="comment">is|42|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>위 에서 A는 길이가 2인 리스트이다. 그리고 이 리스트는 박스의 리스트라고 한다. 첫 번째 박스 안에는 문자열 'The answer is'가 들어있고 두 번째 박스에는 숫자 42가 있다. 박스는 화면에 사각형으로 그려지고 안에 그 박스의 값을 담고 있는 형태로 그려진다.
 
 </p>
@@ -616,11 +616,11 @@ pig</tt></td>
 <p>박스로 이루어진 배열의 주목적은 다른 종류의 값들을 하나의 변수에 집어넣는 것이다. 예를 들어 구입 한 물건의 자세한 사항들(구매 날짜, 가격, 설명)을 담은 변수는 박스의 리스트로 나타낼 수 있다.
 
 </p>
-<pre><code>   P =: <span class="number">18</span> <span class="number">12</span> <span class="number">1998</span>  ;  <span class="number">1.99</span>  ;  <span class="attribute">'baked</span> beans'
-   P
-+<span class="comment">----------+----+-----------+</span>
-|<span class="number">18</span> <span class="number">12</span> <span class="number">1998</span>|<span class="number">1.99</span>|baked beans|
-+<span class="comment">----------+----+-----------+</span></code></pre>
+<pre><code>   <span class="comment">P</span> <span class="comment">=:</span> <span class="comment">18</span> <span class="comment">12</span> <span class="comment">1998</span>  <span class="comment">;</span>  <span class="comment">1</span>.<span class="comment">99</span>  <span class="comment">;</span>  <span class="comment">'baked</span> <span class="comment">beans'</span>
+   <span class="comment">P</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|18</span> <span class="comment">12</span> <span class="comment">1998|1</span>.<span class="comment">99|baked</span> <span class="comment">beans|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>"Link"와 "Append"의 차이점에 주목해야 한다. "Link"가 다른 종류의 값들을 합치는 반면 "Append"가 합치는 값들은 언제나 같은 종류이다. 즉 "Append" 함수에 주어지는 두 인자는 반드시 둘 다 숫자로 이루어진 배열이거나 둘 다 문자로 이루어진 배열이어야 한다. 아니면 둘 다 박스로 이루어진 배열이어야 한다. 그게 아니면 에러가 난다.
 
 </p>
@@ -657,26 +657,26 @@ pig</tt></td>
 <p>"Format"에 대해서 더 알고 싶다면 19장을 보면 된다. 다시 박스로 돌아가도록 하자. 박스는 값이 상자로 둘러싸고 있는 형태이기 때문에, 박스가 화면에 보일 때에는 간단한 표의 형태로 보인다.
 
 </p>
-<pre><code>   p =: <span class="number">4</span> <span class="number">1</span> $ <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>
-   q =: <span class="number">4</span> <span class="number">1</span> $ <span class="number">3</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span>
+<pre><code>   <span class="comment">p</span> <span class="comment">=:</span> <span class="comment">4</span> <span class="comment">1</span> <span class="comment">$</span> <span class="comment">1</span> <span class="comment">2</span> <span class="comment">3</span> <span class="comment">4</span>
+   <span class="comment">q</span> <span class="comment">=:</span> <span class="comment">4</span> <span class="comment">1</span> <span class="comment">$</span> <span class="comment">3</span> <span class="comment">0</span> <span class="comment">1</span> <span class="comment">1</span>
 
-   <span class="number">2</span> <span class="number">3</span> $ ' p ' ; ' q ' ; ' p+q ' ;  p ; q ; p+q
-+---+---+-----+
-<span class="string">| p | q | p+q |</span>
-+---+---+-----+
-<span class="string">|1  |3  |4    |</span>
-<span class="string">|2  |0  |2    |</span>
-<span class="string">|3  |1  |4    |</span>
-<span class="string">|4  |1  |5    |</span>
-+---+---+-----+</code></pre>
+   <span class="comment">2</span> <span class="comment">3</span> <span class="comment">$</span> <span class="comment">'</span> <span class="comment">p</span> <span class="comment">'</span> <span class="comment">;</span> <span class="comment">'</span> <span class="comment">q</span> <span class="comment">'</span> <span class="comment">;</span> <span class="comment">'</span> <span class="comment">p</span>+<span class="comment">q</span> <span class="comment">'</span> <span class="comment">;</span>  <span class="comment">p</span> <span class="comment">;</span> <span class="comment">q</span> <span class="comment">;</span> <span class="comment">p</span>+<span class="comment">q</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">p</span> <span class="comment">|</span> <span class="comment">q</span> <span class="comment">|</span> <span class="comment">p</span>+<span class="comment">q</span> <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|1</span>  <span class="comment">|3</span>  <span class="comment">|4</span>    <span class="comment">|</span>
+<span class="comment">|2</span>  <span class="comment">|0</span>  <span class="comment">|2</span>    <span class="comment">|</span>
+<span class="comment">|3</span>  <span class="comment">|1</span>  <span class="comment">|4</span>    <span class="comment">|</span>
+<span class="comment">|4</span>  <span class="comment">|1</span>  <span class="comment">|5</span>    <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <h3>2.6.2 박싱과 언박싱(Boxing and Unboxing)</h3>
 <p><code>&lt;</code>("Box")라는 내장 함수가 있다. 이 함수는 인자로 들어온 값을 감싸 하나의 박스를 만든다.
 
 </p>
-<pre><code>   &lt; <span class="attribute">'baked</span> beans'
-+<span class="comment">-----------+</span>
-|baked beans|
-+<span class="comment">-----------+</span></code></pre>
+<pre><code>   &lt; <span class="comment">'baked</span> <span class="comment">beans'</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|baked</span> <span class="comment">beans|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>박스는 숫자를 담을 수 있지만, 그 자체로 숫자는 아니다. 박스 안에 있는 값으로 계산 하려면 박스를 열어서 값을 꺼내야 한다. <code>&gt;</code> 함수가 바로 그런 것이다. 이 함수는 "Open"이라고 한다.
 
 </p>

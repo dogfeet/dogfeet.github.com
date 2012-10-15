@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1272949440.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">m2eclipse test practice</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1272949440.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">m2eclipse test practice</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2010 May 04</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#m2eclipse" class="tag">m2eclipse</a> <a href="/site/tagmap.html#maven" class="tag">Maven</a> <a href="/site/tagmap.html#test" class="tag">test</a> | <span><a href="/articles/2010/1272949440.html#disqus_thread" data-disqus-identifier="/articles/2010/1272949440.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -65,22 +65,22 @@
 <p>[Skipping Tests]에는 pom파일에도 명시할 수 있는데 전 잘되지 않네요. 아마도 버전때문일 듯싶습니다. 2.5라고 명시를 해도 2.4.x버전으로만 실행됩니다. 나중에 다시 해볼일이 생겼을때 확실히 정리하겠습니다.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">project</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">project</span>&gt;</span>
   [...]
-  <span class="tag">&lt;<span class="title">build</span>></span>
-    <span class="tag">&lt;<span class="title">plugins</span>></span>
-      <span class="tag">&lt;<span class="title">plugin</span>></span>
-        <span class="tag">&lt;<span class="title">groupId</span>></span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>></span>
-        <span class="tag">&lt;<span class="title">artifactId</span>></span>maven-surefire-plugin<span class="tag">&lt;/<span class="title">artifactId</span>></span>
-        <span class="tag">&lt;<span class="title">version</span>></span>2.5<span class="tag">&lt;/<span class="title">version</span>></span>
-        <span class="tag">&lt;<span class="title">configuration</span>></span>
-          <span class="tag">&lt;<span class="title">skipTests</span>></span>true<span class="tag">&lt;/<span class="title">skipTests</span>></span>
-        <span class="tag">&lt;/<span class="title">configuration</span>></span>
-      <span class="tag">&lt;/<span class="title">plugin</span>></span>
-    <span class="tag">&lt;/<span class="title">plugins</span>></span>
-  <span class="tag">&lt;/<span class="title">build</span>></span>
+  <span class="tag">&lt;<span class="title">build</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">plugins</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="title">skipTests</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">plugins</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">build</span>&gt;</span>
   [...]
-<span class="tag">&lt;/<span class="title">project</span>></span> </code></pre>
+<span class="tag">&lt;/<span class="title">project</span>&gt;</span> </code></pre>
 <h2>Reference</h2>
 <ul>
 <li><a href="http://maven.apache.org/plugins/maven-surefire-plugin/examples/single-test.html">Running a Single Test</a></li>

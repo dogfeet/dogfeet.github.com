@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2008/1219754880.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Gails + eclipse에서의 에러</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2008/1219754880.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Gails + eclipse에서의 에러</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2008 Aug 26</span>
  | <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#grails" class="tag">Grails</a> <a href="/site/tagmap.html#native2ascii" class="tag">native2ascii</a> | <span><a href="/articles/2008/1219754880.html#disqus_thread" data-disqus-identifier="/articles/2008/1219754880.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -23,10 +23,10 @@
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2008/1219754880.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2008/1219754880.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2008/1219754880.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>지난달 새로운 groovy plugin이 배포 됐다. Ganymede에 맞춰 발표된 이 <a href="http://docs.codehaus.org/display/GROOVY/2008/07/25/Groovy+Eclipse+plugin+updated+to+Groovy+1.5.6+and+Eclipse+3.4">플러그인</a>은 아직 뭐가 달라진 건지는 잘 모르겠다. 어찌됐건 grails를 eclipse에서 import하여 실행시키면 다음과 같은 에러가 발생한다.
 
 </p>
-<pre><code>> <span class="special">[</span>native2ascii<span class="special">]</span> Converting 11 files from
-> C:<span class="command">\grails</span>-1.0.3<span class="command">\test</span><span class="command">\grails</span>-app<span class="command">\i</span>18n toC:<span class="command">\Documents</span> and
-> Settings<span class="command">\master</span>.grails\1.0.3<span class="command">\projects</span><span class="command">\test</span><span class="command">\resources</span><span class="command">\grails</span>-app<span class="command">\i</span>18nError
-> starting Sun’s native2ascii:</code></pre>
+<pre><code>&gt; <span class="special">[</span>native2ascii<span class="special">]</span> Converting 11 files from
+&gt; C:<span class="command">\grails</span>-1.0.3<span class="command">\test</span><span class="command">\grails</span>-app<span class="command">\i</span>18n toC:<span class="command">\Documents</span> and
+&gt; Settings<span class="command">\master</span>.grails\1.0.3<span class="command">\projects</span><span class="command">\test</span><span class="command">\resources</span><span class="command">\grails</span>-app<span class="command">\i</span>18nError
+&gt; starting Sun’s native2ascii:</code></pre>
 <p>이 문제는 jdk를 인식하지 못해서 생기는 문제다. JAVA_HOME이 jre로 설정된 경우에 발생된다고 한다. 하지만 JAVA_HOME을 jdk로 잡아주고 eclipse를 실행시켜도, eclipse에서는 저런 에러가 발생한다. 이럴 땐 그냥 강제로 jdk/lib/tool.jar를 프로젝트에 추가하면 해결된다. 단순하지만 project의 설정을 변경한다는 것이 마음에 들지 않는다.
 
 

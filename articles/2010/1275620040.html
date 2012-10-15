@@ -15,17 +15,17 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1275620040.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Extract privatekey and publickey from p12</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1275620040.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Extract privatekey and publickey from p12</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2010 Jun 04</span>
  | <a href="/site/tagmap.html#p12" class="tag">P12</a> <a href="/site/tagmap.html#pfx" class="tag">pfx</a> <a href="/site/tagmap.html#pkcs12" class="tag">PKCS12</a> <a href="/site/tagmap.html#privatekey" class="tag">privatekey</a> <a href="/site/tagmap.html#publickey" class="tag">publickey</a> <a href="/site/tagmap.html#rsa" class="tag">RSA</a> <a href="/site/tagmap.html#x509" class="tag">X509</a> | <span><a href="/articles/2010/1275620040.html#disqus_thread" data-disqus-identifier="/articles/2010/1275620040.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1275620040.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1275620040.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1275620040.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><h2>Extract privatekey and publickey from p12</h2>
-<pre><code>$ openssl pkcs12 -<span class="keyword">in</span> seanlee_yessign<span class="preprocessor">.p</span>12 -clcerts -nokeys -<span class="keyword">out</span> cert<span class="preprocessor">.pem</span>
-$ openssl x509 -<span class="keyword">in</span> cert<span class="preprocessor">.pem</span> -pubkey -noout > pub<span class="preprocessor">.key</span>
+<pre><code><span class="comment">$</span> <span class="comment">openssl</span> <span class="comment">pkcs12</span> <span class="literal">-</span><span class="comment">in</span> <span class="comment">seanlee_yessign</span>.<span class="comment">p12</span> <span class="literal">-</span><span class="comment">clcerts</span> <span class="literal">-</span><span class="comment">nokeys</span> <span class="literal">-</span><span class="comment">out</span> <span class="comment">cert</span>.<span class="comment">pem</span>
+<span class="comment">$</span> <span class="comment">openssl</span> <span class="comment">x509</span> <span class="literal">-</span><span class="comment">in</span> <span class="comment">cert</span>.<span class="comment">pem</span> <span class="literal">-</span><span class="comment">pubkey</span> <span class="literal">-</span><span class="comment">noout</span> &gt; <span class="comment">pub</span>.<span class="comment">key</span>
 
-$ cat pub<span class="preprocessor">.key</span> 
-$ openssl rsa -text -pubin -<span class="keyword">in</span> pub<span class="preprocessor">.key</span> -noout </code></pre>
+<span class="comment">$</span> <span class="comment">cat</span> <span class="comment">pub</span>.<span class="comment">key</span> 
+<span class="comment">$</span> <span class="comment">openssl</span> <span class="comment">rsa</span> <span class="literal">-</span><span class="comment">text</span> <span class="literal">-</span><span class="comment">pubin</span> <span class="literal">-</span><span class="comment">in</span> <span class="comment">pub</span>.<span class="comment">key</span> <span class="literal">-</span><span class="comment">noout</span> </code></pre>
 </div></article><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';

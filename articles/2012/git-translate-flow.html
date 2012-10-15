@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-translate-flow.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:번역 Workflow</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-translate-flow.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:번역 Workflow</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Feb 02</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#번역" class="tag">번역</a> <a href="/site/tagmap.html#workflow" class="tag">Workflow</a> | <span><a href="/articles/2012/git-translate-flow.html#disqus_thread" data-disqus-identifier="/articles/2012/git-translate-flow.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -223,8 +223,8 @@
 <span class="class">Receiving</span> <span class="method">objects:</span> <span class="number">100</span>% (<span class="number">101</span>/<span class="number">101</span>), <span class="number">41.53</span> <span class="class">KiB</span> | <span class="number">42</span> <span class="class">KiB</span>/s, done.
 <span class="class">Resolving</span> <span class="method">deltas:</span> <span class="number">100</span>% (<span class="number">65</span>/<span class="number">65</span>), completed with <span class="number">32</span> local objects.
 <span class="class">From</span> <span class="method">https:</span>//github.com/<span class="class">BonsaiDen</span>/<span class="class">JavaScript</span>-<span class="class">Garden</span>
-   <span class="number">962617</span>e.<span class="number">.67775</span>b0  gh-pages   -> owner/gh-pages
-   e7c00d8.<span class="number">.01</span>fe309  master     -> owner/master</code></pre>
+   <span class="number">962617</span>e.<span class="number">.67775</span>b0  gh-pages   -&gt; owner/gh-pages
+   e7c00d8.<span class="number">.01</span>fe309  master     -&gt; owner/master</code></pre>
 <p>그리고 나서 브랜치 상태를 확인한다:
 
 </p>
@@ -252,8 +252,8 @@
 <p>Merge됐으므로 ko 브랜치가 owner/master를 가리키게 한다:
 
 </p>
-<pre><code><span class="variable">$ </span>git co ko
-<span class="variable">$ </span>git reset --hard owner/master</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">co</span> <span class="comment">ko</span>
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">reset</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">hard</span> <span class="comment">owner/master</code></pre>
 <p>그리고 나서 브랜치 상태를 확인해보자:
 
 </p>
@@ -279,17 +279,17 @@
 
 </p>
 <pre><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master
-> <span class="number">01</span>fe309 Finally get around <span class="keyword">and</span> start fixing some issues
+&gt; <span class="number">01</span>fe309 Finally get around <span class="keyword">and</span> start fixing some issues
 doc<span class="regexp">/en/core/</span><span class="literal">undefined</span>.md
 doc<span class="regexp">/en/function/</span>constructors.md
 doc<span class="regexp">/en/function/</span>scopes.md
 doc<span class="regexp">/en/object/</span>hasownproperty.md
-> <span class="number">98</span>a1f31 Merge pull request <span class="comment">#114 from krawaller/master</span>
-> <span class="number">65</span>f0d9e Merge pull request <span class="comment">#77 from xavierm02/master</span>
-> <span class="number">27</span>b4b2f Merge pull request <span class="comment">#117 from oozcitak/tr</span>
-> <span class="number">666</span>edda Merge pull request <span class="comment">#116 from szTheory/patch-1</span>
-> <span class="number">34</span>c3271 Merge pull request <span class="comment">#121 from pismute/ko</span>
-> <span class="number">09</span>b4f9c [ko] proofreading
+&gt; <span class="number">98</span>a1f31 Merge pull request <span class="comment">#114 from krawaller/master</span>
+&gt; <span class="number">65</span>f0d9e Merge pull request <span class="comment">#77 from xavierm02/master</span>
+&gt; <span class="number">27</span>b4b2f Merge pull request <span class="comment">#117 from oozcitak/tr</span>
+&gt; <span class="number">666</span>edda Merge pull request <span class="comment">#116 from szTheory/patch-1</span>
+&gt; <span class="number">34</span>c3271 Merge pull request <span class="comment">#121 from pismute/ko</span>
+&gt; <span class="number">09</span>b4f9c [ko] proofreading
 doc<span class="regexp">/ko/array/</span>constructor.md
 doc<span class="regexp">/ko/array/g</span>eneral.md
 doc<span class="regexp">/ko/core/</span><span class="keyword">delete</span>.md
@@ -311,38 +311,38 @@ doc<span class="regexp">/ko/other/</span>timeouts.md
 doc<span class="regexp">/ko/types/</span>casting.md
 doc<span class="regexp">/ko/types/</span>equality.md
 doc<span class="regexp">/ko/types/</span><span class="keyword">typeof</span>.md
-> <span class="number">919</span>b581 [tr] Fixed typo
+&gt; <span class="number">919</span>b581 [tr] Fixed typo
 doc<span class="regexp">/tr/core/</span><span class="keyword">delete</span>.md
-> <span class="number">753</span>fd78 Added <span class="keyword">delete</span> to index
+&gt; <span class="number">753</span>fd78 Added <span class="keyword">delete</span> to index
 doc<span class="regexp">/tr/i</span>ndex.json
-> c8258d1 [tr] Translated <span class="keyword">delete</span>
+&gt; c8258d1 [tr] Translated <span class="keyword">delete</span>
 doc<span class="regexp">/tr/core/</span><span class="keyword">delete</span>.md
-> cd06184 [tr] Fixed type
+&gt; cd06184 [tr] Fixed type
 doc<span class="regexp">/tr/function/</span>scopes.md
-> be27b01 grammar
+&gt; be27b01 grammar
 doc<span class="regexp">/en/function/</span><span class="keyword">this</span>.md
-> <span class="number">103</span>ca5d removed trailing whitespace <span class="keyword">in</span> comment <span class="literal">on</span> line <span class="number">55</span> which caused line to spill outside code container
+&gt; <span class="number">103</span>ca5d removed trailing whitespace <span class="keyword">in</span> comment <span class="literal">on</span> line <span class="number">55</span> which caused line to spill outside code container
 doc<span class="regexp">/fi/function/</span>arguments.md
-> <span class="number">0</span>a894c1 Stored the biggest timeout ID to avoid infinite <span class="keyword">loop</span>.
+&gt; <span class="number">0</span>a894c1 Stored the biggest timeout ID to avoid infinite <span class="keyword">loop</span>.
 doc<span class="regexp">/en/other/</span>timeouts.md
-> <span class="number">53</span>decce Added another way to clear <span class="string">"all"</span> timeouts <span class="keyword">and</span> replaced the <span class="string">"is is"</span> <span class="keyword">by</span> <span class="string">"it is"</span>.
+&gt; <span class="number">53</span>decce Added another way to clear <span class="string">"all"</span> timeouts <span class="keyword">and</span> replaced the <span class="string">"is is"</span> <span class="keyword">by</span> <span class="string">"it is"</span>.
 doc<span class="regexp">/en/other/</span>timeouts.md</code></pre>
 <p>그동안 수정된 커밋이 좀 있다. 영어로 된 것을 번역한 것이니 이 중에서 <code>doc/en</code> 파일이 수정된 것만 확인한다. <code>doc/en</code> 디렉토리에 있는 파일만 조회하자:
 
 </p>
 <pre><code>$ git log --pretty=oneline --abbrev-commit --left-right --name-only ko-base...master doc/en
-> <span class="number">01</span>fe309 Finally get around <span class="keyword">and</span> start fixing some issues
+&gt; <span class="number">01</span>fe309 Finally get around <span class="keyword">and</span> start fixing some issues
 doc<span class="regexp">/en/core/</span><span class="literal">undefined</span>.md
 doc<span class="regexp">/en/function/</span>constructors.md
 doc<span class="regexp">/en/function/</span>scopes.md
 doc<span class="regexp">/en/object/</span>hasownproperty.md
-> <span class="number">65</span>f0d9e Merge pull request <span class="comment">#77 from xavierm02/master</span>
-> <span class="number">666</span>edda Merge pull request <span class="comment">#116 from szTheory/patch-1</span>
-> be27b01 grammar
+&gt; <span class="number">65</span>f0d9e Merge pull request <span class="comment">#77 from xavierm02/master</span>
+&gt; <span class="number">666</span>edda Merge pull request <span class="comment">#116 from szTheory/patch-1</span>
+&gt; be27b01 grammar
 doc<span class="regexp">/en/function/</span><span class="keyword">this</span>.md
-> <span class="number">0</span>a894c1 Stored the biggest timeout ID to avoid infinite <span class="keyword">loop</span>.
+&gt; <span class="number">0</span>a894c1 Stored the biggest timeout ID to avoid infinite <span class="keyword">loop</span>.
 doc<span class="regexp">/en/other/</span>timeouts.md
-> <span class="number">53</span>decce Added another way to clear <span class="string">"all"</span> timeouts <span class="keyword">and</span> replaced the <span class="string">"is is"</span> <span class="keyword">by</span> <span class="string">"it is"</span>.
+&gt; <span class="number">53</span>decce Added another way to clear <span class="string">"all"</span> timeouts <span class="keyword">and</span> replaced the <span class="string">"is is"</span> <span class="keyword">by</span> <span class="string">"it is"</span>.
 doc<span class="regexp">/en/other/</span>timeouts.md</code></pre>
 <p>커밋 정보 없이 수정된 파일만 볼 수도 있다:
 
@@ -396,8 +396,8 @@ diff --git a/doc/en/core/undefined.md b/doc/en/core/undefined.md
 <p>다음에 원문이 수정됐을 때 다시 참고 할 수 있도록 ko-base가 owner/master를 가리키도록 한다.
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout ko-base
-<span class="variable">$ </span>git reset --hard owner/master</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="comment">ko</span>-<span class="comment">base</span>
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">reset</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">hard</span> <span class="comment">owner/master</code></pre>
 <p>그리고 저장소를 origin에 Push한다. Push하고 나면 브랜치 상태는 다음과 같아진다:
 
 </p>

@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2008/1220695860.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Enum을 JSP 페이지에 노출 시키기</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2008/1220695860.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Enum을 JSP 페이지에 노출 시키기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2008 Sep 06</span>
  | <a href="/site/tagmap.html#enum" class="tag">Enum</a> <a href="/site/tagmap.html#jsp" class="tag">Jsp</a> | <span><a href="/articles/2008/1220695860.html#disqus_thread" data-disqus-identifier="/articles/2008/1220695860.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -54,14 +54,14 @@
 <p>이제 web.xml에 이 ContextListner를 넣는다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">context-param</span>></span>
-    <span class="tag">&lt;<span class="title">param-name</span>></span>enumServletContextConfig<span class="tag">&lt;/<span class="title">param-name</span>></span>
-    <span class="tag">&lt;<span class="title">param-value</span>></span>kr.pismute.Week<span class="tag">&lt;/<span class="title">param-value</span>></span>
-<span class="tag">&lt;/<span class="title">context-param</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">context-param</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>enumServletContextConfig<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>kr.pismute.Week<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">context-param</span>&gt;</span>
 
-<span class="tag">&lt;<span class="title">listener</span>></span>
-    <span class="tag">&lt;<span class="title">listener-class</span>></span>kr.pismute.EnumContextListener<span class="tag">&lt;/<span class="title">listener-class</span>></span>
-<span class="tag">&lt;/<span class="title">listener</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">listener</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">listener-class</span>&gt;</span>kr.pismute.EnumContextListener<span class="tag">&lt;/<span class="title">listener-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">listener</span>&gt;</span></code></pre>
 <p>Enum에 빈을 추가해서 사용할 수도 있다. Week에 다음과 같이 추가하고:
 
 </p>
@@ -106,20 +106,20 @@
     }
 
     <span class="javadoc">/**
-     * Enum 인스턴스를 찾아서 Map&lt;name, Enum&lt;?>> 맵으로 변환하고
+     * Enum 인스턴스를 찾아서 Map&lt;name, Enum&lt;?&gt;&gt; 맵으로 변환하고
      * ServletContext에 넣습니다.
      * 
      * <span class="javadoctag">@param</span> className
      */</span>
     <span class="annotation">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)
     <span class="keyword">private</span> <span class="keyword">void</span> loadEnum(String className, ServletContext context) {
-        Map&lt;String, Enum&lt;?>> ret = <span class="keyword">null</span>;
+        Map&lt;String, Enum&lt;?&gt;&gt; ret = <span class="keyword">null</span>;
 
         <span class="keyword">try</span> {
-            Class&lt;Enum> clazz = (Class&lt;Enum>)Class.forName(className);
+            Class&lt;Enum&gt; clazz = (Class&lt;Enum&gt;)Class.forName(className);
             Enum[] enums = clazz.getEnumConstants();
 
-            ret = <span class="keyword">new</span> HashMap&lt;String, Enum&lt;?>>(enums.length);
+            ret = <span class="keyword">new</span> HashMap&lt;String, Enum&lt;?&gt;&gt;(enums.length);
             <span class="keyword">for</span>(Enum e : enums) {
                 ret.put(e.name(), e);
             }

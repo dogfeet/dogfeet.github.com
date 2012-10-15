@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-fibers.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: node-fibers</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-fibers.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: node-fibers</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 10</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#node-fibers" class="tag">node-fibers</a> | <span><a href="/articles/2012/nodejs-fibers.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-fibers.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -160,7 +160,7 @@ fs.<span class="keyword">readdir</span>(<span class="string">'.'</span>, functio
     idx = idx === <span class="literal">undefined</span> ? fn.length - <span class="number">1</span> : idx;
     <span class="keyword">return</span> <span class="keyword">function</span>() {
         <span class="keyword">var</span> args = Array.prototype.slice.call(arguments);
-        <span class="keyword">if</span> (args.length > idx) {
+        <span class="keyword">if</span> (args.length &gt; idx) {
             <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'function expects no more than '</span>+ idx+ <span class="string">' arguments'</span>);
         }
         <span class="keyword">var</span> future = <span class="keyword">new</span> Future;

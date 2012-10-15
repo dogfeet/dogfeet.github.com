@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: Mocha</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: Mocha</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Apr 15</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#bdd" class="tag">BDD</a> <a href="/site/tagmap.html#test" class="tag">Test</a> <a href="/site/tagmap.html#mocha" class="tag">Mocha</a> <a href="/site/tagmap.html#should" class="tag">Should</a> | <span><a href="/articles/2012/nodejs-mocha.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-mocha.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -45,27 +45,27 @@
     </span>, "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span>
     </span>, "<span class="attribute">description</span>": <span class="value"><span class="string">"A tutorial for Mocha"</span>
     </span>, "<span class="attribute">keywords</span>": <span class="value">[<span class="string">"test"</span>, <span class="string">"tutorial"</span>]
-    </span>, "<span class="attribute">author</span>": <span class="value"><span class="string">"Alex R. Young &lt;info@dailyjs.com>"</span>
+    </span>, "<span class="attribute">author</span>": <span class="value"><span class="string">"Alex R. Young &lt;info@dailyjs.com&gt;"</span>
     </span>, "<span class="attribute">main</span>": <span class="value"><span class="string">"index"</span>
-    </span>, "<span class="attribute">engines</span>": <span class="value">{ "<span class="attribute">node</span>": <span class="value"><span class="string">">= 0.4.x &lt; 0.7.0"</span> </span>}
+    </span>, "<span class="attribute">engines</span>": <span class="value">{ "<span class="attribute">node</span>": <span class="value"><span class="string">"&gt;= 0.4.x &lt; 0.7.0"</span> }</span>
     </span>, "<span class="attribute">scripts</span>": <span class="value">{
         "<span class="attribute">test</span>": <span class="value"><span class="string">"make test"</span>
-    </span>}
+    }</span>
     </span>, "<span class="attribute">devDependencies</span>": <span class="value">{
         "<span class="attribute">mocha</span>": <span class="value"><span class="string">"1.0.x"</span>
         </span>, "<span class="attribute">should</span>": <span class="value"><span class="string">"0.6.x"</span>
-    </span>}
-</span>}</code></pre>
+    }</span>
+}</span></code></pre>
 <p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.
 
 </p>
 <p>이를 위해 의존성을 추가한다.: 
 
 </p>
-<pre><code>, &quot;devDependencies&quot;: {
-    &quot;mocha&quot;: &quot;1.0.x&quot;
-    , &quot;should&quot;: &quot;0.6.x&quot;
-}</code></pre>
+<pre><code><span class="string">,</span> <span class="comment">"devDependencies":</span> <span class="comment">{</span>
+    <span class="comment">"mocha":</span> <span class="comment">"1</span>.<span class="comment">0</span>.<span class="comment">x"</span>
+    <span class="string">,</span> <span class="comment">"should":</span> <span class="comment">"0</span>.<span class="comment">6</span>.<span class="comment">x"</span>
+<span class="comment">}</code></pre>
 <p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.
 
 </p>
@@ -73,10 +73,10 @@
 <p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다. 
 
 </p>
-<pre><code><span class="label">test:</span>
-    @./node_modules/<span class="preprocessor">.bin</span>/mocha --require should
+<pre><code><span class="comment">test:</span>
+    <span class="comment">@</span>.<span class="comment">/node_modules/</span>.<span class="comment">bin/mocha</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">require</span> <span class="comment">should</span>
 
-<span class="label">.PHONY:</span> test</code></pre>
+<span class="string">.</span><span class="comment">PHONY:</span> <span class="comment">test</code></pre>
 <ul>
 <li><code>--require should</code> - 테스트 코드에서 should 모듈을 끼워 넣어 준다. 생략하면 테스트 코드에 <code>require(&#39;should&#39;)</code>를 직접 넣어 줘야 한다.</li>
 <li><code>--reporter dot</code> - 테스트 결과를 어떻게 보여줄지 reporter를 고를 수 있다. 생략 시 기본 값은 <code>dot</code>.</li>
@@ -93,12 +93,12 @@
     var smaller;
     n = <span class="transposed_variable">Math.</span><span class="built_in">floor</span>(n);
 
-    <span class="keyword">if</span> (n >= <span class="number">2</span>) <span class="cell">{
+    <span class="keyword">if</span> (n &gt;= <span class="number">2</span>) <span class="cell">{
         smaller = <span class="number">1</span>;
         while (smaller * smaller &lt;= n) {
             n++;
             smaller = <span class="number">2</span>;
-            while ((n % smaller > <span class="number">0</span>) &amp;&amp; (smaller * smaller &lt;= n)) {
+            while ((n % smaller &gt; <span class="number">0</span>) &amp;&amp; (smaller * smaller &lt;= n)) {
                 smaller++;
             }</span>   
         }   

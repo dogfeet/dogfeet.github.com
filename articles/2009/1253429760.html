@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1253429760.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring MVC and iBatis Example - jPetStore 분석 (2)</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1253429760.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring MVC and iBatis Example - jPetStore 분석 (2)</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Sep 20</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#ibatis" class="tag">iBATIS</a> <a href="/site/tagmap.html#jpetstore" class="tag">jPetStore</a> <a href="/site/tagmap.html#spring mvc" class="tag">Spring MVC</a> | <span><a href="/articles/2009/1253429760.html#disqus_thread" data-disqus-identifier="/articles/2009/1253429760.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -30,14 +30,14 @@
 -
 - Simply comment out the "petstore" reference in favour of "action"
 - to switch from the Spring web tier to the Struts web tier.
---></span>
-<span class="tag">&lt;<span class="title">servlet-mapping</span>></span>
-<span class="tag">&lt;<span class="title">servlet-name</span>></span>petstore<span class="tag">&lt;/<span class="title">servlet-name</span>></span>
+--&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-mapping</span>&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-name</span>&gt;</span>petstore<span class="tag">&lt;/<span class="title">servlet-name</span>&gt;</span>
 <span class="comment">&lt;!--
-&lt;servlet-name>action&lt;/servlet-name>
---></span>
-<span class="tag">&lt;<span class="title">url-pattern</span>></span>*.do<span class="tag">&lt;/<span class="title">url-pattern</span>></span>
-<span class="tag">&lt;/<span class="title">servlet-mapping</span>></span> </code></pre>
+&lt;servlet-name&gt;action&lt;/servlet-name&gt;
+--&gt;</span>
+<span class="tag">&lt;<span class="title">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="title">url-pattern</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">servlet-mapping</span>&gt;</span> </code></pre>
 <p>servlet-mapping 설정은 특정 url-pattern을 servlet이 처리 하도록 지정한다. *.do 라는 url-pattern은 petstore로 처리가 된다. petstore라는 서블릿은 다음과 같이 정의하고 있으며 이어지는 내용을 보면 petstore서블릿은 SpringMVC를 통해 처리를 한다는 것을 알 수 있다.. 만약 petstore를 주석처리하고 action서블릿으로 처리를 하면 <a href="http://struts.apache.org/">Struts</a>를 통해 처리를 한다.
 
 </p>
@@ -49,12 +49,12 @@
 - A web app can contain any number of such servlets.
 - Note that this web app has a shared root application context, serving as parent
 - of all DispatcherServlet contexts.
---></span>
-<span class="tag">&lt;<span class="title">servlet</span>></span>
-<span class="tag">&lt;<span class="title">servlet-name</span>></span>petstore<span class="tag">&lt;/<span class="title">servlet-name</span>></span>
-<span class="tag">&lt;<span class="title">servlet-class</span>></span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="title">servlet-class</span>></span>
-<span class="tag">&lt;<span class="title">load-on-startup</span>></span>2<span class="tag">&lt;/<span class="title">load-on-startup</span>></span>
-<span class="tag">&lt;/<span class="title">servlet</span>></span>
+--&gt;</span>
+<span class="tag">&lt;<span class="title">servlet</span>&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-name</span>&gt;</span>petstore<span class="tag">&lt;/<span class="title">servlet-name</span>&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="title">servlet-class</span>&gt;</span>
+<span class="tag">&lt;<span class="title">load-on-startup</span>&gt;</span>2<span class="tag">&lt;/<span class="title">load-on-startup</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">servlet</span>&gt;</span>
 
 <span class="comment">&lt;!--
 - Struts servlet that dispatches requests to registered actions.
@@ -62,12 +62,12 @@
 -
 - A web app can just contain one such servlet.
 - If you need multiple namespaces, use Struts' module mechanism.
---></span>
-<span class="tag">&lt;<span class="title">servlet</span>></span>
-<span class="tag">&lt;<span class="title">servlet-name</span>></span>action<span class="tag">&lt;/<span class="title">servlet-name</span>></span>
-<span class="tag">&lt;<span class="title">servlet-class</span>></span>org.apache.struts.action.ActionServlet<span class="tag">&lt;/<span class="title">servlet-class</span>></span>
-<span class="tag">&lt;<span class="title">load-on-startup</span>></span>3<span class="tag">&lt;/<span class="title">load-on-startup</span>></span>
-<span class="tag">&lt;/<span class="title">servlet</span>></span> </code></pre>
+--&gt;</span>
+<span class="tag">&lt;<span class="title">servlet</span>&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-name</span>&gt;</span>action<span class="tag">&lt;/<span class="title">servlet-name</span>&gt;</span>
+<span class="tag">&lt;<span class="title">servlet-class</span>&gt;</span>org.apache.struts.action.ActionServlet<span class="tag">&lt;/<span class="title">servlet-class</span>&gt;</span>
+<span class="tag">&lt;<span class="title">load-on-startup</span>&gt;</span>3<span class="tag">&lt;/<span class="title">load-on-startup</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">servlet</span>&gt;</span> </code></pre>
 <p>Struts는 뒤로하고 SpringMVC에 연결되는 petstore를 살펴본다. 이름은 petstore이고 클래스는 org.springframework.web.servlet.DispatcherServlet인 서블릿은 자체 Context 파일을 {servlet-name}-servlet.xml 라는 이름으로 갖는다. petstore라고 이름을 짓는다면, petstore-servlet.xml이 되겠다.
 
 </p>
@@ -83,20 +83,20 @@
 <p>'/shop/index.do' 요청을 처리하는 예를 적용해 보면 petstore 서블릿 컨텍스트에서 다음의 정의에 의해 처리가 된다.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">name</span>=<span class="value">"/shop/index.do"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.mvc.ParameterizableViewController"</span>></span>
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"viewName"</span> <span class="attribute">value</span>=<span class="value">"index"</span>/></span>
-<span class="tag">&lt;/<span class="title">bean</span>></span> </code></pre>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">name</span>=<span class="value">"/shop/index.do"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.mvc.ParameterizableViewController"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"viewName"</span> <span class="attribute">value</span>=<span class="value">"index"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> </code></pre>
 <p>Controller는 사용자가 만들어서 처리하는 경우가 대부분이지만, 이 예제는 <a href="http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/web/portlet/mvc/ParameterizableViewController.html">ParameterizableViewController</a>라는 spring에서 미리 정의된 Controller에게 전달되고, 그 결과가 'index'라는 View로 표현되도록 정의하였다.
 
 </p>
 <p>index라는 View는 ViewResolver를 통해 '/WEB-INF/jsp/spring/index.jsp'를 가리키게 되고, 해당 View로 위의 Controller가 돌려준 Model이 전달된다.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"viewResolver"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>></span>
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"viewClass"</span> <span class="attribute">value</span>=<span class="value">"org.springframework.web.servlet.view.JstlView"</span>/></span>
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"prefix"</span> <span class="attribute">value</span>=<span class="value">"/WEB-INF/jsp/spring/"</span>/></span>
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"suffix"</span> <span class="attribute">value</span>=<span class="value">".jsp"</span>/></span>
-<span class="tag">&lt;/<span class="title">bean</span>></span> </code></pre>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"viewResolver"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"viewClass"</span> <span class="attribute">value</span>=<span class="value">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"prefix"</span> <span class="attribute">value</span>=<span class="value">"/WEB-INF/jsp/spring/"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"suffix"</span> <span class="attribute">value</span>=<span class="value">".jsp"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> </code></pre>
 <p><img src="http://dogfeet-support.appspot.com/static/tistory/149.attachment.Picture%2023.png" alt="image">
 
 </p>

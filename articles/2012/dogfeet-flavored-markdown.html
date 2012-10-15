@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/dogfeet-flavored-markdown.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">dogfeet-flavored-markdown</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/dogfeet-flavored-markdown.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">dogfeet-flavored-markdown</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 20</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">Nodejs</a> <a href="/site/tagmap.html#markdown" class="tag">Markdown</a> <a href="/site/tagmap.html#docpad" class="tag">Docpad</a> <a href="/site/tagmap.html#github" class="tag">Github</a> <a href="/site/tagmap.html#dogfeet" class="tag">Dogfeet</a> | <span><a href="/articles/2012/dogfeet-flavored-markdown.html#disqus_thread" data-disqus-identifier="/articles/2012/dogfeet-flavored-markdown.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -55,8 +55,8 @@
 <pre><code>var ghm = require("github-flavored-markdown")
 ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 // returns:
-// '<span class="tag">&lt;<span class="title">p</span>></span>I <span class="tag">&lt;<span class="title">strong</span>></span>love<span class="tag">&lt;/<span class="title">strong</span>></span> GHM.  '+
-// '<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">\'http:</span>//<span class="attribute">github.com</span>/<span class="attribute">isaacs</span>/<span class="attribute">npm</span>/<span class="attribute">issues</span>/#<span class="attribute">issue</span>/<span class="attribute">2</span>\'></span>#2<span class="tag">&lt;/<span class="title">a</span>></span><span class="tag">&lt;/<span class="title">p</span>></span>'</code></pre>
+// '<span class="tag">&lt;<span class="title">p</span>&gt;</span>I <span class="tag">&lt;<span class="title">strong</span>&gt;</span>love<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> GHM.  '+
+// '<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">\'http:</span>//<span class="attribute">github.com</span>/<span class="attribute">isaacs</span>/<span class="attribute">npm</span>/<span class="attribute">issues</span>/#<span class="attribute">issue</span>/<span class="attribute">2</span>\'&gt;</span>#2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span>'</code></pre>
 <p>그러면 나머지 패턴도 해당 저장소에 대한 GitHub 링크가 생성된다:
 
 </p>
@@ -94,7 +94,7 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 <p>그리고 <code>&lt;code&gt;</code> 블럭과 <code>&lt;a&gt;</code> 블럭에 있는 것은 무시한다. 간단히 말하면 <code>@mention</code>과 <a href="https://twitter.com/mention">@mention</a>의 차이이고 <a href="http://twitter.com"><a href="https://twitter.com/twitter">@twitter</a></a>와 <a href="https://twitter.com/twitter">@twitter</a> 의 차이다. 원문은 다음과 같다:
 
 </p>
-<pre><code>그리고 `<span class="tag">&lt;<span class="title">code</span>></span>` 블럭과 `<span class="tag">&lt;<span class="title">a</span>></span>` 블럭에 있는 것은 무시한다. 간단히 말하면 `@mention`과 @mention의 차이이고 [@twitter](http://twitter.com)와 @twitter 의 차이다. 원문은 다음과 같다:</code></pre>
+<pre><code>그리고 `<span class="javascript">&lt;code&gt;</span>` 블럭과 `<span class="javascript">&lt;a&gt;</span>` 블럭에 있는 것은 무시한다. 간단히 말하면 `<span class="javascript">@mention</span>`과 <span class="property">@mention</span>의 차이이고 [<span class="property">@twitter</span>](http:<span class="regexp">//</span>twitter.com)와 <span class="property">@twitter</span> 의 차이다. 원문은 다음과 같다:</code></pre>
 <h3>예제</h3>
 <p>이 것은 코드 블럭이 아니라 잘 된다:
 
@@ -138,7 +138,7 @@ ghm.parse("I **love** GHM.\n\n#2", "isaacs/npm")
 var dfm = require("dogfeet-flavored-markdown");
 gfm.parse("I **love** @DFM. #DFM", {templates:templates});
 // returns:
-// '<span class="tag">&lt;<span class="title">p</span>></span>I <span class="tag">&lt;<span class="title">strong</span>></span>love<span class="tag">&lt;/<span class="title">strong</span>></span> @@DFM. ##DFM'</code></pre>
+// '<span class="tag">&lt;<span class="title">p</span>&gt;</span>I <span class="tag">&lt;<span class="title">strong</span>&gt;</span>love<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> @@DFM. ##DFM'</code></pre>
 <h3>설치</h3>
 <p>이 모듈은 npmjs.org에 올릴 계획이 없다. 그러니 다음과 같이 설치해야 한다.
 
@@ -149,7 +149,7 @@ gfm.parse("I **love** @DFM. #DFM", {templates:templates});
 
 </p>
 <pre><code><span class="comment"># Export Plugin</span>
-module.exports = (BasePlugin) ->
+module.exports = (BasePlugin) -&gt;
     <span class="comment"># Define Plugin</span>
     <span class="class"><span class="keyword">class</span> <span class="title">DogdownPlugin</span> <span class="keyword">extends</span> <span class="title">BasePlugin</span>
         # <span class="title">Plugin</span> <span class="title">name</span>
@@ -159,14 +159,14 @@ module.exports = (BasePlugin) ->
         <span class="title">priority</span>: 700 
 
         <span class="title">templates</span>:
-            '@': ( <span class="title">key</span> ) ->
-                ['&lt;<span class="title">a</span> <span class="title">href</span>="<span class="title">https</span>://<span class="title">twitter</span>.<span class="title">com</span>/#!/', <span class="title">key</span>, '">@', <span class="title">key</span>, '&lt;/<span class="title">a</span>>'].<span class="title">join</span>('')
-                #['&lt;<span class="title">a</span> <span class="title">href</span>="<span class="title">https</span>://<span class="title">github</span>.<span class="title">com</span>/', <span class="title">key</span>, '">@', <span class="title">key</span>, '&lt;/<span class="title">a</span>>'].<span class="title">join</span>('')
-            '#': ( <span class="title">key</span> ) ->
-                ['&lt;<span class="title">a</span> <span class="title">href</span>="/<span class="title">site</span>/<span class="title">tagmap</span>.<span class="title">html</span>#', <span class="title">key</span>, '">#', <span class="title">key</span>, '&lt;/<span class="title">a</span>>'].<span class="title">join</span>('')
+            '@': ( <span class="title">key</span> ) -&gt;
+                ['&lt;<span class="title">a</span> <span class="title">href</span>="<span class="title">https</span>://<span class="title">twitter</span>.<span class="title">com</span>/#!/', <span class="title">key</span>, '"&gt;@', <span class="title">key</span>, '&lt;/<span class="title">a</span>&gt;'].<span class="title">join</span>('')
+                #['&lt;<span class="title">a</span> <span class="title">href</span>="<span class="title">https</span>://<span class="title">github</span>.<span class="title">com</span>/', <span class="title">key</span>, '"&gt;@', <span class="title">key</span>, '&lt;/<span class="title">a</span>&gt;'].<span class="title">join</span>('')
+            '#': ( <span class="title">key</span> ) -&gt;
+                ['&lt;<span class="title">a</span> <span class="title">href</span>="/<span class="title">site</span>/<span class="title">tagmap</span>.<span class="title">html</span>#', <span class="title">key</span>, '"&gt;#', <span class="title">key</span>, '&lt;/<span class="title">a</span>&gt;'].<span class="title">join</span>('')
 
         # <span class="title">Render</span> <span class="title">some</span> <span class="title">content</span>
-        <span class="title">render</span>: (<span class="title">opts</span>,<span class="title">next</span>) ->
+        <span class="title">render</span>: (<span class="title">opts</span>,<span class="title">next</span>) -&gt;
             # <span class="title">Prepare</span>
             {</span>inExtension,outExtension,templateData,content} = opts
 

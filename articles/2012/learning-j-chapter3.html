@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter3.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어 배우기 - 제 3장: 함수 정의하기</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter3.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어 배우기 - 제 3장: 함수 정의하기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
  | <span property="dc:created">2012 May 01</span>
  | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">J언어</a> | <span><a href="/articles/2012/learning-j-chapter3.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter3.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -40,8 +40,8 @@
 <p>우리가 지은 이름이 더 기억하기 쉽거나 해서 그게 좋다면 새로운 이름을 사용한다. 같은 내장 함수에 다른 두 개의 이름을 부여할 수도 있다. 하나는 모나딕용으로, 다른 하나는 다이아딕 용으로.
 
 </p>
-<pre><code>   <span class="title">Ceiling</span> =: >.
-   Max     =: >.</code></pre>
+<pre><code>   <span class="comment">Ceiling</span> <span class="comment">=:</span> &gt;<span class="string">.</span>
+   <span class="comment">Max</span>     <span class="comment">=:</span> &gt;<span class="string">.</span></code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>Ceiling 1.7</tt></td>
@@ -282,7 +282,7 @@
 <p>두 개의 동사를 괄호 안에 넣어 분리시켜 훅의 형태로 사용할 수 있다.
 
 </p>
-<pre><code>   <span class="list">(<span class="title">+</span><span class="body"> tax</span>)</span> <span class="number">50</span>
+<pre><code>   <span class="list">(<span class="title">+</span><span class="body"> tax)</span></span> <span class="number">50</span>
 <span class="number">55</span></code></pre>
 <p>f가 다이아드, g가 모나드이고 y라는 어떤 인자가 있을때 훅의 일반적인 구조는 다음과 같다. 
 
@@ -297,7 +297,7 @@
 <p>또다른 예로 인자로 들어온 수의 정수 부분을 계산하는 동사인 <code>&lt;.</code>("floor")를 이용해보자. 숫자가 정수인지 아닌지 검사를 하려면 그 숫자가 정수부와 같은지 검사한다. "equal-to-its-floor"라는 의미를 가진 이 동사는 <code>= &lt;.</code>라는 훅으로 정의할 수 있다.
 
 </p>
-<pre><code>   wholenumber  =:  = <span class="tag">&lt;<span class="title">.</span></code></pre>
+<pre><code>   wholenumber  =:  = <span class="xml"><span class="tag">&lt;<span class="title">.</span></span></code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>y =: 3 2.7</tt></td>
@@ -351,7 +351,7 @@
 <p>리스트에서 가장 큰 수를 구하는 함수 <code>&gt;./</code>와 가장 작은 수를 구하는 함수 <code>&lt;./</code>는 1장에서 배웠다.
 
 </p>
-<pre><code>   range =: <span class="tag">&lt;<span class="title">.</span>/  ,  ></span>./</code></pre>
+<pre><code>   range =: <span class="xml"><span class="tag">&lt;<span class="title">.</span>/  ,  &gt;</span>./</span></code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>L</tt></td>
@@ -385,13 +385,13 @@
 <p>이 데이터를 이용하면 <code>display</code>동사는 각 숫자와 그 숫자의 퍼센트를 표현할 것이다. 아래 표를 보자면, 3은 8에서 38%를 차지한다.
 
 </p>
-<pre><code>   display <span class="typedef"><span class="keyword">data</span></span>
-+<span class="comment">----+-----------+</span>
-|<span class="type">Data</span>|<span class="type">Percentages</span>|
-+<span class="comment">----+-----------+</span>
-|<span class="number">3</span>   |<span class="number">38</span>         |
-|<span class="number">5</span>   |<span class="number">63</span>         |
-+<span class="comment">----+-----------+</span></code></pre>
+<pre><code>   <span class="comment">display</span> <span class="comment">data</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|Data|Percentages|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
+<span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p><code>percent</code>동사는 훅 <code>% +/</code>으로 전체 수에서 각각의 수를 나누고 각각에 100을 곱해서 퍼센트를 계산해낸다. 아래에 <code>percent</code>의 정의를 다시 쓸테니 위로 스크롤 하지 않아도 된다.
 
 </p>
@@ -417,7 +417,7 @@
 <p>퍼센트 값을 반올림하자. 반올림은 각 값에 0.5를 더하고 "floor"(<code>&lt;.</code>)를 이용해 정수 부분만을 취한다. 이런 일을 하는 동사 <code>round</code>는 아래와 같이 정의한다.
 
 </p>
-<pre><code>   round    =: <span class="tag">&lt;<span class="title">.</span> @<span class="attribute">:</span> (+&amp;<span class="attribute">0.5</span>)</code></pre>
+<pre><code>   round    =: <span class="xml"><span class="tag">&lt;<span class="title">.</span> @<span class="attribute">:</span> (+&amp;<span class="attribute">0.5</span>)</span></code></pre>
 <p>그러면 화면에 표시할 값을 계산하는 동사는 다음과 같다.
 
 </p>
@@ -450,7 +450,7 @@
 <p>테이블의 아래쪽 행을 만들기 위해 <code>br</code> 이라는 동사를 정의한다. 이 동사는 데이타와 계산된 값을 열(column)로 링크하는 포크이다.(포크는 위에서 정의했듯이 세 동사의 시퀀스이다.)
 
 </p>
-<pre><code>   br  =: ,.  ;  (,. @: <span class="built_in">comp</span>)</code></pre>
+<pre><code>   <span class="comment">br</span>  <span class="comment">=:</span> <span class="string">,</span><span class="string">.</span>  <span class="comment">;</span>  <span class="comment">(</span>,<span class="string">.</span> <span class="comment">@:</span> <span class="comment">comp)</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
@@ -487,25 +487,25 @@
 <p>남은건 박스 4개의 리스트를 2행 2열의 테이블로 만드는 것이다.
 
 </p>
-<pre><code>   (<span class="number">2</span> <span class="number">2</span> &amp; $)  tr br <span class="typedef"><span class="keyword">data</span></span>
-+<span class="comment">----+-----------+</span>
-|<span class="type">Data</span>|<span class="type">Percentages</span>|
-+<span class="comment">----+-----------+</span>
-|<span class="number">3</span>   |<span class="number">38</span>         |
-|<span class="number">5</span>   |<span class="number">63</span>         |
-+<span class="comment">----+-----------+</span></code></pre>
+<pre><code>   <span class="comment">(2</span> <span class="comment">2</span> <span class="comment">&amp;</span> <span class="comment">$)</span>  <span class="comment">tr</span> <span class="comment">br</span> <span class="comment">data</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|Data|Percentages|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
+<span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>이걸 다 합하면,
 
 </p>
-<pre><code>   display =: (<span class="number">2</span> <span class="number">2</span> &amp; $) @: tr @: br
+<pre><code>   <span class="comment">display</span> <span class="comment">=:</span> <span class="comment">(2</span> <span class="comment">2</span> <span class="comment">&amp;</span> <span class="comment">$)</span> <span class="comment">@:</span> <span class="comment">tr</span> <span class="comment">@:</span> <span class="comment">br</span>
 
-   display <span class="typedef"><span class="keyword">data</span></span>
-+<span class="comment">----+-----------+</span>
-|<span class="type">Data</span>|<span class="type">Percentages</span>|
-+<span class="comment">----+-----------+</span>
-|<span class="number">3</span>   |<span class="number">38</span>         |
-|<span class="number">5</span>   |<span class="number">63</span>         |
-+<span class="comment">----+-----------+</span></code></pre>
+   <span class="comment">display</span> <span class="comment">data</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|Data|Percentages|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
+<span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>이렇게 된다.
 
 </p>
@@ -516,17 +516,17 @@
 <p>동사 <code>tr</code>에 있는 표의 컬럼 헤딩도 알맞게 수정해야한다.
 
 </p>
-<pre><code>   tr   =: ('Numbers';'Square Roots') &amp; ,
+<pre><code>   <span class="comment">tr</span>   <span class="comment">=:</span> <span class="comment">('Numbers';'Square</span> <span class="comment">Roots')</span> <span class="comment">&amp;</span> <span class="string">,</span>
 
-   display <span class="number">1</span> <span class="number">4</span> <span class="number">9</span> <span class="number">16</span>
-+-------+------------+
-<span class="string">|Numbers|Square Roots|</span>
-+-------+------------+
-<span class="string">| 1     |1           |</span>
-<span class="string">| 4     |2           |</span>
-<span class="string">| 9     |3           |</span>
-<span class="string">|16     |4           |</span>
-+-------+------------+</code></pre>
+   <span class="comment">display</span> <span class="comment">1</span> <span class="comment">4</span> <span class="comment">9</span> <span class="comment">16</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|Numbers|Square</span> <span class="comment">Roots|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">1</span>     <span class="comment">|1</span>           <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">4</span>     <span class="comment">|2</span>           <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">9</span>     <span class="comment">|3</span>           <span class="comment">|</span>
+<span class="comment">|16</span>     <span class="comment">|4</span>           <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.
 이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.
 

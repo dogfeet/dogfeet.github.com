@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1253444040.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring MVC and iBatis Example - jPetStore 분석 (3)</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1253444040.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring MVC and iBatis Example - jPetStore 분석 (3)</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Sep 23</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#jpetstore" class="tag">Jpetstore</a> <a href="/site/tagmap.html#spring mvc" class="tag">Spring MVC</a> | <span><a href="/articles/2009/1253444040.html#disqus_thread" data-disqus-identifier="/articles/2009/1253444040.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -33,14 +33,14 @@
 -
 - Can include "/WEB-INF/dataAccessContext-local.xml" for a single-database
 - context, or "/WEB-INF/dataAccessContext-jta.xml" for a two-database context.
---></span>
-<span class="tag">&lt;<span class="title">context-param</span>></span>
-<span class="tag">&lt;<span class="title">param-name</span>></span>contextConfigLocation<span class="tag">&lt;/<span class="title">param-name</span>></span>
-<span class="tag">&lt;<span class="title">param-value</span>></span>/WEB-INF/dataAccessContext-local.xml /WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="title">param-value</span>></span>
+--&gt;</span>
+<span class="tag">&lt;<span class="title">context-param</span>&gt;</span>
+<span class="tag">&lt;<span class="title">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+<span class="tag">&lt;<span class="title">param-value</span>&gt;</span>/WEB-INF/dataAccessContext-local.xml /WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
 <span class="comment">&lt;!--
-&lt;param-value>/WEB-INF/dataAccessContext-jta.xml  /WEB-INF/applicationContext.xml&lt;/param-value>
---></span>
-<span class="tag">&lt;/<span class="title">context-param</span>></span> </code></pre>
+&lt;param-value&gt;/WEB-INF/dataAccessContext-jta.xml  /WEB-INF/applicationContext.xml&lt;/param-value&gt;
+--&gt;</span>
+<span class="tag">&lt;/<span class="title">context-param</span>&gt;</span> </code></pre>
 <p>대충 훓어보다보며 'dataAccessContext' 이 부분이 보인다. 옳거니 여기구나. 'context-param'은 일종의 환경변수 등록이다. 즉 다음과 같이 서블릿이 실행되기 전에 변수를 등록해 놓는 것이다.
 
 </p>
@@ -71,19 +71,19 @@
 <p>다시 dataSource Bean으로 돌아와서, dataSource에서 사용하는 값이 정의된 /war/WEB-INF/jdbc.properties 파일을 열어보면 jdbc 연결에 필요한 파라미터들이 정의되어있다. 이 샘플은 기본적으로 HSQLDB를 사용한다. 따라서 HSQLDB의 구동이 필요한데, 이것을 위한 파일들은 /db/hsqldb에 위치한다. 샘플을 돌려보는 운영체제에 따라 server.bat나 server.sh파일을 실행한다. 나의 경우, server.sh파일을 'sh server.sh'나 chmod로 권한을 줘서 실행하면 잘 실행이 되지 않았다(실행은 되는데 샘플 데이터 구축이 잘 안됌). 'cat server.sh'하여 그 내용을 똑같이 따라 입력하였더니 HSQLDB가 실행이 되는 것을 볼 수 있었다. manager.sh(manager.bat)파일은 현재 실행중인 HSQLDB에 접속해서 Query를 실행해 볼 수 있는 간단한 클라이언트다.
 
 </p>
-<pre><code><span class="constant">SeanMacBook</span><span class="symbol">:</span>~<span class="regexp">/Documents/</span><span class="constant">Workspace</span>/spring-framework/spring-framework-<span class="number">2.5</span>.<span class="number">5</span>/samples/jpetstore/db/hsqldb<span class="variable">$ </span>java -classpath ..<span class="regexp">/../</span>..<span class="regexp">/../lib</span><span class="regexp">/hsqldb/hsqldb</span>.jar org.hsqldb.<span class="constant">Server</span> -database jpetstore
+<pre><code><span class="constant">SeanMacBook</span><span class="symbol">:~/Documents/Workspace/spring-framework/spring-framework-</span><span class="number">2.5</span>.<span class="number">5</span>/samples/jpetstore/db/hsqldb<span class="variable">$ </span>java -classpath ..<span class="regexp">/../</span>..<span class="regexp">/../lib</span><span class="regexp">/hsqldb/hsqldb</span>.jar org.hsqldb.<span class="constant">Server</span> -database jpetstore
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> [<span class="constant">Thread</span>[main,<span class="number">5</span>,main]]<span class="symbol">:</span> checkRunning(<span class="keyword">false</span>) entered
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> [<span class="constant">Thread</span>[main,<span class="number">5</span>,main]]<span class="symbol">:</span> checkRunning(<span class="keyword">false</span>) exited
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Startup</span> sequence initiated from main() method
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Loaded</span> properties from [<span class="regexp">/Users/</span><span class="constant">Yee</span>/<span class="constant">Documents</span>/<span class="constant">Workspace</span>/spring-framework/spring-framework-<span class="number">2.5</span>.<span class="number">5</span>/samples/jpetstore/db/hsqldb/server.properties]
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Initiating</span> startup sequence...
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Server</span> socket opened successfully <span class="keyword">in</span> <span class="number">6</span> ms.
-[<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Database</span> [index=<span class="number">0</span>, id=<span class="number">0</span>, db=file<span class="symbol">:jpetstore</span>, <span class="keyword">alias</span>=] opened sucessfully <span class="keyword">in</span> <span class="number">344</span> ms.
+[<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Database</span> [index=<span class="number">0</span>, id=<span class="number">0</span>, db=<span class="symbol">file:</span>jpetstore, <span class="keyword">alias</span>=] opened sucessfully <span class="keyword">in</span> <span class="number">344</span> ms.
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">Startup</span> sequence completed <span class="keyword">in</span> <span class="number">353</span> ms.
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="number">2009</span>-09-<span class="number">20</span> <span class="number">19</span><span class="symbol">:</span><span class="number">36</span><span class="symbol">:</span><span class="number">26.022</span> <span class="constant">HSQLDB</span> server <span class="number">1.8</span>.<span class="number">0</span> is online
 [<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">To</span> close normally, connect <span class="keyword">and</span> execute <span class="constant">SHUTDOWN</span> <span class="constant">SQL</span>
-[<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">From</span> command line, use [<span class="constant">Ctrl</span>]+[<span class="constant">C</span>] to abort abruptly&lt;font <span class="keyword">class</span>=<span class="string">"Apple-style-span"</span> face=<span class="string">"굴림, gulim, tahoma, sans-serif"</span>>&lt;span <span class="keyword">class</span>=<span class="string">"Apple-style-span"</span> style=<span class="string">"white-space: normal;"</span>>
-&lt;<span class="regexp">/span>&lt;/font</span>> </code></pre>
+[<span class="constant">Server</span><span class="variable">@5d173</span>]<span class="symbol">:</span> <span class="constant">From</span> command line, use [<span class="constant">Ctrl</span>]+[<span class="constant">C</span>] to abort abruptly&lt;font <span class="keyword">class</span>=<span class="string">"Apple-style-span"</span> face=<span class="string">"굴림, gulim, tahoma, sans-serif"</span>&gt;&lt;span <span class="keyword">class</span>=<span class="string">"Apple-style-span"</span> style=<span class="string">"white-space: normal;"</span>&gt;
+&lt;<span class="regexp">/span&gt;&lt;/font</span>&gt; </code></pre>
 <p>자 이제 다시 브라우저로 돌아와서 Fish메뉴에 다시 접근해 보면 Database로부터 Data를 가져오는것을 확인할 수 있다. 자, 이제 Context 파일을 통해서 Bean들의 관계를 다음과 같이 간략히 정리해 볼 수 있다. 붉은색은 Sample에서 작성하는 Bean, 초록색은 iBatis의 Bean, 파란색은 JDBC Bean이라고 보면 되겠다. 다음은 iBatis부분을 좀 더 살펴볼 것이다.
 
 </p>

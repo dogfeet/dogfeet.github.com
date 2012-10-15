@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:diff</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/git-diff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:diff</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 24</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#diff" class="tag">diff</a> | <span><a href="/articles/2011/git-diff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-diff.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -53,11 +53,11 @@
 <p>Staged와 Unmodified(HEAD의)는 다음과 같이 비교한다:
 
 </p>
-<pre><code><span class="title">git</span> diff <span class="comment">--staged/--cached</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">staged/</span>-<span class="literal">-</span><span class="comment">cached</code></pre>
 <p><code>--staged</code>와 <code>--cached</code>는 똑같다. 이것도 특정 파일만 비교할 수 있다:
 
 </p>
-<pre><code><span class="title">git</span> diff <span class="comment">--staged my-file</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">staged</span> <span class="comment">my</span>-<span class="comment">file</code></pre>
 <h3>Revision 비교</h3>
 <p>리비전 두 개를 골라 비교할 수도 있다:
 
@@ -70,7 +70,7 @@
 <p>다음처럼도 비교할 수도 있다:
 
 </p>
-<pre><code>git diff bd976f4<span class="symbol">:my</span>-file <span class="number">59</span>d60f9<span class="symbol">:my</span>-file</code></pre>
+<pre><code>git diff bd976f4:<span class="keyword">my</span>-<span class="type">file</span> <span class="number">59</span>d60f9:<span class="keyword">my</span>-<span class="type">file</span></code></pre>
 <h3>Modified, Staged와 Revision 비교</h3>
 <p>Working Directory에 있거나 Staging Area에 수정한 파일을 HEAD의 파일이 아니라 이전 커밋하고 비교할 수도 있다. Working Directory를 <code>HEAD~18</code>에 비교할 수 있다:
 
@@ -83,25 +83,25 @@
 <p>Staging Area와 <code>HEAD~18</code>과 비교하려면 다음과 같이 한다:
 
 </p>
-<pre><code><span class="title">git</span> diff <span class="comment">--staged HEAD~18</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">staged</span> <span class="comment">HEAD~18</code></pre>
 <p>이때도 특정 파일만 비교하려면 다음과 같다:
 
 </p>
-<pre><code><span class="title">git</span> diff <span class="comment">--staged HEAD~18 my-file</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">staged</span> <span class="comment">HEAD~18</span> <span class="comment">my</span>-<span class="comment">file</code></pre>
 <h3>파일 이름만 보기</h3>
 <p><code>--name-only</code> 옵션을 주면 관련 파일을 볼 수 있다. 다음은 해당 커밋에 수정된 파일 목록을 보여준다:
 
 </p>
-<pre><code><span class="title">git</span> show <span class="comment">--name-only HEAD~4</span></code></pre>
+<pre><code>git <span class="operator"><span class="keyword">show</span> --name-<span class="keyword">only</span> HEAD~<span class="number">4</span></code></pre>
 <p>다음은 Working Directory와 HEAD~4에서 변경된 파일 이름만 보여준다.
 
 </p>
-<pre><code><span class="title">git</span> diff <span class="comment">--name-only HEAD~4</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span>-<span class="comment">only</span> <span class="comment">HEAD~4</code></pre>
 <p>이 옵션은 <code>git log</code> 명령에도 사용할 수 있다. 해당 commit에 수정된 파일 이름도 같이 보여준다.
 
 </p>
-<pre><code><span class="title">git</span> log <span class="comment">--name-only</span></code></pre>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<pre><code><span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span>-<span class="comment">only</code></pre>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-diff.html';

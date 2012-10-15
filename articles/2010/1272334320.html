@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1272334320.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Dev Environment in Maven</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1272334320.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Dev Environment in Maven</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2010 Apr 27</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#environment" class="tag">Environment</a> <a href="/site/tagmap.html#maven" class="tag">Maven</a> <a href="/site/tagmap.html#개발환경" class="tag">개발환경</a> | <span><a href="/articles/2010/1272334320.html#disqus_thread" data-disqus-identifier="/articles/2010/1272334320.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -34,17 +34,17 @@
 <p>Maven에는 Profile 개념이 있다. mvn실행시 선택적으로 설정을 적용할 수 있게 해준다. 간단한 Profile을 설정은 다음과 같습니다. dev, prod를 profile로 만들어 보자:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">profiles</span>></span>
-    <span class="tag">&lt;<span class="title">profile</span>></span>
-        <span class="tag">&lt;<span class="title">id</span>></span>dev<span class="tag">&lt;/<span class="title">id</span>></span>
-        <span class="tag">&lt;<span class="title">activation</span>></span>
-            <span class="tag">&lt;<span class="title">activeByDefault</span>></span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>></span>
-        <span class="tag">&lt;/<span class="title">activation</span>></span>
-    <span class="tag">&lt;/<span class="title">profile</span>></span>
-    <span class="tag">&lt;<span class="title">profile</span>></span>
-        <span class="tag">&lt;<span class="title">id</span>></span>prod<span class="tag">&lt;/<span class="title">id</span>></span>
-    <span class="tag">&lt;/<span class="title">profile</span>></span>
-<span class="tag">&lt;/<span class="title">profiles</span>></span> </code></pre>
+<pre><code><span class="tag">&lt;<span class="title">profiles</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">activation</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">activation</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">profiles</span>&gt;</span> </code></pre>
 <p>activeByDefault를 이용해서 profile을 선택하지 않으면 dev profile이 선택되도록 설정한다.
 
 </p>
@@ -61,52 +61,52 @@ mvn build -Pprod <span class="comment"># prod profile로 실행한다.</span></c
 <p>다음과 같으 profile을 만든다:
 
 </p>
-<pre><code><span class="xml"><span class="tag">&lt;<span class="title">profiles</span>></span>
-    <span class="tag">&lt;<span class="title">profile</span>></span>
-        <span class="tag">&lt;<span class="title">id</span>></span>dev<span class="tag">&lt;/<span class="title">id</span>></span>
-        <span class="tag">&lt;<span class="title">activation</span>></span>
-            <span class="tag">&lt;<span class="title">activeByDefault</span>></span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>></span>
-        <span class="tag">&lt;/<span class="title">activation</span>></span>
-        <span class="tag">&lt;<span class="title">build</span>></span>
-            <span class="tag">&lt;<span class="title">plugins</span>></span>
-                <span class="tag">&lt;<span class="title">plugin</span>></span>
-                    <span class="tag">&lt;<span class="title">groupId</span>></span>org.codehaus.mojo<span class="tag">&lt;/<span class="title">groupId</span>></span>
-                    <span class="tag">&lt;<span class="title">artifactId</span>></span>build-helper-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>></span>
-                    <span class="tag">&lt;<span class="title">version</span>></span></span><span class="number">1.5</span><span class="xml"><span class="tag">&lt;/<span class="title">version</span>></span>
-                    <span class="tag">&lt;<span class="title">executions</span>></span>
-                        <span class="tag">&lt;<span class="title">execution</span>></span>
-                            <span class="tag">&lt;<span class="title">id</span>></span>build-helper-add-source<span class="tag">&lt;/<span class="title">id</span>></span>
-                            <span class="tag">&lt;<span class="title">phase</span>></span>generate-sources<span class="tag">&lt;/<span class="title">phase</span>></span>
-                            <span class="tag">&lt;<span class="title">goals</span>></span>
-                                <span class="tag">&lt;<span class="title">goal</span>></span>add-source<span class="tag">&lt;/<span class="title">goal</span>></span>
-                            <span class="tag">&lt;/<span class="title">goals</span>></span>
-                            <span class="tag">&lt;<span class="title">configuration</span>></span>
-                                <span class="tag">&lt;<span class="title">sources</span>></span>
-                                    <span class="tag">&lt;<span class="title">source</span>></span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/java<span class="tag">&lt;/<span class="title">source</span>></span>
-                                <span class="tag">&lt;/<span class="title">sources</span>></span>
-                            <span class="tag">&lt;/<span class="title">configuration</span>></span>
-                        <span class="tag">&lt;/<span class="title">execution</span>></span>
-                        <span class="tag">&lt;<span class="title">execution</span>></span>
-                            <span class="tag">&lt;<span class="title">id</span>></span>build-helper-add-resource<span class="tag">&lt;/<span class="title">id</span>></span>
-                            <span class="tag">&lt;<span class="title">phase</span>></span>generate-resources<span class="tag">&lt;/<span class="title">phase</span>></span>
-                            <span class="tag">&lt;<span class="title">goals</span>></span>
-                                <span class="tag">&lt;<span class="title">goal</span>></span>add-resource<span class="tag">&lt;/<span class="title">goal</span>></span>
-                            <span class="tag">&lt;/<span class="title">goals</span>></span>
-                            <span class="tag">&lt;<span class="title">configuration</span>></span>
-                                <span class="tag">&lt;<span class="title">resources</span>></span>
-                                    <span class="tag">&lt;<span class="title">resource</span>></span><span class="tag">&lt;<span class="title">directory</span>></span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/resources<span class="tag">&lt;/<span class="title">directory</span>></span><span class="tag">&lt;/<span class="title">resource</span>></span>
-                                <span class="tag">&lt;/<span class="title">resources</span>></span>
-                            <span class="tag">&lt;/<span class="title">configuration</span>></span>
-                        <span class="tag">&lt;/<span class="title">execution</span>></span>
-                    <span class="tag">&lt;/<span class="title">executions</span>></span>
-                <span class="tag">&lt;/<span class="title">plugin</span>></span>
-            <span class="tag">&lt;/<span class="title">plugins</span>></span>
-        <span class="tag">&lt;/<span class="title">build</span>></span>
-    <span class="tag">&lt;/<span class="title">profile</span>></span>
-    <span class="tag">&lt;<span class="title">profile</span>></span>
-        <span class="tag">&lt;<span class="title">id</span>></span>prod<span class="tag">&lt;/<span class="title">id</span>></span>
-    <span class="tag">&lt;/<span class="title">profile</span>></span>
-<span class="tag">&lt;/<span class="title">profiles</span>></span> </span></code></pre>
+<pre><code><span class="xml"><span class="tag">&lt;<span class="title">profiles</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">activation</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">activation</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">build</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">plugins</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>build-helper-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">version</span>&gt;</span></span><span class="number">1.5</span><span class="xml"><span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+                    <span class="tag">&lt;<span class="title">executions</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">id</span>&gt;</span>build-helper-add-source<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
+                                <span class="tag">&lt;<span class="title">goal</span>&gt;</span>add-source<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
+                            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
+                                <span class="tag">&lt;<span class="title">sources</span>&gt;</span>
+                                    <span class="tag">&lt;<span class="title">source</span>&gt;</span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/java<span class="tag">&lt;/<span class="title">source</span>&gt;</span>
+                                <span class="tag">&lt;/<span class="title">sources</span>&gt;</span>
+                            <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
+                        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
+                        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">id</span>&gt;</span>build-helper-add-resource<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>generate-resources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
+                                <span class="tag">&lt;<span class="title">goal</span>&gt;</span>add-resource<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
+                            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
+                            <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
+                                <span class="tag">&lt;<span class="title">resources</span>&gt;</span>
+                                    <span class="tag">&lt;<span class="title">resource</span>&gt;</span><span class="tag">&lt;<span class="title">directory</span>&gt;</span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/resources<span class="tag">&lt;/<span class="title">directory</span>&gt;</span><span class="tag">&lt;/<span class="title">resource</span>&gt;</span>
+                                <span class="tag">&lt;/<span class="title">resources</span>&gt;</span>
+                            <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
+                        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
+                    <span class="tag">&lt;/<span class="title">executions</span>&gt;</span>
+                <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">plugins</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">build</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">profiles</span>&gt;</span> </span></code></pre>
 <p>prod profile에서는 maven default를 사용한다. 
 
 </p>

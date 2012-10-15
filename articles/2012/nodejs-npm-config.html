@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-npm-config.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: npm config</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-npm-config.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: npm config</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 05</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#npm" class="tag">npm</a> <a href="/site/tagmap.html#config" class="tag">config</a> | <span><a href="/articles/2012/nodejs-npm-config.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-npm-config.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -79,7 +79,7 @@
 
 </p>
 <h3>set</h3>
-<pre><code>npm config <span class="keyword">set</span> key <span class="keyword">value</span></code></pre>
+<pre><code>npm config <span class="operator"><span class="keyword">set</span> <span class="keyword">key</span> <span class="keyword">value</span></code></pre>
 <p>key, value를 설정한다.
 
 </p>
@@ -97,7 +97,7 @@
 
 </p>
 <h3>delete</h3>
-<pre><code><span class="title">npm</span> config delete key</code></pre>
+<pre><code>npm config <span class="operator"><span class="keyword">delete</span> <span class="keyword">key</span></code></pre>
 <p>모든 설정 파일에서 key를 삭제한다.
 
 </p>
@@ -141,16 +141,16 @@
 <p>단축 파라미터는 여러 개를 붙여 사용해도 된다. 예를 들어:
 
 </p>
-<pre><code><span class="title">npm</span> ls -gpld
-# same <span class="keyword">as</span>:
-<span class="title">npm</span> ls <span class="comment">--global --parseable --long --loglevel info</span></code></pre>
+<pre><code><span class="comment">npm</span> <span class="comment">ls</span> <span class="literal">-</span><span class="comment">gpld</span>
+<span class="comment">#</span> <span class="comment">same</span> <span class="comment">as:</span>
+<span class="comment">npm</span> <span class="comment">ls</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">parseable</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">long</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">loglevel</span> <span class="comment">info</code></pre>
 <h2>Per-Package Config Settings</h2>
 <p>npm script를 사용할 때만 적용되는 설정도 할 수 있다. package.json의 "config" 설정은 "scripts" 설명을 이용할 때 적용된다. 다음과 같으면:
 
 </p>
 <pre><code>{ "<span class="attribute">name</span>" : <span class="value"><span class="string">"foo"</span>
-</span>, "<span class="attribute">config</span>" : <span class="value">{ "<span class="attribute">port</span>" : <span class="value"><span class="string">"8080"</span> </span>}
-</span>, "<span class="attribute">scripts</span>" : <span class="value">{ "<span class="attribute">start</span>" : <span class="value"><span class="string">"node server.js"</span> </span>} </span>}</code></pre>
+</span>, "<span class="attribute">config</span>" : <span class="value">{ "<span class="attribute">port</span>" : <span class="value"><span class="string">"8080"</span> }</span>
+</span>, "<span class="attribute">scripts</span>" : <span class="value">{ "<span class="attribute">start</span>" : <span class="value"><span class="string">"node server.js"</span> }</span> }</span></code></pre>
 <p><code>npm start</code>를 실행시킬 때 config 설정이 적용된다. 하지만, 다른 곳에 설정할 수도 있다. <code>&lt;name&gt;[@&lt;version&gt;]:&lt;key&gt;</code>처럼 정의하면 된다. 이 pacakge.json을 사용하는 server.js가 다음과 같으면:
 
 </p>
@@ -158,7 +158,7 @@
 <p>다음과 같이 바꿀 수 있다:
 
 </p>
-<pre><code><span class="title">npm</span> config set foo:port <span class="number">80</span></code></pre>
+<pre><code>npm config <span class="operator"><span class="keyword">set</span> foo:port <span class="number">80</span></code></pre>
 </div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jun 24 2012</span>&raquo;<a href="/articles/2012/nodejs-monkey-patching.html">nodejs에서의 멍키 패칭</a></li><li><span>Jun 17 2012</span>&raquo;<a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a></li><li><span>Jun 10 2012</span>&raquo;<a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a></li><li><span>May 13 2012</span>&raquo;<a href="/articles/2012/nodejs-modules.html">nodejs: modules</a></li><li><span>Apr 15 2012</span>&raquo;<a href="/articles/2012/nodejs-mocha.html">nodejs: Mocha</a></li><li><span>Feb 25 2012</span>&raquo;<a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a></li><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Jul 05 2011</span>&raquo;<a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';

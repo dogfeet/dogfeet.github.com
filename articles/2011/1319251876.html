@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1319251876.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">tav:Brain-free command-line options parser</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1319251876.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">tav:Brain-free command-line options parser</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Oct 22</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#tav" class="tag">tav</a> <a href="/site/tagmap.html#cli" class="tag">cli</a> | <span><a href="/articles/2011/1319251876.html#disqus_thread" data-disqus-identifier="/articles/2011/1319251876.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -33,9 +33,9 @@ console.log(opts, opts.args);</code></pre>
 <p>라고 만들고 나서 대충 실행하면:
 
 </p>
-<pre><code>#!/usr/bin/env bash
-<span class="char">$n</span>ode app.js --host=localhost --port=<span class="number">8080</span> --debug arg1 arg2
-{ <span class="method">host:</span> <span class="string">'localhost'</span>, <span class="method">port:</span> <span class="number">8080</span>, <span class="method">debug:</span> <span class="keyword">true</span> } [ <span class="string">'arg1'</span>, <span class="string">'arg2'</span> ]</code></pre>
+<pre><code><span class="comment">#!/usr/bin/env</span> <span class="comment">bash</span>
+<span class="comment">$node</span> <span class="comment">app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=localhost</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port=8080</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span> <span class="comment">arg1</span> <span class="comment">arg2</span>
+<span class="comment">{</span> <span class="comment">host:</span> <span class="comment">'localhost'</span>, <span class="comment">port:</span> <span class="comment">8080</span>, <span class="comment">debug:</span> <span class="comment">true</span> <span class="comment">}</span> <span class="title">[</span> <span class="comment">'arg1'</span>, <span class="comment">'arg2'</span> <span class="title">]</span></code></pre>
 <p>된다.
 
 </p>
@@ -63,17 +63,17 @@ console.log(opts);</code></pre>
 <p>정의한대로 usage를 자동으로 구성해준다. <code>--help</code> 옵션을 주면 전체 볼 수 있다. <code>--help</code>가 없으면 그때그때 필요한 것만 보여준다.
 
 </p>
-<pre><code>$node app.js <span class="comment">--host=localhost --debug arg1 arg2 --help</span>
-Very cool app
+<pre><code><span class="comment">$node</span> <span class="comment">app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=localhost</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span> <span class="comment">arg1</span> <span class="comment">arg2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">help</span>
+<span class="comment">Very</span> <span class="comment">cool</span> <span class="comment">app</span>
 
-Hostname
-    <span class="comment">--host *required</span>
-Binding <span class="keyword">port</span>
-    <span class="comment">--port</span>
-Debug this
-    <span class="comment">--debug</span>
-Help. This message.
-    <span class="comment">--help</span></code></pre>
+<span class="comment">Hostname</span>
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">host</span> <span class="comment">*required</span>
+<span class="comment">Binding</span> <span class="comment">port</span>
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span>
+<span class="comment">Debug</span> <span class="comment">this</span>
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span>
+<span class="comment">Help</span>. <span class="comment">This</span> <span class="comment">message</span>.
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">help</code></pre>
 <p>옵션의 속성으로 <code>Required</code>, <code>Unexpected</code>, <code>Optional</code>가 있다.
 
 </p>

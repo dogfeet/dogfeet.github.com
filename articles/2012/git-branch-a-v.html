@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-branch-a-v.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:branch-a-v</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-branch-a-v.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:branch-a-v</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jan 14</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#todo" class="tag">Todo</a> <a href="/site/tagmap.html#tracking branch" class="tag">Tracking Branch</a> <a href="/site/tagmap.html#branch" class="tag">Branch</a> | <span><a href="/articles/2012/git-branch-a-v.html#disqus_thread" data-disqus-identifier="/articles/2012/git-branch-a-v.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -36,9 +36,9 @@
 <p>merge를 설명할 때 사용했던 ship 저장소를 다시 살펴보자. 이 저장소를 clone하고 <code>git branch -a -v</code>를 실행한다:
 
 </p>
-<pre><code>$ git branch -a -v
-<span class="title">ship</span>                             <span class="number">3</span>f129b5 <span class="type">Fix</span> anchor
-<span class="title">remotes</span>/origin/ship              <span class="number">3</span>f129b5 <span class="type">Fix</span> anchor</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="comment">a</span> <span class="literal">-</span><span class="comment">v</span>
+<span class="comment">ship</span>                             <span class="comment">3f129b5</span> <span class="comment">Fix</span> <span class="comment">anchor</span>
+<span class="comment">remotes/origin/ship</span>              <span class="comment">3f129b5</span> <span class="comment">Fix</span> <span class="comment">anchor</code></pre>
 <p><code>-a</code>의 는 원격 브랜치를 포함한 모든 브랜치를 보여준다. 그리고 <code>-v</code>는 해당 브랜치의 마지막 커밋을 보여준다.
 
 </p>
@@ -64,9 +64,9 @@
 <p>마찬가지로 'behind 1'은 'origin/sink' 브랜치가 'feature/kitchen' 브랜치보다 커밋을 하나 더 가졌다는 것이다. <code>git log feature/kitchen...origin/ship --left-right</code>을 실행하면 다음과 같다:
 
 </p>
-<pre><code>$ git lg feature/kitchen..<span class="preprocessor">.origin</span>/ship --left-right
-> <span class="number">2</span>d45d4c - (origin/ship) <span class="keyword">Add</span> test
-&lt; e054c7e - (feature/kitchen) <span class="keyword">Add</span> sink unit</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">lg</span> <span class="comment">feature/kitchen</span>.<span class="string">.</span><span class="string">.</span><span class="comment">origin/ship</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span>-<span class="comment">right</span>
+&gt; <span class="comment">2d45d4c</span> <span class="literal">-</span> <span class="comment">(origin/ship)</span> <span class="comment">Add</span> <span class="comment">test</span>
+&lt; <span class="comment">e054c7e</span> <span class="literal">-</span> <span class="comment">(feature/kitchen)</span> <span class="comment">Add</span> <span class="comment">sink</span> <span class="comment">unit</code></pre>
 <p><code>git branch</code>의 <code>-v</code> 옵션은 Tracking 브랜치의 경우 두 브랜치 사이가 얼마나 멀어졌는지도 함께 보여준다.
 
 </p>
@@ -77,7 +77,7 @@
 <p>나는 해당 프로젝트의 'todo' 목록을 별도로 관리하지 않고 그냥 토픽 브랜치로 만든다. 그리고 <code>git branch -a -v</code> 명령으로 관리한다. 나는 편의를 위해서 <code>todo</code>라는 alias를 만들어 사용한다:
 
 </p>
-<pre><code><span class="title">git</span> config <span class="comment">--global alias.todo "branch -a -v"</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">alias</span>.<span class="comment">todo</span> <span class="comment">"branch</span> <span class="literal">-</span><span class="comment">a</span> <span class="literal">-</span><span class="comment">v"</code></pre>
 <h2>결론</h2>
 <p><code>git branch -a -v</code> 명령은 하던 일을 뭔지 기억하는데 도움이 된다. 간단하게만 관리할 수 있다면 일을 하는 것과 계획을 관리하는 것을 한 몸으로 할 수 있다.
 

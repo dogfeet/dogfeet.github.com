@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1318481700.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">ssh-agent, bash-it plugin</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1318481700.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">ssh-agent, bash-it plugin</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Oct 13</span>
  | <a href="/site/tagmap.html#ssh-agent" class="tag">ssh-agent</a> <a href="/site/tagmap.html#bash-it" class="tag">bash-it</a> <a href="/site/tagmap.html#bash" class="tag">bash</a> | <span><a href="/articles/2011/1318481700.html#disqus_thread" data-disqus-identifier="/articles/2011/1318481700.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -46,7 +46,7 @@ function bind_ssh_agent(){
   <span class="title">local</span> agent_pid=`ps -U <span class="variable">$USER</span> | grep ssh-agent | grep -v grep  | awk <span class="string">'{print <span class="variable">$1</span>}'</span> | xargs`
 
   if [ <span class="string">"<span class="variable">$agent_pid</span>"</span> = <span class="string">""</span> ]; <span class="title">then</span>
-    ssh-agent -t $(get_ssh_agent_timeout) > ~/.ssh/ssh_agent_rc
+    ssh-agent -t $(get_ssh_agent_timeout) &gt; ~/.ssh/ssh_agent_rc
 
     . ~/.ssh/ssh_agent_rc
 

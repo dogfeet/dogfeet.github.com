@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1317201600.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New in JavaScript 1.7</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1317201600.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">New in JavaScript 1.7</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Sep 28</span>
  | <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a> | <span><a href="/articles/2011/1317201600.html#disqus_thread" data-disqus-identifier="/articles/2011/1317201600.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -61,10 +61,10 @@ print(pair); <span class="regexp">//</span> prints each [key, value] pair <span 
 <p>Array에서 Iterator()의 두번째 인자로 true를 주면 index를 iteration한다.
 
 </p>
-<pre><code><span class="keyword">var</span> langs = [<span class="string">'JavaScript'</span>, <span class="string">'Python'</span>, <span class="string">'C++'</span>];
-<span class="keyword">var</span> it = Iterator(langs, <span class="keyword">true</span>);
-<span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> it)
-  print(i); <span class="comment">// prints 0, then 1, then 2</span></code></pre>
+<pre><code><span class="reserved">var</span> langs = [<span class="string">'JavaScript'</span>, <span class="string">'Python'</span>, <span class="string">'C++'</span>];
+<span class="reserved">var</span> it = Iterator(langs, <span class="literal">true</span>);
+<span class="keyword">for</span> (<span class="reserved">var</span> i <span class="keyword">in</span> it)
+  print(i); <span class="regexp">//</span> prints <span class="number">0</span>, <span class="keyword">then</span> <span class="number">1</span>, <span class="keyword">then</span> <span class="number">2</span></code></pre>
 <p>let 키워드로 block scoped 변수를 만들어 할당할 수 있다:
 
 </p>
@@ -91,7 +91,7 @@ print(pair); <span class="regexp">//</span> prints each [key, value] pair <span 
   <span class="keyword">this</span><span class="variable">.current</span> = <span class="keyword">this</span><span class="variable">.range</span><span class="variable">.low</span>;
 }
 RangeIterator<span class="variable">.prototype</span><span class="variable">.next</span> = function(){
-  <span class="keyword">if</span> (<span class="keyword">this</span><span class="variable">.current</span> > <span class="keyword">this</span><span class="variable">.range</span><span class="variable">.high</span>)
+  <span class="keyword">if</span> (<span class="keyword">this</span><span class="variable">.current</span> &gt; <span class="keyword">this</span><span class="variable">.range</span><span class="variable">.high</span>)
     <span class="keyword">throw</span> StopIteration;
   <span class="keyword">else</span>
     <span class="keyword">return</span> <span class="keyword">this</span><span class="variable">.current</span>++;
@@ -115,7 +115,7 @@ RangeIterator<span class="variable">.prototype</span><span class="variable">.nex
 <p>yeild 키워드를 사용하려면 Script Block을 다음과 같이 선언해야 한다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"application/JavaScript;version=1.7"</span>/></span><span class="javascript"></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"application/JavaScript;version=1.7"</span>/&gt;</span><span class="javascript"></span></code></pre>
 <p>Generator()를 호출하면 그 함수가 바로 실행되는 것이 아니라 generator-iterator 객체를 반환한다. 그리고
 반환된 generator-iterator 객체의 next() 메소드를 호출할 때마다 다음 yield까지 실행한다. 함수가 끝나거나
 return되면 StopIteration 예외를 던진다.
@@ -188,7 +188,7 @@ fibonacci()에 limit 인자를 추가한다:
     <span class="title">var</span> current = fn2;
     <span class="title">fn2</span> = fn1;
     <span class="title">fn1</span> = fn1 + current;
-    <span class="title">if</span> (limit &amp;&amp; current > limit)
+    <span class="title">if</span> (limit &amp;&amp; current &gt; limit)
       return;
     <span class="title">yield</span> current;
   }</code></pre>
@@ -341,7 +341,7 @@ var b = <span class="number">3</span><span class="comment">;</span>
 }
 <span class="keyword">var</span> a, b;
 [a, b] = f();
-document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br>\n"</span>); </code></pre>
+document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br&gt;\n"</span>); </code></pre>
 <p>리턴값중에서 몇개는 무시할 수도 있다.
 
 </p>
@@ -350,7 +350,7 @@ document.write (<span class="string">"A is "</span> + a + <span class="string">"
 }
 
 <span class="keyword">var</span> [a, , b] = f();
-document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br>\n"</span>); </code></pre>
+document.write (<span class="string">"A is "</span> + a + <span class="string">" B is "</span> + b + <span class="string">"&lt;br&gt;\n"</span>); </code></pre>
 <p>결과를 Array로도 받을 수 있다.
 
 </p>
@@ -362,7 +362,7 @@ document<span class="preprocessor">.write</span> (<span class="string">"A is "</
 <pre><code><span class="keyword">let</span> obj = <span class="tuple">{ width: <span class="number">3</span>, length: <span class="number">1.5</span>, color: <span class="string">"orange"</span> }</span>;
 
 <span class="function"><span class="title">for</span> <span class="params">(let [name, value] in <span class="variable">Iterator</span>(obj)</span>) {
-  <span class="title">document</span>.<span class="title">write</span> <span class="params">(<span class="string">"Name: "</span> + name + <span class="string">", Value: "</span> + value + <span class="string">"&lt;br>\n"</span>)</span>;
+  <span class="title">document</span>.<span class="title">write</span> <span class="params">(<span class="string">"Name: "</span> + name + <span class="string">", Value: "</span> + value + <span class="string">"&lt;br&gt;\n"</span>)</span>;
 }</code></pre>
 <p>Array안에 있는 객체의 프로퍼티에 직접 접근할 수도 있다.
 
@@ -389,7 +389,7 @@ document<span class="preprocessor">.write</span> (<span class="string">"A is "</
 ];
 
 for each (let {<span class="method">name:</span> n, <span class="method">family:</span> { <span class="method">father:</span> f } } in people) {
-  document.write (<span class="comment">"Name: "</span> + n + <span class="comment">", Father: "</span> + f + <span class="comment">"&lt;br>\n"</span>);
+  document.write (<span class="comment">"Name: "</span> + n + <span class="comment">", Father: "</span> + f + <span class="comment">"&lt;br&gt;\n"</span>);
 } </code></pre>
 <p>함수 인자에서도 사용할 수 있다:
 

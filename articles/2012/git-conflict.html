@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-conflict.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:conflict</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-conflict.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:conflict</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jan 01</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> | <span><a href="/articles/2012/git-conflict.html#disqus_thread" data-disqus-identifier="/articles/2012/git-conflict.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -51,32 +51,32 @@ theirs</code></pre>
 <p><code>theirs</code> 브랜치를 <code>ours</code> 브랜치에 Merge하면 충돌 난다:
 
 </p>
-<pre><code><span class="variable">$ </span>git merge theirs
-<span class="constant">Auto</span>-merging conflict
-<span class="constant">CONFLICT</span> (content)<span class="symbol">:</span> <span class="constant">Merge</span> conflict <span class="keyword">in</span> conflict
-<span class="constant">Automatic</span> merge failed; fix conflicts <span class="keyword">and</span> <span class="keyword">then</span> commit the result.</code></pre>
+<pre><code>$ git merge theirs
+Auto-merging conflict
+CONFLICT (content): Merge conflict <span class="keyword">in</span> conflict
+Automatic merge failed; fix conflicts <span class="keyword">and</span> <span class="keyword">then</span> commit <span class="keyword">the</span> <span class="constant">result</span>.</code></pre>
 <p>diff 명령으로 어디서 충돌 났는지 확인한다:
 
 </p>
-<pre><code>$ git diff
-diff --cc conflict
-index 1b9074b,f853c8d..0000000
-<span class="header">--- a/conflict</span>
-<span class="header">+++ b/conflict</span>
-@@@ -1,1 -1,1 +1,5 @@@
-<span class="addition">++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
- +ours
-<span class="addition">++=======</span>
-<span class="addition">+ theirs</span>
-<span class="addition">++>>>>>>> theirs</span></code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">diff</span>
+<span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">conflict</span>
+<span class="comment">index</span> <span class="comment">1b9074b</span>,<span class="comment">f853c8d</span>.<span class="string">.</span><span class="comment">0000000</span>
+<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/conflict</span>
+<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/conflict</span>
+<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">1</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">1</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">5</span> <span class="comment">@@@</span>
+<span class="literal">+</span><span class="literal">+</span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="comment">HEAD</span>
+ <span class="literal">+</span><span class="comment">ours</span>
+<span class="literal">+</span><span class="literal">+</span><span class="comment">=======</span>
+<span class="literal">+</span> <span class="comment">theirs</span>
+<span class="literal">+</span><span class="literal">+</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; <span class="comment">theirs</code></pre>
 <p>편집기로 conflict 파일을 손으로 수정해도 되지만 그냥 ours에 있는 파일을 사용할 수 있다:
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout --ours -- conflict</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ours</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">conflict</code></pre>
 <p>theirs의 파일을 선택할 수도 있다:
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout --theirs -- conflict</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">theirs</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">conflict</code></pre>
 <p>충돌을 해결했으면 <code>git add</code>로 추가하고 커밋한다.
 
 </p>
@@ -84,20 +84,20 @@ index 1b9074b,f853c8d..0000000
 <p><code>git diff</code> 명령에도 <code>--ours</code>, <code>--theirs</code> 옵션이 있다. 이 옵션을 주면 <code>git diff</code> 명령은 다른 색으로 표시해준다. 예를 들어 다음과 같이 실행한다.
 
 </p>
-<pre><code><span class="variable">$ </span>git diff --ours --color=auto</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ours</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">color=auto</code></pre>
 <p>그러면 ours 브랜치의 내용만 다른 색으로 표시해준다. <code>--theirs</code>도 같은 방법으로 확인할 수 있다.
 
 </p>
 <p>diff 명령은 <code>--base</code> 옵션이 있어서 이 옵션을 주면 두 브랜치의 base 커밋에 있는 내용도 같이 보여준다:
 
 </p>
-<pre><code><span class="preprocessor"># git diff --base</span></code></pre>
+<pre><code><span class="comment">#</span> <span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">base</code></pre>
 <h2>Merge</h2>
 <p>Merge할 때 아예 어느 것을 선택할지 정해줄 수 있다. ours 브랜치의 것을 선택하는 merge를 해보자.
 
 </p>
-<pre><code><span class="variable">$ </span>git merge -s ours theirs
-<span class="constant">Merge</span> made by ours.</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">merge</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">ours</span> <span class="comment">theirs</span>
+<span class="comment">Merge</span> <span class="comment">made</span> <span class="comment">by</span> <span class="comment">ours</span>.</code></pre>
 <p>그리고 파일 내용을 보면 ours 브랜치의 파일로 Merge 돼 있다.
 
 </p>
@@ -122,7 +122,7 @@ ours</code></pre>
 <pre><code>src/main/resoruces/<span class="transposed_variable">env.</span><span class="keyword">properties</span> merge=ours</code></pre>
 <p><code>git merge</code> 명령을 실행하면 이 파일은 항상 ours의 파일로 Merge한다. 그래서 환경 설정이 Merge될 걱정 없이 사용할 수 있다.
 </p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-conflict.html';

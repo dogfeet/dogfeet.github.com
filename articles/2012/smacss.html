@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS: Brief Notes - Part 1</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a>, <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS: Brief Notes - Part 1</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2012 Feb 04</span>
  | <a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#smacss" class="tag">SMACSS</a> <a href="/site/tagmap.html#jonathan snook" class="tag">Jonathan Snook</a> <a href="/site/tagmap.html#review" class="tag">Review</a> | <span><a href="/articles/2012/smacss.html#disqus_thread" data-disqus-identifier="/articles/2012/smacss.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -90,10 +90,10 @@
 <p>Base Rule을 쉽게 말하자면 id, class가 없는 스타일들을 말한다. 다음과 같은 것들이 Base Rule이다:
 
 </p>
-<pre><code><span class="tag">html</span>, <span class="tag">body</span>, <span class="tag">form</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span>;</span> <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span>;</span> <span class="rule">}</span></span>
-<span class="tag">input</span><span class="attr_selector">[type=text]</span> <span class="rules">{ <span class="rule"><span class="attribute">boarder</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#999</span></span>;</span> <span class="rule">}</span></span>
-<span class="tag">a</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#039</span></span>;</span> <span class="rule">}</span></span>
-<span class="tag">a</span><span class="pseudo">:hover</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#03C</span></span>;</span> <span class="rule">}</span></span></code></pre>
+<pre><code><span class="tag">html</span>, <span class="tag">body</span>, <span class="tag">form</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule">}</span></span>
+<span class="tag">input</span><span class="attr_selector">[type=text]</span> <span class="rules">{ <span class="rule"><span class="attribute">boarder</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#999</span>;</span></span> <span class="rule">}</span></span>
+<span class="tag">a</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#039</span>;</span></span> <span class="rule">}</span></span>
+<span class="tag">a</span><span class="pseudo">:hover</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#03C</span>;</span></span> <span class="rule">}</span></span></code></pre>
 <p>Base Rule은 직접 이름 지을 수 없는 element, attribute, psedo 셀렉터 등으로만 만든다.
 
 </p>
@@ -119,26 +119,26 @@
 <p>Exmaple Module에서 하위 스타일을 하나 만든다면 다음과 같이 하면 된다:
 
 </p>
-<pre><code><span class="class">.exm-caption</span> <span class="rules">{ <span class="rule">}</span></span></code></pre>
+<pre><code><span class="string">.</span><span class="comment">exm</span>-<span class="comment">caption</span> <span class="comment">{</span> <span class="comment">}</code></pre>
 <p>Module은 재사용할 수 있어야 하기 때문에 id 셀렉터를 사용하지 않는다. 그리고 element 셀렉터도 사용하지 않는다. 다음과 같은 스타일과 html을 보자:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"fld"</span>></span>
-    <span class="tag">&lt;<span class="title">span</span>></span>Folder Name<span class="tag">&lt;/<span class="title">span</span>></span>
-<span class="tag">&lt;/<span class="title">div</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"fld"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span>&gt;</span>Folder Name<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
 
-.fld > span {
+.fld &gt; span {
     padding-left: 20px;
     background: url(icon.png);
 }</code></pre>
 <p>이렇게 사용해도 무방하지만, 프로젝트 규모가 커질수록 다른 element로 바꿔야 할 수도 있고 element 본연의 특징을 유지하기 어려울 수 있다. <code>span</code>을 제거하고 다음과 같이 변경한다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"fld"</span>></span>
-    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"fld-name"</span>></span>Folder Name<span class="tag">&lt;/<span class="title">span</span>></span>
-<span class="tag">&lt;/<span class="title">div</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"fld"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"fld-name"</span>&gt;</span>Folder Name<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
 
-.fld > .fld-name {
+.fld &gt; .fld-name {
     padding-left: 20px;
     background: url(icon.png);
 }</code></pre>
@@ -153,21 +153,21 @@
 
 </p>
 <pre><code><span class="id">#article</span> <span class="rules">{
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80</span>%</span>;</span>
-    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span>;</span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80</span>%;</span></span>
+    <span class="rule"><span class="attribute">float</span>:<span class="value"> left;</span></span>
 <span class="rule">}</span></span>
 
 <span class="id">#sidebar</span> <span class="rules">{
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20</span>%</span>;</span>
-    <span class="rule"><span class="attribute">float</span>:<span class="value"> right</span>;</span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20</span>%;</span></span>
+    <span class="rule"><span class="attribute">float</span>:<span class="value"> right;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.l-fixed</span> <span class="id">#article</span> <span class="rules">{
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">600</span>px</span>;</span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">600</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.l-fixed</span> <span class="id">#sidebar</span> <span class="rules">{
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200</span>px</span>;</span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>id 셀렉터에는 'l'을 붙이지 않고 class 셀렉터에만 'l'을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.
 
@@ -185,7 +185,7 @@
 <p>상태와 관련된 스타일을 말하고 이름을 지을 때 's'를 붙인다. 예를 들면 이런 거다:
 
 </p>
-<pre><code><span class="class">.s-hidden</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> none</span>;</span> <span class="rule">}</span></span></code></pre>
+<pre><code><span class="class">.s-hidden</span> <span class="rules">{ <span class="rule"><span class="attribute">display</span>:<span class="value"> none;</span></span> <span class="rule">}</span></span></code></pre>
 <p><code>!important</code>를 사용해도 되는 Rule은 State Rule뿐이다. 다른 Rule에는 <code>!important</code>를 사용해서는 절대 안된다. 하지만, State Rule에서도 권장하지 않는다. 되도록 안 쓰는 것이 좋다. 뭥미:) 그냥 사용하지 말자.
 
 </p>

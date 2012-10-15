@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/git-merge.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:merge</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/git-merge.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:merge</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 10</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#branch" class="tag">Branch</a> <a href="/site/tagmap.html#merge" class="tag">Merge</a> <a href="/site/tagmap.html#rebase" class="tag">Rebase</a> | <span><a href="/articles/2011/git-merge.html#disqus_thread" data-disqus-identifier="/articles/2011/git-merge.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -76,34 +76,34 @@
 <p>ship 브랜치 히스토리가 다음과 같다고 하자:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>23a973a - (ship) Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>이 상태에서 '프랑키'는 feature/guns 브랜치를 만들어 대포를 두 번에 나눠서 달았다. 배를 고친 후 feature/guns 브랜치는 다음과 같다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>f296244 - (feature/guns) Add gun2
-<span class="bullet">* </span>084ebfa - Add new A gun
-<span class="bullet">* </span>23a973a - (ship) Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">f296244</span> <span class="literal">-</span> <span class="comment">(feature/guns)</span> <span class="comment">Add</span> <span class="comment">gun2</span>
+<span class="comment">*</span> <span class="comment">084ebfa</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">A</span> <span class="comment">gun</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>이것을 ship 브랜치에 merge하면 feature/guns는 ship을 base로 하고 있기 때문에 Fast-forward된다. ship 브랜치의 히스토리는 다음과 같아진다:
 
 </p>
-<pre><code><span class="bullet">* </span>f296244 - (ship, feature/guns) Add gun2
-<span class="bullet">* </span>084ebfa - Add new A gun
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">*</span> <span class="comment">f296244</span> <span class="literal">-</span> <span class="comment">(ship</span>, <span class="comment">feature/guns)</span> <span class="comment">Add</span> <span class="comment">gun2</span>
+<span class="comment">*</span> <span class="comment">084ebfa</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">A</span> <span class="comment">gun</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>사실 대포를 두 번에 나눠서 달았지만, ship 브랜치 히스토리에는 그냥 대포를 추가했다고 남기고 싶다. 대포를 나눠서 추가했든 한 번에 추가했든 그게 의미 있는 게 아니라 대포를 추가했다는 사실만 중요하기 때문에 하나로 합치는 것이 좋다.
 
 </p>
 <p><code>git merge --no-commit --squash</code> 명령으로 두 커밋을 합쳐서 merge하면 다음과 같아진다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>99f108e - (ship) Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p><code>--no-commit</code> 옵션을 주면 말 그대로 merge한 후 commit하지 않는다. <code>--no--commit</code> 옵션이 없더라도 커밋 여러 개를 합친 것이기(squash) 때문에 merge만하고 자동으로 커밋해주지 않는다. 수동으로 커밋 메시지를 수정하고 커밋한다.
 
 </p>
@@ -111,83 +111,83 @@
 <p>'프랑키'가 대포를 추가하는 사이에 '나미'는 'feature/tangerine' 브랜치를 만들고 귤 나무를 하나 심었다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>945381e - (feature/tangerine) Plant new tangerine
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">945381e</span> <span class="literal">-</span> <span class="comment">(feature/tangerine)</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>'나미'는 자신의 결과물을 push하기 위해서 먼저 pull한다. 그럼 ‘나미’의 ship 브랜치는 다음과 같다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>99f108e - (ship) Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>merge하기 전에 여기서도 두 브랜치에 어떤 차이가 있는 지 확인한다. 이때는 <code>git log --left-right ship...feature/tangerine</code> 명령으로 두 브랜치 사이에 뭐가 다른지 확인한다. <code>...</code>은 서로 다른 커밋을 모두 보여준다.
 
 </p>
 <pre><code>:::text
-> <span class="number">945381</span>e - (feature/tangerine) Plant <span class="keyword">new</span> tangerine
+&gt; <span class="number">945381</span>e - (feature/tangerine) Plant <span class="keyword">new</span> tangerine
 &lt; <span class="number">99f</span>108e - (ship) Add <span class="keyword">new</span> guns</code></pre>
 <p><code>&gt;</code>는 파라미터로 넘긴 오른쪽 브랜치에만 있는 커밋이고 <code>&lt;</code>는 왼쪽 브랜치에만 있는 커밋이다. 여기서 feature/tangerine를 merge하면 ship 브랜치는 다음과 같아진다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">*   </span>2cc0cb8 - (dev) Merge branch 'feature/tangerine' into dev
-|\
-| * 945381e - (feature/tangerine) Plant new tangerine
-<span class="bullet">* </span>| 99f108e - Add new guns
-|/
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span>   <span class="comment">2cc0cb8</span> <span class="literal">-</span> <span class="comment">(dev)</span> <span class="comment">Merge</span> <span class="comment">branch</span> <span class="comment">'feature/tangerine'</span> <span class="comment">into</span> <span class="comment">dev</span>
+<span class="comment">|\</span>
+<span class="comment">|</span> <span class="comment">*</span> <span class="comment">945381e</span> <span class="literal">-</span> <span class="comment">(feature/tangerine)</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">|</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">|/</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>ship 브랜치에 merge 커밋이 들어갔기 때문에 히스토리가 선형적이지 않다. 곧 사라질 브랜치인 'feature/tangerine' 브랜치의 잔재가 커밋 히스토리에 남는다. 이럴 때는 rebase가 필요하다. 다음과 같이 feature/tangerine 브랜치를 checkout하고 rebase한다:
 
 </p>
 <pre><code>$ git checkout feature/tangerine
 $ git rebase ship
-First, rewinding head <span class="keyword">to</span> replay your work <span class="keyword">on</span> top <span class="keyword">of</span> it...
-Applying: Plant <span class="keyword">new</span> tangerine</code></pre>
+First, rewinding head <span class="keyword">to</span> replay your work <span class="function_start"><span class="keyword">on</span> <span class="title">top</span></span> <span class="keyword">of</span> <span class="keyword">it</span>...
+Applying: Plant new tangerine</code></pre>
 <p>그럼 feature/tangerine의 히스토리는 다음과 같아진다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>0c8c128 - (feature/tangerine) Plant new tangerine
-<span class="bullet">* </span>99f108e - (ship) Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">(feature/tangerine)</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>feature/tangerine의 히스토리를 잘 보자. feature/tangerine 브랜치에서 추가한 커밋의 SHA 값이 '945381e'에서 '0c8c128'로 바뀌었다. rebase하면 ship 브랜치가 가리키는 커밋을 base로 해서 해당 커밋 개체를 다시 만든다. 그래서 저장소에 이미 push한 커밋에 대해서 rebase하면 다른 동료가 혼란스러워하고 히스토리를 다시 정리하기 위해 추가작업이 필요해진다
 
 </p>
 <p>그리고 나서 ship 브랜치에 feature/tangerine을 merge한다. 이때 feature/tangerine 브랜치는 ship 브랜치를 base로 하기 때문에 Fast-forward된다. merge하면 ship 브랜치의 히스토리는 다음과 같아진다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>0c8c128 - (ship, feature/tangerine) Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">(ship</span>, <span class="comment">feature/tangerine)</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <h3>Cherry-pick</h3>
 <p>'루피'는 고기와 과일을 가지고 돌아왔다. '루피'의 브랜치, feature/food는 다음과 같다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>df19672 - (feature/food) Add fruits
-<span class="bullet">* </span>663ced1 - Add meats
-<span class="bullet">* </span>0c8c128 - (ship) Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">df19672</span> <span class="literal">-</span> <span class="comment">(feature/food)</span> <span class="comment">Add</span> <span class="comment">fruits</span>
+<span class="comment">*</span> <span class="comment">663ced1</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">meats</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>그런데 배에 이미 과일이 많아서 고기만 배에 넣기로 했다. 두 커밋 'df19672', '663ced1' 중에서 '663ced1' 골라서 merge 시킬 수 있을까? 이럴 때 cherry-pick을 사용한다. cherry-pick은 기여자가 보내온 커밋 중에서 하나만 rebase하는 것이다. 커밋 하나만 rebase하는 것이기 때문에 커밋 개체도 새로 만들어진다.
 
 </p>
 <p>ship 브랜치로 이동해서 <code>git cherry-pick 663ced1</code> 명령을 실행하면 ship 브랜치 히스토리는 다음과 같아진다:
 
 </p>
-<pre><code>:::text
-<span class="bullet">* </span>271fa93 - (ship, feature/food) Add meats
-<span class="bullet">* </span>0c8c128 - Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span> <span class="comment">271fa93</span> <span class="literal">-</span> <span class="comment">(ship</span>, <span class="comment">feature/food)</span> <span class="comment">Add</span> <span class="comment">meats</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <h2>Fast-forward Merge와 Merge 커밋</h2>
 <p>merge 커밋을 해야 하는 이유는 대개 이슈사항을 커밋 하나로 정리할 수 없기 때문이다. 이슈를 하나로 정리해서 히스토리를 선형적으로 관리하는 것도 좋은 방법이지만 커밋 하나로 정리할 수 없는 이슈를 하나로 정리해 버리면 나중에 추적하기도 관리하기도 어려워진다.
 
@@ -199,19 +199,19 @@ Applying: Plant <span class="keyword">new</span> tangerine</code></pre>
 <p>fast-forward merge하는 방법을 살펴보자. '프랑키'는 feature/fix-ship 브랜치를 만들어 뱃머리와 닻을 수리했다:
 
 </p>
-<pre><code><span class="bullet">* </span>52f084e - (HEAD, feature/fix-ship) Fix anchor
-<span class="bullet">* </span>eb1db0d - Fix sunny bow
-<span class="bullet">* </span>271fa93 - (ship) Add meats
-<span class="bullet">* </span>0c8c128 - Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">*</span> <span class="comment">52f084e</span> <span class="literal">-</span> <span class="comment">(HEAD</span>, <span class="comment">feature/fix</span>-<span class="comment">ship)</span> <span class="comment">Fix</span> <span class="comment">anchor</span>
+<span class="comment">*</span> <span class="comment">eb1db0d</span> <span class="literal">-</span> <span class="comment">Fix</span> <span class="comment">sunny</span> <span class="comment">bow</span>
+<span class="comment">*</span> <span class="comment">271fa93</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">meats</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>이 브랜치를 ship 브랜치에 merge한다. 먼저, <code>...</code>으로 fast-forward merge될 수 있는지 확인한다.
 
 </p>
-<pre><code>$ git <span class="built_in">log</span> --left-right <span class="transposed_variable">ship...</span>feature/<span class="built_in">fix</span>-ship
-> <span class="number">52</span>f084e - (feature/<span class="built_in">fix</span>-ship) Fix anchor
-> eb1db0d - Fix sunny bow</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span>-<span class="comment">right</span> <span class="comment">ship</span>.<span class="string">.</span><span class="string">.</span><span class="comment">feature/fix</span>-<span class="comment">ship</span>
+&gt; <span class="comment">52f084e</span> <span class="literal">-</span> <span class="comment">(feature/fix</span>-<span class="comment">ship)</span> <span class="comment">Fix</span> <span class="comment">anchor</span>
+&gt; <span class="comment">eb1db0d</span> <span class="literal">-</span> <span class="comment">Fix</span> <span class="comment">sunny</span> <span class="comment">bow</code></pre>
 <p>feature/fix-ship 브랜치는 ship 브랜치를 base로 하기 때문에 fast-forward merge될 수 있다. <code>merge-base</code> 명령으로도 확인할 수 있다. 이 명령은 두 브랜치가 공통으로 하는 공통 커밋을 알려준다:
 
 </p>
@@ -223,13 +223,13 @@ Applying: Plant <span class="keyword">new</span> tangerine</code></pre>
 <p><code>--no-ff</code> 옵션을 사용하지 않고 merge하면 fast-forward merge된다.
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout ship
-<span class="variable">$ </span>git merge feature/fix-ship 
-<span class="constant">Updating</span> <span class="number">271</span>fa93..<span class="number">52</span>f084e
-<span class="constant">Fast</span>-forward
- <span class="number">0</span> files changed, <span class="number">0</span> insertions(+), <span class="number">0</span> deletions(-)
- create mode <span class="number">100644</span> anchor
- create mode <span class="number">100644</span> sunny</code></pre>
+<pre><code>$ git checkout ship
+$ git merge feature/fix-ship 
+Updating 271fa93..52f084e
+Fast-forward
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ <span class="operator"><span class="keyword">create</span> mode <span class="number">100644</span> anchor
+ <span class="keyword">create</span> mode <span class="number">100644</span> sunny</code></pre>
 <h3>Merge 커밋</h3>
 <p>merge 커밋은 단순하게 말해서 커밋의 집합이라고 생각할 수 있다. merge 커밋을 만들어야 하는 때는 여러 커밋을 묶어서 관리하고자 할 때이다.
 
@@ -240,46 +240,46 @@ Applying: Plant <span class="keyword">new</span> tangerine</code></pre>
 <p>위에서 merge 했던 것을 다시 원상태로 돌린다(revert):
 
 </p>
-<pre><code>$ git reset <span class="comment">--hard HEAD~2</span>
-HEAD <span class="keyword">is</span> now at <span class="number">271</span>fa93 Add meats</code></pre>
+<pre><code>$ git re<span class="operator"><span class="keyword">set</span> --hard HEAD~<span class="number">2</span>
+HEAD <span class="keyword">is</span> now <span class="keyword">at</span> <span class="number">271</span>fa93 <span class="keyword">Add</span> meats</code></pre>
 <p>커밋이 두 개라서 feature 하나를 원래대로 복구 할 때 커밋 두 개를 모두 reset해야 한다.
 
 </p>
 <p>이제 <code>--no-ff</code>을 주고 merge 커밋을 만든다.
 
 </p>
-<pre><code><span class="variable">$ </span>git checkout ship
-<span class="variable">$ </span>git merge --no-ff feature/fix-ship
-<span class="constant">Merge</span> made by recursive.
- <span class="number">0</span> files changed, <span class="number">0</span> insertions(+), <span class="number">0</span> deletions(-)
- create mode <span class="number">100644</span> anchor
- create mode <span class="number">100644</span> sunny</code></pre>
+<pre><code>$ git checkout ship
+$ git merge <span class="comment">--no-ff feature/fix-ship</span>
+Merge made by recursive.
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ <span class="operator"><span class="keyword">create</span> mode <span class="number">100644</span> anchor
+ <span class="keyword">create</span> mode <span class="number">100644</span> sunny</code></pre>
 <p>이제 ship 브랜치의 히스토리를 살펴보자:
 
 </p>
-<pre><code><span class="bullet">*   </span>65f14bd - (HEAD, ship) Merge branch 'feature/fix-ship' into ship
-|\  
-| * 52f084e - (feature/fix-ship) Fix anchor
-| * eb1db0d - Fix sunny bow
-|/ 
-<span class="bullet">* </span>271fa93 - (ship) Add meats
-<span class="bullet">* </span>0c8c128 - Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">*</span>   <span class="comment">65f14bd</span> <span class="literal">-</span> <span class="comment">(HEAD</span>, <span class="comment">ship)</span> <span class="comment">Merge</span> <span class="comment">branch</span> <span class="comment">'feature/fix</span>-<span class="comment">ship'</span> <span class="comment">into</span> <span class="comment">ship</span>
+<span class="comment">|\</span>  
+<span class="comment">|</span> <span class="comment">*</span> <span class="comment">52f084e</span> <span class="literal">-</span> <span class="comment">(feature/fix</span>-<span class="comment">ship)</span> <span class="comment">Fix</span> <span class="comment">anchor</span>
+<span class="comment">|</span> <span class="comment">*</span> <span class="comment">eb1db0d</span> <span class="literal">-</span> <span class="comment">Fix</span> <span class="comment">sunny</span> <span class="comment">bow</span>
+<span class="comment">|/</span> 
+<span class="comment">*</span> <span class="comment">271fa93</span> <span class="literal">-</span> <span class="comment">(ship)</span> <span class="comment">Add</span> <span class="comment">meats</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <p>어떤 feature를 merge했고 그 feature에 해당하는 커밋이 무엇인지 히스토리에 남는다. 만약 이 merge를 취소하고 싶을 때는 다음과 같이 실행하면 된다.
 
 </p>
-<pre><code>$ git reset <span class="comment">--hard HEAD~1</span>
-HEAD <span class="keyword">is</span> now at <span class="number">271</span>fa93 Add meats</code></pre>
+<pre><code>$ git re<span class="operator"><span class="keyword">set</span> --hard HEAD~<span class="number">1</span>
+HEAD <span class="keyword">is</span> now <span class="keyword">at</span> <span class="number">271</span>fa93 <span class="keyword">Add</span> meats</code></pre>
 <p>merge 커밋이 있기 때문에 'HEAD~1' 만으로도 feature/fix-ship에 해당하는 커밋이 모두 reset된다:
 
 </p>
-<pre><code><span class="bullet">* </span>271fa93 - (HEAD, ship) Add meats
-<span class="bullet">* </span>0c8c128 - Plant new tangerine
-<span class="bullet">* </span>99f108e - Add new guns
-<span class="bullet">* </span>23a973a - Add feature/sample
-<span class="bullet">* </span>1934594 - Add ship</code></pre>
+<pre><code><span class="comment">*</span> <span class="comment">271fa93</span> <span class="literal">-</span> <span class="comment">(HEAD</span>, <span class="comment">ship)</span> <span class="comment">Add</span> <span class="comment">meats</span>
+<span class="comment">*</span> <span class="comment">0c8c128</span> <span class="literal">-</span> <span class="comment">Plant</span> <span class="comment">new</span> <span class="comment">tangerine</span>
+<span class="comment">*</span> <span class="comment">99f108e</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">new</span> <span class="comment">guns</span>
+<span class="comment">*</span> <span class="comment">23a973a</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">feature/sample</span>
+<span class="comment">*</span> <span class="comment">1934594</span> <span class="literal">-</span> <span class="comment">Add</span> <span class="comment">ship</code></pre>
 <h2>결론</h2>
 <p>Vincent Driessen는 <a href="http://dogfeet.github.com/articles/2011/a-successful-git-branching-model.html">A successful Git branching model</a>에서 --no-ff를 기본 옵션으로 해야 한다고 했지만, 꼭 그렇지 않다. 히스토리를 어떻게 관리할지에 따라 선택해야 하고 fast-forward merge해야 하는 경우도 매우 많다.
 

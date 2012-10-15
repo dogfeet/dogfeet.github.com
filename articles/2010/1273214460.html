@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1273214460.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">c++ downcasting with dynamic_cast</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1273214460.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">c++ downcasting with dynamic_cast</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2010 May 07</span>
  | <a href="/site/tagmap.html#c++" class="tag">c++</a> <a href="/site/tagmap.html#downcasting" class="tag">Downcasting</a> <a href="/site/tagmap.html#dynamic_cast" class="tag">dynamic_cast</a> <a href="/site/tagmap.html#virtual class" class="tag">virtual class</a> | <span><a href="/articles/2010/1273214460.html#disqus_thread" data-disqus-identifier="/articles/2010/1273214460.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -43,8 +43,8 @@
 <pre><code>Base *b1 = <span class="keyword">new</span> Derive();
 Base *b2 = <span class="keyword">new</span> Derive2();
 
-Derive *d1 = <span class="keyword">dynamic_cast</span>&lt;derive *> (b1); <span class="comment">// b1</span>
-Derive *d2 = <span class="keyword">dynamic_cast</span>&lt;derive *> (b2); <span class="comment">// null</span></code></pre>
+Derive *d1 = <span class="keyword">dynamic_cast</span>&lt;derive *&gt; (b1); <span class="comment">// b1</span>
+Derive *d2 = <span class="keyword">dynamic_cast</span>&lt;derive *&gt; (b2); <span class="comment">// null</span></code></pre>
 <p>restriction
 base class must be virtual class
 

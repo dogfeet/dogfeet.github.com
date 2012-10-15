@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:mergetool, difftool</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/git-mergediff.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:mergetool, difftool</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 17</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#diffmerge" class="tag">diffmerge</a> | <span><a href="/articles/2011/git-mergediff.html#disqus_thread" data-disqus-identifier="/articles/2011/git-mergediff.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -33,9 +33,9 @@
 <p>다음과 같이 설정한다:
 
 </p>
-<pre><code><span class="title">git</span> config <span class="comment">--global merge.tool diffmerge</span>
-<span class="title">git</span> config <span class="comment">--global mergetool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\$MERGED \$LOCAL \$BASE $REMOTE"</span>
-<span class="title">git</span> config <span class="comment">--global mergetool.diffmerge.trustExitCode true</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">merge</span>.<span class="comment">tool</span> <span class="comment">diffmerge</span>
+<span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">mergetool</span>.<span class="comment">diffmerge</span>.<span class="comment">cmd</span> <span class="comment">"/Applications/DiffMerge</span>.<span class="comment">app/Contents/MacOS/DiffMerge</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">merge</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">result=\$MERGED</span> <span class="comment">\$LOCAL</span> <span class="comment">\$BASE</span> <span class="comment">$REMOTE"</span>
+<span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">mergetool</span>.<span class="comment">diffmerge</span>.<span class="comment">trustExitCode</span> <span class="comment">true</code></pre>
 <p>각 설정의 의미는 다음과 같다:
 
 </p>
@@ -64,8 +64,8 @@
 <p>difftool은 다음과 같이 설정한다:
 
 </p>
-<pre><code><span class="title">git</span> config <span class="comment">--global diff.tool diffmerge</span>
-<span class="title">git</span> config <span class="comment">--global difftool.diffmerge.cmd "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge \$LOCAL \$REMOTE"</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">diff</span>.<span class="comment">tool</span> <span class="comment">diffmerge</span>
+<span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">difftool</span>.<span class="comment">diffmerge</span>.<span class="comment">cmd</span> <span class="comment">"/Applications/DiffMerge</span>.<span class="comment">app/Contents/MacOS/DiffMerge</span> <span class="comment">\$LOCAL</span> <span class="comment">\$REMOTE"</code></pre>
 <p>각 설정의 의미는 다음과 같다:
 
 </p>
@@ -102,7 +102,7 @@
 <p>그리고 이 파일을 실행경로에 넣고 실행권한도 부여한다. 그리고 이 것을 Git에 설정한다:
 
 </p>
-<pre><code><span class="title">git</span> config <span class="comment">--global diff.external mydiff</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">diff</span>.<span class="comment">external</span> <span class="comment">mydiff</code></pre>
 <p>그러면 이제 <code>git diff</code> 명령을 실행할 때도 DiffMerge를 사용할 수 있다. 
 
 </p>
@@ -113,7 +113,7 @@
 <p>Git에 이미 설정이 포함돼 있어서 cmd를 설정하지 않아도 되는 프로그램들이 있다. kdiff3, opendiff, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff는 cmd 설정이 필요 없고 merge.tool, diff.tool만 설정해서 Git한테 어떤 도구를 사용할지만 알려주면 된다. 예를 들어 vimdiff를 사용할 거라면 다음 옵션만 설정하고 vimdiff만 실행 경로에 넣으면 된다:
 
 </p>
-<pre><code><span class="title">git</span> config <span class="comment">--global merge.tool vimdiff</span></code></pre>
+<pre><code><span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">merge</span>.<span class="comment">tool</span> <span class="comment">vimdiff</code></pre>
 <h2>그외</h2>
 <ul>
 <li>diff 할때 공백 문자 어떻게 다룰지 설정할 수 있다. </li>
@@ -126,7 +126,7 @@
 <li><a href="http://adventuresincoding.com/2010/04/how-to-setup-git-to-use-diffmerge">How to setup git to use diffmerge</a></li>
 <li><a href="http://progit.org">progit</a></li>
 </ul>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-mergediff.html';

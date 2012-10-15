@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1237194420.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">TLB file to DLL</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1237194420.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">TLB file to DLL</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Mar 16</span>
  | <a href="/site/tagmap.html#dll" class="tag">dll</a> <a href="/site/tagmap.html#tlb" class="tag">TLB</a> <a href="/site/tagmap.html#typelibrary" class="tag">typelibrary</a> | <span><a href="/articles/2009/1237194420.html#disqus_thread" data-disqus-identifier="/articles/2009/1237194420.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -23,7 +23,7 @@
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1237194420.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1237194420.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1237194420.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Convert a Type Library file into a DLL file.
 
 </p>
-<pre><code>Prompt> c:<span class="command">\Program</span> Files<span class="command">\Microsoft</span> SDKs<span class="command">\Windows</span><span class="command">\v</span>6.0A<span class="command">\bin</span><span class="command">\Tlbimp</span>.exe" mlapp.tlb /out:MLApp</code></pre>
+<pre><code>Prompt&gt; c:<span class="command">\Program</span> Files<span class="command">\Microsoft</span> SDKs<span class="command">\Windows</span><span class="command">\v</span>6.0A<span class="command">\bin</span><span class="command">\Tlbimp</span>.exe" mlapp.tlb /out:MLApp</code></pre>
 <p>It generates a MLApp.dll file. (warning. case-sensitive)
 
 </p>

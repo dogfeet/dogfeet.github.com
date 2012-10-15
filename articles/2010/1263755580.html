@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1263755580.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">eclipse 메모리 설정하기</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1263755580.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">eclipse 메모리 설정하기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2010 Jan 17</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#sts" class="tag">STS</a> | <span><a href="/articles/2010/1263755580.html#disqus_thread" data-disqus-identifier="/articles/2010/1263755580.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -29,9 +29,9 @@
 <p>소스탭하나 바꾸는데 2~3초의 시간을 기다려야 했는데--; 이제 1초 이내에 바뀐다. 다음과 같이 변경했다.
 
 </p>
-<pre><code>-<span class="constant">Xms1024m</span> -<span class="constant">Xmx1024m</span> -<span class="constant">XstartOnFirstThread</span> -<span class="constant">Xverify</span><span class="symbol">:none</span>
--<span class="constant">XX</span><span class="symbol">:MaxPermSize</span>=<span class="number">256</span>m -<span class="constant">XX</span><span class="symbol">:PermSize</span>=<span class="number">256</span>m -<span class="constant">XX</span><span class="symbol">:MaxNewSize</span>=<span class="number">128</span>m
--<span class="constant">XX</span><span class="symbol">:NewSize</span>=<span class="number">128</span>m -<span class="constant">XX</span><span class="symbol">:</span>+<span class="constant">UseParallelGC</span></code></pre>
+<pre><code><span class="literal">-</span><span class="comment">Xms1024m</span> <span class="literal">-</span><span class="comment">Xmx1024m</span> <span class="literal">-</span><span class="comment">XstartOnFirstThread</span> <span class="literal">-</span><span class="comment">Xverify:none</span>
+<span class="literal">-</span><span class="comment">XX:MaxPermSize=256m</span> <span class="literal">-</span><span class="comment">XX:PermSize=256m</span> <span class="literal">-</span><span class="comment">XX:MaxNewSize=128m</span>
+<span class="literal">-</span><span class="comment">XX:NewSize=128m</span> <span class="literal">-</span><span class="comment">XX:</span>+<span class="comment">UseParallelGC</code></pre>
 <p>Mac은 OS Paging을 끌수가 없어서 4G를 장착하고도 꽤 느리다. SO(DLL)을 사용하지 않는 정책때문에 매모리가 많이 필요하며 시간이 지나면 리부팅을 해줘야 한다. 적어도 일주일에 한번이나 해줘야 한다.
 
 </p>

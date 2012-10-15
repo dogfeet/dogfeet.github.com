@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter1.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어를 배워보자 - 제 1장. 기본기</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/yongjae-choi.html">Yongjae Choi</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter1.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어를 배워보자 - 제 1장. 기본기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
  | <span property="dc:created">2012 Apr 06</span>
  | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">j언어</a> | <span><a href="/articles/2012/learning-j-chapter1.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter1.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -64,18 +64,18 @@
 <p>뺄셈을 위해서는 <code>-</code>를 쓴다.
 
 </p>
-<pre><code>   3 - 2
-1</code></pre>
+<pre><code>   <span class="comment">3</span> <span class="literal">-</span> <span class="comment">2</span>
+<span class="comment">1</code></pre>
 <p>다음 예제는 음수에 대한 것이다. 음수는 숫자 앞에 <code>_</code>부호가 붙는다. 숫자와 <code>_</code>사이에는 빈칸이 있어선 안 된다. <code>_</code>는 산수 할 때 쓰는 연산자가 아니라 숫자의 표현 중 하나이다. 마치 부동소수점을 표현할 때 수 중간에 <code>.</code>을 찍는 것과 같다.
 
 </p>
-<pre><code>   <span class="number">2</span> - <span class="number">3</span>
-<span class="title">_1</span></code></pre>
+<pre><code>   <span class="comment">2</span> <span class="literal">-</span> <span class="comment">3</span>
+<span class="comment">_1</code></pre>
 <p><code>-</code>또한 음수를 만들어내기는 한다. 하지만 음수를 '만들어낸다'고 한 것에 주의해야 한다. <code>_</code>는 숫자를 표현하는 방식 중 하나이지만 <code>-</code>는 연산자라는 뜻이다.
 
 </p>
-<pre><code>   - <span class="number">3</span>
-<span class="title">_3</span></code></pre>
+<pre><code>   <span class="literal">-</span> <span class="comment">3</span>
+<span class="comment">_3</code></pre>
 <p>거듭제곱을 위해서는 <code>^</code>(caret)을 쓴다. 2의 3 제곱을 계산하면 아래와 같다.
 
 </p>
@@ -99,16 +99,16 @@
 <p>위 예제에서 "Square" 함수(<code>*:</code>)가 리스트의 각 아이템에 적용되었음을 알 수 있다. 리스트로 이루어진 두 개의 인자와 <code>+</code>같은 함수가 주어지면 그 함수는 두 리스트에서 서로 대응되는 아이템에 적용된다.
 
 </p>
-<pre><code>   1 2 3 + 10 20 30
-11 22 33</code></pre>
+<pre><code>   <span class="comment">1</span> <span class="comment">2</span> <span class="comment">3</span> <span class="literal">+</span> <span class="comment">10</span> <span class="comment">20</span> <span class="comment">30</span>
+<span class="comment">11</span> <span class="comment">22</span> <span class="comment">33</code></pre>
 <p>만약 한 인자는 리스트이고 다른 인자는 숫자 하나 라면, 숫자 하나는 리스트의 각 아이템에 대응된다.
 
 </p>
-<pre><code>   1 + 10 20 30
-11 21 31
+<pre><code>   <span class="comment">1</span> <span class="literal">+</span> <span class="comment">10</span> <span class="comment">20</span> <span class="comment">30</span>
+<span class="comment">11</span> <span class="comment">21</span> <span class="comment">31</span>
 
-   1 2 3 + 10
-11 12 13</code></pre>
+   <span class="comment">1</span> <span class="comment">2</span> <span class="comment">3</span> <span class="literal">+</span> <span class="comment">10</span>
+<span class="comment">11</span> <span class="comment">12</span> <span class="comment">13</code></pre>
 <p>이런 식의 실험은 새로운 함수가 여러 인자 패턴에 어떻게 동작하는지 알아보는 데에 효과적이다. 
 
 </p>
@@ -132,16 +132,16 @@
 <p>괄호는 항상 필요하지는 않다. <code>3*2+1</code>이라는 표현식을 보자. 이 식이 <code>(3*2)+1</code>로 해석되어 7이 될까, 아니면 <code>3*(2+1)</code>이 되어 9가 될까?
 
 </p>
-<pre><code>   3 * 2 + 1
-9</code></pre>
+<pre><code>   <span class="comment">3</span> <span class="comment">*</span> <span class="comment">2</span> <span class="literal">+</span> <span class="comment">1</span>
+<span class="comment">9</code></pre>
 <p>학교에서 수학을 배울 때에는 곱셈을 덧셈보다 연산을 먼저 한다고 배웠다. 이런 규칙이 있어서 괄호를 적게 쓸 수 있다.
 
 </p>
 <p>J에는 그런 규칙이 없다. 먼저 따로 계산해야 할 부분이 필요하다면 괄호를 쓰면 된다. 하지만 괄호가 없다면 뒤부터(오른쪽부터) 계산된다. 다시 말하자면 자연스레 읽었을 때에 연산자의 오른쪽 인자부터 계산된다. 따라서 <code>3*2+1</code>의 경우에는 <code>*</code>의 오른쪽 인자인 <code>2+1</code>부터 계산된다. 다른 예제를 보자.
 
 </p>
-<pre><code>   <span class="number">1</span> + <span class="number">3</span> <span class="comment">% 4 </span>
-<span class="number">1.75</span></code></pre>
+<pre><code>   <span class="comment">1</span> <span class="literal">+</span> <span class="comment">3</span> <span class="comment">%</span> <span class="comment">4</span> 
+<span class="comment">1</span>.<span class="comment">75</code></pre>
 <p>여기서 <code>%</code>가 <code>+</code>보다 먼저 적용되는 것을 볼 수 있다. 즉 "제일 오른쪽 먼저" 연산이 시작되었다.
 
 </p>
@@ -189,10 +189,10 @@
 <p>위의 예제는 한 라인이 할당문으로만 이루어졌을 때에 결과 줄에 아무것도 출력되지 않음을 보여준다. 그럼에도 할당문 역시 하나의 표현식이다. 할당문이 어떤 표현식의 부분에 쓰였을 때에는 값으로 사용할 수 있다.
 
 </p>
-<pre><code>   1 + (u =: 99)
-100
-   u
-99</code></pre>
+<pre><code>   <span class="comment">1</span> <span class="literal">+</span> <span class="comment">(u</span> <span class="comment">=:</span> <span class="comment">99)</span>
+<span class="comment">100</span>
+   <span class="comment">u</span>
+<span class="comment">99</code></pre>
 <p>아래는 어떤 이름을 변수명으로 사용할 수 있는지에 대한 예제이다.
 
 </p>
@@ -229,8 +229,8 @@
 <p>이걸 계산하면 9이다. 이걸 J로 표현하면 다음과 같다.
 
 </p>
-<pre><code>   + <span class="regexp">/ 2 3 4
-9</code></pre>
+<pre><code>   <span class="literal">+</span> <span class="comment">/</span> <span class="comment">2</span> <span class="comment">3</span> <span class="comment">4</span>
+<span class="comment">9</code></pre>
 <p>영어 표현과 J의 표현을 비교해보자. "add"는 <code>+</code>에 대응되고 "together"는 <code>/</code>에 대응된다. 비슷하게 다음 표현을 생각해보자.
 
 </p>
@@ -238,7 +238,7 @@
 <p>이걸 계산하면 24이다. 이건 J로 다음과 같이 표현한다.
 
 </p>
-<pre><code>   * <span class="regexp">/ 2 3 4
+<pre><code>   * / 2 3 4
 24</code></pre>
 <p><code>+/2 3 4</code>는 <code>2+3+4</code>와 같은 의미이고 <code>*/2 3 4</code>는 <code>2*3*4</code>와 같은 의미임을 알 수 있다. <code>/</code>는 "Insert"라고 한다. 이 녀석은 왼쪽에 있는 함수를 오른쪽의 리스트의 각 아이템 사이에 끼워 넣는 역할을 하기 때문이다. 일반화하여 말하자면, F가 임의의 다이아딕 함수이고, L이 숫자로 이루어진 리스트 a, b, c, .... y, z 라면
 
@@ -254,7 +254,7 @@
 <p>J에서 "참"은 1로 표현하고, "거짓"은 0으로 표현한다. 그래서 위의 세 명제는 다음과 같이 쓸 수 있다.
 
 </p>
-<pre><code>   2 > 1
+<pre><code>   2 &gt; 1
 1
 
    2 = 1
@@ -269,19 +269,19 @@
 <p>'x의 어떤 수가 2보다 큰가?' 라고 J에게 물어볼 수 있다.
 
 </p>
-<pre><code>   <span class="title">x</span> > <span class="number">2</span>
+<pre><code>   <span class="title">x</span> &gt; <span class="number">2</span>
 <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span></code></pre>
 <p>위에서 보면, '어떤 게 2보다 큰가?'라는 물음에 첫 번째, 두 번째, 네 번째가 1로 표현되었다. x에서 2보다 더 큰 숫자가 존재하는지 알려면 이렇게 쓰면 될까?
 
 </p>
-<pre><code>   * <span class="regexp">/ x > 2
+<pre><code>   * / x &gt; 2
 0</code></pre>
 <p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1<em>1</em>0*1) 0("거짓")이 들어있으면 죽어도 1이 될 수 없다.
 x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <code>x&gt;2</code>의 결과를 전부 더하면 된다!
 
 </p>
-<pre><code>   + <span class="regexp">/ x > 2
-3</code></pre>
+<pre><code>   <span class="literal">+</span> <span class="comment">/</span> <span class="comment">x</span> &gt; <span class="comment">2</span>
+<span class="comment">3</code></pre>
 <p>x에 숫자가 몇 개 있는지 알려면? <code>x=x</code>의 결과를 모두 더하면 된다.
 
 </p>
@@ -402,32 +402,32 @@ x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <
 <p>모나딕 '<code>&gt;.</code>'은 올림 연산을 한다. 올림은 자기 자신보다 큰 정수 중 가장 가까운 수이다. 이것의 이름은 "Ceiling"이다.
 
 </p>
-<pre><code>   >. <span class="filename">_1.7 1 1.7
-_1 1 2</code></pre>
+<pre><code>   &gt;<span class="string">.</span> <span class="comment">_1</span>.<span class="comment">7</span> <span class="comment">1</span> <span class="comment">1</span>.<span class="comment">7</span>
+<span class="comment">_1</span> <span class="comment">1</span> <span class="comment">2</code></pre>
 <p>다이아딕 '<code>&gt;.</code>'은 두 인자 중 큰 녀석을 선택한다. ("Larger Of")
 
 </p>
-<pre><code>   3 &gt;. 1 3 5 
-3 3 5</code></pre>
+<pre><code>   <span class="comment">3</span> &gt;<span class="string">.</span> <span class="comment">1</span> <span class="comment">3</span> <span class="comment">5</span> 
+<span class="comment">3</span> <span class="comment">3</span> <span class="comment">5</code></pre>
 <p><code>/</code>를 이용해서 "Larger Of"를 리스트의 아이템 사이에 끼워 넣으면, 리스트에서 가장 큰 수를 뽑아낼 수 있다. 예를 들어서 리스트 <code>1 6 5</code>에서 가장 큰 수를 알아내려면 <code>&gt;. / 1 6 5</code>를 입력하면 된다. 아래 예제를 통해 어떻게 해서 <code>6</code>이 나오는지 확인할 수 있다. 주석은 왜 이전 입력과 같은 결과가 나오는지 이유를 설명한다.
 
 </p>
-<pre><code>   >. / <span class="number">1</span> <span class="number">6</span> <span class="number">5</span>
-<span class="number">6</span>
-   <span class="number">1</span> >. <span class="number">6</span> >. <span class="number">5</span>      <span class="transposed_variable">NB.</span> /의 의미에 따라서
-<span class="number">6</span>
-   <span class="number">1</span> >. (<span class="number">6</span> >. <span class="number">5</span>)    <span class="transposed_variable">NB.</span> 제일 오른쪽 먼저 규칙에 따라서
-<span class="number">6</span>
-   <span class="number">1</span> >. (<span class="number">6</span>)         <span class="transposed_variable">NB.</span> >.의 의미에 따라서
-<span class="number">6</span>
-   <span class="number">1</span> >. <span class="number">6</span>           <span class="transposed_variable">NB.</span> ()의 의미에 따라서
-<span class="number">6</span>
-   <span class="number">6</span>                <span class="transposed_variable">NB.</span> >.의 의미에 따라서
-<span class="number">6</span></code></pre>
+<pre><code>   &gt;<span class="string">.</span> <span class="comment">/</span> <span class="comment">1</span> <span class="comment">6</span> <span class="comment">5</span>
+<span class="comment">6</span>
+   <span class="comment">1</span> &gt;<span class="string">.</span> <span class="comment">6</span> &gt;<span class="string">.</span> <span class="comment">5</span>      <span class="comment">NB</span>. <span class="comment">/의</span> <span class="comment">의미에</span> <span class="comment">따라서</span>
+<span class="comment">6</span>
+   <span class="comment">1</span> &gt;<span class="string">.</span> <span class="comment">(6</span> &gt;<span class="string">.</span> <span class="comment">5)</span>    <span class="comment">NB</span>. <span class="comment">제일</span> <span class="comment">오른쪽</span> <span class="comment">먼저</span> <span class="comment">규칙에</span> <span class="comment">따라서</span>
+<span class="comment">6</span>
+   <span class="comment">1</span> &gt;<span class="string">.</span> <span class="comment">(6)</span>         <span class="comment">NB</span>. &gt;<span class="string">.</span><span class="comment">의</span> <span class="comment">의미에</span> <span class="comment">따라서</span>
+<span class="comment">6</span>
+   <span class="comment">1</span> &gt;<span class="string">.</span> <span class="comment">6</span>           <span class="comment">NB</span>. <span class="comment">()의</span> <span class="comment">의미에</span> <span class="comment">따라서</span>
+<span class="comment">6</span>
+   <span class="comment">6</span>                <span class="comment">NB</span>. &gt;<span class="string">.</span><span class="comment">의</span> <span class="comment">의미에</span> <span class="comment">따라서</span>
+<span class="comment">6</code></pre>
 <p>모나딕 '<code>&gt;:</code>'은 비공식적으로 "Increment"라고 부른다. 인자의 값에 1을 더한다.
 
 </p>
-<pre><code>   >: _2 <span class="number">3</span> <span class="number">5</span> <span class="number">6.3</span>
+<pre><code>   &gt;: _2 <span class="number">3</span> <span class="number">5</span> <span class="number">6.3</span>
 <span class="title">_1</span> <span class="number">4</span> <span class="number">6</span> <span class="number">7.3</span></code></pre>
 <p>다이아딕 '<code>&gt;:</code>'은 "Larger or Equal"이다.
 

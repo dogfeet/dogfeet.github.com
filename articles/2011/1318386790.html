@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1318386790.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Build distfile using Ant with Git revision</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1318386790.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Build distfile using Ant with Git revision</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2011 Oct 12</span>
  | <a href="/site/tagmap.html#ant" class="tag">ant</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#revision" class="tag">revision</a> <a href="/site/tagmap.html#os" class="tag">os</a> | <span><a href="/articles/2011/1318386790.html#disqus_thread" data-disqus-identifier="/articles/2011/1318386790.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -50,47 +50,47 @@
 
 </p>
 <pre><code><span class="xml">....
-<span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"dist"</span>></span>
-  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"rev"</span>></span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/></span>
-  <span class="tag">&lt;/<span class="title">exec</span>></span>
-  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"branch"</span>></span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/></span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--contains"</span>/></span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--all"</span>/></span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"HEAD"</span>/></span>
-  <span class="tag">&lt;/<span class="title">exec</span>></span>
-  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">language</span>=<span class="value">"javascript"</span>></span><span class="javascript">&lt;![CDATA[
+<span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"dist"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"rev"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">exec</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"branch"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--contains"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--all"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"HEAD"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">exec</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">language</span>=<span class="value">"javascript"</span>&gt;</span><span class="javascript">&lt;![CDATA[
     rev = project.getProperty(<span class="string">"rev"</span>);
     index = rev.lastIndexOf(<span class="string">"-"</span>);
     counter = rev.substring(</span></span><span class="number">0</span><span class="xml">, index);
     project.setProperty("rev",counter);
-  ]]><span class="tag">&lt;/<span class="title">script</span>></span>
+  ]]&gt;<span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 
-  <span class="tag">&lt;<span class="title">echo</span>></span>Git Branch: </span><span class="variable">${branch}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>></span>
-  <span class="tag">&lt;<span class="title">echo</span>></span>Git Rev.  : </span><span class="variable">${rev}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>></span>
+  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>Git Branch: </span><span class="variable">${branch}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>Git Rev.  : </span><span class="variable">${rev}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
 
-  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"z:"</span>></span>
-    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"windows"</span> /></span>
-  <span class="tag">&lt;/<span class="title">condition</span>></span>
-  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"/NetworkDirectory/dist-file-server"</span>></span>
-    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"mac"</span> /></span>
-  <span class="tag">&lt;/<span class="title">condition</span>></span>
-  <span class="tag">&lt;<span class="title">fail</span> <span class="attribute">unless</span>=<span class="value">"dist.path"</span>></span>No dist.path set for this OS!<span class="tag">&lt;/<span class="title">fail</span>></span>
+  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"z:"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"windows"</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">condition</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"/NetworkDirectory/dist-file-server"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"mac"</span> /&gt;</span>
+  <span class="tag">&lt;/<span class="title">condition</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">fail</span> <span class="attribute">unless</span>=<span class="value">"dist.path"</span>&gt;</span>No dist.path set for this OS!<span class="tag">&lt;/<span class="title">fail</span>&gt;</span>
 
-  <span class="tag">&lt;<span class="title">echo</span>></span>FileSrv Path: </span><span class="variable">${dist.path}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>></span>
+  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>FileSrv Path: </span><span class="variable">${dist.path}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
 
-  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-</span><span class="variable">${rev}</span><span class="xml">.</span><span class="variable">${branch}</span><span class="xml">" overwrite="true">
-    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>></span>
-      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/></span>
-    <span class="tag">&lt;/<span class="title">fileset</span>></span>
-  <span class="tag">&lt;/<span class="title">copy</span>></span>
-  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-last" overwrite="true">
-    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>></span>
-      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/></span>
-    <span class="tag">&lt;/<span class="title">fileset</span>></span>
-  <span class="tag">&lt;/<span class="title">copy</span>></span>
-<span class="tag">&lt;/<span class="title">target</span>></span>
+  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-</span><span class="variable">${rev}</span><span class="xml">.</span><span class="variable">${branch}</span><span class="xml">" overwrite="true"&gt;
+    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">fileset</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">copy</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-last" overwrite="true"&gt;
+    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">fileset</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">copy</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">target</span>&gt;</span>
 ....</span></code></pre>
 <p>위의 스크립트에서 rev 변수의 경우 'build-138-geba356c' 값에서 hash 부분은 잘라내고 'build-138' 값만 이용하도록 Javascript로 수정하였다.
 
@@ -100,7 +100,7 @@
 </p>
 <p>마지막으로 배포하는 지점에 위에서 가져온 프로젝트의 revision 정보를 가지고 디렉토리를 만들고 배포파일을 복사하는 작업까지 마치도록 한다.
 </p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/1318386790.html';

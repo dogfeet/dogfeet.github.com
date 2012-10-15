@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/docpad.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Docpad</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/docpad.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Docpad</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Nov 26</span>
  | <a href="/site/tagmap.html#docpad" class="tag">Docpad</a> <a href="/site/tagmap.html#prettify" class="tag">Prettify</a> <a href="/site/tagmap.html#markdown" class="tag">Markdown</a> <a href="/site/tagmap.html#coffeekup" class="tag">CoffeeKup</a> | <span><a href="/articles/2011/docpad.html#disqus_thread" data-disqus-identifier="/articles/2011/docpad.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -42,11 +42,11 @@
 <p>일단 coffee script를 설치하고:
 
 </p>
-<pre><code><span class="variable">$ </span>npm install -g coffee-script </code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">coffee</span>-<span class="comment">script</span> </code></pre>
 <p>docpad를 설치한다. -g는 global 영역에 설치하는 것으로 -g 옵션을 줘야 명령으로 실행할 수 있다:
 
 </p>
-<pre><code><span class="variable">$ </span>npm install -g docpad</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">docpad</code></pre>
 <p><code>kitchensink.docpad</code>를 클론한다:
 
 </p>
@@ -65,12 +65,12 @@
 
 </p>
 <pre><code>:::html
-<span class="tag">&lt;<span class="title">pre</span>></span><span class="tag">&lt;<span class="title">code</span>></span>...<span class="tag">&lt;/<span class="title">code</span>></span><span class="tag">&lt;/<span class="title">pre</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">pre</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>...<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></code></pre>
 <p>이 것을 다음과 같이 변환한다:
 
 </p>
 <pre><code>:::html
-<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>></span><span class="tag">&lt;<span class="title">code</span>></span>...<span class="tag">&lt;/<span class="title">code</span>></span><span class="tag">&lt;/<span class="title">pre</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>...<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></code></pre>
 <p>google prettify는 특별히 언어를 명시하지 않아도 자동으로 찾는다. 완벽하지는 않지만 편리하다.
 
 </p>
@@ -78,7 +78,7 @@
 
 </p>
 <pre><code>:::html
-<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>></span><span class="tag">&lt;<span class="title">code</span> <span class="attribute">class</span>=<span class="value">"language-java"</span>></span>...<span class="tag">&lt;/<span class="title">code</span>></span><span class="tag">&lt;/<span class="title">pre</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>&gt;</span><span class="tag">&lt;<span class="title">code</span> <span class="attribute">class</span>=<span class="value">"language-java"</span>&gt;</span>...<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></code></pre>
 <p>이 모습 낮설어 보여도 <a href="http://dev.w3.org/html5/spec-author-view/the-code-element.html">w3c 권장사항</a>이다. html5에서 syntax highlight는 이렇게 해야 한다. 지원하는 언어는 <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">prettify 페이지</a>에서 확인한다.
 
 </p>
@@ -86,7 +86,7 @@
 
 </p>
 <pre><code>:::html
-<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>></span><span class="tag">&lt;<span class="title">code</span> <span class="attribute">class</span>=<span class="value">"language-bsh"</span>></span>#!/usr/bin/env bash...<span class="tag">&lt;/<span class="title">code</span>></span><span class="tag">&lt;/<span class="title">pre</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">pre</span> <span class="attribute">class</span>=<span class="value">"prittyprint"</span>&gt;</span><span class="tag">&lt;<span class="title">code</span> <span class="attribute">class</span>=<span class="value">"language-bsh"</span>&gt;</span>#!/usr/bin/env bash...<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></code></pre>
 <p><code>#!/bin/bash</code>라고 써도 되고 <code>#!/usr/bin/bash</code>라고 써도 된다.
 
 </p>
@@ -94,7 +94,7 @@
 
 </p>
 <pre><code>:::html
-<span class="tag">&lt;<span class="title">pre</span>></span><span class="tag">&lt;<span class="title">code</span>></span>...<span class="tag">&lt;/<span class="title">code</span>></span><span class="tag">&lt;/<span class="title">pre</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">pre</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>...<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span></code></pre>
 <h3>Tool Plugin</h3>
 <p>기본적으로 Template Engine이기 때문에 다양한 function을 사용할 수 없다. nodejs의 다양한 api들을 template에서 사용하고 싶은 것이다. 나는 CoffeeKup이외의 지식이 빈약하기 때문에 다른 Template Engine에 관한 예제는 올리지 않는다.
 
@@ -116,7 +116,7 @@ moment = <span class="keyword">require</span> <span class="string">'moment'</spa
   <span class="title">name</span>: '<span class="title">totaldocuments</span>'
 
   # <span class="title">Ammend</span> <span class="title">our</span> <span class="title">Template</span> <span class="title">Data</span>
-  <span class="title">renderBefore</span>: ({</span>documents, templateData}, next) ->
+  <span class="title">renderBefore</span>: ({</span>documents, templateData}, next) -&gt;
     templateData[ <span class="string">'tool'</span> ] = tool =
       moment: moment
 
@@ -154,11 +154,11 @@ Here <span class="keyword">is</span> summary
 <p>authors Plugin인 저자를 소개하는 페이지를 만들고 다른 문서의 author 프로퍼티에 저자 이름을 명시하면 자동으로 그 페이지로 링크해주는 것이다. <code>/src/documents/authors/</code>안에 소개 페이지를 다음과 같이 만든다.
 
 </p>
-<pre><code><span class="comment">--- yaml</span>
-<span class="title">name</span>=<span class="string"> 'ahmooge'</span>
-<span class="comment">---</span>
+<pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">yaml</span>
+<span class="comment">name=</span> <span class="comment">'ahmooge'</span>
+<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
 
-<span class="title">blahblah</span></code></pre>
+<span class="comment">blahblah</code></pre>
 <p>docpad는 이 문서를 처리해서 <code>{name:&#39;ahmooge&#39;, url:&#39;/authors/ahmooge.html&#39;, content: &#39;blahblah..&#39;, contentRendered: &#39;&lt;span&gt;blahblah&lt;/span&gt;&#39;}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 <code>@authors.data</code> 객체에 담아준다. 'Kim'라는 document1와 'Park'라는 document2가 있으면 <code>@authors.data</code>에는 <code>{&quot;Kim&quot;: document1, &quot;Park&quot;:document2}</code>라는 객체가 들어가게 된다. 
 
 </p>

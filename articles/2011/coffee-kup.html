@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/coffee-kup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">CoffeeKup &lt;☕/&gt;</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/coffee-kup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">CoffeeKup &lt;☕/&gt;</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Nov 22</span>
  | <a href="/site/tagmap.html#coffeekup" class="tag">CoffeeKup</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a> | <span><a href="/articles/2011/coffee-kup.html#disqus_thread" data-disqus-identifier="/articles/2011/coffee-kup.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -59,17 +59,17 @@ say <span class="string">'Hello World'</span></code></pre>
 <p>say 함수를 만들면 더이상 에러가 나지 않는다:
 
 </p>
-<pre><code><span class="title">say</span> = (args) ->
-  tag<span class="string"> 'say'</span>, args
+<pre><code><span class="keyword">say</span> = (args) -&gt;
+  tag <span class="string">'say'</span>, args
 
-<span class="title">say</span><span class="string"> 'Hello World'</span></code></pre>
+<span class="keyword">say</span> <span class="string">'Hello World'</span></code></pre>
 <p>여기서 <code>say &#39;Hello World&#39;</code>은 <code>tag &#39;say&#39;, &#39;Hello World&#39;</code>과 같다. tag는 정의되지 않은 xml tag가 필요할 때 사용할 수 있다. 예를 들어, <code>p &#39;Hello World&#39;</code>과 똑같은 표현을 tag로 하면 <code>tag &#39;p&#39;, &#39;Hello World&#39;</code>이다. 함수를 호출하는 것이라는 걸 기억해야 한다.
 
 </p>
 <p>함수라는 것은 배웠고 이제 그럼 인자는 어떻게 매핑되는 거지?라는 것이 궁금하다. 다음 예제를 보자:
 
 </p>
-<pre><code><span class="title">say</span> id:<span class="string"> 'first'</span>, <span class="class"><span class="keyword">class</span>: 'example', '<span class="type">Hello</span> <span class="type">World'</span></code></pre>
+<pre><code><span class="command">say</span> <span class="property">id</span>: '<span class="keyword">first</span>', <span class="type">class</span>: 'example', 'Hello World'</code></pre>
 <p>say 함수의 args[0]에는 <code>{id: &#39;first&#39;, class: &#39;example&#39;}</code>라는 객체가 넘어가고 args[1]에는 'Hello World'가 넘어간다. 이를 이용해서 자신만의 함수를 작성해 사용할 수 있다.
 
 </p>
@@ -77,13 +77,13 @@ say <span class="string">'Hello World'</span></code></pre>
 <p>Tag body는 두 가지 방법으로 정의할 수 있다. 먼저 <code>title &#39;Hello World&#39;</code>은 다음과 같이 해석된다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">title</span>></span>Hello World<span class="tag">&lt;/<span class="title">title</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">title</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="title">title</span>&gt;</span></code></pre>
 <p>하지만 <code>title -&gt; &#39;Hello World&#39;</code>는 다음과 같이 해석된다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">title</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">title</span>&gt;</span>
   Hello World
-<span class="tag">&lt;/<span class="title">title</span>></span></code></pre>
+<span class="tag">&lt;/<span class="title">title</span>&gt;</span></code></pre>
 <p>이 두 가지는 구현이 조금 다르다. 문법에서 보이듯이 전자는 'Hello World'라는 스트링이 인자로 넘어가는 거고 후자는 'Hello World'라는 스트링을 반환하는 함수가 넘어간다. JavaScript로 표현하면 <code>function(){return &#39;Hello World&#39;;}</code>같은 함수가 넘어가는 것이다. CoffeeKup은 다르게 해석해 주기 때문에 필요에 따라 선택해 사용한다.
 
 </p>
@@ -106,22 +106,22 @@ say <span class="string">'Hello World'</span></code></pre>
 </p>
 <pre><code>homeUrl=<span class="attribute">'http</span>://dogfeet.github.com'
 
-anEntry = (document) ->
-  tag <span class="attribute">'entry</span>', ->
+anEntry = (document) -&gt;
+  tag <span class="attribute">'entry</span>', -&gt;
     tag <span class="attribute">'title</span>', document.title
     tag <span class="attribute">'link</span>', href: <span class="string">"#{homeUrl}#{document.url}"</span>
     tag <span class="attribute">'updated</span>', document.date.toString()
     tag <span class="attribute">'id</span>', <span class="string">"#{homeUrl}#{document.url}"</span>
-    tag <span class="attribute">'content</span>', <span class="keyword">type</span>: <span class="attribute">'html</span>', -> document.contentRendered
+    tag <span class="attribute">'content</span>', <span class="keyword">type</span>: <span class="attribute">'html</span>', -&gt; document.contentRendered
 
-text '&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?>\n'
-tag <span class="attribute">'feed</span>', xmlns: <span class="attribute">'http</span>://www.w3.org/<span class="number">2005</span>/Atom', ->
+text '&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;\n'
+tag <span class="attribute">'feed</span>', xmlns: <span class="attribute">'http</span>://www.w3.org/<span class="number">2005</span>/Atom', -&gt;
   title <span class="attribute">'dogfeet</span>.github.com'
   tag <span class="attribute">'link</span>', href: <span class="string">"#{homeUrl}/atom.xml"</span>, rel: <span class="attribute">'self</span>'
   tag <span class="attribute">'link</span>', href: homeUrl
   tag <span class="attribute">'updated</span>', @site.date.toIsoDateString()
   tag <span class="attribute">'id</span>', homeUrl
-  tag <span class="attribute">'author</span>', ->
+  tag <span class="attribute">'author</span>', -&gt;
     tag <span class="attribute">'name</span>', <span class="attribute">'Changwoo</span> Park'
     tag <span class="attribute">'email</span>', <span class="attribute">'my</span>@email'
 

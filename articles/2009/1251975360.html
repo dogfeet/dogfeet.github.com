@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2009/1251975360.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">기본 xmlns(namespace)가 정의된 문서 XPath로 읽기</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2009/1251975360.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">기본 xmlns(namespace)가 정의된 문서 XPath로 읽기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2009 Sep 03</span>
  | <a href="/site/tagmap.html#c" class="tag">C</a> <a href="/site/tagmap.html#namespace" class="tag">namespace</a> <a href="/site/tagmap.html#selectnodes" class="tag">selectnodes</a> <a href="/site/tagmap.html#selectsinglenode" class="tag">selectsinglenode</a> <a href="/site/tagmap.html#xml" class="tag">xml</a> <a href="/site/tagmap.html#xmlns" class="tag">xmlns</a> <a href="/site/tagmap.html#xpath" class="tag">xpath</a> | <span><a href="/articles/2009/1251975360.html#disqus_thread" data-disqus-identifier="/articles/2009/1251975360.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -26,10 +26,10 @@
 <p>C#에서 XPath로 XML을 쉽게 다룰 수 있는데, Select검색시에 기본 네임스페이스(RootElement에 정의된 xmlns)가 정의되어 있을 경우, ElementName만 가지고서는 검색되지 않는다.
 
 </p>
-<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>></span>
-  <span class="tag">&lt;<span class="title">body</span> /></span>
-<span class="tag">&lt;/<span class="title">html</span>></span> </code></pre>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span> </code></pre>
 <p>code
 
 </p>

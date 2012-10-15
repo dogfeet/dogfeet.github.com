@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-todo.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:Todo Plugin</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/git-todo.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:Todo Plugin</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jan 21</span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#todo" class="tag">Todo</a> <a href="/site/tagmap.html#branch" class="tag">Branch</a> | <span><a href="/articles/2012/git-todo.html#disqus_thread" data-disqus-identifier="/articles/2012/git-todo.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -52,7 +52,7 @@
 <p>설정하지 않으면 master 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 거리를 계산한다. 이 브랜치는 다음과 같이 설정한다:
 
 </p>
-<pre><code><span class="title">git</span> config todo.base ko</code></pre>
+<pre><code>git config to<span class="operator"><span class="keyword">do</span>.base ko</code></pre>
 <p>여기서 보여주는 예제는 Pro Git 저장소를 캡처한 것이기 때문에 기준 브랜치가 ko이다.
 
 </p>
@@ -87,7 +87,7 @@
 </p>
 <pre><code><span class="title">cd</span> ~
 <span class="title">git</span> clone https://github.com/dogfeet/git-tles
-<span class="title">echo</span> <span class="string">"export PATH=~/bin:$PATH"</span> >> ~/.bash_profile
+<span class="title">echo</span> <span class="string">"export PATH=~/bin:$PATH"</span> &gt;&gt; ~/.bash_profile
 <span class="title">mkdir</span> ~/bin
 <span class="title">cd</span> ~/bin
 <span class="title">ln</span> -s ~/git-tles/git-todo git-todo</code></pre>

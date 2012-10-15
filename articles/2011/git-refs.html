@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/git-refs.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:refs</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/git-refs.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git:refs</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Dec 02</span>
  | <a href="/site/tagmap.html#git" class="tag">git</a> | <span><a href="/articles/2011/git-refs.html#disqus_thread" data-disqus-identifier="/articles/2011/git-refs.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -50,11 +50,11 @@
 <p>기본적으로 7자가 사용된다. 위 SHA 값에 적용하면 <code>1c36188</code>이다:
 
 </p>
-<pre><code><span class="title">git</span> show 1c3618887afb5fbcbea25b7c013f4e2114448b8d</code></pre>
+<pre><code>git <span class="operator"><span class="keyword">show</span> <span class="number">1</span>c3618887afb5fbcbea25b7c013f4e2114448b8d</code></pre>
 <p>라고 해도 되지만:
 
 </p>
-<pre><code><span class="title">git</span> show 1c36188</code></pre>
+<pre><code>git <span class="operator"><span class="keyword">show</span> <span class="number">1</span>c36188</code></pre>
 <p>이렇게 해도 결과는 같다. short SHA는 저장소에서 식별할 수 있는 만큼 사용되며 거대한 리눅스 커널 프로젝트도 겨우 12자를 사용한다.
 
 </p>
@@ -96,17 +96,17 @@
 <p>커밋 히스토리가 다음과 같을 때:
 
 </p>
-<pre><code>:::text
-*   <span class="number">4</span>f2b862 - (HEAD, dev) Merge branch 'issue2' into dev
-<span class="string">|\</span>
-<span class="string">| * 3a6714f - (issue2) It sucks again</span>
-<span class="string">|/</span>
-* <span class="number">41947</span>a1 - It sucks
-*   <span class="number">3</span>b0b17d - Merge branch 'issue1' into dev
-<span class="string">|\</span>
-<span class="string">| * 3b1bfc5 - (issue1) Add issue1</span>
-<span class="string">|/</span>
-* <span class="number">40</span>b4870 - (master) Initial Commit</code></pre>
+<pre><code><span class="comment">:::text</span>
+<span class="comment">*</span>   <span class="comment">4f2b862</span> <span class="literal">-</span> <span class="comment">(HEAD</span>, <span class="comment">dev)</span> <span class="comment">Merge</span> <span class="comment">branch</span> <span class="comment">'issue2'</span> <span class="comment">into</span> <span class="comment">dev</span>
+<span class="comment">|\</span>
+<span class="comment">|</span> <span class="comment">*</span> <span class="comment">3a6714f</span> <span class="literal">-</span> <span class="comment">(issue2)</span> <span class="comment">It</span> <span class="comment">sucks</span> <span class="comment">again</span>
+<span class="comment">|/</span>
+<span class="comment">*</span> <span class="comment">41947a1</span> <span class="literal">-</span> <span class="comment">It</span> <span class="comment">sucks</span>
+<span class="comment">*</span>   <span class="comment">3b0b17d</span> <span class="literal">-</span> <span class="comment">Merge</span> <span class="comment">branch</span> <span class="comment">'issue1'</span> <span class="comment">into</span> <span class="comment">dev</span>
+<span class="comment">|\</span>
+<span class="comment">|</span> <span class="comment">*</span> <span class="comment">3b1bfc5</span> <span class="literal">-</span> <span class="comment">(issue1)</span> <span class="comment">Add</span> <span class="comment">issue1</span>
+<span class="comment">|/</span>
+<span class="comment">*</span> <span class="comment">40b4870</span> <span class="literal">-</span> <span class="comment">(master)</span> <span class="comment">Initial</span> <span class="comment">Commit</code></pre>
 <h4>'~'</h4>
 <p>HEAD를 기준으로 이전 커밋을 보려면 <code>HEAD~</code>를 사용한다. 예를 들어 <code>git show HEAD~</code>라고 실행하면 <code>41947a1</code>에 대한 정보를 보여준다.
 
@@ -219,19 +219,19 @@ E</code></pre>
 <p>Tripple Dot은 서로 다른 커밋만을 보여준다. 다음 예제를 보자:
 
 </p>
-<pre><code>$ git <span class="built_in">log</span> <span class="transposed_variable">master...</span>experiment
-F
-E
-D
-C</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="comment">master</span>.<span class="string">.</span><span class="string">.</span><span class="comment">experiment</span>
+<span class="comment">F</span>
+<span class="comment">E</span>
+<span class="comment">D</span>
+<span class="comment">C</code></pre>
 <p><code>--left-right</code> 옵션을 추가하면 어느쪽에 속하는 것인지도 보여준다.
 
 </p>
-<pre><code>$ git log --left-right master...experiment
-<span class="tag">&lt;<span class="title">F
-&lt;E
-</span>></span>D
->C</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">left</span>-<span class="comment">right</span> <span class="comment">master</span>.<span class="string">.</span><span class="string">.</span><span class="comment">experiment</span>
+&lt;<span class="comment">F</span>
+&lt;<span class="comment">E</span>
+&gt;<span class="comment">D</span>
+&gt;<span class="comment">C</code></pre>
 <h3>-not or <code>^</code></h3>
 <p>이 옵션은 세 개 이상의 브랜치를 서로 비교해볼 때 유용하다. <code>git log refA refB -not refC</code>는 <code>git log refA refB ^refC</code>와 같고 refA와 refB에는 있지만 refC에는 없는 커밋들을 보여준다.
 
@@ -240,7 +240,7 @@ C</code></pre>
 <ul>
 <li><a href="/articles/2011/progit.html">progit</a></li>
 </ul>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/git-refs.html';

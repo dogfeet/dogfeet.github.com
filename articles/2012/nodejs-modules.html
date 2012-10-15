@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-modules.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: modules</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-modules.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: modules</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 May 13</span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#doc" class="tag">doc</a> <a href="/site/tagmap.html#module" class="tag">module</a> <a href="/site/tagmap.html#uniquenoun" class="tag">uniquenoun</a> | <span><a href="/articles/2012/nodejs-modules.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-modules.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -188,7 +188,7 @@ a <span class="keyword">done</span>
 
 </p>
 <pre><code>{ "<span class="attribute">name</span>" : <span class="value"><span class="string">"some-library"</span></span>,
-  "<span class="attribute">main</span>" : <span class="value"><span class="string">"./lib/some-library.js"</span> </span>}</code></pre>
+  "<span class="attribute">main</span>" : <span class="value"><span class="string">"./lib/some-library.js"</span> }</span></code></pre>
 <p>이 파일이 <code>./some-library</code>라는 폴더에 있다고 하고, <code>require(&#39;./some-library&#39;)</code>를 호출하면 <code>./some-library/lib/some-library.js</code>를 찾아 로드한다.
 
 </p>
@@ -237,15 +237,15 @@ a <span class="keyword">done</span>
 <p><code>exports</code> 객체는 Module 시스템이 자동으로 만들어 준다. Export하려는 객체를 <code>module.exports</code>에 할당해서 직접 만든 객체가 반환되게 할 수도 있다. <code>.js</code>라는 모듈을 만들어 보자:
 
 </p>
-<pre><code>var <span class="variable">EventEmitter</span> = require('events').<span class="variable">EventEmitter</span>;
+<pre><code>var EventEmitter = require('events').EventEmitter;
 
-module.exports = new <span class="variable">EventEmitter</span>();
+module.exports = new EventEmitter();
 
-// <span class="variable">Do</span> some work, <span class="keyword">and</span> <span class="keyword">after</span> some time emit
-// the 'ready' event from the module itself.
-<span class="function"><span class="title">setTimeout</span><span class="params">(<span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-  module.exports.<span class="function_name">emit</span>('ready');
-}</span>, <span class="number">1000</span>);</code></pre>
+// <span class="operator"><span class="keyword">Do</span> <span class="keyword">some</span> <span class="keyword">work</span>, <span class="keyword">and</span> after <span class="keyword">some</span> <span class="keyword">time</span> emit
+// the <span class="string">'ready'</span> event <span class="keyword">from</span> the <span class="keyword">module</span> itself.
+setTimeout(function() {
+  <span class="keyword">module</span>.exports.emit(<span class="string">'ready'</span>);</span>
+}, 1000);</code></pre>
 <p>이 모듈은 다음과 같이 사용한다:
 
 </p>
@@ -322,56 +322,56 @@ a.<span class="keyword">on</span>(<span class="comment">'ready', function() {</s
 <p>require.resolve가 정확히 어떻게 동작하는지 슈도 코드로 살펴보자. 이 슈도 코드는 여태까지 설명한 것을 모두 합쳐 놓은 것이다:
 
 </p>
-<pre><code>require(X) from module at path Y
-<span class="number">1.</span> <span class="keyword">If</span> X <span class="keyword">is</span> a core module,
-   a. return the core module
-   b. <span class="keyword">STOP</span>
-<span class="number">2.</span> <span class="keyword">If</span> X begins <span class="keyword">with</span> <span class="comment">'./' or '/' or '../'</span>
+<pre><code>require(X) <span class="keyword">from</span> module <span class="keyword">at</span> path Y
+<span class="number">1.</span> If X <span class="keyword">is</span> a core module,
+   a. <span class="constant">return</span> <span class="keyword">the</span> core module
+   b. STOP
+<span class="number">2.</span> If X <span class="keyword">begins with</span> './' <span class="keyword">or</span> '/' <span class="keyword">or</span> '../'
    a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
 <span class="number">3.</span> LOAD_NODE_MODULES(X, dirname(Y))
 <span class="number">4.</span> THROW <span class="string">"not found"</span>
 
-require(X) from module at path Y
-<span class="number">1.</span> <span class="keyword">If</span> X <span class="keyword">is</span> a core module,
-   a. return the core module
-   b. <span class="keyword">STOP</span>
-<span class="number">2.</span> <span class="keyword">If</span> X begins <span class="keyword">with</span> <span class="comment">'./' or '/' or '../'</span>
+require(X) <span class="keyword">from</span> module <span class="keyword">at</span> path Y
+<span class="number">1.</span> If X <span class="keyword">is</span> a core module,
+   a. <span class="constant">return</span> <span class="keyword">the</span> core module
+   b. STOP
+<span class="number">2.</span> If X <span class="keyword">begins with</span> './' <span class="keyword">or</span> '/' <span class="keyword">or</span> '../'
    a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
 <span class="number">3.</span> LOAD_NODE_MODULES(X, dirname(Y))
 <span class="number">4.</span> THROW <span class="string">"not found"</span>
 
 LOAD_AS_FILE(X)
-<span class="number">1.</span> <span class="keyword">If</span> X <span class="keyword">is</span> a file, load X as JavaScript text.  <span class="keyword">STOP</span>
-<span class="number">2.</span> <span class="keyword">If</span> X.js <span class="keyword">is</span> a file, load X.js as JavaScript text.  <span class="keyword">STOP</span>
-<span class="number">3.</span> <span class="keyword">If</span> X.node <span class="keyword">is</span> a file, load X.node as binary addon.  <span class="keyword">STOP</span>
+<span class="number">1.</span> If X <span class="keyword">is</span> a <span class="type">file</span>, load X <span class="keyword">as</span> JavaScript <span class="type">text</span>.  STOP
+<span class="number">2.</span> If X.js <span class="keyword">is</span> a <span class="type">file</span>, load X.js <span class="keyword">as</span> JavaScript <span class="type">text</span>.  STOP
+<span class="number">3.</span> If X.node <span class="keyword">is</span> a <span class="type">file</span>, load X.node <span class="keyword">as</span> binary addon.  STOP
 
 LOAD_AS_DIRECTORY(X)
-<span class="number">1.</span> <span class="keyword">If</span> X/package.json <span class="keyword">is</span> a file,
+<span class="number">1.</span> If X/package.json <span class="keyword">is</span> a <span class="type">file</span>,
    a. Parse X/package.json, <span class="keyword">and</span> look <span class="keyword">for</span> <span class="string">"main"</span> field.
-   b. <span class="keyword">let</span> M = X + (json main field)
+   b. let M = X + (json main field)
    c. LOAD_AS_FILE(M)
-<span class="number">2.</span> <span class="keyword">If</span> X/index.js <span class="keyword">is</span> a file, load X/index.js as JavaScript text.  <span class="keyword">STOP</span>
-<span class="number">3.</span> <span class="keyword">If</span> X/index.node <span class="keyword">is</span> a file, load X/index.node as binary addon.  <span class="keyword">STOP</span>
+<span class="number">2.</span> If X/index.js <span class="keyword">is</span> a <span class="type">file</span>, load X/index.js <span class="keyword">as</span> JavaScript <span class="type">text</span>.  STOP
+<span class="number">3.</span> If X/index.node <span class="keyword">is</span> a <span class="type">file</span>, load X/index.node <span class="keyword">as</span> binary addon.  STOP
 
 LOAD_NODE_MODULES(X, START)
-<span class="number">1.</span> <span class="keyword">let</span> DIRS=NODE_MODULES_PATHS(START)
-<span class="number">2.</span> <span class="keyword">for</span> <span class="keyword">each</span> DIR <span class="keyword">in</span> DIRS:
+<span class="number">1.</span> let DIRS=NODE_MODULES_PATHS(START)
+<span class="number">2.</span> <span class="keyword">for</span> each DIR <span class="keyword">in</span> DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
-<span class="number">1.</span> <span class="keyword">let</span> PARTS = path <span class="built_in">split</span>(START)
-<span class="number">2.</span> <span class="keyword">let</span> ROOT = index of first instance of <span class="string">"node_modules"</span> <span class="keyword">in</span> PARTS, <span class="keyword">or</span> <span class="number">0</span>
-<span class="number">3.</span> <span class="keyword">let</span> I = count of PARTS - <span class="number">1</span>
-<span class="number">4.</span> <span class="keyword">let</span> DIRS = []
-<span class="number">5.</span> <span class="keyword">while</span> I > ROOT,
+<span class="number">1.</span> let PARTS = path split(START)
+<span class="number">2.</span> let ROOT = index <span class="keyword">of</span> <span class="keyword">first</span> instance <span class="keyword">of</span> <span class="string">"node_modules"</span> <span class="keyword">in</span> PARTS, <span class="keyword">or</span> <span class="number">0</span>
+<span class="number">3.</span> let I = <span class="command">count</span> <span class="keyword">of</span> PARTS - <span class="number">1</span>
+<span class="number">4.</span> let DIRS = []
+<span class="number">5.</span> <span class="keyword">while</span> I &gt; ROOT,
    a. <span class="keyword">if</span> PARTS[I] = <span class="string">"node_modules"</span> CONTINUE
-   c. DIR = path <span class="built_in">join</span>(PARTS[<span class="number">0</span> .. I] + <span class="string">"node_modules"</span>)
+   c. DIR = path join(PARTS[<span class="number">0</span> .. I] + <span class="string">"node_modules"</span>)
    b. DIRS = DIRS + DIR
-   c. <span class="keyword">let</span> I = I - <span class="number">1</span>
-<span class="number">6.</span> return DIRS</code></pre>
+   c. let I = I - <span class="number">1</span>
+<span class="number">6.</span> <span class="constant">return</span> DIRS</code></pre>
 <h3>Loading from the global folders</h3>
 <!-- type=misc -->
 

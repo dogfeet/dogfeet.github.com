@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss-part2.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS: Brief Notes - Part 2</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a>, <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss-part2.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS: Brief Notes - Part 2</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2012 Apr 01</span>
  | <a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#smacss" class="tag">SMACSS</a> <a href="/site/tagmap.html#jonathan snook" class="tag">Jonathan Snook</a> <a href="/site/tagmap.html#review" class="tag">Review</a> | <span><a href="/articles/2012/smacss-part2.html#disqus_thread" data-disqus-identifier="/articles/2012/smacss-part2.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -95,29 +95,29 @@
 
 </p>
 <pre><code><span class="id">#sidebar</span> <span class="tag">div</span>, <span class="id">#footer</span> <span class="tag">div</span> <span class="rules">{
-    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#333</span></span>;</span>
+    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#333</span>;</span></span>
 <span class="rule">}</span></span>
 
 <span class="id">#sidebar</span> <span class="tag">div</span> <span class="tag">h3</span>, <span class="id">#footer</span> <span class="tag">div</span> <span class="tag">h3</span> <span class="rules">{
-    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">5</span>px</span>;</span>
+    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">5</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="id">#sidebar</span> <span class="tag">div</span> <span class="tag">ul</span>, <span class="id">#footer</span> <span class="tag">div</span> <span class="tag">ul</span> <span class="rules">{
-    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px</span>;</span>
+    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>div 엘레멘트를 기본으로 하여 다음과 같이 바꿀 수 있다.
 
 </p>
 <pre><code><span class="class">.pod</span> <span class="rules">{
-    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#333</span></span>;</span>
+    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#333</span>;</span></span>
 <span class="rule">}</span></span>
 
-<span class="class">.pod</span> > <span class="tag">h3</span> <span class="rules">{
-    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">5</span>px</span>;</span>
+<span class="class">.pod</span> &gt; <span class="tag">h3</span> <span class="rules">{
+    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">5</span>px;</span></span>
 <span class="rule">}</span></span>
 
-<span class="class">.pod</span> > <span class="tag">ul</span> <span class="rules">{
-    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px</span>;</span>
+<span class="class">.pod</span> &gt; <span class="tag">ul</span> <span class="rules">{
+    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>엘리먼트 마다 Class 셀렉터를 만들지 않고 <code>.pod</code> 하나만 만들었다. 깊이도 간단해졌고 문서 구조에 따라 의도하지 않은 CSS 적용도 피할 수 있다. 문서 구조는 변하지 않았지만 대신 적용해야 하는 부분마다 <code>.pod</code> 클래스를 지정해줘야 한다 이런 점이 고민할 부분이다. 한 쪽으로 치우치면 다른 한 쪽이 아쉬워진다.
 
@@ -125,14 +125,14 @@
 <p>이렇게 얕은 깊이의 CSS은 템플릿 엔진을 사용할 때 효과적이다. 이 CSS를 따르는 <a href="http://mustache.github.com/">Mushache</a>의 템플릿 코드를 살펴보자:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"pod"</span>></span>
-    <span class="tag">&lt;<span class="title">h3</span>></span><span class="variable">{{heading}}</span><span class="tag">&lt;/<span class="title">h3</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"pod"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="variable">{{heading}}</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
         <span class="variable">{{#items}}</span>
-        <span class="tag">&lt;<span class="title">li</span>></span><span class="variable">{{item}}</span><span class="tag">&lt;/<span class="title">li</span>></span>
+        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="variable">{{item}}</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
         <span class="variable">{{/items}}</span>
-    <span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">div</span>></span></code></pre>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
 <p>중요한 점은 관리성, 성능, 가독성을 잘 조화시켜야 한다. CSS 셀렉터 길이가 너무 길면 HTML 여기저기 클래스 속성이 남발하는 것을 낮출 수 있지만 관리성과 가독성을 포기해야 한다. 반대로 모든 엘리먼트에 Class 셀렉터를 새로 만들어 줄 수도 있다. 이 예제에서 h3, h1에 까지 class 셀렉터를 부여하는 것은 불필요하다.
 
 </p>
@@ -140,7 +140,7 @@
 
 </p>
 <pre><code><span class="class">.pod-body</span> <span class="rules">{
-    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px</span>;</span>
+    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">5</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>Container 안에서 ul, ol, div에서 클래스 지정만으로 같은 효과를 사용할 수 있다.
 
@@ -155,18 +155,18 @@
 <p>우선 스타일은 HTML의 엘리먼트가가 생성되는 시점에 적용이 된다. 브라우저는 HTML문서를 일종의 Stream으로 다룬다. 그러니까 먼저 들어온 엘리먼트를 먼저 생성한다. 다음 예제를 보면:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">body</span>></span>
-    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>></span>
-        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module intro"</span>></span>
-            <span class="tag">&lt;<span class="title">p</span>></span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>></span>
-        <span class="tag">&lt;/<span class="title">div</span>></span>
-        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module"</span>></span>
-            <span class="tag">&lt;<span class="title">p</span>></span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>></span>
-            <span class="tag">&lt;<span class="title">p</span>></span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>></span>
-            <span class="tag">&lt;<span class="title">p</span>></span>Lorem Ipsum <span class="tag">&lt;<span class="title">span</span>></span>Test-<span class="tag">&lt;/<span class="title">span</span>></span><span class="tag">&lt;/<span class="title">p</span>></span>
-        <span class="tag">&lt;/<span class="title">div</span>></span>
-    <span class="tag">&lt;/<span class="title">div</span>></span>
-<span class="tag">&lt;/<span class="title">body</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module intro"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem Ipsum<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem Ipsum <span class="tag">&lt;<span class="title">span</span>&gt;</span>Test-<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></pre>
 <p><code>body, div#content, div.module.intro ...</code> 순으로 엘리먼트를 생성하고 스타일을 evaluate한다는 말이다. 각 엘리먼트를 Evaluate할 때 Font는 뭐고, 컬러는 뭐고, 높이나 넓으는 얼마인지 브라우저는 정리한 스타일대로 적용하고 그린다. 그리고 하위 엘리먼트의 크기가 바뀌면 브라우저는 Body를 다시 그려야(Repaint)한다고 생각한다(저자는 다른 변수가 있는 사례가 있다고 의심하지만 확실한 것은 보통 width와 height값이 바뀌면 다시 그린다는 것이다).
 
 </p>
@@ -204,65 +204,65 @@
 <p>특히 HTML5에서 새로 추가된 의미 태그는 1번 항목을 도와준다. 하지만 HTML5라고 해서 충분히 모든 의미를 포함할수는 없다. 클래스 속성을 통해서 아주 구체적인 의미를 밝힐 수 있다. 아래의 두 <code>&lt;nav&gt;</code> 엘리먼트는 클래스로 그 의미를 밝혀두고 있다. 클래스 속성에 따라 <code>nav-primary</code> 클래스는 가로 메뉴로, <code>nav-secondary</code> 세로메뉴로 만들수도 있다.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-primary"</span>></span>
-    <span class="tag">&lt;<span class="title">h1</span>></span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>…<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">nav</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-primary"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>…<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">nav</span>&gt;</span>
 
-<span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-secondary"</span>></span>
-    <span class="tag">&lt;<span class="title">h1</span>></span>External Links<span class="tag">&lt;/<span class="title">h1</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>…<span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">nav</span>></span></code></pre>
+<span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-secondary"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>External Links<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>…<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">nav</span>&gt;</span></code></pre>
 <h3>2단계 메뉴 목록</h3>
 <p>SMACSS의 목표는 최대한 얕은 깊이의 셀렉터를 사용하는 것이다. 만약 아래와 같은 마크업이 있을 때 2단계를 어떻게 다르게 처리할 수 있을까.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-primary"</span>></span>
-    <span class="tag">&lt;<span class="title">h1</span>></span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>
-        <span class="tag">&lt;<span class="title">li</span>></span>About Us
-            <span class="tag">&lt;<span class="title">ul</span>></span>
-                <span class="tag">&lt;<span class="title">li</span>></span>Team<span class="tag">&lt;/<span class="title">li</span>></span>
-                <span class="tag">&lt;<span class="title">li</span>></span>Location<span class="tag">&lt;/<span class="title">li</span>></span>
-            <span class="tag">&lt;/<span class="title">ul</span>></span>
-        <span class="tag">&lt;/<span class="title">li</span>></span>
-    <span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">nav</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav-primary"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">li</span>&gt;</span>About Us
+            <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">li</span>&gt;</span>Team<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">li</span>&gt;</span>Location<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">nav</span>&gt;</span></code></pre>
 <p>CSS 셀렉터를 중첩해서 쓰면 아래와 같다:
 
 </p>
 <pre><code><span class="tag">nav</span><span class="class">.nav-primary</span> <span class="tag">li</span> <span class="rules">{ 
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span>;</span> 
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span> 
 <span class="rule">}</span></span>
 
 <span class="tag">nav</span><span class="class">.nav-secondary</span> <span class="tag">li</span>,
 <span class="tag">nav</span><span class="class">.nav-primary</span> <span class="tag">li</span> <span class="tag">li</span> <span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span>;</span>
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> block;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>자 여기서 엘리먼트를 제한하는 <code>nav</code>를 제거하고 셀렉터의 깊이도 더 얕게 만들어보면:
 
 </p>
-<pre><code><span class="class">.l-inline</span> > * <span class="rules">{ 
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span>;</span>
+<pre><code><span class="class">.l-inline</span> &gt; * <span class="rules">{ 
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
 <span class="rule">}</span></span>
 
-<span class="class">.l-stacked</span> > * <span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span>;</span>
+<span class="class">.l-stacked</span> &gt; * <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> block;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>요렇게 만들어볼 수 있다. 마크업은 아래와 같이 수정되어야 한다.
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"l-inline"</span>></span>
-    <span class="tag">&lt;<span class="title">h1</span>></span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>></span>
-    <span class="tag">&lt;<span class="title">ul</span>></span>
-        <span class="tag">&lt;<span class="title">li</span>></span>About Us
-            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"l-stacked"</span>></span>
-                <span class="tag">&lt;<span class="title">li</span>></span>Team<span class="tag">&lt;/<span class="title">li</span>></span>
-                <span class="tag">&lt;<span class="title">li</span>></span>Location<span class="tag">&lt;/<span class="title">li</span>></span>
-            <span class="tag">&lt;/<span class="title">ul</span>></span>
-        <span class="tag">&lt;/<span class="title">li</span>></span>
-    <span class="tag">&lt;/<span class="title">ul</span>></span>
-<span class="tag">&lt;/<span class="title">nav</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"l-inline"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Primary Navigation<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">li</span>&gt;</span>About Us
+            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"l-stacked"</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">li</span>&gt;</span>Team<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">li</span>&gt;</span>Location<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">nav</span>&gt;</span></code></pre>
 <h2>프로토타입</h2>
 <p>좋은 프로그래머는 패턴을 좋아해~ 좋은 디자이너도 패턴을 좋아해~
 

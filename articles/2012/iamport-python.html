@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/iamport-python.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">iamport: python</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/iamport-python.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">iamport: python</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jun 02</span>
  | <a href="/site/tagmap.html#python" class="tag">python</a> <a href="/site/tagmap.html#coroutine" class="tag">coroutine</a> <a href="/site/tagmap.html#gevent" class="tag">gevent</a> <a href="/site/tagmap.html#iamport" class="tag">iamport</a> | <span><a href="/articles/2012/iamport-python.html#disqus_thread" data-disqus-identifier="/articles/2012/iamport-python.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -72,7 +72,7 @@
 
         opts = re.split(<span class="string">'\s*'</span>, line)
 
-        <span class="keyword">if</span> len(opts) > <span class="number">2</span>:
+        <span class="keyword">if</span> len(opts) &gt; <span class="number">2</span>:
             job = tryToConnect( opts )
             jobs.append( job )
         <span class="keyword">else</span>:
@@ -95,13 +95,13 @@
 <p>그러면 입력 값이 잘못 됐거나 열리지 않는, 아무튼 예외가 발생하는 것만 출력한다. 실행 결과는 다음과 같다:
 
 </p>
-<pre><code>$ .<span class="regexp">/iamport.py port_scan 
-127.0.0.1 22
-127.0.0.1 21
-168.126.63.1 18
-18.18.18.18 18
-18.18.18.18
-elapsed 42.215497</code></pre>
+<pre><code><span class="comment">$</span> <span class="string">.</span><span class="comment">/iamport</span>.<span class="comment">py</span> <span class="comment">port_scan</span> 
+<span class="comment">127</span>.<span class="comment">0</span>.<span class="comment">0</span>.<span class="comment">1</span> <span class="comment">22</span>
+<span class="comment">127</span>.<span class="comment">0</span>.<span class="comment">0</span>.<span class="comment">1</span> <span class="comment">21</span>
+<span class="comment">168</span>.<span class="comment">126</span>.<span class="comment">63</span>.<span class="comment">1</span> <span class="comment">18</span>
+<span class="comment">18</span>.<span class="comment">18</span>.<span class="comment">18</span>.<span class="comment">18</span> <span class="comment">18</span>
+<span class="comment">18</span>.<span class="comment">18</span>.<span class="comment">18</span>.<span class="comment">18</span>
+<span class="comment">elapsed</span> <span class="comment">42</span>.<span class="comment">215497</code></pre>
 <p>100개 정도에 한번 해봤는데 27분 걸렸다.
 
 </p>
@@ -175,7 +175,7 @@ elapsed 42.215497</code></pre>
 
         opts = re.split(<span class="string">'\s*'</span>, line)
 
-        <span class="keyword">if</span> len(opts) > <span class="number">2</span>:
+        <span class="keyword">if</span> len(opts) &gt; <span class="number">2</span>:
             <span class="comment">#job을 spawn</span>
             job = gevent.spawn(tryToConnect, opts )
             jobs.append( job )

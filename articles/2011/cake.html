@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/cake.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Cake</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/cake.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Cake</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Nov 22</span>
  | <a href="/site/tagmap.html#cake" class="tag">Cake</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a> | <span><a href="/articles/2011/cake.html#disqus_thread" data-disqus-identifier="/articles/2011/cake.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -31,48 +31,48 @@
 
 </p>
 <pre><code>:::coffee
-task <span class="attribute">'say</span>:hello', <span class="attribute">'Description</span> <span class="keyword">of</span> task', ->
+task <span class="attribute">'say</span>:hello', <span class="attribute">'Description</span> <span class="keyword">of</span> task', -&gt;
   console.log <span class="attribute">'Hello</span> World!'</code></pre>
 <p>그리고 <code>task say:hello</code>라고 실행하면:
 
 </p>
 <pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:bash</span>
-<span class="variable">$ </span>cake say<span class="symbol">:hello</span>
+<span class="variable">$ </span>cake <span class="symbol">say:</span>hello
 <span class="constant">Hello</span> <span class="constant">World</span>!</code></pre>
 <p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:
 
 </p>
 <pre><code><span class="variable">$ </span>cake
 
-cake say<span class="symbol">:hello</span>             <span class="comment"># Description of task</span></code></pre>
+cake <span class="symbol">say:</span>hello             <span class="comment"># Description of task</span></code></pre>
 <h3>Option</h3>
 <p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:
 
 </p>
 <pre><code>:::coffee
 option '-e', '<span class="comment">--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'</span>
-task <span class="attribute">'task</span>:withDefaults', <span class="attribute">'Description</span> <span class="keyword">of</span> task', (options) ->
+task <span class="attribute">'task</span>:withDefaults', <span class="attribute">'Description</span> <span class="keyword">of</span> task', (options) -&gt;
   options.environment <span class="keyword">or</span>= <span class="attribute">'production</span>'</code></pre>
 <p>이 코드는 다음과 같이 실행한다.
 
 </p>
 <pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:bash</span>
-<span class="variable">$ </span>cake -e <span class="string">"development"</span> task<span class="symbol">:withDefaults</span></code></pre>
+<span class="variable">$ </span>cake -e <span class="string">"development"</span> <span class="symbol">task:</span>withDefaults</code></pre>
 <h2>Use Case</h2>
 <h3>Compile</h3>
 <p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:
 
 </p>
-<pre><code><span class="variable">$ </span>coffee --compile --output lib/ src/</code></pre>
+<pre><code><span class="comment">$</span> <span class="comment">coffee</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">lib/</span> <span class="comment">src/</code></pre>
 <p>이 cake로 하려면 다음과 같이 한다.
 
 </p>
-<pre><code>:::coffee
-{exec} = require <span class="comment">'child_process'</span>
-task <span class="comment">'build', 'Build project from src/*.coffee to lib/*.js', -></span>
-  exec <span class="comment">'coffee --compile --output lib/ src/', (err, stdout, stderr) -></span>
-    throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
-    console.<span class="built_in">log</span> stdout + stderr</code></pre>
+<pre><code><span class="comment">:::coffee</span>
+<span class="comment">{exec}</span> <span class="comment">=</span> <span class="comment">require</span> <span class="comment">'child_process'</span>
+<span class="comment">task</span> <span class="comment">'build'</span>, <span class="comment">'Build</span> <span class="comment">project</span> <span class="comment">from</span> <span class="comment">src/*</span>.<span class="comment">coffee</span> <span class="comment">to</span> <span class="comment">lib/*</span>.<span class="comment">js'</span>, <span class="literal">-</span>&gt;
+  <span class="comment">exec</span> <span class="comment">'coffee</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">lib/</span> <span class="comment">src/'</span>, <span class="comment">(err</span>, <span class="comment">stdout</span>, <span class="comment">stderr)</span> <span class="literal">-</span>&gt;
+    <span class="comment">throw</span> <span class="comment">err</span> <span class="comment">if</span> <span class="comment">err</span>
+    <span class="comment">console</span>.<span class="comment">log</span> <span class="comment">stdout</span> <span class="literal">+</span> <span class="comment">stderr</code></pre>
 <p><code>{exec} = require &#39;child_process&#39;</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require(&#39;child_process&#39;).exec</code>와 같다.
 
 </p>
@@ -93,30 +93,30 @@ appFiles  = [
   <span class="comment">'content/scripts/command/selectionTools/general'</span>
 ]
 
-task <span class="comment">'build', 'Build single application file from source files', -></span>
+task <span class="comment">'build', 'Build single application file from source files', -&gt;</span>
   appContents = <span class="keyword">new</span> <span class="built_in">Array</span> remaining = appFiles.length
-  <span class="keyword">for</span> file, index <span class="keyword">in</span> appFiles <span class="keyword">then</span> <span class="keyword">do</span> (file, index) ->
-    fs.readFile <span class="string">"src/#{file}.coffee"</span>, <span class="comment">'utf8', (err, fileContents) -></span>
+  <span class="keyword">for</span> file, index <span class="keyword">in</span> appFiles <span class="keyword">then</span> <span class="keyword">do</span> (file, index) -&gt;
+    fs.readFile <span class="string">"src/#{file}.coffee"</span>, <span class="comment">'utf8', (err, fileContents) -&gt;</span>
       throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
       appContents[index] = fileContents
       process() <span class="keyword">if</span> --remaining <span class="keyword">is</span> <span class="number">0</span>
-  process = ->
-    fs.writeFile <span class="comment">'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -></span>
+  process = -&gt;
+    fs.writeFile <span class="comment">'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;</span>
       throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
-      exec <span class="comment">'coffee --compile lib/app.coffee', (err, stdout, stderr) -></span>
+      exec <span class="comment">'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;</span>
         throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
         console.<span class="built_in">log</span> stdout + stderr
-        fs.unlink <span class="comment">'lib/app.coffee', (err) -></span>
+        fs.unlink <span class="comment">'lib/app.coffee', (err) -&gt;</span>
           throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
           console.<span class="built_in">log</span> <span class="comment">'Done.'</span></code></pre>
 <h3>Minify/Compress Your Files</h3>
 <p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기
 
 </p>
-<pre><code>task <span class="attribute">'minify</span>', <span class="attribute">'Minify</span> the resulting application <span class="keyword">file</span> <span class="keyword">after</span> build', ->
-  exec <span class="attribute">'java</span> -jar <span class="string">"/home/stan/public/compiler.jar"</span> <span class="comment">--js lib/app.js --js_output_file lib/app.production.js', (err, stdout, stderr) -></span>
-    throw err <span class="keyword">if</span> err
-    console.log stdout + stderr</code></pre>
+<pre><code><span class="comment">task</span> <span class="comment">'minify'</span>, <span class="comment">'Minify</span> <span class="comment">the</span> <span class="comment">resulting</span> <span class="comment">application</span> <span class="comment">file</span> <span class="comment">after</span> <span class="comment">build'</span>, <span class="literal">-</span>&gt;
+  <span class="comment">exec</span> <span class="comment">'java</span> <span class="literal">-</span><span class="comment">jar</span> <span class="comment">"/home/stan/public/compiler</span>.<span class="comment">jar"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">js</span> <span class="comment">lib/app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">js_output_file</span> <span class="comment">lib/app</span>.<span class="comment">production</span>.<span class="comment">js'</span>, <span class="comment">(err</span>, <span class="comment">stdout</span>, <span class="comment">stderr)</span> <span class="literal">-</span>&gt;
+    <span class="comment">throw</span> <span class="comment">err</span> <span class="comment">if</span> <span class="comment">err</span>
+    <span class="comment">console</span>.<span class="comment">log</span> <span class="comment">stdout</span> <span class="literal">+</span> <span class="comment">stderr</code></pre>
 <h2>참고</h2>
 <ul>
 <li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>

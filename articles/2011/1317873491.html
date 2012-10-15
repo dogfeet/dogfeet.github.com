@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1317873491.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">ECMAScript 5 Strict Mode, JSON, and More</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2011/1317873491.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">ECMAScript 5 Strict Mode, JSON, and More</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2011 Oct 06</span>
  | <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a> <a href="/site/tagmap.html#ecmascript" class="tag">ECMAScript</a> <a href="/site/tagmap.html#es5" class="tag">ES5</a> <a href="/site/tagmap.html#john resig" class="tag">John Resig</a> | <span><a href="/articles/2011/1317873491.html#disqus_thread" data-disqus-identifier="/articles/2011/1317873491.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -69,14 +69,14 @@
 <p>함수에만 'Strict Mode'를 적용할 수 있기 때문에 다른 코드에 대한 걱정없이 JavaScript 라이브러리에 사용할 수 있다.
 
 </p>
-<pre><code><span class="comment">// Non-strict code...</span>
-(<span class="keyword">function</span>(){
-  <span class="string">"use strict"</span>;
+<pre><code><span class="comment">//</span> <span class="comment">Non</span>-<span class="comment">strict</span> <span class="comment">code</span>.<span class="string">.</span><span class="string">.</span>
+<span class="comment">(function(){</span>
+  <span class="comment">"use</span> <span class="comment">strict";</span>
 
-  <span class="comment">// Define your library strictly...</span>
-})();
+  <span class="comment">//</span> <span class="comment">Define</span> <span class="comment">your</span> <span class="comment">library</span> <span class="comment">strictly</span>.<span class="string">.</span><span class="string">.</span>
+<span class="comment">})();</span>
 
-<span class="comment">// Non-strict code... </span></code></pre>
+<span class="comment">//</span> <span class="comment">Non</span>-<span class="comment">strict</span> <span class="comment">code</span>.<span class="string">.</span><span class="string">.</span> </code></pre>
 <p>많은 라이브러리들은 코드 전체를 함수 하나로 감싸는 이 방식으로 구현했기 때문에 'Strict Mode'를 쉽게 적용할 수 있다.
 
 </p>

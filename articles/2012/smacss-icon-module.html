@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss-icon-module.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS:The Icon Module</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/smacss-icon-module.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">SMACSS:The Icon Module</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Mar 08</span>
  | <a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#smacss" class="tag">SMACSS</a> <a href="/site/tagmap.html#icon" class="tag">Icon</a> <a href="/site/tagmap.html#css sprite" class="tag">CSS Sprite</a> | <span><a href="/articles/2012/smacss-icon-module.html#disqus_thread" data-disqus-identifier="/articles/2012/smacss-icon-module.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -46,24 +46,24 @@
 <p>Menu HTML:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"menu"</span>></span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-inbox"</span>></span>Inbox<span class="tag">&lt;/<span class="title">li</span>></span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-drafts"</span>></span>Drafts<span class="tag">&lt;/<span class="title">li</span>></span>
-<span class="tag">&lt;/<span class="title">ul</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-inbox"</span>&gt;</span>Inbox<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-drafts"</span>&gt;</span>Drafts<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></pre>
 <p>Menu CSS:
 
 </p>
 <pre><code><span class="class">.menu</span> <span class="tag">li</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat <span class="number">0</span> <span class="number">0</span></span>;</span>
-    <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">20</span>px</span>;</span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat <span class="number">0</span> <span class="number">0</span>;</span></span>
+    <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">20</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.menu</span> <span class="class">.menu-inbox</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">20</span>px</span>;</span>
+    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">20</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.menu</span> <span class="class">.menu-drafts</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">40</span>px</span>;</span>
+    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">40</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p>모든 Icon은 Sprite 파일 하나에 다 들어 있고 아이템마다 필요한 Icon이 있는 위치를 보여준다.
 
@@ -83,7 +83,7 @@
 <p>Icon Module을 사용하도록 HTML을 바꾼다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">li</span>></span><span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"ico ico-16 ico-inbox"</span>></span><span class="tag">&lt;/<span class="title">i</span>></span> Inbox<span class="tag">&lt;/<span class="title">li</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"ico ico-16 ico-inbox"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span> Inbox<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></pre>
 <p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.
 
 </p>
@@ -97,23 +97,23 @@
 
 </p>
 <pre><code><span class="class">.ico</span> <span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span>;</span>
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat</span>;</span>
-    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">0</span></span>;</span>
-    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> bottom</span>;</span>
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat;</span></span>
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">0</span>;</span></span>
+    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> bottom;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.ico-16</span> <span class="rules">{
-    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">16</span>px</span>;</span>
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">16</span>px</span>;</span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">16</span>px;</span></span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">16</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.ico-inbox</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">20</span>px</span>;</span>
+    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">20</span>px;</span></span>
 <span class="rule">}</span></span>
 
 <span class="class">.ico-drafts</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">40</span>px</span>;</span>
+    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">40</span>px;</span></span>
 <span class="rule">}</span></span></code></pre>
 <p><code>ico</code> 클래스는 모듈의 기본적인 토대를 다지는 클래스다. <code>&lt;img&gt;</code>처럼 inline-block 엘리멘트로 만들고 <code>vertical-align</code>으로 Icon이 텍스트와 잘 어우러지도록 해준다. IE는 <code>inline-block</code>을 <code>block</code> 엘리먼트로 취급하기 때문에 IE에서는 <code>{ zoom:1; display:inline; }</code>로 해야 한다.
 

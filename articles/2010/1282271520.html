@@ -15,13 +15,13 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1282271520.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">한 줄 구구단 in scheme</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/sean-lee.html">Sean Lee</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1282271520.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">한 줄 구구단 in scheme</h1></header><footer class="modern-font" .small-font><span>by <a href="https://github.com/lethee/">Sean Lee</a></span>
  | <span property="dc:created">2010 Aug 20</span>
  | <a href="/site/tagmap.html#iterator" class="tag">Iterator</a> <a href="/site/tagmap.html#scheme" class="tag">scheme</a> <a href="/site/tagmap.html#구구단" class="tag">구구단</a> | <span><a href="/articles/2010/1282271520.html#disqus_thread" data-disqus-identifier="/articles/2010/1282271520.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1282271520.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1282271520.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1282271520.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><h2>구구단 scheme</h2>
-<pre><code>#lang scheme (<span class="keyword">do</span> ([i <span class="number">1</span> (+ i <span class="number">1</span>)]) [(= i <span class="number">10</span>)] (<span class="keyword">do</span> ([j <span class="number">1</span> (+ j <span class="number">1</span>)]) [(= j <span class="number">10</span>)] (printf <span class="string">"~ax~a=~a~n"</span> i j (* i j)))) </code></pre>
+<pre><code>#lang scheme (<span class="operator"><span class="keyword">do</span> ([i <span class="number">1</span> (+ i <span class="number">1</span>)]) [(= i <span class="number">10</span>)] (<span class="keyword">do</span> ([j <span class="number">1</span> (+ j <span class="number">1</span>)]) [(= j <span class="number">10</span>)] (printf <span class="string">"~ax~a=~a~n"</span> i j (* i j)))) </code></pre>
 <p>iterator를 쉽게 배워보는 계기가 됨. 발단은 <a href="http://me2day.net/darjeeling/2010/08/19#21:40:53">이곳 다즐링님 포스팅</a>
 </p>
 </div></article><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>

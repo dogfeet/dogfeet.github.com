@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2010 Apr 19</span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#spring finance" class="tag">Spring Finance</a> <a href="/site/tagmap.html#stefan schmidt" class="tag">Stefan Schmidt</a> | <span><a href="/articles/2010/1271653140.html#disqus_thread" data-disqus-identifier="/articles/2010/1271653140.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -66,12 +66,12 @@
 <p>분명, 여러분은 <code>@Controller</code> 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 <code>@Controller</code> 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">context:component-scan</span> <span class="attribute">base-package</span>=<span class="value">"net.stsmedia.financemanager"</span> <span class="attribute">use-default-filters</span>=<span class="value">"false"</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">context:component-scan</span> <span class="attribute">base-package</span>=<span class="value">"net.stsmedia.financemanager"</span> <span class="attribute">use-default-filters</span>=<span class="value">"false"</span>&gt;</span>
 
-<span class="tag">&lt;<span class="title">context:include-filter</span> <span class="attribute">expression</span>=<span class="value">"org.springframework.stereotype.Controller"</span> <span class="attribute">type</span>=<span class="value">"annotation"</span>></span>
+<span class="tag">&lt;<span class="title">context:include-filter</span> <span class="attribute">expression</span>=<span class="value">"org.springframework.stereotype.Controller"</span> <span class="attribute">type</span>=<span class="value">"annotation"</span>&gt;</span>
 
-<span class="tag">&lt;/<span class="title">context:include-filter</span>></span>
-<span class="tag">&lt;/<span class="title">context:component-scan</span>></span> </code></pre>
+<span class="tag">&lt;/<span class="title">context:include-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">context:component-scan</span>&gt;</span> </code></pre>
 <p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 '/FinanceManager/person/'와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 '<a href="[http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>'란 글을 참고하라.
 
 </p>
@@ -88,35 +88,35 @@
 <p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> <span class="attribute">p:prefix</span>=<span class="value">"/WEB-INF/jsp/"</span> <span class="attribute">p:suffix</span>=<span class="value">".jsp"</span>></span>
-<span class="tag">&lt;/<span class="title">bean</span>></span></code></pre>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> <span class="attribute">p:prefix</span>=<span class="value">"/WEB-INF/jsp/"</span> <span class="attribute">p:suffix</span>=<span class="value">".jsp"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span></code></pre>
 <p>update.jsp 페이지를 살펴봅시다:
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">form:form</span> <span class="attribute">action</span>=<span class="value">"/FinanceManager/person/${person.id}"</span> <span class="attribute">method</span>=<span class="value">"PUT"</span> <span class="attribute">modelattribute</span>=<span class="value">"person"</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">form:form</span> <span class="attribute">action</span>=<span class="value">"/FinanceManager/person/${person.id}"</span> <span class="attribute">method</span>=<span class="value">"PUT"</span> <span class="attribute">modelattribute</span>=<span class="value">"person"</span>&gt;</span>
 [...]
-<span class="tag">&lt;/<span class="title">form:form</span>></span> </code></pre>
+<span class="tag">&lt;/<span class="title">form:form</span>&gt;</span> </code></pre>
 <p>HTTP 메소드가 'method="PUT"'으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):
 
 </p>
-<pre><code><span class="tag">&lt;<span class="title">filter</span>></span>
-    <span class="tag">&lt;<span class="title">filter-name</span>></span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>></span>
-    <span class="tag">&lt;<span class="title">filter-class</span>></span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="title">filter-class</span>></span>
-<span class="tag">&lt;/<span class="title">filter</span>></span>
+<pre><code><span class="tag">&lt;<span class="title">filter</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">filter-name</span>&gt;</span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="title">filter-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">filter</span>&gt;</span>
 
-<span class="tag">&lt;<span class="title">filter-mapping</span>></span>
-    <span class="tag">&lt;<span class="title">filter-name</span>></span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>></span>
-    <span class="tag">&lt;<span class="title">servlet-name</span>></span>FinanceManager<span class="tag">&lt;/<span class="title">servlet-name</span>></span>
-<span class="tag">&lt;/<span class="title">filter-mapping</span>></span> </code></pre>
+<span class="tag">&lt;<span class="title">filter-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">filter-name</span>&gt;</span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">servlet-name</span>&gt;</span>FinanceManager<span class="tag">&lt;/<span class="title">servlet-name</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">filter-mapping</span>&gt;</span> </code></pre>
 <h2>REST Mappings</h2>
 <p>이 절에서는 REST mappings에 대해 매우 자세히 설명한다. 다음에 나올 PersionController를 위해서도 필요하다. Spring Finance Manager같은 웹 어플리케이션은 네가지 기능이 사용자에게 노출된다. 이 네가지 기능은 새로 자원(a person)을 만드는 것(Create), 존제하는 자원(a person)의 상세정보를 보여주거나 읽는 것(Read), 자원(a person) 정보를 수정하는 것(Update), 자원(a person)을 삭제하는 것(Delete)이다. 우리는 Person 엔티티를 읽고 관리하는 것을 CRUD라고 부른다. REST 어플리케이션을 만들 때 다음과 같은 패턴을 따르는 것이 권장된다. 다음은 CRUD가 HTTP 메소드에 어떻게 매핑되는 지를 보여준다:
 
 </p>
-<pre><code>HTTP   <span class="string">| CRUD</span>
-POST   <span class="string">| CREATE</span>
-GET    <span class="string">| READ</span>
-PUT    <span class="string">| UPDATE</span>
-DELETE <span class="string">| DELETE</span></code></pre>
+<pre><code>HTTP   | CRUD
+POST   | <span class="operator"><span class="keyword">CREATE</span>
+<span class="keyword">GET</span>    | <span class="keyword">READ</span>
+PUT    | <span class="keyword">UPDATE</span>
+<span class="keyword">DELETE</span> | <span class="keyword">DELETE</span></code></pre>
 <p>MVC 컨트롤러는 표준 CRUD 이외에도 create.jsp, update.jsp의 폼을 위한 폼 백킹 오브젝트(form backing object)를 지원해야 한다. 다음은 PersonController에 REST 매핑을 적용한 표이다:
 
 </p>

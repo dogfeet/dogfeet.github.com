@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Setup</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Setup</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 03</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-setup.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-setup.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -69,7 +69,7 @@
 <p>sbt 없으면 레파지토리에서 정보를 업데이트한다:
 
 </p>
-<pre><code>apt-<span class="keyword">get</span> update</code></pre>
+<pre><code>apt-get <span class="operator"><span class="keyword">update</span></code></pre>
 <p><em>Note: 이슈를 발견하면 <a href="https://github.com/sbt/sbt-launcher-package/issues">여기</a>에 신고할 수 있다.</em>
 
 </p>
@@ -79,13 +79,13 @@
 </p>
 <pre><code><span class="title">mkdir</span> -p /usr/local/portage &amp;&amp; cd /usr/local/portage
 <span class="title">git</span> clone git://github.com/whiter4bbit/overlays.git
-<span class="title">echo</span> <span class="string">"PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay"</span> >> /etc/make.conf
+<span class="title">echo</span> <span class="string">"PORTDIR_OVERLAY=$PORTDIR_OVERLAY /usr/local/portage/overlay"</span> &gt;&gt; /etc/make.conf
 <span class="title">emerge</span> sbt-bin</code></pre>
 <h2>Mac</h2>
 <p><a href="http://macports.org/">MacPorts</a>로 설치한다:
 
 </p>
-<pre><code><span class="variable">$ </span>sudo port install sbt</code></pre>
+<pre><code>$ su<span class="operator"><span class="keyword">do</span> port install sbt</code></pre>
 <p><a href="http://mxcl.github.com/homebrew/">HomeBrew</a>로 설치할 수 있다:
 
 </p>
@@ -115,7 +115,7 @@ java -Xmx512M -jar <span class="string">"<span class="variable">%SCRIPT_DIR</spa
 <p>이 jar 파일을 실행하는 스크립트를 'sbt'라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:
 
 </p>
-<pre><code><span class="title">java</span> -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=<span class="number">384M</span> -jar `dirname <span class="variable">$0</span>`/sbt-launch.jar <span class="string">"$@"</span></code></pre>
+<pre><code><span class="comment">java</span> <span class="literal">-</span><span class="comment">Xms512M</span> <span class="literal">-</span><span class="comment">Xmx1536M</span> <span class="literal">-</span><span class="comment">Xss1M</span> <span class="literal">-</span><span class="comment">XX:</span>+<span class="comment">CMSClassUnloadingEnabled</span> <span class="literal">-</span><span class="comment">XX:MaxPermSize=384M</span> <span class="literal">-</span><span class="comment">jar</span> <span class="comment">`dirname</span> <span class="comment">$0`/sbt</span>-<span class="comment">launch</span>.<span class="comment">jar</span> <span class="comment">"$@"</code></pre>
 <p>그리고 스크립트를 실행할 수 있게 만든다:
 
 </p>

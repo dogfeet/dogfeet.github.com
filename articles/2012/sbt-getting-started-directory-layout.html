@@ -15,7 +15,7 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Directory Layout</h1></header><footer class="modern-font" .small-font><span>by <a href="/authors/changwoo-park.html">Changwoo Park</a></span>
+</script><article id="post" typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">sbt: Getting Started Guide: Directory Layout</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <span property="dc:created">2012 Jul 16</span>
  | <a href="/site/tagmap.html#sbt" class="tag">sbt</a> | <span><a href="/articles/2012/sbt-getting-started-directory-layout.html#disqus_thread" data-disqus-identifier="/articles/2012/sbt-getting-started-directory-layout.html"></a></span>
 <style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
@@ -40,18 +40,18 @@
 <pre><code>src/
   main/
     resources/
-       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">main</span> <span class="attribute">jar</span> <span class="attribute">here</span>></span>
+       <span class="xml"><span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">main</span> <span class="attribute">jar</span> <span class="attribute">here</span>&gt;</span>
     scala/
-       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>></span>
+       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>&gt;</span>
     java/
-       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Java</span> <span class="attribute">sources</span>></span>
+       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Java</span> <span class="attribute">sources</span>&gt;</span>
   test/
     resources
-       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">test</span> <span class="attribute">jar</span> <span class="attribute">here</span>></span>
+       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">test</span> <span class="attribute">jar</span> <span class="attribute">here</span>&gt;</span>
     scala/
-       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>></span>
+       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>&gt;</span>
     java/
-       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Java</span> <span class="attribute">sources</span>></span></code></pre>
+       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Java</span> <span class="attribute">sources</span>&gt;</span></span></code></pre>
 <p><code>src/</code> 안에 있는 다른 디렉토리와 숨겨진 디렉토리는 무시된다.
 
 </p>
