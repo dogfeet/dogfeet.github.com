@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어 배우기 - 제 3장: 함수 정의하기</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,33 +15,28 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/learning-j-chapter3.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">J언어 배우기 - 제 3장: 함수 정의하기</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <span property="dc:created">2012 May 01</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/learning-j-chapter3.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2012 May 01 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">J언어 배우기 - 제 3장: 함수 정의하기</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
  | <a href="/site/tagmap.html#j" class="tag">J</a> <a href="/site/tagmap.html#jsoftware" class="tag">jsoftware</a> <a href="/site/tagmap.html#language" class="tag">language</a> <a href="/site/tagmap.html#j언어" class="tag">J언어</a> | <span><a href="/articles/2012/learning-j-chapter3.html#disqus_thread" data-disqus-identifier="/articles/2012/learning-j-chapter3.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-via="lnyarl" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a> 의 chapter 3:Defining Functions를 번역/정리했다. 이전 챕터들은 본 사이트에서 <a href="/site/tagmap.html#j언어">J언어 태그</a>로 검색해 볼 수 있다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-via="lnyarl" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a> 의 chapter 3:Defining Functions를 번역/정리했다. 이전 챕터들은 본 사이트에서 <a href="/site/tagmap.html#j%EC%96%B8%EC%96%B4">J언어 태그</a>로 검색해 볼 수 있다.</p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/jcode.png" alt="j code">
+<p><img src="/articles/2012/learning_j_chapter3/jcode.png" alt="j code"></p>
 
-</p>
-<p>J에는 많은 내장 함수가 있다. 우리는 그 중 몇 가지를 살펴보았다.(<code>*</code>나 <code>+</code>같은 것들) 이번 섹션에서는 이 내장함수를 조합해 원하는 함수를 정의하는 여러 방법을 배운다.
+<p>J에는 많은 내장 함수가 있다. 우리는 그 중 몇 가지를 살펴보았다.(<code>*</code>나 <code>+</code>같은 것들) 이번 섹션에서는 이 내장함수를 조합해 원하는 함수를 정의하는 여러 방법을 배운다.</p>
 
-</p>
 <h2>3.1 이름짓기</h2>
-<p>함수를 정의하는 가장 간단한 방법은 그냥 원하는 내장 함수에 이름을 부여하는 것이다. 정의는 할당 함수를 이용해서 한다. 예를 들어서 아래의 <code>square</code>함수는 내장 함수인 <code>*:</code>를 이용하는 것과 똑같다.
 
-</p>
+<p>함수를 정의하는 가장 간단한 방법은 그냥 원하는 내장 함수에 이름을 부여하는 것이다. 정의는 할당 함수를 이용해서 한다. 예를 들어서 아래의 <code>square</code>함수는 내장 함수인 <code>*:</code>를 이용하는 것과 똑같다.</p>
 <pre><code>   <span class="title">square</span> =: *:
 
    square <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>
-<span class="number">1</span> <span class="number">4</span> <span class="number">9</span> <span class="number">16</span></code></pre>
-<p>우리가 지은 이름이 더 기억하기 쉽거나 해서 그게 좋다면 새로운 이름을 사용한다. 같은 내장 함수에 다른 두 개의 이름을 부여할 수도 있다. 하나는 모나딕용으로, 다른 하나는 다이아딕 용으로.
-
-</p>
+<span class="number">1</span> <span class="number">4</span> <span class="number">9</span> <span class="number">16</span>
+</code></pre>
+<p>우리가 지은 이름이 더 기억하기 쉽거나 해서 그게 좋다면 새로운 이름을 사용한다. 같은 내장 함수에 다른 두 개의 이름을 부여할 수도 있다. 하나는 모나딕용으로, 다른 하나는 다이아딕 용으로.</p>
 <pre><code>   <span class="comment">Ceiling</span> <span class="comment">=:</span> &gt;<span class="string">.</span>
-   <span class="comment">Max</span>     <span class="comment">=:</span> &gt;<span class="string">.</span></code></pre>
+   <span class="comment">Max</span>     <span class="comment">=:</span> &gt;<span class="string">.</span>
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>Ceiling 1.7</tt></td>
@@ -52,50 +47,45 @@
 </tr></tbody></table>
 
 <h2>3.2 삽입하기</h2>
-<p>표현식 <code>+/ 2 3 4</code>는 의미가 <code>2 + 3 + 4</code>와 같고 비슷하게 <code>*/ 2 3 4</code>는 <code>2 * 3 * 4</code>와 같다. 이제 이 함수에 <code>sum</code>이라는 이름을 붙여보자.
 
-</p>
+<p>표현식 <code>+/ 2 3 4</code>는 의미가 <code>2 + 3 + 4</code>와 같고 비슷하게 <code>*/ 2 3 4</code>는 <code>2 * 3 * 4</code>와 같다. 이제 이 함수에 <code>sum</code>이라는 이름을 붙여보자.</p>
 <pre><code>   <span class="keyword">sum</span> =: + /
 
    <span class="keyword">sum</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>
-<span class="number">9</span></code></pre>
+<span class="number">9</span>
+</code></pre>
 <p><code>sum =: +/</code>라는 코드를 보면 <code>+/</code>가 이 자체로 함수를 표현하는 표현식임을 알 수 있다.
-<code>+/</code>는 "Insert"(<code>/</code>)가 함수 <code>+</code>에 적용되어 리스트를 합치는 함수가 되었다 라고 말한다.
+<code>+/</code>는 &ldquo;Insert&rdquo;(<code>/</code>)가 함수 <code>+</code>에 적용되어 리스트를 합치는 함수가 되었다 라고 말한다.</p>
 
-</p>
-<p>즉, <code>/</code>은 그 자체로 함수의 한 종류이다. 이 함수는 왼쪽에 인자 하나를 받는다. 그 인자도 함수고 계산 결과도 함수다.
+<p>즉, <code>/</code>은 그 자체로 함수의 한 종류이다. 이 함수는 왼쪽에 인자 하나를 받는다. 그 인자도 함수고 계산 결과도 함수다.</p>
 
-</p>
 <h2>3.3 용어: 동사, 연산자, 부사</h2>
-<p>우리는 두 종류의 함수를 봤다. 첫째로 "일반적인" 함수다. 숫자를 계산해서 숫자를 내뱉는 <code>+</code>나 <code>*</code>같은 함수. J에서는 이런 것들을 "동사"라고 한다. 둘째로 함수를 계산해서 함수를 내뱉는 <code>/</code>같은 함수이다. 이런 종류의 함수를 다른 종류의 함수와는 구별하여 "연산자"라고 한다. 
 
-</p>
-<p>하나의 인자를 받는 연산자는 "부사"라고 한다. 부사는 항상 왼쪽에 하나의 인자를 받는다. 그래서 표현식 <code>+ /</code>에서 부사 <code>/</code>는 동사 <code>+</code>에 적용되어서 리스트를 더하는 동사가 만들어진다.
+<p>우리는 두 종류의 함수를 봤다. 첫째로 &ldquo;일반적인&rdquo; 함수다. 숫자를 계산해서 숫자를 내뱉는 <code>+</code>나 <code>*</code>같은 함수. J에서는 이런 것들을 &ldquo;동사&quot;라고 한다. 둘째로 함수를 계산해서 함수를 내뱉는 <code>/</code>같은 함수이다. 이런 종류의 함수를 다른 종류의 함수와는 구별하여 &quot;연산자&quot;라고 한다. </p>
 
-</p>
-<p>용어는 영어구문에서 따왔다. 동사는 물건의 행동을 묘사하고 부사는 동사의 의미를 변한다.
+<p>하나의 인자를 받는 연산자는 &quot;부사&quot;라고 한다. 부사는 항상 왼쪽에 하나의 인자를 받는다. 그래서 표현식 <code>+ /</code>에서 부사 <code>/</code>는 동사 <code>+</code>에 적용되어서 리스트를 더하는 동사가 만들어진다.</p>
 
-</p>
+<p>용어는 영어구문에서 따왔다. 동사는 물건의 행동을 묘사하고 부사는 동사의 의미를 변한다.</p>
+
 <h2>3.4 교환하기(Commuting)</h2>
-<p>부사 <code>/</code>말고 다른것도 보자. 부사 <code>~</code>는 왼쪽과 오른쪽의 인자를 서로 바꾸는 기능이 있다.
-</p>
+
+<p>부사 <code>/</code>말고 다른것도 보자. 부사 <code>~</code>는 왼쪽과 오른쪽의 인자를 서로 바꾸는 기능이 있다.</p>
+
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
-<td><tt>'a' , 'b'</tt></td>
-<td><tt>'a' ,~ 'b'</tt></td>
+<td><tt>&lsquo;a&rsquo; , &lsquo;b&rsquo;</tt></td>
+<td><tt>&lsquo;a&rsquo; ,~ &lsquo;b&rsquo;</tt></td>
 </tr><tr valign="TOP">
 <td><tt>ab</tt></td>
 <td><tt>ba</tt></td>
 </tr></tbody></table>
 
-<p>다이아드 함수 <code>f</code>와 그 인자 <code>x</code>, <code>y</code>에 대해서 <code>~</code>의 구조는 다음과 같다.
-
-</p>
-<pre><code>         <span class="title">x</span> f<span class="regexp">~ y</span>      는   y f x   이다</code></pre>
-<p>또 다른 예로 동사 <code>|</code>를 기억하는가? <code>2|7</code>은 "7 mod 2"와 같다. 이제 mod함수를 정의 할 차례이다.
-
-</p>
-<pre><code>   <span class="title">mod</span> =: | ~</code></pre>
+<p>다이아드 함수 <code>f</code>와 그 인자 <code>x</code>, <code>y</code>에 대해서 <code>~</code>의 구조는 다음과 같다.</p>
+<pre><code>         <span class="title">x</span> f<span class="regexp">~ y</span>      는   y f x   이다
+</code></pre>
+<p>또 다른 예로 동사 <code>|</code>를 기억하는가? <code>2|7</code>은 &quot;7 mod 2&quot;와 같다. 이제 mod함수를 정의 할 차례이다.</p>
+<pre><code>   <span class="title">mod</span> =: | <span class="regexp">~
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>7 mod 2</tt></td>
@@ -105,99 +95,79 @@
 <td><tt>1</tt></td>
 </tr></tbody></table>
 
-<p>그림을 한번 그려보자. 우선 함수 f에 인자 y를 적용해 <code>f y</code>의 결과를 반환하는 다이어그램이 있다. 이 다이어그램에서 함수 f는 사각형으로 그리고 인자가 어떻게 흘러서 결과가 나타나는지 화살표로 나타낸다. 각각의 화살표에는 표현식이 쓰여있다.
+<p>그림을 한번 그려보자. 우선 함수 f에 인자 y를 적용해 <code>f y</code>의 결과를 반환하는 다이어그램이 있다. 이 다이어그램에서 함수 f는 사각형으로 그리고 인자가 어떻게 흘러서 결과가 나타나는지 화살표로 나타낸다. 각각의 화살표에는 표현식이 쓰여있다.</p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag01.gif" alt="monadic">
+<p><img src="/articles/2012/learning_j_chapter3/diag01.gif" alt="monadic"></p>
 
-</p>
-<p>아래에 다이아딕 함수 f에 인자 x, y를 적용해 <code>x f y</code>가 만들어지는 다이어그램이 있다.
+<p>아래에 다이아딕 함수 f에 인자 x, y를 적용해 <code>x f y</code>가 만들어지는 다이어그램이 있다.</p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag02.gif" alt="dyadic">
+<p><img src="/articles/2012/learning_j_chapter3/diag02.gif" alt="dyadic"></p>
 
-</p>
-<p>이것이 함수 <code>f~</code>에 대한 다이어그램이다. 상자 안에 함수 f가 있고 인자가 서로 엇갈려서 들어가는 그림으로 나타냈다.
+<p>이것이 함수 <code>f~</code>에 대한 다이어그램이다. 상자 안에 함수 f가 있고 인자가 서로 엇갈려서 들어가는 그림으로 나타냈다.</p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag03.gif" alt="~">
+<p><img src="/articles/2012/learning_j_chapter3/diag03.gif" alt="~"></p>
 
-</p>
 <h2>3.5 묶기(Bonding)</h2>
-<p>double이라는 동사를 정의해야한다고 가정해보자. <code>double x</code>는 <code>x * 2</code>를 뜻한다. 즉 double은 "곱하기 2"이다. 아래와 같이 정의할 수 있다.
 
-</p>
+<p>double이라는 동사를 정의해야한다고 가정해보자. <code>double x</code>는 <code>x * 2</code>를 뜻한다. 즉 double은 &quot;곱하기 2&quot;이다. 아래와 같이 정의할 수 있다.</p>
 <pre><code>   <span class="keyword">double</span> =: * &amp; <span class="number">2</span>
 
    <span class="keyword">double</span> <span class="number">3</span>
-<span class="number">6</span></code></pre>
-<p>우리는 <code>*</code>를 두 인자중 한 인자를 미리 정해놓고(이 경우엔 2) 그걸 마치 모나드 처럼 써서 <code>*</code>를 다이아드로 사용했다. <code>&amp;</code> 연산자는 함수와 값을 묶어놓는 역할을 한다. f가 다이아딕 함수이고 k가 f의 오른쪽 인자라면 다음과 같은 구조를 가진다.
-
-</p>
-<pre><code>        (f &amp; k) y    은    y f k   이다.</code></pre>
-<p>오른쪽 인자말고 왼쪽 인자를 고정하고 싶다면 아래와 같이 쓸 수 있다.
-
-</p>
-<pre><code>        (k &amp; f)  y   은    k f y   이다</code></pre>
-<p>예를 들어서 물건 값의 10% 세금은 계산해야 한다고 하자. 그러면 세액을 계산하는 함수는 다음과 같다.
-
-</p>
+<span class="number">6</span>
+</code></pre>
+<p>우리는 <code>*</code>를 두 인자중 한 인자를 미리 정해놓고(이 경우엔 2) 그걸 마치 모나드 처럼 써서 <code>*</code>를 다이아드로 사용했다. <code>&amp;</code> 연산자는 함수와 값을 묶어놓는 역할을 한다. f가 다이아딕 함수이고 k가 f의 오른쪽 인자라면 다음과 같은 구조를 가진다.</p>
+<pre><code>        (f &amp; k) y    은    y f k   이다.
+</code></pre>
+<p>오른쪽 인자말고 왼쪽 인자를 고정하고 싶다면 아래와 같이 쓸 수 있다.</p>
+<pre><code>        (k &amp; f)  y   은    k f y   이다
+</code></pre>
+<p>예를 들어서 물건 값의 10% 세금은 계산해야 한다고 하자. 그러면 세액을 계산하는 함수는 다음과 같다.</p>
 <pre><code>   <span class="title">tax</span> =: <span class="number">0</span>.<span class="number">10</span> &amp; *
 
    tax <span class="number">50</span>
-<span class="number">5</span></code></pre>
-<p>아래에 <code>k&amp;f</code>함수의 다이어그램이 있다.
+<span class="number">5</span>
+</code></pre>
+<p>아래에 <code>k&amp;f</code>함수의 다이어그램이 있다.</p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag04.gif" alt="bond">
+<p><img src="/articles/2012/learning_j_chapter3/diag04.gif" alt="bond"></p>
 
-</p>
 <h2>3.6 용어: 접속사와 동사</h2>
-<p>표현식 <code>*&amp;2</code>는 <code>&amp;</code> 연산자는 두 인자(동사 <code>*</code>와 숫자 2)를 받는 함수이며 그 결과로 "doubling"이라는 동사를 만들어낸다.
-<code>&amp;</code>와 같은 두 인자를 취하는 "연산자"를 J에서는 "접속사"라고 한다. 이는 두 인자를 묶어주기 때문이다. 반면에 부사는 하나의 인자만을 가지는 연산자이다.
 
-</p>
-<p>J의 모든 함수는 내장 함수이건 사용자 정의 함수이건 반드시 4종류 중 하나이다. 모나딕 동사, 다이아딕 동사, 부사, 접속사가 그것이다. 같은 심볼이지만 다른 의미를 가지는 동사는 두 개의 다른 동사로 간주한다. 예를 들면 <code>-</code>는 모나딕으로는 "negation"이고 다이아딕으로는 "subtraction"이다.
+<p>표현식 <code>*&amp;2</code>는 <code>&amp;</code> 연산자는 두 인자(동사 <code>*</code>와 숫자 2)를 받는 함수이며 그 결과로 &quot;doubling&quot;이라는 동사를 만들어낸다.
+<code>&amp;</code>와 같은 두 인자를 취하는 &quot;연산자&quot;를 J에서는 &quot;접속사&quot;라고 한다. 이는 두 인자를 묶어주기 때문이다. 반면에 부사는 하나의 인자만을 가지는 연산자이다.</p>
 
-</p>
-<p>J의 모든 표현식은 어떤 타입을 가진 값이다. 그리고 함수가 아닌 모든 값은 데이터이다.(정확히는 이전 섹션에서 본 배열이다)
+<p>J의 모든 함수는 내장 함수이건 사용자 정의 함수이건 반드시 4종류 중 하나이다. 모나딕 동사, 다이아딕 동사, 부사, 접속사가 그것이다. 같은 심볼이지만 다른 의미를 가지는 동사는 두 개의 다른 동사로 간주한다. 예를 들면 <code>-</code>는 모나딕으로는 &quot;negation&quot;이고 다이아딕으로는 &quot;subtraction&quot;이다.</p>
 
-</p>
-<p>J에서 데이터 값, 즉 배열은 "명사"라고 부른다. 이는 영어의 구문과 비슷하다. 이젠 어떤 것이 동사가 아닌 것을 강조하기 위해서 그것을 명사라 부르고, 어떤 차원을 가지고 있다는걸 강조하기 위해서 그것을 배열이라 부른다.
+<p>J의 모든 표현식은 어떤 타입을 가진 값이다. 그리고 함수가 아닌 모든 값은 데이터이다.(정확히는 이전 섹션에서 본 배열이다)</p>
 
-</p>
+<p>J에서 데이터 값, 즉 배열은 &quot;명사&quot;라고 부른다. 이는 영어의 구문과 비슷하다. 이젠 어떤 것이 동사가 아닌 것을 강조하기 위해서 그것을 명사라 부르고, 어떤 차원을 가지고 있다는걸 강조하기 위해서 그것을 배열이라 부른다.</p>
+
 <h2>3.7 함수의 합성(composition)</h2>
-<p>이런 영어 표현을 생각해보자. "the sum of the squares of the numbers 1 2 3" 이건 <code>1+4+9</code> 또는 <code>14</code>이다. 우리가 앞에서 sum과 square동사를 정의 했으니 J로는 다음과 같이 쓸 수 있다.
 
-</p>
+<p>이런 영어 표현을 생각해보자. &quot;the sum of the squares of the numbers 1 2 3&rdquo; 이건 <code>1+4+9</code> 또는 <code>14</code>이다. 우리가 앞에서 sum과 square동사를 정의 했으니 J로는 다음과 같이 쓸 수 있다.</p>
 <pre><code>   <span class="title">sum</span> square <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>
-<span class="number">14</span></code></pre>
-<p>sum과 square를 합성하여 하나의 "sum-of-the-squares"함수를 만들 수도 있다.
-
-</p>
+<span class="number">14</span>
+</code></pre>
+<p>sum과 square를 합성하여 하나의 &ldquo;sum-of-the-squares&quot;함수를 만들 수도 있다.</p>
 <pre><code>   <span class="title">sumsq</span> =: sum @: square
 
    sumsq <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>
-<span class="number">14</span></code></pre>
-<p>심볼 <code>@:</code>(at colon)은 "composition(합성)" 연산자다. f와 g가 동사이고 y라는 인자가 있을때 이 연산자의 구조는 다음과 같다.
+<span class="number">14</span>
+</code></pre>
+<p>심볼 <code>@:</code>(at colon)은 &quot;composition(합성)&rdquo; 연산자다. f와 g가 동사이고 y라는 인자가 있을때 이 연산자의 구조는 다음과 같다.</p>
+<pre><code>       (<span class="tag">f</span> <span class="at_rule">@: g) y    는  f (g y)  이다.
+</code></pre>
+<p>아래에는 이 구조에 대한 다이어그램이다.</p>
 
-</p>
-<pre><code>       (<span class="tag">f</span> <span class="at_rule">@: g) y    는  f (g y)  이다.</code></pre>
-<p>아래에는 이 구조에 대한 다이어그램이다.
+<p><img src="/articles/2012/learning_j_chapter3/diag05.gif" alt="composition"></p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag05.gif" alt="composition">
+<p>이 시점에서 독자분들은 동사를 합성할 때 왜 간단하게 <code>f g</code>라고 쓰지 않고 <code>f @: g</code>라고 쓰는지 궁금할 것이다. 간단히 말하자면 <code>f g</code>은 또 다른 의미이다. 이건 곧 나온다.</p>
 
-</p>
-<p>이 시점에서 독자분들은 동사를 합성할 때 왜 간단하게 <code>f g</code>라고 쓰지 않고 <code>f @: g</code>라고 쓰는지 궁금할 것이다. 간단히 말하자면 <code>f g</code>은 또 다른 의미이다. 이건 곧 나온다.
-
-</p>
-<p>합성에 대한 다른 예는 화씨를 섭씨로 바꾸는 것이다. 32를 빼는 함수 s와 5%9를 곱하는 함수 m을 합성해보자.
-
-</p>
+<p>합성에 대한 다른 예는 화씨를 섭씨로 바꾸는 것이다. 32를 빼는 함수 s와 5%9를 곱하는 함수 m을 합성해보자.</p>
 <pre><code>   <span class="keyword">s</span>       =: - &amp; <span class="number">32</span>
    <span class="keyword">m</span>       =: * &amp; (<span class="number">5</span><span class="variable">%9</span>)
-   convert =: <span class="keyword">m</span> <span class="variable">@:</span> <span class="keyword">s</span></code></pre>
+   convert =: <span class="keyword">m</span> <span class="variable">@:</span> <span class="keyword">s</span>
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>s 212</tt></td>
@@ -209,34 +179,30 @@
 <td><tt>100</tt></td>
 </tr></tbody></table>
 
-<p>이 예제는 이름있는 함수의 합성을 잘 보여준다. 다음과 같이 함수의 표현식 자체를 합성 할 수도 있다.
-
-</p>
+<p>이 예제는 이름있는 함수의 합성을 잘 보여준다. 다음과 같이 함수의 표현식 자체를 합성 할 수도 있다.</p>
 <pre><code>   conv =: <span class="comment">(* &amp; (5%9)) @: (- &amp; 32) 
    conv 212
-100</code></pre>
-<p>합성한 함수에 이름을 주지 않고서도 인자를 적용시켜 사용할 수 있다.
-
-</p>
+100
+</code></pre>
+<p>합성한 함수에 이름을 주지 않고서도 인자를 적용시켜 사용할 수 있다.</p>
 <pre><code>   <span class="comment">(* &amp; (5%9)) @: (- &amp; 32)  212
-100</code></pre>
-<p>위 예제들로 모나드와 모나드를 합성한 것을 보였다. 다음 예제는 다이아드를 합성한 것이다. 일반적인 구조는 다음과 같다.
-
-</p>
-<pre><code>           <span class="title">x</span> (f @: g) y   은    f (x g y)   이다.</code></pre>
-<p>예를 들어서 아이템 몇 개를 구매한 총 금액은 각 아이템의 가격에 개 수를 곱하고 곱한 값을 더하면 알 수 있다. 아래를 보자.
-
-</p>
+100
+</code></pre>
+<p>위 예제들로 모나드와 모나드를 합성한 것을 보였다. 다음 예제는 다이아드를 합성한 것이다. 일반적인 구조는 다음과 같다.</p>
+<pre><code>           <span class="title">x</span> (f @: g) y   은    f (x g y)   이다.
+</code></pre>
+<p>예를 들어서 아이템 몇 개를 구매한 총 금액은 각 아이템의 가격에 개 수를 곱하고 곱한 값을 더하면 알 수 있다. 아래를 보자.</p>
 <pre><code>   <span class="title">P</span> =:  <span class="number">2</span> <span class="number">3</span>        NB. 가격
    Q =:  <span class="number">1</span> <span class="number">100</span>      NB. 개 수
 
-   total =: sum @: *</code></pre>
+   total =: sum @: *
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>P</tt></td>
 <td><tt>Q</tt></td>
-<td><tt>P<em>Q</tt></td>
-<td><tt>sum P </em> Q</tt></td>
+<td><tt>P*Q</tt></td>
+<td><tt>sum P * Q</tt></td>
 <td><tt>P total Q</tt></td>
 </tr><tr valign="TOP">
 <td><tt>2 3</tt></td>
@@ -246,25 +212,22 @@
 <td><tt>302</tt></td>
 </tr></tbody></table>
 
-<p>합성에 대해서 더 알고 싶으면 8장을 보라.
+<p>합성에 대해서 더 알고 싶으면 8장을 보라.</p>
 
-</p>
 <h2>3.8 동사의 연결(Trains of Verbs)</h2>
-<p>"no pain, no gain"이라는 문구를 아는가. 이것은 압축되고 요약된 관용적 표현이다. 이런 말은 문법적 구조에는 맞지 않지만 제법 알아들을 수 있다. (메인 동사가 없으므로 문장이 아니다) J에는 이와 비슷하게 함수를 몇 개 연결해서 특정한 의미가 되도록 하는 표기법이 있다. 아래에 그 방법이 나온다.
 
-</p>
+<p>&ldquo;no pain, no gain&quot;이라는 문구를 아는가. 이것은 압축되고 요약된 관용적 표현이다. 이런 말은 문법적 구조에는 맞지 않지만 제법 알아들을 수 있다. (메인 동사가 없으므로 문장이 아니다) J에는 이와 비슷하게 함수를 몇 개 연결해서 특정한 의미가 되도록 하는 표기법이 있다. 아래에 그 방법이 나온다.</p>
+
 <h3>3.8.1 훅(Hooks)</h3>
-<p>위에서 정의했던 세금을 계산하는 동사를 다시 가져오자. 이 동사에서 세율은 10%였다. 
 
-</p>
-<pre><code>   <span class="title">tax</span> =: <span class="number">0</span>.<span class="number">10</span> &amp; *</code></pre>
-<p>지불해야 하는 금액은 물건 가격 더하기 세금이다. 지불해야 하는 금액을 계산하는 동사는 다음과 같이 작성 할 수 있다.
+<p>위에서 정의했던 세금을 계산하는 동사를 다시 가져오자. 이 동사에서 세율은 10%였다. </p>
+<pre><code>   <span class="title">tax</span> =: <span class="number">0</span>.<span class="number">10</span> &amp; *
+</code></pre>
+<p>지불해야 하는 금액은 물건 가격 더하기 세금이다. 지불해야 하는 금액을 계산하는 동사는 다음과 같이 작성 할 수 있다.</p>
+<pre><code>   <span class="title">payable</span> =: + tax
+</code></pre>
+<p>만약 물건 가격이 50달러 라면, 아래와 같이 계산할 수 있다.</p>
 
-</p>
-<pre><code>   <span class="title">payable</span> =: + tax</code></pre>
-<p>만약 물건 가격이 50달러 라면, 아래와 같이 계산할 수 있다.
-
-</p>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>tax 50</tt></td>
@@ -276,28 +239,22 @@
 <td><tt>55</tt></td>
 </tr></tbody></table>
 
-<p><code>payable =: + tax</code>라는 정의를 보면 <code>+</code>동사 다음에 곧바로 <code>tax</code>가 온다. 이 시퀀스는 할당 연산자 오른쪽에 위치함으로써 분리되어있다.(isolated) 이렇게 분리된 동사의 시퀀스를 "train"이라고 부르고 동사 2개의 train을 "hook"(훅)이라고 부른다.
+<p><code>payable =: + tax</code>라는 정의를 보면 <code>+</code>동사 다음에 곧바로 <code>tax</code>가 온다. 이 시퀀스는 할당 연산자 오른쪽에 위치함으로써 분리되어있다.(isolated) 이렇게 분리된 동사의 시퀀스를 &quot;train&quot;이라고 부르고 동사 2개의 train을 &quot;hook&rdquo;(훅)이라고 부른다.</p>
 
-</p>
-<p>두 개의 동사를 괄호 안에 넣어 분리시켜 훅의 형태로 사용할 수 있다.
-
-</p>
+<p>두 개의 동사를 괄호 안에 넣어 분리시켜 훅의 형태로 사용할 수 있다.</p>
 <pre><code>   <span class="list">(<span class="title">+</span><span class="body"> tax)</span></span> <span class="number">50</span>
-<span class="number">55</span></code></pre>
-<p>f가 다이아드, g가 모나드이고 y라는 어떤 인자가 있을때 훅의 일반적인 구조는 다음과 같다. 
+<span class="number">55</span>
+</code></pre>
+<p>f가 다이아드, g가 모나드이고 y라는 어떤 인자가 있을때 훅의 일반적인 구조는 다음과 같다. </p>
+<pre><code>        (f g) y       는   y f (g y)   이다.
+</code></pre>
+<p>이 구조를 다이어그램으로 나타내면 다음과 같다.</p>
 
-</p>
-<pre><code>        (f g) y       는   y f (g y)   이다.</code></pre>
-<p>이 구조를 다이어그램으로 나타내면 다음과 같다.
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"></p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook">
-
-</p>
-<p>또다른 예로 인자로 들어온 수의 정수 부분을 계산하는 동사인 <code>&lt;.</code>("floor")를 이용해보자. 숫자가 정수인지 아닌지 검사를 하려면 그 숫자가 정수부와 같은지 검사한다. "equal-to-its-floor"라는 의미를 가진 이 동사는 <code>= &lt;.</code>라는 훅으로 정의할 수 있다.
-
-</p>
-<pre><code>   wholenumber  =:  = <span class="xml"><span class="tag">&lt;<span class="title">.</span></span></code></pre>
+<p>또다른 예로 인자로 들어온 수의 정수 부분을 계산하는 동사인 <code>&lt;.</code>(&ldquo;floor&rdquo;)를 이용해보자. 숫자가 정수인지 아닌지 검사를 하려면 그 숫자가 정수부와 같은지 검사한다. &ldquo;equal-to-its-floor&quot;라는 의미를 가진 이 동사는 <code>= &lt;.</code>라는 훅으로 정의할 수 있다.</p>
+<pre><code>   wholenumber  =:  = <span class="xml"><span class="tag">&lt;<span class="title">.
+</span></span></code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>y =: 3 2.7</tt></td>
@@ -312,9 +269,9 @@
 </tr></tbody></table>
 
 <h3>3.8.2 포크(Forks)</h3>
-<p>숫자 리스트 L의 산술 평균은 L의 합을 L의 아이템 개 수로 나눈 것이다.(아이템 개 수를 세는 모나딕 동사인 <code>#</code>는 기억하고 있겠지?)
 
-</p>
+<p>숫자 리스트 L의 산술 평균은 L의 합을 L의 아이템 개 수로 나눈 것이다.(아이템 개 수를 세는 모나딕 동사인 <code>#</code>는 기억하고 있겠지?)</p>
+
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>L =: 3 5 7 9</tt></td>
@@ -328,30 +285,24 @@
 <td><tt>6</tt></td>
 </tr></tbody></table>
 
-<p>합을 아이템 개 수로 나누기 계산을 하는 동사는 세가지 동사의 시퀀스로 나타낼 수 있다. <code>sum</code> 다음에 <code>%</code>다음에 <code>#</code>가 오면 된다.
-
-</p>
+<p>합을 아이템 개 수로 나누기 계산을 하는 동사는 세가지 동사의 시퀀스로 나타낼 수 있다. <code>sum</code> 다음에 <code>%</code>다음에 <code>#</code>가 오면 된다.</p>
 <pre><code>   <span class="title">mean</span> =: sum % <span class="comment">#</span>
 
    mean L
-<span class="number">6</span></code></pre>
-<p>세 동사의 분리된 시퀀스는 "fork(포크)"라고 한다. 임의의 인자 y에 대해서 f가 모나드이고 g가 다이아드이고 h가 모나드일 때 다음과 같은 일반적인 구조를 지닌다.
+<span class="number">6</span>
+</code></pre>
+<p>세 동사의 분리된 시퀀스는 &quot;fork(포크)&quot;라고 한다. 임의의 인자 y에 대해서 f가 모나드이고 g가 다이아드이고 h가 모나드일 때 다음과 같은 일반적인 구조를 지닌다.</p>
+<pre><code>        (f g h) y     는   (f y) g (h y)   이다.
+</code></pre>
+<p>이 구조를 다이어그램으로 나타내면 아래와 같다.</p>
 
-</p>
-<pre><code>        (f g h) y     는   (f y) g (h y)   이다.</code></pre>
-<p>이 구조를 다이어그램으로 나타내면 아래와 같다.
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"></p>
 
-</p>
-<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook">
+<p>포크에 대한 다른 예로는 숫자 리스트의 범위를 구하는 것이 있다. 숫자 리스트의 범위는 리스트에서 가장 작은 수와 가장 큰 수를 구하는 것이다. 이는 최소, 최대를 구하는 동사 중간에 콤마 동사를 넣어 포크하면 된다.</p>
 
-</p>
-<p>포크에 대한 다른 예로는 숫자 리스트의 범위를 구하는 것이 있다. 숫자 리스트의 범위는 리스트에서 가장 작은 수와 가장 큰 수를 구하는 것이다. 이는 최소, 최대를 구하는 동사 중간에 콤마 동사를 넣어 포크하면 된다.
-
-</p>
-<p>리스트에서 가장 큰 수를 구하는 함수 <code>&gt;./</code>와 가장 작은 수를 구하는 함수 <code>&lt;./</code>는 1장에서 배웠다.
-
-</p>
-<pre><code>   range =: <span class="xml"><span class="tag">&lt;<span class="title">.</span>/  ,  &gt;</span>./</span></code></pre>
+<p>리스트에서 가장 큰 수를 구하는 함수 <code>&gt;./</code>와 가장 작은 수를 구하는 함수 <code>&lt;./</code>는 1장에서 배웠다.</p>
+<pre><code>   range =: <span class="xml"><span class="tag">&lt;<span class="title">.</span>/  ,  &gt;</span>./
+</span></code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>L</tt></td>
@@ -361,44 +312,38 @@
 <td><tt>3 9</tt></td>
 </tr></tbody></table>
 
-<p>훅과 포크는 동사의 시퀀스이다. 이는 동사의 "trains" 라고도 말한다. trains에 대해 더 많은 정보를 알려면 제 9장을 참고하라.
+<p>훅과 포크는 동사의 시퀀스이다. 이는 동사의 &quot;trains&rdquo; 라고도 말한다. trains에 대해 더 많은 정보를 알려면 제 9장을 참고하라.</p>
 
-</p>
 <h2>3.9 다 집어넣고 보자(Putting Things Together)</h2>
+
 <p>이제까지 배운 것들 중 몇가지를 섞어서 좀 더 커다란 예제를 만들어보자
-어떤걸 만들꺼냐면, 숫자 리스트를 보여주고 각 숫자가 전체에서 몇 퍼센트를 차지하는지 보여주는 간단한 표를 만들 예정이다.
+어떤걸 만들꺼냐면, 숫자 리스트를 보여주고 각 숫자가 전체에서 몇 퍼센트를 차지하는지 보여주는 간단한 표를 만들 예정이다.</p>
 
-</p>
-<p>어떤걸 만들어야 하는지 명확히 하기 위해 우선 완성된 예제를 먼저 보자. 아래에 설명 할 것이기 때문에 당장에 이 모든걸 알 필요는 없다. 그냥 아래 6라인의 코드를 보고 어떤 동사가 정의되어 있는지 살펴보자.
-
-</p>
+<p>어떤걸 만들어야 하는지 명확히 하기 위해 우선 완성된 예제를 먼저 보자. 아래에 설명 할 것이기 때문에 당장에 이 모든걸 알 필요는 없다. 그냥 아래 6라인의 코드를 보고 어떤 동사가 정의되어 있는지 살펴보자.</p>
 <pre><code>   percent  =: (100 &amp; *) @: (% +/)
    round    =: <span class="tag">&lt;<span class="title">.</span> @<span class="attribute">:</span> (+&amp;<span class="attribute">0.5</span>)
    <span class="attribute">comp</span>     =<span class="value">:</span> <span class="attribute">round</span> @<span class="attribute">:</span> <span class="attribute">percent</span>
    <span class="attribute">br</span>       =<span class="value">:</span> ,<span class="attribute">.</span>  ;  (,<span class="attribute">.</span> @<span class="attribute">:</span> <span class="attribute">comp</span>)
    <span class="attribute">tr</span>       =<span class="value">:</span> ('<span class="attribute">Data</span>';'<span class="attribute">Percentages</span>') &amp; ,
-   <span class="attribute">display</span>  =<span class="value">:</span> (<span class="attribute">2</span> <span class="attribute">2</span> &amp; $) @<span class="attribute">:</span> <span class="attribute">tr</span> @<span class="attribute">:</span> <span class="attribute">br</span></code></pre>
-<p>간단한 데이터로 시작해보자.
-
-</p>
-<pre><code>   <span class="typedef"><span class="keyword">data</span> =: 3 5</span></code></pre>
-<p>이 데이터를 이용하면 <code>display</code>동사는 각 숫자와 그 숫자의 퍼센트를 표현할 것이다. 아래 표를 보자면, 3은 8에서 38%를 차지한다.
-
-</p>
+   <span class="attribute">display</span>  =<span class="value">:</span> (<span class="attribute">2</span> <span class="attribute">2</span> &amp; $) @<span class="attribute">:</span> <span class="attribute">tr</span> @<span class="attribute">:</span> <span class="attribute">br</span>
+</code></pre>
+<p>간단한 데이터로 시작해보자.</p>
+<pre><code>   <span class="typedef"><span class="keyword">data</span> =: 3 5</span>
+</code></pre>
+<p>이 데이터를 이용하면 <code>display</code>동사는 각 숫자와 그 숫자의 퍼센트를 표현할 것이다. 아래 표를 보자면, 3은 8에서 38%를 차지한다.</p>
 <pre><code>   <span class="comment">display</span> <span class="comment">data</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|Data|Percentages|</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
 <span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
-<p><code>percent</code>동사는 훅 <code>% +/</code>으로 전체 수에서 각각의 수를 나누고 각각에 100을 곱해서 퍼센트를 계산해낸다. 아래에 <code>percent</code>의 정의를 다시 쓸테니 위로 스크롤 하지 않아도 된다.
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+</code></pre>
+<p><code>percent</code>동사는 훅 <code>% +/</code>으로 전체 수에서 각각의 수를 나누고 각각에 100을 곱해서 퍼센트를 계산해낸다. 아래에 <code>percent</code>의 정의를 다시 쓸테니 위로 스크롤 하지 않아도 된다.</p>
+<pre><code>   <span class="keyword">percent</span>  =: (<span class="number">100</span> &amp; <span class="variable">*)</span> <span class="variable">@:</span> (% +/)
+</code></pre>
+<p>이를 사용해보자.</p>
 
-</p>
-<pre><code>   <span class="keyword">percent</span>  =: (<span class="number">100</span> &amp; <span class="variable">*)</span> <span class="variable">@:</span> (% +/)</code></pre>
-<p>이를 사용해보자.
-
-</p>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
@@ -414,14 +359,12 @@
 <td><tt>37.5 62.5</tt></td>
 </tr></tbody></table>
 
-<p>퍼센트 값을 반올림하자. 반올림은 각 값에 0.5를 더하고 "floor"(<code>&lt;.</code>)를 이용해 정수 부분만을 취한다. 이런 일을 하는 동사 <code>round</code>는 아래와 같이 정의한다.
-
-</p>
-<pre><code>   round    =: <span class="xml"><span class="tag">&lt;<span class="title">.</span> @<span class="attribute">:</span> (+&amp;<span class="attribute">0.5</span>)</span></code></pre>
-<p>그러면 화면에 표시할 값을 계산하는 동사는 다음과 같다.
-
-</p>
-<pre><code>   <span class="built_in">comp</span>     =: <span class="built_in">round</span> @: percent</code></pre>
+<p>퍼센트 값을 반올림하자. 반올림은 각 값에 0.5를 더하고 &ldquo;floor&rdquo;(<code>&lt;.</code>)를 이용해 정수 부분만을 취한다. 이런 일을 하는 동사 <code>round</code>는 아래와 같이 정의한다.</p>
+<pre><code>   round    =: <span class="xml"><span class="tag">&lt;<span class="title">.</span> @<span class="attribute">:</span> (+&amp;<span class="attribute">0.5</span>)
+</span></code></pre>
+<p>그러면 화면에 표시할 값을 계산하는 동사는 다음과 같다.</p>
+<pre><code>   <span class="built_in">comp</span>     =: <span class="built_in">round</span> @: percent
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
@@ -431,9 +374,8 @@
 <td><tt>38 63</tt></td>
 </tr></tbody></table>
 
-<p>이제 테이블에 데이터와 퍼센트로 계산된 값을 표현해야 한다. 리스트를 하나의 열(column)을 만들기 위해선 동사 <code>,.</code>를 사용할 수 있다.("Ravel Items"라고 부른다)
+<p>이제 테이블에 데이터와 퍼센트로 계산된 값을 표현해야 한다. 리스트를 하나의 열(column)을 만들기 위해선 동사 <code>,.</code>를 사용할 수 있다.(&ldquo;Ravel Items&quot;라고 부른다)</p>
 
-</p>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
@@ -447,26 +389,24 @@
 63</tt></td>
 </tr></tbody></table>
 
-<p>테이블의 아래쪽 행을 만들기 위해 <code>br</code> 이라는 동사를 정의한다. 이 동사는 데이타와 계산된 값을 열(column)로 링크하는 포크이다.(포크는 위에서 정의했듯이 세 동사의 시퀀스이다.)
-
-</p>
-<pre><code>   <span class="comment">br</span>  <span class="comment">=:</span> <span class="string">,</span><span class="string">.</span>  <span class="comment">;</span>  <span class="comment">(</span>,<span class="string">.</span> <span class="comment">@:</span> <span class="comment">comp)</code></pre>
+<p>테이블의 아래쪽 행을 만들기 위해 <code>br</code> 이라는 동사를 정의한다. 이 동사는 데이타와 계산된 값을 열(column)로 링크하는 포크이다.(포크는 위에서 정의했듯이 세 동사의 시퀀스이다.)</p>
+<pre><code>   <span class="comment">br</span>  <span class="comment">=:</span> <span class="string">,</span><span class="string">.</span>  <span class="comment">;</span>  <span class="comment">(</span>,<span class="string">.</span> <span class="comment">@:</span> <span class="comment">comp)</span>
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
 <td><tt>br data</tt></td>
 </tr><tr valign="TOP">
 <td><tt>3 5</tt></td>
-<td><tt>+-+--+<br>
+<td><tt>+-+&ndash;+<br>
 |3|38|<br>
 |5|63|<br>
-+-+--+</tt></td>
++-+&ndash;+</tt></td>
 </tr></tbody></table>
 
-<p>테이블의 위쪽 행(컬럼 헤딩)은 간단하게 만들 수 있다. 아래쪽 행은 두 박스의 리스트이다. 우리가 그 앞에 두 개의 박스를 더 붙이면 박스가 4개인 리스트가 된다. 동사 <code>tr</code>이 그 작업을 한다.
-
-</p>
-<pre><code>   tr  =: (<span class="attribute">'Data</span>';<span class="attribute">'Percentages</span>') &amp; ,</code></pre>
+<p>테이블의 위쪽 행(컬럼 헤딩)은 간단하게 만들 수 있다. 아래쪽 행은 두 박스의 리스트이다. 우리가 그 앞에 두 개의 박스를 더 붙이면 박스가 4개인 리스트가 된다. 동사 <code>tr</code>이 그 작업을 한다.</p>
+<pre><code>   tr  =: (<span class="attribute">'Data</span>';<span class="attribute">'Percentages</span>') &amp; ,
+</code></pre>
 <table style="margin:20px 0px" cellpadding="10" border="1">
 <tbody><tr valign="TOP">
 <td><tt>data</tt></td>
@@ -474,29 +414,27 @@
 <td><tt>tr br data</tt></td>
 </tr><tr valign="TOP">
 <td><tt>3 5</tt></td>
-<td><tt>+-+--+<br>
+<td><tt>+-+&ndash;+<br>
 |3|38|<br>
 |5|63|<br>
-+-+--+</tt></td>
-<td><tt>+----+-----------+-+--+<br>
++-+&ndash;+</tt></td>
+<td><tt>+&mdash;-+&mdash;&mdash;&mdash;&ndash;+-+&ndash;+<br>
 |Data|Percentages|3|38|<br>
 |&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5|63|<br>
-+----+-----------+-+--+</tt></td>
++&mdash;-+&mdash;&mdash;&mdash;&ndash;+-+&ndash;+</tt></td>
 </tr></tbody></table>
+   
 
-<p>남은건 박스 4개의 리스트를 2행 2열의 테이블로 만드는 것이다.
-
-</p>
+<p>남은건 박스 4개의 리스트를 2행 2열의 테이블로 만드는 것이다.</p>
 <pre><code>   <span class="comment">(2</span> <span class="comment">2</span> <span class="comment">&amp;</span> <span class="comment">$)</span>  <span class="comment">tr</span> <span class="comment">br</span> <span class="comment">data</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|Data|Percentages|</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
 <span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
-<p>이걸 다 합하면,
-
-</p>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+</code></pre>
+<p>이걸 다 합하면,</p>
 <pre><code>   <span class="comment">display</span> <span class="comment">=:</span> <span class="comment">(2</span> <span class="comment">2</span> <span class="comment">&amp;</span> <span class="comment">$)</span> <span class="comment">@:</span> <span class="comment">tr</span> <span class="comment">@:</span> <span class="comment">br</span>
 
    <span class="comment">display</span> <span class="comment">data</span>
@@ -505,17 +443,14 @@
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|3</span>   <span class="comment">|38</span>         <span class="comment">|</span>
 <span class="comment">|5</span>   <span class="comment">|63</span>         <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
-<p>이렇게 된다.
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+</code></pre>
+<p>이렇게 된다.</p>
 
-</p>
-<p><code>display</code>동사는 두 부분으로 나눈다. 반올림된 퍼센트 값을 계산하는 <code>comp</code>함수와 화면에 결과를 표시하는 나머지 부분이 그것이다. <code>comp</code>함수를 바꾸어 다른 함수를 사용하면 그 함수의 계산 결과를 표 형태로 표시한다. <code>comp</code>를 제곱근을 계산하는 <code>%:</code>함수로 바꿔보자.
-
-</p>
-<pre><code>   <span class="title">comp</span> =: %:</code></pre>
-<p>동사 <code>tr</code>에 있는 표의 컬럼 헤딩도 알맞게 수정해야한다.
-
-</p>
+<p><code>display</code>동사는 두 부분으로 나눈다. 반올림된 퍼센트 값을 계산하는 <code>comp</code>함수와 화면에 결과를 표시하는 나머지 부분이 그것이다. <code>comp</code>함수를 바꾸어 다른 함수를 사용하면 그 함수의 계산 결과를 표 형태로 표시한다. <code>comp</code>를 제곱근을 계산하는 <code>%:</code>함수로 바꿔보자.</p>
+<pre><code>   <span class="title">comp</span> =: %:
+</code></pre>
+<p>동사 <code>tr</code>에 있는 표의 컬럼 헤딩도 알맞게 수정해야한다.</p>
 <pre><code>   <span class="comment">tr</span>   <span class="comment">=:</span> <span class="comment">('Numbers';'Square</span> <span class="comment">Roots')</span> <span class="comment">&amp;</span> <span class="string">,</span>
 
    <span class="comment">display</span> <span class="comment">1</span> <span class="comment">4</span> <span class="comment">9</span> <span class="comment">16</span>
@@ -526,15 +461,13 @@
 <span class="comment">|</span> <span class="comment">4</span>     <span class="comment">|2</span>           <span class="comment">|</span>
 <span class="comment">|</span> <span class="comment">9</span>     <span class="comment">|3</span>           <span class="comment">|</span>
 <span class="comment">|16</span>     <span class="comment">|4</span>           <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+</code></pre>
 <p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.
-이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.
+이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.</p>
 
-</p>
-<p>이렇게 제 3장이 끝났다.
-
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Apr 17 2012</span>&raquo;<a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a></li><li><span>Apr 06 2012</span>&raquo;<a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p>이렇게 제 3장이 끝났다.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Apr 17 2012</span>&raquo;<a href="/articles/2012/learning-j-chapter2.html">J언어 배우기 - 제 2장: 리스트와 테이블</a></li><li><span>Apr 06 2012</span>&raquo;<a href="/articles/2012/learning-j-chapter1.html">J언어를 배워보자 - 제 1장. 기본기</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/learning-j-chapter3.html';
@@ -544,10 +477,10 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

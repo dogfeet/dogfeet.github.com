@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Meteor: 스마트 패키지 매니저 "Meteorite"</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,51 +15,43 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/meteor-meteorite.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Meteor: 스마트 패키지 매니저 "Meteorite"</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <span property="dc:created">2012 Sep 21</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/meteor-meteorite.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2012 Sep 21 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">Meteor: 스마트 패키지 매니저 "Meteorite"</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <a href="/site/tagmap.html#meteor" class="tag">meteor</a> <a href="/site/tagmap.html#meteorite" class="tag">meteorite</a> <a href="/site/tagmap.html#package" class="tag">package</a> | <span><a href="/articles/2012/meteor-meteorite.html#disqus_thread" data-disqus-identifier="/articles/2012/meteor-meteorite.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.</p>
 
-</p>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.</p>
 
-</p>
-<p><img src="/articles/2012/meteor/meteorite.png" alt="meteorite">
+<p><img src="/articles/2012/meteor/meteorite.png" alt="meteorite"></p>
 
-</p>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.</p>
 
-</p>
 <h2>설치하기</h2>
-<pre><code class="lang-bash">npm install -g meteorite</code></pre>
+<pre><code class="lang-bash">npm install -g meteorite
+</code></pre>
 <h2>mrt 명령어</h2>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. 'meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:
 
-</p>
-<pre><code class="lang-bash">mrt create myapp</code></pre>
-<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:
-
-</p>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. &lsquo;meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:</p>
+<pre><code class="lang-bash">mrt create myapp
+</code></pre>
+<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:</p>
 <pre><code class="lang-javascript">{
   <span class="string">"meteor"</span>: {
     <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
     <span class="string">"branch"</span>: <span class="string">"master"</span>
   },
   <span class="string">"packages"</span>: {}
-}</code></pre>
-<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. 
+}
+</code></pre>
+<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. </p>
 
-</p>
-<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:
-
-</p>
-<pre><code class="lang-bash">mrt run --port 2222</code></pre>
+<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:</p>
+<pre><code class="lang-bash">mrt run --port 2222
+</code></pre>
 <h2>smart.json</h2>
-<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. 
 
-</p>
+<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. </p>
 <pre><code class="lang-javascript">{
   <span class="comment">//meteor는 생략할 수 있다.</span>
   <span class="comment">//생략할 경우 Meteor의 공식 저장소와 master 브랜치가 사용된다.</span>
@@ -93,14 +85,12 @@
       <span class="string">"path"</span>: <span class="string">"/path/to/local/package"</span>
     }
   }
-}</code></pre>
+}
+</code></pre>
 <ul>
-<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p>
-</li>
-<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p>
-</li>
-<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p>
-</li>
+<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p></li>
+<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p></li>
+<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p></li>
 </ul>
 <pre><code class="lang-javascript">{
   <span class="string">"meteor"</span>: {
@@ -126,27 +116,22 @@
       }
     }
   }
-}</code></pre>
-<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.
+}
+</code></pre>
+<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.</p>
 
-</p>
-<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.
+<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.</p>
 
-</p>
 <h2>Atmosphere</h2>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. 
 
-</p>
-<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. </p>
 
-</p>
-<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</code></pre>
-<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.
+<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:</p>
+<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</span>
+</code></pre>
+<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.</p>
 
-</p>
-<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:
-
-</p>
+<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:</p>
 <pre><code>absolute-url      DEPRECATED: Generate absolute URLs pointing <span class="keyword">to</span> the application
 amplify           Cross browser API <span class="keyword">for</span> Persistant Storage, PubSub <span class="keyword">and</span> Request.
 autopublish       Automatically publish all data <span class="keyword">in</span> the database <span class="keyword">to</span> every client
@@ -171,14 +156,12 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <span class="title">showdown</span>          <span class="title">Markdown</span>-<span class="title">to</span>-<span class="title">HTML</span> <span class="title">processor</span>
 <span class="title">spiderable</span>        <span class="title">Makes</span> <span class="title">the</span> <span class="title">application</span> <span class="title">crawlable</span> <span class="title">to</span> <span class="title">web</span> <span class="title">spiders</span>.
 <span class="title">stylus</span>            <span class="title">Expressive</span>, <span class="title">dynamic</span>, <span class="title">robust</span> <span class="title">CSS</span>.
-<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span></code></pre>
-<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.
+<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span>
+</code></pre>
+<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.</p>
 
-</p>
-<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.
-
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Sep 16 2012</span>&raquo;<a href="/articles/2012/meteor-docs-ko.html">Meteor 한글 문서</a></li><li><span>Aug 19 2012</span>&raquo;<a href="/articles/2012/meteor-fundametals-and-best-practices.html">Meteor: Learn Meteor Fundamentals and Best Practices</a></li><li><span>Aug 03 2012</span>&raquo;<a href="/articles/2012/meteor-for-windows.html">Meteor: Windows에 설치하기</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Sep 16 2012</span>&raquo;<a href="/articles/2012/meteor-docs-ko.html">Meteor 한글 문서</a></li><li><span>Aug 19 2012</span>&raquo;<a href="/articles/2012/meteor-fundametals-and-best-practices.html">Meteor: Learn Meteor Fundamentals and Best Practices</a></li><li><span>Aug 03 2012</span>&raquo;<a href="/articles/2012/meteor-for-windows.html">Meteor: Windows에 설치하기</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/meteor-meteorite.html';
@@ -188,10 +171,10 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

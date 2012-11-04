@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,36 +15,30 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <span property="dc:created">2010 Apr 19</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2010 Apr 19 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">Spring Finance: Part 2 - Spring `@MVC` and Spring 3.0 REST integration</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#spring finance" class="tag">Spring Finance</a> <a href="/site/tagmap.html#stefan schmidt" class="tag">Stefan Schmidt</a> | <span><a href="/articles/2010/1271653140.html#disqus_thread" data-disqus-identifier="/articles/2010/1271653140.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1271653140.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1271653140.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1271653140.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이글은 Stefan Schmidt의 Spring Finance를 번역한 것이다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2010/1271653140.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2010/1271653140.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1271653140.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>이글은 Stefan Schmidt의 Spring Finance를 번역한 것이다.</p>
 
-</p>
 <h2>Part 2: Spring <code>@MVC</code> & Spring 3.0 REST integration</h2>
-<p>이전 글에서 Spring Finance Manager 어플리케이션을 소개하고 나서 소개할 기술들에 대해 줄곧 고민했다. 이 글은 Spring 3.0 M1부터 처음 도입된 REST 특징을 위주로 설명하고자 한다.
 
-</p>
-<p><img src="/articles/2010/1271653140/class_diagram_part_1.png" alt="image">
+<p>이전 글에서 Spring Finance Manager 어플리케이션을 소개하고 나서 소개할 기술들에 대해 줄곧 고민했다. 이 글은 Spring 3.0 M1부터 처음 도입된 REST 특징을 위주로 설명하고자 한다.</p>
 
-</p>
-<p>이 글에서는 쉽게 이해할 수 있도록 클래스 다이어그램의 모든 코드를 게재하지 않았다. 이 글에서는 오직 하나의 콘트롤러, 서비스 그리고 Person, Address 두 개의 도메인 객체만으로 구성된 Spring MVC 어플리케이션을 만들기로 했다.
+<p><img src="/articles/2010/1271653140/class_diagram_part_1.png" alt="image"></p>
 
-</p>
+<p>이 글에서는 쉽게 이해할 수 있도록 클래스 다이어그램의 모든 코드를 게재하지 않았다. 이 글에서는 오직 하나의 콘트롤러, 서비스 그리고 Person, Address 두 개의 도메인 객체만으로 구성된 Spring MVC 어플리케이션을 만들기로 했다.</p>
+
 <h2>프로젝트 코드 저장소와 빌드 방법</h2>
-<p>SVN 저장소가 필요해서 Google code에 프로젝트를 만들었다. 프로젝트 페이지는 <a href="http://code.google.com/p/spring-finance-manager">여기</a>이고 SVN 저장소는 다음과 같이 이용할 수 있다:
 
-</p>
-<pre><code><span class="title">svn</span> checkout <span class="url">http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</span> </code></pre>
-<p>자세한 빌드 방법은 <a href="http://code.google.com/p/spring-finance-manager/wiki/BuildAndInstall">여기</a>에 있다.
+<p>SVN 저장소가 필요해서 Google code에 프로젝트를 만들었다. 프로젝트 페이지는 <a href="http://code.google.com/p/spring-finance-manager">여기</a>이고 SVN 저장소는 다음과 같이 이용할 수 있다:</p>
+<pre><code><span class="title">svn</span> checkout <span class="url">http://spring-finance-manager.googlecode.com/svn/tags/FinanceManager-0.1/</span> 
+</code></pre>
+<p>자세한 빌드 방법은 <a href="http://code.google.com/p/spring-finance-manager/wiki/BuildAndInstall">여기</a>에 있다.</p>
 
-</p>
 <h2>Spring <code>@MVC</code></h2>
-<p>말했던데로 이 어플리케이션은 Spring <code>@MVC</code>를 사용했다. PersonController.java를 보면 Spring MVC의 콘트롤러는 어노테이션을 사용한 POJO 빈이라는 것을 알 수 있다. 이 어노테이션들은 빈을 Spring 어플리케이션 컨텍스트에 컨트롤러로 등록해 준다.
 
-</p>
+<p>말했던데로 이 어플리케이션은 Spring <code>@MVC</code>를 사용했다. PersonController.java를 보면 Spring MVC의 콘트롤러는 어노테이션을 사용한 POJO 빈이라는 것을 알 수 있다. 이 어노테이션들은 빈을 Spring 어플리케이션 컨텍스트에 컨트롤러로 등록해 준다.</p>
 <pre><code>@Controller
 @RequestMapping(<span class="string">"/person/**"</span>)
 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">PersonController</span> {</span>
@@ -62,43 +56,36 @@
     }
 
     <span class="comment">//further methods omitted</span>
-}</code></pre>
-<p>분명, 여러분은 <code>@Controller</code> 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 <code>@Controller</code> 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:
-
-</p>
+}
+</code></pre>
+<p>분명, 여러분은 <code>@Controller</code> 어노테이션에 친숙할 것이다. 이 어노테이션은 컨트롤러 클래스를 Spring 어플리케이션 컨텍스트에 MVC 컨트롤러로 등록한다. 설정해야 하는 것은 Spring이 <code>@Controller</code> 어노테이션이 달린 Pojo 빈을 알 수 있게 FinanceManager-serlvet.xml에 설정하는 것 뿐이다:</p>
 <pre><code><span class="tag">&lt;<span class="title">context:component-scan</span> <span class="attribute">base-package</span>=<span class="value">"net.stsmedia.financemanager"</span> <span class="attribute">use-default-filters</span>=<span class="value">"false"</span>&gt;</span>
 
 <span class="tag">&lt;<span class="title">context:include-filter</span> <span class="attribute">expression</span>=<span class="value">"org.springframework.stereotype.Controller"</span> <span class="attribute">type</span>=<span class="value">"annotation"</span>&gt;</span>
 
 <span class="tag">&lt;/<span class="title">context:include-filter</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">context:component-scan</span>&gt;</span> </code></pre>
-<p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 '/FinanceManager/person/'와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 '<a href="[http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>'란 글을 참고하라.
+<span class="tag">&lt;/<span class="title">context:component-scan</span>&gt;</span> 
+</code></pre>
+<p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 &lsquo;/FinanceManager/person/'와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 &rsquo;<a href="%5Bhttp://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>&lsquo;란 글을 참고하라.</p>
 
-</p>
-<p><code>@Autowired</code> 어노테이션으로 PersionService를 주입하면 show() 메소드를 살펴볼 준비가 된 것이다. 이 메소드는 REST 스타일로 특정 사람의 상세정보를 얻어 오는데 사용된다.
+<p><code>@Autowired</code> 어노테이션으로 PersionService를 주입하면 show() 메소드를 살펴볼 준비가 된 것이다. 이 메소드는 REST 스타일로 특정 사람의 상세정보를 얻어 오는데 사용된다.</p>
 
-</p>
 <h2>Spring 3.0 REST</h2>
-<p><code>@RequestMapping</code> 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 <code>@RequestMapping</code>을 show() 메소드에 정의했다. '/FinanceManager/person/1'에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.
 
-</p>
-<p>Spring 3.0은 <code>@PathVariable</code> 어노세이션을 도입했다. 그래서 요청 URI에 공급된 값을 얻기가(binding) 매우 쉬워졌습니다. <code>@PathVariable</code>은 Spring 3.0 REST의 핵심이다. 위 코드에서 path variable은 {id}를 가르킨다. <code>@PathVariable(&quot;id&quot;) Long id</code>만으로도 자동으로 Long 객체로 매핑된다. 이 것은 Spring의 기본 프로퍼티 에티터 덕이다.
+<p><code>@RequestMapping</code> 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 <code>@RequestMapping</code>을 show() 메소드에 정의했다. &rsquo;/FinanceManager/person/1'에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.</p>
 
-</p>
-<p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:
+<p>Spring 3.0은 <code>@PathVariable</code> 어노세이션을 도입했다. 그래서 요청 URI에 공급된 값을 얻기가(binding) 매우 쉬워졌습니다. <code>@PathVariable</code>은 Spring 3.0 REST의 핵심이다. 위 코드에서 path variable은 {id}를 가르킨다. <code>@PathVariable(&quot;id&quot;) Long id</code>만으로도 자동으로 Long 객체로 매핑된다. 이 것은 Spring의 기본 프로퍼티 에티터 덕이다.</p>
 
-</p>
+<p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:</p>
 <pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> <span class="attribute">p:prefix</span>=<span class="value">"/WEB-INF/jsp/"</span> <span class="attribute">p:suffix</span>=<span class="value">".jsp"</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">bean</span>&gt;</span></code></pre>
-<p>update.jsp 페이지를 살펴봅시다:
-
-</p>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+</code></pre>
+<p>update.jsp 페이지를 살펴봅시다:</p>
 <pre><code><span class="tag">&lt;<span class="title">form:form</span> <span class="attribute">action</span>=<span class="value">"/FinanceManager/person/${person.id}"</span> <span class="attribute">method</span>=<span class="value">"PUT"</span> <span class="attribute">modelattribute</span>=<span class="value">"person"</span>&gt;</span>
 [...]
-<span class="tag">&lt;/<span class="title">form:form</span>&gt;</span> </code></pre>
-<p>HTTP 메소드가 'method="PUT"'으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):
-
-</p>
+<span class="tag">&lt;/<span class="title">form:form</span>&gt;</span> 
+</code></pre>
+<p>HTTP 메소드가 &lsquo;method=&ldquo;PUT&rdquo;'으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):</p>
 <pre><code><span class="tag">&lt;<span class="title">filter</span>&gt;</span>
     <span class="tag">&lt;<span class="title">filter-name</span>&gt;</span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>&gt;</span>
     <span class="tag">&lt;<span class="title">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="title">filter-class</span>&gt;</span>
@@ -107,19 +94,19 @@
 <span class="tag">&lt;<span class="title">filter-mapping</span>&gt;</span>
     <span class="tag">&lt;<span class="title">filter-name</span>&gt;</span>httpMethodFilter<span class="tag">&lt;/<span class="title">filter-name</span>&gt;</span>
     <span class="tag">&lt;<span class="title">servlet-name</span>&gt;</span>FinanceManager<span class="tag">&lt;/<span class="title">servlet-name</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">filter-mapping</span>&gt;</span> </code></pre>
+<span class="tag">&lt;/<span class="title">filter-mapping</span>&gt;</span> 
+</code></pre>
 <h2>REST Mappings</h2>
-<p>이 절에서는 REST mappings에 대해 매우 자세히 설명한다. 다음에 나올 PersionController를 위해서도 필요하다. Spring Finance Manager같은 웹 어플리케이션은 네가지 기능이 사용자에게 노출된다. 이 네가지 기능은 새로 자원(a person)을 만드는 것(Create), 존제하는 자원(a person)의 상세정보를 보여주거나 읽는 것(Read), 자원(a person) 정보를 수정하는 것(Update), 자원(a person)을 삭제하는 것(Delete)이다. 우리는 Person 엔티티를 읽고 관리하는 것을 CRUD라고 부른다. REST 어플리케이션을 만들 때 다음과 같은 패턴을 따르는 것이 권장된다. 다음은 CRUD가 HTTP 메소드에 어떻게 매핑되는 지를 보여준다:
 
-</p>
+<p>이 절에서는 REST mappings에 대해 매우 자세히 설명한다. 다음에 나올 PersionController를 위해서도 필요하다. Spring Finance Manager같은 웹 어플리케이션은 네가지 기능이 사용자에게 노출된다. 이 네가지 기능은 새로 자원(a person)을 만드는 것(Create), 존제하는 자원(a person)의 상세정보를 보여주거나 읽는 것(Read), 자원(a person) 정보를 수정하는 것(Update), 자원(a person)을 삭제하는 것(Delete)이다. 우리는 Person 엔티티를 읽고 관리하는 것을 CRUD라고 부른다. REST 어플리케이션을 만들 때 다음과 같은 패턴을 따르는 것이 권장된다. 다음은 CRUD가 HTTP 메소드에 어떻게 매핑되는 지를 보여준다:</p>
 <pre><code>HTTP   | CRUD
 POST   | <span class="operator"><span class="keyword">CREATE</span>
 <span class="keyword">GET</span>    | <span class="keyword">READ</span>
 PUT    | <span class="keyword">UPDATE</span>
-<span class="keyword">DELETE</span> | <span class="keyword">DELETE</span></code></pre>
-<p>MVC 컨트롤러는 표준 CRUD 이외에도 create.jsp, update.jsp의 폼을 위한 폼 백킹 오브젝트(form backing object)를 지원해야 한다. 다음은 PersonController에 REST 매핑을 적용한 표이다:
+<span class="keyword">DELETE</span> | <span class="keyword">DELETE</span>
+</code></pre>
+<p>MVC 컨트롤러는 표준 CRUD 이외에도 create.jsp, update.jsp의 폼을 위한 폼 백킹 오브젝트(form backing object)를 지원해야 한다. 다음은 PersonController에 REST 매핑을 적용한 표이다:</p>
 
-</p>
 <table><tbody>
   <tr>
     <th>Resource</th>
@@ -129,28 +116,28 @@ PUT    | <span class="keyword">UPDATE</span>
     <th>DELETE</th>
   </tr>
   <tr>
-    <td>Collection URI such as <a href="http://domain.com/financemanager/person/&lt;/td&gt;">http://domain.com/financemanager/person/&lt;/td&gt;</a>
+    <td>Collection URI such as http://domain.com/financemanager/person/</td>
     <td>사람들의 목록, 예를 들어 시스템에 등록된 모든 사람을 나열한다.</td>
     <td>사용되지 않는다.</td>
     <td>Id를 자동으로 생성하여 사람을 생성한다.</td>
     <td>사용되지 않는다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href="http://domain.com/financemanager/person/5&lt;/td&gt;">http://domain.com/financemanager/person/5&lt;/td&gt;</a>
+    <td>Member URI such as http://domain.com/financemanager/person/5</td>
     <td>id가 5인 사람의 상세정보를 가져온다.</td>
     <td>id가 5인 사람을 갱신한다.</td>
     <td>사용되지 않는다.</td>
     <td>id가 5인 사람을 삭제한다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href="http://domain.com/financemanager/person/form&lt;/td&gt;">http://domain.com/financemanager/person/form&lt;/td&gt;</a>
+    <td>Member URI such as http://domain.com/financemanager/person/form</td>
     <td>생성(Create) 폼 - 초기화 된 사람을 반환한다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
   </tr>
   <tr>
-    <td>Member URI such as <a href="http://domain.com/financemanager/person/5/form&lt;/td&gt;">http://domain.com/financemanager/person/5/form&lt;/td&gt;</a>
+    <td>Member URI such as http://domain.com/financemanager/person/5/form</td>
     <td>갱신(Update) 폼 - 폼 바인딩으로 미리 데이터가 채워진 사람을 반환한다.</td>
     <td>사용되지 않는다.</td>
     <td>사용되지 않는다.</td>
@@ -158,26 +145,23 @@ PUT    | <span class="keyword">UPDATE</span>
   </tr>
 </tbody></table>
 
-<p>이 테이블은 Spring Finance Manager에서 사용하는 REST 매핑의 개요이다. 여러분이 보신데로 첫 두 줄은 자원을 관리하는 것이고 나머지 두 줄은 Spring MVC를 사용할 때 필요한 폼 매핑을 추가한 것이다. create.jsp와 update.jsp가 별로 다르지 않다면 하나로 합치는 것도 가능하다. 하지만 생성 폼의 REST 매핑은 HTTP POST 메시지를 보내고 업데이트 폼은 HTTP PUT 메시지를 보낸다. 그리므로, 두 폼을 합칠려면 JSP 페이지와 콘트롤러에 좀 더 다듬어야(hacking) 한다.
+<p>이 테이블은 Spring Finance Manager에서 사용하는 REST 매핑의 개요이다. 여러분이 보신데로 첫 두 줄은 자원을 관리하는 것이고 나머지 두 줄은 Spring MVC를 사용할 때 필요한 폼 매핑을 추가한 것이다. create.jsp와 update.jsp가 별로 다르지 않다면 하나로 합치는 것도 가능하다. 하지만 생성 폼의 REST 매핑은 HTTP POST 메시지를 보내고 업데이트 폼은 HTTP PUT 메시지를 보낸다. 그리므로, 두 폼을 합칠려면 JSP 페이지와 콘트롤러에 좀 더 다듬어야(hacking) 한다.</p>
 
-</p>
 <h2>결론과 부가 정보</h2>
-<p>이 글에서는 Spring <code>@MVC</code> 어노테이션 스타일과 Spring <code>@MVC</code>의 REST 기능을 이용해서 Spring MVC 프레임워크를 사용해봤다. 나는 XML, ATOM, RSS, JSON같은 문서들이 생성되게 해주는 content negotiation은 설명하지 않았다. 하지만 Spring Finance Manager에 걸맞는 유즈 케이스를 제안해 주시는 분이 있으면 나는 기쁘게 이 시리즈의 한 파트로 추가시킬 것이다.
 
-</p>
-<p>나는 여러분이 내 동료 Arjen Poutsma, Alef Arendsen의 글도 참고하길 바란다.
+<p>이 글에서는 Spring <code>@MVC</code> 어노테이션 스타일과 Spring <code>@MVC</code>의 REST 기능을 이용해서 Spring MVC 프레임워크를 사용해봤다. 나는 XML, ATOM, RSS, JSON같은 문서들이 생성되게 해주는 content negotiation은 설명하지 않았다. 하지만 Spring Finance Manager에 걸맞는 유즈 케이스를 제안해 주시는 분이 있으면 나는 기쁘게 이 시리즈의 한 파트로 추가시킬 것이다.</p>
 
-</p>
+<p>나는 여러분이 내 동료 Arjen Poutsma, Alef Arendsen의 글도 참고하길 바란다.</p>
+
 <ul>
 <li><a href="http://blog.springsource.com/2009/03/08/rest-in-spring-3-mvc/">REST in Spring 3</a> - <code>@MVC</code>: Arjen이 Spring 3.0 REST 지원의 주요 기능을 소개한다.</li>
-<li><a href="http://blog.springsource.com/2009/03/16/adding-an-atom-view-to-an-application-using-springs-rest-support/">Adding an Atom view to an application using Spring's REST support</a> - Alef는 Spring 3.0 REST content negotiation을 사용하여 ATOM 피드를 생성하는 방법을 설명한다.</li>
+<li><a href="http://blog.springsource.com/2009/03/16/adding-an-atom-view-to-an-application-using-springs-rest-support/">Adding an Atom view to an application using Spring&rsquo;s REST support</a> - Alef는 Spring 3.0 REST content negotiation을 사용하여 ATOM 피드를 생성하는 방법을 설명한다.</li>
 </ul>
-<p>또, Spring 3.0 M3 문서부터는 이 기능을 설명한다.
 
-</p>
-<p>이 시리즈의 다음 파트로 나는 Spring Finance Manager의 내부 구현에 대해 설명할 계획이다. 특히 도메인 모델에 대한 주요 아이디어들을 정리할 계획이다. 이 것은 DDD와 관련이 있다. 게다가 JPA API, Hibernate, HSQL DB를 샘플 어플리케이션에 통합하는 것을 다룰 것이다.
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Dec 27 2009</span>&raquo;<a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a></li><li><span>Jul 29 2010</span>&raquo;<a href="/articles/2010/1280382600.html">와우 war overlay</a></li><li><span>May 04 2010</span>&raquo;<a href="/articles/2010/1272949440.html">m2eclipse test practice</a></li><li><span>Apr 27 2010</span>&raquo;<a href="/articles/2010/1272334320.html">Dev Environment in Maven</a></li><li><span>Apr 20 2010</span>&raquo;<a href="/articles/2010/1271743080.html">Spring Finance</a></li><li><span>Apr 19 2010</span>&raquo;<a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a></li><li><span>Jan 17 2010</span>&raquo;<a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a></li><li><span>Jan 14 2010</span>&raquo;<a href="/articles/2010/1263483780.html">Show Bean List in JSP</a></li><li><span>May 11 2010</span>&raquo;<a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257832500.html">Grails 1.2 M4</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a></li><li><span>Sep 23 2009</span>&raquo;<a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a></li><li><span>Apr 03 2009</span>&raquo;<a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a></li><li><span>Jan 02 2009</span>&raquo;<a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a></li><li><span>Aug 19 2008</span>&raquo;<a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p>또, Spring 3.0 M3 문서부터는 이 기능을 설명한다.</p>
+
+<p>이 시리즈의 다음 파트로 나는 Spring Finance Manager의 내부 구현에 대해 설명할 계획이다. 특히 도메인 모델에 대한 주요 아이디어들을 정리할 계획이다. 이 것은 DDD와 관련이 있다. 게다가 JPA API, Hibernate, HSQL DB를 샘플 어플리케이션에 통합하는 것을 다룰 것이다.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Dec 27 2009</span>&raquo;<a href="/articles/2009/1261931280.html">new Groovy and Grails announced.</a></li><li><span>Jul 29 2010</span>&raquo;<a href="/articles/2010/1280382600.html">와우 war overlay</a></li><li><span>May 04 2010</span>&raquo;<a href="/articles/2010/1272949440.html">m2eclipse test practice</a></li><li><span>Apr 27 2010</span>&raquo;<a href="/articles/2010/1272334320.html">Dev Environment in Maven</a></li><li><span>Apr 20 2010</span>&raquo;<a href="/articles/2010/1271743080.html">Spring Finance</a></li><li><span>Apr 19 2010</span>&raquo;<a href="/articles/2010/1271648700.html">Spring finance: Part 1 - Introduction And Architecture</a></li><li><span>Jan 17 2010</span>&raquo;<a href="/articles/2010/1263755580.html">eclipse 메모리 설정하기</a></li><li><span>Jan 14 2010</span>&raquo;<a href="/articles/2010/1263483780.html">Show Bean List in JSP</a></li><li><span>May 11 2010</span>&raquo;<a href="/articles/2010/1273557120.html">DES Encryption and Decryption in groovy</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257832500.html">Grails 1.2 M4</a></li><li><span>Nov 10 2009</span>&raquo;<a href="/articles/2009/1257843480.html">Simplest Spring 3 Application, 초간단 Spring 3 어플</a></li><li><span>Sep 23 2009</span>&raquo;<a href="/articles/2009/1253444040.html">Spring MVC and iBatis Example - jPetStore 분석 (3)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253428440.html">Spring MVC and iBatis Example - jPetStore 분석 (1)</a></li><li><span>Sep 20 2009</span>&raquo;<a href="/articles/2009/1253429760.html">Spring MVC and iBatis Example - jPetStore 분석 (2)</a></li><li><span>Apr 03 2009</span>&raquo;<a href="/articles/2009/1238754840.html">대학 컴퓨터공학부 신입생에게 프로그래밍 과목에서 C언어는 적당한가?</a></li><li><span>Jan 02 2009</span>&raquo;<a href="/articles/2009/1230888060.html">Groovy나 Grails사용시 한글 설정</a></li><li><span>Aug 19 2008</span>&raquo;<a href="/articles/2008/1219110060.html">Java의 속도에 근접한 Groovy</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2010/1271653140.html';
@@ -187,10 +171,10 @@ PUT    | <span class="keyword">UPDATE</span>
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2010/1271653140.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1271653140.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2010/1271653140.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

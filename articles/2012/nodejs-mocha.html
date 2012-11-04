@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - nodejs: Mocha</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,31 +15,25 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">nodejs: Mocha</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <span property="dc:created">2012 Apr 15</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2012 Apr 15 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">nodejs: Mocha</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#bdd" class="tag">BDD</a> <a href="/site/tagmap.html#test" class="tag">Test</a> <a href="/site/tagmap.html#mocha" class="tag">Mocha</a> <a href="/site/tagmap.html#should" class="tag">Should</a> | <span><a href="/articles/2012/nodejs-mocha.html#disqus_thread" data-disqus-identifier="/articles/2012/nodejs-mocha.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 '<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>'을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>이 글은 &lsquo;<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>'을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
 
-</p>
-<p><img src="/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test">
+<p><img src="/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test"></p>
 
-</p>
-<p><a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>를 읽고 Mocha 메뉴얼을 읽으니 훨씬 눈에 잘 들어온다.
+<p><a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>를 읽고 Mocha 메뉴얼을 읽으니 훨씬 눈에 잘 들어온다.</p>
 
-</p>
 <h2>Mocha</h2>
-<p><a href="http://visionmedia.github.com/mocha/">Mocha</a>는 TJ Holowaychuk이 만든 <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> 프레임워크이다. 
 
-</p>
-<p>이 글에서는 그냥 Mocha로 BDD하는 법에 대해서만 설명한다. 원래 글은 TDD를 하는 법에 대해서 다뤘지만, 다시 정리하면서 BDD로 수정했다. 다른 방법, 다른 프레임워크와의 비교는 <a href="https://twitter.com/outsider">@outsider</a>님이 잘 정리해 주었다. <a href="https://twitter.com/outsider">@outsider</a>님 <a href="http://blog.outsider.ne.kr/770">블로그 글</a>을 읽어보자. 
+<p><a href="http://visionmedia.github.com/mocha/">Mocha</a>는 TJ Holowaychuk이 만든 <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> 프레임워크이다. </p>
 
-</p>
+<p>이 글에서는 그냥 Mocha로 BDD하는 법에 대해서만 설명한다. 원래 글은 TDD를 하는 법에 대해서 다뤘지만, 다시 정리하면서 BDD로 수정했다. 다른 방법, 다른 프레임워크와의 비교는 <a href="https://twitter.com/outsider">@outsider</a>님이 잘 정리해 주었다. <a href="https://twitter.com/outsider">@outsider</a>님 <a href="http://blog.outsider.ne.kr/770">블로그 글</a>을 읽어보자. </p>
+
 <h2>package.json</h2>
-<p>먼저 package.json 파일을 다음과 같이 만든다.
 
-</p>
+<p>먼저 package.json 파일을 다음과 같이 만든다.</p>
 <pre><code>{
     "<span class="attribute">name</span>": <span class="value"><span class="string">"async-testing-tutorial"</span>
     </span>, "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span>
@@ -55,40 +49,37 @@
         "<span class="attribute">mocha</span>": <span class="value"><span class="string">"1.0.x"</span>
         </span>, "<span class="attribute">should</span>": <span class="value"><span class="string">"0.6.x"</span>
     }</span>
-}</span></code></pre>
-<p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.
+}</span>
+</code></pre>
+<p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.</p>
 
-</p>
-<p>이를 위해 의존성을 추가한다.: 
-
-</p>
+<p>이를 위해 의존성을 추가한다.: </p>
 <pre><code><span class="string">,</span> <span class="comment">"devDependencies":</span> <span class="comment">{</span>
     <span class="comment">"mocha":</span> <span class="comment">"1</span>.<span class="comment">0</span>.<span class="comment">x"</span>
     <span class="string">,</span> <span class="comment">"should":</span> <span class="comment">"0</span>.<span class="comment">6</span>.<span class="comment">x"</span>
-<span class="comment">}</code></pre>
-<p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.
+<span class="comment">}</span>
+</code></pre>
+<p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.</p>
 
-</p>
 <h2>Makefile</h2>
-<p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다. 
 
-</p>
+<p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다. </p>
 <pre><code><span class="comment">test:</span>
     <span class="comment">@</span>.<span class="comment">/node_modules/</span>.<span class="comment">bin/mocha</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">require</span> <span class="comment">should</span>
 
-<span class="string">.</span><span class="comment">PHONY:</span> <span class="comment">test</code></pre>
+<span class="string">.</span><span class="comment">PHONY:</span> <span class="comment">test</span>
+</code></pre>
 <ul>
 <li><code>--require should</code> - 테스트 코드에서 should 모듈을 끼워 넣어 준다. 생략하면 테스트 코드에 <code>require(&#39;should&#39;)</code>를 직접 넣어 줘야 한다.</li>
 <li><code>--reporter dot</code> - 테스트 결과를 어떻게 보여줄지 reporter를 고를 수 있다. 생략 시 기본 값은 <code>dot</code>.</li>
 <li><code>--u bdd</code> - 테스트 스타일을 고를 수 있는데. 생략 시 기본 값은 <code>bdd</code>.</li>
 </ul>
-<p>자세한 옵션은 <a href="http://visionmedia.github.com/mocha/">Mocha</a> 페이지에서 확인한다.
 
-</p>
+<p>자세한 옵션은 <a href="http://visionmedia.github.com/mocha/">Mocha</a> 페이지에서 확인한다.</p>
+
 <h2>prime Module</h2>
-<p><a href="http://alexyoung.org/">Alex Young</a>님이 작성한 모듈 코드:
 
-</p>
+<p><a href="http://alexyoung.org/">Alex Young</a>님이 작성한 모듈 코드:</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">nextPrime</span><span class="params">(n)</span> {</span>
     var smaller;
     n = <span class="transposed_variable">Math.</span><span class="built_in">floor</span>(n);
@@ -115,11 +106,11 @@
 }
 
 <span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>nextPrime = nextPrime;
-<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>asyncPrime = asyncPrime;</code></pre>
+<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>asyncPrime = asyncPrime;
+</code></pre>
 <h2>Test</h2>
-<p>BDD 스타일로 작성한 테스트는 다음과 같다.
 
-</p>
+<p>BDD 스타일로 작성한 테스트는 다음과 같다.</p>
 <pre><code>var next<span class="variable">Prime</span> = require('./../index').next<span class="variable">Prime</span>
 var async<span class="variable">Prime</span> = require('./../index').async<span class="variable">Prime</span>;
 
@@ -146,20 +137,20 @@ var async<span class="variable">Prime</span> = require('./../index').async<span 
             }</span>);
         });
     });
-});</code></pre>
-<p>비동기 테스트 예제인 'asyncPrime'은 done()을 호출해서 테스트가 성공했음을 알린다.
+});
+</code></pre>
+<p>비동기 테스트 예제인 'asyncPrime'은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
 
-</p>
 <h2>hooks</h2>
+
 <ul>
 <li>before() - describe()를 시작하기 전에 한번</li>
 <li>after() - describe()를 끝내고 나서 한번</li>
 <li>beforeEach() - describe() 안에 있는 it()이 시작할 때마다 한번</li>
 <li>afterEach() - describe() 안에 있는 it() 이 끝날 때마다 한번</li>
 </ul>
-<p>위 테스트코드에 hooks을 추가해보고:
 
-</p>
+<p>위 테스트코드에 hooks을 추가해보고:</p>
 <pre><code>var next<span class="variable">Prime</span> = require('./../index').next<span class="variable">Prime</span>
 var async<span class="variable">Prime</span> = require('./../index').async<span class="variable">Prime</span>;
 
@@ -208,10 +199,9 @@ var async<span class="variable">Prime</span> = require('./../index').async<span 
             }</span>);
         });
     });
-});</code></pre>
-<p>결과는 다음과 같다:
-
-</p>
+});
+</code></pre>
+<p>결과는 다음과 같다:</p>
 <pre><code>  before
 <span class="title">new</span> before
 <span class="title">beforeEach</span>
@@ -224,17 +214,14 @@ var async<span class="variable">Prime</span> = require('./../index').async<span 
 <span class="title">after</span>
 
 
-  ✔ <span class="number">3</span> tests complete (<span class="number">25</span>ms)</code></pre>
-<p>'new afterEach'나 'new before' 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.
+  ✔ <span class="number">3</span> tests complete (<span class="number">25</span>ms)
+</code></pre>
+<p>'new afterEach'나 'new before&rsquo; 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
 
-</p>
-<p><a href="http://alexyoung.org/">Alex Young</a> 만든 코드는 <a href="https://github.com/alexyoung/async-testing-tutorial">async-testing-tutorial</a>이고 내가 수정한 코드는 <a href="https://github.com/pismute/async-testing-tutorial">async-testing-tutorial-pismute</a>이다.
+<p><a href="http://alexyoung.org/">Alex Young</a> 만든 코드는 <a href="https://github.com/alexyoung/async-testing-tutorial">async-testing-tutorial</a>이고 내가 수정한 코드는 <a href="https://github.com/pismute/async-testing-tutorial">async-testing-tutorial-pismute</a>이다.</p>
 
-</p>
-<p>TDD 스타일로 테스트를 작성하고 assert방식의 expecting을 선호한다면 <a href="http://alexyoung.org/">Alex Young</a>만든 코드를 보는 것이 낫다.
-
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Jun 24 2012</span>&raquo;<a href="/articles/2012/nodejs-monkey-patching.html">nodejs에서의 멍키 패칭</a></li><li><span>Jun 17 2012</span>&raquo;<a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a></li><li><span>Jun 10 2012</span>&raquo;<a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a></li><li><span>May 13 2012</span>&raquo;<a href="/articles/2012/nodejs-modules.html">nodejs: modules</a></li><li><span>May 05 2012</span>&raquo;<a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a></li><li><span>Feb 25 2012</span>&raquo;<a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a></li><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Jul 05 2011</span>&raquo;<a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p>TDD 스타일로 테스트를 작성하고 assert방식의 expecting을 선호한다면 <a href="http://alexyoung.org/">Alex Young</a>만든 코드를 보는 것이 낫다.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Jun 24 2012</span>&raquo;<a href="/articles/2012/nodejs-monkey-patching.html">nodejs에서의 멍키 패칭</a></li><li><span>Jun 17 2012</span>&raquo;<a href="/articles/2012/iamport-nodejs.html">iamport: nodejs</a></li><li><span>Jun 10 2012</span>&raquo;<a href="/articles/2012/nodejs-fibers.html">nodejs: node-fibers</a></li><li><span>May 13 2012</span>&raquo;<a href="/articles/2012/nodejs-modules.html">nodejs: modules</a></li><li><span>May 05 2012</span>&raquo;<a href="/articles/2012/nodejs-npm-config.html">nodejs: npm config</a></li><li><span>Feb 25 2012</span>&raquo;<a href="/articles/2012/npm-tricks.html">nodejs: npm-tricks</a></li><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Jul 05 2011</span>&raquo;<a href="/articles/2011/1309906680.html">Felix's Node.js Guide</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/nodejs-mocha.html';
@@ -244,10 +231,10 @@ var async<span class="variable">Prime</span> = require('./../index').async<span 
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/nodejs-mocha.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

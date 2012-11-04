@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Object.getPrototypeOf</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,32 +15,27 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2011/1317693360.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Object.getPrototypeOf</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <span property="dc:created">2011 Oct 04</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1317693360.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2011 Oct 04 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">Object.getPrototypeOf</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <a href="/site/tagmap.html#getprototypeof" class="tag">getPrototypeOF</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#john resig" class="tag">John Resig</a> | <span><a href="/articles/2011/1317693360.html#disqus_thread" data-disqus-identifier="/articles/2011/1317693360.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317693360.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317693360.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317693360.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>이 글은 John Resig의 '<a href="http://ejohn.org/blog/objectgetprototypeof">Object.getPrototypeOf</a>'을 번역한 것이다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2011/1317693360.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2011/1317693360.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317693360.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>이 글은 John Resig의 &lsquo;<a href="http://ejohn.org/blog/objectgetprototypeof">Object.getPrototypeOf</a>'을 번역한 것이다.</p>
 
-</p>
 <h2>Object.getPrototypeOf</h2>
-<p>역사적으로 <code>__proto__</code>는 편리하기 때문에 많은 사랑을 받았다. <code>__proto__</code>는 객체의 constructor 함수의 property에 접근하는 방법이다. 사용하기 쉽지만 좀 지저분하다. 다음의 코드는 true이다:
 
-</p>
+<p>역사적으로 <code>__proto__</code>는 편리하기 때문에 많은 사랑을 받았다. <code>__proto__</code>는 객체의 constructor 함수의 property에 접근하는 방법이다. 사용하기 쉽지만 좀 지저분하다. 다음의 코드는 true이다:</p>
 <pre><code><span class="string">"test"</span><span class="variable">.__proto__</span> === String<span class="variable">.prototype</span>
 <span class="comment">// Another alternative, not using __proto__</span>
 <span class="comment">// Only works when constructor isn't changed</span>
-<span class="string">"test"</span><span class="variable">.constructor</span><span class="variable">.prototype</span> === String<span class="variable">.prototype</span></code></pre>
-<p>Object.getPrototypeOf(object)은 ECMAScript 3.1 표준에 추가될 것 같다(역주, 실제로 ECMAScript 5에). 그리고 Firefox에서 이제 막 구현했다.
+<span class="string">"test"</span><span class="variable">.constructor</span><span class="variable">.prototype</span> === String<span class="variable">.prototype</span>
+</code></pre>
+<p>Object.getPrototypeOf(object)은 ECMAScript 3.1 표준에 추가될 것 같다(역주, 실제로 ECMAScript 5에). 그리고 Firefox에서 이제 막 구현했다.</p>
 
-</p>
-<p>이제 막 표준화된 이 기능은 어떻게 사용해야 할까?
+<p>이제 막 표준화된 이 기능은 어떻게 사용해야 할까?</p>
 
-</p>
 <h2>instanceOf</h2>
-<p>instanceOf를 JavaScript로 구현한다면 다음과 같다:
 
-</p>
+<p>instanceOf를 JavaScript로 구현한다면 다음과 같다:</p>
 <pre><code>function instanceOf(<span class="keyword">object</span>, constructor) {
   <span class="keyword">while</span> (<span class="class"><span class="keyword">object</span> != <span class="title">null</span>) {</span>
     <span class="keyword">if</span> (<span class="class"><span class="keyword">object</span> == <span class="title">constructor</span>.<span class="title">prototype</span>)</span>
@@ -50,14 +45,13 @@
   <span class="keyword">return</span> <span class="keyword">false</span>;
 }
 instanceOf(<span class="string">"test"</span>, String);
-instanceOf(<span class="keyword">true</span>, Boolean);</code></pre>
-<p>prototype chain을 따라서 constructor의 prototype이 있는지 찾는다. 이 코드는 getPrototypeOf을 설명하기에 좋다.
+instanceOf(<span class="keyword">true</span>, Boolean);
+</code></pre>
+<p>prototype chain을 따라서 constructor의 prototype이 있는지 찾는다. 이 코드는 getPrototypeOf을 설명하기에 좋다.</p>
 
-</p>
 <h2>Super Methods</h2>
-<p>getPrototypeOf()를 super 키워드 처럼 사용할 수 있다. 코드를 보자:
 
-</p>
+<p>getPrototypeOf()를 super 키워드 처럼 사용할 수 있다. 코드를 보자:</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span><span class="comment">{}</span>
 <span class="title">Person</span>.<span class="title">prototype</span>.<span class="title">kick</span> = <span class="title">function</span><span class="params">(<span class="keyword">type</span>)</span><span class="comment">{
   alert(type + " kick!");
@@ -70,14 +64,13 @@ instanceOf(<span class="keyword">true</span>, Boolean);</code></pre>
 
 Norris.prototype.kick = <span class="keyword">function</span>()<span class="comment">{
   Object.getPrototypeOf(this).kick("Roundhouse");
-}</span>;</code></pre>
-<p>Object.getPrototypeOf(this)를 통해서 원래의 kick method에 접근 할 수 있다. 이 예제에서는 getPrototypeOf()이용하여 kick method를 override했다.
+}</span>;
+</code></pre>
+<p>Object.getPrototypeOf(this)를 통해서 원래의 kick method에 접근 할 수 있다. 이 예제에서는 getPrototypeOf()이용하여 kick method를 override했다.</p>
 
-</p>
 <h2>Cross-Browser Implementation</h2>
-<p>브라우저들이 Object.getPrototypeOf를 구현할 때까지 다음과 같은 코드를 사용할 수 있다:
 
-</p>
+<p>브라우저들이 Object.getPrototypeOf를 구현할 때까지 다음과 같은 코드를 사용할 수 있다:</p>
 <pre><code><span class="title">if</span> ( <span class="typedef">typeof <span class="type">Object</span>.getPrototypeOf !== "function" ) <span class="container">{
   <span class="title">if</span> ( <span class="title">typeof</span> "<span class="title">test</span>".<span class="title">__proto__</span> === "<span class="title">object</span>" ) {
     <span class="type">Object</span>.<span class="title">getPrototypeOf</span> = <span class="title">function</span>(<span class="title">object</span>){
@@ -89,25 +82,21 @@ Norris.prototype.kick = <span class="keyword">function</span>()<span class="comm
       return object.constructor.prototype;
     };
   }
-}</code></pre>
-<p>.constuctor property는 mutable이기 때문에 이 코드는 완벽하지 않다. 사용자가 갑자기 .constructor property의 값을 바꿔 버릴 수도 있다. 그렇지만 브라우저들이 구현할때까지 충분히 쓸만할 것이다.
+}
+</code></pre>
+<p>.constuctor property는 mutable이기 때문에 이 코드는 완벽하지 않다. 사용자가 갑자기 .constructor property의 값을 바꿔 버릴 수도 있다. 그렇지만 브라우저들이 구현할때까지 충분히 쓸만할 것이다.</p>
 
-</p>
 <h2>Why Object.getPrototypeOf?</h2>
-<p>왜 'test'.getPrototypeOf()가 아니라 Object.getPrototypeOf('test')일까? <code>__proto__</code>처럼 property도 아니다. 왜? 객체의 method나 property인 편이 더 편리할 것 같지만 실제로는 그렇지 않다.
 
-</p>
-<p>일단 다음과 같은 예제부터 살펴보자:
+<p>왜 'test&rsquo;.getPrototypeOf()가 아니라 Object.getPrototypeOf(&lsquo;test&rsquo;)일까? <code>__proto__</code>처럼 property도 아니다. 왜? 객체의 method나 property인 편이 더 편리할 것 같지만 실제로는 그렇지 않다.</p>
 
-</p>
-<pre><code><span class="keyword">var</span> obj = { getPrototypeOf: <span class="string">"blah"</span> };</code></pre>
-<p>사용자가 이렇게 정의해 버리면 getPrototypeOf()은 메소드가 아니라서 호출될 수 없다. 그러니까 개발자들은 항상 Object.getPrototypeOf()라고 사용해야 한다. getPrototypeOf()가 필요한 때는 보통 fallback같은 것을 만들 때이다. 즉, 일반적으로 필요하지 않기 때문에 모든 객채의 property일 필요는 없는 것이다.
+<p>일단 다음과 같은 예제부터 살펴보자:</p>
+<pre><code><span class="keyword">var</span> obj = { getPrototypeOf: <span class="string">"blah"</span> };
+</code></pre>
+<p>사용자가 이렇게 정의해 버리면 getPrototypeOf()은 메소드가 아니라서 호출될 수 없다. 그러니까 개발자들은 항상 Object.getPrototypeOf()라고 사용해야 한다. getPrototypeOf()가 필요한 때는 보통 fallback같은 것을 만들 때이다. 즉, 일반적으로 필요하지 않기 때문에 모든 객채의 property일 필요는 없는 것이다.</p>
 
-</p>
-<p>그리고 누구도 Object의 Prototype(Object.prototype.getPrototypeOf = ...;)을 확장하는 것 같은 사악한 짓은 하지 않을 것이기 때문에 예전 코드를 지원하기도 쉽다.
-
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317888540.html">JavaScript Standard</a></li><li><span>Oct 05 2011</span>&raquo;<a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a></li><li><span>Sep 29 2011</span>&raquo;<a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a></li><li><span>Sep 28 2011</span>&raquo;<a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p>그리고 누구도 Object의 Prototype(Object.prototype.getPrototypeOf = &hellip;;)을 확장하는 것 같은 사악한 짓은 하지 않을 것이기 때문에 예전 코드를 지원하기도 쉽다.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Oct 22 2011</span>&raquo;<a href="/articles/2011/1319251876.html">tav:Brain-free command-line options parser</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317873491.html">ECMAScript 5 Strict Mode, JSON, and More</a></li><li><span>Oct 06 2011</span>&raquo;<a href="/articles/2011/1317888540.html">JavaScript Standard</a></li><li><span>Oct 05 2011</span>&raquo;<a href="/articles/2011/1317779520.html">ECMAScript 5 Objects and Properties</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317341820.html">New In Javascript 1.8.1</a></li><li><span>Sep 30 2011</span>&raquo;<a href="/articles/2011/1317370500.html">JavaScript How Prototypal Inheritance really works</a></li><li><span>Sep 29 2011</span>&raquo;<a href="/articles/2011/1317258960.html">New in JavaScript 1.8</a></li><li><span>Sep 28 2011</span>&raquo;<a href="/articles/2011/1317201600.html">New in JavaScript 1.7</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317086700.html">New In JavaScript 1.6</a></li><li><span>Sep 27 2011</span>&raquo;<a href="/articles/2011/1317088260.html">Partial Application in JavaScript</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/1317693360.html';
@@ -117,10 +106,10 @@ Norris.prototype.kick = <span class="keyword">function</span>()<span class="comm
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2011/1317693360.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/1317693360.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2011/1317693360.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

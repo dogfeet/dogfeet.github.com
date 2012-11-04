@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: Remote Tracking Branch vs Tracking Branch</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><!--Styles--><link rel="stylesheet" href="/css/bootstrap.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/bootstrap-responsive.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="/js/bootstrap.min.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar" navbar-fixed-top><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right" action="http://google.com/search" method="get" navbar-search><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container-fluid"><div class="row-fluid"><section class="content" span10><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -15,119 +15,104 @@
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
-</script><article id="post" typeof="sioc:post" about="/articles/2012/git-tracking-vs-remote-tracking.html" lang="ko-kr" .post .undefined><header><h1 property="dcterms:title">Git: Remote Tracking Branch vs Tracking Branch</h1></header><footer class="modern-font" .small-font><span>by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <span property="dc:created">2012 Mar 03</span>
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/git-tracking-vs-remote-tracking.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2012 Mar 03 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">Git: Remote Tracking Branch vs Tracking Branch</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
  | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#tracking branch" class="tag">Tracking Branch</a> <a href="/site/tagmap.html#remote tracking branch" class="tag">Remote Tracking Branch</a> | <span><a href="/articles/2012/git-tracking-vs-remote-tracking.html#disqus_thread" data-disqus-identifier="/articles/2012/git-tracking-vs-remote-tracking.html"></a></span>
-<style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div></footer><div property="sioc:content"><p>Tracking 브랜치와 Remote Tracking 브랜치는 조금 애매하다. <code>Tracking 브랜치</code> 개념은 잘 이용하지 않기 때문에 돌아서면 잊어버린다. 그래서 정리했다. 구분하고 있지 않아도 Git을 사용하는데 불편할 거라고는 생각하지 않지만, 그래도 궁금하다.
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>Tracking 브랜치와 Remote Tracking 브랜치는 조금 애매하다. <code>Tracking 브랜치</code> 개념은 잘 이용하지 않기 때문에 돌아서면 잊어버린다. 그래서 정리했다. 구분하고 있지 않아도 Git을 사용하는데 불편할 거라고는 생각하지 않지만, 그래도 궁금하다.</p>
 
-</p>
-<p><img src="/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg" alt="stalker">
+<p><img src="/articles/2012/git-tracking-vs-remote-tracking/sensei.jpeg" alt="stalker"></p>
 
-</p>
-<p>(절망선생)
+<p>(절망선생)</p>
 
-</p>
 <h2>Remote Tracking 브랜치</h2>
-<p>Remote Tracking 브랜치는 <code>origin/master</code>와 같은 브랜치를 말한다. 이 브랜치는 origin 저장소에 있는 master 브랜치가 가리키는 커밋을 그대로 가리키는 브랜치이다. 리모트 저장소의 브랜치를 Fetch해 오면 이 브랜치가 업데이트된다.
 
-</p>
-<p>Remote Tracking 브랜치는 다음과 같은 특징이 있다.
+<p>Remote Tracking 브랜치는 <code>origin/master</code>와 같은 브랜치를 말한다. 이 브랜치는 origin 저장소에 있는 master 브랜치가 가리키는 커밋을 그대로 가리키는 브랜치이다. 리모트 저장소의 브랜치를 Fetch해 오면 이 브랜치가 업데이트된다.</p>
 
-</p>
+<p>Remote Tracking 브랜치는 다음과 같은 특징이 있다.</p>
+
 <ul>
 <li>이 브랜치는 사용자가 임의로 수정할 수 없다.</li>
 <li><code>git fetch</code>, <code>git pull</code> 명령으로만 업데이트할 수 있다.</li>
 </ul>
+
 <h2>Tracking 브랜치</h2>
-<p>Tracking 브랜치는 Remote Tracking 브랜치(이하 리모트 브랜치)보다 복잡하지만 그렇다고 어려운 것도 아니다.
 
-</p>
-<p>Tracking 브랜치는 로컬 브랜치이다. 로컬 브랜치 중에서 리모트 브랜치를 Tracking하는 브랜치다.
+<p>Tracking 브랜치는 Remote Tracking 브랜치(이하 리모트 브랜치)보다 복잡하지만 그렇다고 어려운 것도 아니다.</p>
 
-</p>
-<p>Tracking 특징 다음과 같다:
+<p>Tracking 브랜치는 로컬 브랜치이다. 로컬 브랜치 중에서 리모트 브랜치를 Tracking하는 브랜치다.</p>
 
-</p>
+<p>Tracking 특징 다음과 같다:</p>
+
 <ul>
 <li>이 브랜치는 사용자가 임의로 수정할 수 있다.</li>
 <li><code>git fetch</code>로 정보가 업데이트되지 않는다. <code>git fetch</code>는 단지 리모트 저장소의 브랜치를 Tracking하는 Remote Tracking 브랜치만 만든다.</li>
 </ul>
-<p>Tracking 브랜치는 도우미 같은 것으로 생각하면 된다. 몰라도 크게 불편하지 않다.
 
-</p>
+<p>Tracking 브랜치는 도우미 같은 것으로 생각하면 된다. 몰라도 크게 불편하지 않다.</p>
+
 <h3>Tracking 브랜치 확인</h3>
-<p><code>git clone</code> 명령은 리모트 저장소를 Fetch하고 나서 master 브랜치를 만들고 Checkout 해준다. 이때 master 브랜치를 origin/master 브랜치를 Tracking하도록 만든다.
 
-</p>
-<p><code>git clone</code> 명령으로 저장소를 만들고 <code>git config -l</code> 명령을 실행하면 다음과 같은 설정이 들어가 있다:
+<p><code>git clone</code> 명령은 리모트 저장소를 Fetch하고 나서 master 브랜치를 만들고 Checkout 해준다. 이때 master 브랜치를 origin/master 브랜치를 Tracking하도록 만든다.</p>
 
-</p>
+<p><code>git clone</code> 명령으로 저장소를 만들고 <code>git config -l</code> 명령을 실행하면 다음과 같은 설정이 들어가 있다:</p>
 <pre><code>branch<span class="variable">.master</span><span class="variable">.remote</span>=origin
-branch<span class="variable">.master</span><span class="variable">.merge</span>=refs/heads/master</code></pre>
+branch<span class="variable">.master</span><span class="variable">.merge</span>=refs/heads/master
+</code></pre>
 <h3>Tracking 브랜치 만들기</h3>
-<p>Tracking 브랜치는 설정에 이런 정보를 가지고 있다. Tracking 브랜치는 만드는 게 간단하다. 리모트 브랜치에서 브랜치를 만들면 된다.
 
-</p>
+<p>Tracking 브랜치는 설정에 이런 정보를 가지고 있다. Tracking 브랜치는 만드는 게 간단하다. 리모트 브랜치에서 브랜치를 만들면 된다.</p>
 <pre><code><span class="title">git</span> br tracking origin/master
-<span class="title">git</span> co -b tracking origin/master</code></pre>
-<p>하지만, 로컬 브랜치에서 만들면 Tracking 브랜치가 되지 않는다:
-
-</p>
+<span class="title">git</span> co -b tracking origin/master
+</code></pre>
+<p>하지만, 로컬 브랜치에서 만들면 Tracking 브랜치가 되지 않는다:</p>
 <pre><code><span class="title">git</span> br tracking master
-<span class="title">git</span> co -b tracking master</code></pre>
-<p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:
-
-</p>
-<pre><code><span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">set</span>-<span class="comment">upstream</span> <span class="comment">master</span> <span class="comment">origin/master</code></pre>
+<span class="title">git</span> co -b tracking master
+</code></pre>
+<p>이미 만든 브랜치를 Tracking 브랜치로 만들 수도 있다:</p>
+<pre><code><span class="comment">git</span> <span class="comment">branch</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">set</span>-<span class="comment">upstream</span> <span class="comment">master</span> <span class="comment">origin/master</span>
+</code></pre>
 <h3>쓰임새</h3>
-<p>Tracking 브랜치 정보는 로컬 브랜치와 리모트 브랜치 사이의 연결 정보이고 설정에 저장된다. Git은 이 정보를 이용해서 몇 가지 정보를 제공한다.
 
-</p>
+<p>Tracking 브랜치 정보는 로컬 브랜치와 리모트 브랜치 사이의 연결 정보이고 설정에 저장된다. Git은 이 정보를 이용해서 몇 가지 정보를 제공한다.</p>
+
 <h4>git branch -v</h4>
-<p>Tracking 브랜치의 경우 리모트 브랜치와 거리가 얼마나 되는지(다른 커밋 개수를) 보여준다:
 
-</p>
+<p>Tracking 브랜치의 경우 리모트 브랜치와 거리가 얼마나 되는지(다른 커밋 개수를) 보여준다:</p>
 <pre><code>$ git branch -v
 feature/kitchen e054c7e [ahead <span class="number">1</span>, behind <span class="number">1</span>] <span class="keyword">Add</span> sink unit
-* ship            <span class="number">2</span>d45d4c <span class="keyword">Add</span> test</code></pre>
-<p><code>[ahead 1]</code>은 feature/kitchen은 origin/feature/kitchen에 없는 커밋이 하나 있다는 것이고 [behind 1]은 feature/kitchen은 origin/feature/kitchen에 있는 커밋 하나가 없다는 것이다.
+* ship            <span class="number">2</span>d45d4c <span class="keyword">Add</span> test
+</code></pre>
+<p><code>[ahead 1]</code>은 feature/kitchen은 origin/feature/kitchen에 없는 커밋이 하나 있다는 것이고 [behind 1]은 feature/kitchen은 origin/feature/kitchen에 있는 커밋 하나가 없다는 것이다.</p>
 
-</p>
 <h4>git checkout</h4>
-<p><code>git checkout</code>도 브랜치가 Tracking 브랜치이면 얼마나 다른지 보여준다.
 
-</p>
+<p><code>git checkout</code>도 브랜치가 Tracking 브랜치이면 얼마나 다른지 보여준다.</p>
 <pre><code>$ git checkout feature/kitchen 
 Switched <span class="keyword">to</span> branch <span class="comment">'feature/kitchen'</span>
 Your branch <span class="keyword">and</span> <span class="comment">'origin/ship' have diverged,</span>
-<span class="keyword">and</span> have <span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span> different commit(s) <span class="keyword">each</span>, respectively.</code></pre>
+<span class="keyword">and</span> have <span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span> different commit(s) <span class="keyword">each</span>, respectively.
+</code></pre>
 <h4>git pull</h4>
-<p>Tracking 브랜치를 Checkout한 상태에서 <code>git pull</code> 명령을 실행하면 현재 Checkout과 연결된 리모트 저장소와 브랜치를 설정에서 찾아서 Fetch하고 현 브랜치에 Merge한다.
 
-</p>
-<p>Tracking 브랜치가 아니면 <code>git pull</code>을 할 수 없다. 그러니까 <code>git pull</code>을 하려면 Tracking 브랜치를 Checkout하고 있어야 한다.
+<p>Tracking 브랜치를 Checkout한 상태에서 <code>git pull</code> 명령을 실행하면 현재 Checkout과 연결된 리모트 저장소와 브랜치를 설정에서 찾아서 Fetch하고 현 브랜치에 Merge한다.</p>
 
-</p>
+<p>Tracking 브랜치가 아니면 <code>git pull</code>을 할 수 없다. 그러니까 <code>git pull</code>을 하려면 Tracking 브랜치를 Checkout하고 있어야 한다.</p>
+
 <h4>git push</h4>
-<p><code>git push</code>라고 실행하면 Checkout한 브랜치와 상관없이 Tracking 브랜치를 모두 Push한다. <code>git push origin master</code>는 Tracking 브랜치와 상관없이 master 브랜치를 origin/master로 Push한다.
 
-</p>
-<h2>끝으로...</h2>
-<p>자동으로 Merge하는 방식은 아름다운 히스토리를 해칠 수 있다. 히스토리는 가능한 평평하게 펴줘야 하고 여러 커밋을 묶어서 관리할 필요가 있을 때만 Merge 커밋을 히스토리에 남기는 것이 좋다.
+<p><code>git push</code>라고 실행하면 Checkout한 브랜치와 상관없이 Tracking 브랜치를 모두 Push한다. <code>git push origin master</code>는 Tracking 브랜치와 상관없이 master 브랜치를 origin/master로 Push한다.</p>
 
-</p>
-<p>물론 <code>git pull</code> 명령도 --rebase, --ff, --no-ff, --ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.
+<h2>끝으로&hellip;</h2>
 
-</p>
-<p><code>git pull</code> 명령은 어떨 때 유용한 걸까?
+<p>자동으로 Merge하는 방식은 아름다운 히스토리를 해칠 수 있다. 히스토리는 가능한 평평하게 펴줘야 하고 여러 커밋을 묶어서 관리할 필요가 있을 때만 Merge 커밋을 히스토리에 남기는 것이 좋다.</p>
 
-</p>
-<p>저장소와 모든 브랜치를 동기화하는 기능이 필요하긴 하다. 복잡하게 Tracking 브랜치에 따른 것이 아니라 걍 이름으로 했으면 좋겠는데..
+<p>물론 <code>git pull</code> 명령도 &ndash;rebase, &ndash;ff, &ndash;no-ff, &ndash;ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.</p>
 
-</p>
-</div></article><section id="related"><h3>Related Posts</h3><div class="alert" alert-info><ul><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Feb 10 2012</span>&raquo;<a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li></ul></div></section><section id="comments"><h3>Feedback</h3><div class="row"><div id="disqus_thread" class="well span10 offset1"></div>
+<p><code>git pull</code> 명령은 어떨 때 유용한 걸까?</p>
+
+<p>저장소와 모든 브랜치를 동기화하는 기능이 필요하긴 하다. 복잡하게 Tracking 브랜치에 따른 것이 아니라 걍 이름으로 했으면 좋겠는데..</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Feb 10 2012</span>&raquo;<a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-tracking-vs-remote-tracking.html';
@@ -137,10 +122,10 @@ Your branch <span class="keyword">and</span> <span class="comment">'origin/ship'
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well span10 offset1">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
   <div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-send="true" data-width="450" data-show-faces="true"></div>
-    <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-num-posts="1"></div>
-  </div></div></section></section><aside class="sidebar" span2></aside></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2012/git-tracking-vs-remote-tracking.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

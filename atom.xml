@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-10-15T15:33:44.124Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ GitHub의 페이지 기능 이용하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/github-pages.html" /><updated>2012-10-10T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/github-pages.html</id><content type="html"><![CDATA[
-<p>GitHub의 Pages 기능을 이용하는 방법에 대해 정리해보고자 한다. <a href="https://twitter.com/pismute">@pismute</a>님의 &#39;한 때 버전 컨트롤, 위키, 블로그를 다 따로 사용했었는데, GitHub를 알고 나서 Git, GitHub으로만 사용하고 있다&#39;는 말을 듣고 블로깅을 GitHub로 해보면 어떨까 하는 생각이 들었다. GitHub의 Page 기능을 이용하면 이 블로그처럼 글을 써서 남길 수 있다.
-GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이지에 있는 Pages의 글</a> 들중 몇 가지만 빼고 한국어로 옮겨봤다.
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-11-04T15:13:41.259Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ GitHub의 페이지 기능 이용하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/github-pages.html" /><updated>2012-10-10T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/github-pages.html</id><content type="html"><![CDATA[
+<p>GitHub의 Pages 기능을 이용하는 방법에 대해 정리해보고자 한다. <a href="https://twitter.com/pismute">@pismute</a>님의 &lsquo;한 때 버전 컨트롤, 위키, 블로그를 다 따로 사용했었는데, GitHub를 알고 나서 Git, GitHub으로만 사용하고 있다'는 말을 듣고 블로깅을 GitHub로 해보면 어떨까 하는 생각이 들었다. GitHub의 Page 기능을 이용하면 이 블로그처럼 글을 써서 남길 수 있다.
+GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이지에 있는 Pages의 글</a> 들중 몇 가지만 빼고 한국어로 옮겨봤다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/github-pages/github-help.jpg" alt="help">
+<p><img src="http://dogfeet.github.com/articles/2012/github-pages/github-help.jpg" alt="help"></p>
 
-</p>
 <h2>1. GitHub의 Pages란?</h2>
-<p>GitHub의 Pages란(이하 페이지) GitHub에서 무료로 호스팅하는 공개 웹페이지이다. GitHub에서 제공하는 페이지 제작 도구로 쉽게 페이지를 만들어 공개할 수도 있고, 로컬에서 git을 이용해 수동으로 만들 수도 있다.
 
-</p>
+<p>GitHub의 Pages란(이하 페이지) GitHub에서 무료로 호스팅하는 공개 웹페이지이다. GitHub에서 제공하는 페이지 제작 도구로 쉽게 페이지를 만들어 공개할 수도 있고, 로컬에서 git을 이용해 수동으로 만들 수도 있다.</p>
+
 <h2>2. 사용자와 프로젝트를 위한 페이지</h2>
-<p>우리는 두 가지 타입의 페이지를 만들 수 있다. 사용자 페이지와 프로젝트 페이지가 그것이다. 이 둘은 몇 가지 사항을 빼고는 거의 똑같다. (역자주 : 원문에는 User, Organization and Project Page라고 나와있다. 하지만 User와 Organization을 나누는 것은 계정을 혼자 사용하느냐 여럿이서 사용하느냐에 따른 차이일 뿐이다. 사용 방법에는 아무런 차이가 없으므로 이 글에서는 뭉쳐서 사용자라고만 표기한다.)
 
-</p>
+<p>우리는 두 가지 타입의 페이지를 만들 수 있다. 사용자 페이지와 프로젝트 페이지가 그것이다. 이 둘은 몇 가지 사항을 빼고는 거의 똑같다. (역자주 : 원문에는 User, Organization and Project Page라고 나와있다. 하지만 User와 Organization을 나누는 것은 계정을 혼자 사용하느냐 여럿이서 사용하느냐에 따른 차이일 뿐이다. 사용 방법에는 아무런 차이가 없으므로 이 글에서는 뭉쳐서 사용자라고만 표기한다.)</p>
+
 <h3>사용자 페이지</h3>
-<p>사용자 페이지는 페이지만을 위한 특별한 저장소에 저장한다. 이 저장소의 이름은 계정 이름을 사용한다. 만약 계정이 dogfeet라면 이 조직을 위한 저장소의 이름은 <a href="https://github.com/dogfeet/dogfeet.github.com">dogfeet/dogfeet.github.com</a> 이 된다.
 
-</p>
+<p>사용자 페이지는 페이지만을 위한 특별한 저장소에 저장한다. 이 저장소의 이름은 계정 이름을 사용한다. 만약 계정이 dogfeet라면 이 조직을 위한 저장소의 이름은 <a href="https://github.com/dogfeet/dogfeet.github.com">dogfeet/dogfeet.github.com</a> 이 된다.</p>
+
 <ul>
 <li>저장소의 이름은 반드시 <code>username/username.github.com</code>의 구조를 가진다.</li>
 <li><strong>master</strong> 브랜치의 내용이 곧 페이지에서 보이는 내용이다.</li>
 </ul>
+
 <blockquote>
-<p><strong>알아둘 것</strong>: 사용자 페이지의 저장소는 반드시 그 자신의 계정 이름밖에 사용하지 못한다. 다시 말해서 <code>joe/bob.github.com</code>식의 저장소는 페이지로 작동하지 않는다.
-
-</p>
+<p><strong>알아둘 것</strong>: 사용자 페이지의 저장소는 반드시 그 자신의 계정 이름밖에 사용하지 못한다. 다시 말해서 <code>joe/bob.github.com</code>식의 저장소는 페이지로 작동하지 않는다.</p>
 </blockquote>
-<h3>프로젝트 페이지</h3>
-<p>사용자 페이지와는 다르게 <strong>프로젝트 페이지</strong>는 그 프로젝트의 저장소를 그대로 사용한다. (새로 저장소를 만들 필요 없다.) 그렇게 만들어진 페이지는 몇 가지를 제외하고 사용자 페이지와 완전히 똑같다.
 
-</p>
+<h3>프로젝트 페이지</h3>
+
+<p>사용자 페이지와는 다르게 <strong>프로젝트 페이지</strong>는 그 프로젝트의 저장소를 그대로 사용한다. (새로 저장소를 만들 필요 없다.) 그렇게 만들어진 페이지는 몇 가지를 제외하고 사용자 페이지와 완전히 똑같다.</p>
+
 <ul>
 <li>페이지를 만들거나 퍼블리싱 할 때에 <strong>gh-pages</strong> 브랜치를 사용한다.</li>
 <li>커스텀 도메인을 사용하지 않으면 프로젝트 페이지는 사용자 페이지의 서브 경로로 제공된다. 주소는 <code>username.github.com/projectname</code>의 형태를 띈다.</li>
 <li>커스텀 404 에러 페이지를 사용하려면 커스텀 도메인을 사용해야 한다. 커스텀 도메인을 사용하지 않으면 사용자 페이지의 404 에러 페이지를 사용하게 된다.</li>
 </ul>
+
 <h2>3. 자동으로 페이지 만들기</h2>
-<p>프로젝트나 사용자의 페이지를 빠르게 만들려면 GitHub에서 제공하는 페이지 제작 도구를 이용한다.
 
-</p>
+<p>프로젝트나 사용자의 페이지를 빠르게 만들려면 GitHub에서 제공하는 페이지 제작 도구를 이용한다.</p>
+
 <h3>사용자 페이지</h3>
-<p>사용자 페이지를 만들려면 우선 <code>username.github.com</code>이나 <code>orgname.github.com</code>이란 이름의 저장소를 만들어야 한다. 물론 여기서 username이나 orgname은 자기 자신의 github계정 이름이어야 한다. 그렇지 않으면 페이지는 만들어지지 않는다. 저장소의 admin 페이지에 가면 제작 도구를 사용할 수 있다.
 
-</p>
+<p>사용자 페이지를 만들려면 우선 <code>username.github.com</code>이나 <code>orgname.github.com</code>이란 이름의 저장소를 만들어야 한다. 물론 여기서 username이나 orgname은 자기 자신의 github계정 이름이어야 한다. 그렇지 않으면 페이지는 만들어지지 않는다. 저장소의 admin 페이지에 가면 제작 도구를 사용할 수 있다.</p>
+
 <h3>프로젝트 페이지</h3>
-<p>모든 프로젝트 저장소에서 페이지를 만들고 퍼블리싱 할 수 있다. 하지만 주의할 것은 비공개 저장소에서 만든 페이지는 공개 페이지가 된다. (비공개 페이지를 만들 수 없다.)
 
-</p>
+<p>모든 프로젝트 저장소에서 페이지를 만들고 퍼블리싱 할 수 있다. 하지만 주의할 것은 비공개 저장소에서 만든 페이지는 공개 페이지가 된다. (비공개 페이지를 만들 수 없다.)</p>
+
 <h3>자동 페이지 제작 도구</h3>
+
 <ol>
 <li><p>저장소의 admin 페이지로 간다.</p>
-<p><img src="/articles/2012/github-pages/repo-actions-admin.png" alt="repo-actions-admin"></p>
-</li>
-<li><p>"Automatic Page Generator" 버튼을 클릭한다.</p>
-<p><img src="/articles/2012/github-pages/pages-automatic-page-generator.png" alt="pages-automatic-page-generator"></p>
-</li>
-<li>마크다운 에디터로 내용을 작성한다.</li>
-<li>"Continue To Layouts" 버튼을 누른다.</li>
-<li><p>제공되는 테마들을 적용해서 미리보기로 확인한다.</p>
-<p><img src="/articles/2012/github-pages/page-generator-picker.png" alt="page-generator-picker"></p>
-</li>
-<li><p>좋아하는 테마를 발견했으면 "Publish"를 클릭한다.</p>
-<p><img src="/articles/2012/github-pages/page-generator-publish.png" alt="page-generator-publish"></p>
-</li>
-</ol>
-<p>페이지가 만들어진 후에 로컬에 복사본을 얻을 수 있다. 프로젝트 페이지를 만들었다면 새로운 브랜치를 fetch 후 checkout 한다.
 
-</p>
+<p><img src="/articles/2012/github-pages/repo-actions-admin.png" alt="repo-actions-admin"></p></li>
+<li><p>&ldquo;Automatic Page Generator&rdquo; 버튼을 클릭한다.</p>
+
+<p><img src="/articles/2012/github-pages/pages-automatic-page-generator.png" alt="pages-automatic-page-generator"></p></li>
+<li><p>마크다운 에디터로 내용을 작성한다.</p></li>
+<li><p>&ldquo;Continue To Layouts&rdquo; 버튼을 누른다.</p></li>
+<li><p>제공되는 테마들을 적용해서 미리보기로 확인한다.</p>
+
+<p><img src="/articles/2012/github-pages/page-generator-picker.png" alt="page-generator-picker"></p></li>
+<li><p>좋아하는 테마를 발견했으면 &ldquo;Publish&quot;를 클릭한다.</p>
+
+<p><img src="/articles/2012/github-pages/page-generator-publish.png" alt="page-generator-publish"></p></li>
+</ol>
+
+<p>페이지가 만들어진 후에 로컬에 복사본을 얻을 수 있다. 프로젝트 페이지를 만들었다면 새로운 브랜치를 fetch 후 checkout 한다.</p>
 <pre><code><span class="char">$ </span>cd repo
 <span class="char">$ </span>git fetch origin
 <span class="method">remote:</span> <span class="class">Counting</span> <span class="method">objects:</span> <span class="number">92</span>, done.
@@ -80,10 +79,9 @@ GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이�
 
 <span class="char">$ </span>git checkout gh-pages
 <span class="class">Branch</span> gh-pages set up to track remote branch gh-pages from origin.
-<span class="class">Switched</span> to a new branch <span class="string">'gh-pages'</span></code></pre>
-<p>사용자 페이지를 만들었다면 페이지 코드는 gh-pages 브랜치가 아니라 master 브랜치에 페이지의 코드가 들어있다. 따라서 그냥 master 브랜치를 check out 한 뒤 pull 명령을 내리면 된다.
-
-</p>
+<span class="class">Switched</span> to a new branch <span class="string">'gh-pages'</span>
+</code></pre>
+<p>사용자 페이지를 만들었다면 페이지 코드는 gh-pages 브랜치가 아니라 master 브랜치에 페이지의 코드가 들어있다. 따라서 그냥 master 브랜치를 check out 한 뒤 pull 명령을 내리면 된다.</p>
 <pre><code>$ cd repo
 $ git checkout master
 Switched to branch <span class="string">'master'</span>
@@ -101,15 +99,15 @@ index.html                                     |  <span class="number">265</span
 <span class="keyword">...</span>
 <span class="number">98</span> files changed, <span class="number">18123</span> insertions(+), <span class="number">1</span> deletion(-)
 create mode <span class="number">100644</span> index.html
-<span class="keyword">...</span></code></pre>
+<span class="keyword">...</span>
+</code></pre>
 <h2>4. 수동으로 페이지 만들기</h2>
-<p>git을 command-line으로 사용해왔다면 수동으로 새로운 페이지를 만드는 건 어렵지 않다.
 
-</p>
+<p>git을 command-line으로 사용해왔다면 수동으로 새로운 페이지를 만드는 건 어렵지 않다.</p>
+
 <h3>안전하게 가자</h3>
-<p>프로젝트에 페이지를 만들어 넣으려면 저장소에 "부모가 없는(orphan)" 브랜치를 만들어야 한다. 이걸 하는 가장 안전한 방법은 우선 새로 저장소를 클론하는 것이다.
 
-</p>
+<p>프로젝트에 페이지를 만들어 넣으려면 저장소에 &quot;부모가 없는(orphan)&rdquo; 브랜치를 만들어야 한다. 이걸 하는 가장 안전한 방법은 우선 새로 저장소를 클론하는 것이다.</p>
 <pre><code>git clone https://github.com/user/repo.git
 Clone our repo
 
@@ -118,11 +116,11 @@ remote: Counting objects: <span class="number">2791</span>, done.
 remote: Compressing objects: <span class="number">100</span>% (<span class="number">1225</span>/<span class="number">1225</span>), done.
 remote: Total <span class="number">2791</span> (delta <span class="number">1722</span>), reused <span class="number">2513</span> (delta <span class="number">1493</span>)
 Receiving objects: <span class="number">100</span>% (<span class="number">2791</span>/<span class="number">2791</span>), <span class="number">3.77</span> MiB | <span class="number">969</span> KiB/s, done.
-Resolving deltas: <span class="number">100</span>% (<span class="number">1722</span>/<span class="number">1722</span>), done.</code></pre>
+Resolving deltas: <span class="number">100</span>% (<span class="number">1722</span>/<span class="number">1722</span>), done.
+</code></pre>
 <h3>이제 놀자!</h3>
-<p>깨끗한 저장소를 손에 넣었다. 이제 새로운 브랜치를 만들고 작업 디렉토리와 인덱스의 모든 내용을 지워야 한다.
 
-</p>
+<p>깨끗한 저장소를 손에 넣었다. 이제 새로운 브랜치를 만들고 작업 디렉토리와 인덱스의 모든 내용을 지워야 한다.</p>
 <pre><code>$ cd repo
 
 $ git checkout <span class="comment">--orphan gh-pages</span>
@@ -133,209 +131,196 @@ Switched <span class="keyword">to</span> a <span class="keyword">new</span> bran
 git rm -rf .
 Remove <span class="keyword">all</span> files from the old working tree
 
-rm '.gitignore'</code></pre>
+rm '.gitignore'
+</code></pre>
 <blockquote>
-<p><strong>알아둘 것</strong>: <code>gh-pages</code> 브랜치는 처음 커밋이 되기 전까지는 <code>git branch</code>의 브랜치 목록에 나타나지 않는다.
-
-</p>
+<p><strong>알아둘 것</strong>: <code>gh-pages</code> 브랜치는 처음 커밋이 되기 전까지는 <code>git branch</code>의 브랜치 목록에 나타나지 않는다.</p>
 </blockquote>
-<p>비어있는 작업 디렉토리를 얻었다. 이 안에 내용을 채워넣고 GitHub로 푸시하면 된다. 예를 들자면 다음과 같다.
 
-</p>
+<p>비어있는 작업 디렉토리를 얻었다. 이 안에 내용을 채워넣고 GitHub로 푸시하면 된다. 예를 들자면 다음과 같다.</p>
 <pre><code><span class="variable">$ </span>echo <span class="string">"My GitHub Page"</span> &gt; index.html
 <span class="variable">$ </span>git add .
 <span class="variable">$ </span>git commit -a -m <span class="string">"First pages commit"</span>
-<span class="variable">$ </span>git push origin gh-pages</code></pre>
+<span class="variable">$ </span>git push origin gh-pages
+</code></pre>
 <blockquote>
-<p><strong>알아둘 것</strong>: 최초의 푸시를 한 뒤에 페이지가 보이기까지는 몇 분 정도 기다려야 한다.
-
-</p>
+<p><strong>알아둘 것</strong>: 최초의 푸시를 한 뒤에 페이지가 보이기까지는 몇 분 정도 기다려야 한다.</p>
 </blockquote>
+
 <h2>5. Jekyll과 페이지</h2>
-<p>일반적인 HTML 컨텐츠를 지원하는 차원에서 GitHub의 페이지는 <a href="https://github.com/mojombo/jekyll">Jekyll</a>을 지원한다. (역자주: '지킬 박사와 하이드'의 지킬이다.) Jekyll은 'Tom Preston-Werner'이 제작한 간단한 스태틱 사이트 제네레이터이다. Jekyll을 이용하면 웹사이트 전체에 적용되는 헤더, 푸터를 파일을 여러 번 복제하지 않고도 만들 수 있다. 블로그 기능이나 멋진 템플릿 기능들도 지원한다.
 
-</p>
+<p>일반적인 HTML 컨텐츠를 지원하는 차원에서 GitHub의 페이지는 <a href="https://github.com/mojombo/jekyll">Jekyll</a>을 지원한다. (역자주: '지킬 박사와 하이드'의 지킬이다.) Jekyll은 'Tom Preston-Werner'이 제작한 간단한 스태틱 사이트 제네레이터이다. Jekyll을 이용하면 웹사이트 전체에 적용되는 헤더, 푸터를 파일을 여러 번 복제하지 않고도 만들 수 있다. 블로그 기능이나 멋진 템플릿 기능들도 지원한다.</p>
+
 <h3>Jekyll 사용하기</h3>
-<p>GitHub의 모든 페이지는 Jekyll로 돌아간다. 일반 HTML 파일 또한 유효한 Jekyll 사이트이기 때문에 이미 가지고 있던 HTML 파일들을 수정하지 않아도 된다. 그냥 전부 HTML 파일이면 괜찮다. <a href="https://github.com/mojombo/jekyll/blob/master/README.textile">README</a>에 Jekyll의 기능들과 그 사용법이 적혀있다.
 
-</p>
+<p>GitHub의 모든 페이지는 Jekyll로 돌아간다. 일반 HTML 파일 또한 유효한 Jekyll 사이트이기 때문에 이미 가지고 있던 HTML 파일들을 수정하지 않아도 된다. 그냥 전부 HTML 파일이면 괜찮다. <a href="https://github.com/mojombo/jekyll/blob/master/README.textile">README</a>에 Jekyll의 기능들과 그 사용법이 적혀있다.</p>
+
 <h3>Jekyll 설정하기</h3>
-<p><code>_config.yml</code> 파일에 Jekyll의 대부분의 설정이 다 들어있다. 퍼머 링크의 스타일이나 마크다운 렌더러를 Maruku에서 RDiscount로 바꿀 수도 있다. 아래와 같은 옵션만 바꾸면 된다.
 
-</p>
+<p><code>_config.yml</code> 파일에 Jekyll의 대부분의 설정이 다 들어있다. 퍼머 링크의 스타일이나 마크다운 렌더러를 Maruku에서 RDiscount로 바꿀 수도 있다. 아래와 같은 옵션만 바꾸면 된다.</p>
 <pre><code><span class="attribute">safe</span>: <span class="string">true</span>
 <span class="attribute">source</span>: <span class="string">&lt;your pages repo&gt;</span>
 <span class="attribute">destination</span>: <span class="string">&lt;the build dir&gt;</span>
 <span class="attribute">lsi</span>: <span class="string">false</span>
-<span class="attribute">pygments</span>: <span class="string">true</span></code></pre>
+<span class="attribute">pygments</span>: <span class="string">true</span>
+</code></pre>
 <h3>Troubleshooting</h3>
-<p>사이트를 GitHub에 푸시 후에도 Jekyll 사이트가 보이지 않는다면 Jekyll을 로컬에서 돌려보면 여러 오류를 잡을 수 있다. 이 기능을 위해 GitHub에서 사용하는 것과 같은 버전의 Jekyll을 사용하길 바란다.
 
-</p>
-<p>GitHub의 페이지 서버는 Jekyll 버전 0.11.0, Liquid 버전 2.2.2를 사용하고 다음 명령어로 실행을 시킨다.
+<p>사이트를 GitHub에 푸시 후에도 Jekyll 사이트가 보이지 않는다면 Jekyll을 로컬에서 돌려보면 여러 오류를 잡을 수 있다. 이 기능을 위해 GitHub에서 사용하는 것과 같은 버전의 Jekyll을 사용하길 바란다.</p>
 
-</p>
-<pre><code><span class="comment">$</span> <span class="comment">jekyll</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">pygments</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">lsi</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">safe</code></pre>
-<p>만약 GitHub에 푸시하고도 페이지가 만들어지지 않으면 '페이지가 안 보여요'가이드를 보라.
+<p>GitHub의 페이지 서버는 Jekyll 버전 0.11.0, Liquid 버전 2.2.2를 사용하고 다음 명령어로 실행을 시킨다.</p>
+<pre><code><span class="comment">$</span> <span class="comment">jekyll</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">pygments</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">lsi</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">safe</span>
+</code></pre>
+<p>만약 GitHub에 푸시하고도 페이지가 만들어지지 않으면 '페이지가 안 보여요'가이드를 보라.</p>
 
-</p>
 <h4>Jekyll 끄기</h4>
-<p>Jekyll을 그만 사용하려면 저장소의 루트에 <code>.nojekyll</code>이란 이름의 파일을 만들고 푸시하기만 하면 된다. 
 
-</p>
+<p>Jekyll을 그만 사용하려면 저장소의 루트에 <code>.nojekyll</code>이란 이름의 파일을 만들고 푸시하기만 하면 된다. </p>
+
 <h3>기여하기</h3>
-<p>Jekyll에 필요한 기능이 있으면 주저하지 말고 <a href="https://github.com/mojombo/jekyll">fork</a> 한 뒤에 풀 리퀘스트를 보내면 된다. 이런 건 언제든지 환영한다
 
-</p>
+<p>Jekyll에 필요한 기능이 있으면 주저하지 말고 <a href="https://github.com/mojombo/jekyll">fork</a> 한 뒤에 풀 리퀘스트를 보내면 된다. 이런 건 언제든지 환영한다</p>
+
 <h2>6. 페이지에 커스텀 도메인 설정하기</h2>
-<p>GitHub의 페이지에 사용자가 지정하는 도메인 이름을 설정해줄 수 있다.
 
-</p>
+<p>GitHub의 페이지에 사용자가 지정하는 도메인 이름을 설정해줄 수 있다.</p>
+
 <h3>저장소에 도메인 설정하기.</h3>
-<p>우리가 가지고 있는 도메인이 <code>example.com</code>라 치고 이걸 우리 페이지에 연결해보자. GitHub에게 이 도메인으로 서비스해주세요~ 라고 말하는 건 쉽다. 페이지의 루트에 CNAME 이라는 파일을 하나 만들고 도메인 이름을 적어넣으면 된다.
 
-</p>
-<pre><code><span class="filename">example.com</code></pre>
+<p>우리가 가지고 있는 도메인이 <code>example.com</code>라 치고 이걸 우리 페이지에 연결해보자. GitHub에게 이 도메인으로 서비스해주세요~ 라고 말하는 건 쉽다. 페이지의 루트에 CNAME 이라는 파일을 하나 만들고 도메인 이름을 적어넣으면 된다.</p>
+<pre><code><span class="filename">example.com
+</code></pre>
 <blockquote>
-<p><strong>알아둘 것</strong>: 이 파일을 만들고 GitHub에서 페이지를 성공적으로 만들었다는 알림을 확인한 후에 다음 단계인 'DNS 세팅하기'를 시작해야 한다.
-
-</p>
+<p><strong>알아둘 것</strong>: 이 파일을 만들고 GitHub에서 페이지를 성공적으로 만들었다는 알림을 확인한 후에 다음 단계인 'DNS 세팅하기'를 시작해야 한다.</p>
 </blockquote>
-<p>만약 <strong>사용자 페이지</strong> 저장소에서 작업하고 있다면 이 일은 <strong>master</strong>브랜치에서 해야 하고 <strong>프로젝트 페이지</strong> 저장소라면 <strong>gh-pages</strong>브랜치에서 작업을 해야 한다.
 
-</p>
+<p>만약 <strong>사용자 페이지</strong> 저장소에서 작업하고 있다면 이 일은 <strong>master</strong>브랜치에서 해야 하고 <strong>프로젝트 페이지</strong> 저장소라면 <strong>gh-pages</strong>브랜치에서 작업을 해야 한다.</p>
+
 <blockquote>
-<p><strong>알아둘 것</strong>: 하나의 페이지에는 하나의 커스텀 도메인만 할당할 수 있다. 만약 같은 페이지에 여러 도메인을 할당하고 싶다면 다른 도메인에서 당신의 페이지로 리다이렉트 해주는 서비스 등을 이용해야 할 것이다.
-
-</p>
+<p><strong>알아둘 것</strong>: 하나의 페이지에는 하나의 커스텀 도메인만 할당할 수 있다. 만약 같은 페이지에 여러 도메인을 할당하고 싶다면 다른 도메인에서 당신의 페이지로 리다이렉트 해주는 서비스 등을 이용해야 할 것이다.</p>
 </blockquote>
+
 <h3>DNS 세팅하기</h3>
-<p>다음은 DNS를 세팅할 차례이다. 세팅은 사용하는 도메인의 종류에 따라서 두 가지 방법으로 나눌 수 있다.
 
-</p>
-<p>아, DNS 변경이 전 세계로 퍼지기까지는 약 하루가 걸린다. 인내를 가지고 기다려야 한다.
+<p>다음은 DNS를 세팅할 차례이다. 세팅은 사용하는 도메인의 종류에 따라서 두 가지 방법으로 나눌 수 있다.</p>
 
-</p>
+<p>아, DNS 변경이 전 세계로 퍼지기까지는 약 하루가 걸린다. 인내를 가지고 기다려야 한다.</p>
+
 <h4>Top-level 도메인 (TLD)</h4>
-<p><code>example.com</code>과 같은 TLD은 <strong>A 레코드</strong>가 204.232.175.78를 가리키도록 해야 한다.
 
-</p>
+<p><code>example.com</code>과 같은 TLD은 <strong>A 레코드</strong>가 204.232.175.78를 가리키도록 해야 한다.</p>
 <pre><code>$ dig example<span class="preprocessor">.com</span> +nostats +nocomments +nocmd
 <span class="preprocessor"># Look up DNS record for example.com</span>
 <span class="comment">;example.com.                    IN      A</span>
-example<span class="preprocessor">.com</span>.             <span class="number">3259</span>    <span class="keyword">IN</span>      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span></code></pre>
+example<span class="preprocessor">.com</span>.             <span class="number">3259</span>    <span class="keyword">IN</span>      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span>
+</code></pre>
 <blockquote>
-<p><strong>경고</strong>: TLD에는 CNAME 레코드를 사용하면 안 된다. CNAME 레코드를 쓰면 해당 도메인의 다른 서비스들(예를 들면 이메일 같은)에 문제가 생길 수 있다.
-
-</p>
+<p><strong>경고</strong>: TLD에는 CNAME 레코드를 사용하면 안 된다. CNAME 레코드를 쓰면 해당 도메인의 다른 서비스들(예를 들면 이메일 같은)에 문제가 생길 수 있다.</p>
 </blockquote>
-<h4>서브 도메인</h4>
-<p>서브 도메인을 할당하려면 <strong>CNAME 레코드</strong>로 사용자 페이지 서브 도메인을 가리키는게 최고다. 이 방법을 이용하면 GitHub 서버의 IP가 바뀌어도 자동으로 조정해준다. CNAME 레코드는 A 레코드 위에 쓸 수도 있다. 하지만 이 정보는 자동으로 업데이트 되지 않는다.
 
-</p>
+<h4>서브 도메인</h4>
+
+<p>서브 도메인을 할당하려면 <strong>CNAME 레코드</strong>로 사용자 페이지 서브 도메인을 가리키는게 최고다. 이 방법을 이용하면 GitHub 서버의 IP가 바뀌어도 자동으로 조정해준다. CNAME 레코드는 A 레코드 위에 쓸 수도 있다. 하지만 이 정보는 자동으로 업데이트 되지 않는다.</p>
 <pre><code>$ dig <span class="transposed_variable">www.</span><span class="transposed_variable">example.</span>com +nostats +nocomments +nocmd
 ;<span class="transposed_variable">www.</span><span class="transposed_variable">example.</span><span class="transposed_variable">com.</span>                 IN      A
 <span class="transposed_variable">www.</span><span class="transposed_variable">example.</span><span class="transposed_variable">com.</span>          <span class="number">3592</span>    IN      CNAME   <span class="transposed_variable">username.</span><span class="transposed_variable">github.</span><span class="transposed_variable">com.</span>
-<span class="transposed_variable">username.</span><span class="transposed_variable">github.</span><span class="transposed_variable">com.</span>      <span class="number">43192</span>   IN      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span></code></pre>
+<span class="transposed_variable">username.</span><span class="transposed_variable">github.</span><span class="transposed_variable">com.</span>      <span class="number">43192</span>   IN      A       <span class="number">204.232</span><span class="number">.175</span><span class="number">.78</span>
+</code></pre>
 <h3>자동 리다이렉트</h3>
-<p>커스텀 도메인을 세팅하면 서버는 자동으로 몇 가지 리다이렉트 기능을 제공한다.
 
-</p>
+<p>커스텀 도메인을 세팅하면 서버는 자동으로 몇 가지 리다이렉트 기능을 제공한다.</p>
+
 <ul>
 <li>사용자 페이지에서는 <code>username.github.com</code> ⇒ <code>example.com</code></li>
 <li>TDL에서는 <code>www.example.com</code> ⇒ <code>example.com</code></li>
 <li>www 서브 도메인을 사용 중이라면 <code>example.com</code> ⇒ <code>www.example.com</code></li>
 </ul>
-<p><code>www</code> ⇔ TLD 리다이렉트가 동작하려면 TLD와 <code>www</code> 서브 도메인 DNS의 레코드가 페이지의 서버를 가리키고 있어야 한다.
 
-</p>
+<p><code>www</code> ⇔ TLD 리다이렉트가 동작하려면 TLD와 <code>www</code> 서브 도메인 DNS의 레코드가 페이지의 서버를 가리키고 있어야 한다.</p>
+
 <blockquote>
-<p><strong>알아둘 것</strong>: 사용자 페이지의 커스텀 도메인은 자체의 커스텀 도메인을 가진 프로젝트 페이지는 제외하고 그 계정 아래에 있는 모든 프로젝트 페이지를 같은 도메인으로 리다이렉트한다.
+<p><strong>알아둘 것</strong>: 사용자 페이지의 커스텀 도메인은 자체의 커스텀 도메인을 가진 프로젝트 페이지는 제외하고 그 계정 아래에 있는 모든 프로젝트 페이지를 같은 도메인으로 리다이렉트한다.</p>
 
-</p>
-<p><strong>경고</strong>: <code>http://username.github.com/projectname</code>과 같은 프로젝트 페이지의 서브 경로는 프로젝트의 커스텀 도메인으로 리다이렉트 되지 않는다.
-
-</p>
+<p><strong>경고</strong>: <code>http://username.github.com/projectname</code>과 같은 프로젝트 페이지의 서브 경로는 프로젝트의 커스텀 도메인으로 리다이렉트 되지 않는다.</p>
 </blockquote>
-<h3>실제 예제</h3>
-<p><a href="http://github.com/mojombo/mojombo.github.com/">mojombo.github.com</a> 은 <a href="http://tom.preston-werner.com/">tom.preston-werner.com</a> 로 리다이렉트 된다. 커스텀 도메인은 <a href="https://github.com/mojombo/mojombo.github.com/blob/master/CNAME">이 파일</a>에 정의되어 있다.
 
-</p>
+<h3>실제 예제</h3>
+
+<p><a href="http://github.com/mojombo/mojombo.github.com/">mojombo.github.com</a> 은 <a href="http://tom.preston-werner.com/">tom.preston-werner.com</a> 로 리다이렉트 된다. 커스텀 도메인은 <a href="https://github.com/mojombo/mojombo.github.com/blob/master/CNAME">이 파일</a>에 정의되어 있다.</p>
+
 <h3>Troubleshooting</h3>
-<p>커스텀 도메인 설정에 문제가 생기면 <a href="https://help.github.com/articles/my-custom-domain-isn-t-working">이 가이드</a>를 보면 된다.
 
-</p>
+<p>커스텀 도메인 설정에 문제가 생기면 <a href="https://help.github.com/articles/my-custom-domain-isn-t-working">이 가이드</a>를 보면 된다.</p>
+
 <h2>7. 커스텀 404 페이지</h2>
-<p>404.html 파일을 저장소의 루트에 넣어두면 기존 404페이지 대신 저장소의 404.html 페이지를 보여준다. 404 페이지는 반드시 html 파일이어야 한다.
 
-</p>
+<p>404.html 파일을 저장소의 루트에 넣어두면 기존 404페이지 대신 저장소의 404.html 페이지를 보여준다. 404 페이지는 반드시 html 파일이어야 한다.</p>
+
 <blockquote>
-<p><strong>알아둘 것</strong>: 커스텀 404 페이지는 페이지 도메인의 루트에 존재해야만 작동한다. 커스텀 도메인을 사용하지 않는 프로젝트 페이지의 커스텀 404 페이지는 동작하지 않는다. (프로젝트 페이지는 루트도메인 외에 프로젝트 이름이 경로에 추가되므로)
-
-</p>
+<p><strong>알아둘 것</strong>: 커스텀 404 페이지는 페이지 도메인의 루트에 존재해야만 작동한다. 커스텀 도메인을 사용하지 않는 프로젝트 페이지의 커스텀 404 페이지는 동작하지 않는다. (프로젝트 페이지는 루트도메인 외에 프로젝트 이름이 경로에 추가되므로)</p>
 </blockquote>
+
 <h3>실제 예제</h3>
-<p><a href="http://github.com/tekkub/tekkub.github.com/blob/master/404.html">Tekkub의 404</a> 페이지는 <a href="http://tekkub.net/404.html">tekkub.net/404.html</a> 에서 볼 수 있다.
 
-</p>
-<h2>8. 페이지가 안 보여요. "unable to run Jekyll!"</h2>
-<p>가끔 페이지는 푸시 후에 빌드에 실패해서 "unable to run jekyll"이라는 에러를 내뱉을 때가 있다. 이 에러가 나올 수 있는 몇몇 원인을 알아보자.
+<p><a href="http://github.com/tekkub/tekkub.github.com/blob/master/404.html">Tekkub의 404</a> 페이지는 <a href="http://tekkub.net/404.html">tekkub.net/404.html</a> 에서 볼 수 있다.</p>
 
-</p>
+<h2>8. 페이지가 안 보여요. &ldquo;unable to run Jekyll!&rdquo;</h2>
+
+<p>가끔 페이지는 푸시 후에 빌드에 실패해서 &ldquo;unable to run jekyll&quot;이라는 에러를 내뱉을 때가 있다. 이 에러가 나올 수 있는 몇몇 원인을 알아보자.</p>
+
 <h3>저수준 태그 에러</h3>
-<p>Jekyll은 현재 저수준의 Liquid 태그에 대한 <a href="https://github.com/mojombo/jekyll/issues/425">이슈사항</a>이 있다. 만약 이 기능을 사용한다면 템플릿에 중괄호 등을 이스케이프 시킬 때는 HTML 이스케이프 시퀀스 같은 방법을 사용하는 등의 우회로를 찾아야 한다.
 
-</p>
+<p>Jekyll은 현재 저수준의 Liquid 태그에 대한 <a href="https://github.com/mojombo/jekyll/issues/425">이슈사항</a>이 있다. 만약 이 기능을 사용한다면 템플릿에 중괄호 등을 이스케이프 시킬 때는 HTML 이스케이프 시퀀스 같은 방법을 사용하는 등의 우회로를 찾아야 한다.</p>
+
 <h3>안전하지 않은 플러그인</h3>
-<p>페이지의 서버는 안전하다고 확인되지 않은 플러그인은 빌드하지 않는다. <code>_plugins</code>폴더에 있는 모든 플러그인 또한 이 규칙에 적용받는다.
-이 문제는 두 가지 해결책이 존재한다.
 
-</p>
+<p>페이지의 서버는 안전하다고 확인되지 않은 플러그인은 빌드하지 않는다. <code>_plugins</code>폴더에 있는 모든 플러그인 또한 이 규칙에 적용받는다.
+이 문제는 두 가지 해결책이 존재한다.</p>
+
 <ul>
 <li>안전하지 않은 플러그인을 지운다. 또는</li>
 <li>소스 파일 대신에 페이지를 로컬에서 빌드하고 그 결과 파일을 푸시한다.</li>
 </ul>
-<p>두 번째 해결책이 <a href="http://octopress.org/">Octopress</a>가 취하고 있는 전략이다.
 
-</p>
+<p>두 번째 해결책이 <a href="http://octopress.org/">Octopress</a>가 취하고 있는 전략이다.</p>
+
 <h3>문법 에러</h3>
-<p>때로 타이핑을 잘못 했다던가 하는 이유로 빌드가 실패하는 때도 있다. 이는 <a href="http://jekyllrb.com/">jekyll</a>을 로컬에서 <code>jekyll --safe</code>를 이용해 확실히 잡아야 한다. GitHub에서 사용하는 서버에서 사용하는 jekyll의 버전은 Jekyll과 페이지 섹션에서 알 수 있다.
 
-</p>
+<p>때로 타이핑을 잘못 했다던가 하는 이유로 빌드가 실패하는 때도 있다. 이는 <a href="http://jekyllrb.com/">jekyll</a>을 로컬에서 <code>jekyll --safe</code>를 이용해 확실히 잡아야 한다. GitHub에서 사용하는 서버에서 사용하는 jekyll의 버전은 Jekyll과 페이지 섹션에서 알 수 있다.</p>
+
 <h3>소스 세팅</h3>
-<p>GitHub의 빌드 서버는 당신의 페이지를 빌드할 때 <code>source</code> 세팅을 덮어쓴다. 만약 당신이 이 세팅을 바꾼다면 페이지가 빌드되지 않을 수도 있다.
 
-</p>
+<p>GitHub의 빌드 서버는 당신의 페이지를 빌드할 때 <code>source</code> 세팅을 덮어쓴다. 만약 당신이 이 세팅을 바꾼다면 페이지가 빌드되지 않을 수도 있다.</p>
+
 <h2>9. 프로젝트 페이지 지우기</h2>
-<p>프로젝트 페이지를 없애려면 <code>gh-pages</code> 브랜치를 지우면 된다.
 
-</p>
+<p>프로젝트 페이지를 없애려면 <code>gh-pages</code> 브랜치를 지우면 된다.</p>
 <pre><code>$ git push origin <span class="comment">--delete gh-pages</span>
 <span class="operator"><span class="keyword">Delete</span> the gh-pages branch <span class="keyword">from</span> origin
 
 <span class="keyword">To</span> https://github.com/username/repo.git
-- [deleted]         gh-pages</code></pre>
+- [deleted]         gh-pages
+</code></pre>
 <h2>10. 브랜치 모델</h2>
-<p>섹션 9 까지는 번역이었고, 10 부터는 dogfeet 블로그에서 사용하는 브랜치 모델에 대해서 설명하려 한다. 어렵지 않으나 중요하므로 얼른 하고 마치자.
 
-</p>
+<p>섹션 9 까지는 번역이었고, 10 부터는 dogfeet 블로그에서 사용하는 브랜치 모델에 대해서 설명하려 한다. 어렵지 않으나 중요하므로 얼른 하고 마치자.</p>
+
 <h3>draft/* 브랜치</h3>
+
 <p>모든 글은 각자 하나의 브랜치를 가진다. 이 글은 <code>draft/github-pages</code>라는 브랜치 위에서 작성 중이다. 이 블로그의 모든 글이 <code>draft/</code>라는 접미사를 가진 브랜치를 가지고 있었다. 각 글들은 자신의 브랜치 위에서 작성되고 다른 사람들과 공유하여 리뷰를 받는다. 추가돼야 할 내용이나 오타, 비문 등을 지적받고 다시 고친 뒤에 커밋 한다. 
-글이 완성되면 저장용, 공유용 커밋들을 rebase를 이용해 합쳐서 1~2개의 커밋으로 정리한다. 이는 중앙 저장소의 히스토리를 예쁘게 유지하기 위함이다. 히스토리가 복잡해지면 같이 공유하는 사람에 대한 예의에 어긋난다. (...) 사람마다 다르겠지만 내 경우에 완전한 창작 글은 하나의 커밋으로 합치고 번역 글은 markdown으로 포메팅된 원문이 보존된 커밋 하나와 완성된 번역문 두 개로 정리한다.
-정리가 다 되면 ready 브랜치로 합친다.
+글이 완성되면 저장용, 공유용 커밋들을 rebase를 이용해 합쳐서 1~2개의 커밋으로 정리한다. 이는 중앙 저장소의 히스토리를 예쁘게 유지하기 위함이다. 히스토리가 복잡해지면 같이 공유하는 사람에 대한 예의에 어긋난다. (&hellip;) 사람마다 다르겠지만 내 경우에 완전한 창작 글은 하나의 커밋으로 합치고 번역 글은 markdown으로 포메팅된 원문이 보존된 커밋 하나와 완성된 번역문 두 개로 정리한다.
+정리가 다 되면 ready 브랜치로 합친다.</p>
 
-</p>
 <h3>ready 브랜치</h3>
-<p>정리된 draft 브랜치는 ready 브랜치로 합친다. dogfeet은 완성된 글을 곧바로 퍼블리싱하지 않고 ready 브랜치에 먼저 저장한다. 그리고는 매 주마다 master 브랜치를 ready 브랜치로 fast-forwording하여 실제 웹페이지로 보이도록 발행한다. 저장은 merge나 rebase를 하는데 둘 중에 어떤 것을 할지는 <a href="/articles/2012/git-merge-rebase.html">이 글</a>을 참고 하길 바란다.
 
-</p>
-<p>master 브랜치는 항상 fast-forwording만 한다.
+<p>정리된 draft 브랜치는 ready 브랜치로 합친다. dogfeet은 완성된 글을 곧바로 퍼블리싱하지 않고 ready 브랜치에 먼저 저장한다. 그리고는 매 주마다 master 브랜치를 ready 브랜치로 fast-forwording하여 실제 웹페이지로 보이도록 발행한다. 저장은 merge나 rebase를 하는데 둘 중에 어떤 것을 할지는 <a href="/articles/2012/git-merge-rebase.html">이 글</a>을 참고 하길 바란다.</p>
 
-</p>
+<p>master 브랜치는 항상 fast-forwording만 한다.</p>
+
 <h3>정리</h3>
-<p>하나의 글을 퍼블리싱 하는 프로세스는 다음과 같다.
 
-</p>
+<p>하나의 글을 퍼블리싱 하는 프로세스는 다음과 같다.</p>
+
 <ol>
 <li>master 브랜치에서 draft/<어쩌구 저쩌구> 라는 이름으로 새로운 브랜치를 딴다.</li>
 <li>글을 쓰고 커밋을 정리한다. 필요에 따라 서로 리뷰를 부탁하기도 한다.</li>
@@ -344,60 +329,48 @@ example<span class="preprocessor">.com</span>.             <span class="number">
 </ol>
 ]]>
 </content></entry><entry><title><![CDATA[ Git 인덱스 페이지 프로젝트 dogit ]]></title><link href="http://dogfeet.github.com/articles/2012/dogit.html" /><updated>2012-09-27T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/dogit.html</id><content type="html"><![CDATA[
-<p>프로젝트 <a href="https://github.com/dogfeet/dogit">dogit</a>(<code>두깃</code>으로 읽는다). Git과 관련된 자료를 일목요연하게 볼 수 있도록 Git 인덱스 페이지를 만들었다. 여기저기 흩어져 있는 자료를 후진 기억력에 의존해 찾으려니 매우 오래걸리고 귀찮았다. 한 번에 전부 설명할 수는 없지만, 한 페이지에서 키워드와 해당 자료의 링크를 넣어 두면 검색해서 찾아 보기 쉬울 것 같았다.
+<p>프로젝트 <a href="https://github.com/dogfeet/dogit">dogit</a>(<code>두깃</code>으로 읽는다). Git과 관련된 자료를 일목요연하게 볼 수 있도록 Git 인덱스 페이지를 만들었다. 여기저기 흩어져 있는 자료를 후진 기억력에 의존해 찾으려니 매우 오래걸리고 귀찮았다. 한 번에 전부 설명할 수는 없지만, 한 페이지에서 키워드와 해당 자료의 링크를 넣어 두면 검색해서 찾아 보기 쉬울 것 같았다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/dogit/index-html.png" alt="brownee">
+<p><img src="http://dogfeet.github.com/articles/2012/dogit/index-html.png" alt="brownee"></p>
 
-</p>
-<p>좋은 자료가 있으면 알려주세요. 쉽게 검색할 수 있도록 간략한 소개나 키워드가 같이 있으면 좋습니다. 이 글의 댓글로 남겨주시거나 Pull Request를 보내 주시면 감사하겠습니다.
+<p>좋은 자료가 있으면 알려주세요. 쉽게 검색할 수 있도록 간략한 소개나 키워드가 같이 있으면 좋습니다. 이 글의 댓글로 남겨주시거나 Pull Request를 보내 주시면 감사하겠습니다.</p>
 
-</p>
-<p>풍성하고 즐거운 추석 보내세요.
-
-</p>
+<p>풍성하고 즐거운 추석 보내세요.</p>
 ]]>
 </content></entry><entry><title><![CDATA[ Meteor: 스마트 패키지 매니저 "Meteorite" ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" /><updated>2012-09-20T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-meteorite.html</id><content type="html"><![CDATA[
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.</p>
 
-</p>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/meteor/meteorite.png" alt="meteorite">
+<p><img src="http://dogfeet.github.com/articles/2012/meteor/meteorite.png" alt="meteorite"></p>
 
-</p>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.</p>
 
-</p>
 <h2>설치하기</h2>
-<pre><code class="lang-bash">npm install -g meteorite</code></pre>
+<pre><code class="lang-bash">npm install -g meteorite
+</code></pre>
 <h2>mrt 명령어</h2>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. 'meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:
 
-</p>
-<pre><code class="lang-bash">mrt create myapp</code></pre>
-<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:
-
-</p>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. &lsquo;meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:</p>
+<pre><code class="lang-bash">mrt create myapp
+</code></pre>
+<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:</p>
 <pre><code class="lang-javascript">{
   <span class="string">"meteor"</span>: {
     <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
     <span class="string">"branch"</span>: <span class="string">"master"</span>
   },
   <span class="string">"packages"</span>: {}
-}</code></pre>
-<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. 
+}
+</code></pre>
+<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. </p>
 
-</p>
-<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:
-
-</p>
-<pre><code class="lang-bash">mrt run --port 2222</code></pre>
+<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:</p>
+<pre><code class="lang-bash">mrt run --port 2222
+</code></pre>
 <h2>smart.json</h2>
-<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. 
 
-</p>
+<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. </p>
 <pre><code class="lang-javascript">{
   <span class="comment">//meteor는 생략할 수 있다.</span>
   <span class="comment">//생략할 경우 Meteor의 공식 저장소와 master 브랜치가 사용된다.</span>
@@ -431,14 +404,12 @@ example<span class="preprocessor">.com</span>.             <span class="number">
       <span class="string">"path"</span>: <span class="string">"/path/to/local/package"</span>
     }
   }
-}</code></pre>
+}
+</code></pre>
 <ul>
-<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p>
-</li>
-<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p>
-</li>
-<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p>
-</li>
+<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p></li>
+<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p></li>
+<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p></li>
 </ul>
 <pre><code class="lang-javascript">{
   <span class="string">"meteor"</span>: {
@@ -464,27 +435,22 @@ example<span class="preprocessor">.com</span>.             <span class="number">
       }
     }
   }
-}</code></pre>
-<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.
+}
+</code></pre>
+<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.</p>
 
-</p>
-<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.
+<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.</p>
 
-</p>
 <h2>Atmosphere</h2>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. 
 
-</p>
-<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. </p>
 
-</p>
-<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</code></pre>
-<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.
+<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:</p>
+<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</span>
+</code></pre>
+<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.</p>
 
-</p>
-<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:
-
-</p>
+<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:</p>
 <pre><code>absolute-url      DEPRECATED: Generate absolute URLs pointing <span class="keyword">to</span> the application
 amplify           Cross browser API <span class="keyword">for</span> Persistant Storage, PubSub <span class="keyword">and</span> Request.
 autopublish       Automatically publish all data <span class="keyword">in</span> the database <span class="keyword">to</span> every client
@@ -509,112 +475,84 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <span class="title">showdown</span>          <span class="title">Markdown</span>-<span class="title">to</span>-<span class="title">HTML</span> <span class="title">processor</span>
 <span class="title">spiderable</span>        <span class="title">Makes</span> <span class="title">the</span> <span class="title">application</span> <span class="title">crawlable</span> <span class="title">to</span> <span class="title">web</span> <span class="title">spiders</span>.
 <span class="title">stylus</span>            <span class="title">Expressive</span>, <span class="title">dynamic</span>, <span class="title">robust</span> <span class="title">CSS</span>.
-<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span></code></pre>
-<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.
+<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span>
+</code></pre>
+<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.</p>
 
-</p>
-<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.
-
-</p>
+<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.</p>
 ]]>
 </content></entry><entry><title><![CDATA[ Meteor 한글 문서 ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-docs-ko.html" /><updated>2012-09-15T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-docs-ko.html</id><content type="html"><![CDATA[
-<p><a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a>와 함께 Meteor 문서를 번역했습니다.
+<p><a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a>와 함께 Meteor 문서를 번역했습니다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/meteor/nodejs-framework-comparison.png" alt="">
+<p><img src="http://dogfeet.github.com/articles/2012/meteor/nodejs-framework-comparison.png" alt=""></p>
 
-</p>
 <h2>Meteor</h2>
-<p>이번 프로젝트에는 <a href="https://twitter.com/pismute">@pismute</a>, <a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a> 셋이서 작업했습니다. Meteor 문서는 Meteor 앱으로 구현돼 있습니다. Meteor Template을 이용해서 문서를 만들었습니다. 번역하는 중간에 버전이 계속 올라가서 공개가 늦어졌습니다만, 어쨌든 벌려 놓으니 끝나는군요:)
 
-</p>
-<p>Meteor 한글 문서는 <a href="http://docs-ko.meteor.com">http://docs-ko.meteor.com</a> 에 있습니다. 문서는 길지 않아서 금방 읽을 수 있지만, 구조가 독특하기에 익숙해지는 데 생각보다 시간이 들어요.
+<p>이번 프로젝트에는 <a href="https://twitter.com/pismute">@pismute</a>, <a href="https://twitter.com/lethee">@lethee</a>, <a href="https://twitter.com/lnyarl">@lnyarl</a> 셋이서 작업했습니다. Meteor 문서는 Meteor 앱으로 구현돼 있습니다. Meteor Template을 이용해서 문서를 만들었습니다. 번역하는 중간에 버전이 계속 올라가서 공개가 늦어졌습니다만, 어쨌든 벌려 놓으니 끝나는군요:)</p>
 
-</p>
-<p><a href="http://ocdevel.com/blog/nodejs-frameworks-comparison">Top Node.js Frameworks 2012</a>을 읽어보면 언제 Meteor를 선택하는 것이 좋은지 알 수 있습니다.
+<p>Meteor 한글 문서는 <a href="http://docs-ko.meteor.com">http://docs-ko.meteor.com</a> 에 있습니다. 문서는 길지 않아서 금방 읽을 수 있지만, 구조가 독특하기에 익숙해지는 데 생각보다 시간이 들어요.</p>
 
-</p>
-<p>node의 장점은 IO와 JavaScript라고 생각해서 CRUD 앱을 만드는 것은 적절치 않다고 생각해 왔습니다. JavaScript는 코드가 길어지면 정말 잘 짜야 하는 단점이 있는 것 같습니다. 배움이 부족해서겠지만, 쉽게 복잡해집니다.
+<p><a href="http://ocdevel.com/blog/nodejs-frameworks-comparison">Top Node.js Frameworks 2012</a>을 읽어보면 언제 Meteor를 선택하는 것이 좋은지 알 수 있습니다.</p>
 
-</p>
-<p>그래서 CRUD에는 Rails나 Django 같은 프레임워크가 더 낫다고 생각해왔습니다. 그 험난한 Java + Spring보다도 어렵다고 생각해 왔습니다. 그런데 Meteor는 제한적으로나마 가능성을 보여줍니다. 앞으로도 기대됩니다.
+<p>node의 장점은 IO와 JavaScript라고 생각해서 CRUD 앱을 만드는 것은 적절치 않다고 생각해 왔습니다. JavaScript는 코드가 길어지면 정말 잘 짜야 하는 단점이 있는 것 같습니다. 배움이 부족해서겠지만, 쉽게 복잡해집니다.</p>
 
-</p>
-<p>Meteor 한글 문서 저장소는 <a href="https://github.com/dogfeet/meteor">https://github.com/dogfeet/meteor</a> 입니다. 오역이나 오탈자를 발견하면 신고해주세요.
+<p>그래서 CRUD에는 Rails나 Django 같은 프레임워크가 더 낫다고 생각해왔습니다. 그 험난한 Java + Spring보다도 어렵다고 생각해 왔습니다. 그런데 Meteor는 제한적으로나마 가능성을 보여줍니다. 앞으로도 기대됩니다.</p>
 
-</p>
+<p>Meteor 한글 문서 저장소는 <a href="https://github.com/dogfeet/meteor">https://github.com/dogfeet/meteor</a> 입니다. 오역이나 오탈자를 발견하면 신고해주세요.</p>
 ]]>
 </content></entry><entry><title><![CDATA[ Understanding CSS3 2D Transforms ]]></title><link href="http://dogfeet.github.com/articles/2012/understanding-css3-2d-transforms.html" /><updated>2012-09-09T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/understanding-css3-2d-transforms.html</id><content type="html"><![CDATA[
-<p>이 글은 Klemen Slavič의 <a href="http://msdn.microsoft.com/en-us/magazine/gg709742.aspx">Understanding CSS3 2D Transforms</a>를 번역한 글이다. 최근 CSS의 transform으로 DOM 객체를 이동시키는데 좌표이동이 헷갈려 정리하고 지나가려 한다. 2011년 3월의 글이라 현재는 다 구현되었는데 글에서는 구현 중으로 표현할 수도 있으니 혼란스러워하지 말길 바란다.
+<p>이 글은 Klemen Slavič의 <a href="http://msdn.microsoft.com/en-us/magazine/gg709742.aspx">Understanding CSS3 2D Transforms</a>를 번역한 글이다. 최근 CSS의 transform으로 DOM 객체를 이동시키는데 좌표이동이 헷갈려 정리하고 지나가려 한다. 2011년 3월의 글이라 현재는 다 구현되었는데 글에서는 구현 중으로 표현할 수도 있으니 혼란스러워하지 말길 바란다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime">
+<p><img src="http://dogfeet.github.com/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime"></p>
 
-</p>
 <h2>변환(Transformation)이 뭐냐?</h2>
-<p>수학적으로 엄격하고 광의로의 변환은 한 집합의 요소 X를 다른 집합의 Y로 대응시키는 연산이다. 기하학에서는 한 공간상의 객체들을 다른 기하 공간상에 1:1로 옮기는 수학적 방법이라고 한다.
 
-</p>
-<p>더 쉽게 말하자면, 우리가 물건을 하나 집어서 이리저리 변형을 시킬 수 있다는 뜻이다. '이리저리 변형'이라는 것은 순서가 있는 변환 연산 리스트이다. 변환 연산의 종류는 이동, 확대, 반사, 회전, 기울임이 있다. 이 정도면 쉽게 설명했다. 오케이?
+<p>수학적으로 엄격하고 광의로의 변환은 한 집합의 요소 X를 다른 집합의 Y로 대응시키는 연산이다. 기하학에서는 한 공간상의 객체들을 다른 기하 공간상에 1:1로 옮기는 수학적 방법이라고 한다.</p>
 
-</p>
-<p>객체를 다루는 영역으로 들어가기 전에 우린 이런 변환들이 정확히 어떻게 동작하는지 알아야 한다. 말했듯이 변환 그룹은 순서 있는 변환 연산의 집합이다. 따라서 변환 연산의 순서에 따라 결과가 달라진다. 변환은 객체의 현재 위치 등 온갖 기하학적 요소를 고려해서 적용되기 때문이다.
+<p>더 쉽게 말하자면, 우리가 물건을 하나 집어서 이리저리 변형을 시킬 수 있다는 뜻이다. &lsquo;이리저리 변형'이라는 것은 순서가 있는 변환 연산 리스트이다. 변환 연산의 종류는 이동, 확대, 반사, 회전, 기울임이 있다. 이 정도면 쉽게 설명했다. 오케이?</p>
 
-</p>
+<p>객체를 다루는 영역으로 들어가기 전에 우린 이런 변환들이 정확히 어떻게 동작하는지 알아야 한다. 말했듯이 변환 그룹은 순서 있는 변환 연산의 집합이다. 따라서 변환 연산의 순서에 따라 결과가 달라진다. 변환은 객체의 현재 위치 등 온갖 기하학적 요소를 고려해서 적용되기 때문이다.</p>
+
 <h3>변환의 원점(Origin) 이해하기</h3>
-<p>아래의 간단한 예제를 보자. 2x2 크기의 사각형의 중심이 원점(0, 0)에 있다.
 
-</p>
-<p><img src="/articles/2012/css-transform/gg709742.01-origin(en-us,MSDN.10).png" alt="origin">
+<p>아래의 간단한 예제를 보자. 2x2 크기의 사각형의 중심이 원점(0, 0)에 있다.</p>
 
-</p>
-<p>이 객체를 2 만큼 확대한 후 1 만큼 오른쪽으로 이동하고 나서 0.5만큼 위로 이동시키면 아래와 같은 결과가 나타난다.
+<p><img src="/articles/2012/css-transform/gg709742.01-origin(en-us,MSDN.10).png" alt="origin"></p>
 
-</p>
-<p><img src="/articles/2012/css-transform/gg709742.02-scale-then-move(en-us,MSDN.10).png" alt="scale-then-move">
+<p>이 객체를 2 만큼 확대한 후 1 만큼 오른쪽으로 이동하고 나서 0.5만큼 위로 이동시키면 아래와 같은 결과가 나타난다.</p>
 
-</p>
-<p>정확히 원하던 결과가 나왔다. 사각형은 이제 4x4 크기의 중심이 (1, 0.5)로 옮겨졌다. 하지만 만약 우리가 이 순서를 반대로 적용했다면? 아래에 그 결과가 있다.
+<p><img src="/articles/2012/css-transform/gg709742.02-scale-then-move(en-us,MSDN.10).png" alt="scale-then-move"></p>
 
-</p>
-<p><img src="/articles/2012/css-transform/gg709742.03-move-then-scale(en-us,MSDN.10).png" alt="move-then-scale">
+<p>정확히 원하던 결과가 나왔다. 사각형은 이제 4x4 크기의 중심이 (1, 0.5)로 옮겨졌다. 하지만 만약 우리가 이 순서를 반대로 적용했다면? 아래에 그 결과가 있다.</p>
 
-</p>
-<p>결과는 올바르다. 하지만 딱 보기에 좀 이상하게 보인다. 사각형의 중심이 이전 예제와는 다르게 (1, 0.5)가 아니라 (2, 1)이다. 변환 결과의 위치가 바뀐 이유는 변환이 변환 원점에 의존적이고 변환 원점이 위치를 포함한 객체의 모든 특성에 적용되기 때문이다. 만약 객체에 변환 원점과 관련이 있는 오프셋이 있다면 이 위치는 다른 특성들을 따라 같이 변환된다. 이 경우에는 객체의 x, y가 2만큼 늘어났다. (즉, 늘어난 뒤 이동한 게 아니라 이동 뒤에 늘어났기 때문이다.)
+<p><img src="/articles/2012/css-transform/gg709742.03-move-then-scale(en-us,MSDN.10).png" alt="move-then-scale"></p>
 
-</p>
-<p>이게 어려워도 혼란스러워 하지 마라. 변환 원점의 기본값이 (0, 0)이긴 하지만 명시적으로 이 원점을 바꿀 수 있다. 다음 예제는 사각형을 (2, 2)를 기준으로 시계방향 30도 회전한 것이다.
+<p>결과는 올바르다. 하지만 딱 보기에 좀 이상하게 보인다. 사각형의 중심이 이전 예제와는 다르게 (1, 0.5)가 아니라 (2, 1)이다. 변환 결과의 위치가 바뀐 이유는 변환이 변환 원점에 의존적이고 변환 원점이 위치를 포함한 객체의 모든 특성에 적용되기 때문이다. 만약 객체에 변환 원점과 관련이 있는 오프셋이 있다면 이 위치는 다른 특성들을 따라 같이 변환된다. 이 경우에는 객체의 x, y가 2만큼 늘어났다. (즉, 늘어난 뒤 이동한 게 아니라 이동 뒤에 늘어났기 때문이다.)</p>
 
-</p>
-<p><img src="/articles/2012/css-transform/gg709742.04-rotate-without-origin(en-us,MSDN.10).png" alt="rotate-without-origin">
+<p>이게 어려워도 혼란스러워 하지 마라. 변환 원점의 기본값이 (0, 0)이긴 하지만 명시적으로 이 원점을 바꿀 수 있다. 다음 예제는 사각형을 (2, 2)를 기준으로 시계방향 30도 회전한 것이다.</p>
 
-</p>
-<p>객체가 원점에서부터 떨어져 있기 때문에 사각형 전체가 원점을 중심으로 회전했다. 만약 객체가 왼쪽 위를 중심으로 돌아가게 하고 싶다면 변환 원점을 객체의 왼쪽 위로 옮긴 다음에 회전해야 한다.
+<p><img src="/articles/2012/css-transform/gg709742.04-rotate-without-origin(en-us,MSDN.10).png" alt="rotate-without-origin"></p>
 
-</p>
-<p>여기서 짚고 넘어가야 할 기술적 이슈가 있다. 단일 변환 그룹은 단일 변환 원점에만 적용할 수 있다. 이것은 또 다른 원점을 지정하더라도 다른 개별 변환이 진행되는 동안에는 원점이 변하지 않는다는 의미다. 이를 우회하는 방법은 객체를 원점 주위에 위치시키고 변환을 적용한 후에 객체를 제자리에 옮기면 된다.
+<p>객체가 원점에서부터 떨어져 있기 때문에 사각형 전체가 원점을 중심으로 회전했다. 만약 객체가 왼쪽 위를 중심으로 돌아가게 하고 싶다면 변환 원점을 객체의 왼쪽 위로 옮긴 다음에 회전해야 한다.</p>
 
-</p>
+<p>여기서 짚고 넘어가야 할 기술적 이슈가 있다. 단일 변환 그룹은 단일 변환 원점에만 적용할 수 있다. 이것은 또 다른 원점을 지정하더라도 다른 개별 변환이 진행되는 동안에는 원점이 변하지 않는다는 의미다. 이를 우회하는 방법은 객체를 원점 주위에 위치시키고 변환을 적용한 후에 객체를 제자리에 옮기면 된다.</p>
+
 <h3>화면 공간 vs 유클리드 공간</h3>
-<p>모니터 화면을 고전적인 유클리드 공간이라 생각하면 변환에 대해 더 정확히 이해할 수 있다. 실제 컴퓨터 그래픽(웹페이지도 포함해서)에서는 좌표시스템을 변경해서 사용한다.
 
-</p>
-<p>편의상 모든 윈도우에서 원점은 왼쪽 위에 있고 y축이 아래쪽이다. 그래서 화면의 모든 픽셀은 양의 정수로 표현할 수 있다.
+<p>모니터 화면을 고전적인 유클리드 공간이라 생각하면 변환에 대해 더 정확히 이해할 수 있다. 실제 컴퓨터 그래픽(웹페이지도 포함해서)에서는 좌표시스템을 변경해서 사용한다.</p>
 
+<p>편의상 모든 윈도우에서 원점은 왼쪽 위에 있고 y축이 아래쪽이다. 그래서 화면의 모든 픽셀은 양의 정수로 표현할 수 있다.</p>
 
-</p>
 <h2>TILT!</h2>
-<p>변환의 수학적인 개념을 숙지한 채로 이것들을 CSS로 어떻게 구현하는지 알아보자.
 
-</p>
-<p>시작하기 전에 주의할 것이 있다. 여기서 사용할 CSS의 기능들이 모든 브라우저에서 구현이 안 되어있다. 따라서 표준 CSS 프로퍼티 앞에 벤더에 종속적인 접두어를 표기 할 것이다. '흥미로운 것들' 섹션을 보면 크로스-브라우저 CSS 변환을 위한 중복 표기를 우회하는 방법을 설명해놨다.
+<p>변환의 수학적인 개념을 숙지한 채로 이것들을 CSS로 어떻게 구현하는지 알아보자.</p>
 
+<p>시작하기 전에 주의할 것이 있다. 여기서 사용할 CSS의 기능들이 모든 브라우저에서 구현이 안 되어있다. 따라서 표준 CSS 프로퍼티 앞에 벤더에 종속적인 접두어를 표기 할 것이다. '흥미로운 것들&rsquo; 섹션을 보면 크로스-브라우저 CSS 변환을 위한 중복 표기를 우회하는 방법을 설명해놨다.</p>
 
-</p>
 <h3>변환 원점(Transformation origin)</h3>
-<p>변환 원점을 지정하는 건 trasform-origin이라는 CSS 프로퍼티를 이용한다.
 
-</p>
+<p>변환 원점을 지정하는 건 trasform-origin이라는 CSS 프로퍼티를 이용한다.</p>
+
 <ol>
 <li>-moz-transform-origin: 50% 50%;</li>
 <li>-webkit-transform-origin: 50% 50%;</li>
@@ -622,27 +560,27 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform-origin: 50% 50%;</li>
 <li>transform-origin: 50% 50%;</li>
 </ol>
-<p>변환 원점의 기본값은 바운딩 박스(bounding box)의 가운데이고 바운딩 박스의 왼쪽 위 모서리 좌표가 (0,0)이다.
 
-</p>
+<p>변환 원점의 기본값은 바운딩 박스(bounding box)의 가운데이고 바운딩 박스의 왼쪽 위 모서리 좌표가 (0,0)이다.</p>
+
 <h3>변환 그룹(Transformation groups)</h3>
-<p>CSS의 transform 프로퍼티에 적용할 변환 연산의 리스트를 순서대로 적어주는 것만으로 변환 그룹을 만들 수 있다.
 
-</p>
+<p>CSS의 transform 프로퍼티에 적용할 변환 연산의 리스트를 순서대로 적어주는 것만으로 변환 그룹을 만들 수 있다.</p>
+
 <ol>
-<li>-moz-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
-<li>-webkit-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
-<li>-ms-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
-<li>-o-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
-<li>transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
+<li>-moz-transform: &lt;trans1&gt; &lt;trans2&gt; &hellip;;</li>
+<li>-webkit-transform: &lt;trans1&gt; &lt;trans2&gt; &hellip;;</li>
+<li>-ms-transform: &lt;trans1&gt; &lt;trans2&gt; &hellip;;</li>
+<li>-o-transform: &lt;trans1&gt; &lt;trans2&gt; &hellip;;</li>
+<li>transform: &lt;trans1&gt; &lt;trans2&gt; &hellip;;</li>
 </ol>
-<p>여기서 &lt;trans1&gt;, &lt;trans2&gt;등은 서로 다른 변환 연산들이다. 각 연산은 공백문자로 구분한다.
 
-</p>
+<p>여기서 &lt;trans1&gt;, &lt;trans2&gt;등은 서로 다른 변환 연산들이다. 각 연산은 공백문자로 구분한다.</p>
+
 <h3>평행이동(Translation)</h3>
-<p>객체를 평행이동시키려면 translate, translateX, translateY라는 키워드를 사용한다.
 
-</p>
+<p>객체를 평행이동시키려면 translate, translateX, translateY라는 키워드를 사용한다.</p>
+
 <ol>
 <li>-moz-transform: translate(tx[, ty]) | translateX(tx) | translateY(ty);</li>
 <li>-webkit-transform: translate(tx[, ty]) | translateX(tx) | translateY(ty);</li>
@@ -650,9 +588,9 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform: translate(tx[, ty]) | translateX(tx) | translateY(ty);</li>
 <li>transform: translate(tx[, ty]) | translateX(tx) | translateY(ty);</li>
 </ol>
-<p>tx는 가로 방향 오프셋이고 ty는 세로 방향 오프셋이다. 아래는 이미지를 60픽셀 오른쪽, 20픽셀 아래쪽으로 움직이는 예제이다.
 
-</p>
+<p>tx는 가로 방향 오프셋이고 ty는 세로 방향 오프셋이다. 아래는 이미지를 60픽셀 오른쪽, 20픽셀 아래쪽으로 움직이는 예제이다.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl04_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/01.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
@@ -662,10 +600,11 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform: translate(60px, 20px);</li>
 <li>transform: translate(60px, 20px);</li>
 </ol>
-<h3>스케일링(Scaling)</h3>
-<p>객체를 확대하거나 축소하려면 scale이나 scaleX, scaleY를 이용한다.
 
-</p>
+<h3>스케일링(Scaling)</h3>
+
+<p>객체를 확대하거나 축소하려면 scale이나 scaleX, scaleY를 이용한다.</p>
+
 <ol>
 <li>-moz-transform: scale(sx[, sy]) | scaleX(sx) | scaleY(sy);</li>
 <li>-webkit-transform: scale(sx[, sy]) | scaleX(sx) | scaleY(sy);</li>
@@ -673,53 +612,53 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform: scale(sx[, sy]) | scaleX(sx) | scaleY(sy);</li>
 <li>transform: scale(sx[, sy]) | scaleX(sx) | scaleY(sy);</li>
 </ol>
-<p>스케일링은 인자로 들어온 크기만큼 객체를 확대/축소 시킨다. 각 인자는 단위가 없는 숫자이다. 만약 scale 키워드에 인자 하나만 넘긴다면, 유니폼 스케일로 작동한다. (가로 세로의 비율을 유지하면서 스케일링 된다.) 음수가 인자로 들어오면 각 축에 대칭적으로 스케일링 된다.
 
-</p>
-<p>아래에 객체를 오른쪽 위를 기준으로 80% 축소하는 예제를 보자.
+<p>스케일링은 인자로 들어온 크기만큼 객체를 확대/축소 시킨다. 각 인자는 단위가 없는 숫자이다. 만약 scale 키워드에 인자 하나만 넘긴다면, 유니폼 스케일로 작동한다. (가로 세로의 비율을 유지하면서 스케일링 된다.) 음수가 인자로 들어오면 각 축에 대칭적으로 스케일링 된다.</p>
 
-</p>
+<p>아래에 객체를 오른쪽 위를 기준으로 80% 축소하는 예제를 보자.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl07_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/02.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
-<li>/<em> 원점을 오른쪽 위로 지정한다. </em>/</li>
+<li>/* 원점을 오른쪽 위로 지정한다. */</li>
 <li>-moz-transform-origin: 100% 0;</li>
 <li>-webkit-transform-origin: 100% 0;</li>
 <li>-ms-transform-origin: 100% 0;</li>
 <li>-o-transform-origin: 100% 0;</li>
 <li>transform-origin: 100% 0;</li>
 <li>&nbsp;</li>
-<li>/<em> 80% 축소 </em>/</li>
+<li>/* 80% 축소 */</li>
 <li>-moz-transform: scale(0.8);</li>
 <li>-webkit-transform: scale(0.8);</li>
 <li>-ms-transform: scale(0.8);</li>
 <li>-o-transform: scale(0.8);</li>
 <li>transform: scale(0.8);</li>
 </ol>
-<p>x축을 기준으로 이미지를 반전시키려면 scaleY에 음수를 넘긴다. 
 
-</p>
+<p>x축을 기준으로 이미지를 반전시키려면 scaleY에 음수를 넘긴다. </p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl09_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/03.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
-<li>/<em> 요소의 중간을 원점으로 잡기(기본값) </em>/</li>
+<li>/* 요소의 중간을 원점으로 잡기(기본값) */</li>
 <li>-moz-transform-origin: 50% 50%;</li>
 <li>-webkit-transform-origin: 50% 50%;</li>
 <li>-ms-transform-origin: 50% 50%;</li>
 <li>-o-transform-origin: 50% 50%;</li>
 <li>transform-origin: 50% 50%;</li>
 <li>&nbsp;</li>
-<li>/<em> 이미지의 가운데를 중심으로 가로로 뒤집기 </em>/</li>
+<li>/* 이미지의 가운데를 중심으로 가로로 뒤집기 */</li>
 <li>-moz-transform: scaleY(-1);</li>
 <li>-webkit-transform: scaleY(-1);</li>
 <li>-ms-transform: scaleY(-1);</li>
 <li>-o-transform: scaleY(-1);</li>
 <li>transform: scaleY(-1);</li>
 </ol>
-<h3>회전(Rotation)</h3>
-<p>객체를 회전시킬 때에는 rotate를 사용한다.
 
-</p>
+<h3>회전(Rotation)</h3>
+
+<p>객체를 회전시킬 때에는 rotate를 사용한다.</p>
+
 <ol>
 <li>-moz-transform: rotate(&lt;angle&gt;);</li>
 <li>-webkit-transform: rotate(&lt;angle&gt;);</li>
@@ -727,30 +666,31 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform: rotate(&lt;angle&gt;);</li>
 <li>transform: rotate(&lt;angle&gt;);</li>
 </ol>
-<p>&lt;angle&gt;은 객체를 변환 원점을 기준으로 얼마나 회전시킬지를 결정한다. 단위를 적어줘야 한다(deg, rad, grad 중에 하나) 양수는 시계방향 회전을 의미한다. 아래 예제는 객체를 오른쪽 아래 모서리를 기준으로 회전시키는 것이다.
 
-</p>
+<p>&lt;angle&gt;은 객체를 변환 원점을 기준으로 얼마나 회전시킬지를 결정한다. 단위를 적어줘야 한다(deg, rad, grad 중에 하나) 양수는 시계방향 회전을 의미한다. 아래 예제는 객체를 오른쪽 아래 모서리를 기준으로 회전시키는 것이다.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl12_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/04.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
-<li>/<em> 오른쪽 아래를 원점으로 잡기 </em>/</li>
+<li>/* 오른쪽 아래를 원점으로 잡기 */</li>
 <li>-moz-transform-origin: 100% 100%;</li>
 <li>-webkit-transform-origin: 100% 100%;</li>
 <li>-ms-transform-origin: 100% 100%;</li>
 <li>-o-transform-origin: 100% 100%;</li>
 <li>transform-origin: 100% 100%;</li>
 <li>&nbsp;</li>
-<li>/<em> 시계방향으로 30도 회전 </em>/</li>
+<li>/* 시계방향으로 30도 회전 */</li>
 <li>-moz-transform: rotate(30deg);</li>
 <li>-webkit-transform: rotate(30deg);</li>
 <li>-ms-transform: rotate(30deg);</li>
 <li>-o-transform: rotate(30deg);</li>
 <li>transform: rotate(30deg);</li>
 </ol>
-<h3>기울이기(Skewing)</h3>
-<p>객체를 기울이려면 skew나 skewX, skewY를 사용한다.
 
-</p>
+<h3>기울이기(Skewing)</h3>
+
+<p>객체를 기울이려면 skew나 skewX, skewY를 사용한다.</p>
+
 <ol>
 <li>-moz-transform: skew(&lt;angleX&gt;[, &lt;angleY&gt;]) | skewX(&lt;angleX&gt;) | skewY(&lt;angleY&gt;);</li>
 <li>-webkit-transform: skew(&lt;angleX&gt;[, &lt;angleY&gt;]) | skewX(&lt;angleX&gt;) | skewY(&lt;angleY&gt;);</li>
@@ -758,64 +698,62 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>-o-transform: skew(&lt;angleX&gt;[, &lt;angleY&gt;]) | skewX(&lt;angleX&gt;) | skewY(&lt;angleY&gt;);</li>
 <li>transform: skew(&lt;angleX&gt;[, &lt;angleY&gt;]) | skewX(&lt;angleX&gt;) | skewY(&lt;angleY&gt;);</li>
 </ol>
-<p>기울이기는 축의 방향만 바꾸는 거라서 변환 원점과는 관계가 없다. 각도의 단위는 deg, rad, grad 중에 하나를 사용한다. 회전 연산에서 각도가 양수이면 시계 방향으로 회전하지만 여기서는 반대로 동작한다. 그리고 논리적으로 추측해 봤을 때 skewX와 skewY는 각각 x와 y축 자체에 영향을 줄 것으로 생각할 수 있지만 사실 그건 객체가 기울어질 방향을 의미한다.
 
-</p>
-<p>예제를 보자
+<p>기울이기는 축의 방향만 바꾸는 거라서 변환 원점과는 관계가 없다. 각도의 단위는 deg, rad, grad 중에 하나를 사용한다. 회전 연산에서 각도가 양수이면 시계 방향으로 회전하지만 여기서는 반대로 동작한다. 그리고 논리적으로 추측해 봤을 때 skewX와 skewY는 각각 x와 y축 자체에 영향을 줄 것으로 생각할 수 있지만 사실 그건 객체가 기울어질 방향을 의미한다.</p>
 
-</p>
+<p>예제를 보자</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl15_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/05.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
-<li>/<em> 원점을 왼쪽 위 모서리로 옮김 </em>/</li>
+<li>/* 원점을 왼쪽 위 모서리로 옮김 */</li>
 <li>-moz-transform-origin: 0 0;</li>
 <li>-webkit-transform-origin: 0 0;</li>
 <li>-ms-transform-origin: 0 0;</li>
 <li>-o-transform-origin: 0 0;</li>
-<li>transform-origin: 0 0;</li>
+<li> transform-origin: 0 0;</li>
 <li>&nbsp;</li>
-<li>/<em> 객체를 가로축을 기준 시계방향으로 20도 기울임 </em>/</li>
+<li>/* 객체를 가로축을 기준 시계방향으로 20도 기울임 */</li>
 <li>-moz-transform: skewX(-20deg);</li>
 <li>-webkit-transform: skewX(-20deg);</li>
 <li>-ms-transform: skewX(-20deg);</li>
 <li>-o-transform: skewX(-20deg);</li>
 <li>transform: skewX(-20deg);</li>
 </ol>
-<p>변환이 어떻게 일어나는지 이 예제로 확실히 알 수 있다. 만약 skewX에 음수의 인자를 넘긴다면 객체는 오른쪽으로 기울진다. 수평 방향 기울이기도 똑같다. 하지만 여기선 양수가 시계방향을 의미한다.
 
-</p>
+<p>변환이 어떻게 일어나는지 이 예제로 확실히 알 수 있다. 만약 skewX에 음수의 인자를 넘긴다면 객체는 오른쪽으로 기울진다. 수평 방향 기울이기도 똑같다. 하지만 여기선 양수가 시계방향을 의미한다.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl17_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/06.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
-<li>/<em> 원점을 왼쪽 위 모서리로 옮김 </em>/</li>
+<li>/* 원점을 왼쪽 위 모서리로 옮김 */</li>
 <li>-moz-transform-origin: 0 0;</li>
 <li>-webkit-transform-origin: 0 0;</li>
 <li>-ms-transform-origin: 0 0;</li>
 <li>-o-transform-origin: 0 0;</li>
 <li>transform-origin: 0 0;</li>
 <li>&nbsp;</li>
-<li>/<em> 객체를 세로축 기준, 반시계방향으로 20도 기울임 </em>/</li>
+<li>/* 객체를 세로축 기준, 반시계방향으로 20도 기울임 */</li>
 <li>-moz-transform: skewY(-20deg);</li>
 <li>-webkit-transform: skewY(-20deg);</li>
 <li>-ms-transform: skewY(-20deg);</li>
 <li>-o-transform: skewY(-20deg);</li>
 <li>transform: skewY(-20deg);</li>
 </ol>
-<p>아직도 어떤 방향이 어떤 것인지 모르겠다면 우선 해보는 게 더 나을 것이다.
 
-</p>
+<p>아직도 어떤 방향이 어떤 것인지 모르겠다면 우선 해보는 게 더 나을 것이다.</p>
+
 <h2>바이바이 수평, 우린 널 기억할 거야.</h2>
-<p>우리는 각 변환을 마스터했다. 이제는 원하는 효과를 내기 위해서 변환 그룹을 배워보자.
 
-</p>
-<p>일반적으로 CSS 변환은 버튼에 마우스를 올리면 비틀고, 확대해서 사용자가 그들을 클릭하도록 하는 데에 사용된다. 이 효과는 회전과 스케일링을 이용하면 간단히 구현할 수 있다. 한번 만들어보자.
+<p>우리는 각 변환을 마스터했다. 이제는 원하는 효과를 내기 위해서 변환 그룹을 배워보자.</p>
 
-</p>
+<p>일반적으로 CSS 변환은 버튼에 마우스를 올리면 비틀고, 확대해서 사용자가 그들을 클릭하도록 하는 데에 사용된다. 이 효과는 회전과 스케일링을 이용하면 간단히 구현할 수 있다. 한번 만들어보자.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl19_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/07.html" onload="setFrameHeight(this);" height="100%" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
 <li>button {</li>
-<li>padding: 1em 2em;</li>
+<li>  padding: 1em 2em;</li>
 <li>}</li>
 <li>&nbsp;</li>
 <li>button:hover {</li>
@@ -826,19 +764,18 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>transform: rotate(3deg) scale(1.05);</li>
 <li>}</li>
 </ol>
-<p>묘하게 회전하면서 확대되는 효과를 만들어서 버튼이 사용자에게 튀어 오르는 효과를 만들어 클릭을 유도했다.
 
-</p>
-<p>안에 있는 요소의 변환 그룹과 함께 변환할 수도 있다. 아래는 버튼을 다른 요소로 감싸서 버튼과 버튼을 감싼 요소를 서로 다른 방향으로 회전시킨 예제이다.
+<p>묘하게 회전하면서 확대되는 효과를 만들어서 버튼이 사용자에게 튀어 오르는 효과를 만들어 클릭을 유도했다.</p>
 
-</p>
+<p>안에 있는 요소의 변환 그룹과 함께 변환할 수도 있다. 아래는 버튼을 다른 요소로 감싸서 버튼과 버튼을 감싼 요소를 서로 다른 방향으로 회전시킨 예제이다.</p>
+
 <iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl21_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/08.html" onload="setFrameHeight(this);" height="100%" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
 <ol>
 <li>.wrapper {</li>
-<li>margin: 5px;</li>
-<li>padding: 5px;</li>
-<li>background: red;</li>
+<li>  margin: 5px;</li>
+<li>  padding: 5px;</li>
+<li>  background: red;</li>
 <li>}</li>
 <li>&nbsp;</li>
 <li>.wrapper:hover {</li>
@@ -850,7 +787,7 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>}</li>
 <li>&nbsp;</li>
 <li>.wrapper button {</li>
-<li>padding: 5px 10px;</li>
+<li>  padding: 5px 10px;</li>
 <li>}</li>
 <li>&nbsp;</li>
 <li>.wrapper button:hover {</li>
@@ -861,36 +798,32 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li>transform: rotate(6deg) scale(1.05);</li>
 <li>}</li>
 </ol>
-<p>이런 경우엔 마우스가 버튼을 감싼 요소에 올라갔을 때 감싼 요소가 가진 모든 요소가 변환된다. 그 뒤에 마우스가 버튼 위에 올라갔을 땐 버튼에 적용된 변환 그룹에 따라 변환된다. 이 둘은 독립적이지만 계층적으로 적용된다. 즉 부모 요소의 변환은 모든 자식 요소에 적용된다.
 
-</p>
+<p>이런 경우엔 마우스가 버튼을 감싼 요소에 올라갔을 때 감싼 요소가 가진 모든 요소가 변환된다. 그 뒤에 마우스가 버튼 위에 올라갔을 땐 버튼에 적용된 변환 그룹에 따라 변환된다. 이 둘은 독립적이지만 계층적으로 적용된다. 즉 부모 요소의 변환은 모든 자식 요소에 적용된다.</p>
+
 <h3>2D 변환 vs 3D 변환</h3>
-<p>여기서 지금까지 배운 것으로 3D변환을 하려면 어떻게 해야 할까. 흠, 만약 단순한 정사영만 필요하다면 객체를 기울이고 이동시키는 변환만으로 가능하다. 하지만 진짜 원근법(아니면 비선형 투영)이 필요하다면 불쌍하다고 해야겠다.
 
-</p>
-<p>위에서 봤듯이 기울이기는 두 축의 각도를 바꾸기만 하는데 세 번째 축이 생기면 원근법이 적용되어 공간상의 점이 한쪽 평면에 투영되었을 때, 위치가 변한다. 다시 말해, 객체가 더 멀어질수록 더 작게 보인다는 것이다. 이건 2D 변환을 이용해서는 정확하게 구현할 수 없다.
+<p>여기서 지금까지 배운 것으로 3D변환을 하려면 어떻게 해야 할까. 흠, 만약 단순한 정사영만 필요하다면 객체를 기울이고 이동시키는 변환만으로 가능하다. 하지만 진짜 원근법(아니면 비선형 투영)이 필요하다면 불쌍하다고 해야겠다.</p>
 
-</p>
-<p>만약 3D 변환이 필요하다면 2가지 선택지가 있다. CSS 2D 변환과 비슷한 문법을 가진 실제 CSS 3D 변환을 하거나 WebGL을 이용하는 것이다. 그런데 두 가지 전부 제대로 지원하는 브라우저가 없고 가장 최신의 몇몇 브라우저만이 지원한다. 게다가 이건 이 글에서 다루지 않기로 했었다.
+<p>위에서 봤듯이 기울이기는 두 축의 각도를 바꾸기만 하는데 세 번째 축이 생기면 원근법이 적용되어 공간상의 점이 한쪽 평면에 투영되었을 때, 위치가 변한다. 다시 말해, 객체가 더 멀어질수록 더 작게 보인다는 것이다. 이건 2D 변환을 이용해서는 정확하게 구현할 수 없다.</p>
 
-</p>
-<p>만약 초심자용 글을 원한다면 <a href="http://www.ticketmonster.co.kr/deal/5807965/">웹킷 블로그</a>를 보면 된다. 여기에 3D 변환의 기초 구현 예제들이 있다.
+<p>만약 3D 변환이 필요하다면 2가지 선택지가 있다. CSS 2D 변환과 비슷한 문법을 가진 실제 CSS 3D 변환을 하거나 WebGL을 이용하는 것이다. 그런데 두 가지 전부 제대로 지원하는 브라우저가 없고 가장 최신의 몇몇 브라우저만이 지원한다. 게다가 이건 이 글에서 다루지 않기로 했었다.</p>
 
-</p>
+<p>만약 초심자용 글을 원한다면 <a href="http://www.ticketmonster.co.kr/deal/5807965/">웹킷 블로그</a>를 보면 된다. 여기에 3D 변환의 기초 구현 예제들이 있다.</p>
+
 <h2>그래서 이게 어디서 돌아가는데?</h2>
-<p>옛날에 IE6에서 자기들만의 CSS의 필터를 처리하기 위해 DXtransform을 지원하기는 했지만, 그 당시에는 비슷한 기능이라도 구현한 브라우저는 없었기에 2D 변환은 지금 브라우저에서는 참신한 것이다. 그래도 최근에 브라우저 개발 경쟁에 불이 붙어 모든 주요 브라우저 벤더들이 자사 브라우저들의 최신 릴리즈에 2D 변환기능을 넣어가고 있고 하드웨어 가속을 이용하는 브라우저도 있다.  (역자 주: 2011년 3월 글이다.)
 
-</p>
-<p>현재 다음의 브라우저들이 변환을 지원하고 있다.
+<p>옛날에 IE6에서 자기들만의 CSS의 필터를 처리하기 위해 DXtransform을 지원하기는 했지만, 그 당시에는 비슷한 기능이라도 구현한 브라우저는 없었기에 2D 변환은 지금 브라우저에서는 참신한 것이다. 그래도 최근에 브라우저 개발 경쟁에 불이 붙어 모든 주요 브라우저 벤더들이 자사 브라우저들의 최신 릴리즈에 2D 변환기능을 넣어가고 있고 하드웨어 가속을 이용하는 브라우저도 있다.  (역자 주: 2011년 3월 글이다.)</p>
 
-</p>
-<p><style>
+<p>현재 다음의 브라우저들이 변환을 지원하고 있다.</p>
+
+<style>
   .grid td {
     padding: 5px;
-    border: solid <a href="/site/tagmap.html#333">#333</a> 1px;
+    border: solid #333 1px;
   }
 </style>
-</p>
+
 <table class="grid">
   <thead>
     <tr style="background-color:black;color:white;">
@@ -937,81 +870,70 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
   </tbody>
 </table>
 
-
 <h2>흥미로운 것들</h2>
+
 <h3>성능</h3>
-<p>위의 브라우저 지원 목록을 보고 곧바로 자리에 앉아 막 객체들을 변환해서 홈페이지를 이리저리 돌아다니도록 할 수도 있다. 기술적으로 분명 가능하다. 하지만 CSS 변환을 이용한 크로스-브라우저 지원은 비용이 많이 들어가고 성능상의 문제도 있다.
 
-</p>
-<p>2D 하드웨어 가속을 지원하지 않는 브라우저는 모든 변환을 CPU로 해결한다. 구린 렌더링 엔진을 가진 브라우저의 예로 Firefox pre-4.0이나 Internet Explorer pre-9 정도가 있다. 가속하든 안 하든 올바르게 변환되지만, IE 같은 경우는 성능이 구리다. 많은 변환 연산을 하는 웹페이지는 성능저하를 일으킬 것이다. IE는 z-index 문제도 일어날 수 있다.  
+<p>위의 브라우저 지원 목록을 보고 곧바로 자리에 앉아 막 객체들을 변환해서 홈페이지를 이리저리 돌아다니도록 할 수도 있다. 기술적으로 분명 가능하다. 하지만 CSS 변환을 이용한 크로스-브라우저 지원은 비용이 많이 들어가고 성능상의 문제도 있다.</p>
 
-</p>
+<p>2D 하드웨어 가속을 지원하지 않는 브라우저는 모든 변환을 CPU로 해결한다. 구린 렌더링 엔진을 가진 브라우저의 예로 Firefox pre-4.0이나 Internet Explorer pre-9 정도가 있다. 가속하든 안 하든 올바르게 변환되지만, IE 같은 경우는 성능이 구리다. 많은 변환 연산을 하는 웹페이지는 성능저하를 일으킬 것이다. IE는 z-index 문제도 일어날 수 있다.  </p>
+
 <h3>렌더링</h3>
-<p>여러 플랫폼에서 돌아가는 크롬에 관해 주의해야 할 또 다른 점은 회전/기울어진 이미지(다른 DOM 요소는 해당하지 않는다.)의 가장자리가 윈도우즈에서는 안티엘리어싱이 적용되지 않고 톱니 모양으로 자글자글한다는 것이다. 이 문제는 리눅스에서도 보인다. 리눅스에서 모든 회전된 문자열은 안티엘리어싱이 적용되지 않고, 글자들 일부분은 끊어져 깨져 보이는 데다가 대부분의 작은 글자는 변환 연산을 거치면 읽을 수도 없다.
 
-</p>
-<h3>애들...아니 유저를 생각해!</h3>
-<p>아직도 CSS 변환을 만지작 거리고 있다면(그리고 그래야만 한다면!) 2D CSS 변환을 지원하지 않는 브라우저를 이용하고 있는 사용자들을 위해 <a href="http://modernizr.com/">Modernizr</a>를 이용하면 그런 변환을 대체할 수 있는 표현이나 우아하게 다운그레이드된 화면을 보여줄 수 있다. 만약 그게 필요하다면 브라우저의 지원 여부를 알아내서 순수 CSS로 대체 화면을 만들어내거나 요소를 숨기거나 할 수 있다. 예제로 이 글에 있는 iframe은 대체 할 화면을 보여줄 수 있으며 사용자에게 CSS 변환을 지원하지 않는 버전을 사용하고 있다고 알려준다.
+<p>여러 플랫폼에서 돌아가는 크롬에 관해 주의해야 할 또 다른 점은 회전/기울어진 이미지(다른 DOM 요소는 해당하지 않는다.)의 가장자리가 윈도우즈에서는 안티엘리어싱이 적용되지 않고 톱니 모양으로 자글자글한다는 것이다. 이 문제는 리눅스에서도 보인다. 리눅스에서 모든 회전된 문자열은 안티엘리어싱이 적용되지 않고, 글자들 일부분은 끊어져 깨져 보이는 데다가 대부분의 작은 글자는 변환 연산을 거치면 읽을 수도 없다.</p>
 
-</p>
-<p>또, 만약 여러 버전의 CSS 어트리뷰트를 작성하기가 싫다면 <a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a>를 사용해보는 것도 좋다. cssSandpaper는 표준 문법으로 모든 벤더들에서 작동하는 CSS 어트리뷰트를 만들어준다. 그리고 W3C 문법을 DirectX필터로 바꿔서 Explorer5.5에서도 돌아갈 수 있도록 만들어준다.
+<h3>애들&hellip;아니 유저를 생각해!</h3>
 
-</p>
+<p>아직도 CSS 변환을 만지작 거리고 있다면(그리고 그래야만 한다면!) 2D CSS 변환을 지원하지 않는 브라우저를 이용하고 있는 사용자들을 위해 <a href="http://modernizr.com/">Modernizr</a>를 이용하면 그런 변환을 대체할 수 있는 표현이나 우아하게 다운그레이드된 화면을 보여줄 수 있다. 만약 그게 필요하다면 브라우저의 지원 여부를 알아내서 순수 CSS로 대체 화면을 만들어내거나 요소를 숨기거나 할 수 있다. 예제로 이 글에 있는 iframe은 대체 할 화면을 보여줄 수 있으며 사용자에게 CSS 변환을 지원하지 않는 버전을 사용하고 있다고 알려준다.</p>
+
+<p>또, 만약 여러 버전의 CSS 어트리뷰트를 작성하기가 싫다면 <a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a>를 사용해보는 것도 좋다. cssSandpaper는 표준 문법으로 모든 벤더들에서 작동하는 CSS 어트리뷰트를 만들어준다. 그리고 W3C 문법을 DirectX필터로 바꿔서 Explorer5.5에서도 돌아갈 수 있도록 만들어준다.</p>
+
 <h2>가랏!</h2>
+
 <p>그게 2D CSS 변환의 요지이다. 우리는 텍스트, 이미지에 무려 비디오까지 기울이고 자르고 늘이고 줄일 수 있다. 우리는 우리가 과거에 비트맵에서 했던 모든 것들을 여기서 할 수 있다.
-이제 가서 슬슬 일해!
-
-
-</p>
+이제 가서 슬슬 일해!</p>
 ]]>
 </content></entry><entry><title><![CDATA[ Maven에서 스크립트 사용하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/maven-scala-plugin.html" /><updated>2012-09-01T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/maven-scala-plugin.html</id><content type="html"><![CDATA[
-<p>기본적으로 Maven에는 로직을 넣을 수 없다. 로직이 있으면 있는 대로 없으면 없는 대로 장단점이 있어서 일률적으로 '좋다', '나쁘다.'라고 말할 수 없다. 하지만, 나는 로직을 넣을 수 있는 것이 더 좋다. Ant도 그렇지만 Maven으로 프로젝트를 관리하다 보면 답답할 때가 잦다. 특히 자주 저지르는 실수를 검증하는 코드는 넣고 싶을 때가 잦다(항상 틀린 걸 또 틀리니까!).
+<p>기본적으로 Maven에는 로직을 넣을 수 없다. 로직이 있으면 있는 대로 없으면 없는 대로 장단점이 있어서 일률적으로 &lsquo;좋다&rsquo;, &lsquo;나쁘다.'라고 말할 수 없다. 하지만, 나는 로직을 넣을 수 있는 것이 더 좋다. Ant도 그렇지만 Maven으로 프로젝트를 관리하다 보면 답답할 때가 잦다. 특히 자주 저지르는 실수를 검증하는 코드는 넣고 싶을 때가 잦다(항상 틀린 걸 또 틀리니까!).</p>
 
-</p>
-<p>Maven에 Plugin으로 스크립트를 Embed할 방법이 있는데 <a href="http://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a>, <a href="http://groovy.codehaus.org/GMaven">gmaven-plugin</a>, <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/">maven-scala-plugin</a>이 쓸만하다:
+<p>Maven에 Plugin으로 스크립트를 Embed할 방법이 있는데 <a href="http://maven.apache.org/plugins/maven-antrun-plugin/">maven-antrun-plugin</a>, <a href="http://groovy.codehaus.org/GMaven">gmaven-plugin</a>, <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/">maven-scala-plugin</a>이 쓸만하다:</p>
 
-</p>
 <ul>
 <li><code>maven-antrun-plugin</code>: run 골을 이용해서 ant 스크립트를 실행할 수 있다.</li>
 <li><code>gmaven-plugin</code>: execute 골을 이용해서 groovy 스크립트를 실행할 수 있다.</li>
 <li><code>maven-scala-plugin</code>: script 골을 이용해서 scala 스크립트를 실행할 수 있다.</li>
 </ul>
+
 <p><img src="http://dogfeet.github.com/articles/2012/maven/maple.jpeg" alt="maple">
-(from <a href="http://www.talismancoins.com/servlet/detail?no=920">http://www.talismancoins.com/servlet/detail?no=920</a>)
+(from <a href="http://www.talismancoins.com/servlet/detail?no=920">http://www.talismancoins.com/servlet/detail?no=920</a>)</p>
 
-</p>
 <h2>maven-antrun-plugin</h2>
-<p>ant도 원래 로직을 넣을 수 없다. <a href="http://ant-contrib.sourceforge.net/">Ant-Contrib</a> Task를 추가하면 로직을 사용할 수 있지만 <code>Maven-&gt;Ant Plugin-&gt;Ant-Contrib</code> 형태로 의존성이 생기는 거라 볼썽사납다.
 
-</p>
-<p>기본적으로 <code>&lt;target&gt;</code> 타스크의 unless 속성을 이용하면 아주 간단한 로직은 구현할 수 있다. 특정 변수가 있을 때 실행할 배치작업을 쉽게 구현할 수 있다(from <a href="http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition">http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition</a>):
+<p>ant도 원래 로직을 넣을 수 없다. <a href="http://ant-contrib.sourceforge.net/">Ant-Contrib</a> Task를 추가하면 로직을 사용할 수 있지만 <code>Maven-&gt;Ant Plugin-&gt;Ant-Contrib</code> 형태로 의존성이 생기는 거라 볼썽사납다.</p>
 
-</p>
+<p>기본적으로 <code>&lt;target&gt;</code> 타스크의 unless 속성을 이용하면 아주 간단한 로직은 구현할 수 있다. 특정 변수가 있을 때 실행할 배치작업을 쉽게 구현할 수 있다(from <a href="http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition):">http://stackoverflow.com/questions/6342071/ant-target-to-run-only-based-on-condition):</a></p>
 <pre><code class="lang-xml"><span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"check-abc"</span>&gt;</span>
     <span class="tag">&lt;<span class="title">available</span> <span class="attribute">file</span>=<span class="value">"abc.txt"</span> <span class="attribute">property</span>=<span class="value">"abc.present"</span>/&gt;</span>
 <span class="tag">&lt;/<span class="title">target</span>&gt;</span>
 
 <span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"do-unless-abc"</span> <span class="attribute">depends</span>=<span class="value">"check-abc"</span> <span class="attribute">unless</span>=<span class="value">"abc.present"</span>&gt;</span>
     ...
-<span class="tag">&lt;/<span class="title">target</span>&gt;</span></code></pre>
-<p><code>abc.present</code>가 있을 때만 "do-unless-abc" 타스크가 수행된다. 특정 변수가 있을 때 실행하는 것을 조절하는 것뿐이지 로직을 구현할 수 있을 만큼은 아니다. 
+<span class="tag">&lt;/<span class="title">target</span>&gt;</span> 
+</code></pre>
+<p><code>abc.present</code>가 있을 때만 &ldquo;do-unless-abc&rdquo; 타스크가 수행된다. 특정 변수가 있을 때 실행하는 것을 조절하는 것뿐이지 로직을 구현할 수 있을 만큼은 아니다. </p>
 
-</p>
-<p>maven-antrun-plugin은 maven 자체로는 하기 어려운 배치작업을 구현할 때 좋다. 파일을 복사하거나 삭제하고, ssh로 원격에서 작업한다거나 하는 일을 할 때 좋다. 로직을 넣어서 검증하는 코드를 작성하기에는 좋지 않다.
+<p>maven-antrun-plugin은 maven 자체로는 하기 어려운 배치작업을 구현할 때 좋다. 파일을 복사하거나 삭제하고, ssh로 원격에서 작업한다거나 하는 일을 할 때 좋다. 로직을 넣어서 검증하는 코드를 작성하기에는 좋지 않다.</p>
 
-</p>
 <h3>javascript</h3>
-<p>최근에는 Rhino엔진이 들어가 있어서 jar파일을 추가하지 않고서도 바로 <code>&lt;script&gt;</code> 타스크에서 Javascript를 사용할 수 있지만 실제로 써보지 않았다.
 
-</p>
-<p>더군다나 maven-antrun-plugin에서 <code>&lt;script&gt;</code> 타스크를 쓰는 것은 바람직하지 않다.
+<p>최근에는 Rhino엔진이 들어가 있어서 jar파일을 추가하지 않고서도 바로 <code>&lt;script&gt;</code> 타스크에서 Javascript를 사용할 수 있지만 실제로 써보지 않았다.</p>
 
-</p>
+<p>더군다나 maven-antrun-plugin에서 <code>&lt;script&gt;</code> 타스크를 쓰는 것은 바람직하지 않다.</p>
+
 <h2>gmaven-plugin</h2>
-<p>groovy 스크립트를 실행할 수 있기 때문에 Maven 모델에 접근해서 정보를 가져와서 검사할 수 있다. 사용해본지 너무 오래됐고 이제는 <code>maven-scala-plugin</code>만 사용하기 때문에 정확하게 정리할 수는 없지만, 다음과 같이 할 수 있다(from <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html">http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html</a>):
 
-</p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
+<p>groovy 스크립트를 실행할 수 있기 때문에 Maven 모델에 접근해서 정보를 가져와서 검사할 수 있다. 사용해본지 너무 오래됐고 이제는 <code>maven-scala-plugin</code>만 사용하기 때문에 정확하게 정리할 수는 없지만, 다음과 같이 할 수 있다(from <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html):">http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html):</a></p>
+<pre><code><span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
     <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.codehaus.gmaven<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
     <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>gmaven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
     <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
@@ -1069,20 +991,17 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
         <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
         <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
     <span class="tag">&lt;/<span class="title">executions</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></code></pre>
-<p>이 예제를 왜 만들었는지는 JOCHEN WIEDMANN의 <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html">글</a>을 참고하라.
+<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span>
+</code></pre>
+<p>이 예제를 왜 만들었는지는 JOCHEN WIEDMANN의 <a href="http://grumpyapache.blogspot.kr/2012/08/maven-is-groovy.html">글</a>을 참고하라.</p>
 
-</p>
-<p>groovy는 Java랑 비슷하니까 대충 짜서 사용할 수 있다. 
+<p>groovy는 Java랑 비슷하니까 대충 짜서 사용할 수 있다. </p>
 
-</p>
 <h2>maven-scala-plugin</h2>
-<p>최근에 Maven에 로직을 넣을 일이 있으면 이 플러그인을 사용한다. 간단한 스크립트를 짜는 게 전부니까 maven에서 scala가 groovy보다 나을 이유는 없다. 익숙한 걸 사용하면 되는데, 최근 scala를 공부하고 있기도 하고 gmaven-plugin보다 사이트가 더 잘 정리돼 있어서 보기 편하다.
 
-</p>
-<p>scala를 java처럼 사용해도 충분하다. scala의 현란한 문법은 몰라도 된다.
+<p>최근에 Maven에 로직을 넣을 일이 있으면 이 플러그인을 사용한다. 간단한 스크립트를 짜는 게 전부니까 maven에서 scala가 groovy보다 나을 이유는 없다. 익숙한 걸 사용하면 되는데, 최근 scala를 공부하고 있기도 하고 gmaven-plugin보다 사이트가 더 잘 정리돼 있어서 보기 편하다.</p>
 
-</p>
+<p>scala를 java처럼 사용해도 충분하다. scala의 현란한 문법은 몰라도 된다.</p>
 <pre><code class="lang-xml"><span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
     <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.scala-tools<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
     <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-scala-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
@@ -1120,64 +1039,53 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
             })
         </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
     <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></code></pre>
-<p>validate Phase에서 내가 빠트린 것을 점검할 수 있다. 그리고 project 변수를 이용하면 더 많은 것들을 할 수 있다.
+<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span>
+</code></pre>
+<p>validate Phase에서 내가 빠트린 것을 점검할 수 있다. 그리고 project 변수를 이용하면 더 많은 것들을 할 수 있다.</p>
 
-</p>
-<p>이 project의 타입은 org.scala.tools.maven.model.MavenProjectAdapter 이고 이 클래스가 제공하는 인터페이스로 Maven 정보를 이용할 수 있다. 자세한 내용은 <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/apidocs/">apidoc</a>을 봐라.
+<p>이 project의 타입은 org.scala.tools.maven.model.MavenProjectAdapter 이고 이 클래스가 제공하는 인터페이스로 Maven 정보를 이용할 수 있다. 자세한 내용은 <a href="http://scala-tools.org/mvnsites/maven-scala-plugin/apidocs/">apidoc</a>을 봐라.</p>
 
-</p>
 <h2>결론</h2>
-<p><code>maven-scala-plugin</code>가 킹왕짱. 사견이지만, Maven에서 배치스크립트를 실행할 때는 <code>maven-antrun-plugin</code>이 검증코드 등 로직을 넣을 때는 <code>maven-scala-plugin</code>이 좋다.
 
-</p>
+<p><code>maven-scala-plugin</code>가 킹왕짱. 사견이지만, Maven에서 배치스크립트를 실행할 때는 <code>maven-antrun-plugin</code>이 검증코드 등 로직을 넣을 때는 <code>maven-scala-plugin</code>이 좋다.</p>
 ]]>
 </content></entry><entry><title><![CDATA[ UIWebView 쿠기 유지하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html" /><updated>2012-08-27T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/persist-cookie-of-uiwebview.html</id><content type="html"><![CDATA[
-<p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.
+<p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.</p>
 
-</p>
-<p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.
+<p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.</p>
 
-</p>
 <p><img src="http://farm1.staticflickr.com/182/403856634_db35669863.jpg" width="500" height="375" alt="cookies do not always wish to remain stacked.">
-<em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em>
+<em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em></p>
 
-</p>
 <h2>애플리케이션 종료시 쿠키 저장</h2>
-<p>우선 애플리케이션이 종료되는 이벤트를 잡아야 한다. 현재 멀티태스킹이 지원되는 SDK를 사용하여 애플리케이션을 만든 경우 Application Delegate의 아래 메소드가 호출된다.
 
-</p>
-<pre><code><span class="pp">- <span class="params">(void)</span>applicationDidEnterBackground:<span class="params">(<span class="variable">UIApplication</span> *)</span>application</code></pre>
-<p>멀티태스킹이 지원되기 이전 버전의 SDK나 멀티태스킹을 사용하지 않도록 설정한 애플리케이션은 다음고 같은 메소드에서 종료 이벤트를 잡을 수 있다.
-
-</p>
-<pre><code><span class="pp">- <span class="params">(void)</span>applicationWillTerminate:<span class="params">(<span class="variable">UIApplication</span> *)</span>application</code></pre>
-<p>쿠키 정보를 저장할 때 UIWebView 인스턴스는 필요 없다 <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSHTTPCookieStorage_Class/Reference/Reference.html">[NSHTTPCookieStorage</a> sharedHTTPCookieStorage] 메소드를 호출하면
-애플리케이션에게 할당된 쿠키 저장소를 반환받는다. 즉 시스템 브라우저인 Safari나 다른 애플리케이션과 공유하지 않는 애플리케이션만의 쿠키 저장소이다. (iOS는 쿠키를 공유하지 않지만 Mac OS는 쿠키를 공유한다)
-
-</p>
+<p>우선 애플리케이션이 종료되는 이벤트를 잡아야 한다. 현재 멀티태스킹이 지원되는 SDK를 사용하여 애플리케이션을 만든 경우 Application Delegate의 아래 메소드가 호출된다.</p>
+<pre><code><span class="pp">- <span class="params">(void)</span>applicationDidEnterBackground:<span class="params">(<span class="variable">UIApplication</span> *)</span>application
+</code></pre>
+<p>멀티태스킹이 지원되기 이전 버전의 SDK나 멀티태스킹을 사용하지 않도록 설정한 애플리케이션은 다음고 같은 메소드에서 종료 이벤트를 잡을 수 있다.</p>
+<pre><code><span class="pp">- <span class="params">(void)</span>applicationWillTerminate:<span class="params">(<span class="variable">UIApplication</span> *)</span>application
+</code></pre>
+<p>쿠키 정보를 저장할 때 UIWebView 인스턴스는 필요 없다 [<a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSHTTPCookieStorage_Class/Reference/Reference.html">NSHTTPCookieStorage</a> sharedHTTPCookieStorage] 메소드를 호출하면
+애플리케이션에게 할당된 쿠키 저장소를 반환받는다. 즉 시스템 브라우저인 Safari나 다른 애플리케이션과 공유하지 않는 애플리케이션만의 쿠키 저장소이다. (iOS는 쿠키를 공유하지 않지만 Mac OS는 쿠키를 공유한다)</p>
 <pre><code>{
     NSLog(@<span class="string">"%@"</span>, @<span class="string">"PersisteWebCookie"</span>);
     NSArray *cookies = <span class="string">[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
     [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"MySavedCookies"];
     NSLog(@"%@", @"PersisteWebCookie Saved");
-}</code></pre>
-<p>저장소에 현재 저장된 쿠키를 배열로(NSArray) 받아와서 NSUserDefaults에 저장할 수 있도록 NSKeyedArchiver를 통해 NSData 인스턴스로 변환한다. 키 값은 <strong>MySavedCookies</strong>를 사용하여 NSUserDefaults에 저장해둔다.
+}
+</code></pre>
+<p>저장소에 현재 저장된 쿠키를 배열로(NSArray) 받아와서 NSUserDefaults에 저장할 수 있도록 NSKeyedArchiver를 통해 NSData 인스턴스로 변환한다. 키 값은 <strong>MySavedCookies</strong>를 사용하여 NSUserDefaults에 저장해둔다.</p>
 
-</p>
-<p>일반적으로 쿠키는 브라우저나 애플리케이션이 종료되면(iOS의 경우 홈버튼을 더블탭 하여 마이너스 아이콘으로 종료시키면) 쿠키 정보가 삭제된다. 하지만 위와 같이 저장한 쿠키 정보는 애플리케이션을 다시 실행시켰을 때 복구할 수 있다.
+<p>일반적으로 쿠키는 브라우저나 애플리케이션이 종료되면(iOS의 경우 홈버튼을 더블탭 하여 마이너스 아이콘으로 종료시키면) 쿠키 정보가 삭제된다. 하지만 위와 같이 저장한 쿠키 정보는 애플리케이션을 다시 실행시켰을 때 복구할 수 있다.</p>
 
-</p>
 <h2>애플리케이션으로 돌아왔을 때</h2>
-<p>애플리케이션이 백그라운드에서 돌아오거나 다시 실행되는 이벤트는 보통 다음 Application Delegate의 메소드에서 처리한다.
 
-</p>
+<p>애플리케이션이 백그라운드에서 돌아오거나 다시 실행되는 이벤트는 보통 다음 Application Delegate의 메소드에서 처리한다.</p>
 <pre><code><span class="pp">- <span class="params">(<span class="variable">BOOL</span>)</span>application:<span class="params">(<span class="variable">UIApplication</span> *)</span>application 
-    didFinishLaunchingWithOptions:<span class="params">(<span class="variable">NSDictionary</span> *)</span>launchOptions</code></pre>
-<p>쿠키를 다시 되살리는 방법은 저장하는 순서의 반대로 한다. 키 값을 <strong>MySavedCookies</strong>로 하여 NSUserDefaults로부터 데이터를 꺼내오고 배열로 만든 후 하나씩 다시 쿠키 저장소에 저장한다.
-
-</p>
+    didFinishLaunchingWithOptions:<span class="params">(<span class="variable">NSDictionary</span> *)</span>launchOptions
+</code></pre>
+<p>쿠키를 다시 되살리는 방법은 저장하는 순서의 반대로 한다. 키 값을 <strong>MySavedCookies</strong>로 하여 NSUserDefaults로부터 데이터를 꺼내오고 배열로 만든 후 하나씩 다시 쿠키 저장소에 저장한다.</p>
 <pre><code>{
     NSLog(@<span class="string">"%@"</span>, @<span class="string">"PersisteWebCookie"</span>);
     NSData *cookiesdata = <span class="string">[[NSUserDefaults standardUserDefaults] objectForKey:@"MySavedCookies"];
@@ -1190,151 +1098,109 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
         }
     }
     NSLog(@"%@", @"PersisteWebCookie Restored");
-}</code></pre>
-]]>
+}
+</code></pre>]]>
 </content></entry><entry><title><![CDATA[ Git: 델타와 스냅샷 ]]></title><link href="http://dogfeet.github.com/articles/2012/git-delta.html" /><updated>2012-08-24T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-delta.html</id><content type="html"><![CDATA[
-<p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.
+<p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/git-delta/crime-and-sin.jpeg" alt="">
+<p><img src="http://dogfeet.github.com/articles/2012/git-delta/crime-and-sin.jpeg" alt=""></p>
 
-
-</p>
 <h2>델타</h2>
-<p>옛날 옛적에 리눅스 커널을 직접 빌드해야 했던 시절, 돈이 없어 샀던 싸구려 하드웨어 덕에 patch 파일을 받아서 직접 패치해야 했었다. diff와 patch 의 의미, 사용하는 이유 등을 이해한 것은 나중이었지만 내가 처음 접한 것은 그때였다.
 
-</p>
-<p>과거에는 오픈소스 프로젝트를 <a href="http://kldp.org/node/28938">diff와 patch</a>로 개발했다. 코드를 수정하고 diff 프로그램으로 델타를 만들어서 메일로 보내면 관리자는 그 델타를 받아서 patch 프로그램으로 메인 코드에 적용했다. 비교할 수는 없지만, 선구자들은 우리가 git과 github을 통해서 하는 일들을 <a href="http://kldp.org/node/28938">diff와 patch</a>, 메일, 웹, ftp 같은 것으로 해냈다.
+<p>옛날 옛적에 리눅스 커널을 직접 빌드해야 했던 시절, 돈이 없어 샀던 싸구려 하드웨어 덕에 patch 파일을 받아서 직접 패치해야 했었다. diff와 patch 의 의미, 사용하는 이유 등을 이해한 것은 나중이었지만 내가 처음 접한 것은 그때였다.</p>
 
-</p>
-<p>리누스 토발즈는 오랫동안 그렇게 일해 왔고 그 경험을 살려 Git을 만들었다. 이제는 Git(Mercurial, SVN, 등등) 덕에 많은 것이 자동화됐다.
+<p>과거에는 오픈소스 프로젝트를 <a href="http://kldp.org/node/28938">diff와 patch</a>로 개발했다. 코드를 수정하고 diff 프로그램으로 델타를 만들어서 메일로 보내면 관리자는 그 델타를 받아서 patch 프로그램으로 메인 코드에 적용했다. 비교할 수는 없지만, 선구자들은 우리가 git과 github을 통해서 하는 일들을 <a href="http://kldp.org/node/28938">diff와 patch</a>, 메일, 웹, ftp 같은 것으로 해냈다.</p>
 
-</p>
-<p>코드를 수정해서 github나 어딘가에 올리고 알려주면 그대로 가져가 적용할 수 있다. 메일로 보내는 방법도 아직 유효하고 git-am 같이 mailbox를 이용하는 Command가 내장돼 있어 더욱 편리하다.
+<p>리누스 토발즈는 오랫동안 그렇게 일해 왔고 그 경험을 살려 Git을 만들었다. 이제는 Git(Mercurial, SVN, 등등) 덕에 많은 것이 자동화됐다.</p>
 
-</p>
-<p>다음 그림은 <a href="http://marklodato.github.com/visual-git-guide/index-ko.html">Visual Git Guide</a>의 그림으로 <code>git diff</code> 명령을 설명하는 그림이다. VCS 없이 델타를 구할 생각을 하면 정말 끔찍하다. VCS 없이 코드를 공유했던 사람들은 정말 존경스럽다.
+<p>코드를 수정해서 github나 어딘가에 올리고 알려주면 그대로 가져가 적용할 수 있다. 메일로 보내는 방법도 아직 유효하고 git-am 같이 mailbox를 이용하는 Command가 내장돼 있어 더욱 편리하다.</p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a>
+<p>다음 그림은 <a href="http://marklodato.github.com/visual-git-guide/index-ko.html">Visual Git Guide</a>의 그림으로 <code>git diff</code> 명령을 설명하는 그림이다. VCS 없이 델타를 구할 생각을 하면 정말 끔찍하다. VCS 없이 코드를 공유했던 사람들은 정말 존경스럽다.</p>
 
-</p>
+<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+
 <h2>Git의 저장 방식</h2>
-<p>히스토리는 개념적으로 스냅샷의 연속이자 델타의 연속이기도 하다. Git은 각 시점의 스냅샷을 저장하기도 하지만 그 스냅샷 사이의 델타를 저장하기도 한다.
 
-</p>
-<p>커밋을 하면 그 시점의 스냅샷이 저장되는 것이고 그 커밋과 부모의 커밋을 비교(diff)하면 델타를 얻을 수 있다. 커밋은 영구적으로 저장하는 것이기 때문에 언제든지 Checkout해서 그 시점의 스냅샷을 얻을 수 있고 비교해서(diff) 델타를 얻을 수도 있다.
+<p>히스토리는 개념적으로 스냅샷의 연속이자 델타의 연속이기도 하다. Git은 각 시점의 스냅샷을 저장하기도 하지만 그 스냅샷 사이의 델타를 저장하기도 한다.</p>
 
-</p>
-<p>우리가 커밋을 하면 Git은 기본적으로 스냅샷을 저장한다. 이 말의 뜻은 snapshot.txt 파일을 처음 커밋하면 rev1에 snapshot.txt 파일이 저장된다. 그리고 그 파일을 수정해서 다시 커밋하면 rev2가 저장된다. 이때 rev2에 수정한 파일이 통째로 저장된다. <code>.git</code> 저장소에 rev1 때의 snapshot.txt 파일과 rev2 때의 snapshot.txt 파일이 통째로 저장된다.
+<p>커밋을 하면 그 시점의 스냅샷이 저장되는 것이고 그 커밋과 부모의 커밋을 비교(diff)하면 델타를 얻을 수 있다. 커밋은 영구적으로 저장하는 것이기 때문에 언제든지 Checkout해서 그 시점의 스냅샷을 얻을 수 있고 비교해서(diff) 델타를 얻을 수도 있다.</p>
 
-</p>
-<p>이것을 그림으로 표현하면 다음과 같다:
+<p>우리가 커밋을 하면 Git은 기본적으로 스냅샷을 저장한다. 이 말의 뜻은 snapshot.txt 파일을 처음 커밋하면 rev1에 snapshot.txt 파일이 저장된다. 그리고 그 파일을 수정해서 다시 커밋하면 rev2가 저장된다. 이때 rev2에 수정한 파일이 통째로 저장된다. <code>.git</code> 저장소에 rev1 때의 snapshot.txt 파일과 rev2 때의 snapshot.txt 파일이 통째로 저장된다.</p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot">
+<p>이것을 그림으로 표현하면 다음과 같다:</p>
 
-</p>
-<p>이 방식으로 저장하면 1k 짜리를 한 글자씩 고쳐서 10번 수정하면 10k가 된다. Git은 처음에는 성능과 편리성을 위해 이 방식으로 저장하고 적절한 시점에 GC(Garbage Collection)가 실행되면 다음과 같이 저장한다:
+<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot"></p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta">
+<p>이 방식으로 저장하면 1k 짜리를 한 글자씩 고쳐서 10번 수정하면 10k가 된다. Git은 처음에는 성능과 편리성을 위해 이 방식으로 저장하고 적절한 시점에 GC(Garbage Collection)가 실행되면 다음과 같이 저장한다:</p>
 
-</p>
-<p>마지막 버전의 파일 하나만 통째로 저장하고 이전 버전들은 델타(diff 파일)를 저장한다. 이 그림에서 rev6를 요구하면 rev6의 파일을 그대로 반환한다. 하지만, rev4를 요구하면 rev6 파일에 rev5, rev4의 델타를 적용해서 반환한다.
+<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta"></p>
 
-</p>
-<p>마지막 버전의 파일이 스냅샷인 이유는 우리가 질의하는 파일은 대부분 마지막 버전의 파일이기 때문이다. 평소에는 델타를 적용할 필요가 없어서 빠르다. Git을 정말 꼼꼼하게 설계했음을 보여주는 대목이다.
+<p>마지막 버전의 파일 하나만 통째로 저장하고 이전 버전들은 델타(diff 파일)를 저장한다. 이 그림에서 rev6를 요구하면 rev6의 파일을 그대로 반환한다. 하지만, rev4를 요구하면 rev6 파일에 rev5, rev4의 델타를 적용해서 반환한다.</p>
 
-</p>
-<p>이렇게 저장하기 때문에 1k 짜리를 한 글자씩 10번 수정해서 커밋해도 거의 1k이다. GC가 수행되면 이렇게 델타로 저장할 뿐만 아니라 gzip으로 압축하기 때문에 실제로 저장하는 용량은 더욱 적다. Git은 이런 기법을 통해서 '<a href="http://pismute.github.com/whygitisbetter">저장소 크기가 가장 작다</a>'라고 주장한다.
+<p>마지막 버전의 파일이 스냅샷인 이유는 우리가 질의하는 파일은 대부분 마지막 버전의 파일이기 때문이다. 평소에는 델타를 적용할 필요가 없어서 빠르다. Git을 정말 꼼꼼하게 설계했음을 보여주는 대목이다.</p>
 
-</p>
-<p>우리가 종종 Git과 비교하는 Mercurial도 델타로 저장한다. 다음 그림은 Mercurial이 저장하는 방식이다:
+<p>이렇게 저장하기 때문에 1k 짜리를 한 글자씩 10번 수정해서 커밋해도 거의 1k이다. GC가 수행되면 이렇게 델타로 저장할 뿐만 아니라 gzip으로 압축하기 때문에 실제로 저장하는 용량은 더욱 적다. Git은 이런 기법을 통해서 &lsquo;<a href="http://pismute.github.com/whygitisbetter">저장소 크기가 가장 작다</a>'라고 주장한다.</p>
 
-</p>
-<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta">
+<p>우리가 종종 Git과 비교하는 Mercurial도 델타로 저장한다. 다음 그림은 Mercurial이 저장하는 방식이다:</p>
 
-</p>
-<p>Mercurial은 처음에 스냅샷을 저장하고 그다음 버전부터는 델타를 저장한다. 그래서 최신 버전의 파일이 요구하면 첫 스냅샷 파일과 최근까지의 델타를 적용해서 반환한다<a href="http://pycon-hg-git.heroku.com/">2</a>.
+<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta"></p>
 
-</p>
-<h2>델타의 적용: Merge, Rebase, Cherry-pick, ...</h2>
-<p>Git의 그 수 많은 명령어는 우리가 과거에 수동으로 했던 diff & patch 작업을 자동/반자동으로 해주는 것이라고 이해할 수 있다.
+<p>Mercurial은 처음에 스냅샷을 저장하고 그다음 버전부터는 델타를 저장한다. 그래서 최신 버전의 파일이 요구하면 첫 스냅샷 파일과 최근까지의 델타를 적용해서 반환한다<a href="http://pycon-hg-git.heroku.com/">2</a>.</p>
 
-</p>
-<p><strong>Merge</strong>:
+<h2>델타의 적용: Merge, Rebase, Cherry-pick, &hellip;</h2>
 
-</p>
-<p>Branch를 만들면 Merge Base를 자동으로 기록했다가 나중에 Merge를 하면 두 스냅샷을 기준으로 diff 프로그램을 이용해서 델타를 만들고 한쪽 브랜치에 patch 프로그램으로 적용하는 것과 같다. Merge는 이런 과정이고 Git의 Merge는 그동안 수동으로 했었어야 했던 일을 자동으로 해준다.
+<p>Git의 그 수 많은 명령어는 우리가 과거에 수동으로 했던 diff & patch 작업을 자동/반자동으로 해주는 것이라고 이해할 수 있다.</p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a>
+<p><strong>Merge</strong>:</p>
 
-</p>
-<p>SVN의 Merge도 결국 이런 것인데 SVN의 경우는 Merge Base를 자동으로 기록해주지 않아서 사람이 수동으로 메모했다가 Merge해야 하고 2-way Merge와 3-way Merge의 차이도 있다.
+<p>Branch를 만들면 Merge Base를 자동으로 기록했다가 나중에 Merge를 하면 두 스냅샷을 기준으로 diff 프로그램을 이용해서 델타를 만들고 한쪽 브랜치에 patch 프로그램으로 적용하는 것과 같다. Merge는 이런 과정이고 Git의 Merge는 그동안 수동으로 했었어야 했던 일을 자동으로 해준다.</p>
 
-</p>
-<p><strong>Rebase</strong>:
+<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 
-</p>
-<p>Rebase는 Merge와 비슷하다. 델타를 만들어 적용하는 것은 같지만 히스토리를 구성하는 게 다르다. Merge 커밋을 만드는 것이 아니라 한쪽 브랜치를 <code>base</code>로 만든다. 커밋 순서를 배열한다고 생각하면 된다.
+<p>SVN의 Merge도 결국 이런 것인데 SVN의 경우는 Merge Base를 자동으로 기록해주지 않아서 사람이 수동으로 메모했다가 Merge해야 하고 2-way Merge와 3-way Merge의 차이도 있다.</p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a>
+<p><strong>Rebase</strong>:</p>
 
-</p>
-<p><strong>Cherry-pick</strong>:
+<p>Rebase는 Merge와 비슷하다. 델타를 만들어 적용하는 것은 같지만 히스토리를 구성하는 게 다르다. Merge 커밋을 만드는 것이 아니라 한쪽 브랜치를 <code>base</code>로 만든다. 커밋 순서를 배열한다고 생각하면 된다.</p>
 
-</p>
-<p>Cherry-pick은 특정 커밋과 그 커밋의 부모와의 델타를 구해서(그러니까 해당 커밋의 델타만) 현 브랜치에 적용하는 것이다. 고른 커밋 하나에 대해서만 Rebase하는 것이다:
+<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 
-</p>
-<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a>
+<p><strong>Cherry-pick</strong>:</p>
 
+<p>Cherry-pick은 특정 커밋과 그 커밋의 부모와의 델타를 구해서(그러니까 해당 커밋의 델타만) 현 브랜치에 적용하는 것이다. 고른 커밋 하나에 대해서만 Rebase하는 것이다:</p>
 
-</p>
+<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 ]]>
 </content></entry><entry><title><![CDATA[ Meteor: Learn Meteor Fundamentals and Best Practices ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html" /><updated>2012-08-18T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices.html</id><content type="html"><![CDATA[
-<p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.
+<p>이 글은 <a href="https://twitter.com/agscala">@agscala</a>의 <a href="http://andrewscala.com/meteor/">Learn Meteor Fundamentals and Best Practices</a>를 번역한 것이다. <a href="http://meteor.com/">Meteor</a>를 처음 접할 때 좋은 것 같아 번역하였다. <a href="http://docs.meteor.com/">Meter 공식 문서</a>는 아직 설명이 부족해 어렵다.</p>
 
-</p>
-<p><img src="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt=""> <strong>Andrew Scala</strong>
+<p><img src="http://dogfeet.github.com/articles/2012/meteor-fundametals-and-best-practices/agscala.jpeg" alt=""> <strong>Andrew Scala</strong></p>
 
-</p>
 <h2>Introduction</h2>
-<p>이 새롭고 기괴한 <a href="http://meteor.com/">Meteor</a>가 어떻게 동작하는지 알고 싶어 왔는가? 그레이트, 제대로 왔다. 내가 Meteor 프로젝트가 어떻게 생겼는지 보여주고 Meteor 애플리케이션을 만들 때 꼭 기억해야 하는 비법(Best Practices)을 알려 주겠다.
 
-</p>
+<p>이 새롭고 기괴한 <a href="http://meteor.com/">Meteor</a>가 어떻게 동작하는지 알고 싶어 왔는가? 그레이트, 제대로 왔다. 내가 Meteor 프로젝트가 어떻게 생겼는지 보여주고 Meteor 애플리케이션을 만들 때 꼭 기억해야 하는 비법(Best Practices)을 알려 주겠다.</p>
+
 <h2>What is Meteor?</h2>
-<p>Meteor에서는 적은 코드로도 엄청난 양의 동적 페이지가 시전된다(create). Meteor는 아직 Beta이고 이 글을 쓰는 시점에서 Meteor는 <code>preview 0.3.8</code> 버전에 불과하다. 그러니 이 글의 내용이 동작하지 않더라도 쫄지 말자.
 
-</p>
-<p>Meteor는 <a href="http://nodejs.org/">Node.js</a>에서 Javascript로 만들었다. 그래서 우리가 만드는 Meteor 앱도 Javascript로 만들어야 한다. Javascript 공력이 부족하면 <a href="http://bonsaiden.github.com/JavaScript-Garden/ko/">Javascript Garden</a>을 보라. Javscript 내공을 증진하는데 매우 좋다.
+<p>Meteor에서는 적은 코드로도 엄청난 양의 동적 페이지가 시전된다(create). Meteor는 아직 Beta이고 이 글을 쓰는 시점에서 Meteor는 <code>preview 0.3.8</code> 버전에 불과하다. 그러니 이 글의 내용이 동작하지 않더라도 쫄지 말자.</p>
 
-</p>
-<p>Meteor는 <a href="http://www.mongodb.org/">MongoDB</a>를 사용해서 데이터를 저장한다. Meteor는 MongoDB를 직접 쓰지 않고 Minimongo라는 인터페이스를 사용한다. Minimongo는 MongoDB 인터페이스를 많이 지원하지만, 아직 전부 지원하지 못한다. MongoDB가 정확히 어떻게 동작하는지 알 필요는 없지만 적어도 Meteor의 <a href="http://docs.meteor.com/#collections">컬랙션 문서</a>는 보는 게 좋다. 어떻게 해야 하는지 알려준다.
+<p>Meteor는 <a href="http://nodejs.org/">Node.js</a>에서 Javascript로 만들었다. 그래서 우리가 만드는 Meteor 앱도 Javascript로 만들어야 한다. Javascript 공력이 부족하면 <a href="http://bonsaiden.github.com/JavaScript-Garden/ko/">Javascript Garden</a>을 보라. Javscript 내공을 증진하는데 매우 좋다.</p>
 
-</p>
-<p>메테오는 현재 <a href="http://handlebarsjs.com/">handlebars</a>을 템플릿 엔진으로 사용한다. 아직은 handlebars밖에 사용할 수 없지만, 조만간에 다른 문파의 템플릿 엔진도 사용할 수 있는 날이 올 것이다.
+<p>Meteor는 <a href="http://www.mongodb.org/">MongoDB</a>를 사용해서 데이터를 저장한다. Meteor는 MongoDB를 직접 쓰지 않고 Minimongo라는 인터페이스를 사용한다. Minimongo는 MongoDB 인터페이스를 많이 지원하지만, 아직 전부 지원하지 못한다. MongoDB가 정확히 어떻게 동작하는지 알 필요는 없지만 적어도 Meteor의 <a href="http://docs.meteor.com/#collections">컬랙션 문서</a>는 보는 게 좋다. 어떻게 해야 하는지 알려준다.</p>
 
-</p>
-<p>어찌 됐건 우리는 계속 웹사이트를 만들고 있을 테니 HTML과 CSS의 고수도 돼야 한다.
+<p>메테오는 현재 <a href="http://handlebarsjs.com/">handlebars</a>을 템플릿 엔진으로 사용한다. 아직은 handlebars밖에 사용할 수 없지만, 조만간에 다른 문파의 템플릿 엔진도 사용할 수 있는 날이 올 것이다.</p>
 
-</p>
+<p>어찌 됐건 우리는 계속 웹사이트를 만들고 있을 테니 HTML과 CSS의 고수도 돼야 한다.</p>
+
 <h2>The Basics</h2>
-<p>Meteor 프로젝트는 대부분 Javascript 파일로 구성된다. 프로젝트 디렉토리 중 아무 데나 <code>*.js</code> 파일을 두면 Meteor가 자동으로 로드해서 실행한다. Meteor 프로젝트에 있는 모든 Javascript 파일은 서버와 클라이언트에 모두 배포된다(꼭 그런 것은 아니고 제외하는 방법이 있다). 이것은 Meteor의 절대 무공(really cool) 중에 하나다. 우리는 모든 것을 Javascript로 개발하고 코드를 한 번만 시전해도(write) 서버와 클라이언트 양쪽에서 사용할 수 있다.
 
-</p>
-<p>또 다른 Meteor만의 독문 무공으로 <code>*.less</code> 파일을 프로젝트 디렉토리 중 어디엔가 두면 Meteor가 자동으로 컴파일하고 클라이언트에 전송해서 페이지에 포함한다.
+<p>Meteor 프로젝트는 대부분 Javascript 파일로 구성된다. 프로젝트 디렉토리 중 아무 데나 <code>*.js</code> 파일을 두면 Meteor가 자동으로 로드해서 실행한다. Meteor 프로젝트에 있는 모든 Javascript 파일은 서버와 클라이언트에 모두 배포된다(꼭 그런 것은 아니고 제외하는 방법이 있다). 이것은 Meteor의 절대 무공(really cool) 중에 하나다. 우리는 모든 것을 Javascript로 개발하고 코드를 한 번만 시전해도(write) 서버와 클라이언트 양쪽에서 사용할 수 있다.</p>
 
-</p>
-<p>그것뿐만 아니라 Meteor 서버 코드와 클라이언트 코드를 구분하는 방법도 제공한다. <code>Meteor.is_server</code>와 <code>Meteor.is_client</code> 플래그로 구분할 수 있다.
+<p>또 다른 Meteor만의 독문 무공으로 <code>*.less</code> 파일을 프로젝트 디렉토리 중 어디엔가 두면 Meteor가 자동으로 컴파일하고 클라이언트에 전송해서 페이지에 포함한다.</p>
 
-</p>
-<p>다음은 서버코드와 클라이언트 코드를 구분하는 예제다. 브라우저의 Javascript 콘솔에 "Hi. I'm CLIENT"이라는 로그가 찍히고 Meteor 서버에는 "Hi. I'm SERVER"라고 출력된다.
+<p>그것뿐만 아니라 Meteor 서버 코드와 클라이언트 코드를 구분하는 방법도 제공한다. <code>Meteor.is_server</code>와 <code>Meteor.is_client</code> 플래그로 구분할 수 있다.</p>
 
-</p>
+<p>다음은 서버코드와 클라이언트 코드를 구분하는 예제다. 브라우저의 Javascript 콘솔에 &ldquo;Hi. I&rsquo;m CLIENT&quot;이라는 로그가 찍히고 Meteor 서버에는 &quot;Hi. I&rsquo;m SERVER&quot;라고 출력된다.</p>
 <pre><code class="lang-javascript"><span class="comment">// This function is available on both the client and the server.</span>
 <span class="keyword">var</span> greet = <span class="keyword">function</span>(name) {
     console.log(<span class="string">"Hi. I'm "</span> + name);
@@ -1348,26 +1214,25 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <span class="comment">// Everything in here is only run on the client.</span>
 <span class="keyword">if</span>(Meteor.is_client) {
     greet(<span class="string">"CLIENT"</span>);
-}</code></pre>
-<p>정말 간단하다. 클라이언트와 서버는 코드를 공유하기 쉬워서 재사용성을 극대화할 수 있고 개발 시간이 극적으로 줄어든다.
+}
+</code></pre>
+<p>정말 간단하다. 클라이언트와 서버는 코드를 공유하기 쉬워서 재사용성을 극대화할 수 있고 개발 시간이 극적으로 줄어든다.</p>
 
-</p>
 <h2>Project Structure</h2>
-<p>클라이언트와 서버랑 공유하지 않는 코드가 많으면 어떻게 할까. 가문의 독문(private) 알고리즘이 있으면 서버에서만 실행돼야 하고 절대 다른 사람이 보면 안 되니까 클라이언트에 전송되면 안 된다. Meteor는 서버와 클라이언트 코드를 구분하는 "특별" 디렉토리가 두 개 있다. <code>[project_root]/client/</code>와 <code>[project_root]/server/</code>가 그것이다. server 디렉토리에 있는 Javascript는 클라이언트에 전송되지 않고 서버에서만 실행된다. 반대로 client 디렉토리에 있는 코드는 클라이언트에서만 실행된다. <code>Meteor.is_client</code>와 <code>Meteor.is_server</code>를 안 써도 되기 때문에 매우 편리하다. 그냥 코드를 client 디렉토리에 넣으면 클라이언트 코드가 된다.
 
-</p>
-<p>파일이 어떻게 로드되는지 알려면 다른 것보다 일단 프로젝트 구조를 알아야 한다. 파일이 두 개 있을 때 어떤 파일이 먼저 로드될까? 다음과 같은 순서로 Javascript 파일을 로드한다.
+<p>클라이언트와 서버랑 공유하지 않는 코드가 많으면 어떻게 할까. 가문의 독문(private) 알고리즘이 있으면 서버에서만 실행돼야 하고 절대 다른 사람이 보면 안 되니까 클라이언트에 전송되면 안 된다. Meteor는 서버와 클라이언트 코드를 구분하는 &quot;특별&rdquo; 디렉토리가 두 개 있다. <code>[project_root]/client/</code>와 <code>[project_root]/server/</code>가 그것이다. server 디렉토리에 있는 Javascript는 클라이언트에 전송되지 않고 서버에서만 실행된다. 반대로 client 디렉토리에 있는 코드는 클라이언트에서만 실행된다. <code>Meteor.is_client</code>와 <code>Meteor.is_server</code>를 안 써도 되기 때문에 매우 편리하다. 그냥 코드를 client 디렉토리에 넣으면 클라이언트 코드가 된다.</p>
 
-</p>
+<p>파일이 어떻게 로드되는지 알려면 다른 것보다 일단 프로젝트 구조를 알아야 한다. 파일이 두 개 있을 때 어떤 파일이 먼저 로드될까? 다음과 같은 순서로 Javascript 파일을 로드한다.</p>
+
 <ol>
 <li><code>[project_root]/lib</code>의 파일이 먼저 로드된다. 라이브러리는 이 디렉토리에 넣는다.</li>
 <li>디렉토리 깊이로 파일을 정렬해서 로드한다. 디렉토리 깊이가 깊은 게 먼저 로드된다.</li>
 <li>파일은 알파벳 순으로 정렬한다.</li>
 <li><code>main.*</code> 파일은 마지막에 로드한다. 다른 스크립트와 라이브러리가 모두 로드되고 나서 로드돼야 하는 코드에 적합하다.</li>
 </ol>
-<p>Meteor에는 client/sever 코드를 구분하고 로드 순서를 관리하는데 몇 가지 중요한 디렉토리가 있다:
 
-</p>
+<p>Meteor에는 client/sever 코드를 구분하고 로드 순서를 관리하는데 몇 가지 중요한 디렉토리가 있다:</p>
+
 <ul>
 <li><code>[project_root]/lib/</code> - 이 디렉토리에 있는 파일은 client/server 코드가 시작하기 전에 로드된다.</li>
 <li><code>[project_root]/client/</code> - 이 디렉토리에 있는 파일은 클라이언트인 브라우저에만 전송되고 서버에서는 실행할 수 없다.</li>
@@ -1375,36 +1240,32 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
 <li><code>[project_root]/public/</code> - 정적 파일은 이 디렉토리에 넣는다. image.jpg를 이 디렉토리에 넣고 바로 html에서 사용한다.</li>
 <li><code>[project_root]/.meteor/</code> - Meteor는 사용하는 모듈이 무었인지 등등의 프로젝트 관리 정보를 여기에 둔다. <strong>개발자가 직접 이 디렉토리를 건드리지 않아도 된다</strong>.</li>
 </ul>
+
 <h2>Reactivity</h2>
-<p>Meteor는 데이터가 변경되면 화면에 다시 반영해야 하는 노력을 줄여 준다. "Reactive" 데이터 소스와 컨텍스트를 사용해서 구현한다. Reactive 컨텍스트는 Reactive 데이터 소스를 사용하고 필요하면 다시 실행되는 함수다. 처음에는 이 말을 받아들이는 게 쉽지 않을 것이다. 다음 예제가 명백하게 해줄 것이다.
 
-</p>
-<p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.
+<p>Meteor는 데이터가 변경되면 화면에 다시 반영해야 하는 노력을 줄여 준다. &ldquo;Reactive&rdquo; 데이터 소스와 컨텍스트를 사용해서 구현한다. Reactive 컨텍스트는 Reactive 데이터 소스를 사용하고 필요하면 다시 실행되는 함수다. 처음에는 이 말을 받아들이는 게 쉽지 않을 것이다. 다음 예제가 명백하게 해줄 것이다.</p>
 
-</p>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.</p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
   <span class="tag">&lt;<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
   <span class="tag">&lt;<span class="title">body</span>&gt;</span>
     <span class="variable">{{&gt; cool_dude }}</span>
   <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre>
-<pre><code class="lang-html"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><pre><code><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"cool_dude"</span>&gt;</span>
   <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"important"</span>&gt;</span><span class="variable">{{ name }}</span> sure is one cool dude!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">template</span>&gt;</span></code></pre>
-<pre><code class="lang-javascript"><span class="comment">// On the client:</span>
+<span class="tag">&lt;/<span class="title">template</span>&gt;</span>
+</code></pre><pre><code class="lang-javascript"><span class="comment">// On the client:</span>
 Template.cool_dude.name = <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="string">"Andrew Scala"</span>;
-};</code></pre>
-<p>페이지를 렌더링하면 "Andrew Scala sure is one cool dude!"라고 출력된다. 뭐, 참말이다.
+};
+</code></pre>
+<p>페이지를 렌더링하면 &ldquo;Andrew Scala sure is one cool dude!&quot;라고 출력된다. 뭐, 참말이다.</p>
 
-</p>
-<p>템플릿은 Reactive 컨텍스트다. 템플릿을 렌더링할 때 Reactive 데이터 소스를 사용하면 그 데이터 소스가 변경될 때 다시 렌더링한다. 클라이언트의 <code>Session</code> 객체는 Reactive 데이터 소스다. 클라이언트 <code>Session</code> 객체는 키-밸류 형태로 클라이언트에 정보를 저장한다. 그리고 페이지가 새로 고쳐지면 날아간다.
+<p>템플릿은 Reactive 컨텍스트다. 템플릿을 렌더링할 때 Reactive 데이터 소스를 사용하면 그 데이터 소스가 변경될 때 다시 렌더링한다. 클라이언트의 <code>Session</code> 객체는 Reactive 데이터 소스다. 클라이언트 <code>Session</code> 객체는 키-밸류 형태로 클라이언트에 정보를 저장한다. 그리고 페이지가 새로 고쳐지면 날아간다.</p>
 
-</p>
-<p>Reactive 데이터 소스를 사용해서 템플릿 컨텍스트를 변경해보자:
-
-</p>
+<p>Reactive 데이터 소스를 사용해서 템플릿 컨텍스트를 변경해보자:</p>
 <pre><code class="lang-javascript"><span class="comment">// When the app starts,</span>
 <span class="comment">// associate the key "username" with the string "Andrew Scala"</span>
 Meteor.startup(<span class="keyword">function</span>() {
@@ -1413,33 +1274,26 @@ Meteor.startup(<span class="keyword">function</span>() {
 
 Template.cool_dude.name = <span class="keyword">function</span>() {
     <span class="keyword">return</span> Session.get(<span class="string">"username"</span>);
-};</code></pre>
-<p>템플릿은 Session에 있는 <code>&quot;username&quot;</code>의 값을 가져다가 템플릿 변수 <code>name</code>에 넣는다. 이제 Reactive 컨텍스트에 Reactive 데이터 소스가 있는 상태가 됐다. Session의 <code>&quot;username&quot;</code> 값이 변하면 템플릿은 새 값을 이용해서 자동으로 다시 렌더링힌다. <code>&quot;username&quot;</code> 값을 바꿔보자:
+};
+</code></pre>
+<p>템플릿은 Session에 있는 <code>&quot;username&quot;</code>의 값을 가져다가 템플릿 변수 <code>name</code>에 넣는다. 이제 Reactive 컨텍스트에 Reactive 데이터 소스가 있는 상태가 됐다. Session의 <code>&quot;username&quot;</code> 값이 변하면 템플릿은 새 값을 이용해서 자동으로 다시 렌더링힌다. <code>&quot;username&quot;</code> 값을 바꿔보자:</p>
+<pre><code class="lang-javascript">Session.set(<span class="string">"username"</span>, <span class="string">"Bill Murray"</span>);
+</code></pre>
+<p>이 함수를 호출하자마자(어디서 호출하던 위치는 상관없다) 페이지는 &quot;Bill Murray sure is one cool dude!&quot;로 변경된다. 뭐, 이 말도 참말이다.</p>
 
-</p>
-<pre><code class="lang-javascript">Session.set(<span class="string">"username"</span>, <span class="string">"Bill Murray"</span>);</code></pre>
-<p>이 함수를 호출하자마자(어디서 호출하던 위치는 상관없다) 페이지는 "Bill Murray sure is one cool dude!"로 변경된다. 뭐, 이 말도 참말이다.
+<p>Reactive 컨텍스트와 데이터 소스가 궁금하면 Meteor의 <a href="http://docs.meteor.com/#reactivity">Reactivity 문서</a>를 봐라.</p>
 
-</p>
-<p>Reactive 컨텍스트와 데이터 소스가 궁금하면 Meteor의 <a href="http://docs.meteor.com/#reactivity">Reactivity 문서</a>를 봐라.
-
-</p>
 <h2>Publish/Subscribe</h2>
-<p><strong><em>Note:</em></strong> 프로젝트 루트 디렉토리에서 <code>$ meteor remove autopublish</code>를 꼭 실행해야 한다. Meteor는 기본적으로 모든 데이터를 Publish하는데 이 것은 사파의 사술이다(poor practice).
 
-</p>
-<p>서버는 클라이언트가 사용할 데이터를 Publish하고 클라이언트는 그 데이터를 Subscribe한다. 처음부터 서버가 데이터를 Publish하고 클라이언트가 Subscribe하는 관계를 이해하긴 어렵다. 
+<p><strong><em>Note:</em></strong> 프로젝트 루트 디렉토리에서 <code>$ meteor remove autopublish</code>를 꼭 실행해야 한다. Meteor는 기본적으로 모든 데이터를 Publish하는데 이 것은 사파의 사술이다(poor practice).</p>
 
-</p>
-<p>경험에 의하면 **
+<p>서버는 클라이언트가 사용할 데이터를 Publish하고 클라이언트는 그 데이터를 Subscribe한다. 처음부터 서버가 데이터를 Publish하고 클라이언트가 Subscribe하는 관계를 이해하긴 어렵다. </p>
 
-</p>
-<p>채팅 프로그램이라면 클라이언트는 자기가 참여 중인 채널에서만 메시지를 받아야지 다른 체널의 메시지를 받지 않아야 한다. 사용자 정보도 마찬가지다.
+<p>경험에 의하면 **</p>
 
-</p>
-<p>다음 예제는 좀 엉성하다. 클라이언트는 데이터베이스의 모든 메시지를 받는다:
+<p>채팅 프로그램이라면 클라이언트는 자기가 참여 중인 채널에서만 메시지를 받아야지 다른 체널의 메시지를 받지 않아야 한다. 사용자 정보도 마찬가지다.</p>
 
-</p>
+<p>다음 예제는 좀 엉성하다. 클라이언트는 데이터베이스의 모든 메시지를 받는다:</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> Messages = <span class="keyword">new</span> Meteor.Collection(<span class="string">"messages"</span>);
 
 <span class="keyword">if</span>(Meteor.is_server) {
@@ -1450,16 +1304,13 @@ Template.cool_dude.name = <span class="keyword">function</span>() {
 
 <span class="keyword">if</span>(Meteor.is_client) {
     Meteor.subscribe(<span class="string">"messages"</span>);
-}</code></pre>
-<p>클라이언트는 이제 <code>Messages.find({})</code>를 호출해서 데이터베이스의 모든 메시지를 볼 수 있다. 저질(Bad).
+}
+</code></pre>
+<p>클라이언트는 이제 <code>Messages.find({})</code>를 호출해서 데이터베이스의 모든 메시지를 볼 수 있다. 저질(Bad).</p>
 
-</p>
-<p>(역주, 클라이언트에서 실행하는 find()는 서버에 요청하지 않고 Minimongo 캐시에서 찾는다. 그러니까, 서버에서 Publish한 데이터는 자동으로 로컬에 캐시되고, 클라이언트에서 find()를 실행하면 그 캐시에서 찾는 구조다. )
+<p>(역주, 클라이언트에서 실행하는 find()는 서버에 요청하지 않고 Minimongo 캐시에서 찾는다. 그러니까, 서버에서 Publish한 데이터는 자동으로 로컬에 캐시되고, 클라이언트에서 find()를 실행하면 그 캐시에서 찾는 구조다. )</p>
 
-</p>
-<p>Subscribe할 때 파라미터를 명시하면 이 문제를 해결할 수 있다. 모든 메시지에 대해서 Subscribe하는 것이 아니라 실질적으로 필요한 것만 Subscribe한다. <code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 받게 고쳐보자:
-
-</p>
+<p>Subscribe할 때 파라미터를 명시하면 이 문제를 해결할 수 있다. 모든 메시지에 대해서 Subscribe하는 것이 아니라 실질적으로 필요한 것만 Subscribe한다. <code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 받게 고쳐보자:</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> Messages = <span class="keyword">new</span> Meteor.Collection(<span class="string">"messages"</span>);
 
 <span class="keyword">if</span>(Meteor.is_server) {
@@ -1470,13 +1321,11 @@ Template.cool_dude.name = <span class="keyword">function</span>() {
 
 <span class="keyword">if</span>(Meteor.is_client) {
     Meteor.subscribe(<span class="string">"messages"</span>, <span class="string">"cool_people_channel"</span>);
-}</code></pre>
-<p>이제 클라이언트가 연결하고 메시지를 가져올 때 <code>&quot;cool_people_channel&quot;</code> 채널에 있는 것만 가져온다.
+}
+</code></pre>
+<p>이제 클라이언트가 연결하고 메시지를 가져올 때 <code>&quot;cool_people_channel&quot;</code> 채널에 있는 것만 가져온다.</p>
 
-</p>
-<p><code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 보는 것으로는 충분하지 않다. 다른 채널의 메시지도 이용할 수 있어야 한다. Meteor의 "Reactivity" 이용하면 Session 값에 따라서 동적으로 Subscibe하도록 만들 수 있다.
-
-</p>
+<p><code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 보는 것으로는 충분하지 않다. 다른 채널의 메시지도 이용할 수 있어야 한다. Meteor의 &quot;Reactivity&rdquo; 이용하면 Session 값에 따라서 동적으로 Subscibe하도록 만들 수 있다.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> Messages = <span class="keyword">new</span> Meteor.Collection(<span class="string">"messages"</span>);
 
 <span class="keyword">if</span>(Meteor.is_server) {
@@ -1491,20 +1340,17 @@ Template.cool_dude.name = <span class="keyword">function</span>() {
     Meteor.autosubscribe(<span class="keyword">function</span>() {
         Meteor.subscribe(<span class="string">"messages"</span>, Session.get(<span class="string">"current_channel"</span>));
     });
-}</code></pre>
-<p><a href="http://docs.meteor.com/#Meteor_autosubscribe">Meteor.autosubscribe</a>는 Reactive 컨텍스트다. 그래서 그 안에서 사용한 Reactive 데이터 소스가 변경되면 다시 실행된다. <code>&quot;current_channel&quot;</code>라는 Session 변수에 무슨 채널인지 저장하고 있고 그 값이 바뀌면 Subscription은 갱신되고 다른 메시지도 받게 된다. 만약 사용자가 "breakfast talk"라는 채널로 바꾸려면 <code>Session.set(&quot;current_channel&quot;, &quot;breakfast_talk&quot;)</code>라고 실행해주면 된다. 그러면 autosubscribe의 Reactive 컨텍스트 함수가 다시 실행돼서 이제는 "breakfast_talk" 채널의 메시지를 보게 된다.
+}
+</code></pre>
+<p><a href="http://docs.meteor.com/#Meteor_autosubscribe">Meteor.autosubscribe</a>는 Reactive 컨텍스트다. 그래서 그 안에서 사용한 Reactive 데이터 소스가 변경되면 다시 실행된다. <code>&quot;current_channel&quot;</code>라는 Session 변수에 무슨 채널인지 저장하고 있고 그 값이 바뀌면 Subscription은 갱신되고 다른 메시지도 받게 된다. 만약 사용자가 &ldquo;breakfast talk&quot;라는 채널로 바꾸려면 <code>Session.set(&quot;current_channel&quot;, &quot;breakfast_talk&quot;)</code>라고 실행해주면 된다. 그러면 autosubscribe의 Reactive 컨텍스트 함수가 다시 실행돼서 이제는 &quot;breakfast_talk&rdquo; 채널의 메시지를 보게 된다.</p>
 
-</p>
-<p>클라이언트에 컬렉션을 전부 Publish해야 할 때도 있을 수도 있는데 정말 그게 필요한지 한 번 더 생각해보길 바란다. 그리고 컬렉션의 도큐먼트를 전부 전송하기보다 특정 필드만 전송하는 게 더 낫다.
+<p>클라이언트에 컬렉션을 전부 Publish해야 할 때도 있을 수도 있는데 정말 그게 필요한지 한 번 더 생각해보길 바란다. 그리고 컬렉션의 도큐먼트를 전부 전송하기보다 특정 필드만 전송하는 게 더 낫다.</p>
 
-</p>
 <h2>Server Methods</h2>
-<p>클라이언트에서는 데이터베이스에 있는 데이터를 읽어오는 것 말고는 아무것도 하지 않는 것이 좋다. 그러면 클라이언트는 정보를 어떻게 저장해야 할지 궁금해진다. Meteor 서버의 <a href="http://docs.meteor.com/#methods_header">Method</a>를 사용해서 이 문제를 해결한다. 데이터를 수정하는 것과 같이 위험한 일은 꼭 Method를 이용한다. 서버에 함수를 정의하고 나서 클라이언트에서 그 함수를 호출해서 리턴 값을 받는다. 이게 핵심 아이디어다. 그러면 클라이언트에서는 그 함수가 어떻게 구현됐는지 알 수 없고 다른 방법으로 데이터를 수정하지도 않는다. 그리고 서버는 잘 동작할 것이다.
 
-</p>
-<p>서버 코드에 <code>create_user</code>라는 Method를 만든다. 이 Method는 데이터베이스에 사용자를 추가하는 Method이고 사용자 이름을 아규먼트로 받는다. 사용자를 추가하고 나중에 도큐먼트를 가져올 수 있도록 도큐먼트 ID를 반환한다. 
+<p>클라이언트에서는 데이터베이스에 있는 데이터를 읽어오는 것 말고는 아무것도 하지 않는 것이 좋다. 그러면 클라이언트는 정보를 어떻게 저장해야 할지 궁금해진다. Meteor 서버의 <a href="http://docs.meteor.com/#methods_header">Method</a>를 사용해서 이 문제를 해결한다. 데이터를 수정하는 것과 같이 위험한 일은 꼭 Method를 이용한다. 서버에 함수를 정의하고 나서 클라이언트에서 그 함수를 호출해서 리턴 값을 받는다. 이게 핵심 아이디어다. 그러면 클라이언트에서는 그 함수가 어떻게 구현됐는지 알 수 없고 다른 방법으로 데이터를 수정하지도 않는다. 그리고 서버는 잘 동작할 것이다.</p>
 
-</p>
+<p>서버 코드에 <code>create_user</code>라는 Method를 만든다. 이 Method는 데이터베이스에 사용자를 추가하는 Method이고 사용자 이름을 아규먼트로 받는다. 사용자를 추가하고 나중에 도큐먼트를 가져올 수 있도록 도큐먼트 ID를 반환한다. </p>
 <pre><code class="lang-javascript"><span class="keyword">if</span>(Meteor.is_server) {
     Meteor.methods({
         create_user: <span class="keyword">function</span>(username) {
@@ -1522,17 +1368,15 @@ Template.cool_dude.name = <span class="keyword">function</span>() {
     Meteor.call(<span class="string">"create_user"</span>, username, <span class="keyword">function</span>(error, user_id) {
         Session.set(<span class="string">"user_id"</span>, user_id);
     });
-}</code></pre>
-<p>이 예제에서, <code>user_id</code>를 받아서 클라이언트 Session에 넣는다. 그러면 user_id를 사용하는 템플릿은 자동으로 업데이트된다.
+}
+</code></pre>
+<p>이 예제에서, <code>user_id</code>를 받아서 클라이언트 Session에 넣는다. 그러면 user_id를 사용하는 템플릿은 자동으로 업데이트된다.</p>
 
-</p>
 <h2>Protecting your data</h2>
-<p>클라이언트 앱에서 Javascript 콘솔을 열고 <strong>데이터베이스 쿼리를 실행할 수 있다</strong>. 이것은 정말 구리다. Meteor 앱에 접속해서 콘솔을 열고 <code>Users.remove({})</code>라고 실행하면 사용자 데이터가 전부 날아간다.
 
-</p>
-<p>언젠가는 Meteor가 뭔가 해결책을 제시하겠지만, 지금은 그렇다. 다음은 Meteor의 <a href="http://madewith.meteor.com">madewith</a> 사이트의 [소스][<a href="https://github.com/Meteor/madewith]에서">https://github.com/Meteor/madewith]에서</a> 발췌한 것이다. 이 코드는 클라이언트에서 insert/update/remote 할 수 없게 한다. 다음 코드를 서버 쪽 아무 데나 넣으면 된다:
+<p>클라이언트 앱에서 Javascript 콘솔을 열고 <strong>데이터베이스 쿼리를 실행할 수 있다</strong>. 이것은 정말 구리다. Meteor 앱에 접속해서 콘솔을 열고 <code>Users.remove({})</code>라고 실행하면 사용자 데이터가 전부 날아간다.</p>
 
-</p>
+<p>언젠가는 Meteor가 뭔가 해결책을 제시하겠지만, 지금은 그렇다. 다음은 Meteor의 <a href="http://madewith.meteor.com">madewith</a> 사이트의 [소스][<a href="https://github.com/Meteor/madewith%5D%EC%97%90%EC%84%9C">https://github.com/Meteor/madewith]에서</a> 발췌한 것이다. 이 코드는 클라이언트에서 insert/update/remote 할 수 없게 한다. 다음 코드를 서버 쪽 아무 데나 넣으면 된다:</p>
 <pre><code class="lang-javascript"><span class="comment">// Relies on underscore.js. In your project directory:</span>
 <span class="comment">// $ meteor add underscore</span>
 Meteor.startup(<span class="keyword">function</span>() {
@@ -1543,18 +1387,16 @@ Meteor.startup(<span class="keyword">function</span>() {
             Meteor.default_server.method_handlers[<span class="string">'/'</span> + collection + <span class="string">'/'</span> + method] = <span class="keyword">function</span>() {};
         });
     });
-});</code></pre>
+});
+</code></pre>
 <h2>Stay Tuned</h2>
-<p>이것으로 Meteor 앱을 만들 준비가 다 됐을까? 기다려라. 두 번째 글, Meteor 앱을 완성하는 방법에 대한 비급을 기대하시라.
 
-</p>
-<p>이 글이 도움됐는지 알려주면 감사하겠다.
+<p>이것으로 Meteor 앱을 만들 준비가 다 됐을까? 기다려라. 두 번째 글, Meteor 앱을 완성하는 방법에 대한 비급을 기대하시라.</p>
 
-</p>
-<p>Cheers,
+<p>이 글이 도움됐는지 알려주면 감사하겠다.</p>
 
-</p>
-<p>Andrew Scala
-</p>
+<p>Cheers,</p>
+
+<p>Andrew Scala</p>
 ]]>
 </content></entry></feed>

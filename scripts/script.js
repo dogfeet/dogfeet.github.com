@@ -1,7 +1,1 @@
-(function() {
-
-  $(function() {
-    return prettyPrint();
-  });
-
-}).call(this);
+(function(){}).call(this)
