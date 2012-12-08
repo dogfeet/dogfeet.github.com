@@ -1,5 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-11-21T15:31:00.521Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ Git: rerere ]]></title><link href="http://dogfeet.github.com/articles/2012/git-rerere.html" /><updated>2012-11-22T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-rerere.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2012-12-08T07:48:33.005Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ 잘 빠진 군체 알고리즘 - flock ]]></title><link href="http://dogfeet.github.com/articles/2012/flocking-algorithm.html" /><updated>2012-12-02T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/flocking-algorithm.html</id><content type="html"><![CDATA[
+<style>
+canvas {display:block;}
+.flock {margin-left: 10px;}
+</style>
+
+<p><img src="http://dogfeet.github.com/articles/2012/flocking-algorithm/800px-Red-billed_quelea_flocking_at_waterhole.jpg" alt="flock"></p>
+
+<p><a href="http://harry.me/2011/02/17/neat-algorithms---flocking/">harry</a> 님의 사이트에서 보았던 플로킹 알고리즘(flockng algorithm)을 정리했다.(무려 2011년 2월 글이다.) 플로킹 알고리즘은 떼(flock)의 각 개체의 행동 모델이다. 각 개체는 보이드(boid)라고 부르며 이들은 세 가지 규칙을 이용해 움직인다. 이 알고리즘은 1986년에 Craig Reynolds가 낸 논문에서 처음 소개되었다. 원래 알고리즘은 <a href="http://www.red3d.com/cwr/boids/">여기서</a> 볼 수 있다. 그는 이 모델을 이용해 새 떼나 물고기 떼 등을 시뮬레이션했으며 배트맨 리턴즈의 박쥐 떼가 날아다니는 영상, 소셜 네트워크에서 의견의 흐름을 시뮬레이션해서 미래 의견을 예측하거나 분산 시스템에서도 이용되었다고 한다. 어디에서 쓰였는지는 링크를 확인하고 알고리즘이 어떻게 동작하는지 보자.</p>
+
+<h2>예제 먼저</h2>
+
+<div class="flock" id="prettyDemo"></div>
+
+<p>옆의 버튼을 눌러서 한 보이드에 대한 자세한 정보와 그 범례를 볼 수 있다. : <button class="awesome" id="decorateDemo">Undecorate</button></p>
+
+<p>구현은 harry 사이트의 것을 그대로 가져왔다. Coffee Script로 이루어져 있으며 HTML5의 canvas를 이용해서 애니메이션 데모를 보여준다. 따라서 애니메이션 데모를 보고 싶다면 canvas가 지원되는 브라우저로 들어오기를 바란다.  애니메이션은 <a href="http://processingjs.org/">ProcessingJS</a>를 이용해서 이루어진다. (ProcessingJS에 대한 지식은 그리 필요하진 않다.) 이 페이지의 모든 애니메이션 데모는 버튼으로 애니메이션 속도를 조정할 수 있고 애니메이션 화면을 클릭해서 일시 정지시킬 수 있다. 물론 다시 클릭하면 다시 애니메이션이 진행된다. 정지 되었을 때에는 각 보이드에 마우스를 올려서 그 보이드의 정보를 볼 수 있다. 정보를 보는 법은 이 글을 읽으면서 알 수 있으니 성급해하지 말자.</p>
+
+<h2>보이드 - Boid</h2>
+
+<p>보이드는 무리를 이루는 개체 하나하나를 부르는 이름이다. 여기저기에서 에이전트라고 하기도 하고 오브젝트라고도 하지만 원문에 보이드라고 되어있으니 여기서도 보이드라고 부르기로 하자. 보이드는 위치와 속도를 데이터로 가지고 있다. 그리고 위에서 말한 세 가지 행동 규칙을 이용해 가속도를 계산한다. 가속도는 현재 속도에 영향을 미치고 속도에 의해 다음 위치가 결정된다. 이런 일을 하는 메서드가 <code>step</code>이다. 보이드가 너무 빨라지지 않도록 최고 속도를 정해놓고 그보다는 높아지지 않도록 조종하는 것도 중요하다. 다음 코드를 보자. </p>
+<pre><code class="lang-coffeescript"><span class="comment"># Ported almost directly from http://processingjs.org/learning/topic/flocking</span>
+<span class="comment"># thanks a whole lot to Craig Reynolds and Daniel Shiffman</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
+  location: <span class="literal">false</span>
+  velocity: <span class="literal">false</span>
+
+  constructor: (loc, processing) -&amp;gt;
+    <span class="property">@velocity</span> = <span class="keyword">new</span> Vector(Math.random()*<span class="number">2</span>-<span class="number">1</span>,Math.random()*<span class="number">2</span>-<span class="number">1</span>)
+    <span class="property">@location</span> = loc.copy()
+    <span class="property">@p</span> = processing
+
+  <span class="comment"># Called every frame. Calculates the acceleration using the flock method, </span>
+  <span class="comment"># and moves the boid based on it.</span>
+  step: (neighbours) -&amp;gt;
+    acceleration = <span class="keyword">this</span>.flock(neighbours)
+    <span class="property">@velocity</span>.add(acceleration).limit(MAX_SPEED) <span class="comment"># Limit the maximum speed at which a boid can go</span>
+    <span class="property">@location</span>.add(<span class="property">@velocity</span>)
+    <span class="keyword">this</span>._wrapIfNeeded()
+
+  <span class="comment"># Implements the flocking algorthim by collecting the three components </span>
+  <span class="comment"># and returning a weighted sum.</span>
+  flock: (neighbours) -&amp;gt;
+    separation = <span class="keyword">this</span>.separate(neighbours).multiply(SEPARATION_WEIGHT)
+    alignment = <span class="keyword">this</span>.align(neighbours).multiply(ALIGNMENT_WEIGHT)
+    cohesion = <span class="keyword">this</span>.cohere(neighbours).multiply(COHESION_WEIGHT)
+    <span class="keyword">return</span> separation.add(alignment).add(cohesion)
+</code></pre>
+<p>제일 마지막 메서드인 <code>flock</code>이 앞으로 설명할 세 가지 행동 규칙으로 가속도를 만들어내는 메서드이다. 이에 대한 자세한 이야기는 이 글의 끝에서 하도록 한다.</p>
+
+<h2>응집 - Cohesion</h2>
+
+<div class="flock" id="cohesionDemo" style="float:right;"></div>
+
+<p>보이드는 자기 주변의 보이드의 곁으로 가려는 성질이 있다. 즉 무리지으려는 성질이라고 볼 수 있다. &lsquo;자기 주변의 보이드'는 자신 주변 반경 n 픽셀 안에 있는 보이드로 정의되고 <code>NEIGHBOUR_RADIUS</code>라는 상수가 그 주변을 결정하는 반경 값이다. 하나의 보이드는 주변 보이드들 사이의 무게 중심 쪽으로 방향을 튼다. </p>
+
+<p>옆의 예제를 보면 분홍색 보이드의 Cohesion 정보가 표시되고 있다. 녹색 원이 자신의 주변을 뜻하는 범위이고 그 안에 들어온 보이드들은 녹색으로 표시된다. 그리고 짙은 보라색 화살표가 주변 보이드들의 평균 위치 한 점으로 모인다. 분홍색 보이드는 분홍색 화살표를 이용해 &lsquo;나 그쪽으로 회전 중입니다'라고 알리고 있다.</p>
+
+<div style="clear:right"></div>
+
+<h3>코드</h3>
+
+<p>Cohesion은 <code>NEIGHBOUR_RADIUS</code>안에 있는 모든 보이드의 위치의 평균이다. 코드는 <code>steer_to</code>메서드를 거쳐 리턴한다. <code>stear_to</code>는 현재 위치와 갈 곳을 계산해서 보이드의 방향을 자연스럽게 틀어주는 역할을 한다. 일종의 보정이라고 생각하면 된다.</p>
+<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
+
+  <span class="comment"># 가속도를 계산할 때 cohesion요소를 계산하기 위해 호출한다.</span>
+  cohere: (neighbours) -&amp;gt;
+    sum = <span class="keyword">new</span> Vector
+    count = <span class="number">0</span>
+    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
+      d = <span class="property">@location</span>.distance(boid.location)
+      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; NEIGHBOUR_RADIUS
+        sum.add(boid.location)
+        count++
+
+    <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
+      <span class="keyword">return</span> <span class="keyword">this</span>.steer_to sum.divide(count)
+    <span class="keyword">else</span>
+      <span class="keyword">return</span> sum <span class="comment"># 아무런 영향도 주지 않기 위해 빈 벡터를 리턴한다.</span>
+
+  steer_to: (target) -&amp;gt;
+    desired = Vector.subtract(target, <span class="property">@location</span>) <span class="comment"># 현재 위치에서 가려 하는 곳을 가리키는 벡터</span>
+    d = desired.magnitude()  <span class="comment"># 현재 위치에서 목적지까지의 거리는 벡터의 크기이다.</span>
+
+    <span class="comment"># 만약 거리가 0보다 크면 변경할 방향을 계산한다. (아니면 0을 리턴한다.)</span>
+    <span class="keyword">if</span> d &amp;gt; <span class="number">0</span>
+      desired.normalize()
+
+      <span class="comment"># 원하는 벡터의 크기를 계산하기 위한 두 옵션(1 -- 거리에 기초하여, 2 -- 최대 스피드)</span>
+      <span class="keyword">if</span> d &amp;lt; <span class="number">100.0</span>
+        desired.multiply(MAX_SPEED*(d/<span class="number">100.0</span>)) <span class="comment"># 이 제동은 임의적으로 정했다.</span>
+      <span class="keyword">else</span>
+        desired.multiply(MAX_SPEED)
+
+      <span class="comment"># Steering = Desired minus Velocity</span>
+      steer = desired.subtract(<span class="property">@velocity</span>)
+      steer.limit(MAX_FORCE)  <span class="comment"># 방향 전환 정도에 제한을 둔다.</span>
+    <span class="keyword">else</span>
+      steer = <span class="keyword">new</span> Vector(<span class="number">0</span>,<span class="number">0</span>)
+
+    <span class="keyword">return</span> steer
+</code></pre>
+<h2>정렬 - Alignment</h2>
+
+<div class="flock" id="alignmentDemo" style="float:right;"></div>
+
+<p>각 보이드는 주변의 보이드와 같은 방향을 향하려는 특성도 가지고 있다. 응집도와 비슷하게 <code>NEIGHBOUR_RADIUS</code>의 내에 들어온 주변 보이드들의 속도의 평균을 향한다. 속도는 방향과 크기를 가지고 있으므로 평균을 구하면 방향뿐만이 아니라 크기까지 평균이 된다. 따라서 주변 보이드의 속력이 빠를 수록 정렬되려는 힘도 커진다.</p>
+
+<p>옆의 예제에서 보면 역시 분홍색 보이드의 정보가 보인다. 녹색 원 안에 녹색 보이드가 주변 보이드로 선정된 녀석들이고 주변 보이드의 속도는 녹색 화살표로 표시된다. 이 녹색 화살표의 평균이 분홍색 보이드의 연녹색 화살표이다. 검은색 화살표는 분홍색 보이드의 현재 속도이다. 분홍색 보이드는 다음 프레임에서 자신의 위치와 방향을 결정할 때 연녹색 화살표의 값을 이용한다. </p>
+
+<div style="clear:right"></div>
+
+<h3>코드</h3>
+
+<p>이번 코드는 그리 길지 않다. 로직은 응집도 계산과 똑같다. 다만 위치의 평균이 아니라 속도의 평균인 점이 다르다. 물론 이번에도 최대값이 있어서 너무 커다란 값이 되지 않도록 조정한다.</p>
+<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
+
+  <span class="comment"># Alignment component for the frame's acceleration</span>
+  align: (neighbours) -&amp;gt;
+    mean = <span class="keyword">new</span> Vector
+    count = <span class="number">0</span>
+    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
+      d = <span class="property">@location</span>.distance(boid.location)
+      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; NEIGHBOUR_RADIUS
+        mean.add(boid.velocity)
+        count++
+
+    mean.divide(count) <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
+    mean.limit(MAX_FORCE)
+    <span class="keyword">return</span> mean
+</code></pre>
+<h2>분리 - Separation</h2>
+
+<div class="flock" id="separationDemo" style="float:right;"></div>
+
+<p>각 보이드들은 너무 가까워지지 않으려는 경향이 있다. 보이드는 일정 공간을 두어 그 안으로 다른 보이드가 들어오면 그 보이드의 반대편으로 힘이 작용하여 멀어진다. 그 개인적인 공간은 <code>DESIRED_SEPARATION</code>이 결정하고 이 값은 <code>NEIGHBOUR_RADIUS</code>보다 작아야 한다. 만약 이 값이 <code>NEIGHBOUR_RADIUS</code>보다 크다면 이웃은 사라지고 모든 보이드를 배척하게 된다.</p>
+
+<p>이번 예제는 빨간 원이 하나 더 생겼다. 이것이 <code>DESIRED_SEPARATION</code>값으로 결정된 생긴 개인 공간이고 이 안에 들어온 보이드는 빨간색으로 표시된다. 그리고 빨간 원 안으로 들어온 보이드에 의해 빨간 화살표로 멀어지려는 힘이 계산된다. 그 방향을 빨간 보이드의 반대 방향이 된다.</p>
+
+<div style="clear:right"></div>
+
+<h3>코드</h3>
+
+<p>코드를 보면 주변 보이드들과의 거리를 검사해서 <code>DESIRED_SEPARATION</code>보다 가까운 보이드와 거리를 정규화해서 평균을 낸다. 그 중간에 정규화된 벡터를 자신과 주변 보이드간의 거리에 반비례하게 크기를 변경한다. 이는 가까이 있을수록 더 빨리 멀어지고 싶어한다는 개념을 넣은 것이다.</p>
+<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
+
+  <span class="comment"># Separation component for the frame's acceleration</span>
+  separate: (neighbours) -&amp;gt;
+    mean = <span class="keyword">new</span> Vector
+    count = <span class="number">0</span>
+    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
+      d = <span class="property">@location</span>.distance(boid.location)
+      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; DESIRED_SEPARATION
+        <span class="comment"># Normalized, weighted by distance vector pointing away from the neighbour</span>
+        mean.add Vector.subtract(<span class="property">@location</span>,boid.location).normalize().divide(d)
+        count++
+
+    mean.divide(count) <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
+    mean
+</code></pre>
+<h2>죄다 합쳐보자</h2>
+
+<p>위에서 계산했던 세 가지 행동 요소들을 이용해서 무리를 움직이게 하려면 아래와 같이 하면 된다. 보이드 클래스에 자신을 그리는 <code>render</code>메서드를 넣고 이 보이드의 무리를 만들어서 움직일 <code>flock</code>이라는 함수를 만들어 ProcessingJS의 인스턴스에 넘겨준다. <code>flock</code>에서는 보이드를 만들어 각 보이드의 <code>step</code>메서드와 <code>render</code>메서드를 넣어준다.</p>
+<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
+  r: <span class="number">2</span> <span class="comment"># "radius" of the triangle</span>
+  render: () -&amp;gt;
+    <span class="comment"># Draw a triangle rotated in the direction of velocity</span>
+    theta = <span class="property">@velocity</span>.heading() + <span class="property">@p</span>.radians(<span class="number">90</span>)
+    <span class="property">@p</span>.fill(<span class="number">70</span>)
+    <span class="property">@p</span>.stroke(<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>)
+    <span class="property">@p</span>.pushMatrix()
+    <span class="property">@p</span>.translate(<span class="property">@location</span>.x,<span class="property">@location</span>.y)
+    <span class="property">@p</span>.rotate(theta)
+    <span class="property">@p</span>.beginShape(<span class="property">@p</span>.TRIANGLES)
+    <span class="property">@p</span>.vertex(<span class="number">0</span>, -<span class="number">1</span> * <span class="property">@r</span> *<span class="number">2</span>)
+    <span class="property">@p</span>.vertex(-<span class="number">1</span> * <span class="property">@r</span>, <span class="property">@r</span> * <span class="number">2</span>)
+    <span class="property">@p</span>.vertex(<span class="property">@r</span>, <span class="property">@r</span> * <span class="number">2</span>)
+    <span class="property">@p</span>.endShape()
+    <span class="property">@p</span>.popMatrix()
+
+<span class="comment"># flock function, passed the Processing instance by Processing itself</span>
+flock = (processing) -&amp;gt;
+  start = <span class="keyword">new</span> Vector(processing.width<span class="regexp">/2,processing.height/</span><span class="number">2</span>)
+
+  <span class="comment"># Instantiate 100 boids who start in the middle of the map, have a maxmimum </span>
+  <span class="comment"># speed of 2, maximum force of 0.05, and give them a reference to the </span>
+  <span class="comment"># processing instance so they can render themselves.</span>
+  boids = <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0.</span><span class="number">.100</span>]
+    <span class="keyword">new</span> Boid(start, <span class="number">2</span>, <span class="number">0.05</span>, processing)
+
+  processing.draw = -&amp;gt;
+    processing.background(<span class="number">255</span>)
+    <span class="keyword">for</span> boid <span class="keyword">in</span> boids
+      boid.step(boids)
+      boid.render()
+    <span class="literal">true</span>
+
+canvas = $(<span class="string">'&amp;lt;canvas width="550" height="550"&amp;gt;&amp;lt;/canvas&amp;gt;'</span>).appendTo($(<span class="string">'#flockingDemo'</span>))[<span class="number">0</span>]
+processingInstance = <span class="keyword">new</span> Processing(canvas, flock)
+</code></pre>
+<p>여기서 보이는 <code>flock</code>함수는 보이드의 <code>flock</code> 메서드와는 다르다. 위에 코드가 있지만 난 친절하니까 밑에 다시 코드를 적어주겠다.</p>
+<pre><code class="lang-coffeescript">flock: (neighbours) -&amp;gt;
+  separation = <span class="keyword">this</span>.separate(neighbours).multiply(SEPARATION_WEIGHT)
+  alignment = <span class="keyword">this</span>.align(neighbours).multiply(ALIGNMENT_WEIGHT)
+  cohesion = <span class="keyword">this</span>.cohere(neighbours).multiply(COHESION_WEIGHT)
+  <span class="keyword">return</span> separation.add(alignment).add(cohesion)
+</code></pre>
+<p>자 이것이 보이드의 <code>flock</code>메서드이다. 보이드의 것은 세 가지 행동 요소(분리, 정렬, 응집)를 이용해 가속도로 사용할 값을 계산하는 것이다. 각 요소 값을 계산하고 그것을 그대로 쓰는 것이 아니라 그 것이 가속도에 끼칠 영향도(weight)를 곱해준다. 그 값은 각각 <code>SEPARATION_WEIGHT</code>, <code>ALIGNMENT_WEIGHT</code>, <code>COHESION_WEIGHT</code>이다. 보이드의 <code>flock</code>메서드는 각 요소에 영향도를 곱해서 전부 더한다. 그게 끝이다.
+전체 코드는 <a href="https://github.com/hornairs/blog/tree/master/assets/coffeescripts/flocking">여기</a>에서 구할 수 있다.</p>
+
+<h2>변칙</h2>
+
+<h3>다른 이웃</h3>
+
+<p>여기까지가 기본적인 플로킹 알고리즘이었다. 지금까지는 주변 보이드를 계산할 때 그냥 주변을 360도를 전부 검사했다. 하지만 만약 보이드가 인간이나 동물의 추상체라면 자신의 주변은 관찰 가능한 곳에 있는, 또는 눈에 보이는 보이드로 한정될 것이다. 따라서 주변 보이드를 계산할 때 자신의 뒤쪽은 배제할 수도 있다. 또는 정말 시야에 들어오는 보이드만을 이웃으로 규정할 수도 있다. 이런 이웃을 계산하는 방법에 따라 많은 변칙이 가능해진다.
+공간에서 이웃은 위치상의 근접 개체이지만 다른 문제로 환원하면 논리적 근접을 다시 정의해야 한다. 예를 들어 만약 소셜 네트워크라면 이웃은 자신의 친구나 친구가 공유한 다른 친구로 될 것이다. 웹 사이트라면 직접 링크한 문서들을 이웃으로 정할 수도 있겠다.</p>
+
+<h3>영향도 수정</h3>
+
+<p>글에는 세 행동 요소들에 적용되는 영향도 값을 적어놓진 않았지만, 이 영향도 값들을 수정함으로써 보이드들이 다른 행동 양식을 보이도록 할 수도 있다.</p>
+
+<h3>장애물 피하기</h3>
+
+<p>위 데모가 진행되는 동안 마우스를 보이드로 가져다 대면 그들이 마우스 포인터를 휙휙 피하는 모습을 관찰할 수 있다. 아예 갈 수 없는 곳을 피하기도 하는데 이에 대한 설명은 글에서 하지 않았다. 공부를 더 해야 하지만 단순히 추측해보자면 특정 반경 안에 장애물이 감지되거나 장에물과 보이드가 충돌하면 속도를 줄이거나 멈추고 장애물이 없는 방향으로 속도를 올리는 것으로 생각된다. 장애물이 단순 벽일 때, 각이 있는 모서리 일 때, ㄷ자 형태의 벽일 때에 따라 장애물을 피해서 다시 빠져나갈 방법을 잘 설계해야 한다. 잘못하면 아마 벽에 무한으로 부히는 상황이 올지도 모른다.</p>
+
+<h2>마무리</h2>
+
+<p>이 글은 그냥 개인적으로 관심 있던 분야의 글이 뉴스 사이트에 올라왔고 호기심에 읽어본 글이 어쩌다 보니 이해되어 쓴 글이다. 이 모델을 어디에 사용할지는 아직 나도 모르겠지만 군체의 움직임이 예쁘게 모델링 되어있어 소개한다. 사실 예쁘게 모델링 되었다는게 정확한 모델링이라는 것과는 다른 말이지만 더 정교한 알고리즘의 기반 지식이라도 될까 기대해본다.</p>
+
+<script type="text/javascript">
+  var Harry = {};
+</script>
+
+<script src="/articles/2012/flocking-algorithm/js/processing.js" type="text/javascript"></script>
+
+<script src="/articles/2012/flocking-algorithm/js/vector.js" type="text/javascript"></script>
+
+<script src="/articles/2012/flocking-algorithm/js/boid.js" type="text/javascript"></script>
+
+<script src="/articles/2012/flocking-algorithm/js/flock.js" type="text/javascript"></script>
+
+<script src="/articles/2012/flocking-algorithm/js/flocking.js" type="text/javascript"></script>
+]]>
+</content></entry><entry><title><![CDATA[ Git: rerere ]]></title><link href="http://dogfeet.github.com/articles/2012/git-rerere.html" /><updated>2012-11-22T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-rerere.html</id><content type="html"><![CDATA[
 <p>왠지 &lsquo;거꾸로 해도 이효리'가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다.</p>
 
 <p>어떤 Topic 브랜치는 오랫동안 Merge하지 않고 유지하기도 한다. 이런 Topic 브랜치를 Merge하면 Conflict가 날 확률이 높다. Conflict가 예상되는 브랜치를 Merge할 때 <code>git rerere</code> 명령으로 난관을 극복하는 방법을 알아보자.</p>
@@ -1343,75 +1587,4 @@ jquery-waypoints  Execute a <span class="function"><span class="keyword">functio
     NSLog(@"%@", @"PersisteWebCookie Restored");
 }
 </code></pre>]]>
-</content></entry><entry><title><![CDATA[ Git: 델타와 스냅샷 ]]></title><link href="http://dogfeet.github.com/articles/2012/git-delta.html" /><updated>2012-08-24T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-delta.html</id><content type="html"><![CDATA[
-<p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/git-delta/crime-and-sin.jpeg" alt=""></p>
-
-<h2>델타</h2>
-
-<p>옛날 옛적에 리눅스 커널을 직접 빌드해야 했던 시절, 돈이 없어 샀던 싸구려 하드웨어 덕에 patch 파일을 받아서 직접 패치해야 했었다. diff와 patch 의 의미, 사용하는 이유 등을 이해한 것은 나중이었지만 내가 처음 접한 것은 그때였다.</p>
-
-<p>과거에는 오픈소스 프로젝트를 <a href="http://kldp.org/node/28938">diff와 patch</a>로 개발했다. 코드를 수정하고 diff 프로그램으로 델타를 만들어서 메일로 보내면 관리자는 그 델타를 받아서 patch 프로그램으로 메인 코드에 적용했다. 비교할 수는 없지만, 선구자들은 우리가 git과 github을 통해서 하는 일들을 <a href="http://kldp.org/node/28938">diff와 patch</a>, 메일, 웹, ftp 같은 것으로 해냈다.</p>
-
-<p>리누스 토발즈는 오랫동안 그렇게 일해 왔고 그 경험을 살려 Git을 만들었다. 이제는 Git(Mercurial, SVN, 등등) 덕에 많은 것이 자동화됐다.</p>
-
-<p>코드를 수정해서 github나 어딘가에 올리고 알려주면 그대로 가져가 적용할 수 있다. 메일로 보내는 방법도 아직 유효하고 git-am 같이 mailbox를 이용하는 Command가 내장돼 있어 더욱 편리하다.</p>
-
-<p>다음 그림은 <a href="http://marklodato.github.com/visual-git-guide/index-ko.html">Visual Git Guide</a>의 그림으로 <code>git diff</code> 명령을 설명하는 그림이다. VCS 없이 델타를 구할 생각을 하면 정말 끔찍하다. VCS 없이 코드를 공유했던 사람들은 정말 존경스럽다.</p>
-
-<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
-
-<h2>Git의 저장 방식</h2>
-
-<p>히스토리는 개념적으로 스냅샷의 연속이자 델타의 연속이기도 하다. Git은 각 시점의 스냅샷을 저장하기도 하지만 그 스냅샷 사이의 델타를 저장하기도 한다.</p>
-
-<p>커밋을 하면 그 시점의 스냅샷이 저장되는 것이고 그 커밋과 부모의 커밋을 비교(diff)하면 델타를 얻을 수 있다. 커밋은 영구적으로 저장하는 것이기 때문에 언제든지 Checkout해서 그 시점의 스냅샷을 얻을 수 있고 비교해서(diff) 델타를 얻을 수도 있다.</p>
-
-<p>우리가 커밋을 하면 Git은 기본적으로 스냅샷을 저장한다. 이 말의 뜻은 snapshot.txt 파일을 처음 커밋하면 rev1에 snapshot.txt 파일이 저장된다. 그리고 그 파일을 수정해서 다시 커밋하면 rev2가 저장된다. 이때 rev2에 수정한 파일이 통째로 저장된다. <code>.git</code> 저장소에 rev1 때의 snapshot.txt 파일과 rev2 때의 snapshot.txt 파일이 통째로 저장된다.</p>
-
-<p>이것을 그림으로 표현하면 다음과 같다:</p>
-
-<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot"></p>
-
-<p>이 방식으로 저장하면 1k 짜리를 한 글자씩 고쳐서 10번 수정하면 10k가 된다. Git은 처음에는 성능과 편리성을 위해 이 방식으로 저장하고 적절한 시점에 GC(Garbage Collection)가 실행되면 다음과 같이 저장한다:</p>
-
-<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta"></p>
-
-<p>마지막 버전의 파일 하나만 통째로 저장하고 이전 버전들은 델타(diff 파일)를 저장한다. 이 그림에서 rev6를 요구하면 rev6의 파일을 그대로 반환한다. 하지만, rev4를 요구하면 rev6 파일에 rev5, rev4의 델타를 적용해서 반환한다.</p>
-
-<p>마지막 버전의 파일이 스냅샷인 이유는 우리가 질의하는 파일은 대부분 마지막 버전의 파일이기 때문이다. 평소에는 델타를 적용할 필요가 없어서 빠르다. Git을 정말 꼼꼼하게 설계했음을 보여주는 대목이다.</p>
-
-<p>이렇게 저장하기 때문에 1k 짜리를 한 글자씩 10번 수정해서 커밋해도 거의 1k이다. GC가 수행되면 이렇게 델타로 저장할 뿐만 아니라 gzip으로 압축하기 때문에 실제로 저장하는 용량은 더욱 적다. Git은 이런 기법을 통해서 &lsquo;<a href="http://pismute.github.com/whygitisbetter">저장소 크기가 가장 작다</a>'라고 주장한다.</p>
-
-<p>우리가 종종 Git과 비교하는 Mercurial도 델타로 저장한다. 다음 그림은 Mercurial이 저장하는 방식이다:</p>
-
-<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta"></p>
-
-<p>Mercurial은 처음에 스냅샷을 저장하고 그다음 버전부터는 델타를 저장한다. 그래서 최신 버전의 파일이 요구하면 첫 스냅샷 파일과 최근까지의 델타를 적용해서 반환한다<a href="http://pycon-hg-git.heroku.com/">2</a>.</p>
-
-<h2>델타의 적용: Merge, Rebase, Cherry-pick, &hellip;</h2>
-
-<p>Git의 그 수 많은 명령어는 우리가 과거에 수동으로 했던 diff & patch 작업을 자동/반자동으로 해주는 것이라고 이해할 수 있다.</p>
-
-<p><strong>Merge</strong>:</p>
-
-<p>Branch를 만들면 Merge Base를 자동으로 기록했다가 나중에 Merge를 하면 두 스냅샷을 기준으로 diff 프로그램을 이용해서 델타를 만들고 한쪽 브랜치에 patch 프로그램으로 적용하는 것과 같다. Merge는 이런 과정이고 Git의 Merge는 그동안 수동으로 했었어야 했던 일을 자동으로 해준다.</p>
-
-<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
-
-<p>SVN의 Merge도 결국 이런 것인데 SVN의 경우는 Merge Base를 자동으로 기록해주지 않아서 사람이 수동으로 메모했다가 Merge해야 하고 2-way Merge와 3-way Merge의 차이도 있다.</p>
-
-<p><strong>Rebase</strong>:</p>
-
-<p>Rebase는 Merge와 비슷하다. 델타를 만들어 적용하는 것은 같지만 히스토리를 구성하는 게 다르다. Merge 커밋을 만드는 것이 아니라 한쪽 브랜치를 <code>base</code>로 만든다. 커밋 순서를 배열한다고 생각하면 된다.</p>
-
-<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
-
-<p><strong>Cherry-pick</strong>:</p>
-
-<p>Cherry-pick은 특정 커밋과 그 커밋의 부모와의 델타를 구해서(그러니까 해당 커밋의 델타만) 현 브랜치에 적용하는 것이다. 고른 커밋 하나에 대해서만 Rebase하는 것이다:</p>
-
-<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
-]]>
 </content></entry></feed>

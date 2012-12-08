@@ -19,13 +19,12 @@
  | <a href="/site/tagmap.html#c#" class="tag">C#</a> <a href="/site/tagmap.html#thread" class="tag">Thread</a> | <span><a href="/articles/2009/1260510300.html#disqus_thread" data-disqus-identifier="/articles/2009/1260510300.html"></a></span>
 </div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
   margin-left: 30px;
-}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1260510300.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1260510300.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1260510300.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><pre><code>public void ControlServerTest()
-  {
-    ControlServer controlServer = new ControlServerSync()<span class="comment">;</span>
-    ProxyServer proxyServer = ProxyServer<span class="preprocessor">.CreateProxyServer</span>(ProxyServerConfig<span class="preprocessor">.PrivateAddressRangeConfigSingle</span>)<span class="comment">;</span>
-    controlServer<span class="preprocessor">.ProxyServer</span> = proxyServer<span class="comment">;</span>
-
-    new Thread(() =&gt;
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2009/1260510300.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2009/1260510300.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2009/1260510300.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>public void ControlServerTest()
+      {
+        ControlServer controlServer = new ControlServerSync();
+        ProxyServer proxyServer = ProxyServer.CreateProxyServer(ProxyServerConfig.PrivateAddressRangeConfigSingle);
+        controlServer.ProxyServer = proxyServer;</p>
+<pre><code>    new Thread(() =&gt;
     {
       Thread<span class="preprocessor">.Sleep</span>(<span class="number">1000</span>)<span class="comment">;</span>
       Console<span class="preprocessor">.WriteLine</span>(<span class="string">"receive ACK"</span>)<span class="comment">;</span>
