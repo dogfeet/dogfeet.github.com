@@ -1,8 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2013-02-21T14:19:05.062Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ grunt: node-coffee 템플릿 ]]></title><link href="http://dogfeet.github.com/articles/2013/grunt-init-node-coffee.html" /><updated>2013-02-20T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2013/grunt-init-node-coffee.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.com/atom.xml" rel="self" /><link href="http://dogfeet.github.com" /><updated>2013-03-08T05:08:44.634Z</updated><id>http://dogfeet.github.com</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ mac: java-web-start ]]></title><link href="http://dogfeet.github.com/articles/2013/mac-java-web-start.html" /><updated>2013-03-07T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2013/mac-java-web-start.html</id><content type="html"><![CDATA[
+<p>언제부터 안되더라? 왜 안되더라? 그런건 잘 모르겠고 Mac에서는 Java Web Start가 그냥 실행되지 않는다. Apple이 막은 건데, Oracle이 미운 이유는 뭘까! 아무튼 다시 켜는 방법이 있다.</p>
+
+<p><img src="http://dogfeet.github.com/articles/2013/mac-java-web-start/mung-me.jpg" alt=""/></p>
+
+<h2>Java web start</h2>
+
+<p>윈도에서 처럼 매끄럽게 브라우저 안에서 Java App이 실행되지 않더라도 jnlp 파일을 다운로드 받아서 javaws 명령으로 실행시키면 실행해야 하는데 다음과 같은 에러를 내뱉는다:</p>
+<pre><code>$ javaws my.jnlp
+Java Web Start splash screen process exiting <span class="keyword">...</span>
+Can not find message file: No such file or directory
+</code></pre>
+<p>Google님께 물어보면 Java7을 설치하라는 얘기가 많다. 그래서 설치하고 이것 저것 해봤는데도 됐다가 안됐다가 했다. 자세한 히스토리는 알고 싶지 않았고 그냥 실행만 됐으면 했는데, 그래도 그냥 Java7을 설치했었다. Oracle Java7을 설치하라고 하니 왠지 내 Mac을 욕보이는 것 같았지만 그냥 설치했다.</p>
+
+<p>어짜피 안돼서 Java7을 삭제했는데 Mac이 먹통ㅜㅜ. Mac까지 다시 설치해야 하나 싶었는데 이유는 모르겠지만 복구 됐다(야호!). 욕하고 싶은 상대가 Apple이 아닌 Oracle인건 왜일까!</p>
+
+<p>아래와 같이 파일을 열고:</p>
+<pre><code>sudo vi /System/Library/CoreServices/CoreTypes<span class="variable">.bundle</span>/Contents/Resources/XProtect<span class="variable">.meta</span><span class="variable">.plist</span>
+</code></pre>
+<p>주석처리를 좀 하고:</p>
+<pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="tag">&lt;<span class="title">plist</span> <span class="attribute">version</span>=<span class="value">"1.0"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+<span class="comment">&lt;!--
+  &lt;key&gt;JavaWebComponentVersionMinimum&lt;/key&gt;
+  &lt;string&gt;1.6.0_41-b02-446&lt;/string&gt;
+--&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>LastModification<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">string</span>&gt;</span>Mon, 04 Mar 2013 21:47:02 GMT<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>PlugInBlacklist<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">key</span>&gt;</span>10<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">key</span>&gt;</span>com.macromedia.Flash Player.plugin<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">key</span>&gt;</span>MinimumPlugInBundleVersion<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">string</span>&gt;</span>11.6.602.171<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+<span class="comment">&lt;!--
+      &lt;key&gt;com.oracle.java.JavaAppletPlugin&lt;/key&gt;
+      &lt;dict&gt;
+        &lt;key&gt;MinimumPlugInBundleVersion&lt;/key&gt;
+        &lt;string&gt;1.7.15.04&lt;/string&gt;
+      &lt;/dict&gt;
+--&gt;</span>
+    <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>Version<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">integer</span>&gt;</span>2033<span class="tag">&lt;/<span class="title">integer</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">plist</span>&gt;</span>
+</code></pre>
+<p>리부팅한다. 그리고 아래와 같이 실행한다:</p>
+<pre><code><span class="title">javaws</span> my.jnlp
+</code></pre>
+<p>Apple이 Flash와 Java Applet을 BlackList로까지 분류하고 있는 줄은 몰랐다.</p>
+]]>
+</content></entry><entry><title><![CDATA[ grunt: node-coffee 템플릿 ]]></title><link href="http://dogfeet.github.com/articles/2013/grunt-init-node-coffee.html" /><updated>2013-02-20T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2013/grunt-init-node-coffee.html</id><content type="html"><![CDATA[
 <p><a href="https://twitter.com/Outsideris">@Outsideris</a>님의 <a href="http://blog.outsider.ne.kr/892">자바스크립트 빌드 도구 Grunt</a>와 <a href="http://blog.outsider.ne.kr/894">Grunt에 사용자 템플릿 추가하기</a>를 읽고 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a> 템플릿을 만들었다. <a href="https://twitter.com/docpad">@docpad</a> 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2013/grunt-init-node-coffee/gruntjs.png" alt=""></p>
+<p><img src="http://dogfeet.github.com/articles/2013/grunt-init-node-coffee/gruntjs.png" alt=""/></p>
 
 <h2>grunt 0.4</h2>
 
@@ -48,7 +106,7 @@
 </content></entry><entry><title><![CDATA[ 그와 그녀의 tryios ]]></title><link href="http://dogfeet.github.com/articles/2013/he-she-codeschool-tryios.html" /><updated>2013-01-19T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2013/he-she-codeschool-tryios.html</id><content type="html"><![CDATA[
 <p><a href="http://www.codeschool.com/">codeschool</a>에 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 <a href="https://twitter.com/pismute">그</a>와 코딩 초보인 <a href="http://uniquenoun.tumblr.com/">그녀</a>가 함께 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 해보고 난 후기다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2013/codeschool-tryios/tryios.png" alt="tryios"></p>
+<p><img src="http://dogfeet.github.com/articles/2013/codeschool-tryios/tryios.png" alt="tryios"/></p>
 
 <h2>tryios</h2>
 
@@ -58,23 +116,23 @@
 
 <p>이 강의를 만드는데 무려 12명이나 참여했다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/credit.png" alt="tryios-credit"></p>
+<p><img src="/articles/2013/codeschool-tryios/credit.png" alt="tryios-credit"/></p>
 
 <p>&lsquo;Mr. Higgie'라는 캐릭터 까지 있다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/higgie.png" alt="higgie"></p>
+<p><img src="/articles/2013/codeschool-tryios/higgie.png" alt="higgie"/></p>
 
 <p>설명을 듣고, 코딩해서, 바로 검사하는 구조는 너무 매력적인 학습방법이다. <a href="https://class.coursera.org/progfun-2012-001/">Coursera의 Scala 강의</a>도 그런 방식이였는데 굉장히 잼있었다. 무엇보다 바로 내가 틀렸는지 알 수 있기 때문에 될 때까지 버티면 정말 된다.</p>
 
 <p>Gamification이 잘 돼있어서 강의를 하나씩 끝날 때 마다 뱃지를 준다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/badge.png" alt="badge"></p>
+<p><img src="/articles/2013/codeschool-tryios/badge.png" alt="badge"/></p>
 
 <p><a href="http://beta.openbadges.org/">http://beta.openbadges.org/</a> 에 연계도 된다. <a href="http://openbadges.org/">Open Badges</a>라는 거 처음 봤는데, 뭔지 모르겠다.</p>
 
 <p>Coursera Scala 강의에서는 오덕스키 선생님의 사인이 든 수료증도 줬는데 <a href="https://twitter.com/greggpollack">@greggpollack</a> 선생님의 사인이든 수료증을 별도로 주지 않는다. 하지만 'Report Card'라는 게 있다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/report-card.png" alt="report-card"></p>
+<p><img src="/articles/2013/codeschool-tryios/report-card.png" alt="report-card"/></p>
 
 <p>이 'Report Card'는 공개할 수도 있고 비공개로 설정할 수도 있다. 하지만 타인의 Report Card를 보는 페이지는 찾지 못했다.</p>
 
@@ -92,11 +150,11 @@
 
 <p><a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 수료하면 3가지 보상을 준다. 일단 $5에 이르는 <a href="http://www.codeschool.com/">CodeSchool</a> Cash와 'iOS SDK Development'라는 책의 25% 할인권 그리고 <a href="https://www.tinkerlearn.com/xray">TinkerLearn</a>의 50% 할인권을 준다. 지원해주는 회사가 있으면 재밌게 공부도하고 수익 남는ㅋㅋㅋ:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/reward.png" alt="reward"></p>
+<p><img src="/articles/2013/codeschool-tryios/reward.png" alt="reward"/></p>
 
 <p><a href="https://www.tinkerlearn.com/xray">TinkerLearn</a>은 무료 Lesson만 다운받았는데 해당 Lesson과 관련된 pdf와 샘플 코드가 들어 있다. <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 끝낸 후 다음에 뭘해야 할지 고민할 필요도 없다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/tinkerlearn.png" alt="tinkerlearn"></p>
+<p><img src="/articles/2013/codeschool-tryios/tinkerlearn.png" alt="tinkerlearn"/></p>
 
 <h2>그녀</h2>
 
@@ -130,13 +188,13 @@
 
 <p>내 느낌은 이렇다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/haksan.png" alt="haksan"></p>
+<p><img src="/articles/2013/codeschool-tryios/haksan.png" alt="haksan"/></p>
 
 <p>내가 그녀라면 인내할 수 있었을까? 훌륭하다. 그녀는 이왕 결재한 거라고 하면서 <a href="http://www.codeschool.com/courses/functional-html5-css3">Functional HTML5 & CSS3</a>와 <a href="http://www.codeschool.com/courses/functional-html5-css3">CSS Cross-Country</a> 강의도 시작했다:</p>
 
-<p><img src="/articles/2013/codeschool-tryios/functional-html5-css3.png" alt="functional-html5-css3"></p>
+<p><img src="/articles/2013/codeschool-tryios/functional-html5-css3.png" alt="functional-html5-css3"/></p>
 
-<p><img src="/articles/2013/codeschool-tryios/css-cross-country.png" alt="css-cross-country"></p>
+<p><img src="/articles/2013/codeschool-tryios/css-cross-country.png" alt="css-cross-country"/></p>
 
 <p><a href="http://www.codeschool.com/courses/try-ios">tryios</a> 강의를 끝내고 받은 퀘스트 보상때문에 나도 이 두 강의를 시작했다. 찬찬히 <a href="http://www.codeschool.com/">CodeSchool</a>의 강의를 전부 해보려한다.</p>
 
@@ -151,7 +209,7 @@
 </content></entry><entry><title><![CDATA[ Git: GitHub secrets ]]></title><link href="http://dogfeet.github.com/articles/2012/git-github-secrets.html" /><updated>2012-12-29T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/git-github-secrets.html</id><content type="html"><![CDATA[
 <p>이글은 <a href="https://twitter.com/holman">@holman</a>님이 싱가폴에서 열린 <a href="http://reddotrubyconf.com/">RedDotRubyConf</a>에서 발표한 <a href="http://zachholman.com/talk/git-github-secrets">Git and GitHub Secrets</a>에 설명을 달았다. 내용이 길어서 둘로 나눴는데 이 글은 <code>GitHub Secetets</code> 부분을 정리한 글이다. <a href="/articles/2012/git-secrets.html">Git Secrets</a>은 다른 글에서 정리한다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2012/git-github-secrets/holman.png" alt="holman"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/git-github-secrets/holman.png" alt="holman"/></p>
 
 <p>이 글을 정리하면서 그림을 많이 삽입하지 않았다. <code>GitHub Secrets</code> 부분은 그림이 너무 많아서 생략했다. 이 글을 읽고서 슬라이드를 한번 보는게 좋을 것 같다.</p>
 
@@ -172,7 +230,7 @@
 
 <p>diff URL끝에 <code>?w=1</code>를 붙이면 공백문자를 무시한 결과를 보여준다.</p>
 
-<p><img src="/articles/2012/git-github-secrets/ignore-whitespace.png" alt="ignore_whitespace"></p>
+<p><img src="/articles/2012/git-github-secrets/ignore-whitespace.png" alt="ignore_whitespace"/></p>
 
 <h3>SVN 클라이언트도 지원.</h3>
 
@@ -190,11 +248,11 @@
 
 <p>원래 SSH를 먼저 보여줬었지만:</p>
 
-<p><img src="/articles/2012/git-github-secrets/ssh-http.png" alt="before"></p>
+<p><img src="/articles/2012/git-github-secrets/ssh-http.png" alt="before"/></p>
 
 <p>지금은 HTTP를 먼저 보여준다:</p>
 
-<p><img src="/articles/2012/git-github-secrets/http-ssh.png" alt="after"></p>
+<p><img src="/articles/2012/git-github-secrets/http-ssh.png" alt="after"/></p>
 
 <p>이제 HTTP도 효율적이기 때문에 1) 회사 방화벽 뒤에서도 맘껏 GitHub을 즐길 수 있고 2) SSH Key를 사용하기 힘든 Windows 환경에서도 사용하기 쉬워졌다. SSH key없이도 암호를 메모리에 저장해서 사용할 수 있다. 이 방법은 git 1.7.10부터 사용할 수 있고 GitHub의 <a href="https://help.github.com/articles/set-up-git">패스워드 캐싱하는 방법</a>에 잘 설명돼 있다.</p>
 
@@ -239,7 +297,7 @@ git <span class="keyword">clone</span> https:<span class="comment">//github.com/
 
 <p>저장소에 든 언어가 뭔지 찾아서 직접 그 저장소에서 개발된 파일만 추려서 &lsquo;Syntax Highlighting'도 해준다. GitHub은 이 Linguist를 다음과 같은 걸 만들어 내는데 사용한다:</p>
 
-<p><img src="/articles/2012/git-github-secrets/linguist.png" alt="linguist"></p>
+<p><img src="/articles/2012/git-github-secrets/linguist.png" alt="linguist"/></p>
 
 <p>기능:</p>
 
@@ -337,7 +395,7 @@ git <span class="keyword">clone</span> https:<span class="comment">//github.com/
 
 <p>Git은 명령과 옵션이 굉장히 많은데, 그 중에서 <a href="https://twitter.com/holman">@holman</a>님이 추천하는 쓸만한 것이라고 생각하면 되겠다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2012/git-secrets/holman.png" alt="holman"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/git-secrets/holman.png" alt="holman"/></p>
 
 <h2>Git secret</h2>
 
@@ -417,7 +475,7 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p><code>git diff HEAD^ --stat</code></p>
 
-<p><img src="/articles/2012/git-secrets/git-diff--stat.png" alt="git-diff--stat"></p>
+<p><img src="/articles/2012/git-secrets/git-diff--stat.png" alt="git-diff--stat"/></p>
 
 <h3>BLAME</h3>
 
@@ -431,19 +489,19 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p>정말 내용을 수정한 <strong>새끼</strong>를 찾는다. 공백만 추가한 경우는 무시한다. <code>git diff HEAD~</code> 명령으로 공백이 어디에 추가됐는지 보자:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-w-diff.png" alt="git-blame-w-diff"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-w-diff.png" alt="git-blame-w-diff"/></p>
 
 <p>히스토리를 보면 마지막에 &ldquo;BBB&quot;가 공백을 추가했다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-w-lg.png" alt="git-blame-w-lg"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-w-lg.png" alt="git-blame-w-lg"/></p>
 
 <p>다음은 <code>git blame -w</code>의 결과다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-w.png" alt="git-blame-w"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-w.png" alt="git-blame-w"/></p>
 
 <p>단순히 공백만 추가한 &quot;BBB&quot;는 무시된다. <code>-w</code>을 옵션을 빼고 <code>git blame</code>만 실행하면 공백만 추가한 &quot;BBB&quot;도 나온다.</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame.png" alt="git-blame"></p>
+<p><img src="/articles/2012/git-secrets/git-blame.png" alt="git-blame"/></p>
 
 <h4>git blame -M</h4>
 
@@ -451,11 +509,11 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p>텍스트를 옮긴 후에 <code>git blame</code> 명령을 실행하면 다음과 같이 나온다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-m-before.png" alt="git-blame"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-m-before.png" alt="git-blame"/></p>
 
 <p><code>-M</code> 옵션을 추가하면 단순히 옮긴 사람이 아니라 원래 그 코드를 추가한 사람을 보여준다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-m.png" alt="git-blame"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-m.png" alt="git-blame"/></p>
 
 <p>원래 의도는 측근 <code>all.md</code> 파일에서 친구 끼리, 가족 끼리 모아서 <code>-M</code> 옵션을 설명할 계획이였다. Git이 정확히 어떤 알고리즘을 사용하는 건지 나중에 살펴봐야 겠다.</p>
 
@@ -465,11 +523,11 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p><code>all.md</code>라는 파일에서 친구는 <code>friends.md</code>라는 파일로 옮기고 가족은 <code>family.md</code> 파일로 옮겼다. 아래는 <code>git blame -f family.md</code>의 결과다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-c-f.png" alt="git-blame"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-c-f.png" alt="git-blame"/></p>
 
 <p><code>-f</code>는 원래 파일이름을 보여주는 옵션이다. <code>git blame -fC family.md</code>의 결과는 아래와 같다:</p>
 
-<p><img src="/articles/2012/git-secrets/git-blame-c-cf.png" alt="git-blame"></p>
+<p><img src="/articles/2012/git-secrets/git-blame-c-cf.png" alt="git-blame"/></p>
 
 <h4>git blame -CC</h4>
 
@@ -491,11 +549,11 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p><code>git status</code>:</p>
 
-<p><img src="/articles/2012/git-secrets/git-status.png" alt="git-status"></p>
+<p><img src="/articles/2012/git-secrets/git-status.png" alt="git-status"/></p>
 
 <p><code>git status -sb</code>:</p>
 
-<p><img src="/articles/2012/git-secrets/git-status-sb.png" alt="git-status-sb"></p>
+<p><img src="/articles/2012/git-secrets/git-status-sb.png" alt="git-status-sb"/></p>
 
 <h4>WORD DIFFING</h4>
 
@@ -503,11 +561,11 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 
 <p><code>git diff HEAD^</code>:</p>
 
-<p><img src="/articles/2012/git-secrets/git-diff-head-1.png" alt="diff-head-1"></p>
+<p><img src="/articles/2012/git-secrets/git-diff-head-1.png" alt="diff-head-1"/></p>
 
 <p><code>git diff HEAD^ --word-diff</code>:</p>
 
-<p><img src="/articles/2012/git-secrets/git-diff-head-1--word-diff.png" alt="diff-head-1--word-diff"></p>
+<p><img src="/articles/2012/git-secrets/git-diff-head-1--word-diff.png" alt="diff-head-1--word-diff"/></p>
 
 <h4>CONFIG: SPELLING</h4>
 
@@ -540,7 +598,7 @@ dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c
 <p>누가 얼마나 커밋했는지 보여준다:</p>
 <pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">alias</span>.<span class="comment">count</span> <span class="comment">"shortlog</span> <span class="literal">-</span><span class="comment">sn"</span>
 </code></pre>
-<p><img src="/articles/2012/git-secrets/git-shortlog-sn.png" alt="git-shortlog-sn"></p>
+<p><img src="/articles/2012/git-secrets/git-shortlog-sn.png" alt="git-shortlog-sn"/></p>
 
 <h4>SCRIPT: GIT-CREDIT</h4>
 
@@ -557,7 +615,7 @@ git commit --amend --author <span class="string">"<span class="variable">$1</spa
 
 <p>이 슬라이드로 옥토캣은 다리가 4개고 꼬리가 1개라는 비밀을 알게 됐다. 맨날 보는 그림이지만 문어니까 그냥 다리가 8개라고 생각했었다.</p>
 
-<p><img src="/articles/2012/git-secrets/pusheencat.png" alt="octocat"></p>
+<p><img src="/articles/2012/git-secrets/pusheencat.png" alt="octocat"/></p>
 ]]>
 </content></entry><entry><title><![CDATA[ 잘 빠진 군체 알고리즘 - flock ]]></title><link href="http://dogfeet.github.com/articles/2012/flocking-algorithm.html" /><updated>2012-12-02T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/flocking-algorithm.html</id><content type="html"><![CDATA[
 <style>
@@ -565,7 +623,7 @@ canvas {display:block;}
 .flock {margin-left: 10px;}
 </style>
 
-<p><img src="http://dogfeet.github.com/articles/2012/flocking-algorithm/800px-Red-billed_quelea_flocking_at_waterhole.jpg" alt="flock"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/flocking-algorithm/800px-Red-billed_quelea_flocking_at_waterhole.jpg" alt="flock"/></p>
 
 <p><a href="http://harry.me/2011/02/17/neat-algorithms---flocking/">harry</a> 님의 사이트에서 보았던 플로킹 알고리즘(flockng algorithm)을 정리했다.(무려 2011년 2월 글이다.) 플로킹 알고리즘은 떼(flock)의 각 개체의 행동 모델이다. 각 개체는 보이드(boid)라고 부르며 이들은 세 가지 규칙을 이용해 움직인다. 이 알고리즘은 1986년에 Craig Reynolds가 낸 논문에서 처음 소개되었다. 원래 알고리즘은 <a href="http://www.red3d.com/cwr/boids/">여기서</a> 볼 수 있다. 그는 이 모델을 이용해 새 떼나 물고기 떼 등을 시뮬레이션했으며 배트맨 리턴즈의 박쥐 떼가 날아다니는 영상, 소셜 네트워크에서 의견의 흐름을 시뮬레이션해서 미래 의견을 예측하거나 분산 시스템에서도 이용되었다고 한다. 어디에서 쓰였는지는 링크를 확인하고 알고리즘이 어떻게 동작하는지 보자.</p>
 
@@ -767,14 +825,14 @@ processingInstance = <span class="keyword">new</span> Processing(canvas, flock)
   cohesion = <span class="keyword">this</span>.cohere(neighbours).multiply(COHESION_WEIGHT)
   <span class="keyword">return</span> separation.add(alignment).add(cohesion)
 </code></pre>
-<p>자 이것이 보이드의 <code>flock</code>메서드이다. 보이드의 것은 세 가지 행동 요소(분리, 정렬, 응집)를 이용해 가속도로 사용할 값을 계산하는 것이다. 각 요소 값을 계산하고 그것을 그대로 쓰는 것이 아니라 그 것이 가속도에 끼칠 영향도(weight)를 곱해준다. 그 값은 각각 <code>SEPARATION_WEIGHT</code>, <code>ALIGNMENT_WEIGHT</code>, <code>COHESION_WEIGHT</code>이다. 보이드의 <code>flock</code>메서드는 각 요소에 영향도를 곱해서 전부 더한다. 그게 끝이다.
+<p>자 이것이 보이드의 <code>flock</code>메서드이다. 보이드의 것은 세 가지 행동 요소(분리, 정렬, 응집)를 이용해 가속도로 사용할 값을 계산하는 것이다. 각 요소 값을 계산하고 그것을 그대로 쓰는 것이 아니라 그 것이 가속도에 끼칠 영향도(weight)를 곱해준다. 그 값은 각각 <code>SEPARATION_WEIGHT</code>, <code>ALIGNMENT_WEIGHT</code>, <code>COHESION_WEIGHT</code>이다. 보이드의 <code>flock</code>메서드는 각 요소에 영향도를 곱해서 전부 더한다. 그게 끝이다.<br/>
 전체 코드는 <a href="https://github.com/hornairs/blog/tree/master/assets/coffeescripts/flocking">여기</a>에서 구할 수 있다.</p>
 
 <h2>변칙</h2>
 
 <h3>다른 이웃</h3>
 
-<p>여기까지가 기본적인 플로킹 알고리즘이었다. 지금까지는 주변 보이드를 계산할 때 그냥 주변을 360도를 전부 검사했다. 하지만 만약 보이드가 인간이나 동물의 추상체라면 자신의 주변은 관찰 가능한 곳에 있는, 또는 눈에 보이는 보이드로 한정될 것이다. 따라서 주변 보이드를 계산할 때 자신의 뒤쪽은 배제할 수도 있다. 또는 정말 시야에 들어오는 보이드만을 이웃으로 규정할 수도 있다. 이런 이웃을 계산하는 방법에 따라 많은 변칙이 가능해진다.
+<p>여기까지가 기본적인 플로킹 알고리즘이었다. 지금까지는 주변 보이드를 계산할 때 그냥 주변을 360도를 전부 검사했다. 하지만 만약 보이드가 인간이나 동물의 추상체라면 자신의 주변은 관찰 가능한 곳에 있는, 또는 눈에 보이는 보이드로 한정될 것이다. 따라서 주변 보이드를 계산할 때 자신의 뒤쪽은 배제할 수도 있다. 또는 정말 시야에 들어오는 보이드만을 이웃으로 규정할 수도 있다. 이런 이웃을 계산하는 방법에 따라 많은 변칙이 가능해진다.<br/>
 공간에서 이웃은 위치상의 근접 개체이지만 다른 문제로 환원하면 논리적 근접을 다시 정의해야 한다. 예를 들어 만약 소셜 네트워크라면 이웃은 자신의 친구나 친구가 공유한 다른 친구로 될 것이다. 웹 사이트라면 직접 링크한 문서들을 이웃으로 정할 수도 있겠다.</p>
 
 <h3>영향도 수정</h3>
@@ -808,7 +866,7 @@ processingInstance = <span class="keyword">new</span> Processing(canvas, flock)
 
 <p>어떤 Topic 브랜치는 오랫동안 Merge하지 않고 유지하기도 한다. 이런 Topic 브랜치를 Merge하면 Conflict가 날 확률이 높다. Conflict가 예상되는 브랜치를 Merge할 때 <code>git rerere</code> 명령으로 난관을 극복하는 방법을 알아보자.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2012/git-rerere/overcome.jpg" alt="overcome"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/git-rerere/overcome.jpg" alt="overcome"/></p>
 
 <p>이 글은 <a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat&hellip;</a>을 주로 참고 했다. 내용은 거의 같다.</p>
 
@@ -838,7 +896,7 @@ console.log( <span class="string">'hello world'</span>)
 </code></pre>
 <p>그리고 아래와 같이 프로젝트를 진행한다. master 브랜치의 메시지를 'hola world'로 변경하고 i18n-world 브랜치의 메시지는 'hello mundo'로 변경한다:</p>
 
-<p><img src="/articles/2012/git-rerere/rerere1.png" alt="rerere1"></p>
+<p><img src="/articles/2012/git-rerere/rerere1.png" alt="rerere1"/></p>
 
 <p>이 상태에서 Merge를 하면 Conflict가 난다. 이 예제의 Conflict는 너무 간단해서 Recorded Resolution이 필요하지 않지만 <code>rerere</code>를 설명하기에는 더없이 좋은 예다.</p>
 
@@ -975,7 +1033,7 @@ To check out <span class="keyword">the</span> original branch <span class="keywo
  <span class="literal">-</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hello</span> <span class="comment">mundo')</span>
 <span class="literal">+</span><span class="literal">+</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">mundo')</span>
 </code></pre>
-<p><img src="/articles/2012/git-rerere/rerere3.png" alt="rerere1"></p>
+<p><img src="/articles/2012/git-rerere/rerere3.png" alt="rerere1"/></p>
 
 <p>그러면 이 상태에서 Resolution을 Mark하고 <code>git rebase --continue</code>를 실행하면 Rebase가 완료된다. 아래와 같이 실행한다:</p>
 <pre><code><span class="preprocessor"># git add .</span>
@@ -1047,10 +1105,10 @@ Applying: hello mundo
 </ul>
 ]]>
 </content></entry><entry><title><![CDATA[ GitHub의 페이지 기능 이용하기 ]]></title><link href="http://dogfeet.github.com/articles/2012/github-pages.html" /><updated>2012-10-10T00:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/github-pages.html</id><content type="html"><![CDATA[
-<p>GitHub의 Pages 기능을 이용하는 방법에 대해 정리해보고자 한다. <a href="https://twitter.com/pismute">@pismute</a>님의 &lsquo;한 때 버전 컨트롤, 위키, 블로그를 다 따로 사용했었는데, GitHub를 알고 나서 Git, GitHub으로만 사용하고 있다'는 말을 듣고 블로깅을 GitHub로 해보면 어떨까 하는 생각이 들었다. GitHub의 Page 기능을 이용하면 이 블로그처럼 글을 써서 남길 수 있다.
+<p>GitHub의 Pages 기능을 이용하는 방법에 대해 정리해보고자 한다. <a href="https://twitter.com/pismute">@pismute</a>님의 &lsquo;한 때 버전 컨트롤, 위키, 블로그를 다 따로 사용했었는데, GitHub를 알고 나서 Git, GitHub으로만 사용하고 있다'는 말을 듣고 블로깅을 GitHub로 해보면 어떨까 하는 생각이 들었다. GitHub의 Page 기능을 이용하면 이 블로그처럼 글을 써서 남길 수 있다.<br/>
 GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이지에 있는 Pages의 글</a> 들중 몇 가지만 빼고 한국어로 옮겨봤다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2012/github-pages/github-help.jpg" alt="help"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/github-pages/github-help.jpg" alt="help"/></p>
 
 <h2>1. GitHub의 Pages란?</h2>
 
@@ -1100,18 +1158,18 @@ GitHub의 <a href="https://help.github.com/categories/20/articles">help 페이�
 <ol>
 <li><p>저장소의 admin 페이지로 간다.</p>
 
-<p><img src="/articles/2012/github-pages/repo-actions-admin.png" alt="repo-actions-admin"></p></li>
+<p><img src="/articles/2012/github-pages/repo-actions-admin.png" alt="repo-actions-admin"/></p></li>
 <li><p>&ldquo;Automatic Page Generator&rdquo; 버튼을 클릭한다.</p>
 
-<p><img src="/articles/2012/github-pages/pages-automatic-page-generator.png" alt="pages-automatic-page-generator"></p></li>
+<p><img src="/articles/2012/github-pages/pages-automatic-page-generator.png" alt="pages-automatic-page-generator"/></p></li>
 <li><p>마크다운 에디터로 내용을 작성한다.</p></li>
 <li><p>&ldquo;Continue To Layouts&rdquo; 버튼을 누른다.</p></li>
 <li><p>제공되는 테마들을 적용해서 미리보기로 확인한다.</p>
 
-<p><img src="/articles/2012/github-pages/page-generator-picker.png" alt="page-generator-picker"></p></li>
+<p><img src="/articles/2012/github-pages/page-generator-picker.png" alt="page-generator-picker"/></p></li>
 <li><p>좋아하는 테마를 발견했으면 &ldquo;Publish&quot;를 클릭한다.</p>
 
-<p><img src="/articles/2012/github-pages/page-generator-publish.png" alt="page-generator-publish"></p></li>
+<p><img src="/articles/2012/github-pages/page-generator-publish.png" alt="page-generator-publish"/></p></li>
 </ol>
 
 <p>페이지가 만들어진 후에 로컬에 복사본을 얻을 수 있다. 프로젝트 페이지를 만들었다면 새로운 브랜치를 fetch 후 checkout 한다.</p>
@@ -1321,7 +1379,7 @@ example<span class="preprocessor">.com</span>.             <span class="number">
 
 <h3>안전하지 않은 플러그인</h3>
 
-<p>페이지의 서버는 안전하다고 확인되지 않은 플러그인은 빌드하지 않는다. <code>_plugins</code>폴더에 있는 모든 플러그인 또한 이 규칙에 적용받는다.
+<p>페이지의 서버는 안전하다고 확인되지 않은 플러그인은 빌드하지 않는다. <code>_plugins</code>폴더에 있는 모든 플러그인 또한 이 규칙에 적용받는다.<br/>
 이 문제는 두 가지 해결책이 존재한다.</p>
 
 <ul>
@@ -1354,8 +1412,8 @@ example<span class="preprocessor">.com</span>.             <span class="number">
 
 <h3>draft/* 브랜치</h3>
 
-<p>모든 글은 각자 하나의 브랜치를 가진다. 이 글은 <code>draft/github-pages</code>라는 브랜치 위에서 작성 중이다. 이 블로그의 모든 글이 <code>draft/</code>라는 접미사를 가진 브랜치를 가지고 있었다. 각 글들은 자신의 브랜치 위에서 작성되고 다른 사람들과 공유하여 리뷰를 받는다. 추가돼야 할 내용이나 오타, 비문 등을 지적받고 다시 고친 뒤에 커밋 한다. 
-글이 완성되면 저장용, 공유용 커밋들을 rebase를 이용해 합쳐서 1~2개의 커밋으로 정리한다. 이는 중앙 저장소의 히스토리를 예쁘게 유지하기 위함이다. 히스토리가 복잡해지면 같이 공유하는 사람에 대한 예의에 어긋난다. (&hellip;) 사람마다 다르겠지만 내 경우에 완전한 창작 글은 하나의 커밋으로 합치고 번역 글은 markdown으로 포메팅된 원문이 보존된 커밋 하나와 완성된 번역문 두 개로 정리한다.
+<p>모든 글은 각자 하나의 브랜치를 가진다. 이 글은 <code>draft/github-pages</code>라는 브랜치 위에서 작성 중이다. 이 블로그의 모든 글이 <code>draft/</code>라는 접미사를 가진 브랜치를 가지고 있었다. 각 글들은 자신의 브랜치 위에서 작성되고 다른 사람들과 공유하여 리뷰를 받는다. 추가돼야 할 내용이나 오타, 비문 등을 지적받고 다시 고친 뒤에 커밋 한다. <br/>
+글이 완성되면 저장용, 공유용 커밋들을 rebase를 이용해 합쳐서 1~2개의 커밋으로 정리한다. 이는 중앙 저장소의 히스토리를 예쁘게 유지하기 위함이다. 히스토리가 복잡해지면 같이 공유하는 사람에 대한 예의에 어긋난다. (&hellip;) 사람마다 다르겠지만 내 경우에 완전한 창작 글은 하나의 커밋으로 합치고 번역 글은 markdown으로 포메팅된 원문이 보존된 커밋 하나와 완성된 번역문 두 개로 정리한다.<br/>
 정리가 다 되면 ready 브랜치로 합친다.</p>
 
 <h3>ready 브랜치</h3>
@@ -1378,154 +1436,10 @@ example<span class="preprocessor">.com</span>.             <span class="number">
 </content></entry><entry><title><![CDATA[ Git 인덱스 페이지 프로젝트 dogit ]]></title><link href="http://dogfeet.github.com/articles/2012/dogit.html" /><updated>2012-09-27T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/dogit.html</id><content type="html"><![CDATA[
 <p>프로젝트 <a href="http://dogfeet.github.com/dogit">dogit</a>(<code>두깃</code>으로 읽는다). Git과 관련된 자료를 일목요연하게 볼 수 있도록 Git 인덱스 페이지를 만들었다. 여기저기 흩어져 있는 자료를 후진 기억력에 의존해 찾으려니 매우 오래걸리고 귀찮았다. 한 번에 전부 설명할 수는 없지만, 한 페이지에서 키워드와 해당 자료의 링크를 넣어 두면 검색해서 찾아 보기 쉬울 것 같았다.</p>
 
-<p><img src="http://dogfeet.github.com/articles/2012/dogit/index-html.png" alt="brownee"></p>
+<p><img src="http://dogfeet.github.com/articles/2012/dogit/index-html.png" alt="brownee"/></p>
 
 <p>좋은 자료가 있으면 알려주세요. 쉽게 검색할 수 있도록 간략한 소개나 키워드가 같이 있으면 좋습니다. 이 글의 댓글로 남겨주시거나 Pull Request를 보내 주시면 감사하겠습니다.</p>
 
 <p>풍성하고 즐거운 추석 보내세요.</p>
-]]>
-</content></entry><entry><title><![CDATA[ Meteor: 스마트 패키지 매니저 "Meteorite" ]]></title><link href="http://dogfeet.github.com/articles/2012/meteor-meteorite.html" /><updated>2012-09-20T15:00:00.000Z</updated><id>http://dogfeet.github.com/articles/2012/meteor-meteorite.html</id><content type="html"><![CDATA[
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.</p>
-
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.</p>
-
-<p><img src="http://dogfeet.github.com/articles/2012/meteor/meteorite.png" alt="meteorite"></p>
-
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>를 사용하면 사용할 meteor 버전을 명시할 수도 있고 스마트 패키지 의존성을 관리할 수 있다.</p>
-
-<h2>설치하기</h2>
-<pre><code class="lang-bash">npm install -g meteorite
-</code></pre>
-<h2>mrt 명령어</h2>
-
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. &lsquo;meteor create myapp'으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:</p>
-<pre><code class="lang-bash">mrt create myapp
-</code></pre>
-<p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:</p>
-<pre><code class="lang-javascript">{
-  <span class="string">"meteor"</span>: {
-    <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
-    <span class="string">"branch"</span>: <span class="string">"master"</span>
-  },
-  <span class="string">"packages"</span>: {}
-}
-</code></pre>
-<p><code>mrt create</code> 명령에는 <code>--branch</code>, <code>--tag</code>, <code>--ref</code> 옵션이 있어서 원하는 meteor 버전을 명시할 수 있다. </p>
-
-<p>그리고 다음과 같이 실행한다. 아무 옵션없이 <code>mrt</code>를 실행하면 <code>mrt run</code>를 실행한 것과 같고 기본포트는 <code>meteor</code> 명령처럼 3000이다:</p>
-<pre><code class="lang-bash">mrt run --port 2222
-</code></pre>
-<h2>smart.json</h2>
-
-<p><code>smart.json</code>은 npm의 <code>package.json</code> 처럼 스마트 패키지 정보를 기술하는 파일이다. </p>
-<pre><code class="lang-javascript">{
-  <span class="comment">//meteor는 생략할 수 있다.</span>
-  <span class="comment">//생략할 경우 Meteor의 공식 저장소와 master 브랜치가 사용된다.</span>
-  <span class="comment">//meteor.branch와 meteor.git 설정은 다른 브랜치를 사용할 때 쓴다.</span>
-  <span class="string">"meteor"</span>: { 
-    <span class="string">"branch"</span>: <span class="string">"devel"</span>
-  },
-  <span class="comment">//packages에 명시한 패키지는 기본적으로 중앙저장소(atmosphere)에서</span>
-  <span class="comment">//다운로드한다. 여기서는 moment와 fork-me를 다운로드한다.</span>
-  <span class="string">"packages"</span>: {
-    <span class="string">"moment"</span>: <span class="string">"1.7.0"</span>,
-    <span class="string">"fork-me"</span>: {
-      <span class="string">"version"</span>: <span class="string">"0.0.1"</span>
-    },
-    <span class="string">"cool-tool"</span>: {
-      <span class="comment">//atmosphere가 아니라 git 저장소에서 패키지를 가져온다.</span>
-      <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/cool-tool.git"</span>,
-      <span class="comment">//해당 태그의 버전을 가져온다.</span>
-      <span class="string">"tag"</span>: <span class="string">"v0.0.2"</span>
-      <span class="comment">//branch도 된다.</span>
-      <span class="string">"branch"</span>: <span class="string">"master"</span>
-      <span class="comment">//ref도 된다.</span>
-      <span class="string">"ref"</span>: <span class="string">"a137a5eee5"</span>
-    },
-    <span class="string">"another-tool"</span>: {
-      <span class="comment">//atmosphere가 아니라 git 저장소에서 패키지를 가져온다.</span>
-      <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/another-tool.git"</span>
-    },
-    <span class="string">"test-package"</span>: {
-      <span class="comment">//로컬 디스크에 있는 패키지를 가져온다.</span>
-      <span class="string">"path"</span>: <span class="string">"/path/to/local/package"</span>
-    }
-  }
-}
-</code></pre>
-<ul>
-<li><p>smart.json 파일에는 저장소 이외에 다른 정보는 기입하지 않아도 된다. mrt는 저장소에 있는 package.js 파일을 찾고 해당 Meteor 버전에 맞는 패키지를 다운로드해서 설치한다.</p></li>
-<li><p>명시한 스마트 패키지들에 서로 의존관계가 있으면 <code>mrt</code>가 적당히 정렬해서 설치한다. 상호 의존성이 있어도 잘 설치한다.</p></li>
-<li><p><code>mrt</code>가 처음 실행되면 smart.lock 파일이 생성된다. 이 파일에는 사용하는 패키지 버전이 들어간다. 다음에 실행할 때 참고하기 때문에 매우 유용하다. smart.lock 파일을 저장소에 커밋해 두면 그 저장소를 클론한 다른 개발자도 원 개발자가 사용하는 버전이 무었인지 알 수 있다. 그리고 smart.json 파일이 수정되면 자동으로 새 버전으로 업데이트 한다. 다음은 smart.lock 샘플이다:</p></li>
-</ul>
-<pre><code class="lang-javascript">{
-  <span class="string">"meteor"</span>: {
-    <span class="string">"git"</span>: <span class="string">"https://github.com/meteor/meteor.git"</span>,
-    <span class="string">"branch"</span>: <span class="string">"devel"</span>,
-    <span class="string">"commit"</span>: <span class="string">"de413efe500174999211eff318ad65eb34794d74"</span>
-  },
-  <span class="string">"dependencies"</span>: {
-    <span class="string">"basePackages"</span>: {
-      <span class="string">"moment"</span>: {},
-      <span class="string">"groups"</span>: {}
-    },
-    <span class="string">"packages"</span>: {
-      <span class="string">"moment"</span>: {
-        <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/meteor-moment.git"</span>,
-        <span class="string">"tag"</span>: <span class="string">"v1.7.0"</span>,
-        <span class="string">"commit"</span>: <span class="string">"c64b6ec0e714b9556f4b6643d430b868ba69d3d7"</span>
-      },
-      <span class="string">"groups"</span>: {
-        <span class="string">"git"</span>: <span class="string">"https://github.com/possibilities/meteor-groups.git"</span>,
-        <span class="string">"tag"</span>: <span class="string">"v0.0.6"</span>,
-        <span class="string">"commit"</span>: <span class="string">"ee45c3fbdb84313f6f0124ed30e02e101d3829cb"</span>
-      }
-    }
-  }
-}
-</code></pre>
-<p><code>mrt install</code>이라고 실행하면 Meteor는 실행하지 않고 패키지만 설치한다.</p>
-
-<p><code>smart.lock</code> 파일을 날려버리고서 <code>mrt update</code> 명령을 실행하면 패키지를 전부 업데이트할 수 있다. <code>mrt update PACKAGE_NAME</code> 처럼 패키지 이름을 입력하면 그 패키지만 업데이트된다.</p>
-
-<h2>Atmosphere</h2>
-
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다. </p>
-
-<p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:</p>
-<pre><code><span class="comment">mrt</span> <span class="comment">add</span> <span class="comment">moment</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span> <span class="comment">1</span>.<span class="comment">6</span>.<span class="comment">2</span>
-</code></pre>
-<p>'버전은 생략할 수 있다.'라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.</p>
-
-<p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:</p>
-<pre><code>absolute-url      DEPRECATED: Generate absolute URLs pointing <span class="keyword">to</span> the application
-amplify           Cross browser API <span class="keyword">for</span> Persistant Storage, PubSub <span class="keyword">and</span> Request.
-autopublish       Automatically publish all data <span class="keyword">in</span> the database <span class="keyword">to</span> every client
-backbone          A minimalist client-side MVC framework
-bootstrap         UX/UI framework from Twitter
-code-prettify     Syntax highlighting <span class="keyword">of</span> code, from Google
-coffeescript      Javascript dialect <span class="keyword">with</span> fewer braces <span class="keyword">and</span> semicolons
-email             Send email messages
-force-ssl         Require this application always use transport layer encryption
-groups            Simple system <span class="keyword">for</span> groups
-handlebars        Simple semantic templating language
-htmljs            Easy macros <span class="keyword">for</span> generating DOM elements <span class="keyword">in</span> Javascript
-http              Make HTTP calls <span class="keyword">to</span> remote servers
-jquery            Manipulate the DOM using CSS selectors
-jquery-history    pushState module from the jQuery project
-jquery-layout     Easily create arbitrary multicolumn layouts
-jquery-waypoints  Execute a <span class="function"><span class="keyword">function</span> <span class="title">when</span> <span class="title">the</span> <span class="title">user</span> <span class="title">scrolls</span> <span class="title">past</span> <span class="title">an</span> <span class="title">element</span>
-<span class="title">less</span>              <span class="title">The</span> <span class="title">dynamic</span> <span class="title">stylesheet</span> <span class="title">language</span>.
-<span class="title">madewith</span>          <span class="title">Made</span> <span class="title">With</span> <span class="title">Meteor</span> <span class="title">badge</span>
-<span class="title">moment</span>            <span class="title">Moment</span>.<span class="title">js</span> <span class="title">packaged</span> <span class="title">for</span> <span class="title">Meteor</span>
-<span class="title">sass</span>              <span class="title">Sassy</span> <span class="title">CSS</span> <span class="title">pre</span>-<span class="title">processor</span>.
-<span class="title">showdown</span>          <span class="title">Markdown</span>-<span class="title">to</span>-<span class="title">HTML</span> <span class="title">processor</span>
-<span class="title">spiderable</span>        <span class="title">Makes</span> <span class="title">the</span> <span class="title">application</span> <span class="title">crawlable</span> <span class="title">to</span> <span class="title">web</span> <span class="title">spiders</span>.
-<span class="title">stylus</span>            <span class="title">Expressive</span>, <span class="title">dynamic</span>, <span class="title">robust</span> <span class="title">CSS</span>.
-<span class="title">underscore</span>        <span class="title">Collection</span> <span class="title">of</span> <span class="title">small</span> <span class="title">helper</span> <span class="title">functions</span> <span class="params">(map, each, bind, ...)</span>
-</code></pre>
-<p><code>mrt remote moment</code>라고 실행하면 moment 패키지가 삭제된다. mrt 명령 사용방법은 <code>mrt help</code>를 실행하면 볼 수 있다. 세부 명령어 사용법은 <code>mrt help [command]</code>라고 실행하면 볼 수 있다.</p>
-
-<p>지금까지 mrt 명령으로 앱을 관리하는 방법을 살펴보았다. 다음에는 스마트 패키지를 만드는 법을 살펴보겠다. 기대하시라.</p>
 ]]>
 </content></entry></feed>

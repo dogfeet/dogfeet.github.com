@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - mac: java-web-start</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script><section class="content"><article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/mac-java-web-start.html" lang="ko-kr"><div class="row"><div class="span2 muted modern-font small-font"><span property="dc:created">2013 Mar 08 &raquo;</span></div><div class="span10"><h1 property="dcterms:title">mac: java-web-start</h1></div></div><div class="row"><div class="offset2 span10 modern-font small-font muted"><span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
+ | <a href="/site/tagmap.html#mac" class="tag">mac</a> <a href="/site/tagmap.html#java" class="tag">java</a> <a href="/site/tagmap.html#jnlp" class="tag">jnlp</a> | <span><a href="/articles/2013/mac-java-web-start.html#disqus_thread" data-disqus-identifier="/articles/2013/mac-java-web-start.html"></a></span>
+</div></div><div class="row"><div class="offset2 span10"><br/><style rel="stylesheet" media="screen, projection" scoped="scoped">#social-buttons {
+  margin-left: 30px;
+}</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2013/mac-java-web-start.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2013/mac-java-web-start.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2013/mac-java-web-start.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>언제부터 안되더라? 왜 안되더라? 그런건 잘 모르겠고 Mac에서는 Java Web Start가 그냥 실행되지 않는다. Apple이 막은 건데, Oracle이 미운 이유는 뭘까! 아무튼 다시 켜는 방법이 있다.</p>
+
+<p><img src="/articles/2013/mac-java-web-start/mung-me.jpg" alt=""/></p>
+
+<h2>Java web start</h2>
+
+<p>윈도에서 처럼 매끄럽게 브라우저 안에서 Java App이 실행되지 않더라도 jnlp 파일을 다운로드 받아서 javaws 명령으로 실행시키면 실행해야 하는데 다음과 같은 에러를 내뱉는다:</p>
+<pre><code>$ javaws my.jnlp
+Java Web Start splash screen process exiting <span class="keyword">...</span>
+Can not find message file: No such file or directory
+</code></pre>
+<p>Google님께 물어보면 Java7을 설치하라는 얘기가 많다. 그래서 설치하고 이것 저것 해봤는데도 됐다가 안됐다가 했다. 자세한 히스토리는 알고 싶지 않았고 그냥 실행만 됐으면 했는데, 그래도 그냥 Java7을 설치했었다. Oracle Java7을 설치하라고 하니 왠지 내 Mac을 욕보이는 것 같았지만 그냥 설치했다.</p>
+
+<p>어짜피 안돼서 Java7을 삭제했는데 Mac이 먹통ㅜㅜ. Mac까지 다시 설치해야 하나 싶었는데 이유는 모르겠지만 복구 됐다(야호!). 욕하고 싶은 상대가 Apple이 아닌 Oracle인건 왜일까!</p>
+
+<p>아래와 같이 파일을 열고:</p>
+<pre><code>sudo vi /System/Library/CoreServices/CoreTypes<span class="variable">.bundle</span>/Contents/Resources/XProtect<span class="variable">.meta</span><span class="variable">.plist</span>
+</code></pre>
+<p>주석처리를 좀 하고:</p>
+<pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="tag">&lt;<span class="title">plist</span> <span class="attribute">version</span>=<span class="value">"1.0"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+<span class="comment">&lt;!--
+  &lt;key&gt;JavaWebComponentVersionMinimum&lt;/key&gt;
+  &lt;string&gt;1.6.0_41-b02-446&lt;/string&gt;
+--&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>LastModification<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">string</span>&gt;</span>Mon, 04 Mar 2013 21:47:02 GMT<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>PlugInBlacklist<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">key</span>&gt;</span>10<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">key</span>&gt;</span>com.macromedia.Flash Player.plugin<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">key</span>&gt;</span>MinimumPlugInBundleVersion<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">string</span>&gt;</span>11.6.602.171<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+<span class="comment">&lt;!--
+      &lt;key&gt;com.oracle.java.JavaAppletPlugin&lt;/key&gt;
+      &lt;dict&gt;
+        &lt;key&gt;MinimumPlugInBundleVersion&lt;/key&gt;
+        &lt;string&gt;1.7.15.04&lt;/string&gt;
+      &lt;/dict&gt;
+--&gt;</span>
+    <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">key</span>&gt;</span>Version<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">integer</span>&gt;</span>2033<span class="tag">&lt;/<span class="title">integer</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">plist</span>&gt;</span>
+</code></pre>
+<p>리부팅한다. 그리고 아래와 같이 실행한다:</p>
+<pre><code><span class="title">javaws</span> my.jnlp
+</code></pre>
+<p>Apple이 Flash와 Java Applet을 BlackList로까지 분류하고 있는 줄은 몰랐다.</p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Sep 14 2011</span>&raquo;<a href="/articles/2011/1315993080.html">맥 터미널 자동완성시 대소문자 무시하기</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = '/articles/2013/mac-java-web-start.html';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
+  <div class="fb-like" data-href="http://dogfeet.github.com/articles/2013/mac-java-web-start.html" data-send="true" data-width="450" data-show-faces="true"></div>
+  <div class="fb-comments" data-href="http://dogfeet.github.com/articles/2013/mac-java-web-start.html" data-num-posts="1"></div>
+</div></div></div></section></div><footer class="footer"><p>Copyright &copy; 2008-2012 Dogfeet from coding to pixels, powered by <a href="https://github.com/balupton/docpad">Docpad</a></p></footer></div><!--DISQUS--><script>var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());</script><!--GA--><script>if( 'http://dogfeet.github.com' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}</script></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git:번역 Workflow</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git:번역 Workflow</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -21,7 +21,7 @@
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-translate-flow.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-translate-flow.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-translate-flow.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>Git으로 번역한다는 것은 아마도 CCL을 따르는 영문 자료를 우리말로 번역하는 것을 의미할 것이다. Pro Git 번역도 그랬다. Pro Git을 번역하면서 정리한 Workflow를 소개한다. 다른 번역 프로젝트에 도움을 줄 수 있으면 좋겠다.</p>
 
-<p><img src="/articles/2012/translation-flow/translation-flow.png" alt="image"></p>
+<p><img src="/articles/2012/translation-flow/translation-flow.png" alt="image"/></p>
 
 <h2>번역</h2>
 
@@ -53,7 +53,7 @@
 
 <p>이 브랜치는 항상 progit/master를 따라가는 것이니까 항상 Fast-forward Merge된다.</p>
 
-<p><img src="translation-flow/progit-master--master.png" alt="progit/master-master"></p>
+<p><img src="translation-flow/progit-master--master.png" alt="progit/master-master"/></p>
 
 <h3>토픽들</h3>
 
@@ -61,7 +61,7 @@
 
 <p>책 내용뿐만 아니라 보통 ebook을 빌드하는 구조를 가진 책들은 설정 파일과 빌드 스크립트도 수정해야 한다. 이것을 위한 토픽 브랜치도 만든다. 이때는 꼭 브랜치 이름이 ko-build로 시작하게 했다.</p>
 
-<p><img src="translation-flow/topics--ko.png" alt="topics-ko"></p>
+<p><img src="translation-flow/topics--ko.png" alt="topics-ko"/></p>
 
 <h3>ko</h3>
 
@@ -85,7 +85,7 @@
 </code></pre>
 <p>원문 저장소의 리모트 이름이 progit라고 가정한다:</p>
 
-<p><img src="translation-flow/progit-master--ko.png" alt="progit/master-ko"></p>
+<p><img src="translation-flow/progit-master--ko.png" alt="progit/master-ko"/></p>
 
 <h4>ko-build</h4>
 
@@ -97,7 +97,7 @@
 
 <p>Dictator가 검토해주길 바라는 내용은 ko-build 브랜치를 만들어 Pull Request를 보낸다. 스크립트는 한번 고치면 다시 고쳐야 할 일은 거의 없다.</p>
 
-<p><img src="translation-flow/progit-master--ko-build.png" alt="progit/master-ko-build"></p>
+<p><img src="translation-flow/progit-master--ko-build.png" alt="progit/master-ko-build"/></p>
 
 <h3>ko-base</h3>
 
@@ -109,7 +109,7 @@
 
 <p>ko-base를 브랜치가 아닌 Tag로 만들어도 된다. 하지만, Tag는 가리키는 커밋을 옮길 수 없다. 삭제하고 다시 만들어야 한다. 시점이 옮기는 것이니까 Fast-forward Merge가 적당하다고 생각한다.</p>
 
-<p><img src="translation-flow/progit-master--ko-base.png" alt="progit/master-ko-base"></p>
+<p><img src="translation-flow/progit-master--ko-base.png" alt="progit/master-ko-base"/></p>
 
 <h3>private</h3>
 
@@ -374,7 +374,7 @@ diff --git a/doc/en/core/undefined.md b/doc/en/core/undefined.md
 <h2>결론</h2>
 
 <p>번역 작업에도 Git은 매우 훌륭하다. 번역은 개발과 달라서 다른 Workflow가 필요하다. <a href="/articles/2011/a-successful-git-branching-model.html">git-flow</a>처럼 번역 시 참고할 만한 자료가 있으면 좋을 것 같아서 정리했다.</p>
-</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 29 2012</span>&raquo;<a href="/articles/2012/git-github-secrets.html">Git: GitHub secrets</a></li><li><span>Feb 10 2012</span>&raquo;<a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 19 2012</span>&raquo;<a href="/articles/2012/git-secrets.html">Git: git secrets</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Mar 03 2012</span>&raquo;<a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Jan 15 2012</span>&raquo;<a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 10 2011</span>&raquo;<a href="/articles/2011/git-merge.html">Git:merge</a></li><li><span>Mar 30 2012</span>&raquo;<a href="/articles/2012/first-speach.html">KTH 발표</a></li><li><span>Jan 14 2012</span>&raquo;<a href="/articles/2012/git-branch-a-v.html">Git:branch-a-v</a></li><li><span>Dec 29 2012</span>&raquo;<a href="/articles/2012/git-github-secrets.html">Git: GitHub secrets</a></li><li><span>Feb 10 2012</span>&raquo;<a href="/articles/2012/git-global-ignore.html">Git: Global Ignore</a></li><li><span>Aug 12 2012</span>&raquo;<a href="/articles/2012/git-merge-rebase.html">Git: Rebase는 언제 어떻게 해야 할까?</a></li><li><span>Dec 19 2012</span>&raquo;<a href="/articles/2012/git-secrets.html">Git: git secrets</a></li><li><span>Jan 21 2012</span>&raquo;<a href="/articles/2012/git-todo.html">Git:Todo Plugin</a></li><li><span>Mar 03 2012</span>&raquo;<a href="/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a></li><li><span>Apr 01 2012</span>&raquo;<a href="/articles/2012/how-to-github.html">GitHub로 남의 프로젝트에 감놓고 배놓기</a></li><li><span>Jan 15 2012</span>&raquo;<a href="/articles/2012/progit-retro.html">Pro Git 번역 회고</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-translate-flow.html';

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어 배우기 - 제 3장: 함수 정의하기</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어 배우기 - 제 3장: 함수 정의하기</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -21,7 +21,7 @@
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-via="lnyarl" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/learning-j-chapter3.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>Roger Stokes이 쓴 <a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a> 의 chapter 3:Defining Functions를 번역/정리했다. 이전 챕터들은 본 사이트에서 <a href="/site/tagmap.html#j%EC%96%B8%EC%96%B4">J언어 태그</a>로 검색해 볼 수 있다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/jcode.png" alt="j code"></p>
+<p><img src="/articles/2012/learning_j_chapter3/jcode.png" alt="j code"/></p>
 
 <p>J에는 많은 내장 함수가 있다. 우리는 그 중 몇 가지를 살펴보았다.(<code>*</code>나 <code>+</code>같은 것들) 이번 섹션에서는 이 내장함수를 조합해 원하는 함수를 정의하는 여러 방법을 배운다.</p>
 
@@ -54,7 +54,7 @@
    <span class="keyword">sum</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>
 <span class="number">9</span>
 </code></pre>
-<p><code>sum =: +/</code>라는 코드를 보면 <code>+/</code>가 이 자체로 함수를 표현하는 표현식임을 알 수 있다.
+<p><code>sum =: +/</code>라는 코드를 보면 <code>+/</code>가 이 자체로 함수를 표현하는 표현식임을 알 수 있다.<br/>
 <code>+/</code>는 &ldquo;Insert&rdquo;(<code>/</code>)가 함수 <code>+</code>에 적용되어 리스트를 합치는 함수가 되었다 라고 말한다.</p>
 
 <p>즉, <code>/</code>은 그 자체로 함수의 한 종류이다. 이 함수는 왼쪽에 인자 하나를 받는다. 그 인자도 함수고 계산 결과도 함수다.</p>
@@ -97,15 +97,15 @@
 
 <p>그림을 한번 그려보자. 우선 함수 f에 인자 y를 적용해 <code>f y</code>의 결과를 반환하는 다이어그램이 있다. 이 다이어그램에서 함수 f는 사각형으로 그리고 인자가 어떻게 흘러서 결과가 나타나는지 화살표로 나타낸다. 각각의 화살표에는 표현식이 쓰여있다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag01.gif" alt="monadic"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag01.gif" alt="monadic"/></p>
 
 <p>아래에 다이아딕 함수 f에 인자 x, y를 적용해 <code>x f y</code>가 만들어지는 다이어그램이 있다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag02.gif" alt="dyadic"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag02.gif" alt="dyadic"/></p>
 
 <p>이것이 함수 <code>f~</code>에 대한 다이어그램이다. 상자 안에 함수 f가 있고 인자가 서로 엇갈려서 들어가는 그림으로 나타냈다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag03.gif" alt="~"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag03.gif" alt="~"/></p>
 
 <h2>3.5 묶기(Bonding)</h2>
 
@@ -129,11 +129,11 @@
 </code></pre>
 <p>아래에 <code>k&amp;f</code>함수의 다이어그램이 있다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag04.gif" alt="bond"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag04.gif" alt="bond"/></p>
 
 <h2>3.6 용어: 접속사와 동사</h2>
 
-<p>표현식 <code>*&amp;2</code>는 <code>&amp;</code> 연산자는 두 인자(동사 <code>*</code>와 숫자 2)를 받는 함수이며 그 결과로 &quot;doubling&quot;이라는 동사를 만들어낸다.
+<p>표현식 <code>*&amp;2</code>는 <code>&amp;</code> 연산자는 두 인자(동사 <code>*</code>와 숫자 2)를 받는 함수이며 그 결과로 &quot;doubling&quot;이라는 동사를 만들어낸다.<br/>
 <code>&amp;</code>와 같은 두 인자를 취하는 &quot;연산자&quot;를 J에서는 &quot;접속사&quot;라고 한다. 이는 두 인자를 묶어주기 때문이다. 반면에 부사는 하나의 인자만을 가지는 연산자이다.</p>
 
 <p>J의 모든 함수는 내장 함수이건 사용자 정의 함수이건 반드시 4종류 중 하나이다. 모나딕 동사, 다이아딕 동사, 부사, 접속사가 그것이다. 같은 심볼이지만 다른 의미를 가지는 동사는 두 개의 다른 동사로 간주한다. 예를 들면 <code>-</code>는 모나딕으로는 &quot;negation&quot;이고 다이아딕으로는 &quot;subtraction&quot;이다.</p>
@@ -159,7 +159,7 @@
 </code></pre>
 <p>아래에는 이 구조에 대한 다이어그램이다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag05.gif" alt="composition"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag05.gif" alt="composition"/></p>
 
 <p>이 시점에서 독자분들은 동사를 합성할 때 왜 간단하게 <code>f g</code>라고 쓰지 않고 <code>f @: g</code>라고 쓰는지 궁금할 것이다. 간단히 말하자면 <code>f g</code>은 또 다른 의미이다. 이건 곧 나온다.</p>
 
@@ -250,7 +250,7 @@
 </code></pre>
 <p>이 구조를 다이어그램으로 나타내면 다음과 같다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"/></p>
 
 <p>또다른 예로 인자로 들어온 수의 정수 부분을 계산하는 동사인 <code>&lt;.</code>(&ldquo;floor&rdquo;)를 이용해보자. 숫자가 정수인지 아닌지 검사를 하려면 그 숫자가 정수부와 같은지 검사한다. &ldquo;equal-to-its-floor&quot;라는 의미를 가진 이 동사는 <code>= &lt;.</code>라는 훅으로 정의할 수 있다.</p>
 <pre><code>   wholenumber  =:  = <span class="xml"><span class="tag">&lt;<span class="title">.
@@ -296,7 +296,7 @@
 </code></pre>
 <p>이 구조를 다이어그램으로 나타내면 아래와 같다.</p>
 
-<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"></p>
+<p><img src="/articles/2012/learning_j_chapter3/diag06.gif" alt="hook"/></p>
 
 <p>포크에 대한 다른 예로는 숫자 리스트의 범위를 구하는 것이 있다. 숫자 리스트의 범위는 리스트에서 가장 작은 수와 가장 큰 수를 구하는 것이다. 이는 최소, 최대를 구하는 동사 중간에 콤마 동사를 넣어 포크하면 된다.</p>
 
@@ -316,7 +316,7 @@
 
 <h2>3.9 다 집어넣고 보자(Putting Things Together)</h2>
 
-<p>이제까지 배운 것들 중 몇가지를 섞어서 좀 더 커다란 예제를 만들어보자
+<p>이제까지 배운 것들 중 몇가지를 섞어서 좀 더 커다란 예제를 만들어보자<br/>
 어떤걸 만들꺼냐면, 숫자 리스트를 보여주고 각 숫자가 전체에서 몇 퍼센트를 차지하는지 보여주는 간단한 표를 만들 예정이다.</p>
 
 <p>어떤걸 만들어야 하는지 명확히 하기 위해 우선 완성된 예제를 먼저 보자. 아래에 설명 할 것이기 때문에 당장에 이 모든걸 알 필요는 없다. 그냥 아래 6라인의 코드를 보고 어떤 동사가 정의되어 있는지 살펴보자.</p>
@@ -463,7 +463,7 @@
 <span class="comment">|16</span>     <span class="comment">|4</span>           <span class="comment">|</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 </code></pre>
-<p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.
+<p>J의 몇몇 특징적인 기능(묶기, 합성, 훅, 포크)을 이용해서 조그마한 J프로그램을 작성해보았다. 모든 J 프로그램과 마찬가지로 이 프로그램은 이걸 작성하는 많은 방법중에 하나일 뿐이다.<br/>
 이 장에서 우리는 함수를 정의하는 방법을 배웠다. 함수는 두 종류가 있다. 동사와 연산자. 지금까지 우리는 동사의 정의하는 것을 보았다. 다음 장에서는 동사를 정의하는 다른 방법을 알아 볼 것이다. 그리고 제 13장에서는 연산자를 정의하는 방법을 배운다.</p>
 
 <p>이렇게 제 3장이 끝났다.</p>

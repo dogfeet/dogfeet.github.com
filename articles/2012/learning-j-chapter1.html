@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어를 배워보자 - 제 1장. 기본기</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어를 배워보자 - 제 1장. 기본기</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -25,7 +25,7 @@
 
 <p>이 책은 J701을 기준으로 쓰였다. 따라서 <a href="http://www.jsoftware.com">www.jsoftware.com</a> 에서 J701을 다운받아서 설치해 하나하나 실습해보면 좋다. J는 APL, K와 비슷한 언어로 리스트, 행렬등을 연산하기에 좋은 기호 중심의 언어이다. 따라서 수학, 통계, 논리적인 분석등에 쓰기에 좋다. 코드가 일반 알파벳이 아닌 특수문자가 많아 읽기가 난해하고 기존의 제어 흐름과는 다른 프로그래밍 스타일 때문에 배우기 어려워하는 사람이 많다. J에 대한 자세한 소개는 <a href="http://www.jsoftware.com/docs/help701/primer/contents.htm">여기</a> 에서 위의 글 몇 개를 읽으면 된다.</p>
 
-<p><img src="/articles/2012/learning-j-chapter1/j-code.png" alt="j-code"></p>
+<p><img src="/articles/2012/learning-j-chapter1/j-code.png" alt="j-code"/></p>
 
 <h2>1.1 인터렉티브 환경</h2>
 
@@ -203,7 +203,7 @@
 <p><code>+/2 3 4</code>는 <code>2+3+4</code>와 같은 의미이고 <code>*/2 3 4</code>는 <code>2*3*4</code>와 같은 의미임을 알 수 있다. <code>/</code>는 &quot;Insert&quot;라고 한다. 이 녀석은 왼쪽에 있는 함수를 오른쪽의 리스트의 각 아이템 사이에 끼워 넣는 역할을 하기 때문이다. 일반화하여 말하자면, F가 임의의 다이아딕 함수이고, L이 숫자로 이루어진 리스트 a, b, c, &hellip;. y, z 라면</p>
 <pre><code><span class="literal">F</span> / L    은   a <span class="literal">F</span> b <span class="literal">F</span> .... <span class="literal">F</span> y <span class="literal">F</span> z   이다.
 </code></pre>
-<p>또 다른 함수를 더 알아보자. 
+<p>또 다른 함수를 더 알아보자. <br/>
 아래에 세 가지 명제가 있다.</p>
 <pre><code>2 는 1보다 크다     (명백히 참이다)
 2 는 1과 같다          (거짓)
@@ -230,7 +230,7 @@
 <pre><code>   * / x &gt; 2
 0
 </code></pre>
-<p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1*1*0*1) 0(&quot;거짓&rdquo;)이 들어있으면 죽어도 1이 될 수 없다.
+<p>틀렸다. <code>x&gt;2</code> 는 <code>1 1 0 1</code>인데 곱셈에(1*1*0*1) 0(&quot;거짓&rdquo;)이 들어있으면 죽어도 1이 될 수 없다.<br/>
 x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <code>x&gt;2</code>의 결과를 전부 더하면 된다!</p>
 <pre><code>   <span class="literal">+</span> <span class="comment">/</span> <span class="comment">x</span> &gt; <span class="comment">2</span>
 <span class="comment">3</span>
@@ -327,7 +327,7 @@ x에 2보다 큰 수가 얼마나 많은지 알려면 어떻게 해야 할까? <
 </code></pre>
 <h2>1.11 내장 함수가 가진 이름의 구조</h2>
 
-<p>J의 각 내장 함수들은 공식적인 이름과 비공식 이름이 있다. 예를 들어 공식적인 이름이 <code>+</code>인 함수는 비공식 이름이 &quot;Plus&quot;이다. 게다가 모나딕과 다이아딕의 경우도 생각해야 한다. 공식 이름이 <code>-</code>인 함수는 비공식 이름이 &quot;Negate&quot;와 &quot;Minus&quot;가 있다.
+<p>J의 각 내장 함수들은 공식적인 이름과 비공식 이름이 있다. 예를 들어 공식적인 이름이 <code>+</code>인 함수는 비공식 이름이 &quot;Plus&quot;이다. 게다가 모나딕과 다이아딕의 경우도 생각해야 한다. 공식 이름이 <code>-</code>인 함수는 비공식 이름이 &quot;Negate&quot;와 &quot;Minus&quot;가 있다.<br/>
 비공식적인 이름은 보통 한 단어 정도로 짧다. 이 이름은 J가 인식하지 못하기때문에 J에서는 반드시 공식적인 이름을 사용해야 한다. 이 책에서는 비공식 이름은 큰따옴표로 감싸서 표현한다. (&quot;Minus&quot;처럼)</p>
 
 <p>거의 모든 내장 함수가 한 글자 내지 두 글자로 이루어진 공식적인 이름을 가지고 있다. (<code>*</code>나 <code>*:</code> 등등&hellip;) 두 번째 글자는 항당 <code>:</code>(colon)나 <code>.</code>(dot, full stop, period)이다.</p>

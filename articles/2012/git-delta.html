@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: 델타와 스냅샷</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: 델타와 스냅샷</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -21,7 +21,7 @@
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-delta.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-delta.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-delta.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다.</p>
 
-<p><img src="/articles/2012/git-delta/crime-and-sin.jpeg" alt=""></p>
+<p><img src="/articles/2012/git-delta/crime-and-sin.jpeg" alt=""/></p>
 
 <h2>델타</h2>
 
@@ -35,7 +35,7 @@
 
 <p>다음 그림은 <a href="http://marklodato.github.com/visual-git-guide/index-ko.html">Visual Git Guide</a>의 그림으로 <code>git diff</code> 명령을 설명하는 그림이다. VCS 없이 델타를 구할 생각을 하면 정말 끔찍하다. VCS 없이 코드를 공유했던 사람들은 정말 존경스럽다.</p>
 
-<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+<p><img src="/articles/2012/git-delta/git-diff.png" alt="git-diff"/><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 
 <h2>Git의 저장 방식</h2>
 
@@ -47,11 +47,11 @@
 
 <p>이것을 그림으로 표현하면 다음과 같다:</p>
 
-<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot"></p>
+<p><img src="/articles/2012/git-delta/git-snapshot.png" alt="git-snapshot"/></p>
 
 <p>이 방식으로 저장하면 1k 짜리를 한 글자씩 고쳐서 10번 수정하면 10k가 된다. Git은 처음에는 성능과 편리성을 위해 이 방식으로 저장하고 적절한 시점에 GC(Garbage Collection)가 실행되면 다음과 같이 저장한다:</p>
 
-<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta"></p>
+<p><img src="/articles/2012/git-delta/git-delta.png" alt="git-delta"/></p>
 
 <p>마지막 버전의 파일 하나만 통째로 저장하고 이전 버전들은 델타(diff 파일)를 저장한다. 이 그림에서 rev6를 요구하면 rev6의 파일을 그대로 반환한다. 하지만, rev4를 요구하면 rev6 파일에 rev5, rev4의 델타를 적용해서 반환한다.</p>
 
@@ -61,7 +61,7 @@
 
 <p>우리가 종종 Git과 비교하는 Mercurial도 델타로 저장한다. 다음 그림은 Mercurial이 저장하는 방식이다:</p>
 
-<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta"></p>
+<p><img src="/articles/2012/git-delta/mercurial-delta.png" alt="mercurial-delta"/></p>
 
 <p>Mercurial은 처음에 스냅샷을 저장하고 그다음 버전부터는 델타를 저장한다. 그래서 최신 버전의 파일이 요구하면 첫 스냅샷 파일과 최근까지의 델타를 적용해서 반환한다<a href="http://pycon-hg-git.heroku.com/">2</a>.</p>
 
@@ -73,7 +73,7 @@
 
 <p>Branch를 만들면 Merge Base를 자동으로 기록했다가 나중에 Merge를 하면 두 스냅샷을 기준으로 diff 프로그램을 이용해서 델타를 만들고 한쪽 브랜치에 patch 프로그램으로 적용하는 것과 같다. Merge는 이런 과정이고 Git의 Merge는 그동안 수동으로 했었어야 했던 일을 자동으로 해준다.</p>
 
-<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+<p><img src="/articles/2012/git-delta/git-merge.png" alt="git-merge"/><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 
 <p>SVN의 Merge도 결국 이런 것인데 SVN의 경우는 Merge Base를 자동으로 기록해주지 않아서 사람이 수동으로 메모했다가 Merge해야 하고 2-way Merge와 3-way Merge의 차이도 있다.</p>
 
@@ -81,14 +81,14 @@
 
 <p>Rebase는 Merge와 비슷하다. 델타를 만들어 적용하는 것은 같지만 히스토리를 구성하는 게 다르다. Merge 커밋을 만드는 것이 아니라 한쪽 브랜치를 <code>base</code>로 만든다. 커밋 순서를 배열한다고 생각하면 된다.</p>
 
-<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+<p><img src="/articles/2012/git-delta/git-rebase.png" alt="git-rebase"/><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
 
 <p><strong>Cherry-pick</strong>:</p>
 
 <p>Cherry-pick은 특정 커밋과 그 커밋의 부모와의 델타를 구해서(그러니까 해당 커밋의 델타만) 현 브랜치에 적용하는 것이다. 고른 커밋 하나에 대해서만 Rebase하는 것이다:</p>
 
-<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick"><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
-</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Nov 22 2012</span>&raquo;<a href="/articles/2012/git-rerere.html">Git: rerere</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
+<p><img src="/articles/2012/git-delta/git-cherry-pick.png" alt="git-cherry-pick"/><a href="http://marklodato.github.com/visual-git-guide/index-ko.html">1</a></p>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li><li><span>Dec 06 2011</span>&raquo;<a href="/articles/2011/a-successful-git-branching-model.html">A successful git branching model</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Nov 22 2012</span>&raquo;<a href="/articles/2012/git-rerere.html">Git: rerere</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2012/git-delta.html';

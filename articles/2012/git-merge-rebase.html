@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: Rebase는 언제 어떻게 해야 할까?</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Git: Rebase는 언제 어떻게 해야 할까?</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -21,7 +21,7 @@
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/git-merge-rebase.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/git-merge-rebase.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/git-merge-rebase.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>처음에는 Rebase를 왜 해야 하고 언제 어떻게 해야 하는지 좀 헷갈린다. 헷갈리는 이유는 정답이 없고 미묘함이 있어서인데 그래도 대략적인 가이드가 있으면 좋겠다 싶어서 정리해보았다.</p>
 
-<p><img src="/articles/2012/git-merge-rebase/git-rebase.jpeg" alt="git-"></p>
+<p><img src="/articles/2012/git-merge-rebase/git-rebase.jpeg" alt="git-"/></p>
 
 <h2>Social Coding Platform</h2>
 
@@ -47,7 +47,7 @@
 
 <p>잘 정리한 히스토리를 엿보고 싶다면 <a href="https://github.com/isaacs/npm/">npm 저장소</a>를 구경해보는 것이 좋다. <a href="https://twitter.com/izs">@izs</a>님은 완전 git타쿠:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/npm-history.png" alt="npm-history"></p>
+<p><img src="/articles/2012/git-merge-rebase/npm-history.png" alt="npm-history"/></p>
 
 <p>히스토리가 정말 보기 좋다. github의 &lsquo;pull request'도 사용하지 않고 죄다 손으로 Merge하는 것 같다.</p>
 
@@ -61,19 +61,19 @@
 
 <p>npm 저장소에 <a href="https://twitter.com/izs">@izs</a>님이 만들어 놓은 Merge 커밋을 보자:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/npm-gyp-history.png" alt="npm-gyp-history"></p>
+<p><img src="/articles/2012/git-merge-rebase/npm-gyp-history.png" alt="npm-gyp-history"/></p>
 
 <p><code>1ecd0eb</code>는 gyp를 구현한 커밋들을 묶어 놓은 Merge 커밋이다. gyp 브랜치를 만들어 gyp를 구현하고 master 브랜치로 Merge했다.</p>
 
 <p>Merge 커밋은 사실 커밋 묶음 나타내는 것이 아니다. 보통 커밋은 Parent가 하나인데 Merge 커밋은 Parent가 여러 개다. 하지만, Parent가 여러 개인 점을 이용해서 커밋 묶음으로 다룰 수 있다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/git-merge.png" alt="git-merge"></p>
+<p><img src="/articles/2012/git-merge-rebase/git-merge.png" alt="git-merge"/></p>
 
 <p>C6는 Merge 커밋으로 Parent가 두 개다. </p>
 
 <p>Merge 커밋을 Reset하면 관련 커밋이 전부 Reset된다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/git-reset.png" alt="git-reset"></p>
+<p><img src="/articles/2012/git-merge-rebase/git-reset.png" alt="git-reset"/></p>
 
 <p><code>C3</code>와 <code>C5</code>가 같이 Reset되기 때문에 master 입장에서는 커밋 묶음이 Reset된 것이다.</p>
 
@@ -83,53 +83,53 @@
 
 <p>다음과 같은 브랜치를 Merge, Rebase해보고 그 결과를 비교해보자:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig"></p>
+<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig"/></p>
 
 <p><code>git merge iss1</code> 명령으로 iss1를 Merge한다. 노란색인 C1은 Merge Base이다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/merge1.png" alt="merge1"></p>
+<p><img src="/articles/2012/git-merge-rebase/merge1.png" alt="merge1"/></p>
 
 <p><code>git merge iss2</code> 명령으로 iss2를 Merge한다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/merge2.png" alt="merge2"></p>
+<p><img src="/articles/2012/git-merge-rebase/merge2.png" alt="merge2"/></p>
 
 <p><code>git merge iss3</code> 명령으로 iss3를 Merge한다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3"></p>
+<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3"/></p>
 
 <p>iss1, iss2, iss3를 Merge 했다. C9, C10, C11은 Merge 커밋이다. 이 그림에서는 히스토리가 복잡하지 않다고 생각할 수 있지만, 이정도 되는 내용도 콘솔에서 보면 헷갈린다. 한눈에 들어오지 않는다. 이제 Rebase 후 Merge해보자.</p>
 
 <p>헷갈릴 수 있으니 원본 브랜치를 다시 한번 보고:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig"></p>
+<p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig"/></p>
 
 <p><code>git checkout iss1</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C1</code>이 아니라 <code>C4</code>가 된다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase1.png" alt="rebase1"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase1.png" alt="rebase1"/></p>
 
 <p><code>git checkout master</code>과 <code>git merge iss1</code>를 차례대로 실행해서 Merge한다. Rebase를 하면 항상 Fast-Forward Merge가 가능해진다. 하지만, 무턱대고 Fast-Forward Merge를 하는 것이 아니라 앞서 얘기했듯이 커밋을 묶음으로 관리하고 싶지 않을 때만 Fast-Forward Merge한다. 이 경우는 커밋이 하나이므로 그냥 Fast-Forward Merge한다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase1-merge.png" alt="rebase1-merge"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase1-merge.png" alt="rebase1-merge"/></p>
 
 <p><code>git checkout iss2</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>가 아니라 <code>C2&#39;</code>가 된다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase2.png" alt="rebase2"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase2.png" alt="rebase2"/></p>
 
 <p><code>git checkout master</code>과 <code>git merge --no-ff iss2</code>를 차례대로 실행해서 Merge한다. <code>--no-ff</code> 옵션은 강제로 Merge 커밋을 남기려고 주는 것이다. iss2 브랜치는 커밋이 두 개고 이 커밋은 iss2를 처리한 결과이므로 커밋 묶음으로 처리하는 것이 낫다(물론, 내용상 &ndash;no-ff 옵션을 주는 게 틀릴 수도 있다.):</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase2-merge.png" alt="rebase2-merge"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase2-merge.png" alt="rebase2-merge"/></p>
 
 <p><code>git checkout iss3</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>에서 <code>C9</code>이 된다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase3.png" alt="rebase3"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase3.png" alt="rebase3"/></p>
 
 <p><code>git checkout master</code>과 <code>git merge --no-ff iss3</code>를 차례대로 실행해서 Merge한다:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/rebase3-merge.png" alt="rebase3-merge"></p>
+<p><img src="/articles/2012/git-merge-rebase/rebase3-merge.png" alt="rebase3-merge"/></p>
 
 <p>다음 그림은 위에서 Rebase 없이 Merge한 결과다. 한번 비교해보자:</p>
 
-<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3"></p>
+<p><img src="/articles/2012/git-merge-rebase/merge3.png" alt="merge3"/></p>
 
 <p>Rebase를 하고 나서 Merge한 것이 훨씬 보기 좋다. 아무리 복잡한 과정을 거쳤어도 한눈에 들어오게 할 수 있다.</p>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - A successful git branching model</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - A successful git branching model</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Changwoo Park" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -23,7 +23,7 @@
 
 <p>내가 지난 일 년간 프로젝트를 할 때 사용한 개발 모델을 소개하고자 한다. 나는 이 모델을 업무에서도 사용했고 개인 프로젝트에서도 사용했다. 결과는 매우 성공적이었다. 진작부터 이 글을 쓰려고 벼르고 있었지만, 시간이 부족해 완성할 수 없었다. 나는 프로젝트를 진행하는 데 필요한 것을 하나하나 설명하기보다 순수하게 branching 전략과 배포 관리에 대해서 설명하고자 한다. </p>
 
-<p><img src="/articles/2011/a-successful-git-branching-model/git-branching-model.png" alt="Git은 버전 관리용"></p>
+<p><img src="/articles/2011/a-successful-git-branching-model/git-branching-model.png" alt="Git은 버전 관리용"/></p>
 
 <p>이 그림은 <a href="http://git-scm.com/">Git</a>으로 버전 관리하는 것을 한눈에 보여준다.</p>
 
@@ -41,7 +41,7 @@
 
 <p>이 브랜치 모델에는 중앙 저장소가 하나 필요하다. 사람들이 중앙에 두고 공유하는, 의미상으로 &ldquo;진짜&rdquo; 중앙 저장소 말이다. Git은 DVCS라서 본질적으로 모든 저장소가 같다. 중앙 저장소라고 해서 금칠 돼 있는 것이 아니다. 이 중앙 저장소를 origin으로 추가한다. Git을 사용하는 사람에게는 origin이라는 이름이 매우 친근하다.</p>
 
-<p><img src="/articles/2011/a-successful-git-branching-model/centr-decentr.png" alt="Decentralized but centralized"></p>
+<p><img src="/articles/2011/a-successful-git-branching-model/centr-decentr.png" alt="Decentralized but centralized"/></p>
 
 <p>개발자 모두 origin에 push/pull할 수 있지만, 중앙집중식에서는 모든 개발자가 다른 모듈 팀에서 수정한 것까지도 pull해야 한다. 예를 들어 혼자 하기 어려운 기능은 둘, 셋이서 함께 개발하고 나서 origin에 push해야 한다. 개발 중인 것을 origin에 push하지 않는다. 이 그림에서 Alice와 Bob, Alice와 David, Clair와 David은 각각 팀을 만들었다:</p>
 
@@ -49,7 +49,7 @@
 
 <h3>주요 브랜치</h3>
 
-<p><img src="/articles/2011/a-successful-git-branching-model/main-branches.png" alt="branches"></p>
+<p><img src="/articles/2011/a-successful-git-branching-model/main-branches.png" alt="branches"/></p>
 
 <p>이 개발 모델은 전혀 새롭지 않다. 핵심은 기존에 있던 개념들이다. 주요 브랜치 두 개는 중앙 저장소에 영원히 유지한다:</p>
 
@@ -113,7 +113,7 @@ Switched <span class="keyword">to</span> a <span class="keyword">new</span> bran
 </code></pre>
 <p>&rsquo;&ndash;no-ff' 옵션을 주면 항상 merge 커밋을 만들어 merge한다. fast-forward로 merge할 수 있어도 fast-forward하지 않는다. 그러면 feature 브랜치에 추가된 모든 커밋이 merge되고 feature 브랜치에서 merge했다는 기록이 커밋 히스토리에 남는다. 그 둘을 비교해보자:</p>
 
-<p><img src="/articles/2011/a-successful-git-branching-model/merge-without-ff.png" alt="branches"></p>
+<p><img src="/articles/2011/a-successful-git-branching-model/merge-without-ff.png" alt="branches"/></p>
 
 <p>후자처럼 fast-forward merge하면 나중에 커밋 히스토리를 다시 확인할 때 어떤 커밋이 어떤 기능(feature)을 구현한 것인지 확인하기 어렵다. 그래서 히스토리에 있는 커밋 메시지를 하나하나 눈으로 찾아야 한다. 추가한 feature를 되돌려야(revert) 할 때 feature와 관련된 모든 커밋을 되돌려야 하는데 merge 커밋이 없으면 욕이 절로 나올 것이다. &ndash;no-ff 옵션을 주고 merge했다면 되돌리기 쉽다.</p>
 
@@ -179,7 +179,7 @@ Deleted branch <span class="keyword">release</span>-<span class="number">1.2</sp
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: hotfix-*
 </code></pre>
-<p><img src="/articles/2011/a-successful-git-branching-model/hotfix-branches.png" alt="hotfix branches"></p>
+<p><img src="/articles/2011/a-successful-git-branching-model/hotfix-branches.png" alt="hotfix branches"/></p>
 
 <p>미리 계획을 세워두지 않는다는 점만 빼면 hotfix 브랜치도 새로운 배포를 준비하는 것이기 때문에 release 브랜치와 비슷하다. 이것은 이미 배포한 운영 버전에 생긴 문제를 해결하기 위해 만든다. 운영 버전에 생긴 치명적인 버그는 즉시 해결해야 하기 때문에 문제가 생기면 master 브랜치에 만들어 둔 tag로부터 hotfix 브랜치를 만든다.</p>
 
@@ -237,7 +237,7 @@ erge made by recursive.
 <p><a href="http://github.com/downloads/nvie/gitflow/Git-branching-model.pdf">고품질 PDF 버전</a>도 올려 두었으니 언제든지 볼 수 있도록 벽에 붙여두면 좋다. </p>
 
 <p>다이어그램 이미지 파일의 <a href="http://github.com/downloads/nvie/gitflow/Git-branching-model-src.key.zip">Apple Keynote</a> 파일도 요청하는 사람이 많아서 올렸다.</p>
-</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Nov 22 2012</span>&raquo;<a href="/articles/2012/git-rerere.html">Git: rerere</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
+</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Nov 30 2011</span>&raquo;<a href="/articles/2011/progit.html">progit</a></li><li><span>Sep 25 2011</span>&raquo;<a href="/articles/2011/1316924580.html">diff::Unified format</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/bash-it.html">Bash-it</a></li><li><span>Dec 24 2011</span>&raquo;<a href="/articles/2011/git-diff.html">Git:diff</a></li><li><span>Dec 09 2011</span>&raquo;<a href="/articles/2011/git-flow.html">Git:git-flow</a></li><li><span>Dec 01 2011</span>&raquo;<a href="/articles/2011/git-helpers.html">Git:git 도우미</a></li><li><span>Dec 17 2011</span>&raquo;<a href="/articles/2011/git-mergediff.html">Git:mergetool, difftool</a></li><li><span>Dec 02 2011</span>&raquo;<a href="/articles/2011/git-refs.html">Git:refs</a></li><li><span>Dec 22 2011</span>&raquo;<a href="/articles/2011/github-flow.html">GitHub Flow</a></li><li><span>Oct 12 2011</span>&raquo;<a href="/articles/2011/1318386790.html">Build distfile using Ant with Git revision</a></li><li><span>Sep 28 2012</span>&raquo;<a href="/articles/2012/dogit.html">Git 인덱스 페이지 프로젝트 dogit</a></li><li><span>Mar 25 2012</span>&raquo;<a href="/articles/2012/git-ff.html">Git: git-ff</a></li><li><span>Aug 25 2012</span>&raquo;<a href="/articles/2012/git-delta.html">Git: 델타와 스냅샷</a></li><li><span>Jan 01 2012</span>&raquo;<a href="/articles/2012/git-conflict.html">Git:conflict</a></li><li><span>Nov 22 2012</span>&raquo;<a href="/articles/2012/git-rerere.html">Git: rerere</a></li><li><span>Apr 29 2012</span>&raquo;<a href="/articles/2012/git-svn.html">Git: git-svn</a></li><li><span>Feb 02 2012</span>&raquo;<a href="/articles/2012/git-translate-flow.html">Git:번역 Workflow</a></li><li><span>Oct 10 2012</span>&raquo;<a href="/articles/2012/github-pages.html">GitHub의 페이지 기능 이용하기</a></li><li><span>Jan 08 2012</span>&raquo;<a href="/articles/2012/progit.html">progit</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2011/a-successful-git-branching-model.html';

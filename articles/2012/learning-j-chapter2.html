@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어 배우기 - 제 2장: 리스트와 테이블</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - J언어 배우기 - 제 2장: 리스트와 테이블</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -23,7 +23,7 @@
 
 <p>자 시작하자.</p>
 
-<p><img src="/articles/2012/learning-j-chapter2/j-code.png" alt="j-code"></p>
+<p><img src="/articles/2012/learning-j-chapter2/j-code.png" alt="j-code"/></p>
 
 <p>계산(computation)을 하려면 데이터가 필요하다. 지금까지 단일 숫자와 숫자 리스트로 된 데이터만을 다뤘다. 하지만 테이블 같은, 다른 형태를 가진 데이터도 생각해볼 수 있다. 그런 데이터 즉, 리스트나 테이블들을 &ldquo;배열&rdquo;(Array)이라고 한다.</p>
 
@@ -35,7 +35,7 @@
 <span class="number">5</span> <span class="number">6</span>  <span class="number">7</span>
 <span class="number">8</span> <span class="number">9</span> <span class="number">10</span>
 </code></pre>
-<p>위 예제는 <code>x $ y</code>라는 표현식으로 테이블을 만드는 것을 보여준다. x는 테이블의 차원(dimensions)을 결정한다. x는 행의 개수 다음에 열의 개수가 오는 리스트의 형태이다. 테이블은 y의 내용으로 채워진다.
+<p>위 예제는 <code>x $ y</code>라는 표현식으로 테이블을 만드는 것을 보여준다. x는 테이블의 차원(dimensions)을 결정한다. x는 행의 개수 다음에 열의 개수가 오는 리스트의 형태이다. 테이블은 y의 내용으로 채워진다.<br/>
 y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음에는 두 번째 행을 채워나간다. 행이 더 있으면 계속 y의 아이템을 가져와 순서대로 채운다. y는 적어도 하나 이상의 아이템을 가지고 있어야만 한다. 만약 y의 아이템 개수가 테이블을 채우기 부족하다면 y의 처음부터 재사용한다.</p>
 
 <table cellpadding="10" border="1">
@@ -84,7 +84,7 @@ y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음�
 
 <h2>2.2 배열</h2>
 
-<p>테이블은 차원이 2이다. (행과 열) 비슷하게, 리스트는 1차원이라고 말할 수 있다.
+<p>테이블은 차원이 2이다. (행과 열) 비슷하게, 리스트는 1차원이라고 말할 수 있다.<br/>
 2개 이상의 차원을 가진 테이블 형 데이터 오브젝트도 있다. 그런 의미에서 <code>$</code>함수의 왼쪽 인자는 차원의 개수를 가지는 리스트라고도 말할 수 있다. &ldquo;배열&quot;이라는 단어는 차원을 가진 데이터 오브젝트를 가리키는 일반적인 말이다. 아래에는 1차원, 2차원, 3차원의 배열에 대한 예제이다.</p>
 
 <table cellpadding="10" border="1">
@@ -212,7 +212,7 @@ y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음�
 
 <h2>2.3 용어: 랭크와 모양(Rank and Shape)</h2>
 
-<p>&quot;차원 수&quot;라고 부르는 속성은 J에서는 짧게 줄여 &quot;랭크(Rank)&quot;라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 &quot;모양(Shape)&quot;이라고 한다.
+<p>&quot;차원 수&quot;라고 부르는 속성은 J에서는 짧게 줄여 &quot;랭크(Rank)&quot;라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 &quot;모양(Shape)&quot;이라고 한다.<br/>
 수학 용어에서 &quot;벡터(Vector)&quot;와 &quot;매트릭스(Matrix)&quot;는 위에서 말했던 &quot;리스트&quot;와 &quot;테이블&quot;과 관련이 있다. 3차원 이상의 배열(아, 이제는 랭크 3이상의 배열 이라고 하겠다.)은 &quot;리포트(Report)&quot;라고 한다.</p>
 
 <p>아래 테이블에 배열에 대한 용어와 함수들을 정리해놓았다.</p>
@@ -317,7 +317,7 @@ pig</tt></td>
 
 <h3>2.5.2 아이템</h3>
 
-<p>숫자로 이루어진 리스트의 아이템은 각각이 숫자다. 그리고 테이블의 아이템은 그 테이블의 행이라고 한다. 3차원 배열의 아이템은 그 배열의 평면이다. 일반적으로 말해서 아이템이라 함은 배열의 첫 번째 차원을 따라 늘어서 있는 요소들의 연속이다. 배열은 아이템으로 이루어진 리스트이다.
+<p>숫자로 이루어진 리스트의 아이템은 각각이 숫자다. 그리고 테이블의 아이템은 그 테이블의 행이라고 한다. 3차원 배열의 아이템은 그 배열의 평면이다. 일반적으로 말해서 아이템이라 함은 배열의 첫 번째 차원을 따라 늘어서 있는 요소들의 연속이다. 배열은 아이템으로 이루어진 리스트이다.<br/>
 <code>#</code>(&quot;Tally&rdquo;)함수가 리스트의 길이를 반환한다고 했었다. 아래를 보자</p>
 
 <table cellpadding="10" border="1">
@@ -493,7 +493,7 @@ pig</tt></td>
 <pre><code>   <span class="comment">''</span> <span class="literal">-</span><span class="comment">:</span> <span class="comment">0</span> <span class="comment">$</span> <span class="comment">0</span>
 <span class="comment">1</span>
 </code></pre>
-<p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)
+<p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)<br/>
 <code>=</code>(&ldquo;Equal&rdquo;)라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.</p>
 
 <table cellpadding="10" border="1">

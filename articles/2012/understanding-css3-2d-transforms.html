@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Understanding CSS3 2D Transforms</title><meta name="description" /><meta name="keywords" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en"><head><!--Meta--><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>#dogfeet - Understanding CSS3 2D Transforms</title><meta name="description" content="" /><meta name="keywords" content="" /><meta name="author" content="Yongjae Choi" /><!--Icons--><link rel="shortcut icon" href="images/favicon.ico" /><link rel="apple-touch-icon" href="images/apple-touch-icon.png" /><link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" /><link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" /><!--Shims: IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
         <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--><!--Styles--><link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" /><link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" /><link rel="stylesheet" href="/styles/style.css" media="screen, projection" /><link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" /><!--Scripts--><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script><script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script><script src="/scripts/script.js"></script></head><body><!--Topbar--><div class="navbar navbar-static-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="/">dogfeet</a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/site/tagmap.html">Tagmap</a></li><li><a href="/site/archive.html">Archive</a></li><li><a href="/site/atelier.html">Atelier</a></li><li><a href="http://feeds.feedburner.com/github/dogfeet"><img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" /></a></li></ul><form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get"><input type="hidden" name="q" value="site:dogfeet.github.com" /><input type="text" name="q" results="0" placeholder="Search" search-query /></form></div></div></div></div><!--Markup--><div class="container"><div><script src="http://platform.twitter.com/widgets.js"></script><script>//facebook
 (function(d, s, id) {
@@ -21,7 +21,7 @@
   margin-left: 30px;
 }</style><div id="social-buttons" class="pull-right"><ul class="unstyled"><li><a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.com/articles/2012/understanding-css3-2d-transforms.html" data-via="lnyarl" data-count="horizontal" data-lang="en">Tweet</a></li><li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.com/articles/2012/understanding-css3-2d-transforms.html"></div></li><li><div class="fb-like" data-href="http://dogfeet.github.com/articles/2012/understanding-css3-2d-transforms.html" data-send="false" data-layout="button_count" data-show-faces="false"></div></li></ul></div><div property="sioc:content"><p>이 글은 Klemen Slavič의 <a href="http://msdn.microsoft.com/en-us/magazine/gg709742.aspx">Understanding CSS3 2D Transforms</a>를 번역한 글이다. 최근 CSS의 transform으로 DOM 객체를 이동시키는데 좌표이동이 헷갈려 정리하고 지나가려 한다. 2011년 3월의 글이라 현재는 다 구현되었는데 글에서는 구현 중으로 표현할 수도 있으니 혼란스러워하지 말길 바란다.</p>
 
-<p><img src="/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime"></p>
+<p><img src="/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime"/></p>
 
 <h2>변환(Transformation)이 뭐냐?</h2>
 
@@ -35,21 +35,21 @@
 
 <p>아래의 간단한 예제를 보자. 2x2 크기의 사각형의 중심이 원점(0, 0)에 있다.</p>
 
-<p><img src="/articles/2012/css-transform/gg709742.01-origin(en-us,MSDN.10).png" alt="origin"></p>
+<p><img src="/articles/2012/css-transform/gg709742.01-origin(en-us,MSDN.10).png" alt="origin"/></p>
 
 <p>이 객체를 2 만큼 확대한 후 1 만큼 오른쪽으로 이동하고 나서 0.5만큼 위로 이동시키면 아래와 같은 결과가 나타난다.</p>
 
-<p><img src="/articles/2012/css-transform/gg709742.02-scale-then-move(en-us,MSDN.10).png" alt="scale-then-move"></p>
+<p><img src="/articles/2012/css-transform/gg709742.02-scale-then-move(en-us,MSDN.10).png" alt="scale-then-move"/></p>
 
 <p>정확히 원하던 결과가 나왔다. 사각형은 이제 4x4 크기의 중심이 (1, 0.5)로 옮겨졌다. 하지만 만약 우리가 이 순서를 반대로 적용했다면? 아래에 그 결과가 있다.</p>
 
-<p><img src="/articles/2012/css-transform/gg709742.03-move-then-scale(en-us,MSDN.10).png" alt="move-then-scale"></p>
+<p><img src="/articles/2012/css-transform/gg709742.03-move-then-scale(en-us,MSDN.10).png" alt="move-then-scale"/></p>
 
 <p>결과는 올바르다. 하지만 딱 보기에 좀 이상하게 보인다. 사각형의 중심이 이전 예제와는 다르게 (1, 0.5)가 아니라 (2, 1)이다. 변환 결과의 위치가 바뀐 이유는 변환이 변환 원점에 의존적이고 변환 원점이 위치를 포함한 객체의 모든 특성에 적용되기 때문이다. 만약 객체에 변환 원점과 관련이 있는 오프셋이 있다면 이 위치는 다른 특성들을 따라 같이 변환된다. 이 경우에는 객체의 x, y가 2만큼 늘어났다. (즉, 늘어난 뒤 이동한 게 아니라 이동 뒤에 늘어났기 때문이다.)</p>
 
 <p>이게 어려워도 혼란스러워 하지 마라. 변환 원점의 기본값이 (0, 0)이긴 하지만 명시적으로 이 원점을 바꿀 수 있다. 다음 예제는 사각형을 (2, 2)를 기준으로 시계방향 30도 회전한 것이다.</p>
 
-<p><img src="/articles/2012/css-transform/gg709742.04-rotate-without-origin(en-us,MSDN.10).png" alt="rotate-without-origin"></p>
+<p><img src="/articles/2012/css-transform/gg709742.04-rotate-without-origin(en-us,MSDN.10).png" alt="rotate-without-origin"/></p>
 
 <p>객체가 원점에서부터 떨어져 있기 때문에 사각형 전체가 원점을 중심으로 회전했다. 만약 객체가 왼쪽 위를 중심으로 돌아가게 하고 싶다면 변환 원점을 객체의 왼쪽 위로 옮긴 다음에 회전해야 한다.</p>
 
@@ -408,7 +408,7 @@
 
 <h2>가랏!</h2>
 
-<p>그게 2D CSS 변환의 요지이다. 우리는 텍스트, 이미지에 무려 비디오까지 기울이고 자르고 늘이고 줄일 수 있다. 우리는 우리가 과거에 비트맵에서 했던 모든 것들을 여기서 할 수 있다.
+<p>그게 2D CSS 변환의 요지이다. 우리는 텍스트, 이미지에 무려 비디오까지 기울이고 자르고 늘이고 줄일 수 있다. 우리는 우리가 과거에 비트맵에서 했던 모든 것들을 여기서 할 수 있다.<br/>
 이제 가서 슬슬 일해!</p>
 </div></div></div></article></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
