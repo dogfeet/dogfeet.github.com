@@ -26,7 +26,7 @@
 <h2>Java web start</h2>
 
 <p>윈도에서 처럼 매끄럽게 브라우저 안에서 Java App이 실행되지 않더라도 jnlp 파일을 다운로드 받아서 javaws 명령으로 실행시키면 실행해야 하는데 다음과 같은 에러를 내뱉는다:</p>
-<pre><code>$ javaws my.jnlp
+<pre><code>% javaws my.jnlp
 Java Web Start splash screen process exiting <span class="keyword">...</span>
 Can not find message file: No such file or directory
 </code></pre>
@@ -35,7 +35,7 @@ Can not find message file: No such file or directory
 <p>어짜피 안돼서 Java7을 삭제했는데 Mac이 먹통ㅜㅜ. Mac까지 다시 설치해야 하나 싶었는데 이유는 모르겠지만 복구 됐다(야호!). 욕하고 싶은 상대가 Apple이 아닌 Oracle인건 왜일까!</p>
 
 <p>아래와 같이 파일을 열고:</p>
-<pre><code>sudo vi /System/Library/CoreServices/CoreTypes<span class="variable">.bundle</span>/Contents/Resources/XProtect<span class="variable">.meta</span><span class="variable">.plist</span>
+<pre><code>% sudo vi /System/Library/CoreServices/CoreTypes<span class="variable">.bundle</span>/Contents/Resources/XProtect<span class="variable">.meta</span><span class="variable">.plist</span>
 </code></pre>
 <p>주석처리를 좀 하고:</p>
 <pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
@@ -72,10 +72,21 @@ Can not find message file: No such file or directory
 <span class="tag">&lt;/<span class="title">plist</span>&gt;</span>
 </code></pre>
 <p>리부팅한다. 그리고 아래와 같이 실행한다:</p>
-<pre><code><span class="title">javaws</span> my.jnlp
+<pre><code>% javaws <span class="filename">my.jnlp
 </code></pre>
 <p>Apple이 Flash와 Java Applet을 BlackList로까지 분류하고 있는 줄은 몰랐다.</p>
-</div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Sep 14 2011</span>&raquo;<a href="/articles/2011/1315993080.html">맥 터미널 자동완성시 대소문자 무시하기</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
+
+<p>그리고 Mac update를 하면 다시 Disable된다. Disable되면 jre가 설치돼 있는데도 불구하고 javaws를 실행했을 때 아래와 같은 에러를 뱉는다:</p>
+<pre><code>% javaws <span class="keyword">my</span>.jnlp
+No Java runtime present, requesting install.
+Unable <span class="keyword">to</span> locate a Java Runtime <span class="keyword">to</span> invoke.
+</code></pre>
+<p>아래와 같이 실행하면 다시 javaws를 사용할 수 있다:</p>
+<pre><code>su<span class="operator"><span class="keyword">do</span> ln -sf /System/Library/Frameworks/JavaVM.framework/Commands/javaws /usr/bin/javaws
+</code></pre>
+<p>수동으로 다시 disable하고 싶으면 아래와 같이 실행한다:</p>
+<pre><code>% su<span class="operator"><span class="keyword">do</span> ln -sf /System/Library/Frameworks/JavaVM.framework/Versions/<span class="keyword">Current</span>/Commands/javaws /usr/bin/javaws
+</code></pre></div></div></div></article></section><section id="related"><div class="row"><div class="offset2 span10"><h3>Related Posts</h3><ul><li><span>Sep 14 2011</span>&raquo;<a href="/articles/2011/1315993080.html">맥 터미널 자동완성시 대소문자 무시하기</a></li></ul></div></div></section><section id="comments"><div class="row"><div class="offset2 span10"><h3>Feedback</h3><div id="disqus_thread" class="well"></div>
 <script type="text/javascript">
     var disqus_shortname = 'dogfeet-github';
     var disqus_identifier = '/articles/2013/mac-java-web-start.html';
