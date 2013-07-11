@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-05-21T12:48:54.022Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ 프로 Git 한글책 출간 ]]></title><link href="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" /><updated>2013-05-20T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-11T14:21:08.383Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: ckw Solarized!  ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" /><updated>2013-07-10T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id><content type="html"><![CDATA[
+<p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""/></p>
+
+<h2>ckw</h2>
+
+<p>cmd 터미널은 너무 구려서 <a href="http://d.hatena.ne.jp/hideden/20071115/1195229532">ckw</a>를 사용하고 있는데 찾아보니 <a href="https://gist.github.com/cd01/4307522">ckw용 Solarized 테마</a>를 만들어 놓은 훌륭한 분이 있었다.</p>
+
+<p>바로 내 설정에 적용했다:</p>
+
+<p><img src="/articles/2013/git-msysgit-ckw-solarized/git-msysgit-ckw-solarized.png" alt="ckw-solarized"/></p>
+
+<p>Putty에도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 쓰고 있는데 ckw에도 적용했더니 둘이 많이 비슷해졌다.</p>
+
+<p>하지만 미묘하게 이 ckw의 색감이 떨어진다. <a href="https://github.com/brantb/solarized">Solarized 저장소</a>에서 배포하고 있는 것 만큼 색감이 좋지는 않다. 눈에 거슬리는 색은 조금씩 변경해서 쓰는게 좋겠다.</p>
+
+<p>위 설정을 적용한 내 설정은 아래와 같다:</p>
+<pre><code>!
+! ckw setting
+!
+
+Ckw<span class="variable">*title</span>: Powershell
+Ckw<span class="variable">*exec</span>:  powershell -ExecutionPolicy RemoteSigned
+Ckw<span class="variable">*chdir</span>: C:\Users\pismute\git
+
+Ckw<span class="variable">*scrollHide</span>:  <span class="keyword">no</span>
+Ckw<span class="variable">*scrollRight</span>: yes
+Ckw<span class="variable">*internalBorder</span>: <span class="number">1</span>
+Ckw<span class="variable">*lineSpace</span>: <span class="number">0</span>
+Ckw<span class="variable">*topmost</span>: <span class="keyword">no</span>
+
+Ckw<span class="variable">*font</span>: NanumGothicCoding
+Ckw<span class="variable">*fontSize</span>: <span class="number">22</span>
+
+Ckw<span class="variable">*geometry</span>:  <span class="number">80</span>x26
+Ckw<span class="variable">*saveLines</span>: <span class="number">10000</span>
+
+!! theme
+!! Solarized dark
+!!
+
+!Ckw<span class="variable">*foreground</span>:     <span class="comment">#657b83</span>
+Ckw<span class="variable">*background</span>:     <span class="comment">#073642</span>
+!Ckw<span class="variable">*cursorColor</span>:    <span class="comment">#657b83</span>
+Ckw<span class="variable">*cursorImeColor</span>: <span class="comment">#dc322f</span>
+!Ckw<span class="variable">*backgroundBitmap</span>: background.bmp
+!Ckw<span class="variable">*transp</span>:           <span class="number">220</span>
+!Ckw<span class="variable">*transpColor</span>:      <span class="comment">#000000</span>
+
+Ckw<span class="variable">*color1</span>:  <span class="comment">#586e75</span>
+Ckw<span class="variable">*color2</span>:  <span class="comment">#859900</span>
+Ckw<span class="variable">*color3</span>:  <span class="comment">#2aa198</span>
+Ckw<span class="variable">*color4</span>:  <span class="comment">#cb4b16</span>
+Ckw<span class="variable">*color5</span>:  <span class="comment">#6c71c4</span>
+Ckw<span class="variable">*color6</span>:  <span class="comment">#859900</span>
+
+Ckw<span class="variable">*color8</span>:  <span class="comment">#839496</span>
+Ckw<span class="variable">*color9</span>:  <span class="comment">#268bd2</span>
+Ckw<span class="variable">*color10</span>: <span class="comment">#859900</span>
+Ckw<span class="variable">*color11</span>: <span class="comment">#2aa198</span>
+Ckw<span class="variable">*color12</span>: <span class="comment">#dc322f</span>
+Ckw<span class="variable">*color13</span>: <span class="comment">#d33682</span>
+Ckw<span class="variable">*color14</span>: <span class="comment">#b58900</span>
+Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
+</code></pre>]]>
+</content></entry><entry><title><![CDATA[ 프로 Git 한글책 출간 ]]></title><link href="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" /><updated>2013-05-20T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id><content type="html"><![CDATA[
 <p>Pro Git 한글 번역이 <a href="http://www.insightbook.co.kr/">인사이트</a>의 도움을 받아 종이책으로 <a href="http://www.insightbook.co.kr/post/5633">프로 Git</a> 으로 출간되었습니다. 학생분들은 도서관에 직장인은 도서구매부에 얼른얼른 구매 신청해주세요! ㅎㅎ</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/progit-ko-book-published/progit.jpg" alt=""/> <img src="/articles/2013/progit-ko-book-published/devops.png" alt=""/></p>
@@ -952,248 +1018,5 @@ processingInstance = <span class="keyword">new</span> Processing(canvas, flock)
 <script src="/articles/2012/flocking-algorithm/js/flock.js" type="text/javascript"></script>
 
 <script src="/articles/2012/flocking-algorithm/js/flocking.js" type="text/javascript"></script>
-]]>
-</content></entry><entry><title><![CDATA[ Git: rerere ]]></title><link href="http://dogfeet.github.io/articles/2012/git-rerere.html" /><updated>2012-11-22T00:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2012/git-rerere.html</id><content type="html"><![CDATA[
-<p>왠지 &lsquo;거꾸로 해도 이효리'가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다.</p>
-
-<p>어떤 Topic 브랜치는 오랫동안 Merge하지 않고 유지하기도 한다. 이런 Topic 브랜치를 Merge하면 Conflict가 날 확률이 높다. Conflict가 예상되는 브랜치를 Merge할 때 <code>git rerere</code> 명령으로 난관을 극복하는 방법을 알아보자.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2012/git-rerere/overcome.jpg" alt="overcome"/></p>
-
-<p>이 글은 <a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat&hellip;</a>을 주로 참고 했다. 내용은 거의 같다.</p>
-
-<h2>rerere(Reuse Recorded Resolution)</h2>
-
-<p><code>rerere</code>는 간단히 말하자면 Conflict를 해결한 Resolution을 저장해두고 같은 Conflict가 나면 저장한 Resolution을 재사용하는 명령이다.</p>
-
-<p>Conflict가 발생하면 우선 conflict를 해결한 다음에, 다시 Merge하기 전으로 돌아와서 다시 Merge하면 저장된 Resolution이 적용돼서 Conflict 없이 자동으로 Merge된다.</p>
-
-<p>어떻게 보면 말장난 같아 보일 수도 있다. Conflict를 Resolve하는 실험을 하고 실험에 성공하면 수동으로 그 실험을 재현해서 적용한다. 실패하면 다시 처음으로 돌아와 다시 시도한다. 그런데 이때 성공한 실험 내용을 기록해 뒀다가 자동으로 다시 적용하면 매우 편리할 것이다. <strong><code>rerere</code> 옵션을 켜면 Conflict를 Resolve하는데 성공하면 그 내용을 자동으로 저장해주고 같은 일을 다시 시도하면 git이 자동으로 재현해준다.</strong></p>
-
-<p>그러면 이 명령어 어떻게 동작하는지 예제와 함께 살펴보자.</p>
-
-<h3>설정</h3>
-
-<p><code>rerere</code> 기능은 설정해야 사용할 수 있다:</p>
-<pre><code><span class="comment">%</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">rerere</span>.<span class="comment">enabled</span> <span class="comment">1</span>
-</code></pre>
-<p>각 저장소에 <code>.git/rr-cache</code> 디렉토리를 만들어도 이 기능이 켜지지만, 그냥 <code>--global</code>에 설정하자.</p>
-
-<h3>Hello World</h3>
-
-<p><code>hello.js</code> 프로그램 하나인 프로젝트가 있다. master 브랜치의 <code>hello.js</code> 프로그램은 아래와 같다:</p>
-<pre><code class="lang-javascript">#!<span class="regexp">/usr/</span>bin/env node
-
-console.log( <span class="string">'hello world'</span>)
-</code></pre>
-<p>그리고 아래와 같이 프로젝트를 진행한다. master 브랜치의 메시지를 'hola world'로 변경하고 i18n-world 브랜치의 메시지는 'hello mundo'로 변경한다:</p>
-
-<p><img src="/articles/2012/git-rerere/rerere1.png" alt="rerere1"/></p>
-
-<p>이 상태에서 Merge를 하면 Conflict가 난다. 이 예제의 Conflict는 너무 간단해서 Recorded Resolution이 필요하지 않지만 <code>rerere</code>를 설명하기에는 더없이 좋은 예다.</p>
-
-<h3>Recored Resolution 만들기</h3>
-
-<p><a href="https://twitter.com/chacon">@chacon</a>님은 쓴 원래 글에서는 Conflict를 해결하는 브랜치에 바로 Merge하는 방법으로 Resolution을 만들었다. 그리고 Reset한 후에 다시 Merge해서 Resolution을 저장했다. 이 글에서는 detached HEAD를 이용하는 방법을 설명한다. 뭐 결과는 같지만 난 이 방법이 더 좋다.</p>
-
-<p>먼저 detached HEAD 상태로 만든다:</p>
-<pre><code>% git checkout HEAD^0
-Note: checking out 'HEAD^0'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and <span class="operator"><span class="keyword">commit</span> them, <span class="keyword">and</span> you can discard <span class="keyword">any</span> commits you make <span class="keyword">in</span> this
-state without impacting <span class="keyword">any</span> branches <span class="keyword">by</span> performing another checkout.
-
-If you want <span class="keyword">to</span> <span class="keyword">create</span> a new branch <span class="keyword">to</span> retain commits you <span class="keyword">create</span>, you may
-<span class="keyword">do</span> so (now <span class="keyword">or</span> later) <span class="keyword">by</span> <span class="keyword">using</span> -b <span class="keyword">with</span> the checkout command again. Example:
-
-  git checkout -b new_branch_name
-
-HEAD <span class="keyword">is</span> now <span class="keyword">at</span> <span class="number">7</span>d71bbe... hola world
-</code></pre>
-<p>master 브랜치가 가리키는 <code>7d71bbe</code>를 checkout 했기 때문에 워킹 디렉토리 내용은 master 브랜치와 같다. 단지 'detached HEAD&rsquo; 상태인 것만 다르다. 그래서 여기서 커밋을 하면 &lsquo;detached HEAD&rsquo; 상태로 커밋된다. master 브랜치는 움직이지 않는다.</p>
-
-<p>그러면 여기서 Merge한다:</p>
-<pre><code>% git merge i18n-world
-Auto-merging hello.js
-CONFLICT (content): Merge conflict <span class="keyword">in</span> hello.js
-Recorded preimage <span class="keyword">for</span> 'hello.js'
-Automatic merge failed; fix conflicts <span class="keyword">and</span> <span class="keyword">then</span> commit <span class="keyword">the</span> <span class="constant">result</span>.
-</code></pre>
-<p>보통 Conflict 날 때의 상황과 다르게 &ldquo;Recorded preimage for &lsquo;hello.js&rsquo;&rdquo; 라는 메시지를 추가로 보여준다. <code>rerere</code>를 켰기 때문에 생겼다.</p>
-
-<p><code>git status</code>는 Conflict가 있다고 아래와 같이 알려준다:</p>
-<pre><code>% git status
-<span class="preprocessor"># Not currently on any branch.</span>
-<span class="preprocessor"># Unmerged paths:</span>
-<span class="preprocessor">#   (use "git add/rm &lt;file&gt;..." as appropriate to mark resolution)</span>
-<span class="preprocessor">#</span>
-<span class="preprocessor">#       both modified:      hello.js</span>
-<span class="preprocessor">#</span>
-no changes added to commit (use <span class="string">"git add"</span> and/or <span class="string">"git commit -a"</span>)
-</code></pre>
-<p><code>git diff</code>라고 실행하면 어느 부분에서 Conflict가 난 것인지 보여준다:</p>
-<pre><code><span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">hello</span>.<span class="comment">js</span>
-<span class="comment">index</span> <span class="comment">68d2f27</span>,<span class="comment">2c3b5e5</span>.<span class="string">.</span><span class="comment">0000000</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/hello</span>.<span class="comment">js</span>
-<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/hello</span>.<span class="comment">js</span>
-<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">8</span> <span class="comment">@@@</span>
-  <span class="comment">#!/usr/bin/env</span> <span class="comment">node</span>
-
-<span class="literal">+</span><span class="literal">+</span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="comment">ours</span>
- <span class="literal">+</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">world')</span>
-<span class="literal">+</span><span class="literal">+</span><span class="comment">=======</span>
-<span class="literal">+</span> <span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hello</span> <span class="comment">mundo')</span>
-<span class="literal">+</span><span class="literal">+</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; <span class="comment">theirs</span>
-</code></pre>
-<p>이제 &lsquo;hello.js&rsquo; 파일을 편집해서 &lsquo;hola mundo'로 Conflict를 해결하고 저장한다. 아직 Resolve를 Mark하지 않은 상태에서 <code>git diff</code>를 실행하면 아래와 같이 나온다:</p>
-<pre><code><span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">hello</span>.<span class="comment">js</span>
-<span class="comment">index</span> <span class="comment">68d2f27</span>,<span class="comment">2c3b5e5</span>.<span class="string">.</span><span class="comment">0000000</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/hello</span>.<span class="comment">js</span>
-<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/hello</span>.<span class="comment">js</span>
-<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">4</span> <span class="comment">@@@</span>
-  <span class="comment">#!/usr/bin/env</span> <span class="comment">node</span>
-
-<span class="literal">-</span> <span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">world')</span>
- <span class="literal">-</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hello</span> <span class="comment">mundo')</span>
-<span class="literal">+</span><span class="literal">+</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">mundo')</span>
-</code></pre>
-<p>이 명령은 'hola world'가 'hello mundo'와 Merge돼서 'hola mundo'가 되는 거라고 보여준다. 그런데 웬걸 <code>git add</code> 명령으로 Resolution을 Mark하면 <code>git diff</code> 명령은 더는 이런 메시지를 보여주지 않는다. 대신 <code>git rerere diff</code>를 사용해야 한다:</p>
-<pre><code><span class="header">--- a/hello.js</span>
-<span class="header">+++ b/hello.js</span>
-<span class="chunk">@@ -1,8 +1,4 @@</span>
- #!/usr/bin/env node
-
-<span class="deletion">-&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
-<span class="deletion">-console.log( 'hello mundo')</span>
-<span class="deletion">-=======</span>
-<span class="deletion">-console.log( 'hola world')</span>
-<span class="deletion">-&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
-<span class="addition">+console.log( 'hola mundo')</span>
-</code></pre>
-<p>Resolution은 다 만들었고 이제 커밋한다:</p>
-<pre><code>% git commit -m '<span class="keyword">sample</span> resolution'
-Recorded resolution <span class="keyword">for</span> 'hello.js'.
-[detached HEAD f35bf55] <span class="keyword">sample</span> resolution
-</code></pre>
-<p>&ldquo;Recorded resolution for 'hello.js&rsquo;&quot;라는 메시지는 Resolution이 저장됐음을 보여주는 것이고 &quot;detached HEAD&quot;는 detached HEAD 상태에서 커밋했기 때문에 보여주는 것이다.</p>
-
-<p>이제 Resolution은 다 만들었다. Conflict를 해결하는 실험을 성공적으로 마친 것이다. 이 실험 결과를 실전에 적용해보자.</p>
-
-<h2>rerere</h2>
-
-<p>i18n-world를 master로 Merge하기 전에 i18n-world를 Rebase한다. 먼저 i18n-world를 Checkout한다:</p>
-<pre><code>% git co i18n-world
-Warning: you are leaving 1 <span class="operator"><span class="keyword">commit</span> behind, <span class="keyword">not</span> connected <span class="keyword">to</span>
-<span class="keyword">any</span> <span class="keyword">of</span> your branches:
-
-  f35bf55 sample resolution
-
-If you want <span class="keyword">to</span> keep them <span class="keyword">by</span> creating a new branch, this may be a good <span class="keyword">time</span>
-<span class="keyword">to</span> <span class="keyword">do</span> so <span class="keyword">with</span>:
-
- git branch new_branch_name f35bf550d886286e5e75569fb9597c664cd7743d
-
-Switched <span class="keyword">to</span> branch <span class="string">'i18n-world'</span>
-</code></pre>
-<p>detached HEAD에서 벗어난다는 경고 메시지를 보여준다. 그리고 Rebase한다:</p>
-<pre><code>% git rebase master
-First, rewinding head <span class="keyword">to</span> replay your work <span class="function_start"><span class="keyword">on</span> <span class="title">top</span></span> <span class="keyword">of</span> <span class="keyword">it</span>...
-Applying: hello mundo
-Using index info <span class="keyword">to</span> reconstruct a base tree...
-Falling <span class="keyword">back</span> <span class="keyword">to</span> patching base <span class="keyword">and</span> <span class="number">3</span>-way merge...
-Auto-merging hello.js
-CONFLICT (content): Merge conflict <span class="keyword">in</span> hello.js
-Resolved 'hello.js' using previous resolution.
-Failed <span class="keyword">to</span> merge <span class="keyword">in</span> <span class="keyword">the</span> changes.
-Patch failed <span class="keyword">at</span> <span class="number">0001</span> hello mundo
-
-When you have resolved this problem <span class="command">run</span> <span class="string">"git rebase --continue"</span>.
-If you would prefer <span class="keyword">to</span> skip this patch, instead <span class="command">run</span> <span class="string">"git rebase --skip"</span>.
-To check out <span class="keyword">the</span> original branch <span class="keyword">and</span> stop rebasing <span class="command">run</span> <span class="string">"git rebase --abort"</span>.
-</code></pre>
-<p>&quot;Resolved &lsquo;hello.js&rsquo; using previous resolution&rdquo; 메시지가 추가돼 있다. 편집기로 hello.js를 열어보면 좀 전에 만들었던 Resolution대로 파일이 Resolve됐음을 알 수 있다. <code>git diff</code> 명령으로 차이를 확인할 수 있다:</p>
-<pre><code><span class="comment">%</span> <span class="comment">git</span> <span class="comment">diff</span>
-<span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">hello</span>.<span class="comment">js</span>
-<span class="comment">index</span> <span class="comment">68d2f27</span>,<span class="comment">2c3b5e5</span>.<span class="string">.</span><span class="comment">0000000</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/hello</span>.<span class="comment">js</span>
-<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/hello</span>.<span class="comment">js</span>
-<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">4</span> <span class="comment">@@@</span>
-  <span class="comment">#!/usr/bin/env</span> <span class="comment">node</span>
-
-<span class="literal">-</span> <span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">world')</span>
- <span class="literal">-</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hello</span> <span class="comment">mundo')</span>
-<span class="literal">+</span><span class="literal">+</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">mundo')</span>
-</code></pre>
-<p><img src="/articles/2012/git-rerere/rerere3.png" alt="rerere1"/></p>
-
-<p>그러면 이 상태에서 Resolution을 Mark하고 <code>git rebase --continue</code>를 실행하면 Rebase가 완료된다. 아래와 같이 실행한다:</p>
-<pre><code><span class="preprocessor"># git add .</span>
-<span class="preprocessor"># git rebase --continue</span>
-Applying: hello mundo
-</code></pre>
-<p><code>rerere</code>를 이용한 Merge를 마쳤다. &lsquo;detached HEAD&rsquo; 상태를 만들어서 Conflict를 해결하는 실험을 하고 Resolution을 만들어 놓는다. 그다음에 다시 Merge를 하면 만들어 놓은 Resolution이 재사용된다. 그래서 명령어 이름이 &lsquo;rerere(REuse REcorded REsolution)'이다.</p>
-
-<h3>Resolution을 재사용하지 않기</h3>
-
-<p>Resolution을 Mark하기 전으로 돌아가 보자. <code>git rebase master</code>를 실행하면 자동으로 저장된 Resolution이 적용된다. 그 상태로 돌아가서 <code>git diff</code>를 실행하면 결과는 아래와 같다:</p>
-<pre><code><span class="comment">%</span> <span class="comment">git</span> <span class="comment">diff</span>
-<span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">hello</span>.<span class="comment">js</span>
-<span class="comment">index</span> <span class="comment">68d2f27</span>,<span class="comment">2c3b5e5</span>.<span class="string">.</span><span class="comment">0000000</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/hello</span>.<span class="comment">js</span>
-<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/hello</span>.<span class="comment">js</span>
-<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">4</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">4</span> <span class="comment">@@@</span>
-  <span class="comment">#!/usr/bin/env</span> <span class="comment">node</span>
-
-<span class="literal">-</span> <span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">world')</span>
- <span class="literal">-</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hello</span> <span class="comment">mundo')</span>
-<span class="literal">+</span><span class="literal">+</span><span class="comment">console</span>.<span class="comment">log(</span> <span class="comment">'hola</span> <span class="comment">mundo')</span>
-</code></pre>
-<p>여기서 git이 자동으로 적용해준 Resolution이 마음에 들지 않으면 다시 Conflict 파일을 생성할 수 있다:</p>
-<pre><code>% git checkout --conflict=merge hello.j
-% cat hello.js
-#!<span class="regexp">/usr/</span>bin/env node
-
-&lt;<span class="xml"><span class="tag">&lt;<span class="title">&lt;&lt;&lt;&lt;&lt;</span> <span class="attribute">ours</span>
-<span class="attribute">console.log</span>( '<span class="attribute">hola</span> <span class="attribute">world</span>')
-=<span class="value">======</span>
-<span class="attribute">console.log</span>( '<span class="attribute">hello</span> <span class="attribute">mundo</span>')
-&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt; theirs
-</span></code></pre>
-<p><code>--conflict</code> 옵션은 Conflict를 해결할 때 사용하면 유용하다. <code>merge</code> 대신 <code>diff3</code>를 사용하면 base Commit의 것도 알 수 있다. Checkout명령은 <code>.git</code> 데이터베이스에 들어 있는 내용을 워킹 디렉토리로 복사하는 명령이다. 이 명령을 실행하면 충돌이 표시된 hello.js파일이 워킹 디렉토리에 생성된다:</p>
-<pre><code>% git checkout --conflict=diff3 hello.js
-% cat hello.js
-#!<span class="regexp">/usr/</span>bin/env node
-
-&lt;<span class="xml"><span class="tag">&lt;<span class="title">&lt;&lt;&lt;&lt;&lt;</span> <span class="attribute">ours</span>
-<span class="attribute">console.log</span>( '<span class="attribute">hola</span> <span class="attribute">world</span>')
-||||||| <span class="attribute">base</span>
-<span class="attribute">console.log</span>( '<span class="attribute">hello</span> <span class="attribute">world</span>')
-=<span class="value">======</span>
-<span class="attribute">console.log</span>( '<span class="attribute">hello</span> <span class="attribute">mundo</span>')
-&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt; theirs
-</span></code></pre>
-<p>이제 원하는 데로 편집하고 <code>git add .;git rebase --continue</code> 명령을 실행하면 Rebase는 완료된다. 하지만, 저장해둔 Resolution을 다시 적용하고 싶어지면 아래와 같이 복원한다:</p>
-<pre><code>% git rerere
-Resolved <span class="string">'hello.js'</span> <span class="keyword">using</span> previous resolution.
-% cat hello.js
-<span class="preprocessor">#!/usr/bin/env node</span>
-
-console.log( <span class="string">'hola mundo'</span>)
-</code></pre>
-<p>Conflict를 다시 해결했으니 계속 진행해서 Rebate를 완료한다:</p>
-<pre><code><span class="preprocessor"># git add .</span>
-<span class="preprocessor"># git rebase --continue</span>
-Applying: hello mundo
-</code></pre>
-<p>이상으로 <code>rerere</code> 명령에 대해 알아보았다.</p>
-
-<h2>참고</h2>
-
-<ul>
-<li><a href="http://www.kernel.org/pub/software/scm/git/docs/git-rerere.html">git-rerere</a></li>
-<li><a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat&hellip;</a></li>
-<li><a href="http://gitster.livejournal.com/41795.html">Fun with rerere</a></li>
-</ul>
 ]]>
 </content></entry></feed>

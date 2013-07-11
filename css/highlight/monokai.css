@@ -26,11 +26,11 @@ pre code {
 }
 
 pre code .constant {
-    color: #66D9EF;
+	color: #66D9EF;
 }
 
 pre .class .title {
-    color: white;
+	color: white;
 }
 
 pre .attribute,
@@ -38,7 +38,7 @@ pre .symbol,
 pre .symbol .string,
 pre .value,
 pre .regexp {
-    color: #BF79DB;
+	color: #BF79DB;
 }
 
 pre .tag .value,
