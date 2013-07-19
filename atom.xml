@@ -1,5 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-11T14:21:08.383Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: ckw Solarized!  ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" /><updated>2013-07-10T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-19T22:28:07.037Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
+<p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
+
+<p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"/></p>
+
+<h2>USEFUL GITHUB PATTERNS</h2>
+
+<p>내 <a href="http://blog.quickpeople.co.uk/2013/05/17/the-uk-government-pays-me-to-write-open-source-all-day/">직업</a>이나 <a href="http://benilovj.github.io/dbfit/">오픈소스 활동</a>을 하다 보면 git과 GitHub 컨설팅도 하게 된다. 그러면서 git과 GitHub을 일정한 패턴에 따라 사용하는 나를 발견했다.</p>
+
+<p>(여기부터는, &lsquo;Pull Request'를 PR로 사용한다).</p>
+
+<h3>1. The peel-off PR</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>Feature 브랜치에서 뭔가 하는 도중에</li>
+<li>문제를 발견하자마자 바로 수정하고 싶은데, 현재 추가하는 기능과 관련이 없을 때( 작은 버그, 오타, 코딩 규칙 위반을 발견했을 때)</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>하던 일을 저장(Commit하거나 Stash한다)</li>
+<li>checkout master</li>
+<li>브랜치를 만든다.</li>
+<li>문제를 수정하고 PR을 보낸다.</li>
+<li>다시 원래의 Feature 브랜치로 돌아와 하던 일을 계속한다.</li>
+<li>나중에 그 PR을 보냈던 브랜치가 Merge된 후에 Rebase한다.</li>
+</ul>
+
+<p>전혀 다른 문제를 빨리 고치고 싶은 욕망과 Feature 브랜치를 정갈하게 해서 리뷰하기 쉽게 만들고 싶은 욕망을 모두 만족하게 할 수 있다.</p>
+
+<h3>2. The optimistic branch</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>지금은 Merge할 수 없는 브랜치(branch-A)가 있는데(CI 빌드가 깨질 수도 있고, 리뷰어가 바쁠 수도 있다).</li>
+<li>내가 당장 구현해야 하는 기능은 branch-A의 코드가 필요하다.</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>branch-A에서 branch-B 브랜치를 만든다.</li>
+<li>branch-A가 master에 Merge되면, branch-B를 master에 대해 Rebase하고 충돌 나는 게 있으면 해결한다.</li>
+<li>branch-A에 대한 버그픽스 브랜치들은 branch-B에 대해서 Rebase한다.</li>
+</ul>
+
+<p>branch-A에서 코드를 많이 수정하면 충돌 날 확률이 높아진다. 하지만, 95% 정도는 잘 된다.</p>
+
+<h3>3. The heads-up PR</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>리뷰가 필요하지 않은 코드를 작성하고 있지만</li>
+<li>동료가 알고 있으면 좋을 것 같을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>코드를 작성</li>
+<li>PR을 보낸다.</li>
+<li>피드백을 기다리지 않고 PR을 직접 Merge한다.</li>
+</ul>
+
+<p>GitHub은 PR에 대한 이메일을 동료에게 보낸다. 그래서 맘에 들지 않은 코드를 발견한 동료는 코멘트를 달거나 할 수 있다. 내가 할 일이 별로 없다.</p>
+
+<h3>4. The sneaky commit</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>코드를 리뷰하고 master에 Merge까지 한 다음에</li>
+<li>수정할 것이 발견되었는데 너무 사소한 수정(버그픽스나 copy change같은 것)이라서 다른 사람이 알 가치도 없을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>master 브랜치에 바로 커밋한다.</li>
+</ul>
+
+<h3>5. The roger roger comment</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>코드 리뷰 중에 바로 적용할만한 피드백을 받았을 때</li>
+<li>그 피드백에 따라서 고쳤을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>고친 커밋의 Ref가 포함된 PR에 코멘트를 한다.</li>
+<li>Ref를 클릭하면 GitHub은 Diff로 다른 부분만 보여준다. 그래서 내 동료는:
+
+<ul>
+<li>Email로 내가 수정했다는 것을 통보받고</li>
+<li>클릭만 하면 간단하게 커밋 Diff를 볼 수 있고</li>
+<li>이런 식으로 코드 리뷰를 할 수 있다는 것을 안다.</li>
+</ul></li>
+</ul>
+
+<h3>6. The creepin’ commit</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>내가 만든 사소한 포매팅 버그를 발견했을 때(불필요한 공백이나 파일 끝에 한 줄 남기는 것을 빼먹었을 때)나</li>
+<li>이전 커밋과 논리적으로 같은 커밋이 돼야 할 때</li>
+<li>(실패하는 테스트가 있거나 해서) 아직 커밋할 만한 코드가 아닌 상태에서 하나씩 실험해보고 다시 현재 코드로 되돌리거나 진행하고 싶을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>첫 번째나 두 번째는 그냥 이전 커밋을 수정한다(Amend)</li>
+<li>마지막은 일단 (Creeping) 커밋을 하나 만들어 놓고 실험하면서 점진적으로 Amend한다. 실험 결과가 안 좋으면 그냥 버린다. 커밋할만한 단계에 도달할 때까지 계속한다.</li>
+</ul>
+
+<h3>7. The forced branch</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>남이 Push한 Feature 브랜치를 Amend해야 할 때. 예를 들어, 커밋 메시지에 이유를 남기고 싶을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>로컬에서 커밋을 Amend한다.</li>
+<li>Feature 브랜치를 리모트 저장소에 강제로(-f 옵션을 주고) Push한다.</li>
+</ul>
+
+<p>보통 리모트 브랜치에 강제로 Push하는 것은 금단의 영역으로 취급된다. master 브랜치가 아니라면 내 경험상 별로 문제 되지 않았다(역주 - Long-Running 브랜치가 아니면 별로 문제 될 게 없다). GitHub은 PR 브랜치가 강제로 Push돼도 잘 처리한다. 이전 커밋에 있던 코멘트를 잃어버리거나 하지 않는다.</p>
+
+<h3>8. The reformat peel-off</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>코드를 수정하면서 코드 포멧도 수정할 계획이라면</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>포멧을 수정한 커밋은 master 브랜치에 직접 한다.</li>
+<li>코드를 수정한 커밋이 들어 있는 브랜치는 master대해 Rebase한다.</li>
+</ul>
+
+<p>이럴 때 코드 리뷰하는 사람은 코드를 수정한 브랜치에 Dill 하는 것이 더 좋다. 코드 수정 커밋이 있는 브랜치에는 포멧 수정 커밋이 없어서 Diff 결과가 더 깔끔하다.</p>
+
+<h3>9. The prototype PR</h3>
+
+<p><strong>언제 사용하나?:</strong></p>
+
+<ul>
+<li>본격적으로 구현하기 전에 아이디어에 대해 피드백을 받고 싶을 때</li>
+</ul>
+
+<p><strong>어떻게 하나?:</strong></p>
+
+<ul>
+<li>브랜치에 뭔가 수정을 한다.</li>
+<li>아직 완성된 코드가 아니라고 해도 일단 PR을 하면 토론의 시작점이 된다.</li>
+<li>다음 단계로 뭘 할지 합의가 이루어지면 PR을 닫고 브랜치도 삭제한다.</li>
+<li>다시 브랜치를 만들고 제대로 구현해서 PR을 한다.</li>
+</ul>
+
+<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 &ldquo;Pull Request는 대화의 시작점&quot;이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
+]]>
+</content></entry><entry><title><![CDATA[ git: ckw Solarized!  ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" /><updated>2013-07-10T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id><content type="html"><![CDATA[
 <p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""/></p>
@@ -774,249 +954,5 @@ git commit --amend --author <span class="string">"<span class="variable">$1</spa
 <p>이 슬라이드로 옥토캣은 다리가 4개고 꼬리가 1개라는 비밀을 알게 됐다. 맨날 보는 그림이지만 문어니까 그냥 다리가 8개라고 생각했었다.</p>
 
 <p><img src="/articles/2012/git-secrets/pusheencat.png" alt="octocat"/></p>
-]]>
-</content></entry><entry><title><![CDATA[ 잘 빠진 군체 알고리즘 - flock ]]></title><link href="http://dogfeet.github.io/articles/2012/flocking-algorithm.html" /><updated>2012-12-02T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2012/flocking-algorithm.html</id><content type="html"><![CDATA[
-<style>
-canvas {display:block;}
-.flock {margin-left: 10px;}
-</style>
-
-<p><img src="http://dogfeet.github.io/articles/2012/flocking-algorithm/800px-Red-billed_quelea_flocking_at_waterhole.jpg" alt="flock"/></p>
-
-<p><a href="http://harry.me/2011/02/17/neat-algorithms---flocking/">harry</a> 님의 사이트에서 보았던 플로킹 알고리즘(flockng algorithm)을 정리했다.(무려 2011년 2월 글이다.) 플로킹 알고리즘은 떼(flock)의 각 개체의 행동 모델이다. 각 개체는 보이드(boid)라고 부르며 이들은 세 가지 규칙을 이용해 움직인다. 이 알고리즘은 1986년에 Craig Reynolds가 낸 논문에서 처음 소개되었다. 원래 알고리즘은 <a href="http://www.red3d.com/cwr/boids/">여기서</a> 볼 수 있다. 그는 이 모델을 이용해 새 떼나 물고기 떼 등을 시뮬레이션했으며 배트맨 리턴즈의 박쥐 떼가 날아다니는 영상, 소셜 네트워크에서 의견의 흐름을 시뮬레이션해서 미래 의견을 예측하거나 분산 시스템에서도 이용되었다고 한다. 어디에서 쓰였는지는 링크를 확인하고 알고리즘이 어떻게 동작하는지 보자.</p>
-
-<h2>예제 먼저</h2>
-
-<div class="flock" id="prettyDemo"></div>
-
-<p>옆의 버튼을 눌러서 한 보이드에 대한 자세한 정보와 그 범례를 볼 수 있다. : <button class="awesome" id="decorateDemo">Undecorate</button></p>
-
-<p>구현은 harry 사이트의 것을 그대로 가져왔다. Coffee Script로 이루어져 있으며 HTML5의 canvas를 이용해서 애니메이션 데모를 보여준다. 따라서 애니메이션 데모를 보고 싶다면 canvas가 지원되는 브라우저로 들어오기를 바란다.  애니메이션은 <a href="http://processingjs.org/">ProcessingJS</a>를 이용해서 이루어진다. (ProcessingJS에 대한 지식은 그리 필요하진 않다.) 이 페이지의 모든 애니메이션 데모는 버튼으로 애니메이션 속도를 조정할 수 있고 애니메이션 화면을 클릭해서 일시 정지시킬 수 있다. 물론 다시 클릭하면 다시 애니메이션이 진행된다. 정지 되었을 때에는 각 보이드에 마우스를 올려서 그 보이드의 정보를 볼 수 있다. 정보를 보는 법은 이 글을 읽으면서 알 수 있으니 성급해하지 말자.</p>
-
-<h2>보이드 - Boid</h2>
-
-<p>보이드는 무리를 이루는 개체 하나하나를 부르는 이름이다. 여기저기에서 에이전트라고 하기도 하고 오브젝트라고도 하지만 원문에 보이드라고 되어있으니 여기서도 보이드라고 부르기로 하자. 보이드는 위치와 속도를 데이터로 가지고 있다. 그리고 위에서 말한 세 가지 행동 규칙을 이용해 가속도를 계산한다. 가속도는 현재 속도에 영향을 미치고 속도에 의해 다음 위치가 결정된다. 이런 일을 하는 메서드가 <code>step</code>이다. 보이드가 너무 빨라지지 않도록 최고 속도를 정해놓고 그보다는 높아지지 않도록 조종하는 것도 중요하다. 다음 코드를 보자. </p>
-<pre><code class="lang-coffeescript"><span class="comment"># Ported almost directly from http://processingjs.org/learning/topic/flocking</span>
-<span class="comment"># thanks a whole lot to Craig Reynolds and Daniel Shiffman</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
-  location: <span class="literal">false</span>
-  velocity: <span class="literal">false</span>
-
-  constructor: (loc, processing) -&amp;gt;
-    <span class="property">@velocity</span> = <span class="keyword">new</span> Vector(Math.random()*<span class="number">2</span>-<span class="number">1</span>,Math.random()*<span class="number">2</span>-<span class="number">1</span>)
-    <span class="property">@location</span> = loc.copy()
-    <span class="property">@p</span> = processing
-
-  <span class="comment"># Called every frame. Calculates the acceleration using the flock method, </span>
-  <span class="comment"># and moves the boid based on it.</span>
-  step: (neighbours) -&amp;gt;
-    acceleration = <span class="keyword">this</span>.flock(neighbours)
-    <span class="property">@velocity</span>.add(acceleration).limit(MAX_SPEED) <span class="comment"># Limit the maximum speed at which a boid can go</span>
-    <span class="property">@location</span>.add(<span class="property">@velocity</span>)
-    <span class="keyword">this</span>._wrapIfNeeded()
-
-  <span class="comment"># Implements the flocking algorthim by collecting the three components </span>
-  <span class="comment"># and returning a weighted sum.</span>
-  flock: (neighbours) -&amp;gt;
-    separation = <span class="keyword">this</span>.separate(neighbours).multiply(SEPARATION_WEIGHT)
-    alignment = <span class="keyword">this</span>.align(neighbours).multiply(ALIGNMENT_WEIGHT)
-    cohesion = <span class="keyword">this</span>.cohere(neighbours).multiply(COHESION_WEIGHT)
-    <span class="keyword">return</span> separation.add(alignment).add(cohesion)
-</code></pre>
-<p>제일 마지막 메서드인 <code>flock</code>이 앞으로 설명할 세 가지 행동 규칙으로 가속도를 만들어내는 메서드이다. 이에 대한 자세한 이야기는 이 글의 끝에서 하도록 한다.</p>
-
-<h2>응집 - Cohesion</h2>
-
-<div class="flock" id="cohesionDemo" style="float:right;"></div>
-
-<p>보이드는 자기 주변의 보이드의 곁으로 가려는 성질이 있다. 즉 무리지으려는 성질이라고 볼 수 있다. &lsquo;자기 주변의 보이드'는 자신 주변 반경 n 픽셀 안에 있는 보이드로 정의되고 <code>NEIGHBOUR_RADIUS</code>라는 상수가 그 주변을 결정하는 반경 값이다. 하나의 보이드는 주변 보이드들 사이의 무게 중심 쪽으로 방향을 튼다. </p>
-
-<p>옆의 예제를 보면 분홍색 보이드의 Cohesion 정보가 표시되고 있다. 녹색 원이 자신의 주변을 뜻하는 범위이고 그 안에 들어온 보이드들은 녹색으로 표시된다. 그리고 짙은 보라색 화살표가 주변 보이드들의 평균 위치 한 점으로 모인다. 분홍색 보이드는 분홍색 화살표를 이용해 &lsquo;나 그쪽으로 회전 중입니다'라고 알리고 있다.</p>
-
-<div style="clear:right"></div>
-
-<h3>코드</h3>
-
-<p>Cohesion은 <code>NEIGHBOUR_RADIUS</code>안에 있는 모든 보이드의 위치의 평균이다. 코드는 <code>steer_to</code>메서드를 거쳐 리턴한다. <code>stear_to</code>는 현재 위치와 갈 곳을 계산해서 보이드의 방향을 자연스럽게 틀어주는 역할을 한다. 일종의 보정이라고 생각하면 된다.</p>
-<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
-
-  <span class="comment"># 가속도를 계산할 때 cohesion요소를 계산하기 위해 호출한다.</span>
-  cohere: (neighbours) -&amp;gt;
-    sum = <span class="keyword">new</span> Vector
-    count = <span class="number">0</span>
-    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
-      d = <span class="property">@location</span>.distance(boid.location)
-      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; NEIGHBOUR_RADIUS
-        sum.add(boid.location)
-        count++
-
-    <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
-      <span class="keyword">return</span> <span class="keyword">this</span>.steer_to sum.divide(count)
-    <span class="keyword">else</span>
-      <span class="keyword">return</span> sum <span class="comment"># 아무런 영향도 주지 않기 위해 빈 벡터를 리턴한다.</span>
-
-  steer_to: (target) -&amp;gt;
-    desired = Vector.subtract(target, <span class="property">@location</span>) <span class="comment"># 현재 위치에서 가려 하는 곳을 가리키는 벡터</span>
-    d = desired.magnitude()  <span class="comment"># 현재 위치에서 목적지까지의 거리는 벡터의 크기이다.</span>
-
-    <span class="comment"># 만약 거리가 0보다 크면 변경할 방향을 계산한다. (아니면 0을 리턴한다.)</span>
-    <span class="keyword">if</span> d &amp;gt; <span class="number">0</span>
-      desired.normalize()
-
-      <span class="comment"># 원하는 벡터의 크기를 계산하기 위한 두 옵션(1 -- 거리에 기초하여, 2 -- 최대 스피드)</span>
-      <span class="keyword">if</span> d &amp;lt; <span class="number">100.0</span>
-        desired.multiply(MAX_SPEED*(d/<span class="number">100.0</span>)) <span class="comment"># 이 제동은 임의적으로 정했다.</span>
-      <span class="keyword">else</span>
-        desired.multiply(MAX_SPEED)
-
-      <span class="comment"># Steering = Desired minus Velocity</span>
-      steer = desired.subtract(<span class="property">@velocity</span>)
-      steer.limit(MAX_FORCE)  <span class="comment"># 방향 전환 정도에 제한을 둔다.</span>
-    <span class="keyword">else</span>
-      steer = <span class="keyword">new</span> Vector(<span class="number">0</span>,<span class="number">0</span>)
-
-    <span class="keyword">return</span> steer
-</code></pre>
-<h2>정렬 - Alignment</h2>
-
-<div class="flock" id="alignmentDemo" style="float:right;"></div>
-
-<p>각 보이드는 주변의 보이드와 같은 방향을 향하려는 특성도 가지고 있다. 응집도와 비슷하게 <code>NEIGHBOUR_RADIUS</code>의 내에 들어온 주변 보이드들의 속도의 평균을 향한다. 속도는 방향과 크기를 가지고 있으므로 평균을 구하면 방향뿐만이 아니라 크기까지 평균이 된다. 따라서 주변 보이드의 속력이 빠를 수록 정렬되려는 힘도 커진다.</p>
-
-<p>옆의 예제에서 보면 역시 분홍색 보이드의 정보가 보인다. 녹색 원 안에 녹색 보이드가 주변 보이드로 선정된 녀석들이고 주변 보이드의 속도는 녹색 화살표로 표시된다. 이 녹색 화살표의 평균이 분홍색 보이드의 연녹색 화살표이다. 검은색 화살표는 분홍색 보이드의 현재 속도이다. 분홍색 보이드는 다음 프레임에서 자신의 위치와 방향을 결정할 때 연녹색 화살표의 값을 이용한다. </p>
-
-<div style="clear:right"></div>
-
-<h3>코드</h3>
-
-<p>이번 코드는 그리 길지 않다. 로직은 응집도 계산과 똑같다. 다만 위치의 평균이 아니라 속도의 평균인 점이 다르다. 물론 이번에도 최대값이 있어서 너무 커다란 값이 되지 않도록 조정한다.</p>
-<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
-
-  <span class="comment"># Alignment component for the frame's acceleration</span>
-  align: (neighbours) -&amp;gt;
-    mean = <span class="keyword">new</span> Vector
-    count = <span class="number">0</span>
-    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
-      d = <span class="property">@location</span>.distance(boid.location)
-      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; NEIGHBOUR_RADIUS
-        mean.add(boid.velocity)
-        count++
-
-    mean.divide(count) <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
-    mean.limit(MAX_FORCE)
-    <span class="keyword">return</span> mean
-</code></pre>
-<h2>분리 - Separation</h2>
-
-<div class="flock" id="separationDemo" style="float:right;"></div>
-
-<p>각 보이드들은 너무 가까워지지 않으려는 경향이 있다. 보이드는 일정 공간을 두어 그 안으로 다른 보이드가 들어오면 그 보이드의 반대편으로 힘이 작용하여 멀어진다. 그 개인적인 공간은 <code>DESIRED_SEPARATION</code>이 결정하고 이 값은 <code>NEIGHBOUR_RADIUS</code>보다 작아야 한다. 만약 이 값이 <code>NEIGHBOUR_RADIUS</code>보다 크다면 이웃은 사라지고 모든 보이드를 배척하게 된다.</p>
-
-<p>이번 예제는 빨간 원이 하나 더 생겼다. 이것이 <code>DESIRED_SEPARATION</code>값으로 결정된 생긴 개인 공간이고 이 안에 들어온 보이드는 빨간색으로 표시된다. 그리고 빨간 원 안으로 들어온 보이드에 의해 빨간 화살표로 멀어지려는 힘이 계산된다. 그 방향을 빨간 보이드의 반대 방향이 된다.</p>
-
-<div style="clear:right"></div>
-
-<h3>코드</h3>
-
-<p>코드를 보면 주변 보이드들과의 거리를 검사해서 <code>DESIRED_SEPARATION</code>보다 가까운 보이드와 거리를 정규화해서 평균을 낸다. 그 중간에 정규화된 벡터를 자신과 주변 보이드간의 거리에 반비례하게 크기를 변경한다. 이는 가까이 있을수록 더 빨리 멀어지고 싶어한다는 개념을 넣은 것이다.</p>
-<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
-
-  <span class="comment"># Separation component for the frame's acceleration</span>
-  separate: (neighbours) -&amp;gt;
-    mean = <span class="keyword">new</span> Vector
-    count = <span class="number">0</span>
-    <span class="keyword">for</span> boid <span class="keyword">in</span> neighbours
-      d = <span class="property">@location</span>.distance(boid.location)
-      <span class="keyword">if</span> d &amp;gt; <span class="number">0</span> <span class="keyword">and</span> d &amp;lt; DESIRED_SEPARATION
-        <span class="comment"># Normalized, weighted by distance vector pointing away from the neighbour</span>
-        mean.add Vector.subtract(<span class="property">@location</span>,boid.location).normalize().divide(d)
-        count++
-
-    mean.divide(count) <span class="keyword">if</span> count &amp;gt; <span class="number">0</span>
-    mean
-</code></pre>
-<h2>죄다 합쳐보자</h2>
-
-<p>위에서 계산했던 세 가지 행동 요소들을 이용해서 무리를 움직이게 하려면 아래와 같이 하면 된다. 보이드 클래스에 자신을 그리는 <code>render</code>메서드를 넣고 이 보이드의 무리를 만들어서 움직일 <code>flock</code>이라는 함수를 만들어 ProcessingJS의 인스턴스에 넘겨준다. <code>flock</code>에서는 보이드를 만들어 각 보이드의 <code>step</code>메서드와 <code>render</code>메서드를 넣어준다.</p>
-<pre><code class="lang-coffeescript"><span class="class"><span class="keyword">class</span> <span class="title">Boid</span></span>
-  r: <span class="number">2</span> <span class="comment"># "radius" of the triangle</span>
-  render: () -&amp;gt;
-    <span class="comment"># Draw a triangle rotated in the direction of velocity</span>
-    theta = <span class="property">@velocity</span>.heading() + <span class="property">@p</span>.radians(<span class="number">90</span>)
-    <span class="property">@p</span>.fill(<span class="number">70</span>)
-    <span class="property">@p</span>.stroke(<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>)
-    <span class="property">@p</span>.pushMatrix()
-    <span class="property">@p</span>.translate(<span class="property">@location</span>.x,<span class="property">@location</span>.y)
-    <span class="property">@p</span>.rotate(theta)
-    <span class="property">@p</span>.beginShape(<span class="property">@p</span>.TRIANGLES)
-    <span class="property">@p</span>.vertex(<span class="number">0</span>, -<span class="number">1</span> * <span class="property">@r</span> *<span class="number">2</span>)
-    <span class="property">@p</span>.vertex(-<span class="number">1</span> * <span class="property">@r</span>, <span class="property">@r</span> * <span class="number">2</span>)
-    <span class="property">@p</span>.vertex(<span class="property">@r</span>, <span class="property">@r</span> * <span class="number">2</span>)
-    <span class="property">@p</span>.endShape()
-    <span class="property">@p</span>.popMatrix()
-
-<span class="comment"># flock function, passed the Processing instance by Processing itself</span>
-flock = (processing) -&amp;gt;
-  start = <span class="keyword">new</span> Vector(processing.width<span class="regexp">/2,processing.height/</span><span class="number">2</span>)
-
-  <span class="comment"># Instantiate 100 boids who start in the middle of the map, have a maxmimum </span>
-  <span class="comment"># speed of 2, maximum force of 0.05, and give them a reference to the </span>
-  <span class="comment"># processing instance so they can render themselves.</span>
-  boids = <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0.</span><span class="number">.100</span>]
-    <span class="keyword">new</span> Boid(start, <span class="number">2</span>, <span class="number">0.05</span>, processing)
-
-  processing.draw = -&amp;gt;
-    processing.background(<span class="number">255</span>)
-    <span class="keyword">for</span> boid <span class="keyword">in</span> boids
-      boid.step(boids)
-      boid.render()
-    <span class="literal">true</span>
-
-canvas = $(<span class="string">'&amp;lt;canvas width="550" height="550"&amp;gt;&amp;lt;/canvas&amp;gt;'</span>).appendTo($(<span class="string">'#flockingDemo'</span>))[<span class="number">0</span>]
-processingInstance = <span class="keyword">new</span> Processing(canvas, flock)
-</code></pre>
-<p>여기서 보이는 <code>flock</code>함수는 보이드의 <code>flock</code> 메서드와는 다르다. 위에 코드가 있지만 난 친절하니까 밑에 다시 코드를 적어주겠다.</p>
-<pre><code class="lang-coffeescript">flock: (neighbours) -&amp;gt;
-  separation = <span class="keyword">this</span>.separate(neighbours).multiply(SEPARATION_WEIGHT)
-  alignment = <span class="keyword">this</span>.align(neighbours).multiply(ALIGNMENT_WEIGHT)
-  cohesion = <span class="keyword">this</span>.cohere(neighbours).multiply(COHESION_WEIGHT)
-  <span class="keyword">return</span> separation.add(alignment).add(cohesion)
-</code></pre>
-<p>자 이것이 보이드의 <code>flock</code>메서드이다. 보이드의 것은 세 가지 행동 요소(분리, 정렬, 응집)를 이용해 가속도로 사용할 값을 계산하는 것이다. 각 요소 값을 계산하고 그것을 그대로 쓰는 것이 아니라 그 것이 가속도에 끼칠 영향도(weight)를 곱해준다. 그 값은 각각 <code>SEPARATION_WEIGHT</code>, <code>ALIGNMENT_WEIGHT</code>, <code>COHESION_WEIGHT</code>이다. 보이드의 <code>flock</code>메서드는 각 요소에 영향도를 곱해서 전부 더한다. 그게 끝이다.<br/>
-전체 코드는 <a href="https://github.com/hornairs/blog/tree/master/assets/coffeescripts/flocking">여기</a>에서 구할 수 있다.</p>
-
-<h2>변칙</h2>
-
-<h3>다른 이웃</h3>
-
-<p>여기까지가 기본적인 플로킹 알고리즘이었다. 지금까지는 주변 보이드를 계산할 때 그냥 주변을 360도를 전부 검사했다. 하지만 만약 보이드가 인간이나 동물의 추상체라면 자신의 주변은 관찰 가능한 곳에 있는, 또는 눈에 보이는 보이드로 한정될 것이다. 따라서 주변 보이드를 계산할 때 자신의 뒤쪽은 배제할 수도 있다. 또는 정말 시야에 들어오는 보이드만을 이웃으로 규정할 수도 있다. 이런 이웃을 계산하는 방법에 따라 많은 변칙이 가능해진다.<br/>
-공간에서 이웃은 위치상의 근접 개체이지만 다른 문제로 환원하면 논리적 근접을 다시 정의해야 한다. 예를 들어 만약 소셜 네트워크라면 이웃은 자신의 친구나 친구가 공유한 다른 친구로 될 것이다. 웹 사이트라면 직접 링크한 문서들을 이웃으로 정할 수도 있겠다.</p>
-
-<h3>영향도 수정</h3>
-
-<p>글에는 세 행동 요소들에 적용되는 영향도 값을 적어놓진 않았지만, 이 영향도 값들을 수정함으로써 보이드들이 다른 행동 양식을 보이도록 할 수도 있다.</p>
-
-<h3>장애물 피하기</h3>
-
-<p>위 데모가 진행되는 동안 마우스를 보이드로 가져다 대면 그들이 마우스 포인터를 휙휙 피하는 모습을 관찰할 수 있다. 아예 갈 수 없는 곳을 피하기도 하는데 이에 대한 설명은 글에서 하지 않았다. 공부를 더 해야 하지만 단순히 추측해보자면 특정 반경 안에 장애물이 감지되거나 장에물과 보이드가 충돌하면 속도를 줄이거나 멈추고 장애물이 없는 방향으로 속도를 올리는 것으로 생각된다. 장애물이 단순 벽일 때, 각이 있는 모서리 일 때, ㄷ자 형태의 벽일 때에 따라 장애물을 피해서 다시 빠져나갈 방법을 잘 설계해야 한다. 잘못하면 아마 벽에 무한으로 부히는 상황이 올지도 모른다.</p>
-
-<h2>마무리</h2>
-
-<p>이 글은 그냥 개인적으로 관심 있던 분야의 글이 뉴스 사이트에 올라왔고 호기심에 읽어본 글이 어쩌다 보니 이해되어 쓴 글이다. 이 모델을 어디에 사용할지는 아직 나도 모르겠지만 군체의 움직임이 예쁘게 모델링 되어있어 소개한다. 사실 예쁘게 모델링 되었다는게 정확한 모델링이라는 것과는 다른 말이지만 더 정교한 알고리즘의 기반 지식이라도 될까 기대해본다.</p>
-
-<script type="text/javascript">
-  var Harry = {};
-</script>
-
-<script src="/articles/2012/flocking-algorithm/js/processing.js" type="text/javascript"></script>
-
-<script src="/articles/2012/flocking-algorithm/js/vector.js" type="text/javascript"></script>
-
-<script src="/articles/2012/flocking-algorithm/js/boid.js" type="text/javascript"></script>
-
-<script src="/articles/2012/flocking-algorithm/js/flock.js" type="text/javascript"></script>
-
-<script src="/articles/2012/flocking-algorithm/js/flocking.js" type="text/javascript"></script>
 ]]>
 </content></entry></feed>
