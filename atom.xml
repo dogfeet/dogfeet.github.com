@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-19T22:28:07.037Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-21T07:43:58.188Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
 <p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
 
 <p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
@@ -89,18 +89,22 @@
 
 <h3>5. The roger roger comment</h3>
 
+<blockquote>
+<p>역주: GitHub 이슈 넘버를 넣고 push하면 커밋 넘버에 대한 링크가 해당 이슈 코멘트에 댓글로 달리는 기능에 대해 말하는 것 같다. <a href="https://github.com/blog/957-introducing-issue-mentions">Introducing Issue Mentions</a> 참고.</p>
+</blockquote>
+
 <p><strong>언제 사용하나?:</strong></p>
 
 <ul>
-<li>코드 리뷰 중에 바로 적용할만한 피드백을 받았을 때</li>
+<li>특정 브랜치에 대한 피드백을 받았는데 바로 적용하고 싶을 때</li>
 <li>그 피드백에 따라서 고쳤을 때</li>
 </ul>
 
 <p><strong>어떻게 하나?:</strong></p>
 
 <ul>
-<li>고친 커밋의 Ref가 포함된 PR에 코멘트를 한다.</li>
-<li>Ref를 클릭하면 GitHub은 Diff로 다른 부분만 보여준다. 그래서 내 동료는:
+<li>고친 커밋의 Ref가 포함된 PR에 코멘트를 단다.</li>
+<li>GitHub은 똑똑해서 Ref를 클릭했을 때 이전 커밋과의 Diff 결과만 보여준다. 그래서 내 동료는:
 
 <ul>
 <li>Email로 내가 수정했다는 것을 통보받고</li>
@@ -108,6 +112,10 @@
 <li>이런 식으로 코드 리뷰를 할 수 있다는 것을 안다.</li>
 </ul></li>
 </ul>
+
+<blockquote>
+<p>역주: PR을 통해서 코드까지 포함된 피드백을 받든지, 단순히 이슈로 피드백을 받든지 간에 이슈와 코드를 함께 묶어서 토론할 수 있는 점을 말하는 것 같다. 이슈와 관련된 사람은 토론 내역을 Email로 통보받고 Push한 커밋에 대한 diff 결과도 웹에서 쉽게 확인할 수 있다.</p>
+</blockquote>
 
 <h3>6. The creepin’ commit</h3>
 
