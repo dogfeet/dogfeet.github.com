@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-21T07:43:58.188Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-26T19:21:45.472Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: msysgit + pageant ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" /><updated>2013-07-26T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id><content type="html"><![CDATA[
+<p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"/></p>
+
+<h2>pageant</h2>
+
+<p><a href="http://msysgit.github.io/">msysgit</a>을 설치할 때 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">plink</a>를 선택하면 바로 동작한다. plink를 사용해서 뭘하려고 한적이 없어서 모르고 있었다:</p>
+
+<p><img src="/articles/2013/git-msysgit-pageant/msysgit-plink.png" alt="select-plink"/></p>
+
+<p>설치할 때 <a href="http://www.openssh.org/">OpenSSH</a>를 사용하도록 설치했더라도 <code>$GIT_SSH</code> 환경 변수에 plink를 지정해주면 된다:</p>
+<pre><code><span class="keyword">export</span> GIT_SSH=/my/path/plink<span class="variable">.exe</span>
+</code></pre>
+<p>그리고 나서 사용하면 바로 pageant를 사용할 수 있는데, <code>git fetch</code> 명령으로 테스트를 해보면 아직 서버랑 인사 안했다고 다음과 같은 에러를 뱉는다:</p>
+<pre><code>$ git fetch
+The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
+have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
+think <span class="keyword">it</span> <span class="keyword">is</span>.
+The server's rsa2 key fingerprint <span class="keyword">is</span>:
+ssh-rsa <span class="number">2048</span> <span class="number">97</span>:<span class="number">8</span>c:<span class="number">1</span>b:f2:<span class="number">6</span>f:<span class="number">14</span>:<span class="number">6</span>b:<span class="number">5</span>c:<span class="number">3</span>b:ec:aa:<span class="number">46</span>:<span class="number">46</span>:<span class="number">74</span>:<span class="number">7</span>c:<span class="number">40</span>
+Connection abandoned.
+fatal: Could <span class="keyword">not</span> <span class="command">read</span> <span class="keyword">from</span> remote repository.
+</code></pre>
+<p>서버랑 인사를 한번해야 한다:</p>
+<pre><code>$ plink git@github.com
+The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
+have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
+think <span class="keyword">it</span> <span class="keyword">is</span>.
+The server's rsa2 key fingerprint <span class="keyword">is</span>:
+ssh-rsa <span class="number">2048</span> <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1</span>b:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48</span>
+If you trust this host, enter <span class="string">"y"</span> <span class="keyword">to</span> add <span class="keyword">the</span> key <span class="keyword">to</span>
+PuTTY's cache <span class="keyword">and</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span>.
+If you want <span class="keyword">to</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span> just once, <span class="keyword">without</span>
+adding <span class="keyword">the</span> key <span class="keyword">to</span> <span class="keyword">the</span> cache, enter <span class="string">"n"</span>.
+If you do <span class="keyword">not</span> trust this host, press Return <span class="keyword">to</span> abandon <span class="keyword">the</span>
+connection.
+Store key <span class="keyword">in</span> cache? (y/n) y
+Using username <span class="string">"git"</span>.
+Server refused <span class="keyword">to</span> allocate pty
+Hi pismute! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.
+</code></pre>
+<p>서버가 &lsquo;Hi pismute!'라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
+
+<p>키를 자동으로 저장하는 방법이 있을 것 같은데 찾지 못했다. <a href="http://rc.quest.com/topics/putty/">Quest의 plink</a>에는 <code>-auto_store_key_in_cache</code> 옵션이 있어서 자동으로 저장해주도록 만들 수 있는데, 이건 왠일인지 msysgit과 연동이 잘 안된다.</p>
+
+<blockquote>
+<p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>
+</blockquote>
+]]>
+</content></entry><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
 <p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
 
 <p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
@@ -735,232 +785,5 @@ git <span class="keyword">clone</span> https:<span class="comment">//github.com/
 <p>아래와 같이 사용한다:</p>
 
 <p><a href="https://github.com/dogfeet/dogit/compare/master@%7B60.day.ago%7D...master">https://github.com/dogfeet/dogit/compare/master@{60.day.ago}&hellip;master</a></p>
-]]>
-</content></entry><entry><title><![CDATA[ Git: git secrets ]]></title><link href="http://dogfeet.github.io/articles/2012/git-secrets.html" /><updated>2012-12-19T00:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2012/git-secrets.html</id><content type="html"><![CDATA[
-<p>이글은 <a href="https://twitter.com/holman">@holman</a>님이 싱가폴에서 열린 <a href="http://reddotrubyconf.com/">RedDotRubyConf</a>에서 발표한 <a href="http://zachholman.com/talk/git-github-secrets">Git and GitHub Secrets</a>에 설명을 달았다. 내용이 길어서 둘로 나눴는데 이 글은 <code>Git Secetets</code>부분을 정리한 글이다. <a href="/articles/2012/git-github-secrets.html">GitHub Secrets</a>은 다른 글에 정리한다.</p>
-
-<p>Git은 명령과 옵션이 굉장히 많은데, 그 중에서 <a href="https://twitter.com/holman">@holman</a>님이 추천하는 쓸만한 것이라고 생각하면 되겠다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2012/git-secrets/holman.png" alt="holman"/></p>
-
-<h2>Git secret</h2>
-
-<h3>&ndash;allow-empty</h3>
-
-<p>파일없이 커밋할 수 있다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">commit</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">"LOOK</span> <span class="comment">AT</span> <span class="comment">ME</span> <span class="comment">TROLOLOL"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">allow</span>-<span class="comment">empty</span>
-</code></pre>
-<p><code>git log</code>를 하면 아무내용없이 그냥 커밋 개체만 달랑 생긴다.</p>
-<pre><code>$ git log
-<span class="operator"><span class="keyword">commit</span> <span class="number">6</span>eb28f645174fba20d819f40da4ca822c7c67b2a
-Author: Changwoo Park &lt;pismute@gmail.com&gt;
-<span class="keyword">Date</span>:   Tue Nov <span class="number">12</span> <span class="number">20</span>:<span class="number">32</span>:<span class="number">25</span> <span class="number">2012</span> +<span class="number">0900</span>
-
-    LOOK <span class="keyword">AT</span> ME TROLOLOL
-</code></pre>
-<p>히스토리에 뭔가 표식을 남기고 싶을 때 유용하다.</p>
-
-<h3>Staging Hunk</h3>
-
-<p>파일에서 한 부분? 덩어리?를 Hunk라고 부른다. <code>git add -p</code> 명령으로 파일을 통째로 Staging Area에 넣는게 아니라 일정 부분만(hunk만) 골라서 넣는다.</p>
-
-<p>자세한 설명은 <a href="https://twitter.com/semtlnori">@semtlnori</a>님의 <a href="http://npcode.com/blog/archives/449">깔끔하게 커밋하기</a>를 보자.</p>
-
-<h3>git show :/query</h3>
-
-<p>특정 질의가 들어간 커밋 중에서 가장 최근 커밋 하나를 찾아 준다. 로그를 분석할때 매우 유용하다. 커밋 메시지, 파일 이름, 파일 내용에서 찾는다.</p>
-
-<p><code>git log</code> 명령에도 있어서 <code>git log :/query</code>라고 실행해도 된다. <code>:/query</code> 만족하는 커밋을 골라서 보여준다.</p>
-
-<h3>go back</h3>
-
-<p><code>cd -</code>라고 실행하면 이전 디렉토리로 되돌아 간다. <code>cd</code>명령 처럼 <code>git checkout -</code>라고 하면 이전 브랜치를 checkout한다.</p>
-
-<h3>merged branch</h3>
-
-<p>브랜치나 커밋이 다른 브랜치에 Merge됐는지 확인하는 명령들.</p>
-
-<ul>
-<li><code>git branch --merged</code> : 이미 다른 브랜치에 머지된 것만 보여준다.</li>
-<li><code>git branch --no-merged</code> : 아직 다른 브랜치에 머지되지 않는 것만 보여준다.</li>
-<li><code>git branch --contains 838ad46</code> : 특정 커밋이 포함된 브랜치만 보여준다.</li>
-</ul>
-
-<h3>Content Copy</h3>
-
-<p>브랜치를 변경하지 않고도 다른 브랜치에 들어 있는 파일을 복사해 올 수 있다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="comment">BRANCH</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">path/to/file</span>.<span class="comment">rb</span>
-</code></pre>
-<p><code>path/to/file.rb</code>에 파일이 복사된다.</p>
-
-<p>Reset과 Checkout은 비슷해보여서 구분하기 쉽지 않다. Checkout은 데이터베이스에서 뭔가를 꺼낼때 사용하는 명령이다. 옵션도 스냅샷과 파일이름 등 그와 관련된 옵션으로 구성돼있다. 반대로 Reset은 워킹 디렉토리, Staging Area, 브랜치 등을 스냅샷으로 Reset하는 명령이다.</p>
-
-<p>이렇게 구분하면 쉽다. 데이터베이스에서 뭔가를 꺼낼때는 Checkout을 사용하고 그외는 Reset을 사용한다.</p>
-
-<h3>Reachable Commits</h3>
-
-<p>특정 브랜치에만 있는 커밋이 보고 싶을 때는 다음과 같이 한다:</p>
-
-<p><code>git log branchA ^branchB</code></p>
-
-<p>branchA에는 있고 branchB에는 없는 커밋을 보여준다.</p>
-
-<h3>FINDING LOST COMMITS</h3>
-
-<p>어떤 브랜치에도 들어 있지 않은 커밋을 보여준다. git의 커밋은 개체는 실제로 전부 immutable이라서 커밋을 수정하면 새로운 커밋 개체가 등록된다. 잘 못 수정했으면 아래 명령으로 커밋을 찾아서 복구한다:</p>
-<pre><code>$ git fsck <span class="comment">--lost-found</span>
-Checking object directories: 100% (256/256), done.
-dangling <span class="operator"><span class="keyword">commit</span> <span class="number">4</span>a7f2e89a480d3af0ccfdf71f76f4149f25fb0fb
-dangling <span class="keyword">commit</span> d3ad9f17532109d12084646c306e9d7748c2f791
-</code></pre>
-<p>어떤 브랜치에도 속하지 않은 커밋이 두 개있다.</p>
-
-<h2>DIFFSTATS</h2>
-
-<p>델타(diff)를 다 보여주는 게 기본인데 통계만 볼 수도 있다:</p>
-
-<p><code>git diff HEAD^ --stat</code></p>
-
-<p><img src="/articles/2012/git-secrets/git-diff--stat.png" alt="git-diff--stat"/></p>
-
-<h3>BLAME</h3>
-
-<p><code>git blame</code>은 기본적으로 어떤 라인을 누가 고쳤는지 확인하는 명령이다.</p>
-
-<p><strong>blame이니까</strong></p>
-
-<p><code>git blame</code>은 기본적으로 어떤 라인을 <strong>어떤 새끼</strong>가 고쳤는지 확인하는 명령이다.</p>
-
-<h4>git blame -w</h4>
-
-<p>정말 내용을 수정한 <strong>새끼</strong>를 찾는다. 공백만 추가한 경우는 무시한다. <code>git diff HEAD~</code> 명령으로 공백이 어디에 추가됐는지 보자:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-w-diff.png" alt="git-blame-w-diff"/></p>
-
-<p>히스토리를 보면 마지막에 &ldquo;BBB&quot;가 공백을 추가했다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-w-lg.png" alt="git-blame-w-lg"/></p>
-
-<p>다음은 <code>git blame -w</code>의 결과다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-w.png" alt="git-blame-w"/></p>
-
-<p>단순히 공백만 추가한 &quot;BBB&quot;는 무시된다. <code>-w</code>을 옵션을 빼고 <code>git blame</code>만 실행하면 공백만 추가한 &quot;BBB&quot;도 나온다.</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame.png" alt="git-blame"/></p>
-
-<h4>git blame -M</h4>
-
-<p>해당 라인을 실질적으로 마지막에 수정한 사람을 보여준다. 이 옵션을 주면 같은 파일 내에서 단순히 라인을 옮긴 사람이 아니라 마지막으로 내용을 수정한 사람이 표시된다:</p>
-
-<p>텍스트를 옮긴 후에 <code>git blame</code> 명령을 실행하면 다음과 같이 나온다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-m-before.png" alt="git-blame"/></p>
-
-<p><code>-M</code> 옵션을 추가하면 단순히 옮긴 사람이 아니라 원래 그 코드를 추가한 사람을 보여준다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-m.png" alt="git-blame"/></p>
-
-<p>원래 의도는 측근 <code>all.md</code> 파일에서 친구 끼리, 가족 끼리 모아서 <code>-M</code> 옵션을 설명할 계획이였다. Git이 정확히 어떤 알고리즘을 사용하는 건지 나중에 살펴봐야 겠다.</p>
-
-<h4>git blame -C</h4>
-
-<p><code>-M</code>와 비슷하게 실제로 마지막에 수정한 사람을 보여준다. 한 파일 내에서의 이동만 감지하는 것이 아니라. 같은 커밋에서의 다른 파일간 이동도 감지한다.</p>
-
-<p><code>all.md</code>라는 파일에서 친구는 <code>friends.md</code>라는 파일로 옮기고 가족은 <code>family.md</code> 파일로 옮겼다. 아래는 <code>git blame -f family.md</code>의 결과다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-c-f.png" alt="git-blame"/></p>
-
-<p><code>-f</code>는 원래 파일이름을 보여주는 옵션이다. <code>git blame -fC family.md</code>의 결과는 아래와 같다:</p>
-
-<p><img src="/articles/2012/git-secrets/git-blame-c-cf.png" alt="git-blame"/></p>
-
-<h4>git blame -CC</h4>
-
-<p><code>-C</code> 처럼 다른 파일에서 옮긴 것을 감지해주는데 해당 파일을 생성한 커밋내에서도 감지한다.</p>
-
-<h4>git blame -CCC</h4>
-
-<p>다른 파일에서 옮긴 것도 감지하는데 커밋을 가리지 않고 전체에서 찾는다.</p>
-
-<h4>MULTI-REMOTE FETCHES</h4>
-
-<p>원래는 하나씩 fetch해야 하지만 group을 만들어서 한번에 fetch할 수 있다.</p>
-<pre><code><span class="variable">$ </span>git config remotes.mygroup <span class="string">'remote1 remote2'</span>
-<span class="variable">$ </span>git fetch mygroup
-</code></pre>
-<h4>A BETTER STATUS</h4>
-
-<p>status의 결과를 더 간략하게 볼 수 있다.</p>
-
-<p><code>git status</code>:</p>
-
-<p><img src="/articles/2012/git-secrets/git-status.png" alt="git-status"/></p>
-
-<p><code>git status -sb</code>:</p>
-
-<p><img src="/articles/2012/git-secrets/git-status-sb.png" alt="git-status-sb"/></p>
-
-<h4>WORD DIFFING</h4>
-
-<p>라인 단위로 비교하는 것이 아니라 단어 단위로 비교해서 볼 수 있다.</p>
-
-<p><code>git diff HEAD^</code>:</p>
-
-<p><img src="/articles/2012/git-secrets/git-diff-head-1.png" alt="diff-head-1"/></p>
-
-<p><code>git diff HEAD^ --word-diff</code>:</p>
-
-<p><img src="/articles/2012/git-secrets/git-diff-head-1--word-diff.png" alt="diff-head-1--word-diff"/></p>
-
-<h4>CONFIG: SPELLING</h4>
-
-<p><code>git comit</code>이라고 실행하면 <code>commit</code>이라고 할려고 했냐? 라고 물어봐 주는 게 기본설정이다. 명령을 실행할 때 오타를 내면 자동으로 인식해서 실행하게 할 수 있다. 다음과 같이 설정하면 된다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">help</span>.<span class="comment">autocorrect</span> <span class="comment">1</span>
-</code></pre>
-<p>이 옵션이 설정되면 <code>git comit</code>이라고 실행하면 그냥 <code>git commit</code>이 실행된다:</p>
-
-<h4>CONFIG: GIT RERERE(REUSE RECORDED RESOLUTION)</h4>
-
-<p><a href="/articles/2012/git-rerere.html">Git: rerere</a>에서 확인한다.</p>
-
-<h4>CONFIG: COLOR!</h4>
-
-<p>다음과 같이 설정하면 결과가 칼라로 나온다.</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">color</span>.<span class="comment">ui</span> <span class="comment">1</span>
-</code></pre>
-<h4>ALIAS: GIT-AMEND</h4>
-
-<p>아래와 같이 alias를 등록하면 <code>git amend</code>라고 실행해서 HEAD 커밋을 수정할 수 있다. <code>-C</code> 옵션이 있기 때문에 커밋 메시지는 수정하지 않는다. 항상 커밋 메시지를 확인하고 싶으면 <code>-C HEAD</code>를 빼면 된다.</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">alias</span>.<span class="comment">amend</span> <span class="comment">"commit</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">amend</span> <span class="literal">-</span><span class="comment">C</span> <span class="comment">HEAD"</span>
-</code></pre>
-<h4>ALIAS: GIT-UNDO</h4>
-
-<p>가장 최근 커밋을 되돌린다. <code>--soft</code>이기 때문에 그 커밋의 개체는 Staged 상태로 남는다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">alias</span>.<span class="comment">undo</span> <span class="comment">"reset</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">soft</span> <span class="comment">HEAD^"</span>
-</code></pre>
-<h4>ALIAS: GIT-COUNT</h4>
-
-<p>누가 얼마나 커밋했는지 보여준다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">alias</span>.<span class="comment">count</span> <span class="comment">"shortlog</span> <span class="literal">-</span><span class="comment">sn"</span>
-</code></pre>
-<p><img src="/articles/2012/git-secrets/git-shortlog-sn.png" alt="git-shortlog-sn"/></p>
-
-<h4>SCRIPT: GIT-CREDIT</h4>
-
-<p>가장 마지막 커밋 author 정보를 바꿀일은 종종 생긴다. 실수일 수도 있고 아닐 수도 있지만 뭐 어찌됐건 최근 커밋의 author를 마음대로 바꾸고 싶을 때가 있다. 다음과 같이 config에 등록한다:</p>
-<pre><code><span class="shebang">#!/bin/sh</span>
-
-git commit --amend --author <span class="string">"<span class="variable">$1</span> &lt;<span class="variable">$2</span>&gt;"</span> -C HEAD
-</code></pre>
-<p><code>git credit &quot;Zach Holman&quot; zach@example.com</code>이라고 실행하면 최근 커밋의 author 정보가 변경된다.</p>
-
-<p><a href="https://twitter.com/holman">@holman</a>님은 <a href="https://twitter.com/holman">@holman</a>님의 <a href="https://github.com/holman/dotfiles/tree/master/bin">dotfile</a> 프로젝트에 가면 <a href="https://twitter.com/holman">@holman</a>님이 사용하는 <code>git-credit</code> 스크립트가 있다.</p>
-
-<h4>Octocat</h4>
-
-<p>이 슬라이드로 옥토캣은 다리가 4개고 꼬리가 1개라는 비밀을 알게 됐다. 맨날 보는 그림이지만 문어니까 그냥 다리가 8개라고 생각했었다.</p>
-
-<p><img src="/articles/2012/git-secrets/pusheencat.png" alt="octocat"/></p>
 ]]>
 </content></entry></feed>
