@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title><![CDATA[ 개발새발 ]]></title><link href="http://dogfeet.github.io/atom.xml" rel="self" /><link href="http://dogfeet.github.io" /><updated>2013-07-26T19:21:45.472Z</updated><id>http://dogfeet.github.io</id><author><name>Changwoo Park</name><email>pismute@gmail.com</email></author><author><name>Sean Lee</name><email>sean@weaveus.com</email></author><author><name>Yongjae Choi</name><email>mage@weaveus.com</email></author><entry><title><![CDATA[ git: msysgit + pageant ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" /><updated>2013-07-26T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[ 개발새발 ]]></title>
+  <link href="http://dogfeet.github.io/atom.xml" rel="self" />
+  <link href="http://dogfeet.github.io" />
+  <updated>2013-09-06T02:35:42.979Z</updated>
+  <id>http://dogfeet.github.io</id>
+  <entry>
+    <title><![CDATA[ grunt: 비동기 타스크 ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
+    <updated>2013-09-05T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/grunt-async-task.html</id>
+    <content type="html">
+<![CDATA[
+<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다&ndash;;).</p>
+
+<p>이 글은 비동기 타스크를 왜 쓰고 언제 어떻게 써야 하는지 설명한다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/grunt-async-task/information-boards.jpg" alt=""/></p>
+
+<h2>비동기 타스크</h2>
+
+<p>우선 setTimeout으로 간단한 비동기 타스크를 하나 만들어 보자.</p>
+
+<p>afterseconds라는 이름의 타스크를 만든다:</p>
+<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+
+  grunt.registerTask(<span class="comment">'afterseconds', 'done after a few seconds', function() {</span>
+    var done = this.async();
+
+    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+    setTimeout(<span class="keyword">function</span>(){
+      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+      done();
+    }, <span class="number">2000</span>);
+  });
+
+};
+</code></pre>
+<p>이 타스크는 2초 후에 완료하는 타스크다.</p>
+
+<p>Gruntfile.coffee도 만들자:</p>
+<pre><code>module.exports = (grunt)-&gt;
+  <span class="keyword">...</span>
+
+  grunt.loadTasks <span class="string">'tasks'</span>
+
+  <span class="comment"># Default task.</span>
+  grunt.registerTask <span class="string">'default'</span>, [<span class="string">'afterseconds'</span>, <span class="string">'jshint'</span>]
+
+</code></pre>
+<p><code>grunt</code>라고 실행하면 <code>afterseconds</code>, <code>jshint</code>를 차례대로 실행한다:</p>
+<pre><code>$ <span class="tag">grunt</span>
+<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:01</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:03</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+
+<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
+&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
+</code></pre>
+<p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
+
+<h2>grunt 비동기 구현</h2>
+
+<p>grunt는 내부에 타스크 큐를 가지고 있다. 우리가 타스크를 실행하면 즉시 실행되는 것이 아니라 일단 큐에 등록되고 다음 틱에 실행된다.</p>
+
+<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 &lsquo;afterseconds&rsquo;, &lsquo;jshint&rsquo; 타스크가 순서대로 등록됐고 &lsquo;afterseconds'는 2초 후에 끝나므로 2초 후에 'jshint'가 실행된다.</p>
+
+<p><code>var done = this.async();</code>의 async() 함수를 살펴보자:</p>
+<pre><code>// When called, sets the async flag <span class="keyword">and</span> returns a <span class="function"><span class="keyword">function</span> <span class="title">that</span> <span class="title">can</span>
+// <span class="title">be</span> <span class="title">used</span> <span class="title">to</span> <span class="title">continue</span> <span class="title">processing</span> <span class="title">the</span> <span class="title">queue</span>.
+<span class="title">context.async</span> = <span class="title">function</span><span class="params">()</span></span> {
+  async = <span class="keyword">true</span>;
+
+  // The returned <span class="function"><span class="keyword">function</span> <span class="title">should</span> <span class="title">execute</span> <span class="title">asynchronously</span> <span class="title">in</span> <span class="title">case</span>
+  // <span class="title">someone</span> <span class="title">tries</span> <span class="title">to</span> <span class="title">do</span> <span class="title">this.async</span><span class="params">()</span></span>(); inside a task (WTF).
+  <span class="keyword">return</span> function(success) {
+    setTimeout(function() { complete(success); }, <span class="number">1</span>);
+  };
+};
+</code></pre>
+<p>내부의 async 변수를 true바꾸고 done 함수를 리턴한다.</p>
+
+<p>타스크를 실행시키는 grunt 코드는 아래와 같다:</p>
+<pre><code><span class="keyword">try</span> {
+  // Get <span class="keyword">the</span> current task <span class="keyword">and</span> <span class="command">run</span> <span class="keyword">it</span>, setting `this` inside <span class="keyword">the</span> task
+  // function <span class="keyword">to</span> be something useful.
+  var success = fn.call(context);
+  // If <span class="keyword">the</span> async flag wasn't <span class="keyword">set</span>, process <span class="keyword">the</span> next task <span class="keyword">in</span> <span class="keyword">the</span> queue.
+  <span class="keyword">if</span> (!async) {
+    complete(success);
+  }
+} catch (err) {
+  complete(err);
+}
+</code></pre>
+<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)를 바로 실행해서 타스크를 완료시키고 비동기일 때는</code>done()이 실행될 때까지 연기된다.</p>
+
+<h3>async()는 왜 필요할까?</h3>
+
+<p>간단한 node 프로그램에서는 아래와 같이 코드를 작성해서 실행하면 2초 후에 callback까지 실행되고 나서 프로그램이 종료한다:</p>
+<pre><code>console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+setTimeout(<span class="keyword">function</span>(){
+  console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+}, <span class="number">2000</span>);
+</code></pre>
+<p>하지만, grunt에서는 그렇지 않다. 위 예제의 타스크를 동기 타스크로 수정해보자:</p>
+<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+
+  grunt.registerTask(<span class="comment">'afterseconds', 'done after some seconds', function() {</span>
+    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+    setTimeout(<span class="keyword">function</span>(){
+      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+    }, <span class="number">2000</span>);
+  });
+
+};
+</code></pre>
+<p>그리고 <code>grunt</code>를 실행하면 2초 후에 callback이 실행되지 않고 바로 종료한다:</p>
+<pre><code>$ <span class="tag">grunt</span>
+<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 03<span class="pseudo">:20</span><span class="pseudo">:08</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+
+<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
+&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
+
+<span class="tag">Done</span>, <span class="tag">without</span> <span class="tag">errors</span>.
+</code></pre>
+<p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
+
+<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. 'async()'를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
+
+<h3>grunt의 한계</h3>
+
+<p>grunt의 타스크 큐는 차례대로 실행되므로 타스크를 병렬로 실행할 방법은 없다.</p>
+
+<p>플러그인인 <a href="https://github.com/iammerrick/grunt-parallel">grunt-parallel</a> 타스크를 쓰면 타스크를 병렬로 실행할 수 있다. 이 타스크는 grunt 프로세스를 여러 개 띄워서 병렬로 다른 타스크들을 실행시켜 준다.</p>
+
+<p>Async.js처럼 다양하게 flow control를 할 수 있으면 좋지 않을까? 다음이나 다음다음 버전을 기대해본다.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ git: msysgit + pageant ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" />
+    <updated>2013-07-26T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id>
+    <content type="html">
+<![CDATA[
 <p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"/></p>
@@ -49,7 +199,15 @@ Hi pismute! You've successfully authenticated, <span class="keyword">but</span> 
 <p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>
 </blockquote>
 ]]>
-</content></entry><entry><title><![CDATA[ git: Useful GitHub Patterns ]]></title><link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" /><updated>2013-07-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ git: Useful GitHub Patterns ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" />
+    <updated>2013-07-19T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id>
+    <content type="html">
+<![CDATA[
 <p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
 
 <p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
@@ -237,7 +395,15 @@ Hi pismute! You've successfully authenticated, <span class="keyword">but</span> 
 
 <p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 &ldquo;Pull Request는 대화의 시작점&quot;이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
 ]]>
-</content></entry><entry><title><![CDATA[ git: ckw Solarized!  ]]></title><link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" /><updated>2013-07-10T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ git: ckw Solarized!  ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" />
+    <updated>2013-07-10T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id>
+    <content type="html">
+<![CDATA[
 <p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""/></p>
@@ -303,7 +469,15 @@ Ckw<span class="variable">*color13</span>: <span class="comment">#d33682</span>
 Ckw<span class="variable">*color14</span>: <span class="comment">#b58900</span>
 Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
 </code></pre>]]>
-</content></entry><entry><title><![CDATA[ 프로 Git 한글책 출간 ]]></title><link href="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" /><updated>2013-05-20T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ 프로 Git 한글책 출간 ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" />
+    <updated>2013-05-20T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id>
+    <content type="html">
+<![CDATA[
 <p>Pro Git 한글 번역이 <a href="http://www.insightbook.co.kr/">인사이트</a>의 도움을 받아 종이책으로 <a href="http://www.insightbook.co.kr/post/5633">프로 Git</a> 으로 출간되었습니다. 학생분들은 도서관에 직장인은 도서구매부에 얼른얼른 구매 신청해주세요! ㅎㅎ</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/progit-ko-book-published/progit.jpg" alt=""/> <img src="/articles/2013/progit-ko-book-published/devops.png" alt=""/></p>
@@ -320,7 +494,15 @@ Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
 
 <p>또 하나, &lsquo;프로 Git'에 이어 저희 팀원분이 번역한 <a href="http://www.wikibook.co.kr/wiki/Wiki.jsp?page=DevOps">데브옵스</a>도 5월 말에 출간됩니다. 데브옵스에 대한 다양한 문제 상황과 해결법을 다루고 있어 관심있는 분께는 많은 도움이 되리라 생각합니다. 현재 예약판매 중이며 곧 온라인과 오프라인 서점에서 구입하실 수 있습니다.</p>
 ]]>
-</content></entry><entry><title><![CDATA[ git: password caching ]]></title><link href="http://dogfeet.github.io/articles/2013/git-password-caching.html" /><updated>2013-03-27T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/git-password-caching.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ git: password caching ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/git-password-caching.html" />
+    <updated>2013-03-27T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/git-password-caching.html</id>
+    <content type="html">
+<![CDATA[
 <p>요즘은 뭐든 Smart한 시대인지라 http(s) 프로토콜도 Smart하지 않을 수 없다(<a href="http://git-scm.com/2010/03/04/smart-http.html">Smart http</a>). <a href="http://git-scm.com/book/ko">Pro Git</a>에서는 http(s)가 Smart하지 않다고 설명하지만 그건 <a href="http://git-scm.com/book/ko">Pro Git</a>이 출간되고 나서 만들어진 거라 책에는 내용이 빠져 있다. 이제는 ssh를 사용하든 http(s)를 사용하든 효율의 차이는 없다.</p>
 
 <p>ssh는 회사 방화벽에서 막아버릴 수도 있고 익명접근도 허용하지 않지만, http(s)는 그런 게 없다. GitHub도 이제는 ssh가 아닌 http(s)가 기본이다(https 주소를 먼저 보여준다):</p>
@@ -384,7 +566,15 @@ git: <span class="string">'credential-osxkeychain'</span> <span class="keyword">
 
 <p>Windows XP에서는 SourceTree를 설치할 수 없어서 확인하지 못했다.</p>
 ]]>
-</content></entry><entry><title><![CDATA[ mac: java-web-start ]]></title><link href="http://dogfeet.github.io/articles/2013/mac-java-web-start.html" /><updated>2013-03-07T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/mac-java-web-start.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ mac: java-web-start ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/mac-java-web-start.html" />
+    <updated>2013-03-07T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/mac-java-web-start.html</id>
+    <content type="html">
+<![CDATA[
 <p>언제부터 안되더라? 왜 안되더라? 그런건 잘 모르겠고 Mac에서는 Java Web Start가 그냥 실행되지 않는다. Apple이 막은 건데, Oracle이 미운 이유는 뭘까! 아무튼 다시 켜는 방법이 있다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/mac-java-web-start/mung-me.jpg" alt=""/></p>
@@ -453,7 +643,15 @@ Unable <span class="keyword">to</span> locate a Java Runtime <span class="keywor
 <p>수동으로 다시 disable하고 싶으면 아래와 같이 실행한다:</p>
 <pre><code>% su<span class="operator"><span class="keyword">do</span> ln -sf /System/Library/Frameworks/JavaVM.framework/Versions/<span class="keyword">Current</span>/Commands/javaws /usr/bin/javaws
 </code></pre>]]>
-</content></entry><entry><title><![CDATA[ grunt: node-coffee 템플릿 ]]></title><link href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" /><updated>2013-02-20T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ grunt: node-coffee 템플릿 ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" />
+    <updated>2013-02-20T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html</id>
+    <content type="html">
+<![CDATA[
 <p><a href="https://twitter.com/Outsideris">@Outsideris</a>님의 <a href="http://blog.outsider.ne.kr/892">자바스크립트 빌드 도구 Grunt</a>와 <a href="http://blog.outsider.ne.kr/894">Grunt에 사용자 템플릿 추가하기</a>를 읽고 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a> 템플릿을 만들었다. <a href="https://twitter.com/docpad">@docpad</a> 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee/gruntjs.png" alt=""/></p>
@@ -499,7 +697,15 @@ Unable <span class="keyword">to</span> locate a Java Runtime <span class="keywor
 <span class="title">cd</span> my-project
 <span class="title">grunt</span>-init node-coffee
 </code></pre>]]>
-</content></entry><entry><title><![CDATA[ 그와 그녀의 tryios ]]></title><link href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" /><updated>2013-01-19T15:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html</id><content type="html"><![CDATA[
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ 그와 그녀의 tryios ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" />
+    <updated>2013-01-19T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html</id>
+    <content type="html">
+<![CDATA[
 <p><a href="http://www.codeschool.com/">codeschool</a>에 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 <a href="https://twitter.com/pismute">그</a>와 코딩 초보인 <a href="http://uniquenoun.tumblr.com/">그녀</a>가 함께 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 해보고 난 후기다.</p>
 
 <p><img src="http://dogfeet.github.io/articles/2013/codeschool-tryios/tryios.png" alt="tryios"/></p>
@@ -602,188 +808,6 @@ Unable <span class="keyword">to</span> locate a Java Runtime <span class="keywor
 
 <p>영어가 되는 사람들은 좋겠다. 쉽고 재밌는 학습 도구가 많아서 좋겠다. 글래머 금발이랑 코딩할 수 있어서 좋겠다. 앞으로는 영어를 좀 더 to-the-core하게 해서 그런 삶을 살아야 겠다.</p>
 ]]>
-</content></entry><entry><title><![CDATA[ Git: GitHub secrets ]]></title><link href="http://dogfeet.github.io/articles/2012/git-github-secrets.html" /><updated>2012-12-29T00:00:00.000Z</updated><id>http://dogfeet.github.io/articles/2012/git-github-secrets.html</id><content type="html"><![CDATA[
-<p>이글은 <a href="https://twitter.com/holman">@holman</a>님이 싱가폴에서 열린 <a href="http://reddotrubyconf.com/">RedDotRubyConf</a>에서 발표한 <a href="http://zachholman.com/talk/git-github-secrets">Git and GitHub Secrets</a>에 설명을 달았다. 내용이 길어서 둘로 나눴는데 이 글은 <code>GitHub Secetets</code> 부분을 정리한 글이다. <a href="/articles/2012/git-secrets.html">Git Secrets</a>은 다른 글에서 정리한다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2012/git-github-secrets/holman.png" alt="holman"/></p>
-
-<p>이 글을 정리하면서 그림을 많이 삽입하지 않았다. <code>GitHub Secrets</code> 부분은 그림이 너무 많아서 생략했다. 이 글을 읽고서 슬라이드를 한번 보는게 좋을 것 같다.</p>
-
-<h2>숨겨진 기능</h2>
-
-<p>GitHub은 단순함을 추구한다. 그래서 GitHub에는 기능이 많은 데도 불구하고 굳이 화면에 보여주지 않는다.</p>
-
-<h3>.patch, .diff</h3>
-
-<p>커밋 URL 뒤에 .patch나 .diff 붙이면 해당 포멧의 파일이 나온다. 정확하게는 &lsquo;Compare View, Pull Requests, Commit Pages&rsquo; 화면에서 사용할 수 있다.</p>
-
-<ul>
-<li><a href="https://github.com/dogfeet/dogit/commit/a1f156b6415439a8a84c3d2fa89ea975fb3a7ac2.diff">.diff 예제</a></li>
-<li><a href="https://github.com/dogfeet/dogit/commit/a1f156b6415439a8a84c3d2fa89ea975fb3a7ac2.patch">.patch 예제</a></li>
-</ul>
-
-<h2>공백문자는 무시하고 diff를 보여준다.</h2>
-
-<p>diff URL끝에 <code>?w=1</code>를 붙이면 공백문자를 무시한 결과를 보여준다.</p>
-
-<p><img src="/articles/2012/git-github-secrets/ignore-whitespace.png" alt="ignore_whitespace"/></p>
-
-<h3>SVN 클라이언트도 지원.</h3>
-
-<p>&lsquo;SVN/Git 서비스 레이어'가 있어서 SVN 요청을 Git 요청으로 변환해준다.</p>
-
-<p>당연히 Git 클라이언트를 사용할 수 있지만:</p>
-<pre><code>$ git <span class="keyword">clone</span> https:<span class="comment">//github.com/dogfeet/dogit.git</span>
-</code></pre>
-<p>SVN 클라이언트도 사용할 수 있다:</p>
-<pre><code><span class="char">$ </span>svn checkout <span class="method">https:</span>//github.com/dogfeet/dogit.git
-</code></pre>
-<h3>SSH & HTTP => HTTP & SSH</h3>
-
-<p>GitHub은 기본 프로토콜을 SSH에서 HTTP로 바꿨다. 원래 HTTP 프로토콜을 사용하는 방식은 성능이 후져서 SSH를 권장했는데 이제 SmartHTTP 덕택에 HTTP도 효율적이다.</p>
-
-<p>원래 SSH를 먼저 보여줬었지만:</p>
-
-<p><img src="/articles/2012/git-github-secrets/ssh-http.png" alt="before"/></p>
-
-<p>지금은 HTTP를 먼저 보여준다:</p>
-
-<p><img src="/articles/2012/git-github-secrets/http-ssh.png" alt="after"/></p>
-
-<p>이제 HTTP도 효율적이기 때문에 1) 회사 방화벽 뒤에서도 맘껏 GitHub을 즐길 수 있고 2) SSH Key를 사용하기 힘든 Windows 환경에서도 사용하기 쉬워졌다. SSH key없이도 암호를 메모리에 저장해서 사용할 수 있다. 이 방법은 git 1.7.10부터 사용할 수 있고 GitHub의 <a href="https://help.github.com/articles/set-up-git">패스워드 캐싱하는 방법</a>에 잘 설명돼 있다.</p>
-
-<h4>SmartHTTP</h4>
-
-<p>SmartHTTP는 git 1.6.6부터 지원한다. git 1.6.6은 2009년 말에 배포됐다.</p>
-
-<p>Git은 개체를 'Packfile'이라는 덩어리에 묶어서 관리한다. 이전 버전에서는 사용자가 'Packfile'에 들어 있는 개체 한 개가 필요해도 <code>Packfile</code>을 통째로 전송해야 했다. 그래서 HTTP를 더미 프로토콜이라고 불렀다. 이제는 SmartHTTP가 있어서 'Packfile'에서 필요한 개체만 꺼내서 전송할 수 있다.</p>
-
-<p>progit 책을 집필할 때에는 SmartHTTP가 없었기 때문에 이를 설명하지 않았다. SmartHTTP에 대해서 자세히 알아보려면 progit 9장과 <a href="http://git-scm.com/2010/03/04/smart-http.html">Smart HTTP Transport</a>를 읽는게 좋다.</p>
-
-<h3>URL에서 &rsquo;.git'은 생략해도 된다.</h3>
-<pre><code>git <span class="keyword">clone</span> https:<span class="comment">//github.com/holman/boom.git</span>
-git <span class="keyword">clone</span> https:<span class="comment">//github.com/holman/boom</span>
-</code></pre>
-<h3>GitHub HD&trade;</h3>
-
-<p>GitHub 페이지의 아이콘이 HD 벡터 아이콘이라서 계속 확대해도 깨지지 않는다.</p>
-
-<h3>Auditing</h3>
-
-<p>우리말로 하자면 &lsquo;감사로그&rsquo; 쯤 되는 건데, GitHub에서 일어난 중요한 액션은 로그가 남는다:</p>
-
-<p><a href="https://github.com/settings/security">https://github.com/settings/security</a></p>
-
-<h3>Octocat</h3>
-
-<p><a href="https://twitter.com/defunkt">@defunkt</a>님이 에러페이지에 사용할 이미지를 찾다가 <a href="http://www.istockphoto.com/">Istockphoto</a>에서 싸게 산 이미지였는데 사람들이 좋아해서 지금은 GitHub의 마스코드가 됐다. 처음에는 아니였지만 지금은 GitHub이 저작권을 가지고 있다.</p>
-
-<p><a href="http://www.quora.com/GitHub/What-is-the-story-behind-GitHub%E2%80%99s-octocat-mascot">Octocat 스토리</a>는 Quora에서 참고.</p>
-
-<p><a href="http://octodex.github.com/">http://octodex.github.com/</a> 에 가면 Octocat 이미지가 많다.</p>
-
-<h3>git.io</h3>
-
-<p>GitHub용 URL Shortner이다. 작은 <a href="git.io/nxVVig">쉘 스크립트</a>로 구현돼 있고 다음과 같이 사용한다.</p>
-<pre><code>$ gitio <span class="tag">&lt;<span class="title">url</span>&gt;</span> <span class="tag">&lt;<span class="title">name</span>&gt;</span>
-</code></pre>
-<p><a href="https://chrome.google.com/webstore/detail/gitio-url-shortener/baceaeopmlhkjbljoiinmbnnmpokgiml">Chrome Extension</a>도 있다.</p>
-
-<h3>Linguist</h3>
-
-<p>저장소에 든 언어가 뭔지 찾아서 직접 그 저장소에서 개발된 파일만 추려서 &lsquo;Syntax Highlighting'도 해준다. GitHub은 이 Linguist를 다음과 같은 걸 만들어 내는데 사용한다:</p>
-
-<p><img src="/articles/2012/git-github-secrets/linguist.png" alt="linguist"/></p>
-
-<p>기능:</p>
-
-<ul>
-<li>'Language Detection&rsquo; - 어떤 언어가 사용됐는지 찾는다.</li>
-<li>&lsquo;Stats&rsquo; - 언어 통계를 알려준다.</li>
-<li>&lsquo;Syntax Highlighting&rsquo; - Pygments를 사용한다.</li>
-<li>&lsquo;Vendored Files&rsquo; - 저장소에 들어 있는 파일 중 다른 프로젝트에서 가져온 파일. ex) jquery.js</li>
-<li>&lsquo;Generated file detection&rsquo; - 생성되는 파일을 알아서 제외한다.</li>
-</ul>
-
-<h3>email reply</h3>
-
-<p>이메일로 comments에 답변을 달 수 있다.</p>
-
-<h3>gist</h3>
-
-<p>단순히 코드 snippet을 공유하는 도구가 아니다. 코멘트, 스크린샷, 코드를 공유를 할 수 있기 때문에 프로토타이핑 도구로 사용하기에도 좋다. 개발자와 디자이너 모두에게 유용하다.</p>
-
-<p>gist 자체가 git 저장소이기 때문에 clone할 수도 있다:</p>
-<pre><code><span class="title">git</span> clone <span class="url">git://gist.github.com/2720312</span>
-</code></pre>
-<p>간단하게 만들어서 프로토타이핑을 해보기에 아주 좋다.</p>
-
-<h4>microgems.</h4>
-
-<p>Ruby Gem으로도 사용할 수 있는 것 같다. 나는 Ruby를 몰라서 알 수 없다.</p>
-
-<p><a href="http://jeffkreeftmeijer.com/2011/microgems-five-minute-rubygems/">http://jeffkreeftmeijer.com/2011/microgems-five-minute-rubygems/</a></p>
-
-<h3>Image View Mode</h3>
-
-<p>Gist에 이미지를 올리고 비교하면 비교해보기 좋게 나열해준다. 정말 쩐다. 데모 페이지에 가서 클릭해보자.</p>
-
-<p>이 기능은 <a href="http://www.kaleidoscopeapp.com/">KaleidoScope</a>같은 도구에서 있는 건데 GitHub도 된다. <a href="http://www.sourcetreeapp.com/">SourceTree</a>같은 데서도 가능하면 좋겠다.</p>
-
-<p>GitHub의 <a href="https://github.com/blog/817-behold-image-view-modes">Behold: Image view modes</a>에 잘 소개돼 있다.</p>
-
-<h3>Command Line GitHub - hub</h3>
-
-<p><a href="https://github.com/defunkt/hub">hub</a>라는 프로그램이 있다. Command Line에서 GitHub을 사용할 수 있는 명령이다. git + github 명령이라고 생각하면 된다. GitHub을 사용하면서 자동화한다면 꼭 필요한 툴이라고 생각된다. 나중에 따로 정리해야 겠다.</p>
-
-<h3>Keyboard Shortcuts</h3>
-
-<p>GitHub의 모든 페이지에서 <code>?</code>를 누르면 그 페이지에서 사용할 수 있는 단축키를 보여준다.</p>
-
-<h3>Subscribing People</h3>
-
-<p>GitHub에서 글쓸때 <code>@pismute</code>쓰면 해당 사용자에게 알림이 간다. <code>@org/team</code>라는 팀 표현식도 있어서 팀 전체한테 노티를 줄수도 있다.</p>
-
-<h3>GitHub Flavored Markdown</h3>
-
-<p><a href="http://github.github.com/github-flavored-markdown/">GFM</a>에 대한 설명도 있다.</p>
-
-<h3>Auto-Closing Issues</h3>
-
-<p>커밋메시지에 <code>CLOSES/CLOSED/CLOSE #1</code>나 <code>FIXES/FIXED/FIX #1</code>라고 쓰면 해당 이슈가 자동으로 닫힌다.</p>
-
-<h3>Commit by Author</h3>
-
-<p>GitHub의 커밋 페이지에서 <code>?author=holman</code> 처럼 파라미터를 넘기면 해당 사용자의 커밋만 볼 수 있다:</p>
-
-<ul>
-<li><a href="https://github.com/progit/progit/commits/master?author=pismute">https://github.com/progit/progit/commits/master?author=pismute</a></li>
-</ul>
-
-<h3>Branch-to-Branch</h3>
-
-<p>Pull Request는 브랜치 단위로 하는 거라는 얘기. 그래서 원 저장소가 아니라 Clone 저장소에도 Pull Request를 보낼 수 있다.</p>
-
-<h3>emoji!</h3>
-
-<p>GitHub에서 emoji 이모티콘을 사용할 수 있다. 사용할 수 있는 이모티콘은 <a href="http://www.emoji-cheat-sheet.com/">http://www.emoji-cheat-sheet.com/</a> 에서 참고.</p>
-
-<h3>Link Linking</h3>
-
-<p>GitHub 페이지에서 파일 보기 화면에서 URL 뒤에 <code>#L16</code>을 붙이면 16라인이 노랗게 보인다. <code>#L16-32</code>를 붙이면 16라인부터 32라인까지 노랗게 보인다. 다른 사람과 코드에 대해 수다떨 때 어떤 라인에 대해서 얘기하는 건지 콕 집어 줄 수 있다.</p>
-
-<h3>Advanced Compare View</h3>
-
-<p><code>github.com/user/repo/compare/{range}</code>과 같은 형식의 URL을 사용하면 되고 <code>{range}</code>부분에 다음과 같이 넣을 수 있다:</p>
-
-<ul>
-<li><code>master@{1.day.ago}...master</code></li>
-<li><code>master@{yesterday}...master</code></li>
-<li><code>master@{2012-02-25}...master</code></li>
-</ul>
-
-<p>아래와 같이 사용한다:</p>
-
-<p><a href="https://github.com/dogfeet/dogit/compare/master@%7B60.day.ago%7D...master">https://github.com/dogfeet/dogit/compare/master@{60.day.ago}&hellip;master</a></p>
-]]>
-</content></entry></feed>
+    </content>
+  </entry>
+</feed>

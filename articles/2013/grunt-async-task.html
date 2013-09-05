@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>#dogfeet - grunt: 비동기 타스크</title>
+    <meta name="description" content="grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다&ndash;;)." />
+    <meta name="keywords" content="grunt,async,task" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.io" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container">
+      <div>
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<section class="content">
+  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/grunt-async-task.html" lang="ko-kr">
+    <div class="row">
+      <div class="span2 muted modern-font small-font">
+        <span property="dc:created">
+          2013 Sep 06 &raquo;
+        </span>
+      </div>
+      <div class="span10">
+        <h1 property="dcterms:title">grunt: 비동기 타스크</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset2 span10 modern-font small-font muted">
+<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
+ | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#async" class="tag">async</a> <a href="/site/tagmap.html#task" class="tag">task</a> | <span><a href="/articles/2013/grunt-async-task.html#disqus_thread" data-disqus-identifier="/articles/2013/grunt-async-task.html"></a></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset2 span10">
+<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
+          #social-buttons {
+  margin-left: 30px;
+}
+        </style>
+        <div id="social-buttons" class="pull-right">
+          <ul class="unstyled">
+            <li>
+              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/grunt-async-task.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+            </li>
+            <li>
+              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/grunt-async-task.html"></div>
+            </li>
+            <li>
+              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/grunt-async-task.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+            </li>
+          </ul>
+        </div>
+        <div property="sioc:content">
+          <p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다&ndash;;).</p>
+
+<p>이 글은 비동기 타스크를 왜 쓰고 언제 어떻게 써야 하는지 설명한다.</p>
+
+<p><img src="/articles/2013/grunt-async-task/information-boards.jpg" alt=""/></p>
+
+<h2>비동기 타스크</h2>
+
+<p>우선 setTimeout으로 간단한 비동기 타스크를 하나 만들어 보자.</p>
+
+<p>afterseconds라는 이름의 타스크를 만든다:</p>
+<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+
+  grunt.registerTask(<span class="comment">'afterseconds', 'done after a few seconds', function() {</span>
+    var done = this.async();
+
+    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+    setTimeout(<span class="keyword">function</span>(){
+      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+      done();
+    }, <span class="number">2000</span>);
+  });
+
+};
+</code></pre>
+<p>이 타스크는 2초 후에 완료하는 타스크다.</p>
+
+<p>Gruntfile.coffee도 만들자:</p>
+<pre><code>module.exports = (grunt)-&gt;
+  <span class="keyword">...</span>
+
+  grunt.loadTasks <span class="string">'tasks'</span>
+
+  <span class="comment"># Default task.</span>
+  grunt.registerTask <span class="string">'default'</span>, [<span class="string">'afterseconds'</span>, <span class="string">'jshint'</span>]
+
+</code></pre>
+<p><code>grunt</code>라고 실행하면 <code>afterseconds</code>, <code>jshint</code>를 차례대로 실행한다:</p>
+<pre><code>$ <span class="tag">grunt</span>
+<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:01</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:03</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+
+<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
+&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
+</code></pre>
+<p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
+
+<h2>grunt 비동기 구현</h2>
+
+<p>grunt는 내부에 타스크 큐를 가지고 있다. 우리가 타스크를 실행하면 즉시 실행되는 것이 아니라 일단 큐에 등록되고 다음 틱에 실행된다.</p>
+
+<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 &lsquo;afterseconds&rsquo;, &lsquo;jshint&rsquo; 타스크가 순서대로 등록됐고 &lsquo;afterseconds'는 2초 후에 끝나므로 2초 후에 'jshint'가 실행된다.</p>
+
+<p><code>var done = this.async();</code>의 async() 함수를 살펴보자:</p>
+<pre><code>// When called, sets the async flag <span class="keyword">and</span> returns a <span class="function"><span class="keyword">function</span> <span class="title">that</span> <span class="title">can</span>
+// <span class="title">be</span> <span class="title">used</span> <span class="title">to</span> <span class="title">continue</span> <span class="title">processing</span> <span class="title">the</span> <span class="title">queue</span>.
+<span class="title">context.async</span> = <span class="title">function</span><span class="params">()</span></span> {
+  async = <span class="keyword">true</span>;
+
+  // The returned <span class="function"><span class="keyword">function</span> <span class="title">should</span> <span class="title">execute</span> <span class="title">asynchronously</span> <span class="title">in</span> <span class="title">case</span>
+  // <span class="title">someone</span> <span class="title">tries</span> <span class="title">to</span> <span class="title">do</span> <span class="title">this.async</span><span class="params">()</span></span>(); inside a task (WTF).
+  <span class="keyword">return</span> function(success) {
+    setTimeout(function() { complete(success); }, <span class="number">1</span>);
+  };
+};
+</code></pre>
+<p>내부의 async 변수를 true바꾸고 done 함수를 리턴한다.</p>
+
+<p>타스크를 실행시키는 grunt 코드는 아래와 같다:</p>
+<pre><code><span class="keyword">try</span> {
+  // Get <span class="keyword">the</span> current task <span class="keyword">and</span> <span class="command">run</span> <span class="keyword">it</span>, setting `this` inside <span class="keyword">the</span> task
+  // function <span class="keyword">to</span> be something useful.
+  var success = fn.call(context);
+  // If <span class="keyword">the</span> async flag wasn't <span class="keyword">set</span>, process <span class="keyword">the</span> next task <span class="keyword">in</span> <span class="keyword">the</span> queue.
+  <span class="keyword">if</span> (!async) {
+    complete(success);
+  }
+} catch (err) {
+  complete(err);
+}
+</code></pre>
+<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)를 바로 실행해서 타스크를 완료시키고 비동기일 때는</code>done()이 실행될 때까지 연기된다.</p>
+
+<h3>async()는 왜 필요할까?</h3>
+
+<p>간단한 node 프로그램에서는 아래와 같이 코드를 작성해서 실행하면 2초 후에 callback까지 실행되고 나서 프로그램이 종료한다:</p>
+<pre><code>console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+setTimeout(<span class="keyword">function</span>(){
+  console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+}, <span class="number">2000</span>);
+</code></pre>
+<p>하지만, grunt에서는 그렇지 않다. 위 예제의 타스크를 동기 타스크로 수정해보자:</p>
+<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+
+  grunt.registerTask(<span class="comment">'afterseconds', 'done after some seconds', function() {</span>
+    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+
+    setTimeout(<span class="keyword">function</span>(){
+      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+    }, <span class="number">2000</span>);
+  });
+
+};
+</code></pre>
+<p>그리고 <code>grunt</code>를 실행하면 2초 후에 callback이 실행되지 않고 바로 종료한다:</p>
+<pre><code>$ <span class="tag">grunt</span>
+<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
+<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 03<span class="pseudo">:20</span><span class="pseudo">:08</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+
+<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
+&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
+
+<span class="tag">Done</span>, <span class="tag">without</span> <span class="tag">errors</span>.
+</code></pre>
+<p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
+
+<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. 'async()'를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
+
+<h3>grunt의 한계</h3>
+
+<p>grunt의 타스크 큐는 차례대로 실행되므로 타스크를 병렬로 실행할 방법은 없다.</p>
+
+<p>플러그인인 <a href="https://github.com/iammerrick/grunt-parallel">grunt-parallel</a> 타스크를 쓰면 타스크를 병렬로 실행할 수 있다. 이 타스크는 grunt 프로세스를 여러 개 띄워서 병렬로 다른 타스크들을 실행시켜 준다.</p>
+
+<p>Async.js처럼 다양하게 flow control를 할 수 있으면 좋지 않을까? 다음이나 다음다음 버전을 기대해본다.</p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+<section id="comments">
+  <div class="row">
+    <div class="offset2 span10">
+      <h3>Feedback</h3>
+<div id="disqus_thread" class="well"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = 'undefined';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
+  <div class="fb-like" data-href="http://dogfeet.github.ioundefined" data-send="true" data-width="450" data-show-faces="true"></div>
+  <div class="fb-comments" data-href="http://dogfeet.github.ioundefined" data-num-posts="1"></div>
+</div>    </div>
+  </div>
+</section>
+
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>
