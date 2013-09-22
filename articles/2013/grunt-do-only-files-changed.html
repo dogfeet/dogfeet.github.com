@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<!--Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>#dogfeet - grunt: 수정된 파일만 Lint하기</title>
+    <meta name="description" content="이 글은 예로 Lint를 사용하지만, Watch 이벤트를 다루는 법은 CoffeeScript 스크립트를 컴파일하는 것 때문에 필요했다. Lint는 번개처럼 빠르지만 CoffeeScript 컴파일은 번개같진 않아서 수정한 파일만 다시 컴파일하는 기능이 간절했다." />
+    <meta name="keywords" content="grunt,node,watch" />
+    <meta name="author" content="Changwoo Park" />
+<!--Icons-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
+<!--Shims: IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--Styles-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
+    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
+<!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+    <script src="/scripts/script.js"></script>
+  </head>
+  <body>
+<!--Topbar-->
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">dogfeet</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li>
+                <a href="/site/tagmap.html">Tagmap</a>
+              </li>
+              <li>
+                <a href="/site/archive.html">Archive</a>
+              </li>
+              <li>
+                <a href="/site/atelier.html">Atelier</a>
+              </li>
+              <li>
+                <a href="http://feeds.feedburner.com/github/dogfeet">
+                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
+                </a>
+              </li>
+            </ul>
+            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
+              <input type="hidden" name="q" value="site:dogfeet.github.io" />
+              <input type="text" name="q" results="0" placeholder="Search" search-query />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Markup-->
+    <div class="container">
+      <div>
+        <script src="http://platform.twitter.com/widgets.js"></script>
+<script>
+  //facebook
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//google plusone
+(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+
+</script>
+<section class="content">
+  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/grunt-do-only-files-changed.html" lang="ko-kr">
+    <div class="row">
+      <div class="span2 muted modern-font small-font">
+        <span property="dc:created">
+          2013 Sep 22 &raquo;
+        </span>
+      </div>
+      <div class="span10">
+        <h1 property="dcterms:title">grunt: 수정된 파일만 Lint하기</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset2 span10 modern-font small-font muted">
+<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
+ | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#watch" class="tag">watch</a> | <span><a href="/articles/2013/grunt-do-only-files-changed.html#disqus_thread" data-disqus-identifier="/articles/2013/grunt-do-only-files-changed.html"></a></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset2 span10">
+<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
+          #social-buttons {
+  margin-left: 30px;
+}
+        </style>
+        <div id="social-buttons" class="pull-right">
+          <ul class="unstyled">
+            <li>
+              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
+            </li>
+            <li>
+              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html"></div>
+            </li>
+            <li>
+              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+            </li>
+          </ul>
+        </div>
+        <div property="sioc:content">
+          <p>이 글은 예로 Lint를 사용하지만, Watch 이벤트를 다루는 법은 CoffeeScript 스크립트를 컴파일하는 것 때문에 필요했다. Lint는 번개처럼 빠르지만 CoffeeScript 컴파일은 번개같진 않아서 수정한 파일만 다시 컴파일하는 기능이 간절했다.</p>
+
+<p>grunt의 watch 타스크는 아직 완성되지 않은 것 같다. 조금 모호해서 수정한 파일만 다루는게 처음이라면 실수하기 쉽도록 생겼다.</p>
+
+<p><img src="/articles/2013/grunt-do-only-files-changed/gruntjs.png" alt=""/></p>
+
+<h2>Watch 이벤트</h2>
+
+<p>먼저 Watch 이벤트를 핸들링하는 방법을 살펴보자. Watch하고 있다가 파일이 수정되면 해당 파일을 Lint하는 워크플로우를 살펴본다.</p>
+
+<p>아래는 <a href="https://github.com/gruntjs/grunt-init-node">grunt-init-node</a>에서 가져왔고 jshint와 watch를 제외한 다른 부분은 생략한다:</p>
+<pre><code><span class="keyword">...</span>
+jshint: {
+  lib: {
+    src: [<span class="string">'lib/**/*.js'</span>]
+  }
+},
+watch: {
+  lib: {
+    files: <span class="string">'&lt;%= jshint.lib.src %&gt;'</span>,
+    tasks: [<span class="string">'jshint:lib'</span>]
+  }
+}
+<span class="keyword">...</span>
+</code></pre>
+<p>&lsquo;lib/**/*.js'파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
+
+<p>수정된 파일만 다시 Lint하게 하려면, Watch 이벤트를 직접 핸들링해야 한다. 아래와 같은 코드가 필요하다:</p>
+<pre><code><span class="keyword">...</span>
+grunt.event.on(<span class="string">'watch'</span>, <span class="keyword">function</span>(action, files, target) {
+  grunt.log.writeln(target + <span class="string">": "</span> + files + <span class="string">" has "</span> + action);
+  grunt.config([<span class="string">'jshint'</span>, target], {src: files});
+});
+..
+</code></pre>
+<p>'lib/**/*.js&rsquo; 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
+
+<p>파일을 정의해주는 부분을 아래와 같이 변경해줘야 한다:</p>
+<pre><code><span class="keyword">...</span>
+jshint: {
+  lib: {
+    src: <span class="string">'&lt;%= watch.lib.files %&gt;'</span>
+  }
+},
+watch: {
+  lib: {
+    files: [<span class="string">'lib/**/*.js'</span>],
+    tasks: [<span class="string">'jshint:lib'</span>]
+  }
+}
+<span class="keyword">...</span>
+</code></pre>
+<p>이렇게 하면 jshint의 설정이 달라져도 watch 타스크는 영향받지 않는다.</p>
+
+<p>설정을 백업하거나 watch 전용 타겟을 만들어서 해결할 수도 있지만, 코드는 좀더 복잡해질 수 있다. 수정된 파일만 컨트롤하는 방법은 아직 불완전하다.</p>
+
+<p>이 내용을 <a href="https://github.com/gruntjs/grunt-init-node/pull/4">grunt-init-node에 적용해서 PR</a>을 보냈는데 거절됐다. watch는 다른 다스크에 종속적이며 watch 이벤트를 핸들링해서 컴파일을 지원하는 것은 권장하지 않는다고 한다. 다른 방법을 고안중이라고 하니 기다려봐야 겠다.</p>
+
+<p>그리고 <a href="https://github.com/gruntjs/grunt-init-node/issues/3">grunt-init-node의 다른 이슈</a>를 보면 <a href="https://github.com/gruntjs/grunt-init-node">grunt-init-node</a> 프로젝트가 yeoman으로 대체될 것이라고 한다. yeoman과 grunt-init은 기능이 중복되는 감이 있었는데, scaffolding은 전적으로 yeoman이 맡게 될 것으로 보인다.</p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+<section id="comments">
+  <div class="row">
+    <div class="offset2 span10">
+      <h3>Feedback</h3>
+<div id="disqus_thread" class="well"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'dogfeet-github';
+    var disqus_identifier = 'undefined';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="well">
+  <div class="fb-like" data-href="http://dogfeet.github.ioundefined" data-send="true" data-width="450" data-show-faces="true"></div>
+  <div class="fb-comments" data-href="http://dogfeet.github.ioundefined" data-num-posts="1"></div>
+</div>    </div>
+  </div>
+</section>
+
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
+      </footer>
+    </div>
+<!--DISQUS-->
+    <script>
+      var disqus_shortname = 'dogfeet-github';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+    </script>
+<!--GA-->
+    <script>
+      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27493298-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
+    </script>
+  </body>
+</html>
