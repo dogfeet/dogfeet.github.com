@@ -3,8 +3,20 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io/atom.xml" rel="self" />
   <link href="http://dogfeet.github.io" />
-  <updated>2013-09-06T02:35:42.979Z</updated>
+  <updated>2013-09-22T09:00:51.804Z</updated>
   <id>http://dogfeet.github.io</id>
+  <author>
+    <name>Changwoo Park</name>
+    <email>pismute@gmail.com</email>
+  </author>
+  <author>
+    <name>Sean Lee</name>
+    <email>sean@weaveus.com</email>
+  </author>
+  <author>
+    <name>Yongjae Choi</name>
+    <email>mage@weaveus.com</email>
+  </author>
   <entry>
     <title><![CDATA[ grunt: 비동기 타스크 ]]></title>
     <link href="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
@@ -95,7 +107,7 @@
   complete(err);
 }
 </code></pre>
-<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)를 바로 실행해서 타스크를 완료시키고 비동기일 때는</code>done()이 실행될 때까지 연기된다.</p>
+<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)</code>를 바로 실행해서 타스크를 완료시키고 비동기일 때는 <code>done()</code>이 실행될 때까지 연기된다.</p>
 
 <h3>async()는 왜 필요할까?</h3>
 

@@ -213,7 +213,7 @@
   complete(err);
 }
 </code></pre>
-<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)를 바로 실행해서 타스크를 완료시키고 비동기일 때는</code>done()이 실행될 때까지 연기된다.</p>
+<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)</code>를 바로 실행해서 타스크를 완료시키고 비동기일 때는 <code>done()</code>이 실행될 때까지 연기된다.</p>
 
 <h3>async()는 왜 필요할까?</h3>
 
