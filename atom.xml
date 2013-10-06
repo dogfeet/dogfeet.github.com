@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io/atom.xml" rel="self" />
   <link href="http://dogfeet.github.io" />
-  <updated>2013-10-06T11:30:55.220Z</updated>
+  <updated>2013-10-06T15:10:53.563Z</updated>
   <id>http://dogfeet.github.io</id>
   <author>
     <name>Changwoo Park</name>
@@ -45,7 +45,7 @@ grunt.config.init({
 <p>이렇게 설정하면 src에서 expressions를 찾아 그 링크가 죽었는지 살았는지 알려준다.</p>
 
 <ul>
-<li><code>src</code> : Grunt file expand 문법으로 파일들을 적으면 된다. 예를 들자면 &lsquo;docs/**/*.md'는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
+<li><code>src</code> : glob 패턴으로 파일들을 적으면 된다. 예를 들자면 &lsquo;docs/**/*.md'는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
 <li><code>expressions</code> : 자바스크립트의 RegExp 객체들을 적는다. <code>src</code>에서 지정하는 파일들 속에서 <code>expressions</code>로 링크를 찾아낸다. <em>반드시 한 쌍의 괄호로 묶인 sub-string이 필요하다.</em> 이 괄호 안에는 검사하고 싶은 url이 들어간다. 예를 들자면 마크다운은 <code>[&lt;any string&gt;](&lt;url&gt;)</code>과 같은 식으로 링크를 설정하는데, 이를 위해서는 <code>expressions : /\[[^\]]*\]\((http[s]?:\/\/[^\) ]+)/g</code>와 같이 설정해준다. 링크 방식이 여러개라면 배열로 정의해준다. 아무것도 정의해주지 않았다면 마크다운의 링크만 인식한다.</li>
 </ul>
 
