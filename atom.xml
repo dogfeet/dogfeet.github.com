@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io/atom.xml" rel="self" />
   <link href="http://dogfeet.github.io" />
-  <updated>2013-09-26T13:03:40.936Z</updated>
+  <updated>2013-10-06T11:30:55.220Z</updated>
   <id>http://dogfeet.github.io</id>
   <author>
     <name>Changwoo Park</name>
@@ -18,6 +18,64 @@
     <email>mage@weaveus.com</email>
   </author>
   <entry>
+    <title><![CDATA[ grunt-deadlink ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/grunt-deadlink.html" />
+    <updated>2013-10-05T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/grunt-deadlink.html</id>
+    <content type="html">
+<![CDATA[
+<p>grunt에서 동작하는 <a href="https://npmjs.org/package/grunt-deadlink">죽은 링크를 검사하는 플러그인</a>을 만들었다. 블로그를 운영하는데에 있어서 static generator를 이용한다면 이런것도 해야하지 않나 싶기도하고, 옛날 글들에 있는 링크들이 망가졌을 경우 처치를 해야하지 않을까 (사실 잘 읽지도 않겠지만) 싶어서 만들었다. 아무쪼록 잘 써주시길 바란다. 이 글은 grunt-deadlink를 만들면서 생각난 것들을 정리한 것이다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/grunt-deadlink/404.png" alt=""/></p>
+
+<h2>기본적인 동작</h2>
+
+<p>deadlink는 다음과 같이 설정한다.</p>
+<pre><code>grunt.loadNpmTasks(<span class="string">'grunt-deadlink'</span>);
+
+grunt.config.init({
+    deadlink : {
+        samplecheck : {
+            src : [ <span class="keyword">...</span> ]
+            expressions : [ <span class="keyword">...</span> ]
+        }
+    }
+});
+</code></pre>
+<p>이렇게 설정하면 src에서 expressions를 찾아 그 링크가 죽었는지 살았는지 알려준다.</p>
+
+<ul>
+<li><code>src</code> : Grunt file expand 문법으로 파일들을 적으면 된다. 예를 들자면 &lsquo;docs/**/*.md'는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
+<li><code>expressions</code> : 자바스크립트의 RegExp 객체들을 적는다. <code>src</code>에서 지정하는 파일들 속에서 <code>expressions</code>로 링크를 찾아낸다. <em>반드시 한 쌍의 괄호로 묶인 sub-string이 필요하다.</em> 이 괄호 안에는 검사하고 싶은 url이 들어간다. 예를 들자면 마크다운은 <code>[&lt;any string&gt;](&lt;url&gt;)</code>과 같은 식으로 링크를 설정하는데, 이를 위해서는 <code>expressions : /\[[^\]]*\]\((http[s]?:\/\/[^\) ]+)/g</code>와 같이 설정해준다. 링크 방식이 여러개라면 배열로 정의해준다. 아무것도 정의해주지 않았다면 마크다운의 링크만 인식한다.</li>
+</ul>
+
+<p>이 태스크는 일일히 요청을 보내고 받는 일을 하므로 링크가 많을 경우 많은 시간이 걸린다. <em>개발용 grunt 태스크에는 이 태스크를 넣지 않는 것이 좋다.</em></p>
+
+<h2>HTTP Client</h2>
+
+<p>처음에는 nodejs의 기본 패키지인 <code>http</code>와 <code>https</code>를 사용하려 했다. 하지만 https가 제대로 동작하지 않았고 redirect (status code 3xx)를 잘 처리할 자신이 없었다. 인터넷 검색을 통해 <code>request</code>라는 패키지가 redirect와 https를 잘 지원한다는걸 알고는 적용했다. 결과는 성공적. 하지만 여전히 브라우저/Curl로는 제대로 나오지만 deadlink에서는 이러쿵 저러쿵 에러를 내뱉었다. 이유는 몇 가지가 있었는데, HEAD 메서드를 지원하지 않는 웹서버가 종종 있다거나, 너무 많은 소켓을 한꺼번에 열어서 그렇다거나, 어떠한 이유로 연결이 그냥 끊기는 경우도 있었다. 이런 것들은 GET메서드로 변경(마음에 들지 않는다), connection pooling, 재요청등으로 해결했다.</p>
+
+<h2>RegExp</h2>
+
+<p>원하는 문서에서 링크만 뽑아내는 작업은 정규표현식으로 처리했다. 정규표현식으로 인식 불가능한 문법을 사용하는 문서들에겐 유감이지만 현재 가장 간단한 방법이라 생각한다. 우리가 마크다운을 자주 사용하므로 기본 적으로는 마크다운의 링크를 인식하도록 했다. 즉 <code>[...](url)</code> 형식이나 <code>[...]: url</code>형식으로 쓰여있으면 url만 꺼내서 인식한다. 물론 마크다운 문서에 html형식의 링크가 들어갈수 있지만 무시했다. 나중에 넣겠지.</p>
+
+<h2>앞으로 할 것</h2>
+
+<p>귀찮아서 수정안하고 냅둔 것들. 필요한 분들이 수정해주면 뽀뽀해줄꺼다. 아니 개발자분들에겐 술사준다고 해야하려나?</p>
+
+<ul>
+<li><del>결과에 파일 이름 넣기 - 지금은 URL만 출력되는데 URL이 들어있는 파일 이름이 들어가야 한다.</del></li>
+<li><del>결과를 파일로 저장하는 옵션 만들기 - dead link가 많을 때 화면에 출력되는게 좀 부담스럽더라.</del></li>
+<li>HEAD메서드로 우선 요청하고 '405 Method not allowed'나 '501 Method Unimplemented'응답시 GET메서드로 재요청 하기 - 속도나 네트워크에 부하를 덜 주는 방법이다. 근데 어떤 이유에서인지 잘 안된다.</li>
+<li>링크 필터링 - expressions에 RegExp뿐만이 아니라 함수를 넣어 링크를 추출하는 과정을 사용자에게 위임하는 기능</li>
+<li>URL 캐싱 - 중복된 URL은 재요청하지 않는다.</li>
+<li>local link test - 로컬 파일로 접근하는 링크들은 아직 고려하지 않았다. 검사하는 파일로부터의 상대경로와 도메인 루트부터의 상대경로 등을 체크해야한다.</li>
+<li>코드 정리 - (-_-)a</li>
+</ul>
+]]>
+    </content>
+  </entry>
+  <entry>
     <title><![CDATA[ git: AngularJS Git Commit Message Conventions ]]></title>
     <link href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" />
     <updated>2013-09-24T15:00:00.000Z</updated>
@@ -26,9 +84,9 @@
 <![CDATA[
 <p>이 글은 <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS Git Commit Message Conventions</a>를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>라는 스크립트까지 공개돼 있다.</p>
 
-<p>이 가이드에 따라서 커밋 메시지를 남기는 연습을 하고 있다. 확실히 히스토리가 좀 더 읽기 좋아졌다. CHANGELOG를 추출하는 부분은 확인하지 못했다. CHANGELOG를 남길 만한 일을 하직 하지 못했다. 그래서 아직은 얼마나 좋은지 표현하지 못하겠다.</p>
+<p>이 가이드에 따라서 커밋 메시지를 남기는 것을 연습 중이다. 히스토리가 좀 더 읽기 좋아졌지만, CHANGELOG를 남기고 싶어질 만한 일을 아직 하지 못했다. 아직 뭐가 어떻게 좋은지 표현하기 어렵다.</p>
 
-<p>먼저 이 가이드에 따라 커밋 메시지를 작성하고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>로 생성한 샘플을 구경하고 가이드를 읽자:</p>
+<p>이 글에 따라 커밋 메시지를 작성하고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>로 생성한 CHANGELOG를 한번 구경하고 읽자:</p>
 
 <ul>
 <li><a href="https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md">https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md</a></li>
@@ -142,11 +200,10 @@ docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무�
 
 <ul>
 <li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: 'changed'나 'changes'가 아니라 'change'로 적는다.</li>
-<li>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</li>
+<li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p></li>
+<li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p></li>
+<li><p><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></p></li>
 </ul>
-
-<p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a><br/>
-<a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></p>
 
 <h4>메시지 푸터</h4>
 
@@ -949,83 +1006,6 @@ git: <span class="string">'credential-osxkeychain'</span> <span class="keyword">
 
 <p>Windows XP에서는 SourceTree를 설치할 수 없어서 확인하지 못했다.</p>
 ]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ mac: java-web-start ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/mac-java-web-start.html" />
-    <updated>2013-03-07T15:00:00.000Z</updated>
-    <id>http://dogfeet.github.io/articles/2013/mac-java-web-start.html</id>
-    <content type="html">
-<![CDATA[
-<p>언제부터 안되더라? 왜 안되더라? 그런건 잘 모르겠고 Mac에서는 Java Web Start가 그냥 실행되지 않는다. Apple이 막은 건데, Oracle이 미운 이유는 뭘까! 아무튼 다시 켜는 방법이 있다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/mac-java-web-start/mung-me.jpg" alt=""/></p>
-
-<h2>Java web start</h2>
-
-<p>윈도에서 처럼 매끄럽게 브라우저 안에서 Java App이 실행되지 않더라도 jnlp 파일을 다운로드 받아서 javaws 명령으로 실행시키면 실행해야 하는데 다음과 같은 에러를 내뱉는다:</p>
-<pre><code>% javaws my.jnlp
-Java Web Start splash screen process exiting <span class="keyword">...</span>
-Can not find message file: No such file or directory
-</code></pre>
-<p>Google님께 물어보면 Java7을 설치하라는 얘기가 많다. 그래서 설치하고 이것 저것 해봤는데도 됐다가 안됐다가 했다. 자세한 히스토리는 알고 싶지 않았고 그냥 실행만 됐으면 했는데, 그래도 그냥 Java7을 설치했었다. Oracle Java7을 설치하라고 하니 왠지 내 Mac을 욕보이는 것 같았지만 그냥 설치했다.</p>
-
-<p>어짜피 안돼서 Java7을 삭제했는데 Mac이 먹통ㅜㅜ. Mac까지 다시 설치해야 하나 싶었는데 이유는 모르겠지만 복구 됐다(야호!). 욕하고 싶은 상대가 Apple이 아닌 Oracle인건 왜일까!</p>
-
-<p>아래와 같이 파일을 열고:</p>
-<pre><code>% sudo vi /System/Library/CoreServices/CoreTypes<span class="variable">.bundle</span>/Contents/Resources/XProtect<span class="variable">.meta</span><span class="variable">.plist</span>
-</code></pre>
-<p>주석처리를 좀 하고:</p>
-<pre><code class="lang-xml"><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="doctype">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
-<span class="tag">&lt;<span class="title">plist</span> <span class="attribute">version</span>=<span class="value">"1.0"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">dict</span>&gt;</span>
-<span class="comment">&lt;!--
-  &lt;key&gt;JavaWebComponentVersionMinimum&lt;/key&gt;
-  &lt;string&gt;1.6.0_41-b02-446&lt;/string&gt;
---&gt;</span>
-  <span class="tag">&lt;<span class="title">key</span>&gt;</span>LastModification<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">string</span>&gt;</span>Mon, 04 Mar 2013 21:47:02 GMT<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">key</span>&gt;</span>PlugInBlacklist<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">key</span>&gt;</span>10<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">key</span>&gt;</span>com.macromedia.Flash Player.plugin<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">dict</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">key</span>&gt;</span>MinimumPlugInBundleVersion<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">string</span>&gt;</span>11.6.602.171<span class="tag">&lt;/<span class="title">string</span>&gt;</span>
-      <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
-<span class="comment">&lt;!--
-      &lt;key&gt;com.oracle.java.JavaAppletPlugin&lt;/key&gt;
-      &lt;dict&gt;
-        &lt;key&gt;MinimumPlugInBundleVersion&lt;/key&gt;
-        &lt;string&gt;1.7.15.04&lt;/string&gt;
-      &lt;/dict&gt;
---&gt;</span>
-    <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">key</span>&gt;</span>Version<span class="tag">&lt;/<span class="title">key</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">integer</span>&gt;</span>2033<span class="tag">&lt;/<span class="title">integer</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">dict</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">plist</span>&gt;</span>
-</code></pre>
-<p>리부팅한다. 그리고 아래와 같이 실행한다:</p>
-<pre><code>% javaws <span class="filename">my.jnlp
-</code></pre>
-<p>Apple이 Flash와 Java Applet을 BlackList로까지 분류하고 있는 줄은 몰랐다.</p>
-
-<p>그리고 Mac update를 하면 다시 Disable된다. Disable되면 jre가 설치돼 있는데도 불구하고 javaws를 실행했을 때 아래와 같은 에러를 뱉는다:</p>
-<pre><code>% javaws <span class="keyword">my</span>.jnlp
-No Java runtime present, requesting install.
-Unable <span class="keyword">to</span> locate a Java Runtime <span class="keyword">to</span> invoke.
-</code></pre>
-<p>아래와 같이 실행하면 다시 javaws를 사용할 수 있다:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> ln -sf /System/Library/Frameworks/JavaVM.framework/Commands/javaws /usr/bin/javaws
-</code></pre>
-<p>수동으로 다시 disable하고 싶으면 아래와 같이 실행한다:</p>
-<pre><code>% su<span class="operator"><span class="keyword">do</span> ln -sf /System/Library/Frameworks/JavaVM.framework/Versions/<span class="keyword">Current</span>/Commands/javaws /usr/bin/javaws
-</code></pre>]]>
     </content>
   </entry>
 </feed>
