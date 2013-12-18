@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://dogfeet.github.io</loc>
-    <lastmod>2013-12-18T15:55:57.063Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.186Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -12,28 +12,33 @@
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.064Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.187Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.064Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.187Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.064Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.187Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.064Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.188Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.065Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.188Z</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>http://dogfeet.github.ioundefined</loc>
+    <lastmod>2013-12-18T00:00:00.000Z</lastmod>
+    <changefreq>never</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
@@ -802,12 +807,12 @@
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.085Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.211Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>http://dogfeet.github.ioundefined</loc>
-    <lastmod>2013-12-18T15:55:57.085Z</lastmod>
+    <lastmod>2013-12-18T18:03:38.211Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

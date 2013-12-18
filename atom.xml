@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io/atom.xml" rel="self" />
   <link href="http://dogfeet.github.io" />
-  <updated>2013-12-18T15:55:56.905Z</updated>
+  <updated>2013-12-18T18:03:38.050Z</updated>
   <id>http://dogfeet.github.io</id>
   <author>
     <name>Changwoo Park</name>
@@ -54,6 +54,171 @@
 <li><a href="http://dogfeet.github.io/progit/progit.ko.mobi">progit.ko.mobi</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.pdf">progit.ko.pdf</a></li>
 </ul>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title><![CDATA[ Promise ]]></title>
+    <link href="http://dogfeet.github.io/articles/2013/promise.html" />
+    <updated>2013-12-17T15:00:00.000Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/promise.html</id>
+    <content type="html">
+<![CDATA[
+<p>수박 겉핥기 식이라 부끄럽지만 Promise에 대해 정리해보았다.</p>
+
+<p><img src="http://dogfeet.github.io/articles/2013/promise/promise.jpg" alt=""/><br/>
+(무극(2006) - 점점 이 이미지 찾기에 더 많은 시간을 쏟는다-_-)</p>
+
+<h2>Promise?</h2>
+
+<p>promise는 자바스크립트에서 사용하는 비동기 연산의 최종 결과를 나타내는 객체이다. 비동기 함수를 호출했을때에 promise에 그 결과가 담긴다고 생각하면 편하다. 이를 이용하면 평소에 해왔던 비동기 코드를 더 높은 레벨의 추상화 객체로 다룰 수 있다. 그리고 일단 callback hell을 어느 정도 정리할 수있다. 코드를 먼저 보자.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> promise = doSomethingAync();
+promise.then(onFulfilled, onRejected);
+</code></pre>
+<p>비동기 함수는 promise를 리턴하고 promise 객체의 then 메서드를 이용해 비동기 요청이 끝났을 때의 어떤 일을 할지 정의한다. onFulfilled는 정상적으로 비동기 함수가 끝났을 때 실행되고 onRejected는 비동기 함수가 비정상적으로 끝났을 때 실행된다. </p>
+
+<p>이 글에서는 위에서 말한 정상종료와 비정상종료를 각각 <em>fulfilled</em>과 <em>rejected</em>라는 표현으로 쓸 것이다. 약속(promise)이 지켜지거나(fulfilled) 안지켜지는(rejected) 것을 모티브로 삼으면 될 것이다. 비동기는 나중에 작업을 완료하겠다는 하나의 약속이니까.</p>
+
+<p>promise는 자바스크립트 언어에서 지원하는 것이 아니다. 여러 사람의 제안과 협의로 구현 스펙이 만들어졌고 지금은 <a href="https://github.com/kriskowal/q">q</a>나 <a href="https://github.com/cujojs/when">when</a>등을 사용하고 있다. nodejs는 물론 브라우저에서도 사용할 수 있다. JQuery에서도 promise를 지원한다.</p>
+
+<p>주절주절 이야기를 할 예정인데 만약 &lsquo;아 됐고 사용법이나 알려줘'라는 생각이시라면 <code>Then</code> 섹션으로 곧바로 이동하길 바란다.</p>
+
+<h2>Callback Hell</h2>
+
+<p>promise는 어찌보면 사용하기 어렵다. 비동기의 결과를 저장한다는 개념도 이상하고 사용법도 혼란스러울 수 있는 여지가 많다. 물론 이는 익숙함의 문제다. 그렇다고 첫 만남의 어색함이 줄어드는 것은 아니다. 그럼 이런걸 왜 괜히 만들어서 사용하는 걸까.</p>
+
+<p>모두 익숙하겠지만 자바스크립트의 세계에서는 <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a>를 이용해 비동기 요청을 처리한다. 쉽게 말해서 비동기 함수의 뒤쪽에 콜백 함수를 넘겨 콜백 함수를 응답이 왔을 때 핸들러로 사용한다. 이는 동작 방식을 이해하기 어렵지 않고 사용하기도 어렵지 않다. 그런것 처럼 보였다-_-</p>
+
+<p>Callback Hell 이란게 있다. 중첩된 콜백은 코드를 이해하기 어렵게 만들고 변수의 scope가 믹스되어 사이드 이펙트가 생기기 쉽다. 관리되지 않는 자유로움이란 면에서도 코드는 스파게티가 되어가지만 무엇보다 자바스크립트는 이런 스타일을 강제하고 있다. <a href="http://callbackhell.com/">Callback Hell</a>사이트에서는 이런 문제를 어떻게 간단하게 만드는가에 대한 설명이 나온다.</p>
+
+<p>Promise를 사용하면 이러한 문제를 꽤나 깔끔하게 해결할 수 있다. 간단한 예제를 보자. </p>
+<pre><code class="lang-javascript">readFile(<span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> {</span>
+  <span class="keyword">if</span> (err) <span class="keyword">return</span> console.error(err);
+  console.log(data);
+});
+</code></pre>
+<p>위 코드는 파일을 읽어서 에러가 있으면 에러를 출력하고 아니면 파일 안의 데이터를 출력하는 코드이다. nodejs 프로그래밍을 하면 흔히 볼 수있는 스타일이다. 만약 readFile함수가 promise를 리턴하면 다음과 같이 쓸 수 있다.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
+promise.then(console.log, console.error);
+</code></pre>
+<p>극단적으로 간략화된 예제라서 신뢰성이 없어보이지만 핸들러안에서 if를 이용해 에러를 처리하고 만약 핸들러 안에서 다시 비동기 처리를 한다면? 비동기 처리를 세 번정도 중첩해보면 '지금 난 어디인가 이것은 무엇인가&rsquo; 소리가 절로 나온다. Promise는 이러한 복잡성을 꽤 잘 해결해준다.</p>
+
+<h2>Then</h2>
+
+<p>Promise객체는 then이라는 메서드를 가지고있다.(가지고 있어야 한다. 스펙이다.) then은 promise의 결과를 처리하기 위해 사용한다. 표현을 헷갈리면 안된다. <code>비동기 함수</code>는 <code>Promise</code>를 리턴하고 <code>Promise</code>는 <code>then</code>메서드를 이용해 비동기 처리의 결과를 조작할 수 있다. (여담이지만 promise 스펙에서는 then이라는 메서드가 정의된 객체를 thenable이라고 표현한다. 자바의 Runnable 인터페이스같은 느낌이다.)</p>
+
+<p>then은 다음과 같이 생겼다.</p>
+<pre><code class="lang-javascript">promise.then(onFulfilled, onRejected)
+</code></pre>
+<p>그리고 then의 특성은 다음과 같다.</p>
+
+<ul>
+<li>onFulfilled와 onRejected는 모두 함수다. 함수가 아니라면 그냥 무시된다. (딱히 에러가 나거나 하진 않는다.)</li>
+<li>onFulfilled와 onRejected는 선택사항이다. 둘 다 인자로 넘겨도 되고 하나만 넘겨도 된다. 만약 onRejected만 넘기려면 <code>promise.then(null, onRejected)</code>와 같이 사용해야 한다.</li>
+<li>onFulfilled는 promise가 fullfilled되면 실행된다. promise의 값은 onFulfilled의 첫번째 인자로 들어온다.</li>
+<li>onRejected는 promise가 rejected되면 실행된다. 이 함수의 첫번째 인자로는 실패 원인이 들어온다.</li>
+<li>둘 중 한 함수는 반드시 실행된다. 그리고 두 번 실행되지 않는다.</li>
+<li>then메서드는 promise를 리턴한다.</li>
+</ul>
+
+<p>뭔가 복잡하다. 쉽게 말하자면 비동기 함수가 성공했을 때 부를 콜백 함수와 실패했을 때 부를 콜백 함수를 등록해두고 제때제때(성공하거나 실패했을때 - 어쨌든 둘 중 하나는 될꺼아닌가) 콜백 함수를 호출한다는 이야기다. <a href="http://promises-aplus.github.io/promises-spec/">스펙</a>을 보면 더 자세하게 적혀있지만 여기선 이 정도로 만족하자. 물론 fulfilled된다, rejected된다 라는 표현에는 익숙해져야 한다. fulfilled와 rejected의 판단기준은 각 비동기 함수마다 다르다. 파일을 읽는 함수라면 파일을 정상적으로 다 읽었을 때 fulfilled될것이고 그 외의 상황에서는 rejected가 될 것이다. 예제로는 위에 적었던 파일 읽기가 좋겠다.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
+promise.then(console.log, console.error);
+</code></pre>
+<p>console.log는 onFulfilled 함수고 console.error는 onRejected함수이다. 파일을 읽는데에 성공을 했으면 console.log가 실행되고 그 결과값인 파일 내용이 console.log의 첫 인자로 들어간다. 결국 파일의 내용이 화면에 찍힐 것이다. 파일을 읽는데에 실패했다면 promise가 이행되지 않고 에러의 원인이 console.error로 콘솔에 출력된다.</p>
+
+<p>then메서드가 promise를 리턴한다는 말이 무슨 말인지 헷갈릴 수 있겠다. 비동기 요청을 이미 끝냈는데 다시 비동기 상태를 담는 promise가 왜 필요할까. callback hell 섹션에서 이야기 했던 중첩된 비동기 요청을 처리할 때에 이게 좋다. 이에 대해 이야기 해보자.</p>
+
+<h3>Chaining</h3>
+
+<p>then은 promise를 리턴한다. 따라서 다음과 같은 코드가 가능하다.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
+<span class="keyword">var</span> promise2 = promise.then(readAnotherFile, console.error);
+promise2.then(console.log, console.error);
+</code></pre>
+<p>then은 언제나 promise를 리턴하므로 이에 대해 then을 더 호출할 수 있다. 깔끔하게 고쳐보자.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
+promise
+    .then(readAnotherFile, console.error)
+    .then(console.log, console.error);
+</code></pre>
+<p>보기 편해졌다. 이렇게 중첩이 가능하다.</p>
+
+<h4>핸들러의 리턴</h4>
+
+<p>Chaining 과 관련해서 중요한 Then의 특징에 대해 알아보자. 일반적으로 promise는 비동기 함수가 리턴한 것을 곧바로 사용한다. 하지만 여러개의 promise가 중첩되어 사용할때는 then이 리턴한 promise를 사용할 때도 있다. 이런 경우가 생각보다 흔히 발생하므로 알아두면 좋다.</p>
+<pre><code class="lang-javascript">promise2 = promise1.then(onFulfilled, onRejected);
+</code></pre>
+<p>위와 같은 코드가 있을 때 promise2는 다음과 같이 행동한다.</p>
+
+<ul>
+<li>onFulfilled나 onRejected가 예외를 던지면 promise2는 reject된다.</li>
+<li>onFulfilled가 함수가 아닐 때 promise1이 filfilled되면 promise2는 항상 fulfilled된다.</li>
+<li>onRejected가 함수가 아닐 때 promise1이 rejected되면 promise2는 항상 rejected된다.</li>
+<li>onFulfilled나 onRejected가 어떤 값, x를 리턴하면 다음을 수행한다.
+
+<ul>
+<li>x가 promise라면 promise2는 x가 된다. (정확히는 promise2는 x처럼 행동한다. 즉, x가 fulfilled되면 promise2도 fulfilled되고 x가 rejected되면 promise2도 rejected된다. 실제로 promsie2와 x가 같은 객체라면 promise2는 reject된다.)</li>
+<li>x가 그 외의 값이라면 promise2는 x를 인자로 fulfilled된다.(즉, fulfilled핸들러가 실행되고 그 핸들로의 첫번째 인자로 x가 넘어간다.)</li>
+</ul></li>
+</ul>
+
+<p>&hellip; 써놓고 보니 복잡하다-_-) 여기에 추가적으로 thenable에 대한 이야기도 있지만 더 복잡해져서 뺀다. </p>
+
+<p>예제가 더 쉽다.</p>
+<pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
+promise1
+    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> result; })
+    .then(<span class="keyword">function</span>(val) { console.log(val); });
+</code></pre>
+<p>위 코드에서 promise1이 fulfilled되면 result의 값이 출력된다. 첫 번째 then의 리턴 값(result)이 두 번째 then의 인자로 들어가기 때문이다. 이는 윗 섹션에서 다루었다.</p>
+<pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
+promise1
+    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> writeFile(result); }) <span class="comment">// writeFile returns the promise</span>
+    .then(<span class="keyword">function</span>() { console.log(<span class="string">"ok"</span>); }, <span class="keyword">function</span>() { console.error(<span class="string">"fail"</span>); });
+</code></pre>
+<p>위 코드는 writeFile이 promise를 리턴하므로 첫 번째 then의 fulfilled 핸들러가 promise를 리턴한다. 이때 두번째 then은 writeFile이 리턴한 promise가 해결이 되어야 실행된다. 즉 파일을 성공적으로 파일을 썼다면 ok가 출력되고, 실패했다면 &ldquo;fail&quot;이 출력된다. 만약 readFile이 실패했다면 promise1은 rejected되고 그 이후에 물려있는 then또한 rejected된다.(이유는 첫번째 then에 rejected 핸들러가 없기 때문이다.)</p>
+
+<h3>에러 핸들링</h3>
+
+<p>여기까지 따라왔으면 에러핸들링은 어렵지 않다. fulfilled든 rejected든 실행될 때 예외가 발생하면 연결된 promise는 rejected된다.</p>
+<pre><code class="lang-javascript">promise1 = ayncFunction();
+promise1
+  .then(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
+    <span class="keyword">if</span> (!data) <span class="keyword">throw</span> <span class="string">"no data"</span>;
+  })
+  .then(<span class="literal">null</span>, console.error);
+</code></pre>
+<p>위 코드는 첫번째 then에서 data가 없으면 예외를 던지고 연결되어 있는 then은 rejected되어 &quot;no data&quot;가 콘솔에 출력된다. 이 코드는 아래의 코드와 같다.</p>
+<pre><code class="lang-javascript"><span class="keyword">try</span> {
+  syncFunction();
+} <span class="keyword">catch</span> (err) {
+  console.error(err);
+}
+</code></pre>
+<p>에러를 무시하고 싶으면 아래와 같이 하면 된다.</p>
+<pre><code class="lang-javascript"><span class="keyword">try</span> {
+  <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'never will know this happened'</span>)
+} <span class="keyword">catch</span> (e) {}
+</code></pre><pre><code class="lang-javascript">readFile()
+  .then(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
+    <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'never will know this happened'</span>)
+  })
+</code></pre>
+<p>위 두 코드는 모두 에러를 무시하는 코드이다. fulfilled나 rejected핸들러의 예외는 모두 promise의 제어 흐름에만 영향을 준다.</p>
+
+<h2>결론</h2>
+
+<p>이 프로그래밍 모델이 얼마나 많이 사용되고 널리 퍼졌는지 잘 모르겠다. 난 이제서야 사용하기 시작했고 공부겸 정리를 해본것이다. 많이 사용될수록 요구사항도 더 늘어날 수 있고 때문에 복잡해지고 지금 눈에 보이지 않는 문제들이 더 드러날수도 있다. 얼마나 복잡성을 잘 컨트롤 할지는 두고봐야하지만 우선은 괜찮다고 판단해서 지금 글을 쓴것이다.</p>
+
+<p>또 다른 재미있는 메타포를 가진 모델이 나오면 좋을 것 같다.</p>
+
+<h2>참고</h2>
+
+<p><a href="http://howtonode.org/promises">http://howtonode.org/promises</a> : 영어가 부담스럽지 않다면 꼭 읽어보시길 바랍니다.<br/>
+<a href="http://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/">http://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/</a> : promise와 q에 대해 설명이 잘 되어있다.<br/>
+<a href="http://promises-aplus.github.io/promises-spec/">http://promises-aplus.github.io/promises-spec/</a> : promise의 명세서.<br/>
+<a href="http://callbackhell.com/">http://callbackhell.com/</a> : Callback의 부정적인 사용법 모음</p>
 ]]>
     </content>
   </entry>
@@ -949,31 +1114,6 @@ Ckw<span class="variable">*color13</span>: <span class="comment">#d33682</span>
 Ckw<span class="variable">*color14</span>: <span class="comment">#b58900</span>
 Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
 </code></pre>]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ 프로 Git 한글책 출간 ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" />
-    <updated>2013-05-20T15:00:00.000Z</updated>
-    <id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id>
-    <content type="html">
-<![CDATA[
-<p>Pro Git 한글 번역이 <a href="http://www.insightbook.co.kr/">인사이트</a>의 도움을 받아 종이책으로 <a href="http://www.insightbook.co.kr/post/5633">프로 Git</a> 으로 출간되었습니다. 학생분들은 도서관에 직장인은 도서구매부에 얼른얼른 구매 신청해주세요! ㅎㅎ</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/progit-ko-book-published/progit.jpg" alt=""/> <img src="/articles/2013/progit-ko-book-published/devops.png" alt=""/></p>
-
-<h2>프로 Git 출간 이야기</h2>
-
-<p>이미 Pro Git의 한글 번역 전문이 이 블로그 및 github을 통해 오픈소스로 공개되어 있지만, 인사이트 출판사의 도움으로 종이책으로 출간되었습니다. 종이책으로 나올 수 있었던 뒷 이야기는 인사이트 블로그의 <a href="http://www.insightbook.co.kr/post/5633"><프로 Git>, 이미 공개된 내용을 왜 책으로 만들었냐고요?</a> 글을 통해 살펴보실 수 있습니다.</p>
-
-<p>종이책으로 출간된 책의 기본 내용은 동일하지만 몇 번의 교정 과정을 더 거쳤고 이미지도 업데이트 되었으며 부록으로 미처 다루지 못한 몇 가지 내용을 더 담아두었습니다.</p>
-
-<p>주요 오프라인이나 온라인 서점을 통해 구입하실 수 있구요 출간된 것은 4월 중순인데 이렇게 글로 소식을 올리는 것이 늦어졌습니다. <sup>^</sup></p>
-
-<h2>또 다른 번역서, 데브옵스 출간 소식</h2>
-
-<p>또 하나, &lsquo;프로 Git'에 이어 저희 팀원분이 번역한 <a href="http://www.wikibook.co.kr/wiki/Wiki.jsp?page=DevOps">데브옵스</a>도 5월 말에 출간됩니다. 데브옵스에 대한 다양한 문제 상황과 해결법을 다루고 있어 관심있는 분께는 많은 도움이 되리라 생각합니다. 현재 예약판매 중이며 곧 온라인과 오프라인 서점에서 구입하실 수 있습니다.</p>
-]]>
     </content>
   </entry>
 </feed>
