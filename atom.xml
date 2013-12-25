@@ -3,7 +3,7 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io/atom.xml" rel="self" />
   <link href="http://dogfeet.github.io" />
-  <updated>2013-12-18T18:03:38.050Z</updated>
+  <updated>2013-12-25T12:48:55.670Z</updated>
   <id>http://dogfeet.github.io</id>
   <author>
     <name>Changwoo Park</name>
@@ -79,7 +79,7 @@ promise.then(onFulfilled, onRejected);
 
 <p>이 글에서는 위에서 말한 정상종료와 비정상종료를 각각 <em>fulfilled</em>과 <em>rejected</em>라는 표현으로 쓸 것이다. 약속(promise)이 지켜지거나(fulfilled) 안지켜지는(rejected) 것을 모티브로 삼으면 될 것이다. 비동기는 나중에 작업을 완료하겠다는 하나의 약속이니까.</p>
 
-<p>promise는 자바스크립트 언어에서 지원하는 것이 아니다. 여러 사람의 제안과 협의로 구현 스펙이 만들어졌고 지금은 <a href="https://github.com/kriskowal/q">q</a>나 <a href="https://github.com/cujojs/when">when</a>등을 사용하고 있다. nodejs는 물론 브라우저에서도 사용할 수 있다. JQuery에서도 promise를 지원한다.</p>
+<p>promise는 자바스크립트 언어 차원에서 지원하는 기능이 아니다. 여러 사람의 제안과 협의로 구현 스펙이 만들어졌고 지금은 <a href="https://github.com/kriskowal/q">q</a>나 <a href="https://github.com/cujojs/when">when</a>등을 사용하고 있다. nodejs는 물론 브라우저에서도 사용할 수 있다. JQuery에서도 promise를 지원한다.</p>
 
 <p>주절주절 이야기를 할 예정인데 만약 &lsquo;아 됐고 사용법이나 알려줘'라는 생각이시라면 <code>Then</code> 섹션으로 곧바로 이동하길 바란다.</p>
 
@@ -121,7 +121,7 @@ promise.then(console.log, console.error);
 <li>then메서드는 promise를 리턴한다.</li>
 </ul>
 
-<p>뭔가 복잡하다. 쉽게 말하자면 비동기 함수가 성공했을 때 부를 콜백 함수와 실패했을 때 부를 콜백 함수를 등록해두고 제때제때(성공하거나 실패했을때 - 어쨌든 둘 중 하나는 될꺼아닌가) 콜백 함수를 호출한다는 이야기다. <a href="http://promises-aplus.github.io/promises-spec/">스펙</a>을 보면 더 자세하게 적혀있지만 여기선 이 정도로 만족하자. 물론 fulfilled된다, rejected된다 라는 표현에는 익숙해져야 한다. fulfilled와 rejected의 판단기준은 각 비동기 함수마다 다르다. 파일을 읽는 함수라면 파일을 정상적으로 다 읽었을 때 fulfilled될것이고 그 외의 상황에서는 rejected가 될 것이다. 예제로는 위에 적었던 파일 읽기가 좋겠다.</p>
+<p>뭔가 복잡하다. 쉽게 말하자면 비동기 함수가 성공했을 때 부를 콜백 함수와 실패했을 때 부를 콜백 함수를 등록해두고 제때제때(성공하거나 실패했을때 - 어쨌든 둘 중 하나는 될꺼아닌가) 콜백 함수를 호출한다는 이야기다. <a href="http://promises-aplus.github.io/promises-spec/">스펙</a>을 보면 더 자세하게 적혀있지만 여기선 이 정도로 만족하자. 물론 fulfilled된다, rejected된다 라는 표현에는 익숙해져야 한다. fulfilled와 rejected의 판단기준은 각 비동기 함수마다 다르다. 파일을 읽는 함수라면 파일을 정상적으로 다 읽었을 때 fulfilled될것이고 그 외의 상황에서는 rejected가 될 것이다. http요청을 보내는 함수라면 응답이 정상적으로 왔을 때 fulfilled될 것이다. 예제로는 위에 적었던 파일 읽기가 좋겠다.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
 promise.then(console.log, console.error);
 </code></pre>
@@ -131,7 +131,7 @@ promise.then(console.log, console.error);
 
 <h3>Chaining</h3>
 
-<p>then은 promise를 리턴한다. 따라서 다음과 같은 코드가 가능하다.</p>
+<p><em>then은 promise를 리턴한다.</em> 따라서 다음과 같은 코드가 가능하다.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
 <span class="keyword">var</span> promise2 = promise.then(readAnotherFile, console.error);
 promise2.then(console.log, console.error);
@@ -142,8 +142,15 @@ promise
     .then(readAnotherFile, console.error)
     .then(console.log, console.error);
 </code></pre>
-<p>보기 편해졌다. 이렇게 중첩이 가능하다.</p>
+<p>보기 편해졌다. 이렇게 중첩이 가능하다. 물론 다음과 같이 scope가 다른 곳에서도 promise는 동작한다.</p>
+<pre><code class="lang-javascript"><span class="function"><span class="keyword">function</span> <span class="title">myfunction</span><span class="params">()</span> {</span>
+  <span class="keyword">var</span> promise = readFile();
+  <span class="keyword">return</span> promise.then(readAnotherFile, console.error);
+}
 
+thisIsPromise = myfunction();
+thisIsPromise.then(console.log, console.error);
+</code></pre>
 <h4>핸들러의 리턴</h4>
 
 <p>Chaining 과 관련해서 중요한 Then의 특징에 대해 알아보자. 일반적으로 promise는 비동기 함수가 리턴한 것을 곧바로 사용한다. 하지만 여러개의 promise가 중첩되어 사용할때는 then이 리턴한 promise를 사용할 때도 있다. 이런 경우가 생각보다 흔히 발생하므로 알아두면 좋다.</p>
@@ -159,13 +166,14 @@ promise
 
 <ul>
 <li>x가 promise라면 promise2는 x가 된다. (정확히는 promise2는 x처럼 행동한다. 즉, x가 fulfilled되면 promise2도 fulfilled되고 x가 rejected되면 promise2도 rejected된다. 실제로 promsie2와 x가 같은 객체라면 promise2는 reject된다.)</li>
+<li>x가 thenable하다면 promise2는 x가 된다. (정확히는 promise2가 x처럼 행동한다. x.then은 첫번째 인자로 fulfilled 핸들러, 두 번째 인자로 rejected 핸들러를 전달받고 이 함수들을 호출해 promise2를 fulfilled 시키거나 rejected 시킨다.)</li>
 <li>x가 그 외의 값이라면 promise2는 x를 인자로 fulfilled된다.(즉, fulfilled핸들러가 실행되고 그 핸들로의 첫번째 인자로 x가 넘어간다.)</li>
 </ul></li>
 </ul>
 
-<p>&hellip; 써놓고 보니 복잡하다-_-) 여기에 추가적으로 thenable에 대한 이야기도 있지만 더 복잡해져서 뺀다. </p>
+<p>&hellip; 써놓고 보니 복잡하다-_-) 여기에 추가적으로 thenable에 대한 이야기도 있지만 더 복잡해져서 뺀다. 요약하자면, fulfilled나 rejected핸들러에서 리턴한 값이 thenable이면 마치 promise2가 핸들러인것 처럼 동작한다. 아니면 promise2는 보통 fulfilled되고 예외가 발생하면 rejected된다.</p>
 
-<p>예제가 더 쉽다.</p>
+<p>세련되게 서술하는건 힘들구나. 예제가 더 쉽다.</p>
 <pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
 promise1
     .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> result; })
@@ -174,14 +182,46 @@ promise1
 <p>위 코드에서 promise1이 fulfilled되면 result의 값이 출력된다. 첫 번째 then의 리턴 값(result)이 두 번째 then의 인자로 들어가기 때문이다. 이는 윗 섹션에서 다루었다.</p>
 <pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
 promise1
-    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> writeFile(result); }) <span class="comment">// writeFile returns the promise</span>
-    .then(<span class="keyword">function</span>() { console.log(<span class="string">"ok"</span>); }, <span class="keyword">function</span>() { console.error(<span class="string">"fail"</span>); });
+    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> writeFile(result); }) <span class="comment">// writeFile은 promise를 리턴한다.</span>
+    .then(<span class="keyword">function</span>() { console.log(<span class="string">"ok"</span>); }, <span class="keyword">function</span>() { console.error(<span class="string">"fail"</span>); }); <span class="comment">// 이 then은 writeFile이 리턴한 promise에 맞물려 작동한다.</span>
 </code></pre>
 <p>위 코드는 writeFile이 promise를 리턴하므로 첫 번째 then의 fulfilled 핸들러가 promise를 리턴한다. 이때 두번째 then은 writeFile이 리턴한 promise가 해결이 되어야 실행된다. 즉 파일을 성공적으로 파일을 썼다면 ok가 출력되고, 실패했다면 &ldquo;fail&quot;이 출력된다. 만약 readFile이 실패했다면 promise1은 rejected되고 그 이후에 물려있는 then또한 rejected된다.(이유는 첫번째 then에 rejected 핸들러가 없기 때문이다.)</p>
 
+<p>promise1의 핸들러에서 thenable 객체를 리턴하는 경우는 다음과 같다.</p>
+<pre><code class="lang-javascript">thenable = {
+  then : <span class="keyword">function</span>(onFulfilled, onRejected) {
+    <span class="keyword">var</span> result = doSomething();
+
+    <span class="keyword">if</span>(result) onFulfilled(<span class="string">"thenable success"</span>); <span class="comment">// 1. 이 onFulfilled는 `3`에서 첫번째 인자로 넘어가는 함수이다.</span>
+    <span class="keyword">else</span> onRejected(e);
+  }
+};
+
+promise1 = readFile(<span class="string">"foobar.txt"</span>)
+  .then(<span class="function"><span class="keyword">function</span> <span class="params">(content)</span> {</span>
+    console.log(<span class="string">"read ok"</span>);
+    <span class="keyword">return</span> thenable;  <span class="comment">// 2. promise1은 thenable객체처럼 행동한다.</span>
+  }, <span class="keyword">function</span>(reason) {
+    console.log(<span class="string">"read fail : "</span>, reason);
+  });
+
+promsie2 = promise1
+  .then(<span class="keyword">function</span>(message) { <span class="comment">// 3. 이 then은 thenable 객체의 then 메서드이다.</span>
+    console.log(<span class="string">"promiese2 ok : "</span> + message);
+  },
+  <span class="keyword">function</span>(reason) {
+    console.log(<span class="string">"promise2 fail : "</span> + reason);
+  });
+</code></pre>
+<p>파일을 읽는 것이 성공했을 때 위 코드의 실행결과는</p>
+<pre><code><span class="title">read</span> ok
+<span class="title">promise2</span> ok : thenable success
+</code></pre>
+<p>가 된다.</p>
+
 <h3>에러 핸들링</h3>
 
-<p>여기까지 따라왔으면 에러핸들링은 어렵지 않다. fulfilled든 rejected든 실행될 때 예외가 발생하면 연결된 promise는 rejected된다.</p>
+<p>여기까지 따라왔으면 에러핸들링은 어렵지 않다. fulfilled핸들러든 rejected든 실행될 때 예외가 발생하면 연결된 promise는 rejected된다.</p>
 <pre><code class="lang-javascript">promise1 = ayncFunction();
 promise1
   .then(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
