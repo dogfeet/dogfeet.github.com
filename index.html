@@ -1,333 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - 개발새발</title>
-    <meta name="description" content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다." />
-    <meta name="keywords" content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet" />
-    <meta name="author" content="" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - 개발새발</title>
+  <meta name="description"
+    content="정통 개발 주간 블로그입니다. 주 관심사는 학습과 WEB입니다."></meta>
+  <meta name="keywords"
+    content="학습,Learning,HTML5,Mobile,Web,iPhone,Android,Git,JavaScript,Scala,개발새발,dogfeet"></meta>
+  <meta name="author" content=""></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="개발새발 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <div style="display:none">
-  <h1>dogfeet</h1>
-</div>
-<section class="content articles">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <section class="content articles">
   <div class="row">
-    <h2 class="offset2 span10">Articles</h2>
+    <h1 class="col-sm-offset-2 col-sm-10">Articles</h1>
   </div>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Dec 19
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/progit.html">
-          git: progit 업데이트
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a>      </div>
-    </div>
-    <div class="row hidden-phone">
-      <div class="offset2 span10">
-<br/><p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 <a href="https://twitter.com/schacon">@schacon</a> 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 <a href="https://twitter.com/jnavila">@jnavila</a>님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
 
-<p><img src="/articles/2013/progit/git-festival.jpg" alt="git"/></p>
-
-        <p>
-          <a class="btn" href="/articles/2013/progit.html">Read more &raquo;</a>
-        </p>
-      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Dec 18
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/promise.html">
-          Promise
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#javascript" class="tag">javascript</a> <a href="/site/tagmap.html#promise" class="tag">promise</a> <a href="/site/tagmap.html#then" class="tag">then</a> <a href="/site/tagmap.html#q" class="tag">q</a> <a href="/site/tagmap.html#when" class="tag">when</a> <a href="/site/tagmap.html#aync" class="tag">aync</a>      </div>
-    </div>
-    <div class="row hidden-phone">
-      <div class="offset2 span10">
-<br/><p>수박 겉핥기 식이라 부끄럽지만 Promise에 대해 정리해보았다.</p>
-
-<p><img src="/articles/2013/promise/promise.jpg" alt=""/><br/>
-(무극(2006) - 점점 이 이미지 찾기에 더 많은 시간을 쏟는다-_-)</p>
-
-        <p>
-          <a class="btn" href="/articles/2013/promise.html">Read more &raquo;</a>
-        </p>
-      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Oct 06
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/grunt-deadlink.html">
-          grunt-deadlink
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#gruntplugin" class="tag">gruntplugin</a> <a href="/site/tagmap.html#deadlink" class="tag">deadlink</a> <a href="/site/tagmap.html#broken link" class="tag">broken link</a> <a href="/site/tagmap.html#link test" class="tag">link test</a>      </div>
-    </div>
-    <div class="row hidden-phone">
-      <div class="offset2 span10">
-<br/><p>grunt에서 동작하는 <a href="https://npmjs.org/package/grunt-deadlink">죽은 링크를 검사하는 플러그인</a>을 만들었다. 블로그를 운영하는데에 있어서 static generator를 이용한다면 이런것도 해야하지 않나 싶기도하고, 옛날 글들에 있는 링크들이 망가졌을 경우 처치를 해야하지 않을까 (사실 잘 읽지도 않겠지만) 싶어서 만들었다. 아무쪼록 잘 써주시길 바란다. 이 글은 grunt-deadlink를 만들면서 생각난 것들을 정리한 것이다.</p>
-
-<p><img src="/articles/2013/grunt-deadlink/404.png" alt=""/></p>
-
-        <p>
-          <a class="btn" href="/articles/2013/grunt-deadlink.html">Read more &raquo;</a>
-        </p>
-      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Sep 25
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/angularjs-git-commit-message-conventions.html">
-          git: AngularJS Git Commit Message Conventions
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#angularjs" class="tag">AngularJS</a> <a href="/site/tagmap.html#commit message" class="tag">Commit Message</a> <a href="/site/tagmap.html#conventions" class="tag">Conventions</a> <a href="/site/tagmap.html#grunt-conventional-changelog" class="tag">grunt-conventional-changelog</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Sep 22
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/grunt-do-only-files-changed.html">
-          grunt: 수정된 파일만 Lint하기
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#watch" class="tag">watch</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Sep 06
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/grunt-async-task.html">
-          grunt: 비동기 타스크
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#async" class="tag">async</a> <a href="/site/tagmap.html#task" class="tag">task</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 27
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/git-msysgit-pageant.html">
-          git: msysgit + pageant
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#pageant" class="tag">pageant</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 20
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/git-useful-github-pattern.html">
-          git: Useful GitHub Patterns
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#github" class="tag">GitHub</a> <a href="/site/tagmap.html#jake benilov" class="tag">Jake Benilov</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 11
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/git-msysgit-ckw-solarized.html">
-          git: ckw Solarized! 
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#ckw" class="tag">ckw</a> <a href="/site/tagmap.html#solarized" class="tag">solarized</a>      </div>
-    </div>
-  </article>
-  <article class="articles-item" style="padding-bottom: 1em;">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 May 21
-        </span>
-      </div>
-      <div class="span10">
-        <a class="index-article-title" href="/articles/2013/progit-ko-book-published.html">
-          프로 Git 한글책 출간
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#pro" class="tag">pro</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#프로" class="tag">프로</a> <a href="/site/tagmap.html#데브옵스" class="tag">데브옵스</a> <a href="/site/tagmap.html#devops" class="tag">devops</a>      </div>
-    </div>
-  </article>
   <div class="row">
-    <p class="offset2 span10">
-      <a class="btn info right" href="/site/archive.html">go to Archive &raquo;</a>
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Dec 19
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/progit.html">
+          <h2>git: progit 업데이트</h2>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a></p>
+
+        <p>
+<p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 @schacon 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 @jnavila님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
+<p><img src="/articles/2013/progit/git-festival.jpg" alt="git"></p>
+
+        <p><a class="btn btn-default" href="articles/2013/progit.html" role="button">Read more &raquo;</a></p>
+        </a>
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Oct 06
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/grunt-deadlink.html">
+          <h2>grunt-deadlink</h2>
+        </a>
+
+        <p>by <a href="https://twitter.com/lnyarl/">Yongjae Choi</a>
+          | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#gruntplugin" class="tag">gruntplugin</a> <a href="/site/tagmap.html#deadlink" class="tag">deadlink</a> <a href="/site/tagmap.html#broken link" class="tag">broken link</a> <a href="/site/tagmap.html#link test" class="tag">link test</a></p>
+
+        <p>
+<p>grunt에서 동작하는 <a href="https://npmjs.org/package/grunt-deadlink">죽은 링크를 검사하는 플러그인</a>을 만들었다. 블로그를 운영하는데에 있어서 static generator를 이용한다면 이런것도 해야하지 않나 싶기도하고, 옛날 글들에 있는 링크들이 망가졌을 경우 처치를 해야하지 않을까 (사실 잘 읽지도 않겠지만) 싶어서 만들었다. 아무쪼록 잘 써주시길 바란다. 이 글은 grunt-deadlink를 만들면서 생각난 것들을 정리한 것이다.</p>
+<p><img src="/articles/2013/grunt-deadlink/404.png" alt=""></p>
+
+        <p><a class="btn btn-default" href="articles/2013/grunt-deadlink.html" role="button">Read more &raquo;</a></p>
+        </a>
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Sep 25
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/angularjs-git-commit-message-conventions.html">
+          <h2>git: AngularJS Git Commit Message Conventions</h2>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#angularjs" class="tag">AngularJS</a> <a href="/site/tagmap.html#commit message" class="tag">Commit Message</a> <a href="/site/tagmap.html#conventions" class="tag">Conventions</a> <a href="/site/tagmap.html#grunt-conventional-changelog" class="tag">grunt-conventional-changelog</a></p>
+
+        <p>
+<p>이 글은 <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS Git Commit Message Conventions</a>를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>라는 스크립트까지 공개돼 있다.</p>
+<p>이 가이드에 따라서 커밋 메시지를 남기는 것을 연습 중이다. 히스토리가 좀 더 읽기 좋아졌지만, CHANGELOG를 남기고 싶어질 만한 일을 아직 하지 못했다. 아직 뭐가 어떻게 좋은지 표현하기 어렵다.</p>
+<p>이 글에 따라 커밋 메시지를 작성하고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>로 생성한 CHANGELOG를 한번 구경하고 읽자:</p>
+<ul>
+<li><a href="https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md">https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md</a></li>
+<li><a href="https://github.com/karma-runner/karma/blob/master/CHANGELOG.md">https://github.com/karma-runner/karma/blob/master/CHANGELOG.md</a></li>
+</ul>
+<p><img src="/articles/2013/angularjs-git-commit-message-conventions/angularjs-git-lg.png" alt=""></p>
+
+        <p><a class="btn btn-default" href="articles/2013/angularjs-git-commit-message-conventions.html" role="button">Read more &raquo;</a></p>
+        </a>
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Sep 22
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/grunt-do-only-files-changed.html">
+          <h4>grunt: 수정된 파일만 Lint하기</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#watch" class="tag">watch</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Sep 06
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/grunt-async-task.html">
+          <h4>grunt: 비동기 타스크</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#async" class="tag">async</a> <a href="/site/tagmap.html#task" class="tag">task</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Jul 27
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/git-msysgit-pageant.html">
+          <h4>git: msysgit + pageant</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#pageant" class="tag">pageant</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Jul 20
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/git-useful-github-pattern.html">
+          <h4>git: Useful GitHub Patterns</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#github" class="tag">GitHub</a> <a href="/site/tagmap.html#jake benilov" class="tag">Jake Benilov</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Jul 11
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/git-msysgit-ckw-solarized.html">
+          <h4>git: ckw Solarized!</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#ckw" class="tag">ckw</a> <a href="/site/tagmap.html#solarized" class="tag">solarized</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 May 21
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/progit-ko-book-published.html">
+          <h4>프로 Git 한글책 출간</h4>
+        </a>
+
+        <p>by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a>
+          | <a href="/site/tagmap.html#pro" class="tag">pro</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#프로" class="tag">프로</a> <a href="/site/tagmap.html#데브옵스" class="tag">데브옵스</a> <a href="/site/tagmap.html#devops" class="tag">devops</a></p>
+
+      </div>
+    </article>
+  </div>
+  <div class="row">
+    <article>
+      <div class="left-box col-sm-2 small-font">
+        <p property="dc:created">
+          2013 Mar 28
+        </p>
+      </div>
+      <div class="col-sm-10">
+        <a class="index-article-title" href="articles/2013/git-password-caching.html">
+          <h4>git: password caching</h4>
+        </a>
+
+        <p>by <a href="https://twitter.com/pismute/">Changwoo Park</a>
+          | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#password" class="tag">password</a> <a href="/site/tagmap.html#http" class="tag">http</a> <a href="/site/tagmap.html#https" class="tag">https</a></p>
+
+      </div>
+    </article>
+  </div>
+
+  <br /><br />
+
+  <div class="row">
+    <p class="col-sm-offset-2 col-sm-10">
+      <a class="btn btn-default" href="/site/archive.html">
+      go to Archive &raquo;
+      </a>
     </p>
   </div>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
     </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

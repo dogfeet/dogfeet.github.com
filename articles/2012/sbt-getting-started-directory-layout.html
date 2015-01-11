@@ -1,211 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - sbt: Getting Started Guide: Directory Layout</title>
-    <meta name="description" content="이 글은 Getting Started sbt을 번역한 것이다. " />
-    <meta name="keywords" content="sbt" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - sbt: Getting Started Guide: Directory Layout</title>
+  <meta name="description"
+    content="이 글은 Getting Started sbt을 번역한 것이다."></meta>
+  <meta name="keywords"
+    content="sbt"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="sbt: Getting Started Guide: Directory Layout &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jul 16 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jul 16</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">sbt: Getting Started Guide: Directory Layout</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#sbt" class="tag">sbt</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#sbt" class="tag">sbt</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-directory-layout.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다. </p>
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt"/></p>
+    <div class="col-sm-10">
 
-<h3>Base directory</h3>
-
-<p>sbt에서 &ldquo;base 디렉토리&quot;는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.</p>
-
-<h2>Source code</h2>
-
+      <div property="sioc:content"><h1 id="sbt-getting-started-guide-directory-layout">sbt: Getting Started Guide: Directory Layout</h1>
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt"></p>
+<h3 id="base-directory">Base directory</h3>
+<p>sbt에서 “base 디렉토리”는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.</p>
+<h2 id="source-code">Source code</h2>
 <p>소스는 <code>hello/hw.scala</code>처럼 프로젝트 base 디렉토리에 넣으면 된다. 하지만 보통은 그냥 넣으면 너무 지저분하기 때문에 정리해서 넣는 규칙이 있다.</p>
-
 <p>sbt는 기본적으로 <a href="http://maven.apache.org/">Maven</a>과 같은 디렉토리 레이아웃을 사용한다(모든 경로는 base 디렉토리를 기준으로 하는 상대 경로다):</p>
 <pre><code>src/
   main/
     resources/
-       <span class="xml"><span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">main</span> <span class="attribute">jar</span> <span class="attribute">here</span>&gt;</span>
+       &lt;files to include in main jar here&gt;
     scala/
-       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>&gt;</span>
+       &lt;main Scala sources&gt;
     java/
-       <span class="tag">&lt;<span class="title">main</span> <span class="attribute">Java</span> <span class="attribute">sources</span>&gt;</span>
+       &lt;main Java sources&gt;
   test/
     resources
-       <span class="tag">&lt;<span class="title">files</span> <span class="attribute">to</span> <span class="attribute">include</span> <span class="attribute">in</span> <span class="attribute">test</span> <span class="attribute">jar</span> <span class="attribute">here</span>&gt;</span>
+       &lt;files to include in test jar here&gt;
     scala/
-       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Scala</span> <span class="attribute">sources</span>&gt;</span>
+       &lt;test Scala sources&gt;
     java/
-       <span class="tag">&lt;<span class="title">test</span> <span class="attribute">Java</span> <span class="attribute">sources</span>&gt;</span>
-</span></code></pre>
-<p><code>src/</code> 안에 있는 다른 디렉토리와 숨겨진 디렉토리는 무시된다.</p>
-
-<h2>sbt build definition files</h2>
-
+       &lt;test Java sources&gt;
+</code></pre><p><code>src/</code> 안에 있는 다른 디렉토리와 숨겨진 디렉토리는 무시된다.</p>
+<h2 id="sbt-build-definition-files">sbt build definition files</h2>
 <p><code>build.sbt</code> 파일은 base 디렉토리에 넣지만 다른 sbt 파일은 <code>project</code> 디렉토리를 만들어 넣는다.</p>
-
 <p><code>project</code> 디렉토리에는 <code>.scala</code> 파일을 넣을 수 있고 이 <code>.scala</code> 파일은 <code>.sbt</code> 파일과 함께 빌드를 정의하는데 쓴다. 자세한건 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala Build Definition</a>를 봐라.</p>
-<pre><code><span class="title">build</span>.sbt
-<span class="title">project</span>/
-  <span class="type">Build</span>.scala
-</code></pre>
-<p><code>project/</code> 디렉토리 안쪽에도 <code>.sbt</code> 파일을 넣을 수 있지만 base 디렉토리에 있는 <code>.sbt</code> 파일과 다르다. 이점은 몇 가지 사전지식이 필요하기 때문에 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">나중에</a>에서 설명한다.</p>
-
-<h2>Build products</h2>
-
+<pre><code>build.sbt
+project/
+  Build.scala
+</code></pre><p><code>project/</code> 디렉토리 안쪽에도 <code>.sbt</code> 파일을 넣을 수 있지만 base 디렉토리에 있는 <code>.sbt</code> 파일과 다르다. 이점은 몇 가지 사전지식이 필요하기 때문에 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">나중에</a>에서 설명한다.</p>
+<h2 id="build-products">Build products</h2>
 <p>기본적으로 <code>target</code> 디렉토리에 파일을(컴파일한 클래스, 패키지한 jar 파일, managed 파일, 캐시, 문서) 생성한다.</p>
-
-<h2>Configuring version control</h2>
-
+<h2 id="configuring-version-control">Configuring version control</h2>
 <p><code>.gitignore</code> 파일에 <code>target/</code> 디렉토리를 추가한다. 다른 버전관리 시스템도 git처럼 <code>target/</code> 디렉토리를 추가해야 한다:</p>
-<pre><code><span class="title">target</span>/
-</code></pre>
-<p>이름이 <code>/</code>로 끝났다. <code>/</code> 끝나는 이름은 디렉토리만 매치하겠다는 의미다. 그리고 <code>/</code>로 시작하지 않았기 때문에 base 디렉토리에 있는 <code>target/</code> 뿐만 아니라 <code>project/target</code>처럼 하위 디렉토리 안에 있는 디렉토리도 매치된다.</p>
-
-        </div>
-      </div>
+<pre><code>target/
+</code></pre><p>이름이 <code>/</code>로 끝났다. <code>/</code> 끝나는 이름은 디렉토리만 매치하겠다는 의미다. 그리고 <code>/</code>로 시작하지 않았기 때문에 base 디렉토리에 있는 <code>target/</code> 뿐만 아니라 <code>project/target</code>처럼 하위 디렉토리 안에 있는 디렉토리도 매치된다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

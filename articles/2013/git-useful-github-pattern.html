@@ -1,157 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - git: Useful GitHub Patterns</title>
-    <meta name="description" content="Jake Benilov님이 쓴 Useful Github Patterns를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다." />
-    <meta name="keywords" content="git,GitHub,Jake Benilov" />
-    <meta name="author" content="Changwoo Park, Yongjae Choi" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - git: Useful GitHub Patterns</title>
+  <meta name="description"
+    content="Jake Benilov님이 쓴 Useful Github Patterns를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다."></meta>
+  <meta name="keywords"
+    content="git,GitHub,Jake Benilov"></meta>
+  <meta name="author" content="Changwoo Park, Yongjae Choi"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="git: Useful GitHub Patterns &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/git-useful-github-pattern.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 20 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/git-useful-github-pattern.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Jul 20</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a><br /> <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" data-via="Changwoo Park @Yongjae Choi"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">git: Useful GitHub Patterns</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#github" class="tag">GitHub</a> <a href="/site/tagmap.html#jake benilov" class="tag">Jake Benilov</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" data-via="pismute @lnyarl" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
 
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#github" class="tag">GitHub</a> <a href="/site/tagmap.html#jake benilov" class="tag">Jake Benilov</a></p>
+    </div>
+
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="git-useful-github-patterns">git: Useful GitHub Patterns</h1>
+<p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
 <p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
-
-<p><img src="/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"/></p>
-
-<h2>USEFUL GITHUB PATTERNS</h2>
-
+<p><img src="/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"></p>
+<h2 id="useful-github-patterns">USEFUL GITHUB PATTERNS</h2>
 <p>내 <a href="http://blog.quickpeople.co.uk/2013/05/17/the-uk-government-pays-me-to-write-open-source-all-day/">직업</a>이나 <a href="http://benilovj.github.io/dbfit/">오픈소스 활동</a>을 하다 보면 git과 GitHub 컨설팅도 하게 된다. 그러면서 git과 GitHub을 일정한 패턴에 따라 사용하는 나를 발견했다.</p>
-
-<p>(여기부터는, &lsquo;Pull Request'를 PR로 사용한다).</p>
-
-<h3>1. The peel-off PR</h3>
-
+<p>(여기부터는, ‘Pull Request’를 PR로 사용한다).</p>
+<h3 id="1-the-peel-off-pr">1. The peel-off PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>Feature 브랜치에서 뭔가 하는 도중에</li>
 <li>문제를 발견하자마자 바로 수정하고 싶은데, 현재 추가하는 기능과 관련이 없을 때( 작은 버그, 오타, 코딩 규칙 위반을 발견했을 때)</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>하던 일을 저장(Commit하거나 Stash한다)</li>
 <li>checkout master</li>
@@ -160,186 +108,142 @@
 <li>다시 원래의 Feature 브랜치로 돌아와 하던 일을 계속한다.</li>
 <li>나중에 그 PR을 보냈던 브랜치가 Merge된 후에 Rebase한다.</li>
 </ul>
-
 <p>전혀 다른 문제를 빨리 고치고 싶은 욕망과 Feature 브랜치를 정갈하게 해서 리뷰하기 쉽게 만들고 싶은 욕망을 모두 만족하게 할 수 있다.</p>
-
-<h3>2. The optimistic branch</h3>
-
+<h3 id="2-the-optimistic-branch">2. The optimistic branch</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>지금은 Merge할 수 없는 브랜치(branch-A)가 있는데(CI 빌드가 깨질 수도 있고, 리뷰어가 바쁠 수도 있다).</li>
 <li>내가 당장 구현해야 하는 기능은 branch-A의 코드가 필요하다.</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>branch-A에서 branch-B 브랜치를 만든다.</li>
 <li>branch-A가 master에 Merge되면, branch-B를 master에 대해 Rebase하고 충돌 나는 게 있으면 해결한다.</li>
 <li>branch-A에 대한 버그픽스 브랜치들은 branch-B에 대해서 Rebase한다.</li>
 </ul>
-
 <p>branch-A에서 코드를 많이 수정하면 충돌 날 확률이 높아진다. 하지만, 95% 정도는 잘 된다.</p>
-
-<h3>3. The heads-up PR</h3>
-
+<h3 id="3-the-heads-up-pr">3. The heads-up PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>리뷰가 필요하지 않은 코드를 작성하고 있지만</li>
 <li>동료가 알고 있으면 좋을 것 같을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>코드를 작성</li>
 <li>PR을 보낸다.</li>
 <li>피드백을 기다리지 않고 PR을 직접 Merge한다.</li>
 </ul>
-
 <p>GitHub은 PR에 대한 이메일을 동료에게 보낸다. 그래서 맘에 들지 않은 코드를 발견한 동료는 코멘트를 달거나 할 수 있다. 내가 할 일이 별로 없다.</p>
-
-<h3>4. The sneaky commit</h3>
-
+<h3 id="4-the-sneaky-commit">4. The sneaky commit</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>코드를 리뷰하고 master에 Merge까지 한 다음에</li>
 <li>수정할 것이 발견되었는데 너무 사소한 수정(버그픽스나 copy change같은 것)이라서 다른 사람이 알 가치도 없을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>master 브랜치에 바로 커밋한다.</li>
 </ul>
-
-<h3>5. The roger roger comment</h3>
-
+<h3 id="5-the-roger-roger-comment">5. The roger roger comment</h3>
 <blockquote>
 <p>역주: GitHub 이슈 넘버를 넣고 push하면 커밋 넘버에 대한 링크가 해당 이슈 코멘트에 댓글로 달리는 기능에 대해 말하는 것 같다. <a href="https://github.com/blog/957-introducing-issue-mentions">Introducing Issue Mentions</a> 참고.</p>
 </blockquote>
-
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>특정 브랜치에 대한 피드백을 받았는데 바로 적용하고 싶을 때</li>
 <li>그 피드백에 따라서 고쳤을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>고친 커밋의 Ref가 포함된 PR에 코멘트를 단다.</li>
-<li>GitHub은 똑똑해서 Ref를 클릭했을 때 이전 커밋과의 Diff 결과만 보여준다. 그래서 내 동료는:
-
-<ul>
+<li>GitHub은 똑똑해서 Ref를 클릭했을 때 이전 커밋과의 Diff 결과만 보여준다. 그래서 내 동료는:<ul>
 <li>Email로 내가 수정했다는 것을 통보받고</li>
 <li>클릭만 하면 간단하게 커밋 Diff를 볼 수 있고</li>
 <li>이런 식으로 코드 리뷰를 할 수 있다는 것을 안다.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <blockquote>
 <p>역주: PR을 통해서 코드까지 포함된 피드백을 받든지, 단순히 이슈로 피드백을 받든지 간에 이슈와 코드를 함께 묶어서 토론할 수 있는 점을 말하는 것 같다. 이슈와 관련된 사람은 토론 내역을 Email로 통보받고 Push한 커밋에 대한 diff 결과도 웹에서 쉽게 확인할 수 있다.</p>
 </blockquote>
-
-<h3>6. The creepin’ commit</h3>
-
+<h3 id="6-the-creepin-commit">6. The creepin’ commit</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>내가 만든 사소한 포매팅 버그를 발견했을 때(불필요한 공백이나 파일 끝에 한 줄 남기는 것을 빼먹었을 때)나</li>
 <li>이전 커밋과 논리적으로 같은 커밋이 돼야 할 때</li>
 <li>(실패하는 테스트가 있거나 해서) 아직 커밋할 만한 코드가 아닌 상태에서 하나씩 실험해보고 다시 현재 코드로 되돌리거나 진행하고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>첫 번째나 두 번째는 그냥 이전 커밋을 수정한다(Amend)</li>
 <li>마지막은 일단 (Creeping) 커밋을 하나 만들어 놓고 실험하면서 점진적으로 Amend한다. 실험 결과가 안 좋으면 그냥 버린다. 커밋할만한 단계에 도달할 때까지 계속한다.</li>
 </ul>
-
-<h3>7. The forced branch</h3>
-
+<h3 id="7-the-forced-branch">7. The forced branch</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>남이 Push한 Feature 브랜치를 Amend해야 할 때. 예를 들어, 커밋 메시지에 이유를 남기고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>로컬에서 커밋을 Amend한다.</li>
 <li>Feature 브랜치를 리모트 저장소에 강제로(-f 옵션을 주고) Push한다.</li>
 </ul>
-
 <p>보통 리모트 브랜치에 강제로 Push하는 것은 금단의 영역으로 취급된다. master 브랜치가 아니라면 내 경험상 별로 문제 되지 않았다(역주 - Long-Running 브랜치가 아니면 별로 문제 될 게 없다). GitHub은 PR 브랜치가 강제로 Push돼도 잘 처리한다. 이전 커밋에 있던 코멘트를 잃어버리거나 하지 않는다.</p>
-
-<h3>8. The reformat peel-off</h3>
-
+<h3 id="8-the-reformat-peel-off">8. The reformat peel-off</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>코드를 수정하면서 코드 포멧도 수정할 계획이라면</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>포멧을 수정한 커밋은 master 브랜치에 직접 한다.</li>
 <li>코드를 수정한 커밋이 들어 있는 브랜치는 master대해 Rebase한다.</li>
 </ul>
-
 <p>이럴 때 코드 리뷰하는 사람은 코드를 수정한 브랜치에 Dill 하는 것이 더 좋다. 코드 수정 커밋이 있는 브랜치에는 포멧 수정 커밋이 없어서 Diff 결과가 더 깔끔하다.</p>
-
-<h3>9. The prototype PR</h3>
-
+<h3 id="9-the-prototype-pr">9. The prototype PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>본격적으로 구현하기 전에 아이디어에 대해 피드백을 받고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>브랜치에 뭔가 수정을 한다.</li>
 <li>아직 완성된 코드가 아니라고 해도 일단 PR을 하면 토론의 시작점이 된다.</li>
 <li>다음 단계로 뭘 할지 합의가 이루어지면 PR을 닫고 브랜치도 삭제한다.</li>
 <li>다시 브랜치를 만들고 제대로 구현해서 PR을 한다.</li>
 </ul>
-
-<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 &ldquo;Pull Request는 대화의 시작점&quot;이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
-
-        </div>
-      </div>
+<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 “Pull Request는 대화의 시작점”이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

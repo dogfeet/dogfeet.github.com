@@ -1,217 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Partial Application in JavaScript</title>
-    <meta name="description" content="이글은 John Resig님의 &lsquo;Partial Application in JavaScript'를 번역한 것이다. curry 함수를 JavaScript에서 구현하는 방법을 다룬다." />
-    <meta name="keywords" content="John Resig,curry,partial,JavaScript" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Partial Application in JavaScript</title>
+  <meta name="description"
+    content="이글은 John Resig님의 ‘Partial Application in JavaScript‘를 번역한 것이다. curry 함수를 JavaScript에서 구현하는 방법을 다룬다."></meta>
+  <meta name="keywords"
+    content="John Resig,curry,partial,JavaScript"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Partial Application in JavaScript &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1317088260.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Sep 27 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1317088260.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Sep 27</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1317088260.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317088260.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1317088260.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Partial Application in JavaScript</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#john resig" class="tag">John Resig</a> <a href="/site/tagmap.html#curry" class="tag">curry</a> <a href="/site/tagmap.html#partial" class="tag">partial</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1317088260.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317088260.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1317088260.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이글은 John Resig님의 &lsquo;<a href="http://ejohn.org/blog/partial-functions-in-javascript/">Partial Application in JavaScript</a>'를 번역한 것이다. <code>curry</code> 함수를 JavaScript에서 구현하는 방법을 다룬다.</p>
 
-<h2>Partial Application in JavaScript</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#john resig" class="tag">John Resig</a> <a href="/site/tagmap.html#curry" class="tag">curry</a> <a href="/site/tagmap.html#partial" class="tag">partial</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="partial-application-in-javascript">Partial Application in JavaScript</h1>
+<p>이글은 John Resig님의 ‘<a href="http://ejohn.org/blog/partial-functions-in-javascript/">Partial Application in JavaScript</a>‘를 번역한 것이다. <code>curry</code> 함수를 JavaScript에서 구현하는 방법을 다룬다.</p>
+<h2 id="partial-application-in-javascript">Partial Application in JavaScript</h2>
 <p>함수를 부분적으로 apply하는 방법은 굉장히 중요하다. 이 기법은 함수가 실행되기 전에 인자들 중에서 몇 개를 미리 결정하는 것을 말하고 사실상 부분적으로 apply하는 함수는 호출 가능한 새 함수를 반환한다. 이 말의 예를 코드로 만들면 다음과 같다:</p>
-<pre><code>String<span class="preprocessor">.prototype</span><span class="preprocessor">.csv</span> = String<span class="preprocessor">.prototype</span><span class="preprocessor">.split</span><span class="preprocessor">.partial</span>(/,\s*/)<span class="comment">;</span>
+<pre><code>String.prototype.csv = String.prototype.split.partial(/,\s*/);
 
-var results = <span class="string">"John, Resig, Boston"</span><span class="preprocessor">.csv</span>()<span class="comment">;</span>
+var results = &quot;John, Resig, Boston&quot;.csv();
 
-alert( (results[<span class="number">1</span>] == <span class="string">"Resig"</span>) + <span class="string">" The text values were split properly"</span> )<span class="comment">;</span>
-</code></pre>
-<p>partial()은 함수를 반환하는 데, 정규표현식이 인자로 미리 채워진 .split() 메소드를 반환한다. 반환된 함수 .csv()는 comma-separated values를 list로 변환하는 함수다. 함수의 인자 몇 개를 순서대로 채워서 함수를 만드는(반환하는 것) 것을 보통 curry라고 부른다. 어떻게 curry하는지 Prototype 라이브러리에 구현된 것을 살펴보자(역주 - 보통 이런 함수를 curry function이라고 부른다).</p>
-<pre><code>Function<span class="variable">.prototype</span><span class="variable">.curry</span> = function() {
-  var fn = <span class="keyword">this</span>, args = Array<span class="variable">.prototype</span><span class="variable">.slice</span><span class="variable">.call</span>(arguments);
-  <span class="keyword">return</span> function() {
-    <span class="keyword">return</span> fn<span class="variable">.apply</span>(<span class="keyword">this</span>, args<span class="variable">.concat</span>(
-      Array<span class="variable">.prototype</span><span class="variable">.slice</span><span class="variable">.call</span>(arguments)));
+alert( (results[1] == &quot;Resig&quot;) + &quot; The text values were split properly&quot; );
+</code></pre><p>partial()은 함수를 반환하는 데, 정규표현식이 인자로 미리 채워진 .split() 메소드를 반환한다. 반환된 함수 .csv()는 comma-separated values를 list로 변환하는 함수다. 함수의 인자 몇 개를 순서대로 채워서 함수를 만드는(반환하는 것) 것을 보통 curry라고 부른다. 어떻게 curry하는지 Prototype 라이브러리에 구현된 것을 살펴보자(역주 - 보통 이런 함수를 curry function이라고 부른다).</p>
+<pre><code>Function.prototype.curry = function() {
+  var fn = this, args = Array.prototype.slice.call(arguments);
+  return function() {
+    return fn.apply(this, args.concat(
+      Array.prototype.slice.call(arguments)));
   };
 };
-</code></pre>
-<p>이 예제는 클로저로 상태를 저장하는 법을 잘 설명한다. 인자를 저장해 두고 새로 만든 함수로 넘긴다. 저장된 인자와 새로운 함수의 인자는 합쳐져서 원래의 함수로 넘겨진다. 그래서 기존의 함수에서 인자가 몇 개 채워진 새로운 함수를 사용할 수 있다.</p>
-
+</code></pre><p>이 예제는 클로저로 상태를 저장하는 법을 잘 설명한다. 인자를 저장해 두고 새로 만든 함수로 넘긴다. 저장된 인자와 새로운 함수의 인자는 합쳐져서 원래의 함수로 넘겨진다. 그래서 기존의 함수에서 인자가 몇 개 채워진 새로운 함수를 사용할 수 있다.</p>
 <p>이제 부분적으로 apply하는 기법을 개선하여 완벽하게 만들어보자. 단순히 처음 몇 개의 인자를 저장해두는 것이 아니라 위치에 상관없이 동작하도록 할 수 있다. 부분적으로 apply하는 기법은 다른 언어에 있던 아이디어이지만 Oliver Steele는 자신의 <a href="http://osteele.com/sources/JavaScript/functional/">Functional.js</a>에서 구현했고 그가 JavaScript에서 처음으로 구현한 사람중 하나다. 다음의 예를 살펴보자:</p>
-<pre><code>Function<span class="variable">.prototype</span><span class="variable">.partial</span> = function(){
-  var fn = <span class="keyword">this</span>, args = Array<span class="variable">.prototype</span><span class="variable">.slice</span><span class="variable">.call</span>(arguments);
-  <span class="keyword">return</span> function(){
-    var arg = <span class="number">0</span>;
-    <span class="keyword">for</span> ( var i = <span class="number">0</span>; i &lt; args<span class="variable">.length</span> &amp;&amp; arg &lt; arguments<span class="variable">.length</span>; i++ )
-      <span class="keyword">if</span> ( args[i] === undefined )
+<pre><code>Function.prototype.partial = function(){
+  var fn = this, args = Array.prototype.slice.call(arguments);
+  return function(){
+    var arg = 0;
+    for ( var i = 0; i &lt; args.length &amp;&amp; arg &lt; arguments.length; i++ )
+      if ( args[i] === undefined )
         args[i] = arguments[arg++];
-    <span class="keyword">return</span> fn<span class="variable">.apply</span>(<span class="keyword">this</span>, args);
+    return fn.apply(this, args);
   };
 };
-</code></pre>
-<p>이 함수는 .curry()와 매우 유사하지만 차이가 있다. 먼저 partial()함 수를 호출할 때 나중으로 미룰 인자에는 undefined라고 명시하도록 하고 인자를 합치는 기교를 부려야 한다. 넘겨진 인자들을에 대해 loop를 돌면서 undefined로 명시한 것을 찾아 합친다.</p>
-
+</code></pre><p>이 함수는 .curry()와 매우 유사하지만 차이가 있다. 먼저 partial()함 수를 호출할 때 나중으로 미룰 인자에는 undefined라고 명시하도록 하고 인자를 합치는 기교를 부려야 한다. 넘겨진 인자들을에 대해 loop를 돌면서 undefined로 명시한 것을 찾아 합친다.</p>
 <p>String을 split하는 예제는 이미 위에서 살펴봤으니 이 함수가 사용될 만한 다른 것에도 적용해보자. 쉽게 delay시킬 수 있는 함수를 만든다:</p>
-<pre><code>var delay = set<span class="variable">Timeout</span>.partial(undefined, <span class="number">10</span>);
+<pre><code>var delay = setTimeout.partial(undefined, 10);
 
-<span class="function"><span class="title">delay</span><span class="params">(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-  <span class="function_name">alert</span>( <span class="string">"A call to this function will be temporarily delayed."</span> );
-}</span>);
-</code></pre>
-<p>새로 만든 delay()함수에 다른 함수를 인자로 넘기면 10밀리초 후에 인자로 넘긴 함수가 호출될 것이다.</p>
-
+delay(function(){
+  alert( &quot;A call to this function will be temporarily delayed.&quot; );
+});
+</code></pre><p>새로 만든 delay()함수에 다른 함수를 인자로 넘기면 10밀리초 후에 인자로 넘긴 함수가 호출될 것이다.</p>
 <p>event를 바인딩하는 데에도 적용해 보자:</p>
-<pre><code>var bind<span class="variable">Click</span> = document.body.add<span class="variable">EventListener</span>
-  .partial(<span class="string">"click"</span>, undefined, <span class="literal">false</span>);
+<pre><code>var bindClick = document.body.addEventListener
+  .partial(&quot;click&quot;, undefined, false);
 
-<span class="function"><span class="title">bindClick</span><span class="params">(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-  <span class="function_name">alert</span>( <span class="string">"Click event bound via curried function."</span> );
-}</span>);
-</code></pre>
-<p>이 기법은 보통 라이브러리에 들어 있는 이벤트를 바인딩하는 helper 메소드를 만들 때에도 유용하다. 그래서 사용자가 이 helper 함수를 사용하여 불필요한 인자로 귀찮아 지는 일을 줄일 수 있다.</p>
-
+bindClick(function(){
+  alert( &quot;Click event bound via curried function.&quot; );
+});
+</code></pre><p>이 기법은 보통 라이브러리에 들어 있는 이벤트를 바인딩하는 helper 메소드를 만들 때에도 유용하다. 그래서 사용자가 이 helper 함수를 사용하여 불필요한 인자로 귀찮아 지는 일을 줄일 수 있다.</p>
 <p>끝으로 우리는 클로저를 사용하여 복잡한 함수를 쉽게 단순화 시켰다. 이 것은 함수형 언어인 JavaScript의 힘을 보여주는 한 예일 뿐이다.</p>
-
 <p>이 것은 내가 쓰고 있는 책 Secrets of the JavaScript Ninja에 포함된다. 이 책은 2008년 가을에 출간할 예정이다(역주 - 출판사 manning에 따르면 현재 2012년 3월에 출간될 예정이다).</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

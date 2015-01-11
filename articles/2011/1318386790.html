@@ -1,233 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Build distfile using Ant with Git revision</title>
-    <meta name="description" content="배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다." />
-    <meta name="keywords" content="ant,git,revision,os" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Build distfile using Ant with Git revision</title>
+  <meta name="description"
+    content="배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다."></meta>
+  <meta name="keywords"
+    content="ant,git,revision,os"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Build distfile using Ant with Git revision &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1318386790.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Oct 12 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1318386790.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Oct 12</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1318386790.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1318386790.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1318386790.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Build distfile using Ant with Git revision</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#ant" class="tag">ant</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#revision" class="tag">revision</a> <a href="/site/tagmap.html#os" class="tag">os</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1318386790.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1318386790.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1318386790.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다.</p>
 
-<h2>Build distfile using Ant with Git revision</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#ant" class="tag">ant</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#revision" class="tag">revision</a> <a href="/site/tagmap.html#os" class="tag">os</a></p>
+    </div>
 
-<p>우선 Git의 Revision정보를 얻기 위해서는 적어도 Annotated Tag가 하나는 있어야 Revision 정보를 만들 수<br/>
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="build-distfile-using-ant-with-git-revision">Build distfile using Ant with Git revision</h1>
+<p>배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다.</p>
+<h2 id="build-distfile-using-ant-with-git-revision">Build distfile using Ant with Git revision</h2>
+<p>우선 Git의 Revision정보를 얻기 위해서는 적어도 Annotated Tag가 하나는 있어야 Revision 정보를 만들 수
 있다. 이 Tag를 기준으로 얼마나 수정되었는가를 Count하여 Revision 숫자를 만들기 때문이다.</p>
-
-<p>굳이 Tag를 기준으로 Revision을 Count하지 않아도 날짜정보나 기타 정보를 활용하여 Revision 정보를 만들수도<br/>
+<p>굳이 Tag를 기준으로 Revision을 Count하지 않아도 날짜정보나 기타 정보를 활용하여 Revision 정보를 만들수도
 있다.</p>
-<pre><code><span class="title">project</span>-dir $ git tag
-<span class="title">build</span>
-<span class="title">project</span>-dir $ git describe
-<span class="title">build</span>-<span class="number">138</span>-geba356c
-<span class="title">project</span>-dir $ git describe <span class="comment">--contains --all HEAD</span>
-<span class="title">branchA</span>
-</code></pre>
-<p>각 명령을 살펴보면:</p>
-
+<pre><code>project-dir $ git tag
+build
+project-dir $ git describe
+build-138-geba356c
+project-dir $ git describe --contains --all HEAD
+branchA
+</code></pre><p>각 명령을 살펴보면:</p>
 <ul>
 <li>git tag : 현재 설정된 tag의 목록 확인</li>
 <li>git describe : 가장 최근 tag로부터 revision count랑 현재 commit의 앞부분 hash값 확인</li>
-<li>git describe &ndash;contains &ndash;all HEAD : 현재 작업중인 branch의 이름 확인</li>
+<li>git describe —contains —all HEAD : 현재 작업중인 branch의 이름 확인</li>
 </ul>
-
 <p>자 이제 이 값들을 이용해서 배포 파일을 만들면 된다.</p>
-<pre><code><span class="xml">....
-<span class="tag">&lt;<span class="title">target</span> <span class="attribute">name</span>=<span class="value">"dist"</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"rev"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/&gt;</span>
-  <span class="tag">&lt;/<span class="title">exec</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">exec</span> <span class="attribute">executable</span>=<span class="value">"git"</span> <span class="attribute">outputproperty</span>=<span class="value">"branch"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"describe"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--contains"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"--all"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="title">arg</span> <span class="attribute">value</span>=<span class="value">"HEAD"</span>/&gt;</span>
-  <span class="tag">&lt;/<span class="title">exec</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">language</span>=<span class="value">"javascript"</span>&gt;</span><span class="javascript">&lt;![CDATA[
-    rev = project.getProperty(<span class="string">"rev"</span>);
-    index = rev.lastIndexOf(<span class="string">"-"</span>);
-    counter = rev.substring(</span></span><span class="number">0</span><span class="xml">, index);
-    project.setProperty("rev",counter);
-  ]]&gt;<span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<pre><code>....
+&lt;target name=&quot;dist&quot;&gt;
+  &lt;exec executable=&quot;git&quot; outputproperty=&quot;rev&quot;&gt;
+    &lt;arg value=&quot;describe&quot;/&gt;
+  &lt;/exec&gt;
+  &lt;exec executable=&quot;git&quot; outputproperty=&quot;branch&quot;&gt;
+    &lt;arg value=&quot;describe&quot;/&gt;
+    &lt;arg value=&quot;--contains&quot;/&gt;
+    &lt;arg value=&quot;--all&quot;/&gt;
+    &lt;arg value=&quot;HEAD&quot;/&gt;
+  &lt;/exec&gt;
+  &lt;script language=&quot;javascript&quot;&gt;&lt;![CDATA[
+    rev = project.getProperty(&quot;rev&quot;);
+    index = rev.lastIndexOf(&quot;-&quot;);
+    counter = rev.substring(0, index);
+    project.setProperty(&quot;rev&quot;,counter);
+  ]]&gt;&lt;/script&gt;
 
-  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>Git Branch: </span><span class="variable">${branch}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>Git Rev.  : </span><span class="variable">${rev}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
+  &lt;echo&gt;Git Branch: ${branch}&lt;/echo&gt;
+  &lt;echo&gt;Git Rev.  : ${rev}&lt;/echo&gt;
 
-  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"z:"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"windows"</span> /&gt;</span>
-  <span class="tag">&lt;/<span class="title">condition</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">condition</span> <span class="attribute">property</span>=<span class="value">"dist.path"</span> <span class="attribute">value</span>=<span class="value">"/NetworkDirectory/dist-file-server"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">os</span> <span class="attribute">family</span>=<span class="value">"mac"</span> /&gt;</span>
-  <span class="tag">&lt;/<span class="title">condition</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">fail</span> <span class="attribute">unless</span>=<span class="value">"dist.path"</span>&gt;</span>No dist.path set for this OS!<span class="tag">&lt;/<span class="title">fail</span>&gt;</span>
+  &lt;condition property=&quot;dist.path&quot; value=&quot;z:&quot;&gt;
+    &lt;os family=&quot;windows&quot; /&gt;
+  &lt;/condition&gt;
+  &lt;condition property=&quot;dist.path&quot; value=&quot;/NetworkDirectory/dist-file-server&quot;&gt;
+    &lt;os family=&quot;mac&quot; /&gt;
+  &lt;/condition&gt;
+  &lt;fail unless=&quot;dist.path&quot;&gt;No dist.path set for this OS!&lt;/fail&gt;
 
-  <span class="tag">&lt;<span class="title">echo</span>&gt;</span>FileSrv Path: </span><span class="variable">${dist.path}</span><span class="xml"><span class="tag">&lt;/<span class="title">echo</span>&gt;</span>
+  &lt;echo&gt;FileSrv Path: ${dist.path}&lt;/echo&gt;
 
-  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-</span><span class="variable">${rev}</span><span class="xml">.</span><span class="variable">${branch}</span><span class="xml">" overwrite="true"&gt;
-    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">fileset</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">copy</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">copy</span> <span class="attribute">todir</span>=<span class="value">"</span><span class="variable">${dist.path}</span><span class="xml">/distfiles/Project-last" overwrite="true"&gt;
-    <span class="tag">&lt;<span class="title">fileset</span> <span class="attribute">dir</span>=<span class="value">"."</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">include</span> <span class="attribute">name</span>=<span class="value">"*.war"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">fileset</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">copy</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">target</span>&gt;</span>
+  &lt;copy todir=&quot;${dist.path}/distfiles/Project-${rev}.${branch}&quot; overwrite=&quot;true&quot;&gt;
+    &lt;fileset dir=&quot;.&quot;&gt;
+      &lt;include name=&quot;*.war&quot;/&gt;
+    &lt;/fileset&gt;
+  &lt;/copy&gt;
+  &lt;copy todir=&quot;${dist.path}/distfiles/Project-last&quot; overwrite=&quot;true&quot;&gt;
+    &lt;fileset dir=&quot;.&quot;&gt;
+      &lt;include name=&quot;*.war&quot;/&gt;
+    &lt;/fileset&gt;
+  &lt;/copy&gt;
+&lt;/target&gt;
 ....
-</span></code></pre>
-<p>위의 스크립트에서 rev 변수의 경우 &lsquo;build-138-geba356c&rsquo; 값에서 hash 부분은 잘라내고 &lsquo;build-138&rsquo; 값만 이용하도록 Javascript로 수정하였다.</p>
-
+</code></pre><p>위의 스크립트에서 rev 변수의 경우 ‘build-138-geba356c’ 값에서 hash 부분은 잘라내고 ‘build-138’ 값만 이용하도록 Javascript로 수정하였다.</p>
 <p>condition 스크립트로 os별 현재 mount되어있는 배포 파일 서버의 위치를 지정해주었다.</p>
-
 <p>마지막으로 배포하는 지점에 위에서 가져온 프로젝트의 revision 정보를 가지고 디렉토리를 만들고 배포파일을 복사하는 작업까지 마치도록 한다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

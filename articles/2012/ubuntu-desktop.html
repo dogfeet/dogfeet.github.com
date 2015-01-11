@@ -1,151 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Ubuntu</title>
-    <meta name="description" content="Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다." />
-    <meta name="keywords" content="ubuntu" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Ubuntu</title>
+  <meta name="description"
+    content="Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다."></meta>
+  <meta name="keywords"
+    content="ubuntu"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Ubuntu &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/ubuntu-desktop.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Apr 28 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/ubuntu-desktop.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Apr 28</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Ubuntu</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#ubuntu" class="tag">ubuntu</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/ubuntu-desktop.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다.</p>
 
-<p><img src="/articles/2012/ubuntu-desktop/ubuntu.png" alt="ubuntu"/></p>
+      <p class="small-font top-line"><a href="/site/tagmap.html#ubuntu" class="tag">ubuntu</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="ubuntu">Ubuntu</h1>
+<p>Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다.</p>
+<p><img src="/articles/2012/ubuntu-desktop/ubuntu.png" alt="ubuntu"></p>
 <p>만날 X 없이 Server만 깔아서 쓰다가 Desktop을 설치했는데 너무 편하다. 앞으로는 Ubuntu Desktop을 많이 쓸 것 같다.</p>
-
-<h2>할 일</h2>
-
+<h2 id="-">할 일</h2>
 <ul>
 <li>/tmp를 tmpfs로 만들기</li>
 </ul>
-
-<p>noexec로 하면 <code>/tmp</code>에 압축을 풀고 설치하는 인스톨러들이(특히 오라클 제품들&hellip;) 실패한다. 보안을 위해 noexec로 설명하는 글들이 많은데, 서버가 아니니 exec로 하도록 하자.</p>
-<pre><code><span class="comment">#/etc/fstab</span>
-<span class="title">tmpfs</span>            /tmp           tmpfs   defaults,exec,nosuid <span class="number">0</span>       <span class="number">0</span>
-</code></pre>
-<ul>
+<p>noexec로 하면 <code>/tmp</code>에 압축을 풀고 설치하는 인스톨러들이(특히 오라클 제품들…) 실패한다. 보안을 위해 noexec로 설명하는 글들이 많은데, 서버가 아니니 exec로 하도록 하자.</p>
+<pre><code>#/etc/fstab
+tmpfs            /tmp           tmpfs   defaults,exec,nosuid 0       0
+</code></pre><ul>
 <li>apt source를 ftp.daum.net로 변경. - System Settings/Software Sources</li>
 <li>virtual kernel 설치.</li>
 <li>dselect 설치 - <code>sudo apt-get install dselect</code></li>
@@ -159,91 +111,77 @@
 <li>vim - default는 vim-tiny</li>
 <li>가끔 필요 - jekyll</li>
 </ul>
-
 <p>이걸 다 더하면:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install dselect <span class="keyword">open</span>-vm-dkms ttf-nanum ttf-nanum-coding ttf-nanum-extra gnome-tweak-tool git p7zip p7zip-<span class="keyword">full</span> curl libss-dev vim ruby ruby1<span class="number">.9</span><span class="number">.1</span> ruby1<span class="number">.9</span><span class="number">.1</span>-dev
+<pre><code>sudo apt-get install dselect open-vm-dkms ttf-nanum ttf-nanum-coding ttf-nanum-extra gnome-tweak-tool git p7zip p7zip-full curl libss-dev vim ruby ruby1.9.1 ruby1.9.1-dev
 
 sudo gem install jekyll
-</code></pre>
-<h3>chrome 설치</h3>
-
+</code></pre><h3 id="chrome-">chrome 설치</h3>
 <p>인증서를 등록하고:</p>
-<pre><code><span class="comment">wget</span> <span class="literal">-</span><span class="comment">q</span> <span class="literal">-</span><span class="comment">O</span> <span class="literal">-</span> <span class="comment">https://dl</span>-<span class="comment">ssl</span>.<span class="comment">google</span>.<span class="comment">com/linux/linux_signing_key</span>.<span class="comment">pub</span> <span class="comment">|</span> <span class="comment">sudo</span> <span class="comment">apt</span>-<span class="comment">key</span> <span class="comment">add</span> <span class="literal">-</span>
-</code></pre>
-<p>apt source 등록:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> sh -c <span class="string">'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'</span>
-</code></pre>
-<p>update하고:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> <span class="keyword">update</span>
-</code></pre>
-<p>안정 버전을 설치한다:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install google-chrome-stable
-</code></pre>
-<p><a href="http://www.howopensource.com/2011/10/install-google-chrome-in-ubuntu-11-10-11-04-10-10-10-04/">원문</a></p>
-
-<h3>sumlime text</h3>
-
+<pre><code>wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+</code></pre><p>apt source 등록:</p>
+<pre><code>sudo sh -c &#39;echo &quot;deb http://dl.google.com/linux/chrome/deb/ stable main&quot; &gt;&gt; /etc/apt/sources.list.d/google.list&#39;
+</code></pre><p>update하고:</p>
+<pre><code>sudo apt-get update
+</code></pre><p>안정 버전을 설치한다:</p>
+<pre><code>sudo apt-get install google-chrome-stable
+</code></pre><p><a href="http://www.howopensource.com/2011/10/install-google-chrome-in-ubuntu-11-10-11-04-10-10-10-04/">원문</a></p>
+<h3 id="sumlime-text">sumlime text</h3>
 <ul>
 <li><a href="http://www.webupd8.org/2011/03/sublime-text-2-ubuntu-ppa.html">sublime text 설치</a></li>
 </ul>
-
-<h3>ubuntu one</h3>
-
+<h3 id="ubuntu-one">ubuntu one</h3>
 <p>모류 5G라, home directory를 백업하기 적당해 보인다.</p>
-
 <p>백업하지 않을 디렉토리:</p>
-<pre><code><span class="variable">.nvm</span>
-<span class="variable">.npm</span>
-<span class="variable">.jenkins</span>
-<span class="variable">.m2</span>
-<span class="variable">.cache</span> <span class="preprocessor">#chrome cache</span>
-<span class="variable">.mozilla</span>/firefox <span class="preprocessor">#firefox cache</span>
-</code></pre>
-<h3>git-svn, svn</h3>
-
+<pre><code>.nvm
+.npm
+.jenkins
+.m2
+.cache #chrome cache
+.mozilla/firefox #firefox cache
+</code></pre><h3 id="git-svn-svn">git-svn, svn</h3>
 <p>12.04에서만 발생하는 에러일 수도 있지만 당분간 해결되지 않을 것 같은 느낌이다. SVN에서 https인 저장소에 접근하면 다음과 같은 에러가 발생한다.</p>
 <pre><code>└─▪ git svn dcommit
-Committing to https://my.svn/trunk <span class="keyword">...</span>
-RA layer request failed: OPTIONS of <span class="string">'https://my.svn/trunk'</span>: SSL handshake failed: SSL error: Key usage violation <span class="keyword">in</span> certificate has been detected. (https://my.svn) at /usr/lib/git-core/git-svn line <span class="number">577</span>
-</code></pre>
-<p>뭐 이런 에러가 발생하면 다음과 같이 임시로 조치할 수 있다.:</p>
+Committing to https://my.svn/trunk ...
+RA layer request failed: OPTIONS of &#39;https://my.svn/trunk&#39;: SSL handshake failed: SSL error: Key usage violation in certificate has been detected. (https://my.svn) at /usr/lib/git-core/git-svn line 577
+</code></pre><p>뭐 이런 에러가 발생하면 다음과 같이 임시로 조치할 수 있다.:</p>
 <pre><code>sudo apt-get install libneon27
 cd /usr/lib
-sudo mv libneon-gnutls<span class="variable">.so</span><span class="number">.27</span> libneon-gnutls<span class="variable">.so</span><span class="number">.27</span><span class="variable">.old</span>
-sudo ln -s libneon<span class="variable">.so</span><span class="number">.27</span><span class="number">.2</span><span class="number">.6</span> libneon-gnutls<span class="variable">.so</span><span class="number">.27</span>
-</code></pre>
-<p>임시로 이렇게 우회할 수 있지만 Ubunut가 자동으로 복구한다.</p>
-
+sudo mv libneon-gnutls.so.27 libneon-gnutls.so.27.old
+sudo ln -s libneon.so.27.2.6 libneon-gnutls.so.27
+</code></pre><p>임시로 이렇게 우회할 수 있지만 Ubunut가 자동으로 복구한다.</p>
 <p>그냥 간단하게 스킴을 https가 아니라 http로 해주는 게 더 편하다.</p>
-
-<h3>USB에 있는 Ubuntu를 VM에서 부팅 하고자 할 때</h3>
-
+<h3 id="usb-ubuntu-vm-">USB에 있는 Ubuntu를 VM에서 부팅 하고자 할 때</h3>
 <p>USB에 우분트를 설치한 게 있는데 그걸 VM에서 부팅하고 싶다면 <a href="http://www.plop.at/en/bootmanager/plpbt.bin.html">Plop Boot Manager</a>로 부팅시킬 수 있다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

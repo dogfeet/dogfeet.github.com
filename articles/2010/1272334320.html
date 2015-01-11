@@ -1,265 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Dev Environment in Maven</title>
-    <meta name="description" content="m2eclipse를 사용하게 되면서 maven에 흠뻑 빠져들고 있다. 다른 팀원이 전혀 TDD에 관심이 없는 상황에서 Dev 환경이 없는 것은 꽤 불편하다." />
-    <meta name="keywords" content="Java,Spring,Environment,Maven,개발환경" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Dev Environment in Maven</title>
+  <meta name="description"
+    content="m2eclipse를 사용하게 되면서 maven에 흠뻑 빠져들고 있다. 다른 팀원이 전혀 TDD에 관심이 없는 상황에서 Dev 환경이 없는 것은 꽤 불편하다."></meta>
+  <meta name="keywords"
+    content="Java,Spring,Environment,Maven,개발환경"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Dev Environment in Maven &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2010/1272334320.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2010 Apr 27 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2010/1272334320.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2010 Apr 27</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2010/1272334320.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1272334320.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2010/1272334320.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Dev Environment in Maven</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#environment" class="tag">Environment</a> <a href="/site/tagmap.html#maven" class="tag">Maven</a> <a href="/site/tagmap.html#개발환경" class="tag">개발환경</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2010/1272334320.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1272334320.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2010/1272334320.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>m2eclipse를 사용하게 되면서 maven에 흠뻑 빠져들고 있다. 다른 팀원이 전혀 TDD에 관심이 없는 상황에서 Dev 환경이 없는 것은 꽤 불편하다.</p>
 
-<h2>Dev 환경의 필요성?</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a> <a href="/site/tagmap.html#environment" class="tag">Environment</a> <a href="/site/tagmap.html#maven" class="tag">Maven</a> <a href="/site/tagmap.html#개발환경" class="tag">개발환경</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="dev-environment-in-maven">Dev Environment in Maven</h1>
+<p>m2eclipse를 사용하게 되면서 maven에 흠뻑 빠져들고 있다. 다른 팀원이 전혀 TDD에 관심이 없는 상황에서 Dev 환경이 없는 것은 꽤 불편하다.</p>
+<h2 id="dev-">Dev 환경의 필요성?</h2>
 <p>Dev 환경은 필요한 이유는 전적으로 TDD를 따르지 않기 때문이다. dev 환경이 필요성은 필요하다. Local에서 디버깅하는 환경운 test환경과도 다르고 운영 환경과도 다르다.</p>
-
 <p>TDD를 따르지 않으면 Dev환경이 너무 아쉽다. Grails에서 지원하던 Dev 환경이 너무 아쉽다. 개발 환경의 설정을 배포시 매번 수정하는 것도 꽤나 번거로운 작업인데다가 실수의 연속이다.</p>
-
-<h2>Maven Profile</h2>
-
+<h2 id="maven-profile">Maven Profile</h2>
 <p>Maven에는 Profile 개념이 있다. mvn실행시 선택적으로 설정을 적용할 수 있게 해준다. 간단한 Profile을 설정은 다음과 같습니다. dev, prod를 profile로 만들어 보자:</p>
-<pre><code><span class="tag">&lt;<span class="title">profiles</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">activation</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">activation</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">profiles</span>&gt;</span> 
-</code></pre>
-<p>activeByDefault를 이용해서 profile을 선택하지 않으면 dev profile이 선택되도록 설정한다.</p>
-
+<pre><code>&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;dev&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;/activation&gt;
+    &lt;/profile&gt;
+    &lt;profile&gt;
+        &lt;id&gt;prod&lt;/id&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+</code></pre><p>activeByDefault를 이용해서 profile을 선택하지 않으면 dev profile이 선택되도록 설정한다.</p>
 <p>다음과 같이 profile을 선택하여 실행할 수 있다:</p>
-<pre><code><span class="title">mvn</span> build -Pdev <span class="comment"># dev profile로 실행한다. -Pdev를 생략해도 dev profile로 실행된다.</span>
+<pre><code>mvn build -Pdev # dev profile로 실행한다. -Pdev를 생략해도 dev profile로 실행된다.
 or
-mvn build -Pprod <span class="comment"># prod profile로 실행한다.</span>
-</code></pre>
-<h2>Maven directory layout</h2>
-
+mvn build -Pprod # prod profile로 실행한다.
+</code></pre><h2 id="maven-directory-layout">Maven directory layout</h2>
 <p>이제 entry point는 만들었으니 dev를 위한 directory layout을 추가한다.</p>
-
 <p>다음과 같으 profile을 만든다:</p>
-<pre><code><span class="xml"><span class="tag">&lt;<span class="title">profiles</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">activation</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">activation</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">build</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">plugins</span>&gt;</span>
-                <span class="tag">&lt;<span class="title">plugin</span>&gt;</span>
-                    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
-                    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>build-helper-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
-                    <span class="tag">&lt;<span class="title">version</span>&gt;</span></span><span class="number">1.5</span><span class="xml"><span class="tag">&lt;/<span class="title">version</span>&gt;</span>
-                    <span class="tag">&lt;<span class="title">executions</span>&gt;</span>
-                        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">id</span>&gt;</span>build-helper-add-source<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
-                                <span class="tag">&lt;<span class="title">goal</span>&gt;</span>add-source<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
-                            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
-                                <span class="tag">&lt;<span class="title">sources</span>&gt;</span>
-                                    <span class="tag">&lt;<span class="title">source</span>&gt;</span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/java<span class="tag">&lt;/<span class="title">source</span>&gt;</span>
-                                <span class="tag">&lt;/<span class="title">sources</span>&gt;</span>
-                            <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
-                        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
-                        <span class="tag">&lt;<span class="title">execution</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">id</span>&gt;</span>build-helper-add-resource<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>generate-resources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">goals</span>&gt;</span>
-                                <span class="tag">&lt;<span class="title">goal</span>&gt;</span>add-resource<span class="tag">&lt;/<span class="title">goal</span>&gt;</span>
-                            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span>
-                            <span class="tag">&lt;<span class="title">configuration</span>&gt;</span>
-                                <span class="tag">&lt;<span class="title">resources</span>&gt;</span>
-                                    <span class="tag">&lt;<span class="title">resource</span>&gt;</span><span class="tag">&lt;<span class="title">directory</span>&gt;</span></span><span class="variable">${basedir}</span><span class="xml">/src/dev/resources<span class="tag">&lt;/<span class="title">directory</span>&gt;</span><span class="tag">&lt;/<span class="title">resource</span>&gt;</span>
-                                <span class="tag">&lt;/<span class="title">resources</span>&gt;</span>
-                            <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span>
-                        <span class="tag">&lt;/<span class="title">execution</span>&gt;</span>
-                    <span class="tag">&lt;/<span class="title">executions</span>&gt;</span>
-                <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span>
-            <span class="tag">&lt;/<span class="title">plugins</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">build</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">profile</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">profiles</span>&gt;</span> 
-</span></code></pre>
-<p>prod profile에서는 maven default를 사용한다. </p>
-
-<h2>dev profile</h2>
-
+<pre><code>&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;dev&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;/activation&gt;
+        &lt;build&gt;
+            &lt;plugins&gt;
+                &lt;plugin&gt;
+                    &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+                    &lt;artifactId&gt;build-helper-maven-plugin&lt;/artifactId&gt;
+                    &lt;version&gt;1.5&lt;/version&gt;
+                    &lt;executions&gt;
+                        &lt;execution&gt;
+                            &lt;id&gt;build-helper-add-source&lt;/id&gt;
+                            &lt;phase&gt;generate-sources&lt;/phase&gt;
+                            &lt;goals&gt;
+                                &lt;goal&gt;add-source&lt;/goal&gt;
+                            &lt;/goals&gt;
+                            &lt;configuration&gt;
+                                &lt;sources&gt;
+                                    &lt;source&gt;${basedir}/src/dev/java&lt;/source&gt;
+                                &lt;/sources&gt;
+                            &lt;/configuration&gt;
+                        &lt;/execution&gt;
+                        &lt;execution&gt;
+                            &lt;id&gt;build-helper-add-resource&lt;/id&gt;
+                            &lt;phase&gt;generate-resources&lt;/phase&gt;
+                            &lt;goals&gt;
+                                &lt;goal&gt;add-resource&lt;/goal&gt;
+                            &lt;/goals&gt;
+                            &lt;configuration&gt;
+                                &lt;resources&gt;
+                                    &lt;resource&gt;&lt;directory&gt;${basedir}/src/dev/resources&lt;/directory&gt;&lt;/resource&gt;
+                                &lt;/resources&gt;
+                            &lt;/configuration&gt;
+                        &lt;/execution&gt;
+                    &lt;/executions&gt;
+                &lt;/plugin&gt;
+            &lt;/plugins&gt;
+        &lt;/build&gt;
+    &lt;/profile&gt;
+    &lt;profile&gt;
+        &lt;id&gt;prod&lt;/id&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+</code></pre><p>prod profile에서는 maven default를 사용한다.</p>
+<h2 id="dev-profile">dev profile</h2>
 <p>하지만 dev profile에서는 soruce directory에 /src/main/java와 /src/dev/java를 사용하고 resource directory에 /src/main/resources와 /src/dev/resources를 사용한다.</p>
-
 <p>build-helper-maven-plugin를 이용해서 Maven Directory Layout에 간단히 directory를 추가할 수 있다. 기존의(Maven의) 것을 변경하려면 build/sourceDirctory나 build/resources를 사용해야 한다.</p>
-
 <p>이제 자신만의 Convention을 만들어서 사용하면 된다.</p>
-
-<h2>결론</h2>
-
+<h2 id="-">결론</h2>
 <p>지금 추가한 dev, prod는 maven의 main, test와 수평적인 관계가 아니다. main과 test는 maven에서 제공하는 아주 복잡한 phase와 goal들이 연관돼 있다.</p>
-
 <p>예를 들어 다음과 같은 조합을 만들 수 있다:</p>
-
 <ul>
 <li>dev + main - service mocking, dev db등의 설정을 main의 설정과 별도로 유지할 수 있다.</li>
 <li>dev + test - /src/dev에 있는 source와 resource를 활용하여 테스트를 진행할 수 있지만, 별로 유용하지 않다.</li>
 <li>prod + main - maven과 defualt와 완전 동일하므로 생략한다.</li>
 <li>prod + test - maven과 defualt와 완전 동일하므로 생략한다.</li>
 </ul>
-
 <p>이번 글에서는 Maven Profile을 이용해서서 dev 환경을 구성하는 방법을 소개하였다. 나중에, 사용해보고 경험이 축적되면 Convention도 정리해보고 싶다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

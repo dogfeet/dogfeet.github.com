@@ -1,361 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - nodejs: Mocha</title>
-    <meta name="description" content="이 글은 &lsquo;Testing with Mocha'을 다시 쓴 것이다. Alex Young님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다." />
-    <meta name="keywords" content="nodejs,BDD,Test,Mocha,Should" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - nodejs: Mocha</title>
+  <meta name="description"
+    content="이 글은 ‘Testing with Mocha‘을 다시 쓴 것이다. Alex Young님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다."></meta>
+  <meta name="keywords"
+    content="nodejs,BDD,Test,Mocha,Should"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="nodejs: Mocha &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Apr 15 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/nodejs-mocha.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Apr 15</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/nodejs-mocha.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/nodejs-mocha.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/nodejs-mocha.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">nodejs: Mocha</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#bdd" class="tag">BDD</a> <a href="/site/tagmap.html#test" class="tag">Test</a> <a href="/site/tagmap.html#mocha" class="tag">Mocha</a> <a href="/site/tagmap.html#should" class="tag">Should</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/nodejs-mocha.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/nodejs-mocha.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/nodejs-mocha.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 &lsquo;<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>'을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
 
-<p><img src="/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test"/></p>
+      <p class="small-font top-line"><a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#bdd" class="tag">BDD</a> <a href="/site/tagmap.html#test" class="tag">Test</a> <a href="/site/tagmap.html#mocha" class="tag">Mocha</a> <a href="/site/tagmap.html#should" class="tag">Should</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="nodejs-mocha">nodejs: Mocha</h1>
+<p>이 글은 ‘<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>‘을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
+<p><img src="/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test"></p>
 <p><a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>를 읽고 Mocha 메뉴얼을 읽으니 훨씬 눈에 잘 들어온다.</p>
-
-<h2>Mocha</h2>
-
-<p><a href="http://visionmedia.github.com/mocha/">Mocha</a>는 TJ Holowaychuk이 만든 <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> 프레임워크이다. </p>
-
-<p>이 글에서는 그냥 Mocha로 BDD하는 법에 대해서만 설명한다. 원래 글은 TDD를 하는 법에 대해서 다뤘지만, 다시 정리하면서 BDD로 수정했다. 다른 방법, 다른 프레임워크와의 비교는 <a href="https://twitter.com/outsider">@outsider</a>님이 잘 정리해 주었다. <a href="https://twitter.com/outsider">@outsider</a>님 <a href="http://blog.outsider.ne.kr/770">블로그 글</a>을 읽어보자. </p>
-
-<h2>package.json</h2>
-
+<h2 id="mocha">Mocha</h2>
+<p><a href="http://visionmedia.github.com/mocha/">Mocha</a>는 TJ Holowaychuk이 만든 <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> 프레임워크이다.</p>
+<p>이 글에서는 그냥 Mocha로 BDD하는 법에 대해서만 설명한다. 원래 글은 TDD를 하는 법에 대해서 다뤘지만, 다시 정리하면서 BDD로 수정했다. 다른 방법, 다른 프레임워크와의 비교는 @outsider님이 잘 정리해 주었다. @outsider님 <a href="http://blog.outsider.ne.kr/770">블로그 글</a>을 읽어보자.</p>
+<h2 id="package-json">package.json</h2>
 <p>먼저 package.json 파일을 다음과 같이 만든다.</p>
 <pre><code>{
-    "<span class="attribute">name</span>": <span class="value"><span class="string">"async-testing-tutorial"</span>
-    </span>, "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span>
-    </span>, "<span class="attribute">description</span>": <span class="value"><span class="string">"A tutorial for Mocha"</span>
-    </span>, "<span class="attribute">keywords</span>": <span class="value">[<span class="string">"test"</span>, <span class="string">"tutorial"</span>]
-    </span>, "<span class="attribute">author</span>": <span class="value"><span class="string">"Alex R. Young &lt;info@dailyjs.com&gt;"</span>
-    </span>, "<span class="attribute">main</span>": <span class="value"><span class="string">"index"</span>
-    </span>, "<span class="attribute">engines</span>": <span class="value">{ "<span class="attribute">node</span>": <span class="value"><span class="string">"&gt;= 0.4.x &lt; 0.7.0"</span> }</span>
-    </span>, "<span class="attribute">scripts</span>": <span class="value">{
-        "<span class="attribute">test</span>": <span class="value"><span class="string">"make test"</span>
-    }</span>
-    </span>, "<span class="attribute">devDependencies</span>": <span class="value">{
-        "<span class="attribute">mocha</span>": <span class="value"><span class="string">"1.0.x"</span>
-        </span>, "<span class="attribute">should</span>": <span class="value"><span class="string">"0.6.x"</span>
-    }</span>
-}</span>
-</code></pre>
-<p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.</p>
+    &quot;name&quot;: &quot;async-testing-tutorial&quot;
+    , &quot;version&quot;: &quot;0.0.1&quot;
+    , &quot;description&quot;: &quot;A tutorial for Mocha&quot;
+    , &quot;keywords&quot;: [&quot;test&quot;, &quot;tutorial&quot;]
+    , &quot;author&quot;: &quot;Alex R. Young &lt;info@dailyjs.com&gt;&quot;
+    , &quot;main&quot;: &quot;index&quot;
+    , &quot;engines&quot;: { &quot;node&quot;: &quot;&gt;= 0.4.x &lt; 0.7.0&quot; }
+    , &quot;scripts&quot;: {
+        &quot;test&quot;: &quot;make test&quot;
+    }
+    , &quot;devDependencies&quot;: {
+        &quot;mocha&quot;: &quot;1.0.x&quot;
+        , &quot;should&quot;: &quot;0.6.x&quot;
+    }
+}
+</code></pre><p>원래 코드는 assert 모듈과 TDD 스타일로 돼 있었지만, 나는 should와 BDD가 더 직관적이라고 생각하므로 바꿨다.</p>
+<p>이를 위해 의존성을 추가한다.:</p>
+<pre><code>, &quot;devDependencies&quot;: {
+    &quot;mocha&quot;: &quot;1.0.x&quot;
+    , &quot;should&quot;: &quot;0.6.x&quot;
+}
+</code></pre><p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.</p>
+<h2 id="makefile">Makefile</h2>
+<p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다.</p>
+<pre><code>test:
+    @./node_modules/.bin/mocha --require should
 
-<p>이를 위해 의존성을 추가한다.: </p>
-<pre><code><span class="string">,</span> <span class="comment">"devDependencies":</span> <span class="comment">{</span>
-    <span class="comment">"mocha":</span> <span class="comment">"1</span>.<span class="comment">0</span>.<span class="comment">x"</span>
-    <span class="string">,</span> <span class="comment">"should":</span> <span class="comment">"0</span>.<span class="comment">6</span>.<span class="comment">x"</span>
-<span class="comment">}</span>
-</code></pre>
-<p>이제 <code>npm install</code>하면 해당 모듈이 설치된다.</p>
-
-<h2>Makefile</h2>
-
-<p>다음과 같이 Makefile을 만들고 <code>make test</code>를 실행하면 된다. </p>
-<pre><code><span class="comment">test:</span>
-    <span class="comment">@</span>.<span class="comment">/node_modules/</span>.<span class="comment">bin/mocha</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">require</span> <span class="comment">should</span>
-
-<span class="string">.</span><span class="comment">PHONY:</span> <span class="comment">test</span>
-</code></pre>
-<ul>
+.PHONY: test
+</code></pre><ul>
 <li><code>--require should</code> - 테스트 코드에서 should 모듈을 끼워 넣어 준다. 생략하면 테스트 코드에 <code>require(&#39;should&#39;)</code>를 직접 넣어 줘야 한다.</li>
 <li><code>--reporter dot</code> - 테스트 결과를 어떻게 보여줄지 reporter를 고를 수 있다. 생략 시 기본 값은 <code>dot</code>.</li>
 <li><code>--u bdd</code> - 테스트 스타일을 고를 수 있는데. 생략 시 기본 값은 <code>bdd</code>.</li>
 </ul>
-
 <p>자세한 옵션은 <a href="http://visionmedia.github.com/mocha/">Mocha</a> 페이지에서 확인한다.</p>
-
-<h2>prime Module</h2>
-
+<h2 id="prime-module">prime Module</h2>
 <p><a href="http://alexyoung.org/">Alex Young</a>님이 작성한 모듈 코드:</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">nextPrime</span><span class="params">(n)</span> {</span>
+<pre><code>function nextPrime(n) {
     var smaller;
-    n = <span class="transposed_variable">Math.</span><span class="built_in">floor</span>(n);
+    n = Math.floor(n);
 
-    <span class="keyword">if</span> (n &gt;= <span class="number">2</span>) <span class="cell">{
-        smaller = <span class="number">1</span>;
+    if (n &gt;= 2) {
+        smaller = 1;
         while (smaller * smaller &lt;= n) {
             n++;
-            smaller = <span class="number">2</span>;
-            while ((n % smaller &gt; <span class="number">0</span>) &amp;&amp; (smaller * smaller &lt;= n)) {
+            smaller = 2;
+            while ((n % smaller &gt; 0) &amp;&amp; (smaller * smaller &lt;= n)) {
                 smaller++;
-            }</span>   
-        }   
-        <span class="keyword">return</span> n;
-    } <span class="keyword">else</span> <span class="cell">{
-        return <span class="number">2</span>;
-    }</span>   
+            }
+        }
+        return n;
+    } else {
+        return 2;
+    }
 }
 
-<span class="function"><span class="keyword">function</span> <span class="title">asyncPrime</span><span class="params">(n, fn)</span> {</span>
-    setTimeout(<span class="keyword">function</span>() <span class="cell">{
+function asyncPrime(n, fn) {
+    setTimeout(function() {
         fn( nextPrime(n) );
-    }</span>, <span class="number">10</span>);
+    }, 10);
 }
 
-<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>nextPrime = nextPrime;
-<span class="transposed_variable">module.</span><span class="transposed_variable">exports.</span>asyncPrime = asyncPrime;
-</code></pre>
-<h2>Test</h2>
-
+module.exports.nextPrime = nextPrime;
+module.exports.asyncPrime = asyncPrime;
+</code></pre><h2 id="test">Test</h2>
 <p>BDD 스타일로 작성한 테스트는 다음과 같다.</p>
-<pre><code>var next<span class="variable">Prime</span> = require('./../index').next<span class="variable">Prime</span>
-var async<span class="variable">Prime</span> = require('./../index').async<span class="variable">Prime</span>;
+<pre><code>var nextPrime = require(&#39;./../index&#39;).nextPrime
+var asyncPrime = require(&#39;./../index&#39;).asyncPrime;
 
-<span class="function"><span class="title">describe</span><span class="params">('prime', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
+describe(&#39;prime&#39;, function() {
 
-    <span class="function_name">describe</span>('next<span class="variable">Prime</span>', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
+    describe(&#39;nextPrime&#39;, function() {
 
-        <span class="function_name">it</span>('next<span class="variable">Prime</span> should return the next prime number', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-            <span class="function_name">nextPrime</span>(<span class="number">7</span>).should.<span class="function_name">equal</span>(<span class="number">11</span>);
-        }</span>); 
+        it(&#39;nextPrime should return the next prime number&#39;, function() {
+            nextPrime(7).should.equal(11);
+        });
 
-        <span class="function_name">it</span>('zero and one are not prime numbers', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-            <span class="function_name">nextPrime</span>(<span class="number">0</span>).should.<span class="function_name">equal</span>(<span class="number">2</span>);
-            <span class="function_name">nextPrime</span>(<span class="number">1</span>).should.<span class="function_name">equal</span>(<span class="number">2</span>);
-        }</span>); 
-    }); 
+        it(&#39;zero and one are not prime numbers&#39;, function() {
+            nextPrime(0).should.equal(2);
+            nextPrime(1).should.equal(2);
+        });
+    });
 
-    <span class="function_name">describe</span>('async<span class="variable">Prime</span>', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
+    describe(&#39;asyncPrime&#39;, function() {
 
-        <span class="function_name">it</span>('async<span class="variable">Prime</span> should return the next prime number', <span class="keyword">fun</span><span class="function_name">ction</span>(done) <span class="tuple">{
-            <span class="function_name">asyncPrime</span>(<span class="number">128</span>, <span class="keyword">fun</span><span class="function_name">ction</span>(n) <span class="tuple">{
-                n.should.<span class="function_name">equal</span>(<span class="number">131</span>);
-                <span class="function_name">done</span>();
-            }</span>);
+        it(&#39;asyncPrime should return the next prime number&#39;, function(done) {
+            asyncPrime(128, function(n) {
+                n.should.equal(131);
+                done();
+            });
         });
     });
 });
-</code></pre>
-<p>비동기 테스트 예제인 'asyncPrime'은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
-
-<h2>hooks</h2>
-
+</code></pre><p>비동기 테스트 예제인 ‘asyncPrime’은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
+<h2 id="hooks">hooks</h2>
 <ul>
 <li>before() - describe()를 시작하기 전에 한번</li>
 <li>after() - describe()를 끝내고 나서 한번</li>
 <li>beforeEach() - describe() 안에 있는 it()이 시작할 때마다 한번</li>
 <li>afterEach() - describe() 안에 있는 it() 이 끝날 때마다 한번</li>
 </ul>
-
 <p>위 테스트코드에 hooks을 추가해보고:</p>
-<pre><code>var next<span class="variable">Prime</span> = require('./../index').next<span class="variable">Prime</span>
-var async<span class="variable">Prime</span> = require('./../index').async<span class="variable">Prime</span>;
+<pre><code>var nextPrime = require(&#39;./../index&#39;).nextPrime
+var asyncPrime = require(&#39;./../index&#39;).asyncPrime;
 
-<span class="function"><span class="title">describe</span><span class="params">('prime', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
+describe(&#39;prime&#39;, function() {
 
-    <span class="function_name">before</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-        console.<span class="function_name">log</span>('before');
-    }</span>); 
+    before(function(){
+        console.log(&#39;before&#39;);
+    });
 
-    <span class="function_name">after</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-        console.<span class="function_name">log</span>('after');
-    }</span>); 
+    after(function(){
+        console.log(&#39;after&#39;);
+    });
 
-    <span class="function_name">beforeEach</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-        console.<span class="function_name">log</span>('before<span class="variable">Each</span>');
-    }</span>); 
+    beforeEach(function(){
+        console.log(&#39;beforeEach&#39;);
+    });
 
-    <span class="function_name">afterEach</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-        console.<span class="function_name">log</span>('after<span class="variable">Each</span>');
-    }</span>); 
+    afterEach(function(){
+        console.log(&#39;afterEach&#39;);
+    });
 
-    <span class="function_name">describe</span>('next<span class="variable">Prime</span>', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-        <span class="function_name">before</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-            console.<span class="function_name">log</span>('new before');
-        }</span>); 
+    describe(&#39;nextPrime&#39;, function() {
+        before(function(){
+            console.log(&#39;new before&#39;);
+        });
 
-        <span class="function_name">it</span>('next<span class="variable">Prime</span> should return the next prime number', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-            <span class="function_name">nextPrime</span>(<span class="number">7</span>).should.<span class="function_name">equal</span>(<span class="number">11</span>);
-        }</span>); 
+        it(&#39;nextPrime should return the next prime number&#39;, function() {
+            nextPrime(7).should.equal(11);
+        });
 
-        <span class="function_name">it</span>('zero and one are not prime numbers', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-            <span class="function_name">nextPrime</span>(<span class="number">0</span>).should.<span class="function_name">equal</span>(<span class="number">2</span>);
-            <span class="function_name">nextPrime</span>(<span class="number">1</span>).should.<span class="function_name">equal</span>(<span class="number">2</span>);
-        }</span>); 
-    }); 
+        it(&#39;zero and one are not prime numbers&#39;, function() {
+            nextPrime(0).should.equal(2);
+            nextPrime(1).should.equal(2);
+        });
+    });
 
-    <span class="function_name">describe</span>('async<span class="variable">Prime</span>', <span class="keyword">fun</span><span class="function_name">ction</span>() <span class="tuple">{
-        <span class="function_name">afterEach</span>(<span class="keyword">fun</span><span class="function_name">ction</span>()<span class="tuple">{
-            console.<span class="function_name">log</span>('new after<span class="variable">Each</span>');
-        }</span>);
+    describe(&#39;asyncPrime&#39;, function() {
+        afterEach(function(){
+            console.log(&#39;new afterEach&#39;);
+        });
 
-        <span class="function_name">it</span>('async<span class="variable">Prime</span> should return the next prime number', <span class="keyword">fun</span><span class="function_name">ction</span>(done) <span class="tuple">{
-            <span class="function_name">asyncPrime</span>(<span class="number">128</span>, <span class="keyword">fun</span><span class="function_name">ction</span>(n) <span class="tuple">{
-                n.should.<span class="function_name">equal</span>(<span class="number">131</span>);
-                <span class="function_name">done</span>();
-            }</span>);
+        it(&#39;asyncPrime should return the next prime number&#39;, function(done) {
+            asyncPrime(128, function(n) {
+                n.should.equal(131);
+                done();
+            });
         });
     });
 });
-</code></pre>
-<p>결과는 다음과 같다:</p>
+</code></pre><p>결과는 다음과 같다:</p>
 <pre><code>  before
-<span class="title">new</span> before
-<span class="title">beforeEach</span>
+new before
+beforeEach
 .afterEach
-<span class="title">beforeEach</span>
+beforeEach
 .afterEach
-<span class="title">beforeEach</span>
+beforeEach
 .new afterEach
-<span class="title">afterEach</span>
-<span class="title">after</span>
+afterEach
+after
 
 
-  ✔ <span class="number">3</span> tests complete (<span class="number">25</span>ms)
-</code></pre>
-<p>'new afterEach'나 'new before&rsquo; 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
-
+  ✔ 3 tests complete (25ms)
+</code></pre><p>‘new afterEach’나 ‘new before’ 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
 <p><a href="http://alexyoung.org/">Alex Young</a> 만든 코드는 <a href="https://github.com/alexyoung/async-testing-tutorial">async-testing-tutorial</a>이고 내가 수정한 코드는 <a href="https://github.com/pismute/async-testing-tutorial">async-testing-tutorial-pismute</a>이다.</p>
-
 <p>TDD 스타일로 테스트를 작성하고 assert방식의 expecting을 선호한다면 <a href="http://alexyoung.org/">Alex Young</a>만든 코드를 보는 것이 낫다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

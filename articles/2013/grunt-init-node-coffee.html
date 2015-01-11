@@ -1,203 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - grunt: node-coffee 템플릿</title>
-    <meta name="description" content="@Outsideris님의 자바스크립트 빌드 도구 Grunt와 Grunt에 사용자 템플릿 추가하기를 읽고 node-coffee 템플릿을 만들었다. @docpad 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다." />
-    <meta name="keywords" content="grunt,node,node-coffee,template" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - grunt: node-coffee 템플릿</title>
+  <meta name="description"
+    content="@Outsideris님의 자바스크립트 빌드 도구 Grunt와 Grunt에 사용자 템플릿 추가하기를 읽고 node-coffee 템플릿을 만들었다. @docpad 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다."></meta>
+  <meta name="keywords"
+    content="grunt,node,node-coffee,template"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="grunt: node-coffee 템플릿 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/grunt-init-node-coffee.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Feb 21 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/grunt-init-node-coffee.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Feb 21</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">grunt: node-coffee 템플릿</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#node-coffee" class="tag">node-coffee</a> <a href="/site/tagmap.html#template" class="tag">template</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#grunt" class="tag">grunt</a> <a href="/site/tagmap.html#node" class="tag">node</a> <a href="/site/tagmap.html#node-coffee" class="tag">node-coffee</a> <a href="/site/tagmap.html#template" class="tag">template</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/grunt-init-node-coffee.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p><a href="https://twitter.com/Outsideris">@Outsideris</a>님의 <a href="http://blog.outsider.ne.kr/892">자바스크립트 빌드 도구 Grunt</a>와 <a href="http://blog.outsider.ne.kr/894">Grunt에 사용자 템플릿 추가하기</a>를 읽고 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a> 템플릿을 만들었다. <a href="https://twitter.com/docpad">@docpad</a> 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다.</p>
 
-<p><img src="/articles/2013/grunt-init-node-coffee/gruntjs.png" alt=""/></p>
+    <div class="col-sm-10">
 
-<h2>grunt 0.4</h2>
-
-<p>갑자기 0.4 버전이 배포되는 바람에 <a href="https://twitter.com/Outsideris">@Outsideris</a>님의 글이 내용이 틀리게 됐다. 하지만 정리가 잘돼 있어서 grunt를 이해하기에는 여전히 좋은 글이다.</p>
-
-<p><a href="https://twitter.com/Outsideris">@Outsideris</a>님의 글을 읽고 0.3 버전용 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a>를 만들었다가 나중에 글을 써야지 하고 있었는데, 0.4가 나와 버렸다. <a href="http://gruntjs.com/upgrading-from-0.3-to-0.4">upgrading-from-0.3-to-0.4</a>을 잘 읽고 적용하는 게 좋다. 나는 길어서 대충 읽었다가 삽질을 좀 했다. 다 읽기 귀찮으면 새 템플릿으로 만든 코드를 좀 읽어보고 시작하는 것이 시간을 절약해줄 것 같다.</p>
-
-<h2>node-coffee 템플릿</h2>
-
+      <div property="sioc:content"><h1 id="grunt-node-coffee-">grunt: node-coffee 템플릿</h1>
+<p>@Outsideris님의 <a href="http://blog.outsider.ne.kr/892">자바스크립트 빌드 도구 Grunt</a>와 <a href="http://blog.outsider.ne.kr/894">Grunt에 사용자 템플릿 추가하기</a>를 읽고 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a> 템플릿을 만들었다. @docpad 덕에 coffeescript에 익숙해졌고 항상 Compile해서 실행하기만 하면 디버그도 할 수 있기 때문에 node를 사용할 때는 coffee를 사용하려고 하는 편이다. 그동안 make를 사용해서 좀 불편했었는데, grunt를 적용하니 정말 편하다. 좀 더 편하려고 Coffeescript에 Mocha를 기본으로 하는 템플릿을 하나 만들었다.</p>
+<p><img src="/articles/2013/grunt-init-node-coffee/gruntjs.png" alt=""></p>
+<h2 id="grunt-0-4">grunt 0.4</h2>
+<p>갑자기 0.4 버전이 배포되는 바람에 @Outsideris님의 글이 내용이 틀리게 됐다. 하지만 정리가 잘돼 있어서 grunt를 이해하기에는 여전히 좋은 글이다.</p>
+<p>@Outsideris님의 글을 읽고 0.3 버전용 <a href="https://github.com/pismute/grunt-init-node-coffee">node-coffee</a>를 만들었다가 나중에 글을 써야지 하고 있었는데, 0.4가 나와 버렸다. <a href="http://gruntjs.com/upgrading-from-0.3-to-0.4">upgrading-from-0.3-to-0.4</a>을 잘 읽고 적용하는 게 좋다. 나는 길어서 대충 읽었다가 삽질을 좀 했다. 다 읽기 귀찮으면 새 템플릿으로 만든 코드를 좀 읽어보고 시작하는 것이 시간을 절약해줄 것 같다.</p>
+<h2 id="node-coffee-">node-coffee 템플릿</h2>
 <p>이 템플릿은 특징을 요약하면 아래와 같다:</p>
-
 <ul>
-<li>Coffeescript
-
-<ul>
+<li>Coffeescript<ul>
 <li>Gruntfile.coffee</li>
 <li><code>/src/lib/**/*.coffee</code>를 <code>/out/lib/**/*.js</code>로 컴파일</li>
 <li><code>/src/test/**/*.coffee</code>를 <code>/out/test/**/*.js</code>로 컴파일</li>
 <li>coffeelint</li>
-</ul></li>
-<li>Javascript
-
-<ul>
+</ul>
+</li>
+<li>Javascript<ul>
 <li><code>/src/lib/**/*.js</code>를 <code>/out/lib/**/*.js</code>로 복사</li>
 <li><code>/src/test/**/*.js</code>를 <code>/out/test/**/*.js</code>로 복사</li>
 <li>jshint 그대로 포함</li>
-</ul></li>
+</ul>
+</li>
 <li>Mocha + Should로 변경</li>
 </ul>
-
 <p>그 외는 <a href="https://github.com/gruntjs/grunt-init-node">node</a> 템플릿을 수정한 것이기 때문에 node 템플릿과 같다.</p>
-
-<h3>사용법</h3>
-
+<h3 id="-">사용법</h3>
 <p>다음과 같이 설치한다:</p>
-<pre><code>git clone git@github<span class="variable">.com</span>:pismute/grunt-init-node-coffee<span class="variable">.git</span> ~/<span class="variable">.grunt</span>-init/node-coffee
-</code></pre>
-<p><a href="https://github.com/gruntjs/grunt-init">grunt-init</a>이 설치된 상태에서 다음과 같이 프로젝트를 만든다:</p>
-<pre><code><span class="title">mkdir</span> my-project
-<span class="title">cd</span> my-project
-<span class="title">grunt</span>-init node-coffee
-</code></pre>
-        </div>
-      </div>
+<pre><code>git clone git@github.com:pismute/grunt-init-node-coffee.git ~/.grunt-init/node-coffee
+</code></pre><p><a href="https://github.com/gruntjs/grunt-init">grunt-init</a>이 설치된 상태에서 다음과 같이 프로젝트를 만든다:</p>
+<pre><code>mkdir my-project
+cd my-project
+grunt-init node-coffee
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

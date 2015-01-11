@@ -1,237 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - New In Javascript 1.8.1</title>
-    <meta name="description" content="이글은 Mozilla의 &lsquo;New In Javascript 1.8.1'를 정리한 것이다." />
-    <meta name="keywords" content="New In JavaScript,JavaScript,JavaScript Standard" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - New In Javascript 1.8.1</title>
+  <meta name="description"
+    content="이글은 Mozilla의 ‘New In Javascript 1.8.1‘를 정리한 것이다."></meta>
+  <meta name="keywords"
+    content="New In JavaScript,JavaScript,JavaScript Standard"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="New In Javascript 1.8.1 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1317341820.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Sep 30 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1317341820.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Sep 30</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1317341820.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317341820.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1317341820.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">New In Javascript 1.8.1</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1317341820.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317341820.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1317341820.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이글은 Mozilla의 &lsquo;<a href="https://developer.mozilla.org/En/JavaScript/New_in_JavaScript/1.8.1">New In Javascript 1.8.1</a>'를 정리한 것이다.</p>
 
-<h2>Language additions</h2>
+    <div class="col-sm-10">
 
-<h3>Object.getPrototypeOf()</h3>
-
+      <div property="sioc:content"><h1 id="new-in-javascript-1-8-1">New In Javascript 1.8.1</h1>
+<p>이글은 Mozilla의 ‘<a href="https://developer.mozilla.org/En/JavaScript/New_in_JavaScript/1.8.1">New In Javascript 1.8.1</a>‘를 정리한 것이다.</p>
+<h2 id="language-additions">Language additions</h2>
+<h3 id="object-getprototypeof-">Object.getPrototypeOf()</h3>
 <p><a href="http://ejohn.org/blog/objectgetprototypeof">getPrototypeOf</a>(<a href="/articles/2011/1317693360.html">번역</a>)대한 John Resig의 글을 참고</p>
-
-<h3>Using native JSON</h3>
-
+<h3 id="using-native-json">Using native JSON</h3>
 <p><code>Object -&gt; JSON</code>은 stringify()로 하고 <code>JSON -&gt; Object</code>은 parse()메소드를 이용한다. 그리고 JSON은 method가 포함된 객체를 지원하지 않는다. 만약 JSON으로 method가 포함된 객체를 변환하고자 하면 TypeError를 던질 것이다.</p>
-
 <p>parse()는 다음과 같이 사용하면 된다:</p>
-<pre><code>var jsObject = JSON<span class="preprocessor">.parse</span>(jsonString)<span class="comment">;</span>
-</code></pre>
-<p>단 다음과 같은 것은 에러가 나니 주의:</p>
-<pre><code><span class="regexp">//</span> both will <span class="keyword">throw</span> an SyntaxError as <span class="keyword">of</span> JavaScript <span class="number">1.8</span><span class="number">.5</span>
-<span class="reserved">var</span> jsObject = JSON.parse(<span class="string">"[1, 2, 3, 4, ]"</span>);
-<span class="reserved">var</span> jsObject = JSON.parse(<span class="string">"{ \"foo\" : 1, }"</span>);
-</code></pre>
-<p>stringify()는 다음과 같이 사용한다.</p>
-<pre><code>var foo = {}<span class="comment">;  </span>
-foo<span class="preprocessor">.bar</span> = <span class="string">"new property"</span><span class="comment">;  </span>
-foo<span class="preprocessor">.baz</span> = <span class="number">3</span><span class="comment">;  </span>
+<pre><code>var jsObject = JSON.parse(jsonString);
+</code></pre><p>단 다음과 같은 것은 에러가 나니 주의:</p>
+<pre><code>// both will throw an SyntaxError as of JavaScript 1.8.5
+var jsObject = JSON.parse(&quot;[1, 2, 3, 4, ]&quot;);
+var jsObject = JSON.parse(&quot;{ \&quot;foo\&quot; : 1, }&quot;);
+</code></pre><p>stringify()는 다음과 같이 사용한다.</p>
+<pre><code>var foo = {};
+foo.bar = &quot;new property&quot;;
+foo.baz = 3;
 
-var jsonString = JSON<span class="preprocessor">.stringify</span>(foo)<span class="comment">;</span>
-//jsonString = {<span class="string">"bar"</span>:<span class="string">"new property"</span>,<span class="string">"baz"</span>:<span class="number">3</span>}
-</code></pre>
-<p>stringify()의 문법은 다음과 같다.</p>
-<pre><code><span class="comment">jsonString</span> <span class="comment">=</span> <span class="comment">JSON</span>.<span class="comment">stringify(value</span> <span class="title">[</span><span class="string">,</span> <span class="comment">replacer</span> <span class="title">[</span><span class="string">,</span> <span class="comment">space</span>]<span class="title">]</span><span class="comment">)</span>
-</code></pre>
-<ul>
+var jsonString = JSON.stringify(foo);
+//jsonString = {&quot;bar&quot;:&quot;new property&quot;,&quot;baz&quot;:3}
+</code></pre><p>stringify()의 문법은 다음과 같다.</p>
+<pre><code>jsonString = JSON.stringify(value [, replacer [, space]])
+</code></pre><ul>
 <li>value: 객체</li>
 <li>replacer: replacer는 프로퍼티를 선별적으로 변환할 때 사용한다. 만약 replacer가 생략되거나 null이면 모든 프로퍼티를 변환한다.</li>
 <li>space: space는 JSON String을 사람이 읽기 좋도록 예쁘게 만들어 준다. space가 Number면 그 수만큼 space 문자로 공백을 줄 것이고 String이면 그 스트링을 공백으로 사용한다. 물론 둘다 최대크기는 10이다. 그 보다 큰 값이 입력됐을 때 Number는 10이, String은 앞 10자만 사용될 것이다.</li>
 </ul>
-
 <p>replacer를 사용하는 예제를 보자:</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">censor</span><span class="params">(key, value)</span> {</span>
-  <span class="keyword">if</span> (<span class="keyword">typeof</span>(value) == <span class="string">"string"</span>) {
-    <span class="keyword">return</span> <span class="literal">undefined</span>;<span class="comment">//or return null</span>
+<pre><code>function censor(key, value) {
+  if (typeof(value) == &quot;string&quot;) {
+    return undefined;//or return null
   }
-  <span class="keyword">return</span> value;
+  return value;
 }
 
-<span class="keyword">var</span> foo = {foundation: <span class="string">"Mozilla"</span>, model: <span class="string">"box"</span>, week: <span class="number">45</span>, transport: <span class="string">"car"</span>, month: <span class="number">7</span>};
-<span class="keyword">var</span> jsonString = JSON.stringify(foo, censor);
-<span class="comment">//jsonString = {"week":45,"month":7}</span>
-</code></pre>
-<p>replacer에 function대신 Arrray를 사용할 수도 있다:</p>
-<pre><code>console<span class="variable">.log</span>(JSON<span class="variable">.stringify</span>({ a: <span class="number">2</span>, b:<span class="number">3</span> }, [<span class="string">'a'</span>]));
-<span class="comment">//{"a":2}</span>
-</code></pre>
-<p>space를 사용하는 예제를 보자:</p>
-<pre><code>console<span class="variable">.log</span>(JSON<span class="variable">.stringify</span>({ a: <span class="number">2</span> }, null, <span class="string">"  "</span>));
-<span class="comment">// '{\n "a": 2\n}'</span>
-</code></pre>
-<p>해당 객체마다 custom하게 JSON으로 serialize하고 싶으면 toJSON프로퍼티에 메소드를 할당하면 된다:</p>
-<pre><code><span class="keyword">var</span> x = {
-  foo: <span class="string">'foo'</span>,
-  toJSON: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-    <span class="keyword">return</span> <span class="string">'bar'</span>;
+var foo = {foundation: &quot;Mozilla&quot;, model: &quot;box&quot;, week: 45, transport: &quot;car&quot;, month: 7};
+var jsonString = JSON.stringify(foo, censor);
+//jsonString = {&quot;week&quot;:45,&quot;month&quot;:7}
+</code></pre><p>replacer에 function대신 Arrray를 사용할 수도 있다:</p>
+<pre><code>console.log(JSON.stringify({ a: 2, b:3 }, [&#39;a&#39;]));
+//{&quot;a&quot;:2}
+</code></pre><p>space를 사용하는 예제를 보자:</p>
+<pre><code>console.log(JSON.stringify({ a: 2 }, null, &quot;  &quot;));
+// &#39;{\n &quot;a&quot;: 2\n}&#39;
+</code></pre><p>해당 객체마다 custom하게 JSON으로 serialize하고 싶으면 toJSON프로퍼티에 메소드를 할당하면 된다:</p>
+<pre><code>var x = {
+  foo: &#39;foo&#39;,
+  toJSON: function () {
+    return &#39;bar&#39;;
   }
 };
-<span class="keyword">var</span> json = JSON.stringify({x: x});
-<span class="comment">//json = {"x":"bar"}</span>
-</code></pre>
-<h3>String.trim(), trimLeft(), trimRight()</h3>
-
+var json = JSON.stringify({x: x});
+//json = {&quot;x&quot;:&quot;bar&quot;}
+</code></pre><h3 id="string-trim-trimleft-trimright-">String.trim(), trimLeft(), trimRight()</h3>
 <p>공백 문자를 제거하는 함수가 추가됨:</p>
-<pre><code>var orig = <span class="string">"   foo  "</span><span class="comment">;</span>
-console<span class="preprocessor">.log</span>(orig<span class="preprocessor">.trim</span>())<span class="comment">;// "foo"</span>
-</code></pre>
-<p>왼쪽 것만 제거:</p>
-<pre><code>console<span class="variable">.log</span>(orig<span class="variable">.trimLeft</span>());<span class="comment">// "foo  "</span>
-</code></pre>
-<p>오른 쪽 것만 제거:</p>
-<pre><code>console<span class="variable">.log</span>(orig<span class="variable">.trimLeft</span>());<span class="comment">// "  foo"</span>
-</code></pre>
-        </div>
-      </div>
+<pre><code>var orig = &quot;   foo  &quot;;
+console.log(orig.trim());// &quot;foo&quot;
+</code></pre><p>왼쪽 것만 제거:</p>
+<pre><code>console.log(orig.trimLeft());// &quot;foo  &quot;
+</code></pre><p>오른 쪽 것만 제거:</p>
+<pre><code>console.log(orig.trimLeft());// &quot;  foo&quot;
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,378 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[ 개발새발 ]]></title>
-  <link href="http://dogfeet.github.io/atom.xml" rel="self" />
-  <link href="http://dogfeet.github.io" />
-  <updated>2013-12-25T12:48:55.670Z</updated>
-  <id>http://dogfeet.github.io</id>
-  <author>
-    <name>Changwoo Park</name>
-    <email>pismute@gmail.com</email>
-  </author>
-  <author>
-    <name>Sean Lee</name>
-    <email>sean@weaveus.com</email>
-  </author>
-  <author>
-    <name>Yongjae Choi</name>
-    <email>mage@weaveus.com</email>
-  </author>
-  <entry>
+  <link href="http://dogfeet.github.io//atom.xml" rel="self" />
+  <link href="http://dogfeet.github.io/" />
+  <updated>2015-01-11T23:57:58.822Z</updated>
+  <id>http://dogfeet.github.io/</id>
+    <entry>
     <title><![CDATA[ git: progit 업데이트 ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/progit.html" />
-    <updated>2013-12-18T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/progit.html" />
+    <updated>2015-01-11T23:58:05.110Z</updated>
     <id>http://dogfeet.github.io/articles/2013/progit.html</id>
-    <content type="html">
-<![CDATA[
-<p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 <a href="https://twitter.com/schacon">@schacon</a> 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 <a href="https://twitter.com/jnavila">@jnavila</a>님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/progit/git-festival.jpg" alt="git"/></p>
-
-<h2>git christmas!!</h2>
-
-<p><a href="https://twitter.com/lnyarl">@lnyarl</a>, <a href="https://twitter.com/lethee">@lethee</a> 님과 함께 업데이트를 했기 때문에 힘들지 않았습니다만, 집중력이 떨어져서인지 번역할 때만큼 재미있지는 않았습니다. 업데이트한 내용은 아래와 같습니다:</p>
-
+    <content type="html"><![CDATA[
+      <h1 id="git-progit-">git: progit 업데이트</h1>
+<p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 @schacon 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 @jnavila님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/progit/git-festival.jpg" alt="git"></p>
+<h2 id="git-christmas-">git christmas!!</h2>
+<p>@lnyarl, @lethee 님과 함께 업데이트를 했기 때문에 힘들지 않았습니다만, 집중력이 떨어져서인지 번역할 때만큼 재미있지는 않았습니다. 업데이트한 내용은 아래와 같습니다:</p>
 <ul>
 <li>원서의 업데이트된 부분을 반영했습니다.</li>
 <li>용어 통일에 좀 더 신경을 썼습니다.</li>
 <li>문장을 좀 더 매끄럽게 만들었습니다.</li>
 <li>pdf파일에 NanumBarunGothic 폰트를 적용했습니다.</li>
 </ul>
-
 <p>원서의 내용이 조금씩 업데이트되고 있지만 크게 바뀌지는 않았습니다. 예를 들어, 달라진 github ui에 대해서는 전혀 업데이트되지 않았습니다. 하지만 미묘한 정도로 업데이트되고 있습니다. 간단히 생각하면 잘 안쓰는 옵션이 업데이트되고 있다고 생각하셔도 됩니다.</p>
-
 <p>오픈소스 책이라서 그런 것이지만 대부분의 언어들이 함께 업데이트되고 있습니다. 이런 오픈소스 프로젝트에 참여할 수 있어서 정말 운이 좋다고 생각합니다.</p>
-
 <p>종이책을 준비하면서 정리했던 것도 반영했습니다. 종이책을 준비하면서 progit 저장소에 다시 반영하는 걸 염두에 두고 작업했었습니다. 처음 번역할 때 퇴고를 정말 많이 했었는데도 1년이 지나 다시 읽어보니 엉망이였습니다. 그 후로도 1년이 지난 지금 다시 읽으면 또 수두룩하게 발견할 것 같습니다.</p>
-
 <p>실제로 저장소에 적용하는 것은 매우 늦었고 다시 빌드해 배포 것은 더욱 늦었습니다. <a href="http://git-scm.com/book/ko">http://git-scm.com/book/ko</a> 에서는 항상 최신 버전을 읽으실 수 있습니다. 다시 빌드해야 하는 ebook과는 달리 곧 적용되더군요.</p>
-
 <p>다운로드(<code>2013-12-19</code>):</p>
-
 <ul>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.epub">progit.ko.epub</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.mobi">progit.ko.mobi</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.pdf">progit.ko.pdf</a></li>
 </ul>
-]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ Promise ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/promise.html" />
-    <updated>2013-12-17T15:00:00.000Z</updated>
-    <id>http://dogfeet.github.io/articles/2013/promise.html</id>
-    <content type="html">
-<![CDATA[
-<p>수박 겉핥기 식이라 부끄럽지만 Promise에 대해 정리해보았다.</p>
 
-<p><img src="http://dogfeet.github.io/articles/2013/promise/promise.jpg" alt=""/><br/>
-(무극(2006) - 점점 이 이미지 찾기에 더 많은 시간을 쏟는다-_-)</p>
-
-<h2>Promise?</h2>
-
-<p>promise는 자바스크립트에서 사용하는 비동기 연산의 최종 결과를 나타내는 객체이다. 비동기 함수를 호출했을때에 promise에 그 결과가 담긴다고 생각하면 편하다. 이를 이용하면 평소에 해왔던 비동기 코드를 더 높은 레벨의 추상화 객체로 다룰 수 있다. 그리고 일단 callback hell을 어느 정도 정리할 수있다. 코드를 먼저 보자.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> promise = doSomethingAync();
-promise.then(onFulfilled, onRejected);
-</code></pre>
-<p>비동기 함수는 promise를 리턴하고 promise 객체의 then 메서드를 이용해 비동기 요청이 끝났을 때의 어떤 일을 할지 정의한다. onFulfilled는 정상적으로 비동기 함수가 끝났을 때 실행되고 onRejected는 비동기 함수가 비정상적으로 끝났을 때 실행된다. </p>
-
-<p>이 글에서는 위에서 말한 정상종료와 비정상종료를 각각 <em>fulfilled</em>과 <em>rejected</em>라는 표현으로 쓸 것이다. 약속(promise)이 지켜지거나(fulfilled) 안지켜지는(rejected) 것을 모티브로 삼으면 될 것이다. 비동기는 나중에 작업을 완료하겠다는 하나의 약속이니까.</p>
-
-<p>promise는 자바스크립트 언어 차원에서 지원하는 기능이 아니다. 여러 사람의 제안과 협의로 구현 스펙이 만들어졌고 지금은 <a href="https://github.com/kriskowal/q">q</a>나 <a href="https://github.com/cujojs/when">when</a>등을 사용하고 있다. nodejs는 물론 브라우저에서도 사용할 수 있다. JQuery에서도 promise를 지원한다.</p>
-
-<p>주절주절 이야기를 할 예정인데 만약 &lsquo;아 됐고 사용법이나 알려줘'라는 생각이시라면 <code>Then</code> 섹션으로 곧바로 이동하길 바란다.</p>
-
-<h2>Callback Hell</h2>
-
-<p>promise는 어찌보면 사용하기 어렵다. 비동기의 결과를 저장한다는 개념도 이상하고 사용법도 혼란스러울 수 있는 여지가 많다. 물론 이는 익숙함의 문제다. 그렇다고 첫 만남의 어색함이 줄어드는 것은 아니다. 그럼 이런걸 왜 괜히 만들어서 사용하는 걸까.</p>
-
-<p>모두 익숙하겠지만 자바스크립트의 세계에서는 <a href="/articles/2012/by-example-continuation-passing-style-in-javascript.html">CPS</a>를 이용해 비동기 요청을 처리한다. 쉽게 말해서 비동기 함수의 뒤쪽에 콜백 함수를 넘겨 콜백 함수를 응답이 왔을 때 핸들러로 사용한다. 이는 동작 방식을 이해하기 어렵지 않고 사용하기도 어렵지 않다. 그런것 처럼 보였다-_-</p>
-
-<p>Callback Hell 이란게 있다. 중첩된 콜백은 코드를 이해하기 어렵게 만들고 변수의 scope가 믹스되어 사이드 이펙트가 생기기 쉽다. 관리되지 않는 자유로움이란 면에서도 코드는 스파게티가 되어가지만 무엇보다 자바스크립트는 이런 스타일을 강제하고 있다. <a href="http://callbackhell.com/">Callback Hell</a>사이트에서는 이런 문제를 어떻게 간단하게 만드는가에 대한 설명이 나온다.</p>
-
-<p>Promise를 사용하면 이러한 문제를 꽤나 깔끔하게 해결할 수 있다. 간단한 예제를 보자. </p>
-<pre><code class="lang-javascript">readFile(<span class="function"><span class="keyword">function</span> <span class="params">(err, data)</span> {</span>
-  <span class="keyword">if</span> (err) <span class="keyword">return</span> console.error(err);
-  console.log(data);
-});
-</code></pre>
-<p>위 코드는 파일을 읽어서 에러가 있으면 에러를 출력하고 아니면 파일 안의 데이터를 출력하는 코드이다. nodejs 프로그래밍을 하면 흔히 볼 수있는 스타일이다. 만약 readFile함수가 promise를 리턴하면 다음과 같이 쓸 수 있다.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
-promise.then(console.log, console.error);
-</code></pre>
-<p>극단적으로 간략화된 예제라서 신뢰성이 없어보이지만 핸들러안에서 if를 이용해 에러를 처리하고 만약 핸들러 안에서 다시 비동기 처리를 한다면? 비동기 처리를 세 번정도 중첩해보면 '지금 난 어디인가 이것은 무엇인가&rsquo; 소리가 절로 나온다. Promise는 이러한 복잡성을 꽤 잘 해결해준다.</p>
-
-<h2>Then</h2>
-
-<p>Promise객체는 then이라는 메서드를 가지고있다.(가지고 있어야 한다. 스펙이다.) then은 promise의 결과를 처리하기 위해 사용한다. 표현을 헷갈리면 안된다. <code>비동기 함수</code>는 <code>Promise</code>를 리턴하고 <code>Promise</code>는 <code>then</code>메서드를 이용해 비동기 처리의 결과를 조작할 수 있다. (여담이지만 promise 스펙에서는 then이라는 메서드가 정의된 객체를 thenable이라고 표현한다. 자바의 Runnable 인터페이스같은 느낌이다.)</p>
-
-<p>then은 다음과 같이 생겼다.</p>
-<pre><code class="lang-javascript">promise.then(onFulfilled, onRejected)
-</code></pre>
-<p>그리고 then의 특성은 다음과 같다.</p>
-
-<ul>
-<li>onFulfilled와 onRejected는 모두 함수다. 함수가 아니라면 그냥 무시된다. (딱히 에러가 나거나 하진 않는다.)</li>
-<li>onFulfilled와 onRejected는 선택사항이다. 둘 다 인자로 넘겨도 되고 하나만 넘겨도 된다. 만약 onRejected만 넘기려면 <code>promise.then(null, onRejected)</code>와 같이 사용해야 한다.</li>
-<li>onFulfilled는 promise가 fullfilled되면 실행된다. promise의 값은 onFulfilled의 첫번째 인자로 들어온다.</li>
-<li>onRejected는 promise가 rejected되면 실행된다. 이 함수의 첫번째 인자로는 실패 원인이 들어온다.</li>
-<li>둘 중 한 함수는 반드시 실행된다. 그리고 두 번 실행되지 않는다.</li>
-<li>then메서드는 promise를 리턴한다.</li>
-</ul>
-
-<p>뭔가 복잡하다. 쉽게 말하자면 비동기 함수가 성공했을 때 부를 콜백 함수와 실패했을 때 부를 콜백 함수를 등록해두고 제때제때(성공하거나 실패했을때 - 어쨌든 둘 중 하나는 될꺼아닌가) 콜백 함수를 호출한다는 이야기다. <a href="http://promises-aplus.github.io/promises-spec/">스펙</a>을 보면 더 자세하게 적혀있지만 여기선 이 정도로 만족하자. 물론 fulfilled된다, rejected된다 라는 표현에는 익숙해져야 한다. fulfilled와 rejected의 판단기준은 각 비동기 함수마다 다르다. 파일을 읽는 함수라면 파일을 정상적으로 다 읽었을 때 fulfilled될것이고 그 외의 상황에서는 rejected가 될 것이다. http요청을 보내는 함수라면 응답이 정상적으로 왔을 때 fulfilled될 것이다. 예제로는 위에 적었던 파일 읽기가 좋겠다.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
-promise.then(console.log, console.error);
-</code></pre>
-<p>console.log는 onFulfilled 함수고 console.error는 onRejected함수이다. 파일을 읽는데에 성공을 했으면 console.log가 실행되고 그 결과값인 파일 내용이 console.log의 첫 인자로 들어간다. 결국 파일의 내용이 화면에 찍힐 것이다. 파일을 읽는데에 실패했다면 promise가 이행되지 않고 에러의 원인이 console.error로 콘솔에 출력된다.</p>
-
-<p>then메서드가 promise를 리턴한다는 말이 무슨 말인지 헷갈릴 수 있겠다. 비동기 요청을 이미 끝냈는데 다시 비동기 상태를 담는 promise가 왜 필요할까. callback hell 섹션에서 이야기 했던 중첩된 비동기 요청을 처리할 때에 이게 좋다. 이에 대해 이야기 해보자.</p>
-
-<h3>Chaining</h3>
-
-<p><em>then은 promise를 리턴한다.</em> 따라서 다음과 같은 코드가 가능하다.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
-<span class="keyword">var</span> promise2 = promise.then(readAnotherFile, console.error);
-promise2.then(console.log, console.error);
-</code></pre>
-<p>then은 언제나 promise를 리턴하므로 이에 대해 then을 더 호출할 수 있다. 깔끔하게 고쳐보자.</p>
-<pre><code class="lang-javascript"><span class="keyword">var</span> promise = readFile();
-promise
-    .then(readAnotherFile, console.error)
-    .then(console.log, console.error);
-</code></pre>
-<p>보기 편해졌다. 이렇게 중첩이 가능하다. 물론 다음과 같이 scope가 다른 곳에서도 promise는 동작한다.</p>
-<pre><code class="lang-javascript"><span class="function"><span class="keyword">function</span> <span class="title">myfunction</span><span class="params">()</span> {</span>
-  <span class="keyword">var</span> promise = readFile();
-  <span class="keyword">return</span> promise.then(readAnotherFile, console.error);
-}
-
-thisIsPromise = myfunction();
-thisIsPromise.then(console.log, console.error);
-</code></pre>
-<h4>핸들러의 리턴</h4>
-
-<p>Chaining 과 관련해서 중요한 Then의 특징에 대해 알아보자. 일반적으로 promise는 비동기 함수가 리턴한 것을 곧바로 사용한다. 하지만 여러개의 promise가 중첩되어 사용할때는 then이 리턴한 promise를 사용할 때도 있다. 이런 경우가 생각보다 흔히 발생하므로 알아두면 좋다.</p>
-<pre><code class="lang-javascript">promise2 = promise1.then(onFulfilled, onRejected);
-</code></pre>
-<p>위와 같은 코드가 있을 때 promise2는 다음과 같이 행동한다.</p>
-
-<ul>
-<li>onFulfilled나 onRejected가 예외를 던지면 promise2는 reject된다.</li>
-<li>onFulfilled가 함수가 아닐 때 promise1이 filfilled되면 promise2는 항상 fulfilled된다.</li>
-<li>onRejected가 함수가 아닐 때 promise1이 rejected되면 promise2는 항상 rejected된다.</li>
-<li>onFulfilled나 onRejected가 어떤 값, x를 리턴하면 다음을 수행한다.
-
-<ul>
-<li>x가 promise라면 promise2는 x가 된다. (정확히는 promise2는 x처럼 행동한다. 즉, x가 fulfilled되면 promise2도 fulfilled되고 x가 rejected되면 promise2도 rejected된다. 실제로 promsie2와 x가 같은 객체라면 promise2는 reject된다.)</li>
-<li>x가 thenable하다면 promise2는 x가 된다. (정확히는 promise2가 x처럼 행동한다. x.then은 첫번째 인자로 fulfilled 핸들러, 두 번째 인자로 rejected 핸들러를 전달받고 이 함수들을 호출해 promise2를 fulfilled 시키거나 rejected 시킨다.)</li>
-<li>x가 그 외의 값이라면 promise2는 x를 인자로 fulfilled된다.(즉, fulfilled핸들러가 실행되고 그 핸들로의 첫번째 인자로 x가 넘어간다.)</li>
-</ul></li>
-</ul>
-
-<p>&hellip; 써놓고 보니 복잡하다-_-) 여기에 추가적으로 thenable에 대한 이야기도 있지만 더 복잡해져서 뺀다. 요약하자면, fulfilled나 rejected핸들러에서 리턴한 값이 thenable이면 마치 promise2가 핸들러인것 처럼 동작한다. 아니면 promise2는 보통 fulfilled되고 예외가 발생하면 rejected된다.</p>
-
-<p>세련되게 서술하는건 힘들구나. 예제가 더 쉽다.</p>
-<pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
-promise1
-    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> result; })
-    .then(<span class="keyword">function</span>(val) { console.log(val); });
-</code></pre>
-<p>위 코드에서 promise1이 fulfilled되면 result의 값이 출력된다. 첫 번째 then의 리턴 값(result)이 두 번째 then의 인자로 들어가기 때문이다. 이는 윗 섹션에서 다루었다.</p>
-<pre><code class="lang-javascript">promise1 = readFile(<span class="string">"foo.txt"</span>);
-promise1
-    .then(<span class="keyword">function</span>(result) { <span class="keyword">return</span> writeFile(result); }) <span class="comment">// writeFile은 promise를 리턴한다.</span>
-    .then(<span class="keyword">function</span>() { console.log(<span class="string">"ok"</span>); }, <span class="keyword">function</span>() { console.error(<span class="string">"fail"</span>); }); <span class="comment">// 이 then은 writeFile이 리턴한 promise에 맞물려 작동한다.</span>
-</code></pre>
-<p>위 코드는 writeFile이 promise를 리턴하므로 첫 번째 then의 fulfilled 핸들러가 promise를 리턴한다. 이때 두번째 then은 writeFile이 리턴한 promise가 해결이 되어야 실행된다. 즉 파일을 성공적으로 파일을 썼다면 ok가 출력되고, 실패했다면 &ldquo;fail&quot;이 출력된다. 만약 readFile이 실패했다면 promise1은 rejected되고 그 이후에 물려있는 then또한 rejected된다.(이유는 첫번째 then에 rejected 핸들러가 없기 때문이다.)</p>
-
-<p>promise1의 핸들러에서 thenable 객체를 리턴하는 경우는 다음과 같다.</p>
-<pre><code class="lang-javascript">thenable = {
-  then : <span class="keyword">function</span>(onFulfilled, onRejected) {
-    <span class="keyword">var</span> result = doSomething();
-
-    <span class="keyword">if</span>(result) onFulfilled(<span class="string">"thenable success"</span>); <span class="comment">// 1. 이 onFulfilled는 `3`에서 첫번째 인자로 넘어가는 함수이다.</span>
-    <span class="keyword">else</span> onRejected(e);
-  }
-};
-
-promise1 = readFile(<span class="string">"foobar.txt"</span>)
-  .then(<span class="function"><span class="keyword">function</span> <span class="params">(content)</span> {</span>
-    console.log(<span class="string">"read ok"</span>);
-    <span class="keyword">return</span> thenable;  <span class="comment">// 2. promise1은 thenable객체처럼 행동한다.</span>
-  }, <span class="keyword">function</span>(reason) {
-    console.log(<span class="string">"read fail : "</span>, reason);
-  });
-
-promsie2 = promise1
-  .then(<span class="keyword">function</span>(message) { <span class="comment">// 3. 이 then은 thenable 객체의 then 메서드이다.</span>
-    console.log(<span class="string">"promiese2 ok : "</span> + message);
-  },
-  <span class="keyword">function</span>(reason) {
-    console.log(<span class="string">"promise2 fail : "</span> + reason);
-  });
-</code></pre>
-<p>파일을 읽는 것이 성공했을 때 위 코드의 실행결과는</p>
-<pre><code><span class="title">read</span> ok
-<span class="title">promise2</span> ok : thenable success
-</code></pre>
-<p>가 된다.</p>
-
-<h3>에러 핸들링</h3>
-
-<p>여기까지 따라왔으면 에러핸들링은 어렵지 않다. fulfilled핸들러든 rejected든 실행될 때 예외가 발생하면 연결된 promise는 rejected된다.</p>
-<pre><code class="lang-javascript">promise1 = ayncFunction();
-promise1
-  .then(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
-    <span class="keyword">if</span> (!data) <span class="keyword">throw</span> <span class="string">"no data"</span>;
-  })
-  .then(<span class="literal">null</span>, console.error);
-</code></pre>
-<p>위 코드는 첫번째 then에서 data가 없으면 예외를 던지고 연결되어 있는 then은 rejected되어 &quot;no data&quot;가 콘솔에 출력된다. 이 코드는 아래의 코드와 같다.</p>
-<pre><code class="lang-javascript"><span class="keyword">try</span> {
-  syncFunction();
-} <span class="keyword">catch</span> (err) {
-  console.error(err);
-}
-</code></pre>
-<p>에러를 무시하고 싶으면 아래와 같이 하면 된다.</p>
-<pre><code class="lang-javascript"><span class="keyword">try</span> {
-  <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'never will know this happened'</span>)
-} <span class="keyword">catch</span> (e) {}
-</code></pre><pre><code class="lang-javascript">readFile()
-  .then(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> {</span>
-    <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'never will know this happened'</span>)
-  })
-</code></pre>
-<p>위 두 코드는 모두 에러를 무시하는 코드이다. fulfilled나 rejected핸들러의 예외는 모두 promise의 제어 흐름에만 영향을 준다.</p>
-
-<h2>결론</h2>
-
-<p>이 프로그래밍 모델이 얼마나 많이 사용되고 널리 퍼졌는지 잘 모르겠다. 난 이제서야 사용하기 시작했고 공부겸 정리를 해본것이다. 많이 사용될수록 요구사항도 더 늘어날 수 있고 때문에 복잡해지고 지금 눈에 보이지 않는 문제들이 더 드러날수도 있다. 얼마나 복잡성을 잘 컨트롤 할지는 두고봐야하지만 우선은 괜찮다고 판단해서 지금 글을 쓴것이다.</p>
-
-<p>또 다른 재미있는 메타포를 가진 모델이 나오면 좋을 것 같다.</p>
-
-<h2>참고</h2>
-
-<p><a href="http://howtonode.org/promises">http://howtonode.org/promises</a> : 영어가 부담스럽지 않다면 꼭 읽어보시길 바랍니다.<br/>
-<a href="http://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/">http://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/</a> : promise와 q에 대해 설명이 잘 되어있다.<br/>
-<a href="http://promises-aplus.github.io/promises-spec/">http://promises-aplus.github.io/promises-spec/</a> : promise의 명세서.<br/>
-<a href="http://callbackhell.com/">http://callbackhell.com/</a> : Callback의 부정적인 사용법 모음</p>
-]]>
-    </content>
-  </entry>
-  <entry>
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ grunt-deadlink ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/grunt-deadlink.html" />
-    <updated>2013-10-05T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/grunt-deadlink.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-deadlink.html</id>
-    <content type="html">
-<![CDATA[
+    <content type="html"><![CDATA[
+      <h1 id="grunt-deadlink">grunt-deadlink</h1>
 <p>grunt에서 동작하는 <a href="https://npmjs.org/package/grunt-deadlink">죽은 링크를 검사하는 플러그인</a>을 만들었다. 블로그를 운영하는데에 있어서 static generator를 이용한다면 이런것도 해야하지 않나 싶기도하고, 옛날 글들에 있는 링크들이 망가졌을 경우 처치를 해야하지 않을까 (사실 잘 읽지도 않겠지만) 싶어서 만들었다. 아무쪼록 잘 써주시길 바란다. 이 글은 grunt-deadlink를 만들면서 생각난 것들을 정리한 것이다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/grunt-deadlink/404.png" alt=""/></p>
-
-<h2>기본적인 동작</h2>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/grunt-deadlink/404.png" alt=""></p>
+<h2 id="-">기본적인 동작</h2>
 <p>deadlink는 다음과 같이 설정한다.</p>
-<pre><code>grunt.loadNpmTasks(<span class="string">'grunt-deadlink'</span>);
+<pre><code>grunt.loadNpmTasks(&#39;grunt-deadlink&#39;);
 
 grunt.config.init({
     deadlink : {
         samplecheck : {
-            src : [ <span class="keyword">...</span> ]
-            expressions : [ <span class="keyword">...</span> ]
+            src : [ ... ]
+            expressions : [ ... ]
         }
     }
 });
-</code></pre>
-<p>이렇게 설정하면 src에서 expressions를 찾아 그 링크가 죽었는지 살았는지 알려준다.</p>
-
+</code></pre><p>이렇게 설정하면 src에서 expressions를 찾아 그 링크가 죽었는지 살았는지 알려준다.</p>
 <ul>
-<li><code>src</code> : glob 패턴으로 파일들을 적으면 된다. 예를 들자면 &lsquo;docs/**/*.md'는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
+<li><code>src</code> : glob 패턴으로 파일들을 적으면 된다. 예를 들자면 ‘docs/<em>*/</em>.md’는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
 <li><code>expressions</code> : 자바스크립트의 RegExp 객체들을 적는다. <code>src</code>에서 지정하는 파일들 속에서 <code>expressions</code>로 링크를 찾아낸다. <em>반드시 한 쌍의 괄호로 묶인 sub-string이 필요하다.</em> 이 괄호 안에는 검사하고 싶은 url이 들어간다. 예를 들자면 마크다운은 <code>[&lt;any string&gt;](&lt;url&gt;)</code>과 같은 식으로 링크를 설정하는데, 이를 위해서는 <code>expressions : /\[[^\]]*\]\((http[s]?:\/\/[^\) ]+)/g</code>와 같이 설정해준다. 링크 방식이 여러개라면 배열로 정의해준다. 아무것도 정의해주지 않았다면 마크다운의 링크만 인식한다.</li>
 </ul>
-
 <p>이 태스크는 일일히 요청을 보내고 받는 일을 하므로 링크가 많을 경우 많은 시간이 걸린다. <em>개발용 grunt 태스크에는 이 태스크를 넣지 않는 것이 좋다.</em></p>
-
-<h2>HTTP Client</h2>
-
+<h2 id="http-client">HTTP Client</h2>
 <p>처음에는 nodejs의 기본 패키지인 <code>http</code>와 <code>https</code>를 사용하려 했다. 하지만 https가 제대로 동작하지 않았고 redirect (status code 3xx)를 잘 처리할 자신이 없었다. 인터넷 검색을 통해 <code>request</code>라는 패키지가 redirect와 https를 잘 지원한다는걸 알고는 적용했다. 결과는 성공적. 하지만 여전히 브라우저/Curl로는 제대로 나오지만 deadlink에서는 이러쿵 저러쿵 에러를 내뱉었다. 이유는 몇 가지가 있었는데, HEAD 메서드를 지원하지 않는 웹서버가 종종 있다거나, 너무 많은 소켓을 한꺼번에 열어서 그렇다거나, 어떠한 이유로 연결이 그냥 끊기는 경우도 있었다. 이런 것들은 GET메서드로 변경(마음에 들지 않는다), connection pooling, 재요청등으로 해결했다.</p>
-
-<h2>RegExp</h2>
-
+<h2 id="regexp">RegExp</h2>
 <p>원하는 문서에서 링크만 뽑아내는 작업은 정규표현식으로 처리했다. 정규표현식으로 인식 불가능한 문법을 사용하는 문서들에겐 유감이지만 현재 가장 간단한 방법이라 생각한다. 우리가 마크다운을 자주 사용하므로 기본 적으로는 마크다운의 링크를 인식하도록 했다. 즉 <code>[...](url)</code> 형식이나 <code>[...]: url</code>형식으로 쓰여있으면 url만 꺼내서 인식한다. 물론 마크다운 문서에 html형식의 링크가 들어갈수 있지만 무시했다. 나중에 넣겠지.</p>
-
-<h2>앞으로 할 것</h2>
-
+<h2 id="-">앞으로 할 것</h2>
 <p>귀찮아서 수정안하고 냅둔 것들. 필요한 분들이 수정해주면 뽀뽀해줄꺼다. 아니 개발자분들에겐 술사준다고 해야하려나?</p>
-
 <ul>
 <li><del>결과에 파일 이름 넣기 - 지금은 URL만 출력되는데 URL이 들어있는 파일 이름이 들어가야 한다.</del></li>
 <li><del>결과를 파일로 저장하는 옵션 만들기 - dead link가 많을 때 화면에 출력되는게 좀 부담스럽더라.</del></li>
-<li>HEAD메서드로 우선 요청하고 '405 Method not allowed'나 '501 Method Unimplemented'응답시 GET메서드로 재요청 하기 - 속도나 네트워크에 부하를 덜 주는 방법이다. 근데 어떤 이유에서인지 잘 안된다.</li>
+<li>HEAD메서드로 우선 요청하고 ‘405 Method not allowed’나 ‘501 Method Unimplemented’응답시 GET메서드로 재요청 하기 - 속도나 네트워크에 부하를 덜 주는 방법이다. 근데 어떤 이유에서인지 잘 안된다.</li>
 <li>링크 필터링 - expressions에 RegExp뿐만이 아니라 함수를 넣어 링크를 추출하는 과정을 사용자에게 위임하는 기능</li>
 <li>URL 캐싱 - 중복된 URL은 재요청하지 않는다.</li>
 <li>local link test - 로컬 파일로 접근하는 링크들은 아직 고려하지 않았다. 검사하는 파일로부터의 상대경로와 도메인 루트부터의 상대경로 등을 체크해야한다.</li>
 <li>코드 정리 - (-_-)a</li>
 </ul>
-]]>
-    </content>
-  </entry>
-  <entry>
+
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ git: AngularJS Git Commit Message Conventions ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" />
-    <updated>2013-09-24T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html</id>
-    <content type="html">
-<![CDATA[
+    <content type="html"><![CDATA[
+      <h1 id="git-angularjs-git-commit-message-conventions">git: AngularJS Git Commit Message Conventions</h1>
 <p>이 글은 <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS Git Commit Message Conventions</a>를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>라는 스크립트까지 공개돼 있다.</p>
-
 <p>이 가이드에 따라서 커밋 메시지를 남기는 것을 연습 중이다. 히스토리가 좀 더 읽기 좋아졌지만, CHANGELOG를 남기고 싶어질 만한 일을 아직 하지 못했다. 아직 뭐가 어떻게 좋은지 표현하기 어렵다.</p>
-
 <p>이 글에 따라 커밋 메시지를 작성하고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>로 생성한 CHANGELOG를 한번 구경하고 읽자:</p>
-
 <ul>
 <li><a href="https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md">https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md</a></li>
 <li><a href="https://github.com/karma-runner/karma/blob/master/CHANGELOG.md">https://github.com/karma-runner/karma/blob/master/CHANGELOG.md</a></li>
 </ul>
-
-<p><img src="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions/angularjs-git-lg.png" alt=""/></p>
-
-<h2>AngularJS Git Commit Message Conventions</h2>
-
-<h3>요약</h3>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions/angularjs-git-lg.png" alt=""></p>
+<h2 id="angularjs-git-commit-message-conventions">AngularJS Git Commit Message Conventions</h2>
+<h3 id="-">요약</h3>
 <ul>
 <li>CHANGELOG.md를 스크립트로 생성한다.</li>
 <li><code>git bisect</code>로 중요하지 않은 커밋은 그냥 넘긴다.</li>
 <li>히스토리에 유의미한 정보를 많이 남긴다.</li>
 </ul>
-
-<h4>CHANGELOG.md 생성하기</h4>
-
+<h4 id="changelog-md-">CHANGELOG.md 생성하기</h4>
 <p>우리는 CHANGELOG를 만들 때 새 기능(Feature), 버그 픽스, 주목할만한 변화(Breaking Changes) 이렇게 세 가지 정보를 남기려고 한다. 이 세 가지 정보와 관련된 커밋을 이용해서 생성하는데 배포하기 전에 스크립트를 돌려서 생성한다. 생성하고 나서 손으로 수정할 때도 있지만, 수정한다고 해도 기본 왁구를 잡아주기 때문에 매우 유용하다.</p>
-
 <p>마지막으로 배포한 후부터 만들어진 모든 커밋 목록 보기(커밋 메시지의 첫 줄만 나온다):</p>
-<pre><code>git <span class="keyword">log</span> &lt;<span class="keyword">last</span> tag&gt; HEAD --pretty=<span class="keyword">format</span>:<span class="variable">%s</span>
-</code></pre>
-<p>이번에 배포하는 새 기능 조회:</p>
-<pre><code>git log <span class="tag">&lt;<span class="title">last</span> <span class="attribute">release</span>&gt;</span> HEAD --grep feature
-</code></pre>
-<h4>사소한 커밋 식별하기</h4>
-
+<pre><code>git log &lt;last tag&gt; HEAD --pretty=format:%s
+</code></pre><p>이번에 배포하는 새 기능 조회:</p>
+<pre><code>git log &lt;last release&gt; HEAD --grep feature
+</code></pre><h4 id="-">사소한 커밋 식별하기</h4>
 <p>들여쓰기를 하거나, 공백을 추가/삭제하거나, 빠트린 세미콜론을 넣었을 뿐이거나, 주석을 수정한 커밋들은 어떻게 처리해야 할까? 우리가 무언가 찾을 때 로직을 변경하지 않은 커밋은 무시할 수 있다.</p>
-
 <p><code>git bisect</code>를 이용해서 무시한다:</p>
-<pre><code>git bisect skip $(git rev-list --grep irrelevant <span class="tag">&lt;<span class="title">good</span> <span class="attribute">place</span>&gt;</span> HEAD)
-</code></pre>
-<h4>히스토리에는 어떤 정보를 남기면 좋을까?</h4>
-
+<pre><code>git bisect skip $(git rev-list --grep irrelevant &lt;good place&gt; HEAD)
+</code></pre><h4 id="-">히스토리에는 어떤 정보를 남기면 좋을까?</h4>
 <p>일종의 컨텍스트 정보도 넣으면 좋다.</p>
-
 <p>아래의 메지시는 컨텍스트 정보의 예인데 <a href="https://github.com/angular/angular.js">angularjs</a> 커밋에서 추출한 메시지다:</p>
-
 <ul>
 <li>Fix small typo in docs widget (tutorial instructions)</li>
 <li>Fix test for scenario.Application - should remove old iframe</li>
@@ -381,11 +123,8 @@ grunt.config.init({
 <li>Replaced double line break with single when text is fetched from Google</li>
 <li>Added support for properties in documentation</li>
 </ul>
-
 <p>뭘 고쳤는지에 대한 정보가 커밋 메시지에 들어 있긴 하지만 일관된 형식으로 작성하진 않았다.</p>
-
 <p>다른 메시지를 보자:</p>
-
 <ul>
 <li>fix comment stripping</li>
 <li>fixing broken links</li>
@@ -393,27 +132,19 @@ grunt.config.init({
 <li>Check whether links do exist and throw exception</li>
 <li>Fix sitemap include (to work on case sensitive linux)</li>
 </ul>
-
-<p>이 메시지를 보고 뭘 고친 것인지 알 수 있을까? 여기에는 무엇을 고쳤다는 컨텍스트 정보가 없다.<br/>
+<p>이 메시지를 보고 뭘 고친 것인지 알 수 있을까? 여기에는 무엇을 고쳤다는 컨텍스트 정보가 없다.
 docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무엇을 고쳤는지 짐작할 수 있을 것이다.</p>
-
 <p>물론, 어떤 파일이 변경됐는지 확인해보면 무엇을 수정했는지 알 수 있다. 하지만, 좀 번거롭다. 나는 히스토리를 조회하는 것만으로도 무엇을 고친 것인지 안다. 단지 컨벤션에 따라 작성하지 않았을 뿐이다.</p>
-
-<h3>커밋 메시시 포멧</h3>
-<pre><code><span class="tag">&lt;<span class="title">type</span>&gt;</span>(<span class="tag">&lt;<span class="title">scope</span>&gt;</span>): <span class="tag">&lt;<span class="title">subject</span>&gt;</span>
-<span class="tag">&lt;<span class="title">BLANK</span> <span class="attribute">LINE</span>&gt;</span>
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;<span class="title">BLANK</span> <span class="attribute">LINE</span>&gt;</span>
-<span class="tag">&lt;<span class="title">footer</span>&gt;</span>
-</code></pre>
-<p>첫 줄은 70자를 넘지 않아야 한다. 아시다시피 두 번째 줄은 블랭크이고 그다음부터는 80자를 넘지 않아야 한다. 이렇게 작성하면 GitHub에서 읽을 때도 편하고 다른 도구를 사용할 때도 편하다.</p>
-
-<h4>Subject</h4>
-
+<h3 id="-">커밋 메시시 포멧</h3>
+<pre><code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+</code></pre><p>첫 줄은 70자를 넘지 않아야 한다. 아시다시피 두 번째 줄은 블랭크이고 그다음부터는 80자를 넘지 않아야 한다. 이렇게 작성하면 GitHub에서 읽을 때도 편하고 다른 도구를 사용할 때도 편하다.</p>
+<h4 id="subject">Subject</h4>
 <p><code>&lt;subject&gt;</code> 줄에는 무엇이 달라졌는지 간략하게 기술한다.</p>
-
-<h5><code>&lt;type&gt;</code>에 작성하는 것</h5>
-
+<h5 id="-type-"><code>&lt;type&gt;</code>에 작성하는 것</h5>
 <ul>
 <li>feat (feature)</li>
 <li>fix (bug fix)</li>
@@ -423,499 +154,398 @@ docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무�
 <li>test (when adding missing tests)</li>
 <li>chore (maintain)</li>
 </ul>
-
-<h5><code>&lt;scope&gt;</code>에 넣는 것</h5>
-
+<h5 id="-scope-"><code>&lt;scope&gt;</code>에 넣는 것</h5>
 <p>여기에는 무엇을 수정했는지 적는다. 예를 들어 $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView라고 적으면 되겠다.</p>
-
 <blockquote>
-<p>역주: Angular.js에서 <code>스코프</code>는 특별한 컨텍스트(or 네임스페이스)를 지칭하는 용어다. 일반적인 언어의 스코프와 상통하는 면이 있기도 하지만 다르다. 자세한 내용은 <a href="http://docs.angularjs.org/tutorial">Angular.js 튜토리얼</a>을 참고한다.<br/>
+<p>역주: Angular.js에서 <code>스코프</code>는 특별한 컨텍스트(or 네임스페이스)를 지칭하는 용어다. 일반적인 언어의 스코프와 상통하는 면이 있기도 하지만 다르다. 자세한 내용은 <a href="http://docs.angularjs.org/tutorial">Angular.js 튜토리얼</a>을 참고한다.
 하지만 일반적인 의미의 스코프로 해석해서, Angular.js가 아닌 다른 프로젝트의 모듈이나 패키지를 넣어도 무방하다고 생각한다. 도대체 어디를 고쳤는지 적는 용도로 쓰면 좋겠다.</p>
 </blockquote>
-
-<h5><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
-
+<h5 id="-subject-"><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
 <ul>
-<li>군더더기 없이 간략하게 현재형으로 적는다: &lsquo;changed'나 'changes'가 아니라 'change'로 적는다.</li>
+<li>군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
 <li>굳이 첫 문자를 대문자로 적지 않는다.</li>
 <li>문장 끝에 마침표(.)로 끝내지 않는다.</li>
 </ul>
-
-<h4>메시지 바디</h4>
-
+<h4 id="-">메시지 바디</h4>
 <ul>
-<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: 'changed'나 'changes'가 아니라 'change'로 적는다.</li>
-<li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p></li>
-<li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p></li>
-<li><p><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></p></li>
+<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p>
+</li>
+<li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p>
+</li>
+<li><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></li>
 </ul>
-
-<h4>메시지 푸터</h4>
-
-<h5>주요 변경 내용(Breaking changes)</h5>
-
+<h4 id="-">메시지 푸터</h4>
+<h5 id="-breaking-changes-">주요 변경 내용(Breaking changes)</h5>
 <p>주요 변경 내용은 푸터에 언급한다. 무엇을 고쳤는지, 왜 고쳤는지, 마이그레이션은 어떻게 해야 하는지 설명한다.</p>
-
 <blockquote>
 <p>역주 - 예제는 번역하지 않았다. 튜토리얼을 봤는데도 Angularjs에 대한 이해가 여전히 부족하다. 그리고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>를 그대로 사용하려면 인식 가능하도록 주요 용어는 영어를 사용해야 한다.</p>
 </blockquote>
-<pre><code>BREAKING CHANGE: isolate scope bindings definition has changed <span class="keyword">and</span>
-<span class="keyword">the</span> inject option <span class="keyword">for</span> <span class="keyword">the</span> directive controller injection was removed.
+<pre><code>BREAKING CHANGE: isolate scope bindings definition has changed and
+the inject option for the directive controller injection was removed.
 
-To migrate <span class="keyword">the</span> code follow <span class="keyword">the</span> example <span class="keyword">below</span>:
+To migrate the code follow the example below:
 
 Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
 
-The removed `inject` wasn't generaly useful <span class="keyword">for</span> directives so there should be no code using <span class="keyword">it</span>.
-</code></pre><pre><code>BREAKING CHANGE: isolate scope bindings definition has changed <span class="keyword">and</span>
-<span class="keyword">the</span> inject option <span class="keyword">for</span> <span class="keyword">the</span> directive controller injection was removed.
+The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
+</code></pre><pre><code>BREAKING CHANGE: isolate scope bindings definition has changed and
+the inject option for the directive controller injection was removed.
 
-To migrate <span class="keyword">the</span> code follow <span class="keyword">the</span> example <span class="keyword">below</span>:
+To migrate the code follow the example below:
 
 Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
 
-The removed `inject` wasn't generaly useful <span class="keyword">for</span> directives so there should be no code using <span class="keyword">it</span>.
-</code></pre>
-<h5>이슈 번호 넣기</h5>
-
-<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 &ldquo;Closes&quot;로 시작한다:</p>
-<pre><code><span class="title">Closes</span> <span class="comment">#234</span>
-</code></pre>
-<p>이슈를 여러 개 넣어도 된다:</p>
-<pre><code><span class="tag">Closes</span> <span class="id">#123</span>, <span class="id">#245</span>, <span class="id">#992</span>
-</code></pre>
-<blockquote>
+The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
+</code></pre><h5 id="-">이슈 번호 넣기</h5>
+<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 “Closes”로 시작한다:</p>
+<pre><code>Closes #234
+</code></pre><p>이슈를 여러 개 넣어도 된다:</p>
+<pre><code>Closes #123, #245, #992
+</code></pre><blockquote>
 <p>역주: Close(s)와 이슈 번호를 커밋 메시지에 넣어 GitHub에 Push하면 해당 이슈가 자동으로 닫힌다.</p>
 </blockquote>
-
-<h3>Examples</h3>
-
-<hr/>
-
-<p>** Feat($browser): onUrlChange event (popstate/hashchange/polling) **</p>
-
+<h3 id="examples">Examples</h3>
+<hr>
+<p><strong> Feat($browser): onUrlChange event (popstate/hashchange/polling) </strong></p>
 <p>Added new event to $browser:</p>
-
 <ul>
 <li>forward popstate event if available</li>
 <li>forward hashchange event if popstate not available</li>
 <li>do polling when neither popstate nor hashchange available</li>
 </ul>
-
-<p>** Breaks $browser.onHashChange, which was removed (use onUrlChange instead) **</p>
-
-<hr/>
-
-<p>** fix($compile): couple of unit tests for IE9 **</p>
-
-<p>Older IEs serialize html uppercased, but IE9 does not&hellip;<br/>
-Would be better to expect case insensitive, unfortunately jasmine does<br/>
+<p><strong> Breaks $browser.onHashChange, which was removed (use onUrlChange instead) </strong></p>
+<hr>
+<p><strong> fix($compile): couple of unit tests for IE9 </strong></p>
+<p>Older IEs serialize html uppercased, but IE9 does not…
+Would be better to expect case insensitive, unfortunately jasmine does
 not allow to user regexps for throw expectations.</p>
-
-<p>** Closes <code>#392</code> **<br/>
-** Breaks foo.bar api, foo.baz should be used instead **</p>
-
-<hr/>
-
-<p>** feat(directive): ng:disabled, ng:checked, ng:multiple, ng:readonly, ng:selected **</p>
-
-<p>New directives for proper binding these attributes in older browsers (IE).<br/>
+<p><strong> Closes <code>#392</code> </strong>
+<strong> Breaks foo.bar api, foo.baz should be used instead </strong></p>
+<hr>
+<p><strong> feat(directive): ng:disabled, ng:checked, ng:multiple, ng:readonly, ng:selected </strong></p>
+<p>New directives for proper binding these attributes in older browsers (IE).
 Added coresponding description, live examples and e2e tests.</p>
-
-<p>** Closes <code>#351</code> **</p>
-
-<hr/>
-
-<p>** style($location): add couple of missing semi colons **</p>
-
-<hr/>
-
-<p>** docs(guide): updated fixed docs from Google Docs **</p>
-
+<p><strong> Closes <code>#351</code> </strong></p>
+<hr>
+<p><strong> style($location): add couple of missing semi colons </strong></p>
+<hr>
+<p><strong> docs(guide): updated fixed docs from Google Docs </strong></p>
 <p>Couple of typos fixed:</p>
-
 <ul>
 <li>indentation</li>
-<li>batchLogbatchLog -> batchLog</li>
+<li>batchLogbatchLog -&gt; batchLog</li>
 <li>start periodic checking</li>
 <li>missing brace</li>
 </ul>
-
-<hr/>
-
-<p>** feat($compile): simplify isolate scope bindings **</p>
-
+<hr>
+<p><strong> feat($compile): simplify isolate scope bindings </strong></p>
 <p>Changed the isolate scope binding options to:</p>
-
 <ul>
 <li><code>@attr</code> - attribute binding (including interpolation)</li>
 <li>=model - by-directional model binding</li>
-<li>&expr - expression execution binding</li>
+<li>&amp;expr - expression execution binding</li>
 </ul>
-
-<p>This change simplifies the terminology as well as<br/>
-number of choices available to the developer. It<br/>
+<p>This change simplifies the terminology as well as
+number of choices available to the developer. It
 also supports local name aliasing from the parent.</p>
-
-<p><strong>BREAKING CHANGE</strong>: isolate scope bindings definition has changed and<br/>
+<p><strong>BREAKING CHANGE</strong>: isolate scope bindings definition has changed and
 the inject option for the directive controller injection was removed.</p>
-
 <p>To migrate the code follow the example below:</p>
 <pre><code>Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
-</code></pre>
-<p>The removed inject wasn&rsquo;t generaly useful for directives so there should be no code using it.</p>
-]]>
-    </content>
-  </entry>
-  <entry>
+</code></pre><p>The removed `inject` wasn’t generaly useful for directives so there should be no code using it.</p>
+
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ grunt: 수정된 파일만 Lint하기 ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" />
-    <updated>2013-09-21T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html</id>
-    <content type="html">
-<![CDATA[
+    <content type="html"><![CDATA[
+      <h1 id="grunt-lint-">grunt: 수정된 파일만 Lint하기</h1>
 <p>이 글은 예로 Lint를 사용하지만, Watch 이벤트를 다루는 법은 CoffeeScript 스크립트를 컴파일하는 것 때문에 필요했다. Lint는 번개처럼 빠르지만 CoffeeScript 컴파일은 번개같진 않아서 수정한 파일만 다시 컴파일하는 기능이 간절했다.</p>
-
 <p>grunt의 watch 타스크는 아직 완성되지 않은 것 같다. 조금 모호해서 수정한 파일만 다루는게 처음이라면 실수하기 쉽도록 생겼다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed/gruntjs.png" alt=""/></p>
-
-<h2>Watch 이벤트</h2>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/grunt-do-only-files-changed/gruntjs.png" alt=""></p>
+<h2 id="watch-">Watch 이벤트</h2>
 <p>먼저 Watch 이벤트를 핸들링하는 방법을 살펴보자. Watch하고 있다가 파일이 수정되면 해당 파일을 Lint하는 워크플로우를 살펴본다.</p>
-
 <p>아래는 <a href="https://github.com/gruntjs/grunt-init-node">grunt-init-node</a>에서 가져왔고 jshint와 watch를 제외한 다른 부분은 생략한다:</p>
-<pre><code><span class="keyword">...</span>
+<pre><code>...
 jshint: {
   lib: {
-    src: [<span class="string">'lib/**/*.js'</span>]
+    src: [&#39;lib/**/*.js&#39;]
   }
 },
 watch: {
   lib: {
-    files: <span class="string">'&lt;%= jshint.lib.src %&gt;'</span>,
-    tasks: [<span class="string">'jshint:lib'</span>]
+    files: &#39;&lt;%= jshint.lib.src %&gt;&#39;,
+    tasks: [&#39;jshint:lib&#39;]
   }
 }
-<span class="keyword">...</span>
-</code></pre>
-<p>&lsquo;lib/**/*.js'파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
-
+...
+</code></pre><p>‘lib/<em>*/</em>.js’파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
 <p>수정된 파일만 다시 Lint하게 하려면, Watch 이벤트를 직접 핸들링해야 한다. 아래와 같은 코드가 필요하다:</p>
-<pre><code><span class="keyword">...</span>
-grunt.event.on(<span class="string">'watch'</span>, <span class="keyword">function</span>(action, files, target) {
-  grunt.log.writeln(target + <span class="string">": "</span> + files + <span class="string">" has "</span> + action);
-  grunt.config([<span class="string">'jshint'</span>, target], {src: files});
+<pre><code>...
+grunt.event.on(&#39;watch&#39;, function(action, files, target) {
+  grunt.log.writeln(target + &quot;: &quot; + files + &quot; has &quot; + action);
+  grunt.config([&#39;jshint&#39;, target], {src: files});
 });
 ..
-</code></pre>
-<p>'lib/**/*.js&rsquo; 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
-
+</code></pre><p>‘lib/<em>*/</em>.js’ 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
 <p>파일을 정의해주는 부분을 아래와 같이 변경해줘야 한다:</p>
-<pre><code><span class="keyword">...</span>
+<pre><code>...
 jshint: {
   lib: {
-    src: <span class="string">'&lt;%= watch.lib.files %&gt;'</span>
+    src: &#39;&lt;%= watch.lib.files %&gt;&#39;
   }
 },
 watch: {
   lib: {
-    files: [<span class="string">'lib/**/*.js'</span>],
-    tasks: [<span class="string">'jshint:lib'</span>]
+    files: [&#39;lib/**/*.js&#39;],
+    tasks: [&#39;jshint:lib&#39;]
   }
 }
-<span class="keyword">...</span>
-</code></pre>
-<p>이렇게 하면 jshint의 설정이 달라져도 watch 타스크는 영향받지 않는다.</p>
-
+...
+</code></pre><p>이렇게 하면 jshint의 설정이 달라져도 watch 타스크는 영향받지 않는다.</p>
 <p>설정을 백업하거나 watch 전용 타겟을 만들어서 해결할 수도 있지만, 코드는 좀더 복잡해질 수 있다. 수정된 파일만 컨트롤하는 방법은 아직 불완전하다.</p>
-
 <p>이 내용을 <a href="https://github.com/gruntjs/grunt-init-node/pull/4">grunt-init-node에 적용해서 PR</a>을 보냈는데 거절됐다. watch는 다른 다스크에 종속적이며 watch 이벤트를 핸들링해서 컴파일을 지원하는 것은 권장하지 않는다고 한다. 다른 방법을 고안중이라고 하니 기다려봐야 겠다.</p>
-
 <p>그리고 <a href="https://github.com/gruntjs/grunt-init-node/issues/3">grunt-init-node의 다른 이슈</a>를 보면 <a href="https://github.com/gruntjs/grunt-init-node">grunt-init-node</a> 프로젝트가 yeoman으로 대체될 것이라고 한다. yeoman과 grunt-init은 기능이 중복되는 감이 있었는데, scaffolding은 전적으로 yeoman이 맡게 될 것으로 보인다.</p>
-]]>
-    </content>
-  </entry>
-  <entry>
+
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ grunt: 비동기 타스크 ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
-    <updated>2013-09-05T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-async-task.html</id>
-    <content type="html">
-<![CDATA[
-<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다&ndash;;).</p>
-
+    <content type="html"><![CDATA[
+      <h1 id="grunt-">grunt: 비동기 타스크</h1>
+<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다—;).</p>
 <p>이 글은 비동기 타스크를 왜 쓰고 언제 어떻게 써야 하는지 설명한다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/grunt-async-task/information-boards.jpg" alt=""/></p>
-
-<h2>비동기 타스크</h2>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/grunt-async-task/information-boards.jpg" alt=""></p>
+<h2 id="-">비동기 타스크</h2>
 <p>우선 setTimeout으로 간단한 비동기 타스크를 하나 만들어 보자.</p>
-
 <p>afterseconds라는 이름의 타스크를 만든다:</p>
-<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+<pre><code>module.exports = function(grunt) {
 
-  grunt.registerTask(<span class="comment">'afterseconds', 'done after a few seconds', function() {</span>
+  grunt.registerTask(&#39;afterseconds&#39;, &#39;done after a few seconds&#39;, function() {
     var done = this.async();
 
-    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+    console.log(new Date());
 
-    setTimeout(<span class="keyword">function</span>(){
-      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+    setTimeout(function(){
+      console.log(new Date());
       done();
-    }, <span class="number">2000</span>);
+    }, 2000);
   });
 
 };
-</code></pre>
-<p>이 타스크는 2초 후에 완료하는 타스크다.</p>
-
+</code></pre><p>이 타스크는 2초 후에 완료하는 타스크다.</p>
 <p>Gruntfile.coffee도 만들자:</p>
 <pre><code>module.exports = (grunt)-&gt;
-  <span class="keyword">...</span>
+  ...
 
-  grunt.loadTasks <span class="string">'tasks'</span>
+  grunt.loadTasks &#39;tasks&#39;
 
-  <span class="comment"># Default task.</span>
-  grunt.registerTask <span class="string">'default'</span>, [<span class="string">'afterseconds'</span>, <span class="string">'jshint'</span>]
+  # Default task.
+  grunt.registerTask &#39;default&#39;, [&#39;afterseconds&#39;, &#39;jshint&#39;]
+</code></pre><p><code>grunt</code>라고 실행하면 <code>afterseconds</code>, <code>jshint</code>를 차례대로 실행한다:</p>
+<pre><code>$ grunt
+Running &quot;afterseconds&quot; task
+Fri Sep 06 2013 02:24:01 GMT+0900 (KST)
+Fri Sep 06 2013 02:24:03 GMT+0900 (KST)
 
-</code></pre>
-<p><code>grunt</code>라고 실행하면 <code>afterseconds</code>, <code>jshint</code>를 차례대로 실행한다:</p>
-<pre><code>$ <span class="tag">grunt</span>
-<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
-<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:01</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
-<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 02<span class="pseudo">:24</span><span class="pseudo">:03</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
-
-<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
-&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
-</code></pre>
-<p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
-
-<h2>grunt 비동기 구현</h2>
-
+Running &quot;jshint:tasks&quot; (jshint) task
+&gt;&gt; 0 files linted. Please check your ignored files.
+</code></pre><p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
+<h2 id="grunt-">grunt 비동기 구현</h2>
 <p>grunt는 내부에 타스크 큐를 가지고 있다. 우리가 타스크를 실행하면 즉시 실행되는 것이 아니라 일단 큐에 등록되고 다음 틱에 실행된다.</p>
-
-<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 &lsquo;afterseconds&rsquo;, &lsquo;jshint&rsquo; 타스크가 순서대로 등록됐고 &lsquo;afterseconds'는 2초 후에 끝나므로 2초 후에 'jshint'가 실행된다.</p>
-
+<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 ‘afterseconds’, ‘jshint’ 타스크가 순서대로 등록됐고 ‘afterseconds’는 2초 후에 끝나므로 2초 후에 ‘jshint’가 실행된다.</p>
 <p><code>var done = this.async();</code>의 async() 함수를 살펴보자:</p>
-<pre><code>// When called, sets the async flag <span class="keyword">and</span> returns a <span class="function"><span class="keyword">function</span> <span class="title">that</span> <span class="title">can</span>
-// <span class="title">be</span> <span class="title">used</span> <span class="title">to</span> <span class="title">continue</span> <span class="title">processing</span> <span class="title">the</span> <span class="title">queue</span>.
-<span class="title">context.async</span> = <span class="title">function</span><span class="params">()</span></span> {
-  async = <span class="keyword">true</span>;
+<pre><code>// When called, sets the async flag and returns a function that can
+// be used to continue processing the queue.
+context.async = function() {
+  async = true;
 
-  // The returned <span class="function"><span class="keyword">function</span> <span class="title">should</span> <span class="title">execute</span> <span class="title">asynchronously</span> <span class="title">in</span> <span class="title">case</span>
-  // <span class="title">someone</span> <span class="title">tries</span> <span class="title">to</span> <span class="title">do</span> <span class="title">this.async</span><span class="params">()</span></span>(); inside a task (WTF).
-  <span class="keyword">return</span> function(success) {
-    setTimeout(function() { complete(success); }, <span class="number">1</span>);
+  // The returned function should execute asynchronously in case
+  // someone tries to do this.async()(); inside a task (WTF).
+  return function(success) {
+    setTimeout(function() { complete(success); }, 1);
   };
 };
-</code></pre>
-<p>내부의 async 변수를 true바꾸고 done 함수를 리턴한다.</p>
-
+</code></pre><p>내부의 async 변수를 true바꾸고 done 함수를 리턴한다.</p>
 <p>타스크를 실행시키는 grunt 코드는 아래와 같다:</p>
-<pre><code><span class="keyword">try</span> {
-  // Get <span class="keyword">the</span> current task <span class="keyword">and</span> <span class="command">run</span> <span class="keyword">it</span>, setting `this` inside <span class="keyword">the</span> task
-  // function <span class="keyword">to</span> be something useful.
+<pre><code>try {
+  // Get the current task and run it, setting `this` inside the task
+  // function to be something useful.
   var success = fn.call(context);
-  // If <span class="keyword">the</span> async flag wasn't <span class="keyword">set</span>, process <span class="keyword">the</span> next task <span class="keyword">in</span> <span class="keyword">the</span> queue.
-  <span class="keyword">if</span> (!async) {
+  // If the async flag wasn&#39;t set, process the next task in the queue.
+  if (!async) {
     complete(success);
   }
 } catch (err) {
   complete(err);
 }
-</code></pre>
-<p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)</code>를 바로 실행해서 타스크를 완료시키고 비동기일 때는 <code>done()</code>이 실행될 때까지 연기된다.</p>
-
-<h3>async()는 왜 필요할까?</h3>
-
+</code></pre><p><code>fn.call(context)</code>가 타스크를 실행하는 부분이고 async 값을 검사해서 동기일 때는 <code>complete(success)</code>를 바로 실행해서 타스크를 완료시키고 비동기일 때는 <code>done()</code>이 실행될 때까지 연기된다.</p>
+<h3 id="async-">async()는 왜 필요할까?</h3>
 <p>간단한 node 프로그램에서는 아래와 같이 코드를 작성해서 실행하면 2초 후에 callback까지 실행되고 나서 프로그램이 종료한다:</p>
-<pre><code>console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+<pre><code>console.log(new Date());
 
-setTimeout(<span class="keyword">function</span>(){
-  console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
-}, <span class="number">2000</span>);
-</code></pre>
-<p>하지만, grunt에서는 그렇지 않다. 위 예제의 타스크를 동기 타스크로 수정해보자:</p>
-<pre><code>module.exports = <span class="keyword">function</span>(grunt) {
+setTimeout(function(){
+  console.log(new Date());
+}, 2000);
+</code></pre><p>하지만, grunt에서는 그렇지 않다. 위 예제의 타스크를 동기 타스크로 수정해보자:</p>
+<pre><code>module.exports = function(grunt) {
 
-  grunt.registerTask(<span class="comment">'afterseconds', 'done after some seconds', function() {</span>
-    console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
+  grunt.registerTask(&#39;afterseconds&#39;, &#39;done after some seconds&#39;, function() {
+    console.log(new Date());
 
-    setTimeout(<span class="keyword">function</span>(){
-      console.<span class="built_in">log</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());
-    }, <span class="number">2000</span>);
+    setTimeout(function(){
+      console.log(new Date());
+    }, 2000);
   });
 
 };
-</code></pre>
-<p>그리고 <code>grunt</code>를 실행하면 2초 후에 callback이 실행되지 않고 바로 종료한다:</p>
-<pre><code>$ <span class="tag">grunt</span>
-<span class="tag">Running</span> "<span class="tag">afterseconds</span>" <span class="tag">task</span>
-<span class="tag">Fri</span> <span class="tag">Sep</span> 06 2013 03<span class="pseudo">:20</span><span class="pseudo">:08</span> <span class="tag">GMT</span>+0900 (<span class="tag">KST</span>)
+</code></pre><p>그리고 <code>grunt</code>를 실행하면 2초 후에 callback이 실행되지 않고 바로 종료한다:</p>
+<pre><code>$ grunt
+Running &quot;afterseconds&quot; task
+Fri Sep 06 2013 03:20:08 GMT+0900 (KST)
 
-<span class="tag">Running</span> "<span class="tag">jshint</span><span class="pseudo">:tasks"</span> (<span class="tag">jshint</span>) <span class="tag">task</span>
-&gt;&gt; 0 <span class="tag">files</span> <span class="tag">linted</span>. <span class="tag">Please</span> <span class="tag">check</span> <span class="tag">your</span> <span class="tag">ignored</span> <span class="tag">files</span>.
+Running &quot;jshint:tasks&quot; (jshint) task
+&gt;&gt; 0 files linted. Please check your ignored files.
 
-<span class="tag">Done</span>, <span class="tag">without</span> <span class="tag">errors</span>.
-</code></pre>
-<p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
-
-<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. 'async()'를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
-
-<h3>grunt의 한계</h3>
-
+Done, without errors.
+</code></pre><p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
+<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. ‘async()’를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
+<h3 id="grunt-">grunt의 한계</h3>
 <p>grunt의 타스크 큐는 차례대로 실행되므로 타스크를 병렬로 실행할 방법은 없다.</p>
-
 <p>플러그인인 <a href="https://github.com/iammerrick/grunt-parallel">grunt-parallel</a> 타스크를 쓰면 타스크를 병렬로 실행할 수 있다. 이 타스크는 grunt 프로세스를 여러 개 띄워서 병렬로 다른 타스크들을 실행시켜 준다.</p>
-
 <p>Async.js처럼 다양하게 flow control를 할 수 있으면 좋지 않을까? 다음이나 다음다음 버전을 기대해본다.</p>
-]]>
-    </content>
-  </entry>
-  <entry>
+
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ git: msysgit + pageant ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" />
-    <updated>2013-07-26T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id>
-    <content type="html">
-<![CDATA[
-<p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"/></p>
-
-<h2>pageant</h2>
-
-<p><a href="http://msysgit.github.io/">msysgit</a>을 설치할 때 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">plink</a>를 선택하면 바로 동작한다. plink를 사용해서 뭘하려고 한적이 없어서 모르고 있었다:</p>
-
-<p><img src="/articles/2013/git-msysgit-pageant/msysgit-plink.png" alt="select-plink"/></p>
-
+    <content type="html"><![CDATA[
+      <h1 id="git-msysgit-pageant">git: msysgit + pageant</h1>
+<p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"></p>
+<h2 id="pageant">pageant</h2>
+<p><a href="http://msysgit.github.io/">msysgit</a>을 설치할 때 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">plink</a>를 선택하면 바로 동작한다. plink를 사용해서 뭘하려고 한적이 없어서 모르고 있었다:</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/git-msysgit-pageant/msysgit-plink.png" alt="select-plink"></p>
 <p>설치할 때 <a href="http://www.openssh.org/">OpenSSH</a>를 사용하도록 설치했더라도 <code>$GIT_SSH</code> 환경 변수에 plink를 지정해주면 된다:</p>
-<pre><code><span class="keyword">export</span> GIT_SSH=/my/path/plink<span class="variable">.exe</span>
-</code></pre>
-<p>그리고 나서 사용하면 바로 pageant를 사용할 수 있는데, <code>git fetch</code> 명령으로 테스트를 해보면 아직 서버랑 인사 안했다고 다음과 같은 에러를 뱉는다:</p>
+<pre><code>export GIT_SSH=/my/path/plink.exe
+</code></pre><p>그리고 나서 사용하면 바로 pageant를 사용할 수 있는데, <code>git fetch</code> 명령으로 테스트를 해보면 아직 서버랑 인사 안했다고 다음과 같은 에러를 뱉는다:</p>
 <pre><code>$ git fetch
-The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
-have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
-think <span class="keyword">it</span> <span class="keyword">is</span>.
-The server's rsa2 key fingerprint <span class="keyword">is</span>:
-ssh-rsa <span class="number">2048</span> <span class="number">97</span>:<span class="number">8</span>c:<span class="number">1</span>b:f2:<span class="number">6</span>f:<span class="number">14</span>:<span class="number">6</span>b:<span class="number">5</span>c:<span class="number">3</span>b:ec:aa:<span class="number">46</span>:<span class="number">46</span>:<span class="number">74</span>:<span class="number">7</span>c:<span class="number">40</span>
+The server&#39;s host key is not cached in the registry. You
+have no guarantee that the server is the computer you
+think it is.
+The server&#39;s rsa2 key fingerprint is:
+ssh-rsa 2048 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
 Connection abandoned.
-fatal: Could <span class="keyword">not</span> <span class="command">read</span> <span class="keyword">from</span> remote repository.
-</code></pre>
-<p>서버랑 인사를 한번해야 한다:</p>
+fatal: Could not read from remote repository.
+</code></pre><p>서버랑 인사를 한번해야 한다:</p>
 <pre><code>$ plink git@github.com
-The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
-have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
-think <span class="keyword">it</span> <span class="keyword">is</span>.
-The server's rsa2 key fingerprint <span class="keyword">is</span>:
-ssh-rsa <span class="number">2048</span> <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1</span>b:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48</span>
-If you trust this host, enter <span class="string">"y"</span> <span class="keyword">to</span> add <span class="keyword">the</span> key <span class="keyword">to</span>
-PuTTY's cache <span class="keyword">and</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span>.
-If you want <span class="keyword">to</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span> just once, <span class="keyword">without</span>
-adding <span class="keyword">the</span> key <span class="keyword">to</span> <span class="keyword">the</span> cache, enter <span class="string">"n"</span>.
-If you do <span class="keyword">not</span> trust this host, press Return <span class="keyword">to</span> abandon <span class="keyword">the</span>
+The server&#39;s host key is not cached in the registry. You
+have no guarantee that the server is the computer you
+think it is.
+The server&#39;s rsa2 key fingerprint is:
+ssh-rsa 2048 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+If you trust this host, enter &quot;y&quot; to add the key to
+PuTTY&#39;s cache and carry on connecting.
+If you want to carry on connecting just once, without
+adding the key to the cache, enter &quot;n&quot;.
+If you do not trust this host, press Return to abandon the
 connection.
-Store key <span class="keyword">in</span> cache? (y/n) y
-Using username <span class="string">"git"</span>.
-Server refused <span class="keyword">to</span> allocate pty
-Hi pismute! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.
-</code></pre>
-<p>서버가 &lsquo;Hi pismute!'라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
-
+Store key in cache? (y/n) y
+Using username &quot;git&quot;.
+Server refused to allocate pty
+Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre><p>서버가 ‘Hi pismute!’라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
 <p>키를 자동으로 저장하는 방법이 있을 것 같은데 찾지 못했다. <a href="http://rc.quest.com/topics/putty/">Quest의 plink</a>에는 <code>-auto_store_key_in_cache</code> 옵션이 있어서 자동으로 저장해주도록 만들 수 있는데, 이건 왠일인지 msysgit과 연동이 잘 안된다.</p>
-
 <blockquote>
 <p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>
 </blockquote>
-]]>
-    </content>
-  </entry>
-  <entry>
+
+    ]]></content>
+    </entry>
+    <entry>
     <title><![CDATA[ git: Useful GitHub Patterns ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" />
-    <updated>2013-07-19T15:00:00.000Z</updated>
+    <link herf="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id>
-    <content type="html">
-<![CDATA[
+    <content type="html"><![CDATA[
+      <h1 id="git-useful-github-patterns">git: Useful GitHub Patterns</h1>
 <p>Jake Benilov님이 쓴 <a href="http://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/">Useful Github Patterns</a>를 번역한 글이다. Jake님은 글이라기보다 요약이나 정리에 가까운 형식으로 썼기 때문에 번역이 어려웠다. 같은 의미로 글을 새로 쓴 게 많아서 오역이 첨가됐을 것 같다.</p>
-
 <p>특히 <code>Pull Request</code>를 글로 정리하는 일은 쉽지 않았는데 Jake님이 잘 설명하신 것 같다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"/></p>
-
-<h2>USEFUL GITHUB PATTERNS</h2>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"></p>
+<h2 id="useful-github-patterns">USEFUL GITHUB PATTERNS</h2>
 <p>내 <a href="http://blog.quickpeople.co.uk/2013/05/17/the-uk-government-pays-me-to-write-open-source-all-day/">직업</a>이나 <a href="http://benilovj.github.io/dbfit/">오픈소스 활동</a>을 하다 보면 git과 GitHub 컨설팅도 하게 된다. 그러면서 git과 GitHub을 일정한 패턴에 따라 사용하는 나를 발견했다.</p>
-
-<p>(여기부터는, &lsquo;Pull Request'를 PR로 사용한다).</p>
-
-<h3>1. The peel-off PR</h3>
-
+<p>(여기부터는, ‘Pull Request’를 PR로 사용한다).</p>
+<h3 id="1-the-peel-off-pr">1. The peel-off PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>Feature 브랜치에서 뭔가 하는 도중에</li>
 <li>문제를 발견하자마자 바로 수정하고 싶은데, 현재 추가하는 기능과 관련이 없을 때( 작은 버그, 오타, 코딩 규칙 위반을 발견했을 때)</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>하던 일을 저장(Commit하거나 Stash한다)</li>
 <li>checkout master</li>
@@ -924,236 +554,245 @@ Hi pismute! You've successfully authenticated, <span class="keyword">but</span> 
 <li>다시 원래의 Feature 브랜치로 돌아와 하던 일을 계속한다.</li>
 <li>나중에 그 PR을 보냈던 브랜치가 Merge된 후에 Rebase한다.</li>
 </ul>
-
 <p>전혀 다른 문제를 빨리 고치고 싶은 욕망과 Feature 브랜치를 정갈하게 해서 리뷰하기 쉽게 만들고 싶은 욕망을 모두 만족하게 할 수 있다.</p>
-
-<h3>2. The optimistic branch</h3>
-
+<h3 id="2-the-optimistic-branch">2. The optimistic branch</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>지금은 Merge할 수 없는 브랜치(branch-A)가 있는데(CI 빌드가 깨질 수도 있고, 리뷰어가 바쁠 수도 있다).</li>
 <li>내가 당장 구현해야 하는 기능은 branch-A의 코드가 필요하다.</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>branch-A에서 branch-B 브랜치를 만든다.</li>
 <li>branch-A가 master에 Merge되면, branch-B를 master에 대해 Rebase하고 충돌 나는 게 있으면 해결한다.</li>
 <li>branch-A에 대한 버그픽스 브랜치들은 branch-B에 대해서 Rebase한다.</li>
 </ul>
-
 <p>branch-A에서 코드를 많이 수정하면 충돌 날 확률이 높아진다. 하지만, 95% 정도는 잘 된다.</p>
-
-<h3>3. The heads-up PR</h3>
-
+<h3 id="3-the-heads-up-pr">3. The heads-up PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>리뷰가 필요하지 않은 코드를 작성하고 있지만</li>
 <li>동료가 알고 있으면 좋을 것 같을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>코드를 작성</li>
 <li>PR을 보낸다.</li>
 <li>피드백을 기다리지 않고 PR을 직접 Merge한다.</li>
 </ul>
-
 <p>GitHub은 PR에 대한 이메일을 동료에게 보낸다. 그래서 맘에 들지 않은 코드를 발견한 동료는 코멘트를 달거나 할 수 있다. 내가 할 일이 별로 없다.</p>
-
-<h3>4. The sneaky commit</h3>
-
+<h3 id="4-the-sneaky-commit">4. The sneaky commit</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>코드를 리뷰하고 master에 Merge까지 한 다음에</li>
 <li>수정할 것이 발견되었는데 너무 사소한 수정(버그픽스나 copy change같은 것)이라서 다른 사람이 알 가치도 없을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>master 브랜치에 바로 커밋한다.</li>
 </ul>
-
-<h3>5. The roger roger comment</h3>
-
+<h3 id="5-the-roger-roger-comment">5. The roger roger comment</h3>
 <blockquote>
 <p>역주: GitHub 이슈 넘버를 넣고 push하면 커밋 넘버에 대한 링크가 해당 이슈 코멘트에 댓글로 달리는 기능에 대해 말하는 것 같다. <a href="https://github.com/blog/957-introducing-issue-mentions">Introducing Issue Mentions</a> 참고.</p>
 </blockquote>
-
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>특정 브랜치에 대한 피드백을 받았는데 바로 적용하고 싶을 때</li>
 <li>그 피드백에 따라서 고쳤을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>고친 커밋의 Ref가 포함된 PR에 코멘트를 단다.</li>
-<li>GitHub은 똑똑해서 Ref를 클릭했을 때 이전 커밋과의 Diff 결과만 보여준다. 그래서 내 동료는:
-
-<ul>
+<li>GitHub은 똑똑해서 Ref를 클릭했을 때 이전 커밋과의 Diff 결과만 보여준다. 그래서 내 동료는:<ul>
 <li>Email로 내가 수정했다는 것을 통보받고</li>
 <li>클릭만 하면 간단하게 커밋 Diff를 볼 수 있고</li>
 <li>이런 식으로 코드 리뷰를 할 수 있다는 것을 안다.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <blockquote>
 <p>역주: PR을 통해서 코드까지 포함된 피드백을 받든지, 단순히 이슈로 피드백을 받든지 간에 이슈와 코드를 함께 묶어서 토론할 수 있는 점을 말하는 것 같다. 이슈와 관련된 사람은 토론 내역을 Email로 통보받고 Push한 커밋에 대한 diff 결과도 웹에서 쉽게 확인할 수 있다.</p>
 </blockquote>
-
-<h3>6. The creepin’ commit</h3>
-
+<h3 id="6-the-creepin-commit">6. The creepin’ commit</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>내가 만든 사소한 포매팅 버그를 발견했을 때(불필요한 공백이나 파일 끝에 한 줄 남기는 것을 빼먹었을 때)나</li>
 <li>이전 커밋과 논리적으로 같은 커밋이 돼야 할 때</li>
 <li>(실패하는 테스트가 있거나 해서) 아직 커밋할 만한 코드가 아닌 상태에서 하나씩 실험해보고 다시 현재 코드로 되돌리거나 진행하고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>첫 번째나 두 번째는 그냥 이전 커밋을 수정한다(Amend)</li>
 <li>마지막은 일단 (Creeping) 커밋을 하나 만들어 놓고 실험하면서 점진적으로 Amend한다. 실험 결과가 안 좋으면 그냥 버린다. 커밋할만한 단계에 도달할 때까지 계속한다.</li>
 </ul>
-
-<h3>7. The forced branch</h3>
-
+<h3 id="7-the-forced-branch">7. The forced branch</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>남이 Push한 Feature 브랜치를 Amend해야 할 때. 예를 들어, 커밋 메시지에 이유를 남기고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>로컬에서 커밋을 Amend한다.</li>
 <li>Feature 브랜치를 리모트 저장소에 강제로(-f 옵션을 주고) Push한다.</li>
 </ul>
-
 <p>보통 리모트 브랜치에 강제로 Push하는 것은 금단의 영역으로 취급된다. master 브랜치가 아니라면 내 경험상 별로 문제 되지 않았다(역주 - Long-Running 브랜치가 아니면 별로 문제 될 게 없다). GitHub은 PR 브랜치가 강제로 Push돼도 잘 처리한다. 이전 커밋에 있던 코멘트를 잃어버리거나 하지 않는다.</p>
-
-<h3>8. The reformat peel-off</h3>
-
+<h3 id="8-the-reformat-peel-off">8. The reformat peel-off</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>코드를 수정하면서 코드 포멧도 수정할 계획이라면</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>포멧을 수정한 커밋은 master 브랜치에 직접 한다.</li>
 <li>코드를 수정한 커밋이 들어 있는 브랜치는 master대해 Rebase한다.</li>
 </ul>
-
 <p>이럴 때 코드 리뷰하는 사람은 코드를 수정한 브랜치에 Dill 하는 것이 더 좋다. 코드 수정 커밋이 있는 브랜치에는 포멧 수정 커밋이 없어서 Diff 결과가 더 깔끔하다.</p>
-
-<h3>9. The prototype PR</h3>
-
+<h3 id="9-the-prototype-pr">9. The prototype PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
-
 <ul>
 <li>본격적으로 구현하기 전에 아이디어에 대해 피드백을 받고 싶을 때</li>
 </ul>
-
 <p><strong>어떻게 하나?:</strong></p>
-
 <ul>
 <li>브랜치에 뭔가 수정을 한다.</li>
 <li>아직 완성된 코드가 아니라고 해도 일단 PR을 하면 토론의 시작점이 된다.</li>
 <li>다음 단계로 뭘 할지 합의가 이루어지면 PR을 닫고 브랜치도 삭제한다.</li>
 <li>다시 브랜치를 만들고 제대로 구현해서 PR을 한다.</li>
 </ul>
+<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 “Pull Request는 대화의 시작점”이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
 
-<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 &ldquo;Pull Request는 대화의 시작점&quot;이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
-]]>
-    </content>
-  </entry>
-  <entry>
-    <title><![CDATA[ git: ckw Solarized!  ]]></title>
-    <link href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" />
-    <updated>2013-07-10T15:00:00.000Z</updated>
+    ]]></content>
+    </entry>
+    <entry>
+    <title><![CDATA[ git: ckw Solarized! ]]></title>
+    <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id>
-    <content type="html">
-<![CDATA[
+    <content type="html"><![CDATA[
+      <h1 id="git-ckw-solarized-">git: ckw Solarized!</h1>
 <p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
-
-<p><img src="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""/></p>
-
-<h2>ckw</h2>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""></p>
+<h2 id="ckw">ckw</h2>
 <p>cmd 터미널은 너무 구려서 <a href="http://d.hatena.ne.jp/hideden/20071115/1195229532">ckw</a>를 사용하고 있는데 찾아보니 <a href="https://gist.github.com/cd01/4307522">ckw용 Solarized 테마</a>를 만들어 놓은 훌륭한 분이 있었다.</p>
-
 <p>바로 내 설정에 적용했다:</p>
-
-<p><img src="/articles/2013/git-msysgit-ckw-solarized/git-msysgit-ckw-solarized.png" alt="ckw-solarized"/></p>
-
+<p><img src="http:/dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized/git-msysgit-ckw-solarized.png" alt="ckw-solarized"></p>
 <p>Putty에도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 쓰고 있는데 ckw에도 적용했더니 둘이 많이 비슷해졌다.</p>
-
 <p>하지만 미묘하게 이 ckw의 색감이 떨어진다. <a href="https://github.com/brantb/solarized">Solarized 저장소</a>에서 배포하고 있는 것 만큼 색감이 좋지는 않다. 눈에 거슬리는 색은 조금씩 변경해서 쓰는게 좋겠다.</p>
-
 <p>위 설정을 적용한 내 설정은 아래와 같다:</p>
 <pre><code>!
 ! ckw setting
 !
 
-Ckw<span class="variable">*title</span>: Powershell
-Ckw<span class="variable">*exec</span>:  powershell -ExecutionPolicy RemoteSigned
-Ckw<span class="variable">*chdir</span>: C:\Users\pismute\git
+Ckw*title: Powershell
+Ckw*exec:  powershell -ExecutionPolicy RemoteSigned
+Ckw*chdir: C:\Users\pismute\git
 
-Ckw<span class="variable">*scrollHide</span>:  <span class="keyword">no</span>
-Ckw<span class="variable">*scrollRight</span>: yes
-Ckw<span class="variable">*internalBorder</span>: <span class="number">1</span>
-Ckw<span class="variable">*lineSpace</span>: <span class="number">0</span>
-Ckw<span class="variable">*topmost</span>: <span class="keyword">no</span>
+Ckw*scrollHide:  no
+Ckw*scrollRight: yes
+Ckw*internalBorder: 1
+Ckw*lineSpace: 0
+Ckw*topmost: no
 
-Ckw<span class="variable">*font</span>: NanumGothicCoding
-Ckw<span class="variable">*fontSize</span>: <span class="number">22</span>
+Ckw*font: NanumGothicCoding
+Ckw*fontSize: 22
 
-Ckw<span class="variable">*geometry</span>:  <span class="number">80</span>x26
-Ckw<span class="variable">*saveLines</span>: <span class="number">10000</span>
+Ckw*geometry:  80x26
+Ckw*saveLines: 10000
 
 !! theme
 !! Solarized dark
 !!
 
-!Ckw<span class="variable">*foreground</span>:     <span class="comment">#657b83</span>
-Ckw<span class="variable">*background</span>:     <span class="comment">#073642</span>
-!Ckw<span class="variable">*cursorColor</span>:    <span class="comment">#657b83</span>
-Ckw<span class="variable">*cursorImeColor</span>: <span class="comment">#dc322f</span>
-!Ckw<span class="variable">*backgroundBitmap</span>: background.bmp
-!Ckw<span class="variable">*transp</span>:           <span class="number">220</span>
-!Ckw<span class="variable">*transpColor</span>:      <span class="comment">#000000</span>
+!Ckw*foreground:     #657b83
+Ckw*background:     #073642
+!Ckw*cursorColor:    #657b83
+Ckw*cursorImeColor: #dc322f
+!Ckw*backgroundBitmap: background.bmp
+!Ckw*transp:           220
+!Ckw*transpColor:      #000000
 
-Ckw<span class="variable">*color1</span>:  <span class="comment">#586e75</span>
-Ckw<span class="variable">*color2</span>:  <span class="comment">#859900</span>
-Ckw<span class="variable">*color3</span>:  <span class="comment">#2aa198</span>
-Ckw<span class="variable">*color4</span>:  <span class="comment">#cb4b16</span>
-Ckw<span class="variable">*color5</span>:  <span class="comment">#6c71c4</span>
-Ckw<span class="variable">*color6</span>:  <span class="comment">#859900</span>
+Ckw*color1:  #586e75
+Ckw*color2:  #859900
+Ckw*color3:  #2aa198
+Ckw*color4:  #cb4b16
+Ckw*color5:  #6c71c4
+Ckw*color6:  #859900
 
-Ckw<span class="variable">*color8</span>:  <span class="comment">#839496</span>
-Ckw<span class="variable">*color9</span>:  <span class="comment">#268bd2</span>
-Ckw<span class="variable">*color10</span>: <span class="comment">#859900</span>
-Ckw<span class="variable">*color11</span>: <span class="comment">#2aa198</span>
-Ckw<span class="variable">*color12</span>: <span class="comment">#dc322f</span>
-Ckw<span class="variable">*color13</span>: <span class="comment">#d33682</span>
-Ckw<span class="variable">*color14</span>: <span class="comment">#b58900</span>
-Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
-</code></pre>]]>
-    </content>
-  </entry>
+Ckw*color8:  #839496
+Ckw*color9:  #268bd2
+Ckw*color10: #859900
+Ckw*color11: #2aa198
+Ckw*color12: #dc322f
+Ckw*color13: #d33682
+Ckw*color14: #b58900
+Ckw*color15: #fdf6e3
+</code></pre>
+    ]]></content>
+    </entry>
+    <entry>
+    <title><![CDATA[ 프로 Git 한글책 출간 ]]></title>
+    <link herf="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id>
+    <content type="html"><![CDATA[
+      <h1 id="-git-">프로 Git 한글책 출간</h1>
+<p>Pro Git 한글 번역이 <a href="http://www.insightbook.co.kr/">인사이트</a>의 도움을 받아 종이책으로 <a href="http://www.insightbook.co.kr/post/5633">프로 Git</a> 으로 출간되었습니다. 학생분들은 도서관에 직장인은 도서구매부에 얼른얼른 구매 신청해주세요! ㅎㅎ</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/progit-ko-book-published/progit.jpg" alt=""> <img src="http:/dogfeet.github.io/articles/2013/progit-ko-book-published/devops.png" alt=""></p>
+<h2 id="-git-">프로 Git 출간 이야기</h2>
+<p>이미 Pro Git의 한글 번역 전문이 이 블로그 및 github을 통해 오픈소스로 공개되어 있지만, 인사이트 출판사의 도움으로 종이책으로 출간되었습니다. 종이책으로 나올 수 있었던 뒷 이야기는 인사이트 블로그의 <a href="http://www.insightbook.co.kr/post/5633">&lt;프로 Git&gt;, 이미 공개된 내용을 왜 책으로 만들었냐고요?</a> 글을 통해 살펴보실 수 있습니다.</p>
+<p>종이책으로 출간된 책의 기본 내용은 동일하지만 몇 번의 교정 과정을 더 거쳤고 이미지도 업데이트 되었으며 부록으로 미처 다루지 못한 몇 가지 내용을 더 담아두었습니다.</p>
+<p>주요 오프라인이나 온라인 서점을 통해 구입하실 수 있구요 출간된 것은 4월 중순인데 이렇게 글로 소식을 올리는 것이 늦어졌습니다. ^^</p>
+<h2 id="-">또 다른 번역서, 데브옵스 출간 소식</h2>
+<p>또 하나, ‘프로 Git’에 이어 저희 팀원분이 번역한 <a href="http://www.wikibook.co.kr/wiki/Wiki.jsp?page=DevOps">데브옵스</a>도 5월 말에 출간됩니다. 데브옵스에 대한 다양한 문제 상황과 해결법을 다루고 있어 관심있는 분께는 많은 도움이 되리라 생각합니다. 현재 예약판매 중이며 곧 온라인과 오프라인 서점에서 구입하실 수 있습니다.</p>
+
+    ]]></content>
+    </entry>
+    <entry>
+    <title><![CDATA[ git: password caching ]]></title>
+    <link herf="http://dogfeet.github.io/articles/2013/git-password-caching.html" />
+    <updated>2015-01-11T23:58:05.111Z</updated>
+    <id>http://dogfeet.github.io/articles/2013/git-password-caching.html</id>
+    <content type="html"><![CDATA[
+      <h1 id="git-password-caching">git: password caching</h1>
+<p>요즘은 뭐든 Smart한 시대인지라 http(s) 프로토콜도 Smart하지 않을 수 없다(<a href="http://git-scm.com/2010/03/04/smart-http.html">Smart http</a>). <a href="http://git-scm.com/book/ko">Pro Git</a>에서는 http(s)가 Smart하지 않다고 설명하지만 그건 <a href="http://git-scm.com/book/ko">Pro Git</a>이 출간되고 나서 만들어진 거라 책에는 내용이 빠져 있다. 이제는 ssh를 사용하든 http(s)를 사용하든 효율의 차이는 없다.</p>
+<p>ssh는 회사 방화벽에서 막아버릴 수도 있고 익명접근도 허용하지 않지만, http(s)는 그런 게 없다. GitHub도 이제는 ssh가 아닌 http(s)가 기본이다(https 주소를 먼저 보여준다):</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/git-password-caching/http-ssh.png" alt=""></p>
+<p>그런데 ssh는 인증서를 사용하면 ssh-agent를 사용하면 암호를 한 번만 입력할 수 있는데, http(s)에서는 Basic 인증을 통해서 인증하는지라 다른 메커니즘이 필요하다. 이 글은 GitHub help 페이지에 있는 Password Caching을 요약한 글이다.</p>
+<h2 id="password-caching-">Password Caching.</h2>
+<p><em>Git버전이 1.7.10 이상 돼야 한다. 그래야 이 기능을 사용할 수 있다.</em></p>
+<p>나는 주로 ssh를 사용하므로 http(s)를 잘 사용하지 않는다. ssh에 익숙해져서 http(s)가 더 어색하다. 하지만, gist에서는 http(s)를 사용하는 것이 편하다. GitHub이 Gist에서는 git 프로토콜 주소를 안내하지 않고 있다:</p>
+<p><img src="http:/dogfeet.github.io/articles/2013/git-password-caching/gist-clone.png" alt=""></p>
+<p>화면의 주소는 다음과 같은 형태다:</p>
+<pre><code>https://gist.github.com/xxxxxxxxxxxxxxxxxxxx.git
+</code></pre><p>ssh 프로토콜로도 사용할 수 있긴 하다. 단지 복사해서 붙여 넣을 수 없을 뿐이다:</p>
+<pre><code>git@gist.github.com:xxxxxxxxxxxxxxxxxxxx.git
+</code></pre><p>gist는 git을 이용하지만 전문 버전관리 도구가 아니라 프로토타이핑 도구라서 http(s) 프로토콜만으로도 충분할 수 있다. 그래도 명령을 실행할 때마다 암호를 입력하는 일은 좀 불편하다. http(s)에도 ssh처럼 사용할 수 있는 매우 편리한 방법이 있다.</p>
+<h3 id="linux">Linux</h3>
+<p>다음과 같이 설정하면 한번 입력한 암호가 저장된다:</p>
+<pre><code>% git config --global credential.helper cache
+</code></pre><p>기본적으로 15분 저장해주는데 다음과 같이 기간을 수정할 수 있다:</p>
+<pre><code>% git config --global credential.helper &#39;cache --timeout=3600&#39;
+</code></pre><p>‘ssh-agent’로 하는 것과 거의 비슷하다.</p>
+<h3 id="mac">Mac</h3>
+<p>Mac에서는 ‘osxkeychain credential helper’라는 게 있어서 ssh처럼 keychain을 사용할 수 있다.</p>
+<p>먼저 osxkeychain이 잘 동작하는지 확인하고:</p>
+<pre><code>% git credential-osxkeychain
+Usage: git credential-osxkeychain &lt;get|store|erase&gt;
+</code></pre><p>설치돼 있지 않으면 아래와 같이 설치한다:</p>
+<pre><code>% git credential-osxkeychain
+git: &#39;credential-osxkeychain&#39; is not a git command. See &#39;git --help&#39;.
+
+% curl -s -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
+% chmod u+x git-credential-osxkeychain
+% sudo mv git-credential-osxkeychain `dirname \`which git\``
+</code></pre><p>‘credential helper’로 osxkeychain을 사용할 것이라고 알린다.:</p>
+<pre><code>% git config --global credential.helper osxkeychain
+</code></pre><p>이제 ssh를 사용할 때는 ssh 인증서가 사용되고 http(s)를 사용할 때는 ‘osxkeychain credential helper’가 사용된다.</p>
+<p>이렇게 설정하면 CLI뿐만 아니라 <a href="http://www.sourcetreeapp.com/">SourceTree</a>같은 GUI에서도 매번 암호를 입력하지 않을 수 있다.</p>
+<h3 id="windows">Windows</h3>
+<p><a href="http://blob.andrewnurse.net/gitcredentialwinstore/git-credential-winstore.exe">git-credential-winstore</a>를 내려받아서 실행경로에 넣고 한번 실행해준다. 그러면 msysgit 에서 잘 사용할 수 있다. ‘GitHub for Windows’에는 이미 포함돼 있어서 별도로 설치할 필요가 없다.</p>
+<p>Windows XP에서는 SourceTree를 설치할 수 없어서 확인하지 못했다.</p>
+
+    ]]></content>
+    </entry>
 </feed>

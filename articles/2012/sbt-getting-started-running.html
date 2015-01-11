@@ -1,182 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - sbt: Getting Started Guide: Running</title>
-    <meta name="description" content="이 글은 Getting Started sbt을 번역한 것이다." />
-    <meta name="keywords" content="sbt" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - sbt: Getting Started Guide: Running</title>
+  <meta name="description"
+    content="이 글은 Getting Started sbt을 번역한 것이다."></meta>
+  <meta name="keywords"
+    content="sbt"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="sbt: Getting Started Guide: Running &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/sbt-getting-started-running.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jul 25 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/sbt-getting-started-running.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jul 25</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">sbt: Getting Started Guide: Running</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#sbt" class="tag">sbt</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#sbt" class="tag">sbt</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/sbt-getting-started-running.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
 
-<p><img src="/articles/2012/sbt/sbt.png" alt="sbt"/></p>
+    <div class="col-sm-10">
 
-<h1>Running</h1>
-
+      <div property="sioc:content"><h1 id="sbt-getting-started-guide-running">sbt: Getting Started Guide: Running</h1>
+<p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
+<p><img src="/articles/2012/sbt/sbt.png" alt="sbt"></p>
+<h1 id="running">Running</h1>
 <p>이 페이지는 이미 설정이 끝난 프로젝트에서 <code>sbt</code> 명령을 사용하는 법을 설명한다. <a href="/articles/2012/sbt-getting-started-setup.html">sbt를 설치</a>했고 <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a>정도는 만들어 봤다고 간주한다.</p>
-
-<h2>Interactive mode</h2>
-
+<h2 id="interactive-mode">Interactive mode</h2>
 <p>프로젝트 디렉토리에서 아무런 아규먼트 없이 sbt를 실행한다:</p>
-<pre><code><span class="variable">$ </span>sbt
-</code></pre>
-<p>아규먼트 없이 sbt를 실행하면 인터랙티브 모드로 실행돼서 커맨드 프롬프트가 나온다. 이 커맨드 프롬프트는 탭 완성과 히스토리까지 지원한다!</p>
-
+<pre><code>$ sbt
+</code></pre><p>아규먼트 없이 sbt를 실행하면 인터랙티브 모드로 실행돼서 커맨드 프롬프트가 나온다. 이 커맨드 프롬프트는 탭 완성과 히스토리까지 지원한다!</p>
 <p>예를 들어 sbt 프롬프트에서 <code>compile</code>이라고 실행하고:</p>
-<pre><code><span class="blockquote">&gt; compile</span>
-</code></pre>
-<p><code>compile</code>을 다시 실행할 때는, 위 방향키를 누르고 엔터를 친다.</p>
-
+<pre><code>&gt; compile
+</code></pre><p><code>compile</code>을 다시 실행할 때는, 위 방향키를 누르고 엔터를 친다.</p>
 <p><code>run</code>을 입력해서 프로그램을 실행한다.</p>
-
 <p>Unix에서는 Ctrl+D 키를, Windows에서는 Ctrl+Z 키를 누르거나 <code>exit</code>라고 입력하면 인터랙티브 모드를 빠져나온다.</p>
-
-<h2>Batch mode</h2>
-
+<h2 id="batch-mode">Batch mode</h2>
 <p>sbt를 배치 모드로 실행할 수도 있다. 스페이스로 구분해서 목록을 죽 나열하고 sbt 아규먼트로 넘기면 된다. sbt의 아규먼트는 sbt 명령과 그 명령의 아규먼트를 의미한다. sbt 명령어와 해당 명령의 아규먼트는 따옴표(<code>&quot;</code>)로 묶어서 아규먼트 하나로 만든다:</p>
-<pre><code><span class="variable">$ </span>sbt clean compile <span class="string">"test-only TestA TestB"</span>
-</code></pre>
-<p>이 예제에서는 <code>test-only</code> 명령에 <code>TestA와</code>TestB<code>아규먼트를 넘기면 입력한 sbt 명령어 순으로</code>clean<code>,</code>compile<code>,</code>test-only가 실행된다.</p>
-
-<h2>Continuous build and test</h2>
-
+<pre><code>$ sbt clean compile &quot;test-only TestA TestB&quot;
+</code></pre><p>이 예제에서는 <code>test-only</code> 명령에 <code>TestA와</code>TestB<code>아규먼트를 넘기면 입력한 sbt 명령어 순으로</code>clean<code>,</code>compile<code>,</code>test-only`가 실행된다.</p>
+<h2 id="continuous-build-and-test">Continuous build and test</h2>
 <p>소스 파일이 수정될 때 자동으로 컴파일하고 테스트를 실행하게 할 수 있으니 수정-컴파일-테스트 과정에 드는 시간을 절약할 수 있다.</p>
-
 <p>명령을 실행할 때 앞에 <code>~</code> 라고 적어주면 소스 파일이 변경될 때마다 명령어가 실행된다. 예를 들어, 인터랙티브 모드에서는 다음과 같이 실행한다:</p>
 <pre><code>&gt; ~ compile
 
-Press enter <span class="keyword">to</span> <span class="keyword">stop</span> watching <span class="keyword">for</span> changes.
-</code></pre>
-<p>인터랙티브 모드 뿐만 아니라 배치 모드에서도 <code>~</code>를 사용할 수 있다.</p>
-
+Press enter to stop watching for changes.
+</code></pre><p>인터랙티브 모드 뿐만 아니라 배치 모드에서도 <code>~</code>를 사용할 수 있다.</p>
 <p>자세한 내용은 <a href="https://github.com/harrah/xsbt/wiki/Triggered-Execution">Triggered Execution</a>에서 있다.</p>
-
-<h2>Common commands</h2>
-
+<h2 id="common-commands">Common commands</h2>
 <p>다음은 자주 사용하는 sbt 명령어다. 나머지 sbt 명령어는 <a href="https://github.com/harrah/xsbt/wiki/Command-Line-Reference">Command Line Reference</a>에서 설명한다.</p>
-
 <ul>
 <li><code>clean</code>
 <code>target</code> 디렉토리에 생성한 파일을 모두 삭제한다.</li>
@@ -189,21 +126,16 @@ Press enter <span class="keyword">to</span> <span class="keyword">stop</span> wa
 <li><code>run &lt;argument&gt;*</code>
 <code>sbt</code>가 실행되고 있는 가상 머신에서 해당 프로젝트의 메인 클래스를 실행한다.</li>
 <li><code>package</code>
-<code>src/main/scala</code>와 <code>src/main/java</code>에 있는 소스 파일을 컴파일한 클래스와 <code>src/main/resources</code>에 있는 파일까지도 전부 포함하는 jar파일을 생성한다. </li>
+<code>src/main/scala</code>와 <code>src/main/java</code>에 있는 소스 파일을 컴파일한 클래스와 <code>src/main/resources</code>에 있는 파일까지도 전부 포함하는 jar파일을 생성한다.</li>
 <li><code>help &lt;command&gt;</code>
-해당 명령어의 도움말을 보여준다. <command>를 생략하면 모든 명령어에 대한 요약 도움말을 보여준다.</li>
+해당 명령어의 도움말을 보여준다. &lt;command&gt;를 생략하면 모든 명령어에 대한 요약 도움말을 보여준다.</li>
 <li><code>reload</code>
 빌드 정의 파일인 <code>build.sbt</code>, <code>project/*.scala</code>, <code>project/*.sbt</code>을 다시 로드한다. 이 파일을 수정했을 때 필요하다.</li>
 </ul>
-
-<h2>Tab completion</h2>
-
+<h2 id="tab-completion">Tab completion</h2>
 <p>인터랙티브 모드에서는 탭 자동완성을 사용할 수 있다. 프롬프트에 입력한 게 없을 때에도 탭 자동완성을 사용할 수 있다. 탭 키를 한번 누르면 가능한 데까지 자동완성을 해주고 거기서 한 번더 누르면 그 다음에 선택할 수 있는 모든 명령어를 보여준다.</p>
-
-<h2>History Commands</h2>
-
+<h2 id="history-commands">History Commands</h2>
 <p>인터랙티브 모드에서는 히스토리가 저장되는데 sbt를 종료하거나 재시작할 때도 저장된다. 방향키로 히스토리를 조회할 수 있다. 다음은 히스토리와 관련된 명령이다:</p>
-
 <ul>
 <li><code>!</code>
 히스토리 명령어에 대한 도움말을 보여준다.</li>
@@ -222,31 +154,36 @@ Press enter <span class="keyword">to</span> <span class="keyword">stop</span> wa
 <li><code>!?string</code>
 <code>string</code>이 포함된 가장 최근 명령어를 실행한다.</li>
 </ul>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

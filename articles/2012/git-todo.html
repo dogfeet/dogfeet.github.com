@@ -1,220 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Git:Todo Plugin</title>
-    <meta name="description" content="branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다." />
-    <meta name="keywords" content="Git,Todo,Branch" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Git:Todo Plugin</title>
+  <meta name="description"
+    content="branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다."></meta>
+  <meta name="keywords"
+    content="Git,Todo,Branch"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Git:Todo Plugin &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/git-todo.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jan 21 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/git-todo.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jan 21</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/git-todo.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/git-todo.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/git-todo.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Git:Todo Plugin</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#todo" class="tag">Todo</a> <a href="/site/tagmap.html#branch" class="tag">Branch</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/git-todo.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/git-todo.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/git-todo.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다.</p>
 
-<p><a href="/articles/2012/git-branch-a-v.html"><code>git branch -a -v</code> 명령에 대한 글</a>을 썼었는데 그 글에 설명한 것을 발전시켜 구현했다. <code>git-todo</code> 같이 규모가 작은 프로젝트에서는 별도로 Issue를 관리하고 싶지 않아서 만들었다. </p>
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">Git</a> <a href="/site/tagmap.html#todo" class="tag">Todo</a> <a href="/site/tagmap.html#branch" class="tag">Branch</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="git-todo-plugin">Git:Todo Plugin</h1>
+<p>branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다.</p>
+<p><a href="/articles/2012/git-branch-a-v.html"><code>git branch -a -v</code> 명령에 대한 글</a>을 썼었는데 그 글에 설명한 것을 발전시켜 구현했다. <code>git-todo</code> 같이 규모가 작은 프로젝트에서는 별도로 Issue를 관리하고 싶지 않아서 만들었다.</p>
 <p>브랜치 이름과 커밋 메시지를 잘 다듬으면 브랜치 정보를 요약해 보는 것만으로도 해야 할 일이 무엇이고 최근 어디까지 진행했는지 알 수 있다.</p>
-
 <p>Pro Git 저장소를 예제로 사용하여 설명한다:</p>
-
-<p><img src="/articles/2012/git-todo/git-todo.png" alt="git-todo"/></p>
-
-<h2>Usage</h2>
-
+<p><img src="/articles/2012/git-todo/git-todo.png" alt="git-todo"></p>
+<h2 id="usage">Usage</h2>
 <ul>
-<li><img src="/articles/2012/git-todo/checkouted.png" alt="checkouted"/>가 표기된 ko 브랜치가 Checkcout한 브랜치다.</li>
-<li><img src="/articles/2012/git-todo/base_branch.png" alt="base_branch"/>가 표기된 ko 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 <img src="/articles/2012/git-todo/ahead.png" alt="ahead"/>이나 <img src="/articles/2012/git-todo/behind.png" alt="behind"/>을 계산한다.</li>
-<li><img src="/articles/2012/git-todo/ahead.png" alt="ahead"/>가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 없는 커밋이 3개 있다는 것을 의미한다.</li>
-<li><img src="/articles/2012/git-todo/behind.png" alt="behind"/>가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 있는 커밋이 23개 없다는 것을 의미한다.</li>
+<li><img src="/articles/2012/git-todo/checkouted.png" alt="checkouted">가 표기된 ko 브랜치가 Checkcout한 브랜치다.</li>
+<li><img src="/articles/2012/git-todo/base_branch.png" alt="base_branch">가 표기된 ko 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 <img src="/articles/2012/git-todo/ahead.png" alt="ahead">이나 <img src="/articles/2012/git-todo/behind.png" alt="behind">을 계산한다.</li>
 </ul>
-
+<ul>
+<li><img src="/articles/2012/git-todo/ahead.png" alt="ahead">가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 없는 커밋이 3개 있다는 것을 의미한다.</li>
+<li><img src="/articles/2012/git-todo/behind.png" alt="behind">가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 있는 커밋이 23개 없다는 것을 의미한다.</li>
+</ul>
 <p>기본적으로 로컬 브랜치만 보여준다.</p>
-
-<h3>기준 브랜치</h3>
-
+<h3 id="-">기준 브랜치</h3>
 <p>이 기준 브랜치가 <code>git branch -a -v</code>를 쓰지 않고 Plugin을 만든 진짜 이유다. 원하는 브랜치를 기준으로 두고 토픽 브랜치를 만들어 작업할 수 있다.</p>
-
 <p>설정하지 않으면 master 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 거리를 계산한다. 이 브랜치는 다음과 같이 설정한다:</p>
-<pre><code>git config to<span class="operator"><span class="keyword">do</span>.base ko
-</code></pre>
-<p>여기서 보여주는 예제는 Pro Git 저장소를 캡처한 것이기 때문에 기준 브랜치가 ko이다.</p>
-
-<h3>옵션</h3>
-
+<pre><code>git config todo.base ko
+</code></pre><p>여기서 보여주는 예제는 Pro Git 저장소를 캡처한 것이기 때문에 기준 브랜치가 ko이다.</p>
+<h3 id="-">옵션</h3>
 <p>기본적으로 로컬 브랜치만 보여주지만, 리모트 브랜치와 tag도 보여준다</p>
-
-<h4>git todo -r</h4>
-
+<h4 id="git-todo-r">git todo -r</h4>
 <p>리모트 브랜치는 노란(똥)색으로 보여준다:</p>
-
-<p><img src="/articles/2012/git-todo/git-todo-r.png" alt="git-todo-r"/></p>
-
-<h4>git todo -t</h4>
-
+<p><img src="/articles/2012/git-todo/git-todo-r.png" alt="git-todo-r"></p>
+<h4 id="git-todo-t">git todo -t</h4>
 <p>Tag는 흰색으로 보여준다:</p>
-
-<p><img src="/articles/2012/git-todo/git-todo-t.png" alt="git-todo-t"/></p>
-
-<h4>git todo -a</h4>
-
+<p><img src="/articles/2012/git-todo/git-todo-t.png" alt="git-todo-t"></p>
+<h4 id="git-todo-a">git todo -a</h4>
 <p>로컬 브랜치, 리모트 브랜치, Tag를 모두 보여준다:</p>
-
-<p><img src="/articles/2012/git-todo/git-todo-a.png" alt="git-todo-a"/></p>
-
-<h2>설치</h2>
-
+<p><img src="/articles/2012/git-todo/git-todo-a.png" alt="git-todo-a"></p>
+<h2 id="-">설치</h2>
 <p><a href="https://github.com/dogfeet/git-tles">git-todo 저장소</a>를 적당한데다 클론하고 git-todo 파일을 실행 경로에 넣는다:</p>
-<pre><code><span class="title">cd</span> ~
-<span class="title">git</span> clone https://github.com/dogfeet/git-tles
-<span class="title">echo</span> <span class="string">"export PATH=~/bin:$PATH"</span> &gt;&gt; ~/.bash_profile
-<span class="title">mkdir</span> ~/bin
-<span class="title">cd</span> ~/bin
-<span class="title">ln</span> -s ~/git-tles/git-todo git-todo
-</code></pre>
-        </div>
-      </div>
+<pre><code>cd ~
+git clone https://github.com/dogfeet/git-tles
+echo &quot;export PATH=~/bin:$PATH&quot; &gt;&gt; ~/.bash_profile
+mkdir ~/bin
+cd ~/bin
+ln -s ~/git-tles/git-todo git-todo
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,290 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - DES Encryption and Decryption in groovy</title>
-    <meta name="description" content="Groovy에서 DES Encryption and Decryption 하는 샘플 코드" />
-    <meta name="keywords" content="Cipher,Decryption,des,Encryption,Groovy,Java" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - DES Encryption and Decryption in groovy</title>
+  <meta name="description"
+    content="Groovy에서 DES Encryption and Decryption 하는 샘플 코드"></meta>
+  <meta name="keywords"
+    content="Cipher,Decryption,des,Encryption,Groovy,Java"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="DES Encryption and Decryption in groovy &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2010/1273557120.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2010 May 11 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2010/1273557120.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2010 May 11</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2010/1273557120.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1273557120.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2010/1273557120.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">DES Encryption and Decryption in groovy</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#cipher" class="tag">Cipher</a> <a href="/site/tagmap.html#decryption" class="tag">Decryption</a> <a href="/site/tagmap.html#des" class="tag">des</a> <a href="/site/tagmap.html#encryption" class="tag">Encryption</a> <a href="/site/tagmap.html#groovy" class="tag">Groovy</a> <a href="/site/tagmap.html#java" class="tag">Java</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2010/1273557120.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1273557120.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2010/1273557120.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>Groovy에서 DES Encryption and Decryption 하는 샘플 코드</p>
 
-<h2>Code</h2>
-<pre><code>import java<span class="variable">.security</span><span class="variable">.spec</span><span class="variable">.KeySpec</span>
-import javax<span class="variable">.crypto</span>.*
-import javax<span class="variable">.crypto</span><span class="variable">.spec</span>.*
-import sun<span class="variable">.misc</span>.*
+      <p class="small-font top-line"><a href="/site/tagmap.html#cipher" class="tag">Cipher</a> <a href="/site/tagmap.html#decryption" class="tag">Decryption</a> <a href="/site/tagmap.html#des" class="tag">des</a> <a href="/site/tagmap.html#encryption" class="tag">Encryption</a> <a href="/site/tagmap.html#groovy" class="tag">Groovy</a> <a href="/site/tagmap.html#java" class="tag">Java</a></p>
+    </div>
 
-<span class="class"><span class="keyword">class</span> <span class="id">DesCipher</span> <span class="id">implements</span> <span class="id">Runnable</span> {</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> run() throws Exception {
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="des-encryption-and-decryption-in-groovy">DES Encryption and Decryption in groovy</h1>
+<p>Groovy에서 DES Encryption and Decryption 하는 샘플 코드</p>
+<h2 id="code">Code</h2>
+<pre><code>import java.security.spec.KeySpec
+import javax.crypto.*
+import javax.crypto.spec.*
+import sun.misc.*
+
+class DesCipher implements Runnable {
+    public void run() throws Exception {
         testDESKey()
         println();
 
-        println(<span class="string">"== DesCipher =="</span>)
+        println(&quot;== DesCipher ==&quot;)
 
-        String myKeyString = <span class="string">"aaaaaaaa"</span>
-        println(<span class="string">"KeyString    : "</span> + myKeyString)
-        println(<span class="string">"KeyString HEX: "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>()))
+        String myKeyString = &quot;aaaaaaaa&quot;
+        println(&quot;KeyString    : &quot; + myKeyString)
+        println(&quot;KeyString HEX: &quot; + getHexString(myKeyString.getBytes()))
 
-        KeySpec desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>())
-        SecretKey key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"Key algo     : "</span> + key<span class="variable">.getAlgorithm</span>())
-        println(<span class="string">"Key       HEX: "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        KeySpec desKeySpec = new DESKeySpec(myKeyString.getBytes())
+        SecretKey key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;Key algo     : &quot; + key.getAlgorithm())
+        println(&quot;Key       HEX: &quot; + getHexString(key.getEncoded()))
 
-        String myPlain = <span class="string">"this is my plain text"</span>
-        Cipher desCipher = Cipher<span class="variable">.getInstance</span>(<span class="string">"DES/ECB/PKCS5Padding"</span>)
+        String myPlain = &quot;this is my plain text&quot;
+        Cipher desCipher = Cipher.getInstance(&quot;DES/ECB/PKCS5Padding&quot;)
 
-        desCipher<span class="variable">.init</span>(Cipher<span class="variable">.ENCRYPT_MODE</span>, key)
-        byte[] myEncrypt = desCipher<span class="variable">.doFinal</span>(myPlain<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
+        desCipher.init(Cipher.ENCRYPT_MODE, key)
+        byte[] myEncrypt = desCipher.doFinal(myPlain.getBytes(&quot;UTF8&quot;))
 
-        println(String<span class="variable">.format</span>(<span class="string">"Plain        : %s (%d)"</span>, 
-            myPlain, myPlain<span class="variable">.size</span>()))
-        println(String<span class="variable">.format</span>(<span class="string">"Plain     HEX: %s (%d)"</span>, 
-            getHexString(myPlain<span class="variable">.getBytes</span>()), myPlain<span class="variable">.size</span>()))
-        println(String<span class="variable">.format</span>(<span class="string">"Encoded   HEX: %s (%d)"</span>, 
-            getHexString(myEncrypt), myEncrypt<span class="variable">.size</span>()))
+        println(String.format(&quot;Plain        : %s (%d)&quot;,
+            myPlain, myPlain.size()))
+        println(String.format(&quot;Plain     HEX: %s (%d)&quot;,
+            getHexString(myPlain.getBytes()), myPlain.size()))
+        println(String.format(&quot;Encoded   HEX: %s (%d)&quot;,
+            getHexString(myEncrypt), myEncrypt.size()))
 
-        desCipher<span class="variable">.init</span>(Cipher<span class="variable">.DECRYPT_MODE</span>, key)
-        byte[] myDecrypt = desCipher<span class="variable">.doFinal</span>(myEncrypt)
-        println(String<span class="variable">.format</span>(<span class="string">"Decoded   HEX: %s (%d)"</span>, 
-            getHexString(myDecrypt), myDecrypt<span class="variable">.size</span>()))
-        println(String<span class="variable">.format</span>(<span class="string">"Decoded      : %s (%d)"</span>, 
-            new String(myDecrypt), new String(myDecrypt)<span class="variable">.size</span>()))
+        desCipher.init(Cipher.DECRYPT_MODE, key)
+        byte[] myDecrypt = desCipher.doFinal(myEncrypt)
+        println(String.format(&quot;Decoded   HEX: %s (%d)&quot;,
+            getHexString(myDecrypt), myDecrypt.size()))
+        println(String.format(&quot;Decoded      : %s (%d)&quot;,
+            new String(myDecrypt), new String(myDecrypt).size()))
     }
 
-    <span class="keyword">public</span> <span class="keyword">void</span> testDESKey() {
+    public void testDESKey() {
 
-        println (<span class="string">"== test DES Key =="</span>)
+        println (&quot;== test DES Key ==&quot;)
         BASE64Encoder HEX = new BASE64Encoder()
         String myKeyString
         SecretKey key
         KeySpec desKeySpec
 
-        <span class="comment">// try 1        </span>
-        myKeyString = <span class="string">"thisissecretkey1"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 1
+        myKeyString = &quot;thisissecretkey1&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 2</span>
-        myKeyString = <span class="string">"thisissecretkey2"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 2
+        myKeyString = &quot;thisissecretkey2&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 3</span>
-        myKeyString = <span class="string">"thisissecretkey3"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 3
+        myKeyString = &quot;thisissecretkey3&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 4</span>
-        myKeyString = <span class="string">"thisissecretkey3123123123123123"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 4
+        myKeyString = &quot;thisissecretkey3123123123123123&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 5</span>
-        myKeyString = <span class="string">"thisissecret"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 5
+        myKeyString = &quot;thisissecret&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 6</span>
-        myKeyString = <span class="string">"thisisse"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 6
+        myKeyString = &quot;thisisse&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 7</span>
-        myKeyString = <span class="string">"thisissa"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 7
+        myKeyString = &quot;thisissa&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
-        <span class="comment">// try 7</span>
-        myKeyString = <span class="string">"seansean"</span>
-        desKeySpec = new DESKeySpec(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>))
-        key = SecretKeyFactory<span class="variable">.getInstance</span>(<span class="string">"DES"</span>)<span class="variable">.generateSecret</span>(desKeySpec)
-        println(<span class="string">"keyString : "</span> + getHexString(myKeyString<span class="variable">.getBytes</span>(<span class="string">"UTF8"</span>)))
-        println(<span class="string">"Key       : "</span> + getHexString(key<span class="variable">.getEncoded</span>()))
+        // try 7
+        myKeyString = &quot;seansean&quot;
+        desKeySpec = new DESKeySpec(myKeyString.getBytes(&quot;UTF8&quot;))
+        key = SecretKeyFactory.getInstance(&quot;DES&quot;).generateSecret(desKeySpec)
+        println(&quot;keyString : &quot; + getHexString(myKeyString.getBytes(&quot;UTF8&quot;)))
+        println(&quot;Key       : &quot; + getHexString(key.getEncoded()))
 
         println();
-        println(<span class="string">"Results:"</span>)
-        println(<span class="string">" key string's length must be equan or greater than 8"</span>);
-        println(<span class="string">" key string's in position of 9th or more is ignored"</span>);
+        println(&quot;Results:&quot;)
+        println(&quot; key string&#39;s length must be equan or greater than 8&quot;);
+        println(&quot; key string&#39;s in position of 9th or more is ignored&quot;);
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> String getHexString(byte[] b) throws Exception {
-        String result = <span class="string">""</span> 
-        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; b<span class="variable">.length</span>; i++) {
-            result += Integer<span class="variable">.toString</span>( ( b[i] &amp; <span class="number">0xff</span> ) + <span class="number">0x100</span>, <span class="number">16</span>)<span class="variable">.substring</span>( <span class="number">1</span> )
-        }   
-        <span class="keyword">return</span> result
-    }   
+    public static String getHexString(byte[] b) throws Exception {
+        String result = &quot;&quot;
+        for (int i=0; i &lt; b.length; i++) {
+            result += Integer.toString( ( b[i] &amp; 0xff ) + 0x100, 16).substring( 1 )
+        }
+        return result
+    }
 
-    <span class="keyword">private</span> <span class="keyword">static</span> String bytes2String(byte[] bytes) {
+    private static String bytes2String(byte[] bytes) {
         StringBuffer stringBuffer = new StringBuffer()
-        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; bytes<span class="variable">.length</span>; i++) {
-            stringBuffer<span class="variable">.append</span>((<span class="keyword">char</span>) bytes[i])
-        }   
-        <span class="keyword">return</span> stringBuffer<span class="variable">.toString</span>()
-    }   
+        for (int i=0; i &lt; bytes.length; i++) {
+            stringBuffer.append((char) bytes[i])
+        }
+        return stringBuffer.toString()
+    }
 }
-</code></pre>
-        </div>
-      </div>
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,217 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - tav:Brain-free command-line options parser</title>
-    <meta name="description" content="tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다." />
-    <meta name="keywords" content="nodejs,JavaScript,tav,cli" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - tav:Brain-free command-line options parser</title>
+  <meta name="description"
+    content="tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다."></meta>
+  <meta name="keywords"
+    content="nodejs,JavaScript,tav,cli"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="tav:Brain-free command-line options parser &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1319251876.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Oct 22 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1319251876.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Oct 22</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1319251876.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1319251876.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1319251876.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">tav:Brain-free command-line options parser</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#tav" class="tag">tav</a> <a href="/site/tagmap.html#cli" class="tag">cli</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1319251876.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1319251876.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1319251876.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다.</p>
 
-<h2>tav</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#tav" class="tag">tav</a> <a href="/site/tagmap.html#cli" class="tag">cli</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="tav-brain-free-command-line-options-parser">tav:Brain-free command-line options parser</h1>
+<p>tav는 나같은 무뇌아에게 딱 맞는 파서다. 좀더 고급형 cli parser도 많지만 아 뇌가 없어서 힘들다.</p>
+<h2 id="tav">tav</h2>
 <p>다음과 같이 대충 만들고:</p>
-<pre><code><span class="preprocessor">#!/usr/bin/env node</span>
-<span class="keyword">var</span> opts = require(<span class="string">'tav'</span>).<span class="keyword">set</span>();
+<pre><code>#!/usr/bin/env node
+var opts = require(&#39;tav&#39;).set();
 console.log(opts, opts.args);
-</code></pre>
-<p>라고 만들고 나서 대충 실행하면:</p>
-<pre><code><span class="comment">#!/usr/bin/env</span> <span class="comment">bash</span>
-<span class="comment">$node</span> <span class="comment">app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=localhost</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port=8080</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span> <span class="comment">arg1</span> <span class="comment">arg2</span>
-<span class="comment">{</span> <span class="comment">host:</span> <span class="comment">'localhost'</span>, <span class="comment">port:</span> <span class="comment">8080</span>, <span class="comment">debug:</span> <span class="comment">true</span> <span class="comment">}</span> <span class="title">[</span> <span class="comment">'arg1'</span>, <span class="comment">'arg2'</span> <span class="title">]</span>
-</code></pre>
-<p>된다.</p>
-
+</code></pre><p>라고 만들고 나서 대충 실행하면:</p>
+<pre><code>#!/usr/bin/env bash
+$node app.js --host=localhost --port=8080 --debug arg1 arg2
+{ host: &#39;localhost&#39;, port: 8080, debug: true } [ &#39;arg1&#39;, &#39;arg2&#39; ]
+</code></pre><p>된다.</p>
 <p>규칙도 정의할 수 있는데 다음과 같이 만들고:</p>
-<pre><code><span class="preprocessor">#!/usr/bin/env node</span>
-<span class="keyword">var</span> opts = require(<span class="string">'tav'</span>).<span class="keyword">set</span>({
-    <span class="comment">//value가 없기 때문에 host는 required 옵션이다.</span>
+<pre><code>#!/usr/bin/env node
+var opts = require(&#39;tav&#39;).set({
+    //value가 없기 때문에 host는 required 옵션이다.
     host: {
-        note: <span class="string">'Hostname'</span>
+        note: &#39;Hostname&#39;
     },
-    <span class="comment">//value가 있기 때문에 port는 optional 옵션이다.</span>
+    //value가 있기 때문에 port는 optional 옵션이다.
     port: {
-        note: <span class="string">'Binding port'</span>,
-        <span class="keyword">value</span>: <span class="number">80</span>
+        note: &#39;Binding port&#39;,
+        value: 80
     },
     debug : {
-        note : <span class="string">'Debug this'</span>,
-        <span class="keyword">value</span> : <span class="keyword">false</span>
+        note : &#39;Debug this&#39;,
+        value : false
     }
-    <span class="comment">//여기에 정의되지 않는 정의하지 않은 옵션은 unexpected이다.</span>
-}, <span class="string">"Very cool app"</span>);
+    //여기에 정의되지 않는 정의하지 않은 옵션은 unexpected이다.
+}, &quot;Very cool app&quot;);
 console.log(opts);
-</code></pre>
-<p>정의한대로 usage를 자동으로 구성해준다. <code>--help</code> 옵션을 주면 전체 볼 수 있다. <code>--help</code>가 없으면 그때그때 필요한 것만 보여준다.</p>
-<pre><code><span class="comment">$node</span> <span class="comment">app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=localhost</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span> <span class="comment">arg1</span> <span class="comment">arg2</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">help</span>
-<span class="comment">Very</span> <span class="comment">cool</span> <span class="comment">app</span>
+</code></pre><p>정의한대로 usage를 자동으로 구성해준다. <code>--help</code> 옵션을 주면 전체 볼 수 있다. <code>--help</code>가 없으면 그때그때 필요한 것만 보여준다.</p>
+<pre><code>$node app.js --host=localhost --debug arg1 arg2 --help
+Very cool app
 
-<span class="comment">Hostname</span>
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">host</span> <span class="comment">*required</span>
-<span class="comment">Binding</span> <span class="comment">port</span>
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">port</span>
-<span class="comment">Debug</span> <span class="comment">this</span>
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span>
-<span class="comment">Help</span>. <span class="comment">This</span> <span class="comment">message</span>.
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">help</span>
-</code></pre>
-<p>옵션의 속성으로 <code>Required</code>, <code>Unexpected</code>, <code>Optional</code>가 있다.</p>
-
+Hostname
+    --host *required
+Binding port
+    --port
+Debug this
+    --debug
+Help. This message.
+    --help
+</code></pre><p>옵션의 속성으로 <code>Required</code>, <code>Unexpected</code>, <code>Optional</code>가 있다.</p>
 <ul>
 <li>Required: 꼭 입력해야 하는 옵션입니다.</li>
 <li>Unexpected: 넣으면 안돼는 것입니다.</li>
 <li>Optional: 생략 가능한 것입니다.</li>
 </ul>
-
-<p>나이스한 컨벤션을 이용해서 정말 간단하게 구현했다. tav는 페니키아어로 mark, sign이라는 뜻이다. 에로틱한 이름이 어울릴 것 같은데 수학적이다.&ndash;;</p>
-
-        </div>
-      </div>
+<p>나이스한 컨벤션을 이용해서 정말 간단하게 구현했다. tav는 페니키아어로 mark, sign이라는 뜻이다. 에로틱한 이름이 어울릴 것 같은데 수학적이다.—;</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

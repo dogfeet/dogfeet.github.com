@@ -12,22 +12,6 @@
     }
 }
 
-.container-fluid > .sidebar, .container-fluid > .content {
-  padding-top: 60px;
-}
-
-.container-fluid > .sidebar {
-  left: auto;
-  right: 20px;
-  width: 220px;
-}
-
-.container-fluid > .content {
-  left: 20px;
-  margin-left: auto;
-  margin-right: 240px;
-}
-
 footer {
   margin-top: 3px;
   padding-top: 3px;
@@ -35,72 +19,50 @@ footer {
 }
 
 footer.footer {
-	margin-top: 45px;
-	padding: 35px 0 36px;
-	border-top: 1px solid #E5E5E5;
-}
-
-section.content h1 {
-	border-bottom: 1px solid #EEE;
-	letter-spacing: -1px;
-}
-
-section.content article.post {
-	margin-bottom: 50px;
-}
-
-section.content article p {
-	text-align: justify;
-	line-height: 175%;
+    margin-top: 45px;
+    padding: 35px 0 36px;
+    border-top: 1px solid #E5E5E5;
 }
 
 .btn-tag {
-	padding: 2px 5px 3px;
-	font-size: 0.85em;
-	line-height: 120%;
-}
-
-#related ul {
-	margin-bottom: 0;
+    padding: 2px 5px 3px;
+    font-size: 0.85em;
+    line-height: 120%;
 }
 
 section.content { padding-top: 50px; }
 
-article.post { padding-top: 60px; }
-
-section.content article.post footer {
-	padding-left: 1em;
-}
-
-section a.index-article-title { font-weight: bold; }
-
-article.post h1 { font-size: 1em; padding: 0; margin: 0; height: auto; line-height: normal; font-weight: bold;}
-section.content article.post h2 { margin-top: 30px; }
-section.content article.post h3 { margin-top: 20px; }
-section.content article.post h4 { margin-top: 10px; }
-section.content article.post h6 { margin-top: 10px; }
-section.content article.post h6 { margin-top: 10px; }
-
 .small-font {
-	font-size: 0.85em;
+    font-size: 0.85em;
 }
 
 section.content .tag {
-	padding: 3px 1px;
-	color: #D14;
-	background-color: #F7F7F9;
-	border-bottom: 1px solid #E1E1E8;
-	text-decoration: none;
+    padding: 3px 1px;
+    color: #D14;
+    background-color: #F7F7F9;
+    border-bottom: 1px solid #E1E1E8;
+    text-decoration: none;
 }
 
-section.archive, section.tagmap, section.atelier {
-	margin-top: 20px;
+ul.nav li {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.modern-font {
-	font-family: "Lucida Grande","Lucida Sans Unicode","Trebuchet MS", inherit;
+* {
+    font-family: "Lucida Grande","Lucida Sans Unicode","Trebuchet MS", inherit;
 }
 
-.archive-item {
-	margin-bottom: 1em;
+.left-box {
+    margin-top: 30px;
+}
+
+ul.unstyled {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.top-line {
+    border-top: 1px solid gainsboro;
+    padding-top: 15px;
 }

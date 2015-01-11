@@ -1,180 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - git: AngularJS Git Commit Message Conventions</title>
-    <meta name="description" content="이 글은 AngularJS Git Commit Message Conventions를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 grunt-conventional-changelog라는 스크립트까지 공개돼 있다." />
-    <meta name="keywords" content="git,AngularJS,Commit Message,Conventions,grunt-conventional-changelog" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - git: AngularJS Git Commit Message Conventions</title>
+  <meta name="description"
+    content="이 글은 AngularJS Git Commit Message Conventions를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 grunt-conventional-changelog라는 스크립트까지 공개돼 있다."></meta>
+  <meta name="keywords"
+    content="git,AngularJS,Commit Message,Conventions,grunt-conventional-changelog"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="git: AngularJS Git Commit Message Conventions &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/angularjs-git-commit-message-conventions.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Sep 25 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/angularjs-git-commit-message-conventions.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Sep 25</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">git: AngularJS Git Commit Message Conventions</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#angularjs" class="tag">AngularJS</a> <a href="/site/tagmap.html#commit message" class="tag">Commit Message</a> <a href="/site/tagmap.html#conventions" class="tag">Conventions</a> <a href="/site/tagmap.html#grunt-conventional-changelog" class="tag">grunt-conventional-changelog</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS Git Commit Message Conventions</a>를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>라는 스크립트까지 공개돼 있다.</p>
 
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#angularjs" class="tag">AngularJS</a> <a href="/site/tagmap.html#commit message" class="tag">Commit Message</a> <a href="/site/tagmap.html#conventions" class="tag">Conventions</a> <a href="/site/tagmap.html#grunt-conventional-changelog" class="tag">grunt-conventional-changelog</a></p>
+    </div>
+
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="git-angularjs-git-commit-message-conventions">git: AngularJS Git Commit Message Conventions</h1>
+<p>이 글은 <a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/">AngularJS Git Commit Message Conventions</a>를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>라는 스크립트까지 공개돼 있다.</p>
 <p>이 가이드에 따라서 커밋 메시지를 남기는 것을 연습 중이다. 히스토리가 좀 더 읽기 좋아졌지만, CHANGELOG를 남기고 싶어질 만한 일을 아직 하지 못했다. 아직 뭐가 어떻게 좋은지 표현하기 어렵다.</p>
-
 <p>이 글에 따라 커밋 메시지를 작성하고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>로 생성한 CHANGELOG를 한번 구경하고 읽자:</p>
-
 <ul>
 <li><a href="https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md">https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md</a></li>
 <li><a href="https://github.com/karma-runner/karma/blob/master/CHANGELOG.md">https://github.com/karma-runner/karma/blob/master/CHANGELOG.md</a></li>
 </ul>
-
-<p><img src="/articles/2013/angularjs-git-commit-message-conventions/angularjs-git-lg.png" alt=""/></p>
-
-<h2>AngularJS Git Commit Message Conventions</h2>
-
-<h3>요약</h3>
-
+<p><img src="/articles/2013/angularjs-git-commit-message-conventions/angularjs-git-lg.png" alt=""></p>
+<h2 id="angularjs-git-commit-message-conventions">AngularJS Git Commit Message Conventions</h2>
+<h3 id="-">요약</h3>
 <ul>
 <li>CHANGELOG.md를 스크립트로 생성한다.</li>
 <li><code>git bisect</code>로 중요하지 않은 커밋은 그냥 넘긴다.</li>
 <li>히스토리에 유의미한 정보를 많이 남긴다.</li>
 </ul>
-
-<h4>CHANGELOG.md 생성하기</h4>
-
+<h4 id="changelog-md-">CHANGELOG.md 생성하기</h4>
 <p>우리는 CHANGELOG를 만들 때 새 기능(Feature), 버그 픽스, 주목할만한 변화(Breaking Changes) 이렇게 세 가지 정보를 남기려고 한다. 이 세 가지 정보와 관련된 커밋을 이용해서 생성하는데 배포하기 전에 스크립트를 돌려서 생성한다. 생성하고 나서 손으로 수정할 때도 있지만, 수정한다고 해도 기본 왁구를 잡아주기 때문에 매우 유용하다.</p>
-
 <p>마지막으로 배포한 후부터 만들어진 모든 커밋 목록 보기(커밋 메시지의 첫 줄만 나온다):</p>
-<pre><code>git <span class="keyword">log</span> &lt;<span class="keyword">last</span> tag&gt; HEAD --pretty=<span class="keyword">format</span>:<span class="variable">%s</span>
-</code></pre>
-<p>이번에 배포하는 새 기능 조회:</p>
-<pre><code>git log <span class="tag">&lt;<span class="title">last</span> <span class="attribute">release</span>&gt;</span> HEAD --grep feature
-</code></pre>
-<h4>사소한 커밋 식별하기</h4>
-
+<pre><code>git log &lt;last tag&gt; HEAD --pretty=format:%s
+</code></pre><p>이번에 배포하는 새 기능 조회:</p>
+<pre><code>git log &lt;last release&gt; HEAD --grep feature
+</code></pre><h4 id="-">사소한 커밋 식별하기</h4>
 <p>들여쓰기를 하거나, 공백을 추가/삭제하거나, 빠트린 세미콜론을 넣었을 뿐이거나, 주석을 수정한 커밋들은 어떻게 처리해야 할까? 우리가 무언가 찾을 때 로직을 변경하지 않은 커밋은 무시할 수 있다.</p>
-
 <p><code>git bisect</code>를 이용해서 무시한다:</p>
-<pre><code>git bisect skip $(git rev-list --grep irrelevant <span class="tag">&lt;<span class="title">good</span> <span class="attribute">place</span>&gt;</span> HEAD)
-</code></pre>
-<h4>히스토리에는 어떤 정보를 남기면 좋을까?</h4>
-
+<pre><code>git bisect skip $(git rev-list --grep irrelevant &lt;good place&gt; HEAD)
+</code></pre><h4 id="-">히스토리에는 어떤 정보를 남기면 좋을까?</h4>
 <p>일종의 컨텍스트 정보도 넣으면 좋다.</p>
-
 <p>아래의 메지시는 컨텍스트 정보의 예인데 <a href="https://github.com/angular/angular.js">angularjs</a> 커밋에서 추출한 메시지다:</p>
-
 <ul>
 <li>Fix small typo in docs widget (tutorial instructions)</li>
 <li>Fix test for scenario.Application - should remove old iframe</li>
@@ -183,11 +123,8 @@
 <li>Replaced double line break with single when text is fetched from Google</li>
 <li>Added support for properties in documentation</li>
 </ul>
-
 <p>뭘 고쳤는지에 대한 정보가 커밋 메시지에 들어 있긴 하지만 일관된 형식으로 작성하진 않았다.</p>
-
 <p>다른 메시지를 보자:</p>
-
 <ul>
 <li>fix comment stripping</li>
 <li>fixing broken links</li>
@@ -195,27 +132,19 @@
 <li>Check whether links do exist and throw exception</li>
 <li>Fix sitemap include (to work on case sensitive linux)</li>
 </ul>
-
-<p>이 메시지를 보고 뭘 고친 것인지 알 수 있을까? 여기에는 무엇을 고쳤다는 컨텍스트 정보가 없다.<br/>
+<p>이 메시지를 보고 뭘 고친 것인지 알 수 있을까? 여기에는 무엇을 고쳤다는 컨텍스트 정보가 없다.
 docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무엇을 고쳤는지 짐작할 수 있을 것이다.</p>
-
 <p>물론, 어떤 파일이 변경됐는지 확인해보면 무엇을 수정했는지 알 수 있다. 하지만, 좀 번거롭다. 나는 히스토리를 조회하는 것만으로도 무엇을 고친 것인지 안다. 단지 컨벤션에 따라 작성하지 않았을 뿐이다.</p>
-
-<h3>커밋 메시시 포멧</h3>
-<pre><code><span class="tag">&lt;<span class="title">type</span>&gt;</span>(<span class="tag">&lt;<span class="title">scope</span>&gt;</span>): <span class="tag">&lt;<span class="title">subject</span>&gt;</span>
-<span class="tag">&lt;<span class="title">BLANK</span> <span class="attribute">LINE</span>&gt;</span>
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;<span class="title">BLANK</span> <span class="attribute">LINE</span>&gt;</span>
-<span class="tag">&lt;<span class="title">footer</span>&gt;</span>
-</code></pre>
-<p>첫 줄은 70자를 넘지 않아야 한다. 아시다시피 두 번째 줄은 블랭크이고 그다음부터는 80자를 넘지 않아야 한다. 이렇게 작성하면 GitHub에서 읽을 때도 편하고 다른 도구를 사용할 때도 편하다.</p>
-
-<h4>Subject</h4>
-
+<h3 id="-">커밋 메시시 포멧</h3>
+<pre><code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+</code></pre><p>첫 줄은 70자를 넘지 않아야 한다. 아시다시피 두 번째 줄은 블랭크이고 그다음부터는 80자를 넘지 않아야 한다. 이렇게 작성하면 GitHub에서 읽을 때도 편하고 다른 도구를 사용할 때도 편하다.</p>
+<h4 id="subject">Subject</h4>
 <p><code>&lt;subject&gt;</code> 줄에는 무엇이 달라졌는지 간략하게 기술한다.</p>
-
-<h5><code>&lt;type&gt;</code>에 작성하는 것</h5>
-
+<h5 id="-type-"><code>&lt;type&gt;</code>에 작성하는 것</h5>
 <ul>
 <li>feat (feature)</li>
 <li>fix (bug fix)</li>
@@ -225,226 +154,190 @@ docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무�
 <li>test (when adding missing tests)</li>
 <li>chore (maintain)</li>
 </ul>
-
-<h5><code>&lt;scope&gt;</code>에 넣는 것</h5>
-
+<h5 id="-scope-"><code>&lt;scope&gt;</code>에 넣는 것</h5>
 <p>여기에는 무엇을 수정했는지 적는다. 예를 들어 $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView라고 적으면 되겠다.</p>
-
 <blockquote>
-<p>역주: Angular.js에서 <code>스코프</code>는 특별한 컨텍스트(or 네임스페이스)를 지칭하는 용어다. 일반적인 언어의 스코프와 상통하는 면이 있기도 하지만 다르다. 자세한 내용은 <a href="http://docs.angularjs.org/tutorial">Angular.js 튜토리얼</a>을 참고한다.<br/>
+<p>역주: Angular.js에서 <code>스코프</code>는 특별한 컨텍스트(or 네임스페이스)를 지칭하는 용어다. 일반적인 언어의 스코프와 상통하는 면이 있기도 하지만 다르다. 자세한 내용은 <a href="http://docs.angularjs.org/tutorial">Angular.js 튜토리얼</a>을 참고한다.
 하지만 일반적인 의미의 스코프로 해석해서, Angular.js가 아닌 다른 프로젝트의 모듈이나 패키지를 넣어도 무방하다고 생각한다. 도대체 어디를 고쳤는지 적는 용도로 쓰면 좋겠다.</p>
 </blockquote>
-
-<h5><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
-
+<h5 id="-subject-"><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
 <ul>
-<li>군더더기 없이 간략하게 현재형으로 적는다: &lsquo;changed'나 'changes'가 아니라 'change'로 적는다.</li>
+<li>군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
 <li>굳이 첫 문자를 대문자로 적지 않는다.</li>
 <li>문장 끝에 마침표(.)로 끝내지 않는다.</li>
 </ul>
-
-<h4>메시지 바디</h4>
-
+<h4 id="-">메시지 바디</h4>
 <ul>
-<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: 'changed'나 'changes'가 아니라 'change'로 적는다.</li>
-<li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p></li>
-<li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p></li>
-<li><p><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></p></li>
+<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p>
+</li>
+<li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p>
+</li>
+<li><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html</a></li>
 </ul>
-
-<h4>메시지 푸터</h4>
-
-<h5>주요 변경 내용(Breaking changes)</h5>
-
+<h4 id="-">메시지 푸터</h4>
+<h5 id="-breaking-changes-">주요 변경 내용(Breaking changes)</h5>
 <p>주요 변경 내용은 푸터에 언급한다. 무엇을 고쳤는지, 왜 고쳤는지, 마이그레이션은 어떻게 해야 하는지 설명한다.</p>
-
 <blockquote>
 <p>역주 - 예제는 번역하지 않았다. 튜토리얼을 봤는데도 Angularjs에 대한 이해가 여전히 부족하다. 그리고 <a href="https://github.com/btford/grunt-conventional-changelog">grunt-conventional-changelog</a>를 그대로 사용하려면 인식 가능하도록 주요 용어는 영어를 사용해야 한다.</p>
 </blockquote>
-<pre><code>BREAKING CHANGE: isolate scope bindings definition has changed <span class="keyword">and</span>
-<span class="keyword">the</span> inject option <span class="keyword">for</span> <span class="keyword">the</span> directive controller injection was removed.
+<pre><code>BREAKING CHANGE: isolate scope bindings definition has changed and
+the inject option for the directive controller injection was removed.
 
-To migrate <span class="keyword">the</span> code follow <span class="keyword">the</span> example <span class="keyword">below</span>:
+To migrate the code follow the example below:
 
 Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
 
-The removed `inject` wasn't generaly useful <span class="keyword">for</span> directives so there should be no code using <span class="keyword">it</span>.
-</code></pre><pre><code>BREAKING CHANGE: isolate scope bindings definition has changed <span class="keyword">and</span>
-<span class="keyword">the</span> inject option <span class="keyword">for</span> <span class="keyword">the</span> directive controller injection was removed.
+The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
+</code></pre><pre><code>BREAKING CHANGE: isolate scope bindings definition has changed and
+the inject option for the directive controller injection was removed.
 
-To migrate <span class="keyword">the</span> code follow <span class="keyword">the</span> example <span class="keyword">below</span>:
+To migrate the code follow the example below:
 
 Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
 
-The removed `inject` wasn't generaly useful <span class="keyword">for</span> directives so there should be no code using <span class="keyword">it</span>.
-</code></pre>
-<h5>이슈 번호 넣기</h5>
-
-<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 &ldquo;Closes&quot;로 시작한다:</p>
-<pre><code><span class="title">Closes</span> <span class="comment">#234</span>
-</code></pre>
-<p>이슈를 여러 개 넣어도 된다:</p>
-<pre><code><span class="tag">Closes</span> <span class="id">#123</span>, <span class="id">#245</span>, <span class="id">#992</span>
-</code></pre>
-<blockquote>
+The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
+</code></pre><h5 id="-">이슈 번호 넣기</h5>
+<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 “Closes”로 시작한다:</p>
+<pre><code>Closes #234
+</code></pre><p>이슈를 여러 개 넣어도 된다:</p>
+<pre><code>Closes #123, #245, #992
+</code></pre><blockquote>
 <p>역주: Close(s)와 이슈 번호를 커밋 메시지에 넣어 GitHub에 Push하면 해당 이슈가 자동으로 닫힌다.</p>
 </blockquote>
-
-<h3>Examples</h3>
-
-<hr/>
-
-<p>** Feat($browser): onUrlChange event (popstate/hashchange/polling) **</p>
-
+<h3 id="examples">Examples</h3>
+<hr>
+<p><strong> Feat($browser): onUrlChange event (popstate/hashchange/polling) </strong></p>
 <p>Added new event to $browser:</p>
-
 <ul>
 <li>forward popstate event if available</li>
 <li>forward hashchange event if popstate not available</li>
 <li>do polling when neither popstate nor hashchange available</li>
 </ul>
-
-<p>** Breaks $browser.onHashChange, which was removed (use onUrlChange instead) **</p>
-
-<hr/>
-
-<p>** fix($compile): couple of unit tests for IE9 **</p>
-
-<p>Older IEs serialize html uppercased, but IE9 does not&hellip;<br/>
-Would be better to expect case insensitive, unfortunately jasmine does<br/>
+<p><strong> Breaks $browser.onHashChange, which was removed (use onUrlChange instead) </strong></p>
+<hr>
+<p><strong> fix($compile): couple of unit tests for IE9 </strong></p>
+<p>Older IEs serialize html uppercased, but IE9 does not…
+Would be better to expect case insensitive, unfortunately jasmine does
 not allow to user regexps for throw expectations.</p>
-
-<p>** Closes <code>#392</code> **<br/>
-** Breaks foo.bar api, foo.baz should be used instead **</p>
-
-<hr/>
-
-<p>** feat(directive): ng:disabled, ng:checked, ng:multiple, ng:readonly, ng:selected **</p>
-
-<p>New directives for proper binding these attributes in older browsers (IE).<br/>
+<p><strong> Closes <code>#392</code> </strong>
+<strong> Breaks foo.bar api, foo.baz should be used instead </strong></p>
+<hr>
+<p><strong> feat(directive): ng:disabled, ng:checked, ng:multiple, ng:readonly, ng:selected </strong></p>
+<p>New directives for proper binding these attributes in older browsers (IE).
 Added coresponding description, live examples and e2e tests.</p>
-
-<p>** Closes <code>#351</code> **</p>
-
-<hr/>
-
-<p>** style($location): add couple of missing semi colons **</p>
-
-<hr/>
-
-<p>** docs(guide): updated fixed docs from Google Docs **</p>
-
+<p><strong> Closes <code>#351</code> </strong></p>
+<hr>
+<p><strong> style($location): add couple of missing semi colons </strong></p>
+<hr>
+<p><strong> docs(guide): updated fixed docs from Google Docs </strong></p>
 <p>Couple of typos fixed:</p>
-
 <ul>
 <li>indentation</li>
-<li>batchLogbatchLog -> batchLog</li>
+<li>batchLogbatchLog -&gt; batchLog</li>
 <li>start periodic checking</li>
 <li>missing brace</li>
 </ul>
-
-<hr/>
-
-<p>** feat($compile): simplify isolate scope bindings **</p>
-
+<hr>
+<p><strong> feat($compile): simplify isolate scope bindings </strong></p>
 <p>Changed the isolate scope binding options to:</p>
-
 <ul>
 <li><code>@attr</code> - attribute binding (including interpolation)</li>
 <li>=model - by-directional model binding</li>
-<li>&expr - expression execution binding</li>
+<li>&amp;expr - expression execution binding</li>
 </ul>
-
-<p>This change simplifies the terminology as well as<br/>
-number of choices available to the developer. It<br/>
+<p>This change simplifies the terminology as well as
+number of choices available to the developer. It
 also supports local name aliasing from the parent.</p>
-
-<p><strong>BREAKING CHANGE</strong>: isolate scope bindings definition has changed and<br/>
+<p><strong>BREAKING CHANGE</strong>: isolate scope bindings definition has changed and
 the inject option for the directive controller injection was removed.</p>
-
 <p>To migrate the code follow the example below:</p>
 <pre><code>Before:
 
 scope: {
-  myAttr: 'attribute',
-  myBind: 'bind',
-  myExpression: 'expression',
-  myEval: 'evaluate',
-  myAccessor: 'accessor'
+  myAttr: &#39;attribute&#39;,
+  myBind: &#39;bind&#39;,
+  myExpression: &#39;expression&#39;,
+  myEval: &#39;evaluate&#39;,
+  myAccessor: &#39;accessor&#39;
 }
 
 After:
 
 scope: {
-  myAttr: '@',
-  myBind: '@',
-  myExpression: '&amp;',
-  // myEval - usually <span class="keyword">not</span> useful, <span class="keyword">but</span> <span class="keyword">in</span> cases <span class="keyword">where</span> <span class="keyword">the</span> expression <span class="keyword">is</span> assignable, you can use '='
-  myAccessor: '=' // <span class="keyword">in</span> directive's template change myAccessor() <span class="keyword">to</span> myAccessor
+  myAttr: &#39;@&#39;,
+  myBind: &#39;@&#39;,
+  myExpression: &#39;&amp;&#39;,
+  // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
+  myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
-</code></pre>
-<p>The removed inject wasn&rsquo;t generaly useful for directives so there should be no code using it.</p>
-
-        </div>
-      </div>
+</code></pre><p>The removed `inject` wasn’t generaly useful for directives so there should be no code using it.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

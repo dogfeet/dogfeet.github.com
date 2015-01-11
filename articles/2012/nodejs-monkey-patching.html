@@ -1,236 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - nodejs에서의 멍키 패칭</title>
-    <meta name="description" content="JavaScript에서 멍키 패칭이 가능할까? &lsquo;require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다." />
-    <meta name="keywords" content="nodejs,Monkey Patching" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - nodejs에서의 멍키 패칭</title>
+  <meta name="description"
+    content="JavaScript에서 멍키 패칭이 가능할까? ‘require’를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다."></meta>
+  <meta name="keywords"
+    content="nodejs,Monkey Patching"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="nodejs에서의 멍키 패칭 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/nodejs-monkey-patching.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jun 24 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/nodejs-monkey-patching.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jun 24</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">nodejs에서의 멍키 패칭</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#monkey patching" class="tag">Monkey Patching</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/nodejs-monkey-patching.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>JavaScript에서 멍키 패칭이 가능할까? &lsquo;require'를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다.</p>
 
-<p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch"/></p>
+      <p class="small-font top-line"><a href="/site/tagmap.html#nodejs" class="tag">nodejs</a> <a href="/site/tagmap.html#monkey patching" class="tag">Monkey Patching</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="nodejs-">nodejs에서의 멍키 패칭</h1>
+<p>JavaScript에서 멍키 패칭이 가능할까? ‘require’를 어떻게 좀 바꾸면 될 것 같은데, 그런게 가능하긴 할까해서 찾아봤다. 명색이 프로토타입 언어인데 쓸데가 있을지는 둘 째치고 가능할꺼라는 생각이 들었다.</p>
+<p><img src="/articles/2012/nodejs-monkey-patching/monkey_patch.jpg" alt="monkey-patch"></p>
 <p>(from <a href="http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html">http://geargeeksreview.blogspot.kr/2008/09/milspecmonkey-monkey-patch.html</a>)</p>
-
-<h2>require</h2>
-
+<h2 id="require">require</h2>
 <p>소스에서 require를 사용할 수 있는 이유는 다음과 같은 코드로 wrapper되기 때문이다. 다음 코드는 node/src/node.js에 있는(node 소스) 코드다:</p>
 <pre><code>NativeModule.wrapper = [
-    <span class="comment">'(function (exports, require, module, __filename, __dirname) { ',</span>
-    <span class="comment">'\n});'</span>
+    &#39;(function (exports, require, module, __filename, __dirname) { &#39;,
+    &#39;\n});&#39;
 ];
-</code></pre>
-<p>소스에서 exports, require, module, __filename, __dirname 변수를 사용할 수 있는 이유는 우리가 구현하는 모듈이 이 wrapper의 바디에 해당되기 때문이다.</p>
-
+</code></pre><p>소스에서 exports, require, module, <strong>filename, </strong>dirname 변수를 사용할 수 있는 이유는 우리가 구현하는 모듈이 이 wrapper의 바디에 해당되기 때문이다.</p>
 <p>모든 모듈은 Module 객체이다. <code>require(&#39;fs&#39;)</code>라고 호출하면 fs.js를 로드해서 Module 객체 인스턴스로 만들어서 반환한다. <code>node/lib/module.js</code> 코드를 보면 모든 모듈은 Module 객체로 만드는 부분이 있다.</p>
-<pre><code><span class="keyword">var</span> module = <span class="keyword">new</span> Module(filename, <span class="keyword">parent</span>);
-</code></pre>
-<p>require는 module 객체 자체를 반환하는 것이 아니라 <code>module.exports</code>를 반환한다. 그래서 require로 Module 객체에 접근할 수 없다. </p>
-
+<pre><code>var module = new Module(filename, parent);
+</code></pre><p>require는 module 객체 자체를 반환하는 것이 아니라 <code>module.exports</code>를 반환한다. 그래서 require로 Module 객체에 접근할 수 없다.</p>
 <p>module 객체에는 해당 모듈에 필요한 정보를 담고 있으면서 _cached 프로퍼티에 캐시된다. 실제 module.js 소스를 보자:</p>
-<pre><code>var cached<span class="variable">Module</span> = <span class="variable">Module</span>.<span class="variable">_</span>cache[filename];
-<span class="function"><span class="title">if</span> <span class="params">(cached<span class="variable">Module</span>)</span> {
-    <span class="title">return</span> <span class="title">cachedModule</span>.<span class="title">exports</span>;
+<pre><code>var cachedModule = Module._cache[filename];
+if (cachedModule) {
+    return cachedModule.exports;
 }
-</code></pre>
-<p>require가 호출되면 먼저 _cache에 등록는지 확인하고 캐시한 것을 반환한다. 즉, 해당 모듈 객체는 딱 하나만 만든다. 이 것은 API 문서에도 잘 나와 있다.</p>
-
-<h3>Module.prototype.require</h3>
-
+</code></pre><p>require가 호출되면 먼저 _cache에 등록는지 확인하고 캐시한 것을 반환한다. 즉, 해당 모듈 객체는 딱 하나만 만든다. 이 것은 API 문서에도 잘 나와 있다.</p>
+<h3 id="module-prototype-require">Module.prototype.require</h3>
 <p>그럼 require는 어딨는 걸까? 뭘 고쳐야 require 호출을 가로챌 수 있을까? 우리가 호출하는 require는 다음과 같은 위치에 있다:</p>
-<pre><code>Module<span class="variable">.prototype</span><span class="variable">.require</span> = function(path) {
-  <span class="keyword">return</span> Module<span class="variable">._load</span>(path, <span class="keyword">this</span>);
+<pre><code>Module.prototype.require = function(path) {
+  return Module._load(path, this);
 };
-</code></pre>
-<p>메인 모듈(실행하는 스크립트)뿐만 아니라 모든 모듈 객체의 prototype에 있는 require를 호출한다. 그리고 저걸 바꿔주는 모듈을 만들면 내가 만든 require 함수가 호출되도록 할 수 있다.</p>
-
-<h2>멍키 패칭</h2>
-
+</code></pre><p>메인 모듈(실행하는 스크립트)뿐만 아니라 모든 모듈 객체의 prototype에 있는 require를 호출한다. 그리고 저걸 바꿔주는 모듈을 만들면 내가 만든 require 함수가 호출되도록 할 수 있다.</p>
+<h2 id="-">멍키 패칭</h2>
 <p>require 함수를 바꾸는 mp.js 모듈을 만든다:</p>
-<pre><code><span class="keyword">var</span> Module = <span class="keyword">require</span>(<span class="string">'module'</span>);
+<pre><code>var Module = require(&#39;module&#39;);
 
-<span class="comment">// orig 함수를 두는 위치는 아무 의미없다--;</span>
-<span class="comment">// 그냥 prototype._require__에 넣은 것이다. 실제로 사용하려면 문제가 될 수 있다.</span>
-Module.prototype.__require__ = Module.prototype.<span class="keyword">require</span>;
-Module.prototype.<span class="keyword">require</span> = <span class="function"><span class="keyword">function</span> <span class="title">fevent_require</span><span class="params">(id)</span> {</span>
+// orig 함수를 두는 위치는 아무 의미없다--;
+// 그냥 prototype._require__에 넣은 것이다. 실제로 사용하려면 문제가 될 수 있다.
+Module.prototype.__require__ = Module.prototype.require;
+Module.prototype.require = function fevent_require(id) {
 
-    <span class="comment">//여기에 멍키 패칭 코드를 넣을 수 있다.</span>
-    <span class="comment">//fs나 net 모듈 같은 걸 수정할 수 있다.</span>
-    console.log(<span class="string">'called require'</span>);
+    //여기에 멍키 패칭 코드를 넣을 수 있다.
+    //fs나 net 모듈 같은 걸 수정할 수 있다.
+    console.log(&#39;called require&#39;);
 
-    <span class="keyword">return</span> <span class="keyword">this</span>.__require__(id);
+    return this.__require__(id);
 }
-</code></pre>
-<p>mp.js 모듈을 사용해보자:</p>
-<pre><code><span class="keyword">require</span>(<span class="string">'fs'</span>);
+</code></pre><p>mp.js 모듈을 사용해보자:</p>
+<pre><code>require(&#39;fs&#39;);
 
-<span class="keyword">require</span>(<span class="string">'./mp'</span>);
+require(&#39;./mp&#39;);
 
-<span class="keyword">require</span>(<span class="string">'fs'</span>); <span class="regexp">//called</span> <span class="keyword">require</span>
-<span class="keyword">require</span>(<span class="string">'net'</span>); <span class="regexp">//called</span> <span class="keyword">require</span>
-</code></pre>
-<p>잘된다.</p>
-
+require(&#39;fs&#39;); //called require
+require(&#39;net&#39;); //called require
+</code></pre><p>잘된다.</p>
 <p>그런데 여기서 한가지 의문이 든다. Module.prototype.require를 수정했지만 <code>(function (exports, require, module, __filename, __dirname)</code>라는 wrapper를 통해 파라미터로 넘겨진 require의 레퍼런스는 그대로 인데도 잘 수행된다.</p>
-
 <p>이 wrapper를 통해 넘겨진 함수는 다음과 같다:</p>
-<pre><code><span class="keyword">var</span> <span class="keyword">self</span> = <span class="keyword">this</span>;
-<span class="comment">//....</span>
-<span class="function"><span class="keyword">function</span> <span class="title">require</span><span class="params">(path)</span> {</span>
-    <span class="keyword">return</span> <span class="keyword">self</span>.<span class="keyword">require</span>(path);
+<pre><code>var self = this;
+//....
+function require(path) {
+    return self.require(path);
 }
-</code></pre>
-<p>그래서 해당 모듈의 require 함수가 호출되는 것이기 때문에 잘된다.</p>
-
-<p>require 함수를 바꿀 수 있으니 이제 원하는 모듈을 멍키 패칭할 수 있다. 이 방법의 안정성은 좀 더 다듬어야 하고&ndash;; 멍키 패칭이 필요한 이유도 아직 없지만&ndash;;; 가능하긴 하다는 것을 알아 보았다.</p>
-
-        </div>
-      </div>
+</code></pre><p>그래서 해당 모듈의 require 함수가 호출되는 것이기 때문에 잘된다.</p>
+<p>require 함수를 바꿀 수 있으니 이제 원하는 모듈을 멍키 패칭할 수 있다. 이 방법의 안정성은 좀 더 다듬어야 하고—; 멍키 패칭이 필요한 이유도 아직 없지만—;; 가능하긴 하다는 것을 알아 보았다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

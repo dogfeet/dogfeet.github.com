@@ -1,260 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - 그와 그녀의 tryios</title>
-    <meta name="description" content="codeschool에 tryios가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 그와 코딩 초보인 그녀가 함께 tryios를 해보고 난 후기다." />
-    <meta name="keywords" content="codeschool,ios,tryios" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - 그와 그녀의 tryios</title>
+  <meta name="description"
+    content="codeschool에 tryios가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 그와 코딩 초보인 그녀가 함께 tryios를 해보고 난 후기다."></meta>
+  <meta name="keywords"
+    content="codeschool,ios,tryios"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="그와 그녀의 tryios &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/he-she-codeschool-tryios.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jan 20 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/he-she-codeschool-tryios.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Jan 20</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">그와 그녀의 tryios</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#codeschool" class="tag">codeschool</a> <a href="/site/tagmap.html#ios" class="tag">ios</a> <a href="/site/tagmap.html#tryios" class="tag">tryios</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#codeschool" class="tag">codeschool</a> <a href="/site/tagmap.html#ios" class="tag">ios</a> <a href="/site/tagmap.html#tryios" class="tag">tryios</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/he-she-codeschool-tryios.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p><a href="http://www.codeschool.com/">codeschool</a>에 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 <a href="https://twitter.com/pismute">그</a>와 코딩 초보인 <a href="http://uniquenoun.tumblr.com/">그녀</a>가 함께 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 해보고 난 후기다.</p>
 
-<p><img src="/articles/2013/codeschool-tryios/tryios.png" alt="tryios"/></p>
+    <div class="col-sm-10">
 
-<h2>tryios</h2>
-
-<p>이 강의는 제목에서처럼 정말 iOS를 소개하는 수준의 강의다. <a href="https://twitter.com/greggpollack">@greggpollack</a> 선생님이 천천히 쉬운 영어로 설명해주는 것 같지만 뭐라고 말하는지는 들을 수 없다. 내용이 쉬워서 슬라이드로도 충분하긴 하지만 그래도 영어를 알아듣고 싶다.</p>
-
+      <div property="sioc:content"><h1 id="-tryios">그와 그녀의 tryios</h1>
+<p><a href="http://www.codeschool.com/">codeschool</a>에 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>가 올라오자마자 노리고 있었다. 왠지 재미도 있고 쉬울 것 같았다. 이 글은 iOS 초보인 <a href="https://twitter.com/pismute">그</a>와 코딩 초보인 <a href="http://uniquenoun.tumblr.com/">그녀</a>가 함께 <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 해보고 난 후기다.</p>
+<p><img src="/articles/2013/codeschool-tryios/tryios.png" alt="tryios"></p>
+<h2 id="tryios">tryios</h2>
+<p>이 강의는 제목에서처럼 정말 iOS를 소개하는 수준의 강의다. @greggpollack 선생님이 천천히 쉬운 영어로 설명해주는 것 같지만 뭐라고 말하는지는 들을 수 없다. 내용이 쉬워서 슬라이드로도 충분하긴 하지만 그래도 영어를 알아듣고 싶다.</p>
 <p>무료인 <a href="http://www.codecademy.com/">codecademy</a>보다 퀄리티가 높을 거라고는 생각했지만 이렇게 친절할 줄은 생각도 못했다. 처음 접하는 사람이 쉽게 따라 할 수 있도록 기초적인 커리큘럼에 필요한 내용만 가르쳐준다. 거기다가 동영상도 공을 들인 티가 난다. 슬라이드도 아주 예쁘다.</p>
-
 <p>이 강의를 만드는데 무려 12명이나 참여했다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/credit.png" alt="tryios-credit"/></p>
-
-<p>&lsquo;Mr. Higgie'라는 캐릭터 까지 있다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/higgie.png" alt="higgie"/></p>
-
+<p><img src="/articles/2013/codeschool-tryios/credit.png" alt="tryios-credit"></p>
+<p>‘Mr. Higgie’라는 캐릭터 까지 있다:</p>
+<p><img src="/articles/2013/codeschool-tryios/higgie.png" alt="higgie"></p>
 <p>설명을 듣고, 코딩해서, 바로 검사하는 구조는 너무 매력적인 학습방법이다. <a href="https://class.coursera.org/progfun-2012-001/">Coursera의 Scala 강의</a>도 그런 방식이였는데 굉장히 잼있었다. 무엇보다 바로 내가 틀렸는지 알 수 있기 때문에 될 때까지 버티면 정말 된다.</p>
-
 <p>Gamification이 잘 돼있어서 강의를 하나씩 끝날 때 마다 뱃지를 준다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/badge.png" alt="badge"/></p>
-
+<p><img src="/articles/2013/codeschool-tryios/badge.png" alt="badge"></p>
 <p><a href="http://beta.openbadges.org/">http://beta.openbadges.org/</a> 에 연계도 된다. <a href="http://openbadges.org/">Open Badges</a>라는 거 처음 봤는데, 뭔지 모르겠다.</p>
-
-<p>Coursera Scala 강의에서는 오덕스키 선생님의 사인이 든 수료증도 줬는데 <a href="https://twitter.com/greggpollack">@greggpollack</a> 선생님의 사인이든 수료증을 별도로 주지 않는다. 하지만 'Report Card'라는 게 있다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/report-card.png" alt="report-card"/></p>
-
-<p>이 'Report Card'는 공개할 수도 있고 비공개로 설정할 수도 있다. 하지만 타인의 Report Card를 보는 페이지는 찾지 못했다.</p>
-
+<p>Coursera Scala 강의에서는 오덕스키 선생님의 사인이 든 수료증도 줬는데 @greggpollack 선생님의 사인이든 수료증을 별도로 주지 않는다. 하지만 ‘Report Card’라는 게 있다:</p>
+<p><img src="/articles/2013/codeschool-tryios/report-card.png" alt="report-card"></p>
+<p>이 ‘Report Card’는 공개할 수도 있고 비공개로 설정할 수도 있다. 하지만 타인의 Report Card를 보는 페이지는 찾지 못했다.</p>
 <p><a href="http://www.codeschool.com/">CodeSchool</a>은 한달에 $25 단위로 결제해야 한다. $25 결제하면 원하는 대로 강의를 들을 수 있다. 무료 강의도 몇개 있어서 <a href="http://www.codeschool.com/courses/try-git">trygit</a>같은 것을 무료로 해볼 수 있다.</p>
-
 <p>뭔가 처음이라면 codeschool의 강의를 들어보는 게 좋겠다. 유료지만 한달에 $25이 아깝지 않다.</p>
-
 <p>Kickstarter에서 $152,912를 펀딩받아 제작됐다고 한다(<a href="http://www.codeschool.com/2012">http://www.codeschool.com/2012</a>). <a href="http://macminicolo.net/">http://macminicolo.net/</a> 사람들이 만든 것 같은데(추측임), 강의 처음에 나오는 광고도 귀엽다. 앞으로도 재미난 iOS 강의가 많을 것 같아 기대된다.</p>
-
-<h3>code TV</h3>
-
+<h3 id="code-tv">code TV</h3>
 <p><a href="http://www.codeschool.com/">CodeSchool</a>은 <a href="http://www.codeschool.com/code_tv">Code TV</a>라는 podcast도 제공한다. podcast 링크는 iTunes에서 찾을 수 있다. 좀 잼있어 보이는 강의가 몇개 있다. 영어를 못 들으니 영어 자막을 함께 제공해 줬으면 좋겠는데 영어 자막을 제공하지는 않는다.</p>
-
-<h3>수료</h3>
-
-<p><a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 수료하면 3가지 보상을 준다. 일단 $5에 이르는 <a href="http://www.codeschool.com/">CodeSchool</a> Cash와 'iOS SDK Development'라는 책의 25% 할인권 그리고 <a href="https://www.tinkerlearn.com/xray">TinkerLearn</a>의 50% 할인권을 준다. 지원해주는 회사가 있으면 재밌게 공부도하고 수익 남는ㅋㅋㅋ:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/reward.png" alt="reward"/></p>
-
+<h3 id="-">수료</h3>
+<p><a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 수료하면 3가지 보상을 준다. 일단 $5에 이르는 <a href="http://www.codeschool.com/">CodeSchool</a> Cash와 ‘iOS SDK Development’라는 책의 25% 할인권 그리고 <a href="https://www.tinkerlearn.com/xray">TinkerLearn</a>의 50% 할인권을 준다. 지원해주는 회사가 있으면 재밌게 공부도하고 수익 남는ㅋㅋㅋ:</p>
+<p><img src="/articles/2013/codeschool-tryios/reward.png" alt="reward"></p>
 <p><a href="https://www.tinkerlearn.com/xray">TinkerLearn</a>은 무료 Lesson만 다운받았는데 해당 Lesson과 관련된 pdf와 샘플 코드가 들어 있다. <a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 끝낸 후 다음에 뭘해야 할지 고민할 필요도 없다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/tinkerlearn.png" alt="tinkerlearn"/></p>
-
-<h2>그녀</h2>
-
+<p><img src="/articles/2013/codeschool-tryios/tinkerlearn.png" alt="tinkerlearn"></p>
+<h2 id="-">그녀</h2>
 <p>그녀의 개발툴은 Illustrator와 Photoshop으로 프로그래밍은 잘 모른다. 디자이너도 코드를 읽을 줄 알아야 한다는 드립을 한 5년간 쳤는데, 드디어 일진보 했다.</p>
-
 <p>내가 그녀에게 친 뻥은 아래와 같다:</p>
-
 <ol>
 <li>인생은 학습이다. 뭘 배우는지 중요치 않다. 뭐든 배우는 거다.</li>
 <li>실무자가 의사 결정을 직접 해야 작업 속도가 빠르고 퀄리티도 높다. 소프트웨어 디자인을 한다면 소프트웨어에서 디자인을 어떻게 표현하는지 사람들이 어떻게 작업하는지 알아야 한다.</li>
 <li>결정권이 없는 실무자는 우울해진다. 동료를 위해 디자인과 관계된 실무를 익혀라.</li>
 </ol>
-
 <p>그녀에 대답은 대체로 아래와 같았다:</p>
-
 <ol>
 <li>너부터 디자인을 배워라.</li>
 <li>소프트웨어 싫다.</li>
 <li>동료가 없다.</li>
 </ol>
-
 <p>그렇게 줄다리기를 하다가 <a href="http://www.codeschool.com/">CodeSchool</a> 덕택에 함께 공부를 해보게 됐다.</p>
-
 <p>뭐든 상관 없지만, iOS를 배워보기로 했다. iOS, web, Android를 제안했는데 그녀는 iOS를 골랐다. iPhone의 완성도는 역시 너무 매력적이다.</p>
-
 <p><a href="http://www.codeschool.com/courses/try-ios">tryios</a>를 시작하기 전에 그녀는 Objective-C를 좀 먼저 읽었다. 분명 제대로 공부를 하고 있다면 질문이 많았을 텐데 질문이 많지 않은 거로 봐서 멘붕 상태에 있다는 걸 알 수 있었다. 그녀는 <a href="http://www.codeschool.com/courses/try-ios">tryios</a> 강의를 수료한 지금도 멘붕 상태다.</p>
-
 <p>들리지도 않는 동영상 교재를 끝까지 듣고, 처음보는 외계어로 가득찬 슬라이드를 끝까지 감내한 그녀에게 경의를 표한다.</p>
-
 <p>총 6 챕터로 구성된 강의는 매 챕터마다 3~4시간 가량 걸렸다. tryios는 아주 기본적인 내용만 다루기 때문에 하루 정도면 충분하다. 나는 좀 불친절한 성격이라 그녀가 묻는 질문에만 대답해서 오래걸렸다.</p>
-
 <p>내 느낌은 이렇다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/haksan.png" alt="haksan"/></p>
-
-<p>내가 그녀라면 인내할 수 있었을까? 훌륭하다. 그녀는 이왕 결재한 거라고 하면서 <a href="http://www.codeschool.com/courses/functional-html5-css3">Functional HTML5 & CSS3</a>와 <a href="http://www.codeschool.com/courses/functional-html5-css3">CSS Cross-Country</a> 강의도 시작했다:</p>
-
-<p><img src="/articles/2013/codeschool-tryios/functional-html5-css3.png" alt="functional-html5-css3"/></p>
-
-<p><img src="/articles/2013/codeschool-tryios/css-cross-country.png" alt="css-cross-country"/></p>
-
+<p><img src="/articles/2013/codeschool-tryios/haksan.png" alt="haksan"></p>
+<p>내가 그녀라면 인내할 수 있었을까? 훌륭하다. 그녀는 이왕 결재한 거라고 하면서 <a href="http://www.codeschool.com/courses/functional-html5-css3">Functional HTML5 &amp; CSS3</a>와 <a href="http://www.codeschool.com/courses/functional-html5-css3">CSS Cross-Country</a> 강의도 시작했다:</p>
+<p><img src="/articles/2013/codeschool-tryios/functional-html5-css3.png" alt="functional-html5-css3"></p>
+<p><img src="/articles/2013/codeschool-tryios/css-cross-country.png" alt="css-cross-country"></p>
 <p><a href="http://www.codeschool.com/courses/try-ios">tryios</a> 강의를 끝내고 받은 퀘스트 보상때문에 나도 이 두 강의를 시작했다. 찬찬히 <a href="http://www.codeschool.com/">CodeSchool</a>의 강의를 전부 해보려한다.</p>
-
-<h2>영어</h2>
-
+<h2 id="-">영어</h2>
 <p>영어라는 장벽이 없었으면 나도 그녀도 좀 더 쉽게 따라 했을 것 같다. 영어로 표현된 외계어로 가득찬 자료를 끝까지 참아줘서 고맙다. 그덕에 나도 많은 것을 배웠다.</p>
-
-<p><a href="http://www.codeschool.com/">CodeSchool</a> 강의 중에서는 영어자막을 제공하는 강의도 있다. <a href="http://www.codeschool.com/courses/try-ios">tryios</a>는 제공하지 않았는데 <a href="http://www.codeschool.com/courses/functional-html5-css3">Functional HTML5 & CSS3</a>와 <a href="http://www.codeschool.com/courses/functional-html5-css3">CSS Cross-Country</a>는 영어자막이 있다.</p>
-
+<p><a href="http://www.codeschool.com/">CodeSchool</a> 강의 중에서는 영어자막을 제공하는 강의도 있다. <a href="http://www.codeschool.com/courses/try-ios">tryios</a>는 제공하지 않았는데 <a href="http://www.codeschool.com/courses/functional-html5-css3">Functional HTML5 &amp; CSS3</a>와 <a href="http://www.codeschool.com/courses/functional-html5-css3">CSS Cross-Country</a>는 영어자막이 있다.</p>
 <p>영어가 되는 사람들은 좋겠다. 쉽고 재밌는 학습 도구가 많아서 좋겠다. 글래머 금발이랑 코딩할 수 있어서 좋겠다. 앞으로는 영어를 좀 더 to-the-core하게 해서 그런 삶을 살아야 겠다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,189 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - git: progit 업데이트</title>
-    <meta name="description" content="게으름과 생활고 탓에 지난 2012-04-02에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 @schacon 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 @jnavila님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다." />
-    <meta name="keywords" content="git,progit" />
-    <meta name="author" content="Changwoo Park, Sean Lee, Yongjae Choi" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - git: progit 업데이트</title>
+  <meta name="description"
+    content="게으름과 생활고 탓에 지난 2012-04-02에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 @schacon 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 @jnavila님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다."></meta>
+  <meta name="keywords"
+    content="git,progit"></meta>
+  <meta name="author" content="Changwoo Park, Sean Lee, Yongjae Choi"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="git: progit 업데이트 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/progit.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Dec 19 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/progit.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Dec 19</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a><br /> <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a><br /> <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/progit.html" data-via="Changwoo Park @Sean Lee @Yongjae Choi"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/progit.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/progit.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">git: progit 업데이트</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a>, <a href="https://twitter.com/lnyarl/">Yongjae Choi</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/progit.html" data-via="pismute @lethee @lnyarl" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/progit.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/progit.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 <a href="https://twitter.com/schacon">@schacon</a> 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 <a href="https://twitter.com/jnavila">@jnavila</a>님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
 
-<p><img src="/articles/2013/progit/git-festival.jpg" alt="git"/></p>
+    <div class="col-sm-10">
 
-<h2>git christmas!!</h2>
-
-<p><a href="https://twitter.com/lnyarl">@lnyarl</a>, <a href="https://twitter.com/lethee">@lethee</a> 님과 함께 업데이트를 했기 때문에 힘들지 않았습니다만, 집중력이 떨어져서인지 번역할 때만큼 재미있지는 않았습니다. 업데이트한 내용은 아래와 같습니다:</p>
-
+      <div property="sioc:content"><h1 id="git-progit-">git: progit 업데이트</h1>
+<p>게으름과 생활고 탓에 지난 <code>2012-04-02</code>에 배포한 이후로 다시 배포하지 않았습니다. progit 저자인 @schacon 님이 관리하던 시절에는 업데이트가 전혀 이루어지지 않아서 다시 배포할 필요가 없었습니다. 그런데 갑자기 @jnavila님으로 변경되고 나서 업데이트가 되고있습니다. 오픈소스는 아름답네요. 예전에는 PR을 보내고 몇 달이지나서 Merge됐는데 지금은 다음날이면 Merge됩니다.</p>
+<p><img src="/articles/2013/progit/git-festival.jpg" alt="git"></p>
+<h2 id="git-christmas-">git christmas!!</h2>
+<p>@lnyarl, @lethee 님과 함께 업데이트를 했기 때문에 힘들지 않았습니다만, 집중력이 떨어져서인지 번역할 때만큼 재미있지는 않았습니다. 업데이트한 내용은 아래와 같습니다:</p>
 <ul>
 <li>원서의 업데이트된 부분을 반영했습니다.</li>
 <li>용어 통일에 좀 더 신경을 썼습니다.</li>
 <li>문장을 좀 더 매끄럽게 만들었습니다.</li>
 <li>pdf파일에 NanumBarunGothic 폰트를 적용했습니다.</li>
 </ul>
-
 <p>원서의 내용이 조금씩 업데이트되고 있지만 크게 바뀌지는 않았습니다. 예를 들어, 달라진 github ui에 대해서는 전혀 업데이트되지 않았습니다. 하지만 미묘한 정도로 업데이트되고 있습니다. 간단히 생각하면 잘 안쓰는 옵션이 업데이트되고 있다고 생각하셔도 됩니다.</p>
-
 <p>오픈소스 책이라서 그런 것이지만 대부분의 언어들이 함께 업데이트되고 있습니다. 이런 오픈소스 프로젝트에 참여할 수 있어서 정말 운이 좋다고 생각합니다.</p>
-
 <p>종이책을 준비하면서 정리했던 것도 반영했습니다. 종이책을 준비하면서 progit 저장소에 다시 반영하는 걸 염두에 두고 작업했었습니다. 처음 번역할 때 퇴고를 정말 많이 했었는데도 1년이 지나 다시 읽어보니 엉망이였습니다. 그 후로도 1년이 지난 지금 다시 읽으면 또 수두룩하게 발견할 것 같습니다.</p>
-
 <p>실제로 저장소에 적용하는 것은 매우 늦었고 다시 빌드해 배포 것은 더욱 늦었습니다. <a href="http://git-scm.com/book/ko">http://git-scm.com/book/ko</a> 에서는 항상 최신 버전을 읽으실 수 있습니다. 다시 빌드해야 하는 ebook과는 달리 곧 적용되더군요.</p>
-
 <p>다운로드(<code>2013-12-19</code>):</p>
-
 <ul>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.epub">progit.ko.epub</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.mobi">progit.ko.mobi</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.pdf">progit.ko.pdf</a></li>
 </ul>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

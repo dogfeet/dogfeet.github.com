@@ -1,228 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - new Groovy and Grails announced.</title>
-    <meta name="description" content="Groovy와 Grails에서 강화된 것을 알아봅니다." />
-    <meta name="keywords" content="Java,Announcement,Grails,Groovy" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - new Groovy and Grails announced</title>
+  <meta name="description"
+    content="Groovy와 Grails에서 강화된 것을 알아봅니다."></meta>
+  <meta name="keywords"
+    content="Java,Announcement,Grails,Groovy"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="new Groovy and Grails announced &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2009/1261931280.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2009 Dec 27 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2009/1261931280.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2009 Dec 27</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2009/1261931280.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1261931280.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2009/1261931280.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">new Groovy and Grails announced.</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#announcement" class="tag">Announcement</a> <a href="/site/tagmap.html#grails" class="tag">Grails</a> <a href="/site/tagmap.html#groovy" class="tag">Groovy</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2009/1261931280.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1261931280.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2009/1261931280.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>Groovy와 Grails에서 강화된 것을 알아봅니다.</p>
 
-<h2>Grails 1.7</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#announcement" class="tag">Announcement</a> <a href="/site/tagmap.html#grails" class="tag">Grails</a> <a href="/site/tagmap.html#groovy" class="tag">Groovy</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="new-groovy-and-grails-announced">new Groovy and Grails announced</h1>
+<p>Groovy와 Grails에서 강화된 것을 알아봅니다.</p>
+<h2 id="grails-1-7">Grails 1.7</h2>
 <p>우선 IDE 지원이 훨씬 강화되었다고 하는데(Grails와 함께) 이건 써 봐야 알겠습니다. 개발자에게는 정말 필요하지만 또 쉽게 지원하기가 힘든게 IDE이기 때문에 어려운 점도 많았겠지만, 차차 생각보다 훨씬 나아지고 있으니 기대하고 사용해 봐야 할 것 같습니다. 쉽게 코드를 작성하기 위한 기능 및 Dependency관련 기능, 그리고 AST의 기능 사용, 성능 강화 등이 주요 업데이트 인것 같습니다.</p>
-
 <ul>
-<li><p>IDE Support 향상. Eclipse, IntelliJ IDEA, NetBeans</p></li>
-<li><p>Nested Static Class</p></li>
-<li><p>Anonymous Inner Class</p></li>
-<li><p>Accessing the Outer Context from a Nested Class</p></li>
-<li><p>Creating Instances of Non-Static Inner Class</p></li>
-<li><p>Annotations</p></li>
-<li><p>Grape - dependency system</p></li>
-<li><p>Power Asserts</p></li>
-<li><p>AST</p></li>
-<li><p>Ability to customize the Groovy Truth</p></li>
-<li><p>Dependency upgrades</p></li>
-<li><p>Rewrite of the GroovyScriptEngine</p></li>
-<li><p>Groovy console preferences</p></li>
-<li><p>New output window for the groovy console</p></li>
-<li><p>SQL Batch updates</p></li>
-<li><p>SQL Transactions</p></li>
+<li><p>IDE Support 향상. Eclipse, IntelliJ IDEA, NetBeans</p>
+</li>
+<li><p>Nested Static Class</p>
+</li>
+<li><p>Anonymous Inner Class</p>
+</li>
+<li><p>Accessing the Outer Context from a Nested Class</p>
+</li>
+<li><p>Creating Instances of Non-Static Inner Class</p>
+</li>
+<li><p>Annotations</p>
+</li>
+<li><p>Grape - dependency system</p>
+</li>
+<li><p>Power Asserts</p>
+</li>
+<li><p>AST</p>
+</li>
+<li><p>Ability to customize the Groovy Truth</p>
+</li>
+<li><p>Dependency upgrades</p>
+</li>
+<li><p>Rewrite of the GroovyScriptEngine</p>
+</li>
+<li><p>Groovy console preferences</p>
+</li>
+<li><p>New output window for the groovy console</p>
+</li>
+<li><p>SQL Batch updates</p>
+</li>
+<li><p>SQL Transactions</p>
+</li>
 </ul>
-
-<h2>Groovy 1.2</h2>
-
-<p>그동안 마일스톤에서 지원되었던 기능이 안정이 되었나봅니다. 스프링 3과 연동된 부분이 가장 눈에 띄네요. 나머지는 소소하게<br/>
-업데이트 된 것 같지만, 나름 꽤 많은 부분이 업데이트 된 것 같습니다. 컴파일 시간이 좀 단축되었는지도 궁금해집니다. 한번<br/>
+<h2 id="groovy-1-2">Groovy 1.2</h2>
+<p>그동안 마일스톤에서 지원되었던 기능이 안정이 되었나봅니다. 스프링 3과 연동된 부분이 가장 눈에 띄네요. 나머지는 소소하게
+업데이트 된 것 같지만, 나름 꽤 많은 부분이 업데이트 된 것 같습니다. 컴파일 시간이 좀 단축되었는지도 궁금해집니다. 한번
 사용해 봐야 겠습니다.</p>
-
 <ul>
-<li><p>Dependency Resolution DSL</p></li>
-<li><p>Significant Performance Optimizations</p></li>
-<li><p>Bootstrap Environments</p></li>
-<li><p>Spring 3 Upgrade</p></li>
-<li><p>URI Re-writing onto any URI</p></li>
-<li><p>Per-method transactions with <code>@Transactional</code></p></li>
-<li><p>Fine-grained control over DataSource properties</p></li>
-<li><p>Global Configuration of GORM defaults</p></li>
-<li><p>Improved Dynamic Finders for Boolean properties</p></li>
-<li><p>Named Query Support</p></li>
-<li><p>Support for SQL restriction in criteria builder</p></li>
-<li><p>Support for hasOne mapping</p></li>
-<li><p>Strict Validation Errors</p></li>
-<li><p>Improved support for annotated entities</p></li>
-<li><p>Pre-compilation of Groovy Server Pages in WAR deployment</p></li>
-<li><p>Tomcat & Multiple Embedded Containers Supported</p></li>
-<li><p>Web Flow as plugin</p></li>
-<li><p>New Web Flow Events</p></li>
-<li><p>Named URL Mappings</p></li>
-<li><p>Better JSONBuilder</p></li>
-<li><p>Better Date parsing</p></li>
-<li><p>Convenient, null safe converters in params and tag attributes</p></li>
-<li><p>REST improvements</p></li>
-<li><p>Project Documentation Engine</p></li>
-<li><p>Zip-only plugin releases</p></li>
-<li><p>Plugin Metadata</p></li>
-<li><p>formatNumber and formatDate taglib improvements</p></li>
-<li><p>Property Override Configuration Improvements</p></li>
-<li><p>Non JUnit providers</p></li>
-<li><p>Test phase and type targeting</p></li>
-<li><p>Clean testing</p></li>
-<li><p>Echoing System.out and System.err</p></li>
+<li><p>Dependency Resolution DSL</p>
+</li>
+<li><p>Significant Performance Optimizations</p>
+</li>
+<li><p>Bootstrap Environments</p>
+</li>
+<li><p>Spring 3 Upgrade</p>
+</li>
+<li><p>URI Re-writing onto any URI</p>
+</li>
+<li><p>Per-method transactions with <code>@Transactional</code></p>
+</li>
+<li><p>Fine-grained control over DataSource properties</p>
+</li>
+<li><p>Global Configuration of GORM defaults</p>
+</li>
+<li><p>Improved Dynamic Finders for Boolean properties</p>
+</li>
+<li><p>Named Query Support</p>
+</li>
+<li><p>Support for SQL restriction in criteria builder</p>
+</li>
+<li><p>Support for hasOne mapping</p>
+</li>
+<li><p>Strict Validation Errors</p>
+</li>
+<li><p>Improved support for annotated entities</p>
+</li>
+<li><p>Pre-compilation of Groovy Server Pages in WAR deployment</p>
+</li>
+<li><p>Tomcat &amp; Multiple Embedded Containers Supported</p>
+</li>
+<li><p>Web Flow as plugin</p>
+</li>
+<li><p>New Web Flow Events</p>
+</li>
+<li><p>Named URL Mappings</p>
+</li>
+<li><p>Better JSONBuilder</p>
+</li>
+<li><p>Better Date parsing</p>
+</li>
+<li><p>Convenient, null safe converters in params and tag attributes</p>
+</li>
+<li><p>REST improvements</p>
+</li>
+<li><p>Project Documentation Engine</p>
+</li>
+<li><p>Zip-only plugin releases</p>
+</li>
+<li><p>Plugin Metadata</p>
+</li>
+<li><p>formatNumber and formatDate taglib improvements</p>
+</li>
+<li><p>Property Override Configuration Improvements</p>
+</li>
+<li><p>Non JUnit providers</p>
+</li>
+<li><p>Test phase and type targeting</p>
+</li>
+<li><p>Clean testing</p>
+</li>
+<li><p>Echoing System.out and System.err</p>
+</li>
 </ul>
-
 <p>아래 인터뷰에 요약 내용이 있습니다.</p>
-
 <p><a href="http://www.infoq.com/interviews/Groovy-1.7-Grails-1.2">http://www.infoq.com/interviews/Groovy-1.7-Grails-1.2</a></p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

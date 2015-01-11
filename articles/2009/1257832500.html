@@ -1,190 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Grails 1.2 M4</title>
-    <meta name="description" content="Grails 1.2 Milestone 4 Release 노트 요약" />
-    <meta name="keywords" content="Java,Grails" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Grails 1.2 M4</title>
+  <meta name="description"
+    content="Grails 1.2 Milestone 4 Release 노트 요약"></meta>
+  <meta name="keywords"
+    content="Java,Grails"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Grails 1.2 M4 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2009/1257832500.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2009 Nov 10 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2009/1257832500.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2009 Nov 10</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2009/1257832500.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1257832500.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2009/1257832500.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Grails 1.2 M4</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#grails" class="tag">Grails</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2009/1257832500.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1257832500.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2009/1257832500.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p><a href="http://www.grails.org/1.2-M4+Release+Notes">Grails 1.2 Milestone 4 Release 노트 요약</a></p>
 
-<h2>요약</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#grails" class="tag">Grails</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="grails-1-2-m4">Grails 1.2 M4</h1>
+<p><a href="http://www.grails.org/1.2-M4+Release+Notes">Grails 1.2 Milestone 4 Release 노트 요약</a></p>
+<h2 id="-">요약</h2>
 <ul>
-<li><p>의존성 지원 DSL</p></li>
-<li><p>획기적인 성능 개선</p></li>
-<li><p>BootStrap에서의 환경 지원</p></li>
-<li><p>Spring 3 지원</p></li>
-<li><p>URI 리라이팅</p></li>
-<li><p><code>@Transactional</code> 이용한 메소드 단위의 트랜잭션 지원</p></li>
-<li><p>DataSource 프로퍼티를 사용한 저장소 제어</p></li>
-<li><p>GORM 기본값의 전역 설정 지원</p></li>
-<li><p>Bool 프로퍼티에 대한 동적 파인더 개선</p></li>
-<li><p>도메인에서의 Named Query 지원</p></li>
-<li><p>hasOne 매핑 지원</p></li>
-<li><p>save() 메소드에서 validation지원</p></li>
-<li><p>GSP의 war 배포에서 precompilation 지원</p></li>
-<li><p>i18n 클래스와 프로퍼티의 지원 개선</p></li>
-<li><p>multiple embedded containers 지원</p></li>
-<li><p>web flow 플러그인 지원</p></li>
-<li><p>web flow 새로운 이벤트 지원</p></li>
-<li><p>named url 매핑 지원</p></li>
-<li><p>JSONBuiler 개선</p></li>
-<li><p>Data 파싱 개선</p></li>
-<li><p>rest 지원 개선</p></li>
-<li><p>프로젝트 문서화 엔진 지원</p></li>
-<li><p>zip-only 플러그인 지원</p></li>
-<li><p>플러그인 메타데이터 생성기 지원</p></li>
-<li><p>formatNumber, formatData 태그 개선</p></li>
+<li><p>의존성 지원 DSL</p>
+</li>
+<li><p>획기적인 성능 개선</p>
+</li>
+<li><p>BootStrap에서의 환경 지원</p>
+</li>
+<li><p>Spring 3 지원</p>
+</li>
+<li><p>URI 리라이팅</p>
+</li>
+<li><p><code>@Transactional</code> 이용한 메소드 단위의 트랜잭션 지원</p>
+</li>
+<li><p>DataSource 프로퍼티를 사용한 저장소 제어</p>
+</li>
+<li><p>GORM 기본값의 전역 설정 지원</p>
+</li>
+<li><p>Bool 프로퍼티에 대한 동적 파인더 개선</p>
+</li>
+<li><p>도메인에서의 Named Query 지원</p>
+</li>
+<li><p>hasOne 매핑 지원</p>
+</li>
+<li><p>save() 메소드에서 validation지원</p>
+</li>
+<li><p>GSP의 war 배포에서 precompilation 지원</p>
+</li>
+<li><p>i18n 클래스와 프로퍼티의 지원 개선</p>
+</li>
+<li><p>multiple embedded containers 지원</p>
+</li>
+<li><p>web flow 플러그인 지원</p>
+</li>
+<li><p>web flow 새로운 이벤트 지원</p>
+</li>
+<li><p>named url 매핑 지원</p>
+</li>
+<li><p>JSONBuiler 개선</p>
+</li>
+<li><p>Data 파싱 개선</p>
+</li>
+<li><p>rest 지원 개선</p>
+</li>
+<li><p>프로젝트 문서화 엔진 지원</p>
+</li>
+<li><p>zip-only 플러그인 지원</p>
+</li>
+<li><p>플러그인 메타데이터 생성기 지원</p>
+</li>
+<li><p>formatNumber, formatData 태그 개선</p>
+</li>
 </ul>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

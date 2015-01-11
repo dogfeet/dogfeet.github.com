@@ -1,293 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - New in JavaScript 1.8</title>
-    <meta name="description" content="이 글은 Mozila의 &lsquo;New in JavaScript 1.8'을 정리한 것이다." />
-    <meta name="keywords" content="JavaScript,New In JavaScript,JavaScript Standard" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - New in JavaScript 1.8</title>
+  <meta name="description"
+    content="이 글은 Mozila의 ‘New in JavaScript 1.8‘을 정리한 것이다."></meta>
+  <meta name="keywords"
+    content="JavaScript,New In JavaScript,JavaScript Standard"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="New in JavaScript 1.8 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1317258960.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Sep 29 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1317258960.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Sep 29</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1317258960.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317258960.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1317258960.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">New in JavaScript 1.8</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1317258960.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1317258960.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1317258960.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 Mozila의 &lsquo;<a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8">New in JavaScript 1.8</a>'을 정리한 것이다.</p>
 
+      <p class="small-font top-line"><a href="/site/tagmap.html#javascript" class="tag">JavaScript</a> <a href="/site/tagmap.html#new in javascript" class="tag">New In JavaScript</a> <a href="/site/tagmap.html#javascript standard" class="tag">JavaScript Standard</a></p>
+    </div>
+
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="new-in-javascript-1-8">New in JavaScript 1.8</h1>
+<p>이 글은 Mozila의 ‘<a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8">New in JavaScript 1.8</a>‘을 정리한 것이다.</p>
 <p>JavaScript 1.8을 사용하려면 script 엘리먼트를 다음과같이 정의해야 한다:</p>
-<pre><code>&lt;script type=<span class="string">"application/JavaScript;version=1.8"</span>&gt; <span class="keyword">...</span> your code <span class="keyword">...</span> &lt;/script&gt;
-</code></pre>
-<h2>Expression closures</h2>
-
+<pre><code>&lt;script type=&quot;application/JavaScript;version=1.8&quot;&gt; ... your code ... &lt;/script&gt;
+</code></pre><h2 id="expression-closures">Expression closures</h2>
 <p><a href="http://en.wikipedia.org/wiki/Lambda_calculus#Lambda_calculus_and_programming_languages">Lambda notation</a>처럼 함수를 정의할 수 있다.</p>
-
 <p>다음과 같은 코드는:</p>
-<pre><code><span class="function"><span class="title">function</span><span class="params">(x)</span> { <span class="title">return</span> <span class="title">x</span> * <span class="title">x</span>; }
-</code></pre>
-<p>다음과 같이 작성할 수 있다:</p>
-<pre><code><span class="function"><span class="title">function</span><span class="params">(x)</span> <span class="title">x</span> * <span class="title">x</span>
-</code></pre>
-<p>event listeners는 다음 처럼 할 수 있고:</p>
-<pre><code>document.addEventListener(<span class="string">"click"</span>, <span class="keyword">function</span>() <span class="literal">false</span>, <span class="literal">true</span>);
-</code></pre>
-<p>Array closure로도 사용할 수 있다:</p>
-<pre><code><span class="title">elems</span>.some(function(elem) elem.<span class="typedef"><span class="keyword">type</span> == "text");</span>
-</code></pre>
-<h2>Generator expressions</h2>
-
+<pre><code>function(x) { return x * x; }
+</code></pre><p>다음과 같이 작성할 수 있다:</p>
+<pre><code>function(x) x * x
+</code></pre><p>event listeners는 다음 처럼 할 수 있고:</p>
+<pre><code>document.addEventListener(&quot;click&quot;, function() false, true);
+</code></pre><p>Array closure로도 사용할 수 있다:</p>
+<pre><code>elems.some(function(elem) elem.type == &quot;text&quot;);
+</code></pre><h2 id="generator-expressions">Generator expressions</h2>
 <p>Array comprehension의 치명적인 결함은 메모리를 많이 쓴다는 것이다. 모든 결과를 새 Array의 담기 때문에 발생한다. 크기가 작은 Array를 입력받는 다면 상관없지만 크기가 크면 문제가 된다.</p>
-
 <p>만면 Generator는 lazy하게 그때그때 값을 계산해 낸다. Generator expression이 Array comprehension과 다른 점은 <code>[]</code> 블럭안에 <code>for each...in</code>대신 <code>for...in</code>을 쓴다는 것이다. 그리고 Array를 반환하는 것이 아니라 Generator를 반환하고 lazy하게 값을 뽑아 쓴다.</p>
-
 <p>다음의 예에서 it가 거대한 Iterator라고 가정하면 다음과 같이 새로운 Iterator를 만들 수 있다:</p>
-<pre><code>var it2 = (i * <span class="number">2</span> <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="keyword">it</span>));
-print(it2.next()); // The <span class="keyword">first</span> value <span class="keyword">from</span> <span class="keyword">it</span>, doubled
-print(it2.next()); // The <span class="keyword">second</span> value <span class="keyword">from</span> <span class="keyword">it</span>, double
-</code></pre>
-<p>함수 인자에도 사용할 수 있는데 이 때에는 <code>[]</code> 블럭을 생략해도 된다:</p>
-<pre><code>var <span class="constant">result</span> = doSomething(i * <span class="number">2</span> <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="keyword">it</span>));
-</code></pre>
-<h2>More Array extras</h2>
-
+<pre><code>var it2 = (i * 2 for (i in it));
+print(it2.next()); // The first value from it, doubled
+print(it2.next()); // The second value from it, double
+</code></pre><p>함수 인자에도 사용할 수 있는데 이 때에는 <code>[]</code> 블럭을 생략해도 된다:</p>
+<pre><code>var result = doSomething(i * 2 for (i in it));
+</code></pre><h2 id="more-array-extras">More Array extras</h2>
 <p>이것은 ECMAScript 5에 포함된 내용이고 아직 지원하지 않는 browser를 위한 fallback은 다음과 같다:</p>
-<pre><code><span class="keyword">if</span> ( !Array.prototype.reduce ) {
-  Array.prototype.reduce = <span class="reserved">function</span> reduce(accumulator){
-        <span class="reserved">var</span> i, l = <span class="keyword">this</span>.length, curr;
+<pre><code>if ( !Array.prototype.reduce ) {
+  Array.prototype.reduce = function reduce(accumulator){
+        var i, l = this.length, curr;
 
-        <span class="keyword">if</span>(<span class="keyword">typeof</span> accumulator !== <span class="string">"function"</span>) <span class="regexp">//</span> ES5 : <span class="string">"If IsCallable(callbackfn) is false, throw a TypeError exception."</span>
-          <span class="keyword">throw</span> <span class="keyword">new</span> TypeError(<span class="string">"First argument is not callable"</span>);
+        if(typeof accumulator !== &quot;function&quot;) // ES5 : &quot;If IsCallable(callbackfn) is false, throw a TypeError exception.&quot;
+          throw new TypeError(&quot;First argument is not callable&quot;);
 
-        <span class="keyword">if</span>((l == <span class="number">0</span> || l === <span class="literal">null</span>) &amp;&amp; (arguments.length &lt;= <span class="number">1</span>))<span class="regexp">//</span> == <span class="literal">on</span> purpose to test <span class="number">0</span> <span class="keyword">and</span> <span class="literal">false</span>.
-          <span class="keyword">throw</span> <span class="keyword">new</span> TypeError(<span class="string">"Array length is 0 and no second argument"</span>);
+        if((l == 0 || l === null) &amp;&amp; (arguments.length &lt;= 1))// == on purpose to test 0 and false.
+          throw new TypeError(&quot;Array length is 0 and no second argument&quot;);
 
-        <span class="keyword">if</span>(arguments.length &lt;= <span class="number">1</span>){
-          curr = <span class="keyword">this</span>[<span class="number">0</span>]; <span class="regexp">//</span> Increase i to start searching the secondly defined element <span class="keyword">in</span> the array
-          i = <span class="number">1</span>; <span class="regexp">//</span> start accumulating at the second element
+        if(arguments.length &lt;= 1){
+          curr = this[0]; // Increase i to start searching the secondly defined element in the array
+          i = 1; // start accumulating at the second element
         }
-        <span class="keyword">else</span>{
-          curr = arguments[<span class="number">1</span>];
-        }
-
-        <span class="keyword">for</span>(i = i || <span class="number">0</span> ; i &lt; l ; ++i){
-          <span class="keyword">if</span>(i <span class="keyword">in</span> <span class="keyword">this</span>)
-            curr = accumulator.call(<span class="literal">undefined</span>, curr, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);
+        else{
+          curr = arguments[1];
         }
 
-        <span class="keyword">return</span> curr;
+        for(i = i || 0 ; i &lt; l ; ++i){
+          if(i in this)
+            curr = accumulator.call(undefined, curr, this[i], i, this);
+        }
+
+        return curr;
       };
   }
-</code></pre>
-<h3>reduce()</h3>
-
+</code></pre><h3 id="reduce-">reduce()</h3>
 <p>이해를 돕기 위해 다음과 같은 함수를 보자:</p>
-<pre><code>[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="preprocessor">.reduce</span>(function(previousValue, currentValue, index, array){
-  return previousValue + currentValue<span class="comment">;</span>
-})<span class="comment">;</span>
-</code></pre>
-<p>callback이 호출될때마다 상태는 다음과 같다:</p>
-<pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span>             <span class="comment">|</span> <span class="comment">previousValue</span> <span class="comment">|</span> <span class="comment">currentValue</span> <span class="comment">|</span> <span class="comment">index</span> <span class="comment">|</span> <span class="comment">array</span>       <span class="comment">|</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span> <span class="comment">first</span> <span class="comment">call</span>  <span class="comment">|</span>             <span class="comment">0</span> <span class="comment">|</span>            <span class="comment">1</span> <span class="comment">|</span>     <span class="comment">1</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>            <span class="comment">1</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">second</span> <span class="comment">call</span> <span class="comment">|</span>             <span class="comment">1</span> <span class="comment">|</span>            <span class="comment">2</span> <span class="comment">|</span>     <span class="comment">2</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>            <span class="comment">3</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">third</span> <span class="comment">call</span>  <span class="comment">|</span>             <span class="comment">3</span> <span class="comment">|</span>            <span class="comment">3</span> <span class="comment">|</span>     <span class="comment">3</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>            <span class="comment">6</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">fourth</span> <span class="comment">call</span> <span class="comment">|</span>             <span class="comment">6</span> <span class="comment">|</span>            <span class="comment">4</span> <span class="comment">|</span>     <span class="comment">4</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">10</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-</code></pre>
-<p>reduce()가 최종적으로 반환하는 값은 마지막 값인 10이다.</p>
-
-<p>reduce()에 초기값을 넘겨줄 수 도 있다:</p>
-<pre><code>[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="preprocessor">.reduce</span>(function(previousValue, currentValue, index, array){
-  return previousValue + currentValue<span class="comment">;</span>
-}, <span class="number">10</span>)<span class="comment">;</span>
-</code></pre>
-<p>callback마다 상태는 다음과 같다:</p>
-<pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span>             <span class="comment">|</span> <span class="comment">previousValue</span> <span class="comment">|</span> <span class="comment">currentValue</span> <span class="comment">|</span> <span class="comment">index</span> <span class="comment">|</span> <span class="comment">array</span>       <span class="comment">|</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span> <span class="comment">first</span> <span class="comment">call</span>  <span class="comment">|</span>            <span class="comment">10</span> <span class="comment">|</span>            <span class="comment">0</span> <span class="comment">|</span>     <span class="comment">0</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">10</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">second</span> <span class="comment">call</span> <span class="comment">|</span>            <span class="comment">10</span> <span class="comment">|</span>            <span class="comment">1</span> <span class="comment">|</span>     <span class="comment">1</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">11</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">third</span> <span class="comment">call</span>  <span class="comment">|</span>            <span class="comment">11</span> <span class="comment">|</span>            <span class="comment">2</span> <span class="comment">|</span>     <span class="comment">2</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">13</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">fourth</span> <span class="comment">call</span> <span class="comment">|</span>            <span class="comment">13</span> <span class="comment">|</span>            <span class="comment">3</span> <span class="comment">|</span>     <span class="comment">3</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">16</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">fifth</span> <span class="comment">call</span>  <span class="comment">|</span>            <span class="comment">16</span> <span class="comment">|</span>            <span class="comment">4</span> <span class="comment">|</span>     <span class="comment">4</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">20</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-</code></pre>
-<p>똑같이 reduce()함수는 20을 반환한다.</p>
-
-<p>reduce()를 이용해 Array의 합을 구하는 법은 다음과 같다:</p>
-<pre><code><span class="keyword">var</span> total = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="keyword">function</span>(a, b){ <span class="keyword">return</span> a + b; });
-<span class="comment">// total == 6</span>
-</code></pre>
-<p>2차원 Array를 펼 수도 있다:</p>
-<pre><code>var flattened = <span class="string">[[0,1], [2,3], [4,5]]</span>.reduce(function(a,b) {
-  <span class="keyword">return</span> a.concat(b);
+<pre><code>[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
 });
-// flattened is [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
-</code></pre>
-<h3>reduceRight()</h3>
-
+</code></pre><p>callback이 호출될때마다 상태는 다음과 같다:</p>
+<pre><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |             0 |            1 |     1 | [0,1,2,3,4] |            1 |
+| second call |             1 |            2 |     2 | [0,1,2,3,4] |            3 |
+| third call  |             3 |            3 |     3 | [0,1,2,3,4] |            6 |
+| fourth call |             6 |            4 |     4 | [0,1,2,3,4] |           10 |
+-----------------------------------------------------------------------------------
+</code></pre><p>reduce()가 최종적으로 반환하는 값은 마지막 값인 10이다.</p>
+<p>reduce()에 초기값을 넘겨줄 수 도 있다:</p>
+<pre><code>[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+}, 10);
+</code></pre><p>callback마다 상태는 다음과 같다:</p>
+<pre><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |            10 |            0 |     0 | [0,1,2,3,4] |           10 |
+| second call |            10 |            1 |     1 | [0,1,2,3,4] |           11 |
+| third call  |            11 |            2 |     2 | [0,1,2,3,4] |           13 |
+| fourth call |            13 |            3 |     3 | [0,1,2,3,4] |           16 |
+| fifth call  |            16 |            4 |     4 | [0,1,2,3,4] |           20 |
+-----------------------------------------------------------------------------------
+</code></pre><p>똑같이 reduce()함수는 20을 반환한다.</p>
+<p>reduce()를 이용해 Array의 합을 구하는 법은 다음과 같다:</p>
+<pre><code>var total = [0, 1, 2, 3].reduce(function(a, b){ return a + b; });
+// total == 6
+</code></pre><p>2차원 Array를 펼 수도 있다:</p>
+<pre><code>var flattened = [[0,1], [2,3], [4,5]].reduce(function(a,b) {
+  return a.concat(b);
+});
+// flattened is [0, 1, 2, 3, 4, 5]
+</code></pre><h3 id="reduceright-">reduceRight()</h3>
 <p>reduceRight()는 순서가 반대라는 것을 빼고 reduce()와 동일하다. 예제를 보자:</p>
-<pre><code>[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="preprocessor">.reduceRight</span>(function(previousValue, currentValue, index, array){
-  return previousValue + currentValue<span class="comment">;</span>
-})<span class="comment">;</span>
-</code></pre>
-<p>결과는 다음과 같다:</p>
-<pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span>             <span class="comment">|</span> <span class="comment">previousValue</span> <span class="comment">|</span> <span class="comment">currentValue</span> <span class="comment">|</span> <span class="comment">index</span> <span class="comment">|</span> <span class="comment">array</span>       <span class="comment">|</span> <span class="comment">return</span> <span class="comment">value</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span> <span class="comment">first</span> <span class="comment">call</span>  <span class="comment">|</span>             <span class="comment">4</span> <span class="comment">|</span>            <span class="comment">3</span> <span class="comment">|</span>     <span class="comment">3</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>            <span class="comment">7</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">second</span> <span class="comment">call</span> <span class="comment">|</span>             <span class="comment">7</span> <span class="comment">|</span>            <span class="comment">2</span> <span class="comment">|</span>     <span class="comment">2</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>            <span class="comment">9</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">third</span> <span class="comment">call</span>  <span class="comment">|</span>             <span class="comment">9</span> <span class="comment">|</span>            <span class="comment">1</span> <span class="comment">|</span>     <span class="comment">1</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">10</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">fourth</span> <span class="comment">call</span> <span class="comment">|</span>            <span class="comment">10</span> <span class="comment">|</span>            <span class="comment">0</span> <span class="comment">|</span>     <span class="comment">0</span> <span class="comment">|</span> <span class="title">[</span><span class="comment">0</span>,<span class="comment">1</span>,<span class="comment">2</span>,<span class="comment">3</span>,<span class="comment">4</span>] <span class="comment">|</span>           <span class="comment">10</span> <span class="comment">|</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-</code></pre>
-<p>reduce()와 마찬가지로 reduceRight()는 10을 반환한다.</p>
-
-<h2>JavaScript 1.8 compatibility</h2>
-
+<pre><code>[0,1,2,3,4].reduceRight(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+});
+</code></pre><p>결과는 다음과 같다:</p>
+<pre><code>-----------------------------------------------------------------------------------
+|             | previousValue | currentValue | index | array       | return value |
+-----------------------------------------------------------------------------------
+| first call  |             4 |            3 |     3 | [0,1,2,3,4] |            7 |
+| second call |             7 |            2 |     2 | [0,1,2,3,4] |            9 |
+| third call  |             9 |            1 |     1 | [0,1,2,3,4] |           10 |
+| fourth call |            10 |            0 |     0 | [0,1,2,3,4] |           10 |
+-----------------------------------------------------------------------------------
+</code></pre><p>reduce()와 마찬가지로 reduceRight()는 10을 반환한다.</p>
+<h2 id="javascript-1-8-compatibility">JavaScript 1.8 compatibility</h2>
 <p>브라우저 호환 테이블은 <a href="http://robertnyman.com/javascript/#javascript-1-8-compatibility">여기</a></p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

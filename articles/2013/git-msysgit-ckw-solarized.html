@@ -1,223 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - git: ckw Solarized! </title>
-    <meta name="description" content="Solarized는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 Solarized를 사용하고 싶다는 생각이 들었다." />
-    <meta name="keywords" content="git,msysgit,ckw,solarized" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - git: ckw Solarized!</title>
+  <meta name="description"
+    content="Solarized는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 Solarized를 사용하고 싶다는 생각이 들었다."></meta>
+  <meta name="keywords"
+    content="git,msysgit,ckw,solarized"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="git: ckw Solarized! &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/git-msysgit-ckw-solarized.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 11 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/git-msysgit-ckw-solarized.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Jul 11</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">git: ckw Solarized! </h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#ckw" class="tag">ckw</a> <a href="/site/tagmap.html#solarized" class="tag">solarized</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#ckw" class="tag">ckw</a> <a href="/site/tagmap.html#solarized" class="tag">solarized</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
 
-<p><img src="/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""/></p>
+    <div class="col-sm-10">
 
-<h2>ckw</h2>
-
+      <div property="sioc:content"><h1 id="git-ckw-solarized-">git: ckw Solarized!</h1>
+<p><a href="http://ethanschoonover.com/solarized">Solarized</a>는 적당히 이쁜데다가 다양한 도구에서 사용할 수 있도록 이미 만들어진 테마가 많기 때문에 매우 편리하다. 문득 윈도우에서도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 사용하고 싶다는 생각이 들었다.</p>
+<p><img src="/articles/2013/git-msysgit-ckw-solarized/be-autiful.jpg" alt=""></p>
+<h2 id="ckw">ckw</h2>
 <p>cmd 터미널은 너무 구려서 <a href="http://d.hatena.ne.jp/hideden/20071115/1195229532">ckw</a>를 사용하고 있는데 찾아보니 <a href="https://gist.github.com/cd01/4307522">ckw용 Solarized 테마</a>를 만들어 놓은 훌륭한 분이 있었다.</p>
-
 <p>바로 내 설정에 적용했다:</p>
-
-<p><img src="/articles/2013/git-msysgit-ckw-solarized/git-msysgit-ckw-solarized.png" alt="ckw-solarized"/></p>
-
+<p><img src="/articles/2013/git-msysgit-ckw-solarized/git-msysgit-ckw-solarized.png" alt="ckw-solarized"></p>
 <p>Putty에도 <a href="http://ethanschoonover.com/solarized">Solarized</a>를 쓰고 있는데 ckw에도 적용했더니 둘이 많이 비슷해졌다.</p>
-
 <p>하지만 미묘하게 이 ckw의 색감이 떨어진다. <a href="https://github.com/brantb/solarized">Solarized 저장소</a>에서 배포하고 있는 것 만큼 색감이 좋지는 않다. 눈에 거슬리는 색은 조금씩 변경해서 쓰는게 좋겠다.</p>
-
 <p>위 설정을 적용한 내 설정은 아래와 같다:</p>
 <pre><code>!
 ! ckw setting
 !
 
-Ckw<span class="variable">*title</span>: Powershell
-Ckw<span class="variable">*exec</span>:  powershell -ExecutionPolicy RemoteSigned
-Ckw<span class="variable">*chdir</span>: C:\Users\pismute\git
+Ckw*title: Powershell
+Ckw*exec:  powershell -ExecutionPolicy RemoteSigned
+Ckw*chdir: C:\Users\pismute\git
 
-Ckw<span class="variable">*scrollHide</span>:  <span class="keyword">no</span>
-Ckw<span class="variable">*scrollRight</span>: yes
-Ckw<span class="variable">*internalBorder</span>: <span class="number">1</span>
-Ckw<span class="variable">*lineSpace</span>: <span class="number">0</span>
-Ckw<span class="variable">*topmost</span>: <span class="keyword">no</span>
+Ckw*scrollHide:  no
+Ckw*scrollRight: yes
+Ckw*internalBorder: 1
+Ckw*lineSpace: 0
+Ckw*topmost: no
 
-Ckw<span class="variable">*font</span>: NanumGothicCoding
-Ckw<span class="variable">*fontSize</span>: <span class="number">22</span>
+Ckw*font: NanumGothicCoding
+Ckw*fontSize: 22
 
-Ckw<span class="variable">*geometry</span>:  <span class="number">80</span>x26
-Ckw<span class="variable">*saveLines</span>: <span class="number">10000</span>
+Ckw*geometry:  80x26
+Ckw*saveLines: 10000
 
 !! theme
 !! Solarized dark
 !!
 
-!Ckw<span class="variable">*foreground</span>:     <span class="comment">#657b83</span>
-Ckw<span class="variable">*background</span>:     <span class="comment">#073642</span>
-!Ckw<span class="variable">*cursorColor</span>:    <span class="comment">#657b83</span>
-Ckw<span class="variable">*cursorImeColor</span>: <span class="comment">#dc322f</span>
-!Ckw<span class="variable">*backgroundBitmap</span>: background.bmp
-!Ckw<span class="variable">*transp</span>:           <span class="number">220</span>
-!Ckw<span class="variable">*transpColor</span>:      <span class="comment">#000000</span>
+!Ckw*foreground:     #657b83
+Ckw*background:     #073642
+!Ckw*cursorColor:    #657b83
+Ckw*cursorImeColor: #dc322f
+!Ckw*backgroundBitmap: background.bmp
+!Ckw*transp:           220
+!Ckw*transpColor:      #000000
 
-Ckw<span class="variable">*color1</span>:  <span class="comment">#586e75</span>
-Ckw<span class="variable">*color2</span>:  <span class="comment">#859900</span>
-Ckw<span class="variable">*color3</span>:  <span class="comment">#2aa198</span>
-Ckw<span class="variable">*color4</span>:  <span class="comment">#cb4b16</span>
-Ckw<span class="variable">*color5</span>:  <span class="comment">#6c71c4</span>
-Ckw<span class="variable">*color6</span>:  <span class="comment">#859900</span>
+Ckw*color1:  #586e75
+Ckw*color2:  #859900
+Ckw*color3:  #2aa198
+Ckw*color4:  #cb4b16
+Ckw*color5:  #6c71c4
+Ckw*color6:  #859900
 
-Ckw<span class="variable">*color8</span>:  <span class="comment">#839496</span>
-Ckw<span class="variable">*color9</span>:  <span class="comment">#268bd2</span>
-Ckw<span class="variable">*color10</span>: <span class="comment">#859900</span>
-Ckw<span class="variable">*color11</span>: <span class="comment">#2aa198</span>
-Ckw<span class="variable">*color12</span>: <span class="comment">#dc322f</span>
-Ckw<span class="variable">*color13</span>: <span class="comment">#d33682</span>
-Ckw<span class="variable">*color14</span>: <span class="comment">#b58900</span>
-Ckw<span class="variable">*color15</span>: <span class="comment">#fdf6e3</span>
-</code></pre>
-        </div>
-      </div>
+Ckw*color8:  #839496
+Ckw*color9:  #268bd2
+Ckw*color10: #859900
+Ckw*color11: #2aa198
+Ckw*color12: #dc322f
+Ckw*color13: #d33682
+Ckw*color14: #b58900
+Ckw*color15: #fdf6e3
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,140 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Bash-it</title>
-    <meta name="description" content="이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다." />
-    <meta name="keywords" content="Bash-it,NVM,git,git-flow" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Bash-it</title>
+  <meta name="description"
+    content="이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다."></meta>
+  <meta name="keywords"
+    content="Bash-it,NVM,git,git-flow"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Bash-it &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/bash-it.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Dec 01 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/bash-it.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Dec 01</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/bash-it.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/bash-it.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/bash-it.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Bash-it</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#bash-it" class="tag">Bash-it</a> <a href="/site/tagmap.html#nvm" class="tag">NVM</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#git-flow" class="tag">git-flow</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#bash-it" class="tag">Bash-it</a> <a href="/site/tagmap.html#nvm" class="tag">NVM</a> <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#git-flow" class="tag">git-flow</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/bash-it.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/bash-it.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/bash-it.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
 
-<p><img src="/articles/2011/bash-it.sean-shell.png" alt="bash-it"/></p>
+    <div class="col-sm-10">
 
-<p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다. </p>
-
+      <div property="sioc:content"><h1 id="bash-it">Bash-it</h1>
+<p>이 글은 bash-it이 무엇인지 알아보고 각 주제별로 어떤 기능이 있는지 알아 본다.</p>
+<p><img src="/articles/2011/bash-it.sean-shell.png" alt="bash-it"></p>
+<p><a href="https://github.com/revans/bash-it">bash-it</a>은 말 그대로 bash helper다. 크게 shell completion, alias, theme, plugin, template 같은 기능을 지원하는데 각 기능은 다음과 같다.</p>
 <ul>
 <li>completion : tab 키를 눌렀을 때 completion되도록 하는 스크립트가 들어 있다. 명령어 파라미터까지 completion을 지원한다. 예를 들어 <code>git checkout &lt;tab&gt;</code>이라고 입력하면 선택할 수 있는 브랜치 목록이 출력한다.</li>
 <li>alias : 사람들이 자주 사용하는 alias를 정리해 두었다.</li>
@@ -142,98 +97,86 @@
 <li>theme : terminal 색, prompt 모양등이 테마 별로 정리 돼 있다.</li>
 <li>template : .bash_profile 같은 파일을 생성하는 template이 들어 있다.</li>
 </ul>
-
 <p>각 요소들은 apache2 설정처럼 available/enabled 디렉토리 구조로 관리하기 때문에 관리하기 편하다.</p>
-
 <p>나는 bash-it에 들어 있는 것을 대부분 안쓰지만 그냥 다 켜놓고 쓴다. 그리고 혹시 필요한 게 생기면 bash-it 관례에 내가 맞추어 쓴다.</p>
-
 <p>이 것은 다시 말해서 revans님이 정리하고 관리하는 convention이다. bash-it에 익숙해지면 꽤 편리하다.</p>
-
-<h2>completion</h2>
-
+<h2 id="completion">completion</h2>
 <p>다음과 같은 completion 코드가 들어 있다. 해당 도구를 사용한다면 한번쯤은 들어봤을 만한 그 completion 코드다. 장점은 한번에 설치된다는 것:</p>
-<pre><code>brew<span class="variable">.completion</span><span class="variable">.bash</span>
-gem<span class="variable">.completion</span><span class="variable">.bash</span>
-git<span class="variable">.completion</span><span class="variable">.bash</span>
-git_flow<span class="variable">.completion</span><span class="variable">.bash</span>
-rake<span class="variable">.completion</span><span class="variable">.bash</span>
-ssh<span class="variable">.completion</span><span class="variable">.bash</span>
-</code></pre>
-<h2>alias</h2>
-
+<pre><code>brew.completion.bash
+gem.completion.bash
+git.completion.bash
+git_flow.completion.bash
+rake.completion.bash
+ssh.completion.bash
+</code></pre><h2 id="alias">alias</h2>
 <p>다음과 같은 도구에 대한 alias들이 define 돼있다:</p>
-<pre><code>bundler<span class="variable">.aliases</span><span class="variable">.bash</span>
-emacs<span class="variable">.aliases</span><span class="variable">.bash</span>
-general<span class="variable">.aliases</span><span class="variable">.bash</span>
-git<span class="variable">.aliases</span><span class="variable">.bash</span>
-heroku<span class="variable">.aliases</span><span class="variable">.bash</span>
-hg<span class="variable">.aliases</span><span class="variable">.bash</span>
-homebrew<span class="variable">.aliases</span><span class="variable">.bash</span>
-osx<span class="variable">.aliases</span><span class="variable">.bash</span>
-rails<span class="variable">.aliases</span><span class="variable">.bash</span>
-textmate<span class="variable">.aliases</span><span class="variable">.bash</span>
-vim<span class="variable">.aliases</span><span class="variable">.bash</span>
-</code></pre>
-<h3>theme</h3>
-
+<pre><code>bundler.aliases.bash
+emacs.aliases.bash
+general.aliases.bash
+git.aliases.bash
+heroku.aliases.bash
+hg.aliases.bash
+homebrew.aliases.bash
+osx.aliases.bash
+rails.aliases.bash
+textmate.aliases.bash
+vim.aliases.bash
+</code></pre><h3 id="theme">theme</h3>
 <p>이 테마 기능도 굉장히 유용하다. 여러가지 테마가 있는데 내가 사용하고 있는 <code>zork</code> 테마의 경우 다음과 같이 보여준다:</p>
 <pre><code>[계정][시스템 이름][±][브랜치 ✓][현재 경로]
-$ git st <span class="keyword">...</span>
-</code></pre>
-<ul>
+$ git st ...
+</code></pre><ul>
 <li>±  - 이 것은 git을 나타내는 기호다. 왜 Git icon인지 mySysGit을 설치해보면 안다. HG는 <code>☿</code>, SVN은 <code>⑆</code>, 그 외는 <code>○</code>을 보여준다.</li>
-<li> ✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li>
+<li>✓ - 현재 git 상태가 clean 상태라는 것을 의미한다. dirty 상태가 되면 <code>✗</code>를 보여준다.</li>
 </ul>
-
-<h2>plugin</h2>
-
-<h3>nvm</h3>
-
-<p>creationix님의 <a href="https://github.com/creationix/nvm">nvm</a>이 .bash-it에 포함돼 있다. 그러니까 .bash-it만 설치하면 nvm을 별도로 설치할 필요 없다. </p>
-
+<h2 id="plugin">plugin</h2>
+<h3 id="nvm">nvm</h3>
+<p>creationix님의 <a href="https://github.com/creationix/nvm">nvm</a>이 .bash-it에 포함돼 있다. 그러니까 .bash-it만 설치하면 nvm을 별도로 설치할 필요 없다.</p>
 <p>게다가 추가된 기능도 있다. original nvm에는 없는 명령 sync가 추가됐고 마지막 안정버전과 개발버전을 가르키는 stable과 latest가 기본 alias로 추가됐다.</p>
-
-<p><code>nvm sync</code> 명령을 실행하면 nodejs.org의 디렉토리 목록을 가져와서 어떤 버전이 있는지 로컬에 목록을 만들고 각 0.5 같은 0.홀수 버전은 latest로 0.짝수 버전은 stable로 가르킨다. 그리고 <code>nvm ls</code>를 실행할 때마다 로컬에 캐시된 결과와 현재 상태를 보여준다. </p>
-
+<p><code>nvm sync</code> 명령을 실행하면 nodejs.org의 디렉토리 목록을 가져와서 어떤 버전이 있는지 로컬에 목록을 만들고 각 0.5 같은 0.홀수 버전은 latest로 0.짝수 버전은 stable로 가르킨다. 그리고 <code>nvm ls</code>를 실행할 때마다 로컬에 캐시된 결과와 현재 상태를 보여준다.</p>
 <p>내 컴퓨터에서 실행한 <code>nvm ls</code>의 결과:</p>
-<pre><code><span class="title">v0</span><span class="number">.1</span><span class="number">.100</span>  v0<span class="number">.1</span><span class="number">.16</span>   v0<span class="number">.1</span><span class="number">.23</span>   v0<span class="number">.1</span><span class="number">.30</span>   v0<span class="number">.1</span><span class="number">.93</span>   v0<span class="number">.2</span><span class="number">.0</span>    v0<span class="number">.3</span><span class="number">.0</span>    v0<span class="number">.3</span><span class="number">.7</span>    v0<span class="number">.4</span><span class="number">.12</span>   v0<span class="number">.4</span><span class="number">.8</span>    v0<span class="number">.5</span><span class="number">.3</span>    v0<span class="number">.6</span><span class="number">.0</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.101</span>  v0<span class="number">.1</span><span class="number">.17</span>   v0<span class="number">.1</span><span class="number">.24</span>   v0<span class="number">.1</span><span class="number">.31</span>   v0<span class="number">.1</span><span class="number">.94</span>   v0<span class="number">.2</span><span class="number">.1</span>    v0<span class="number">.3</span><span class="number">.1</span>    v0<span class="number">.3</span><span class="number">.8</span>    v0<span class="number">.4</span><span class="number">.2</span>    v0<span class="number">.4</span><span class="number">.8</span>-rc v0<span class="number">.5</span><span class="number">.4</span>    v0<span class="number">.6</span><span class="number">.1</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.102</span>  v0<span class="number">.1</span><span class="number">.18</span>   v0<span class="number">.1</span><span class="number">.25</span>   v0<span class="number">.1</span><span class="number">.32</span>   v0<span class="number">.1</span><span class="number">.95</span>   v0<span class="number">.2</span><span class="number">.2</span>    v0<span class="number">.3</span><span class="number">.2</span>    v0<span class="number">.4</span>      v0<span class="number">.4</span><span class="number">.3</span>    v0<span class="number">.4</span><span class="number">.9</span>    v0<span class="number">.5</span><span class="number">.5</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.103</span>  v0<span class="number">.1</span><span class="number">.19</span>   v0<span class="number">.1</span><span class="number">.26</span>   v0<span class="number">.1</span><span class="number">.33</span>   v0<span class="number">.1</span><span class="number">.96</span>   v0<span class="number">.2</span><span class="number">.3</span>    v0<span class="number">.3</span><span class="number">.3</span>    v0<span class="number">.4</span><span class="number">.0</span>    v0<span class="number">.4</span><span class="number">.4</span>    v0<span class="number">.5</span><span class="number">.0</span>    v0<span class="number">.5</span><span class="number">.6</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.104</span>  v0<span class="number">.1</span><span class="number">.20</span>   v0<span class="number">.1</span><span class="number">.27</span>   v0<span class="number">.1</span><span class="number">.90</span>   v0<span class="number">.1</span><span class="number">.97</span>   v0<span class="number">.2</span><span class="number">.4</span>    v0<span class="number">.3</span><span class="number">.4</span>    v0<span class="number">.4</span><span class="number">.1</span>    v0<span class="number">.4</span><span class="number">.5</span>    v0<span class="number">.5</span><span class="number">.1</span>    v0<span class="number">.5</span><span class="number">.7</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.14</span>   v0<span class="number">.1</span><span class="number">.21</span>   v0<span class="number">.1</span><span class="number">.28</span>   v0<span class="number">.1</span><span class="number">.91</span>   v0<span class="number">.1</span><span class="number">.98</span>   v0<span class="number">.2</span><span class="number">.5</span>    v0<span class="number">.3</span><span class="number">.5</span>    v0<span class="number">.4</span><span class="number">.10</span>   v0<span class="number">.4</span><span class="number">.6</span>    v0<span class="number">.5</span><span class="number">.10</span>   v0<span class="number">.5</span><span class="number">.8</span>
-<span class="title">v0</span><span class="number">.1</span><span class="number">.15</span>   v0<span class="number">.1</span><span class="number">.22</span>   v0<span class="number">.1</span><span class="number">.29</span>   v0<span class="number">.1</span><span class="number">.92</span>   v0<span class="number">.1</span><span class="number">.99</span>   v0<span class="number">.2</span><span class="number">.6</span>    v0<span class="number">.3</span><span class="number">.6</span>    v0<span class="number">.4</span><span class="number">.11</span>   v0<span class="number">.4</span><span class="number">.7</span>    v0<span class="number">.5</span><span class="number">.2</span>    v0<span class="number">.5</span><span class="number">.9</span>
-<span class="title">stable</span>:     v0<span class="number">.6</span><span class="number">.1</span>
-<span class="title">latest</span>:     v0<span class="number">.6</span><span class="number">.1</span>
-<span class="title">current</span>:    v0<span class="number">.6</span><span class="number">.1</span>
-# use<span class="string"> 'nvm sync'</span> to update from nodejs.org
-</code></pre>
-<p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
-
-        </div>
-      </div>
+<pre><code>v0.1.100  v0.1.16   v0.1.23   v0.1.30   v0.1.93   v0.2.0    v0.3.0    v0.3.7    v0.4.12   v0.4.8    v0.5.3    v0.6.0
+v0.1.101  v0.1.17   v0.1.24   v0.1.31   v0.1.94   v0.2.1    v0.3.1    v0.3.8    v0.4.2    v0.4.8-rc v0.5.4    v0.6.1
+v0.1.102  v0.1.18   v0.1.25   v0.1.32   v0.1.95   v0.2.2    v0.3.2    v0.4      v0.4.3    v0.4.9    v0.5.5
+v0.1.103  v0.1.19   v0.1.26   v0.1.33   v0.1.96   v0.2.3    v0.3.3    v0.4.0    v0.4.4    v0.5.0    v0.5.6
+v0.1.104  v0.1.20   v0.1.27   v0.1.90   v0.1.97   v0.2.4    v0.3.4    v0.4.1    v0.4.5    v0.5.1    v0.5.7
+v0.1.14   v0.1.21   v0.1.28   v0.1.91   v0.1.98   v0.2.5    v0.3.5    v0.4.10   v0.4.6    v0.5.10   v0.5.8
+v0.1.15   v0.1.22   v0.1.29   v0.1.92   v0.1.99   v0.2.6    v0.3.6    v0.4.11   v0.4.7    v0.5.2    v0.5.9
+stable:     v0.6.1
+latest:     v0.6.1
+current:    v0.6.1
+# use &#39;nvm sync&#39; to update from nodejs.org
+</code></pre><p>다른 건 nvm을 저장소에서 설치하는 것과 모두 같다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,251 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - SMACSS:The Icon Module</title>
-    <meta name="description" content="이글은 The Icon Module을 정리한 것이다. SMACSS를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 &lsquo;CSS Sprite&rsquo; 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다." />
-    <meta name="keywords" content="CSS,SMACSS,Icon,CSS Sprite" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - SMACSS:The Icon Module</title>
+  <meta name="description"
+    content="이글은 The Icon Module을 정리한 것이다. SMACSS를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 ‘CSS Sprite’ 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다."></meta>
+  <meta name="keywords"
+    content="CSS,SMACSS,Icon,CSS Sprite"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="SMACSS:The Icon Module &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/smacss-icon-module.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Mar 08 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/smacss-icon-module.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Mar 08</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/smacss-icon-module.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/smacss-icon-module.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/smacss-icon-module.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">SMACSS:The Icon Module</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#smacss" class="tag">SMACSS</a> <a href="/site/tagmap.html#icon" class="tag">Icon</a> <a href="/site/tagmap.html#css sprite" class="tag">CSS Sprite</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/smacss-icon-module.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/smacss-icon-module.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/smacss-icon-module.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>이글은 <a href="https://smacss.com/book/icon-module">The Icon Module</a>을 정리한 것이다. <a href="https://smacss.com/">SMACSS</a>를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 &lsquo;CSS Sprite&rsquo; 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다.</p>
 
-<p><img src="/articles/2012/smacss/smacss.png" alt="smacss"/></p>
+      <p class="small-font top-line"><a href="/site/tagmap.html#css" class="tag">CSS</a> <a href="/site/tagmap.html#smacss" class="tag">SMACSS</a> <a href="/site/tagmap.html#icon" class="tag">Icon</a> <a href="/site/tagmap.html#css sprite" class="tag">CSS Sprite</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="smacss-the-icon-module">SMACSS:The Icon Module</h1>
+<p>이글은 <a href="https://smacss.com/book/icon-module">The Icon Module</a>을 정리한 것이다. <a href="https://smacss.com/">SMACSS</a>를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 ‘CSS Sprite’ 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다.</p>
+<p><img src="/articles/2012/smacss/smacss.png" alt="smacss"></p>
 <p>이 글은 무료로 공개돼 있지 않다.</p>
-
-<h2>SMACSS</h2>
-
-<p><a href="https://smacss.com/">SMACSS</a>는 좋은 책이다. CSS &lsquo;관리'에 초점을 맞추고 이렇게 일목요연하게 정리된 자료는 일찍이 보지 못했다. 이 글을 읽고 도움이 됐다면 <a href="https://smacss.com/">SMACSS</a>를 꼭 사길 바란다. $30 짜리 workshop 계정을 사면 저자인 <a href="http://snook.ca/">Jonathan Snook</a>가 지속적으로 업데이트하는 유로 컨텐츠를 계속 이용할 수 있다.</p>
-
-<h2>The Icon Module</h2>
-
+<h2 id="smacss">SMACSS</h2>
+<p><a href="https://smacss.com/">SMACSS</a>는 좋은 책이다. CSS ‘관리’에 초점을 맞추고 이렇게 일목요연하게 정리된 자료는 일찍이 보지 못했다. 이 글을 읽고 도움이 됐다면 <a href="https://smacss.com/">SMACSS</a>를 꼭 사길 바란다. $30 짜리 workshop 계정을 사면 저자인 <a href="http://snook.ca/">Jonathan Snook</a>가 지속적으로 업데이트하는 유로 컨텐츠를 계속 이용할 수 있다.</p>
+<h2 id="the-icon-module">The Icon Module</h2>
 <p>Asset(Image)을 한 파일로 모으면 HTTP 요청 수도 줄고 이미 모든 Asset을 내려받았기 때문에 나중에 필요할 때 바로 사용할 수 있다. 이것을 <code>CSS Sprite</code>라고 부른다.</p>
-
 <p>다음 그림을 보면 이 말이 무슨 뜻인지 알 수 있다:</p>
-
-<p><img src="/articles/2012/smacss/icon-menu.png" alt="icon-menu"/></p>
-
+<p><img src="/articles/2012/smacss/icon-menu.png" alt="icon-menu"></p>
 <p>Menu HTML:</p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"menu"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-inbox"</span>&gt;</span>Inbox<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"menu-drafts"</span>&gt;</span>Drafts<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-</code></pre>
-<p>Menu CSS:</p>
-<pre><code><span class="class">.menu</span> <span class="tag">li</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat <span class="number">0</span> <span class="number">0</span>;</span></span>
-    <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">20</span>px;</span></span>
-<span class="rule">}</span></span>
+<pre><code>&lt;ul class=&quot;menu&quot;&gt;
+    &lt;li class=&quot;menu-inbox&quot;&gt;Inbox&lt;/li&gt;
+    &lt;li class=&quot;menu-drafts&quot;&gt;Drafts&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>Menu CSS:</p>
+<pre><code>.menu li {
+    background: url(/img/sprite.png) no-repeat 0 0;
+    padding-left: 20px;
+}
 
-<span class="class">.menu</span> <span class="class">.menu-inbox</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">20</span>px;</span></span>
-<span class="rule">}</span></span>
+.menu .menu-inbox {
+    background-position: 0 -20px;
+}
 
-<span class="class">.menu</span> <span class="class">.menu-drafts</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">0</span> -<span class="number">40</span>px;</span></span>
-<span class="rule">}</span></span>
-</code></pre>
-<p>모든 Icon은 Sprite 파일 하나에 다 들어 있고 아이템마다 필요한 Icon이 있는 위치를 보여준다.</p>
-
+.menu .menu-drafts {
+    background-position: 0 -40px;
+}
+</code></pre><p>모든 Icon은 Sprite 파일 하나에 다 들어 있고 아이템마다 필요한 Icon이 있는 위치를 보여준다.</p>
 <p>이걸로도 되긴 되지만 좀 더 작업을 다듬을 수 있다:</p>
-
 <ul>
 <li>list 아이템이라는 특정 DOM에만 사용할 수 있다.</li>
 <li>모듈마다 Sprite를 항상 다시 만들어야 한다.</li>
 <li>위치가 취약하다: 폰트 크기를 늘리면 다른 부분이 살짝 보일 수 있다.</li>
 <li>x가 항상 0이기 때문에 수평적으로 처리하기 까다롭다.</li>
 </ul>
-
 <p>이 이슈만 해결되면 소위 Icon Module이라 칭할 수 있다.</p>
-
 <p>Icon Module을 사용하도록 HTML을 바꾼다:</p>
-<pre><code><span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"ico ico-16 ico-inbox"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span> Inbox<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-</code></pre>
-<p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
-
+<pre><code>&lt;li&gt;&lt;i class=&quot;ico ico-16 ico-inbox&quot;&gt;&lt;/i&gt; Inbox&lt;/li&gt;
+</code></pre><p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
 <p><code>&lt;i&gt;</code>는 HTML 속 어디에 넣어도 되니까 HTML 구조의 의존성은 사라졌다고 볼 수 있다.</p>
-
-<p>그리고 &ldquo;ico ico-16 ico-inbox&rdquo; 클래스는 각각 역할이 다르다. 게다가 <code>&lt;img&gt;</code> 태그와 잘 섞어 사용할 수 있다.</p>
-
+<p>그리고 “ico ico-16 ico-inbox” 클래스는 각각 역할이 다르다. 게다가 <code>&lt;img&gt;</code> 태그와 잘 섞어 사용할 수 있다.</p>
 <p>Icon Module CSS:</p>
-<pre><code><span class="class">.ico</span> <span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
-    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url(/img/sprite.png)</span> no-repeat;</span></span>
-    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">0</span>;</span></span>
-    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> bottom;</span></span>
-<span class="rule">}</span></span>
+<pre><code>.ico {
+    display: inline-block;
+    background: url(/img/sprite.png) no-repeat;
+    line-height: 0;
+    vertical-align: bottom;
+}
 
-<span class="class">.ico-16</span> <span class="rules">{
-    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">16</span>px;</span></span>
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">16</span>px;</span></span>
-<span class="rule">}</span></span>
+.ico-16 {
+    height: 16px;
+    width: 16px;
+}
 
-<span class="class">.ico-inbox</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">20</span>px;</span></span>
-<span class="rule">}</span></span>
+.ico-inbox {
+    background-position: 20px 20px;
+}
 
-<span class="class">.ico-drafts</span> <span class="rules">{
-    <span class="rule"><span class="attribute">background-position</span>:<span class="value"> <span class="number">20</span>px <span class="number">40</span>px;</span></span>
-<span class="rule">}</span></span>
-</code></pre>
-<p><code>ico</code> 클래스는 모듈의 기본적인 토대를 다지는 클래스다. <code>&lt;img&gt;</code>처럼 inline-block 엘리멘트로 만들고 <code>vertical-align</code>으로 Icon이 텍스트와 잘 어우러지도록 해준다. IE는 <code>inline-block</code>을 <code>block</code> 엘리먼트로 취급하기 때문에 IE에서는 <code>{ zoom:1; display:inline; }</code>로 해야 한다.</p>
-
+.ico-drafts {
+    background-position: 20px 40px;
+}
+</code></pre><p><code>ico</code> 클래스는 모듈의 기본적인 토대를 다지는 클래스다. <code>&lt;img&gt;</code>처럼 inline-block 엘리멘트로 만들고 <code>vertical-align</code>으로 Icon이 텍스트와 잘 어우러지도록 해준다. IE는 <code>inline-block</code>을 <code>block</code> 엘리먼트로 취급하기 때문에 IE에서는 <code>{ zoom:1; display:inline; }</code>로 해야 한다.</p>
 <p><code>ico-16</code>은 크기 정해주기 위함이다. ico 클래스에 같이 넣어줘도 되지만 Icon마다 크기가 다를 수도 있어서 이렇게 하는 거다.</p>
-
 <p><code>icon-inbox</code>는 Sprite 이미지에서의 Inbox용 Icon의 위치를 정의하는 것이다.</p>
-
 <p>촘촘히 우겨넣은 이미지:</p>
-
-<p><img src="/articles/2012/smacss/icon-menu2.png" alt="icon-menu2"/></p>
-
+<p><img src="/articles/2012/smacss/icon-menu2.png" alt="icon-menu2"></p>
 <p>잘 우겨넣으면 압축 효율이 좋아진다. 그리고 파일 크기도 더 작아지므로 사이트 성능도 향상된다. 아직 <a href="http://www.smushit.com/ysmush.it/">Smush.it</a>이나 <a href="http://imageoptim.pornel.net/">ImageOptim</a>을 사용해보지 않았으면 한번 사용해보는 것이 좋다.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

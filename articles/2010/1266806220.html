@@ -1,208 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Hamachi Install on Snow Leopard (OSX 10.6)</title>
-    <meta name="description" content="Requirements" />
-    <meta name="keywords" content="hamachi,Rosetta,TUNTAP" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Hamachi Install on Snow Leopard (OSX 10.6)</title>
+  <meta name="description"
+    content="Requirements"></meta>
+  <meta name="keywords"
+    content="hamachi,Rosetta,TUNTAP"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Hamachi Install on Snow Leopard (OSX 10.6) &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2010/1266806220.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2010 Feb 22 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2010/1266806220.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2010 Feb 22</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2010/1266806220.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1266806220.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2010/1266806220.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Hamachi Install on Snow Leopard (OSX 10.6)</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#hamachi" class="tag">hamachi</a> <a href="/site/tagmap.html#rosetta" class="tag">Rosetta</a> <a href="/site/tagmap.html#tuntap" class="tag">TUNTAP</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2010/1266806220.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1266806220.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2010/1266806220.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <h2>Requirements</h2>
 
-<h3>TUNTAP</h3>
+      <p class="small-font top-line"><a href="/site/tagmap.html#hamachi" class="tag">hamachi</a> <a href="/site/tagmap.html#rosetta" class="tag">Rosetta</a> <a href="/site/tagmap.html#tuntap" class="tag">TUNTAP</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="hamachi-install-on-snow-leopard-osx-10-6-">Hamachi Install on Snow Leopard (OSX 10.6)</h1>
+<h2 id="requirements">Requirements</h2>
+<h3 id="tuntap">TUNTAP</h3>
 <ol>
 <li>Download TUNTAP for Mac. - <a href="http://tuntaposx.sourceforge.net">http://tuntaposx.sourceforge.net</a></li>
 <li>Install TUNTAP Package. - Untar downloaded TUNTAP file and install it.</li>
-<li>Check &lsquo;/dev/tap0&rsquo; - check in terminal with command &lsquo;ls /dev/tap0&rsquo;.</li>
+<li>Check ‘/dev/tap0’ - check in terminal with command ‘ls /dev/tap0’.</li>
 </ol>
-
-<h3>Rosetta</h3>
-
+<h3 id="rosetta">Rosetta</h3>
 <ol>
 <li>Rosetta install from Snow Leopard DVD Option Disk (2)</li>
-<li>Automatic update via open PPC application.
-
-<ol>
-<li>Download &lsquo;PiXel Check&rsquo; (Bad Pixel Check Utility) - <a href="http://homepage.mac.com/macguitar/FileSharing16.html">http://homepage.mac.com/macguitar/FileSharing16.html</a></li>
-<li>Open &lsquo;PiXel Check&rsquo; and rosetta install dialog will appear.</li>
-</ol></li>
+<li>Automatic update via open PPC application.<ol>
+<li>Download ‘PiXel Check’ (Bad Pixel Check Utility) - <a href="http://homepage.mac.com/macguitar/FileSharing16.html">http://homepage.mac.com/macguitar/FileSharing16.html</a></li>
+<li>Open ‘PiXel Check’ and rosetta install dialog will appear.</li>
 </ol>
-
-<h2>hamachi</h2>
-
-<h3>1. Download Hamachi.</h3>
-
-<p>Visit <a href="http://files.hamachi.cc/osx/">http://files.hamachi.cc/osx/</a> and<br/>
+</li>
+</ol>
+<h2 id="hamachi">hamachi</h2>
+<h3 id="1-download-hamachi-">1. Download Hamachi.</h3>
+<p>Visit <a href="http://files.hamachi.cc/osx/">http://files.hamachi.cc/osx/</a> and
 download latest binary.</p>
+<h3 id="2-run-install-script">2. run install script</h3>
+<pre><code>sudo ./install
+</code></pre><h3 id="3-run-tuncfg">3. run tuncfg</h3>
+<pre><code>sudo /usr/sbin/tuncfg
+</code></pre><h3 id="4-run-hamachi-init-">4. run ‘hamachi-init’</h3>
+<h3 id="5-run-below-">5. run below.</h3>
+<pre><code>hamachi start
 
-<h3>2. run install script</h3>
-<pre><code>su<span class="operator"><span class="keyword">do</span> ./install
-</code></pre>
-<h3>3. run tuncfg</h3>
-<pre><code>su<span class="operator"><span class="keyword">do</span> /usr/sbin/tuncfg
-</code></pre>
-<h3>4. run &lsquo;hamachi-init&rsquo;</h3>
+hamachi login
 
-<h3>5. run below.</h3>
-<pre><code><span class="title">hamachi</span> start
+hamachi set-nick &#39;nick-name&#39;
 
-<span class="title">hamachi</span> login
+hamachi join &#39;network-name&#39;
 
-<span class="title">hamachi</span> set-nick<span class="string"> 'nick-name'</span>
-
-<span class="title">hamachi</span> join<span class="string"> 'network-name'</span>
-
-<span class="title">hamachi</span> go-online<span class="string"> 'network-name'</span>
-</code></pre>
-<p><a href="http://technosense.blogspot.com/2008/04/osx-leopard-hamachi-auto-startup.html">http://technosense.blogspot.com/2008/04/osx-leopard-hamachi-auto-startup.html</a></p>
-
-        </div>
-      </div>
+hamachi go-online &#39;network-name&#39;
+</code></pre><p><a href="http://technosense.blogspot.com/2008/04/osx-leopard-hamachi-auto-startup.html">http://technosense.blogspot.com/2008/04/osx-leopard-hamachi-auto-startup.html</a></p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,210 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - JAVA7 요약</title>
-    <meta name="description" content="참고: http://radar.oreilly.com/2011/09/java7-features.html" />
-    <meta name="keywords" content="java7" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - JAVA7 요약</title>
+  <meta name="description"
+    content="참고: http://radar.oreilly.com/2011/09/java7-features.html"></meta>
+  <meta name="keywords"
+    content="java7"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="JAVA7 요약 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/1315529760.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Sep 09 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/1315529760.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Sep 09</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/1315529760.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1315529760.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/1315529760.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">JAVA7 요약</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#java7" class="tag">java7</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/1315529760.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/1315529760.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/1315529760.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>참고: <a href="http://radar.oreilly.com/2011/09/java7-features.html">http://radar.oreilly.com/2011/09/java7-features.html</a></p>
 
-<h2>Diamond Operator</h2>
+      <p class="small-font top-line"><a href="/site/tagmap.html#java7" class="tag">java7</a></p>
+    </div>
 
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="java7-">JAVA7 요약</h1>
+<p>참고: <a href="http://radar.oreilly.com/2011/09/java7-features.html">http://radar.oreilly.com/2011/09/java7-features.html</a></p>
+<h2 id="diamond-operator">Diamond Operator</h2>
 <p>다음과 같이 양쪽에 모두 정의했어야 했는데:</p>
-<pre><code>Map<span class="tag">&lt;<span class="title">String,</span> <span class="attribute">List</span>&lt;<span class="attribute">Trade</span>» <span class="attribute">trades</span> = <span class="attribute">new</span> <span class="attribute">TreeMap</span>&lt;<span class="attribute">String</span>, <span class="attribute">List</span>&lt;<span class="attribute">Trade</span>» ();
-</code></pre>
-<p>이제 한쪽만 해주면 된다:</p>
-<pre><code>Map<span class="tag">&lt;<span class="title">String,</span> <span class="attribute">List</span>&lt;<span class="attribute">Trade</span>» <span class="attribute">trades</span> = <span class="attribute">new</span> <span class="attribute">TreeMap</span> &lt;&gt;</span> ();
-</code></pre>
-<p><code>&lt;&gt;</code> 이걸 Diamond Operator라고 부른다.</p>
-
-<h2>switch..case 문에 string 지원.</h2>
-
+<pre><code>Map&lt;String, List&lt;Trade» trades = new TreeMap&lt;String, List&lt;Trade» ();
+</code></pre><p>이제 한쪽만 해주면 된다:</p>
+<pre><code>Map&lt;String, List&lt;Trade» trades = new TreeMap &lt;&gt; ();
+</code></pre><p><code>&lt;&gt;</code> 이걸 Diamond Operator라고 부른다.</p>
+<h2 id="switch-case-string-">switch..case 문에 string 지원.</h2>
 <p>String.equals() 메소드를 이용한다.</p>
-
-<h2><code>try{}</code> 구문에서 자동으로 리소스 해제해줌</h2>
-
+<h2 id="-try-"><code>try{}</code> 구문에서 자동으로 리소스 해제해줌</h2>
 <p>리소스(Connections, Files, Input/OutStreams, etc) 를 자동으로 close한다. <code>try{}</code> 구문이 끝나면 java.lang.AutoCloseable를 구현한 리소스가 해제된다.</p>
-
-<h2>상수에 <code>_</code> 사용가능</h2>
-<pre><code><span class="title">int</span> thousand =  1_000;
-<span class="title">int</span> million  =  1_000_000;
-</code></pre>
-<p>예뻐졌다.</p>
-
-<h2>exception handling하는 부분이 강화됨</h2>
-
+<h2 id="-_-">상수에 <code>_</code> 사용가능</h2>
+<pre><code>int thousand =  1_000;
+int million  =  1_000_000;
+</code></pre><p>예뻐졌다.</p>
+<h2 id="exception-handling-">exception handling하는 부분이 강화됨</h2>
 <p>handling 코드가 같은 경우에는 Interface를 구현하던가 아니면 각각 처리했어야 했는데. 단순해짐.</p>
-<pre><code>public <span class="reserved">void</span> newMultiCatch() {
-  <span class="keyword">try</span> {
+<pre><code>public void newMultiCatch() {
+  try {
     methodThatThrowsThreeExceptions();
-  } <span class="keyword">catch</span> (ExceptionOne | ExceptionTwo | ExceptionThree e) {
-    <span class="regexp">//</span> log <span class="keyword">and</span> deal <span class="reserved">with</span> all Exceptions
+  } catch (ExceptionOne | ExceptionTwo | ExceptionThree e) {
+    // log and deal with all Exceptions
   }
 }
-</code></pre>
-<h2>New file system API (NIO 2.0)</h2>
-
+</code></pre><h2 id="new-file-system-api-nio-2-0-">New file system API (NIO 2.0)</h2>
 <ul>
-<li><p>Path, Paths, FileSystem, FileSystems 등등의 인터페이스가 생겨서 파일시스템을 다루기 좀 더 쉬워짐. 기존에 파일시스템을 다루는 문제는 그동안 그지같아서 직접 닦아줘야 했었는데 많은 부분이 강화됨. copy, move, createSymbolicLink같은 것들이 생겼음.</p></li>
-<li><p>File change notifications - 그래서 파일시스템 이벤트를 핸들링할 수 있게됨.</p></li>
+<li><p>Path, Paths, FileSystem, FileSystems 등등의 인터페이스가 생겨서 파일시스템을 다루기 좀 더 쉬워짐. 기존에 파일시스템을 다루는 문제는 그동안 그지같아서 직접 닦아줘야 했었는데 많은 부분이 강화됨. copy, move, createSymbolicLink같은 것들이 생겼음.</p>
+</li>
+<li><p>File change notifications - 그래서 파일시스템 이벤트를 핸들링할 수 있게됨.</p>
+</li>
 </ul>
-
-<h2>Fork and Join</h2>
-
+<h2 id="fork-and-join">Fork and Join</h2>
 <p>Multi core을 효율적으로 사용할 수 있도록 ForkJoinPool이라는 게 생겼음.</p>
-
-<h2>java.lang.invoke 패키지 추가</h2>
-
+<h2 id="java-lang-invoke-">java.lang.invoke 패키지 추가</h2>
 <p>invokedynamic라고 부르고 다른 동적언어를 위해 추가됐다고 함.</p>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

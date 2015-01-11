@@ -1,282 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Enum을 JSP 페이지에 노출 시키기</title>
-    <meta name="description" content="개요" />
-    <meta name="keywords" content="Enum,Jsp" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Enum을 JSP 페이지에 노출 시키기</title>
+  <meta name="description"
+    content="개요"></meta>
+  <meta name="keywords"
+    content="Enum,Jsp"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Enum을 JSP 페이지에 노출 시키기 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2008/1220695860.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2008 Sep 06 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2008/1220695860.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2008 Sep 06</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2008/1220695860.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2008/1220695860.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2008/1220695860.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Enum을 JSP 페이지에 노출 시키기</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#enum" class="tag">Enum</a> <a href="/site/tagmap.html#jsp" class="tag">Jsp</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2008/1220695860.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2008/1220695860.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2008/1220695860.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <h2>개요</h2>
 
+      <p class="small-font top-line"><a href="/site/tagmap.html#enum" class="tag">Enum</a> <a href="/site/tagmap.html#jsp" class="tag">Jsp</a></p>
+    </div>
+
+    <div class="col-sm-10">
+
+      <div property="sioc:content"><h1 id="enum-jsp-">Enum을 JSP 페이지에 노출 시키기</h1>
+<h2 id="-">개요</h2>
 <p>scriptlet은 독이다. scriptlet을 잘쓰고 있는 지인에게 ‘scriptlet은 독이이야’라고 말했다가 미움받았다. 어쨌든 scriptlet을 안쓰고 jsp짜려니까 좀 골때려지는 부분들도 있다. 먼가 방법이 있을까 찾아보니 Spring Interceptor를 이용해서 Enum을 request 스콥에 노출시켜주는 글을 찾았다.</p>
-
 <p>request 스콥에 노출시키는 방법은 다음과 같은 방법이 있을 수 있다.</p>
-
 <ul>
 <li>ServletFilter</li>
 <li>Spring Interceptor</li>
 <li>Controller</li>
 </ul>
-
 <p>하지만 Enum을 요청마다 매번 request에 넣어주는게 좀 후져 보였다. 저장소를 application 스콥으로 잡고 WAS가 기동할 때 넣어줄 수 있도록 ContextListener로 구현하기로 했다.</p>
-
-<h2>예제</h2>
-
+<h2 id="-">예제</h2>
 <p>다음과 같은 enum 클래스가 있다고 하면:</p>
-<pre><code><span class="package"><span class="keyword">package</span> <span class="title">kr</span>.<span class="title">pismute</span>
+<pre><code>package kr.pismute
 
-<span class="title">public</span> <span class="title">enum</span> <span class="title">Week</span> {</span>
+public enum Week {
   MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
-} 
-</code></pre>
-<p>jsp에서 다음과 같이 사용할 수 있다. 사실 applicationSope이란 내장객체라는게 참 촌스럽다. 그냥 application으로 하지 못할 이유라도 있었는지…</p>
-<pre><code>${applicationScope<span class="variable">.week</span><span class="variable">.MONDAY</span>}
-</code></pre>
-<p>Week라는 클래스 이름은 자바 네이밍 컨벤션에 따라 week으로 바꿔서 넣는다. GoldenWeek였다면 goldenWeek로 바뀐다.</p>
-
+}
+</code></pre><p>jsp에서 다음과 같이 사용할 수 있다. 사실 applicationSope이란 내장객체라는게 참 촌스럽다. 그냥 application으로 하지 못할 이유라도 있었는지…</p>
+<pre><code>${applicationScope.week.MONDAY}
+</code></pre><p>Week라는 클래스 이름은 자바 네이밍 컨벤션에 따라 week으로 바꿔서 넣는다. GoldenWeek였다면 goldenWeek로 바뀐다.</p>
 <p>이제 web.xml에 이 ContextListner를 넣는다:</p>
-<pre><code><span class="tag">&lt;<span class="title">context-param</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>enumServletContextConfig<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>kr.pismute.Week<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">context-param</span>&gt;</span>
+<pre><code>&lt;context-param&gt;
+    &lt;param-name&gt;enumServletContextConfig&lt;/param-name&gt;
+    &lt;param-value&gt;kr.pismute.Week&lt;/param-value&gt;
+&lt;/context-param&gt;
 
-<span class="tag">&lt;<span class="title">listener</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">listener-class</span>&gt;</span>kr.pismute.EnumContextListener<span class="tag">&lt;/<span class="title">listener-class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">listener</span>&gt;</span>
-</code></pre>
-<p>Enum에 빈을 추가해서 사용할 수도 있다. Week에 다음과 같이 추가하고:</p>
-<pre><code><span class="title">private</span> Integer day;
+&lt;listener&gt;
+    &lt;listener-class&gt;kr.pismute.EnumContextListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</code></pre><p>Enum에 빈을 추가해서 사용할 수도 있다. Week에 다음과 같이 추가하고:</p>
+<pre><code>private Integer day;
 
-  <span class="title">public</span> Integer getDay(){
-    <span class="title">return</span> day;
+  public Integer getDay(){
+    return day;
   }
-</code></pre>
-<p>jsp에서 다음과 같이 day 프로퍼티를 사용할 수 있다.</p>
-<pre><code>${applicationScope<span class="variable">.week</span><span class="variable">.MONDAY</span><span class="variable">.day</span>}
-</code></pre>
-<h2>Code</h2>
+</code></pre><p>jsp에서 다음과 같이 day 프로퍼티를 사용할 수 있다.</p>
+<pre><code>${applicationScope.week.MONDAY.day}
+</code></pre><h2 id="code">Code</h2>
 <pre><code>pacakge kr.pismute
 
-<span class="keyword">import</span> java.util.Collections;
-<span class="keyword">import</span> java.util.HashMap;
-<span class="keyword">import</span> java.util.Map;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-<span class="keyword">import</span> javax.servlet.ServletContext;
-<span class="keyword">import</span> javax.servlet.ServletContextEvent;
-<span class="keyword">import</span> javax.servlet.ServletContextListener;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-<span class="javadoc">/**
+/**
  * JSP에서 ENUM 클래스에 접근할 수 있도록 ServletContext에 넣어줍니다.
- * 
- * <span class="javadoctag">@author</span> pismute
  *
- */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumContextListener</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> {</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> contextDestroyed(ServletContextEvent sce) {
+ * @author pismute
+ *
+ */
+public class EnumContextListener implements ServletContextListener {
+    public void contextDestroyed(ServletContextEvent sce) {
     }
 
-    <span class="keyword">public</span> <span class="keyword">void</span> contextInitialized(ServletContextEvent sce) {
-        String param = sce.getServletContext().getInitParameter(<span class="string">"enumServletContextConfig"</span>);
-        String[] params = param.split(<span class="string">","</span>);
+    public void contextInitialized(ServletContextEvent sce) {
+        String param = sce.getServletContext().getInitParameter(&quot;enumServletContextConfig&quot;);
+        String[] params = param.split(&quot;,&quot;);
 
-        <span class="keyword">for</span>(String className : params) {
+        for(String className : params) {
             className = className.trim();
-            <span class="keyword">this</span>.loadEnum(className, sce.getServletContext());
+            this.loadEnum(className, sce.getServletContext());
         }
     }
 
-    <span class="javadoc">/**
+    /**
      * Enum 인스턴스를 찾아서 Map&lt;name, Enum&lt;?&gt;&gt; 맵으로 변환하고
      * ServletContext에 넣습니다.
-     * 
-     * <span class="javadoctag">@param</span> className
-     */</span>
-    <span class="annotation">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)
-    <span class="keyword">private</span> <span class="keyword">void</span> loadEnum(String className, ServletContext context) {
-        Map&lt;String, Enum&lt;?&gt;&gt; ret = <span class="keyword">null</span>;
+     *
+     * @param className
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private void loadEnum(String className, ServletContext context) {
+        Map&lt;String, Enum&lt;?&gt;&gt; ret = null;
 
-        <span class="keyword">try</span> {
+        try {
             Class&lt;Enum&gt; clazz = (Class&lt;Enum&gt;)Class.forName(className);
             Enum[] enums = clazz.getEnumConstants();
 
-            ret = <span class="keyword">new</span> HashMap&lt;String, Enum&lt;?&gt;&gt;(enums.length);
-            <span class="keyword">for</span>(Enum e : enums) {
+            ret = new HashMap&lt;String, Enum&lt;?&gt;&gt;(enums.length);
+            for(Enum e : enums) {
                 ret.put(e.name(), e);
             }
-        } <span class="keyword">catch</span> (Exception e) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
         ret = Collections.unmodifiableMap(ret);
-        context.setAttribute(<span class="keyword">this</span>.getAlias(className), ret);
+        context.setAttribute(this.getAlias(className), ret);
     }
 
-    <span class="javadoc">/**
+    /**
      * 클래스 첫 문자를 소문자로 바꿔서 alias를 만듭니다.
-     * 
-     * <span class="javadoctag">@param</span> className
-     * <span class="javadoctag">@return</span>
-     */</span>
-    <span class="keyword">private</span> String getAlias(String className) {
-        String[] token = className.split(<span class="string">"\\."</span>);
-        String alias = token[token.length - <span class="number">1</span>].trim();
-        String initial = alias.substring(<span class="number">0</span>, <span class="number">1</span>);
-        String suffix = alias.substring(<span class="number">1</span>);
+     *
+     * @param className
+     * @return
+     */
+    private String getAlias(String className) {
+        String[] token = className.split(&quot;\\.&quot;);
+        String alias = token[token.length - 1].trim();
+        String initial = alias.substring(0, 1);
+        String suffix = alias.substring(1);
 
         initial = initial.toLowerCase();
         alias = initial + suffix;
 
-        <span class="keyword">return</span> alias;
+        return alias;
     }
 }
-</code></pre>
-        </div>
-      </div>
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

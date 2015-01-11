@@ -1,254 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Cake</title>
-    <meta name="description" content="Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다." />
-    <meta name="keywords" content="Cake,CoffeeScript" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Cake</title>
+  <meta name="description"
+    content="Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다."></meta>
+  <meta name="keywords"
+    content="Cake,CoffeeScript"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Cake &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/cake.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Nov 22 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/cake.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Nov 22</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/cake.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/cake.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/cake.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Cake</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#cake" class="tag">Cake</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#cake" class="tag">Cake</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/cake.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/cake.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/cake.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
 
-<p><img src="/articles/2011/cake.png" alt="Cake"/></p>
+    <div class="col-sm-10">
 
-<h3>Hello World!</h3>
-
+      <div property="sioc:content"><h1 id="cake">Cake</h1>
+<p>Cake는 정말 쉽고 간단하다. Makefile대신 Cakefile만 만들면 된다.</p>
+<p><img src="/articles/2011/cake.png" alt="Cake"></p>
+<h3 id="hello-world-">Hello World!</h3>
 <p>Cake 자체는 별로 설명할게 없다. Cakefile을 우선 다음과 같이 만든다:</p>
 <pre><code>:::coffee
-task <span class="attribute">'say</span>:hello', <span class="attribute">'Description</span> <span class="keyword">of</span> task', -&gt;
-  console.log <span class="attribute">'Hello</span> World!'
-</code></pre>
-<p>그리고 <code>task say:hello</code>라고 실행하면:</p>
-<pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:bash</span>
-<span class="variable">$ </span>cake <span class="symbol">say:</span>hello
-<span class="constant">Hello</span> <span class="constant">World</span>!
-</code></pre>
-<p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
-<pre><code><span class="variable">$ </span>cake
+task &#39;say:hello&#39;, &#39;Description of task&#39;, -&gt;
+  console.log &#39;Hello World!&#39;
+</code></pre><p>그리고 <code>task say:hello</code>라고 실행하면:</p>
+<pre><code>:::bash
+$ cake say:hello
+Hello World!
+</code></pre><p>task 이름 없이 실행하면 실행할 수 있는 task를 모두 보여준다:</p>
+<pre><code>$ cake
 
-cake <span class="symbol">say:</span>hello             <span class="comment"># Description of task</span>
-</code></pre>
-<h3>Option</h3>
-
+cake say:hello             # Description of task
+</code></pre><h3 id="option">Option</h3>
 <p>production, development 등 환경에 따라 다르게 실행시키고 싶다면 다음과 같이 option을 정의한다:</p>
 <pre><code>:::coffee
-option '-e', '<span class="comment">--environment [ENVIRONMENT_NAME]', 'set the environment for `task:withDefaults`'</span>
-task <span class="attribute">'task</span>:withDefaults', <span class="attribute">'Description</span> <span class="keyword">of</span> task', (options) -&gt;
-  options.environment <span class="keyword">or</span>= <span class="attribute">'production</span>'
-</code></pre>
-<p>이 코드는 다음과 같이 실행한다.</p>
-<pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:bash</span>
-<span class="variable">$ </span>cake -e <span class="string">"development"</span> <span class="symbol">task:</span>withDefaults
-</code></pre>
-<h2>Use Case</h2>
-
-<h3>Compile</h3>
-
-<p>src/*.coffee 파일을 out/*.js로 컴파일하는 명령어는 다음과 같다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">coffee</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">lib/</span> <span class="comment">src/</span>
-</code></pre>
-<p>이 cake로 하려면 다음과 같이 한다.</p>
-<pre><code><span class="comment">:::coffee</span>
-<span class="comment">{exec}</span> <span class="comment">=</span> <span class="comment">require</span> <span class="comment">'child_process'</span>
-<span class="comment">task</span> <span class="comment">'build'</span>, <span class="comment">'Build</span> <span class="comment">project</span> <span class="comment">from</span> <span class="comment">src/*</span>.<span class="comment">coffee</span> <span class="comment">to</span> <span class="comment">lib/*</span>.<span class="comment">js'</span>, <span class="literal">-</span>&gt;
-  <span class="comment">exec</span> <span class="comment">'coffee</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">output</span> <span class="comment">lib/</span> <span class="comment">src/'</span>, <span class="comment">(err</span>, <span class="comment">stdout</span>, <span class="comment">stderr)</span> <span class="literal">-</span>&gt;
-    <span class="comment">throw</span> <span class="comment">err</span> <span class="comment">if</span> <span class="comment">err</span>
-    <span class="comment">console</span>.<span class="comment">log</span> <span class="comment">stdout</span> <span class="literal">+</span> <span class="comment">stderr</span>
-</code></pre>
-<p><code>{exec} = require &#39;child_process&#39;</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require(&#39;child_process&#39;).exec</code>와 같다.</p>
-
+option &#39;-e&#39;, &#39;--environment [ENVIRONMENT_NAME]&#39;, &#39;set the environment for `task:withDefaults`&#39;
+task &#39;task:withDefaults&#39;, &#39;Description of task&#39;, (options) -&gt;
+  options.environment or= &#39;production&#39;
+</code></pre><p>이 코드는 다음과 같이 실행한다.</p>
+<pre><code>:::bash
+$ cake -e &quot;development&quot; task:withDefaults
+</code></pre><h2 id="use-case">Use Case</h2>
+<h3 id="compile">Compile</h3>
+<p>src/<em>.coffee 파일을 out/</em>.js로 컴파일하는 명령어는 다음과 같다:</p>
+<pre><code>$ coffee --compile --output lib/ src/
+</code></pre><p>이 cake로 하려면 다음과 같이 한다.</p>
+<pre><code>:::coffee
+{exec} = require &#39;child_process&#39;
+task &#39;build&#39;, &#39;Build project from src/*.coffee to lib/*.js&#39;, -&gt;
+  exec &#39;coffee --compile --output lib/ src/&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre><p><code>{exec} = require &#39;child_process&#39;</code>는 <a href="http://jashkenas.github.com/coffee-script/">Destructuring Assignment</a>라는 것으로 js로 컴파일시 <code>var exec = require(&#39;child_process&#39;).exec</code>와 같다.</p>
 <p>간단히 말해서 task를 이용해서 child process로 <code>coffee --compile --output lib/ src/</code>를 실행하는 것 뿐이다.</p>
-
-<h3>Concatenating Files</h3>
-
+<h3 id="concatenating-files">Concatenating Files</h3>
 <p>파일을 하나로 합친다. 한 마디로 브라우저용이다. 개발은 Module별로 파일을 나눠서 하지만 배포는 하나로 하는 것이다.</p>
-<pre><code>fs     = require <span class="comment">'fs'</span>
-{exec} = require <span class="comment">'child_process'</span>
+<pre><code>fs     = require &#39;fs&#39;
+{exec} = require &#39;child_process&#39;
 
 appFiles  = [
-  # omit src/ <span class="keyword">and</span> .coffee <span class="keyword">to</span> make the below lines a little shorter
-  <span class="comment">'content/scripts/statusbar'</span>
-  <span class="comment">'content/scripts/command/quickMacro'</span>
-  <span class="comment">'content/scripts/command/selectionTools/general'</span>
+  # omit src/ and .coffee to make the below lines a little shorter
+  &#39;content/scripts/statusbar&#39;
+  &#39;content/scripts/command/quickMacro&#39;
+  &#39;content/scripts/command/selectionTools/general&#39;
 ]
 
-task <span class="comment">'build', 'Build single application file from source files', -&gt;</span>
-  appContents = <span class="keyword">new</span> <span class="built_in">Array</span> remaining = appFiles.length
-  <span class="keyword">for</span> file, index <span class="keyword">in</span> appFiles <span class="keyword">then</span> <span class="keyword">do</span> (file, index) -&gt;
-    fs.readFile <span class="string">"src/#{file}.coffee"</span>, <span class="comment">'utf8', (err, fileContents) -&gt;</span>
-      throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
+task &#39;build&#39;, &#39;Build single application file from source files&#39;, -&gt;
+  appContents = new Array remaining = appFiles.length
+  for file, index in appFiles then do (file, index) -&gt;
+    fs.readFile &quot;src/#{file}.coffee&quot;, &#39;utf8&#39;, (err, fileContents) -&gt;
+      throw err if err
       appContents[index] = fileContents
-      process() <span class="keyword">if</span> --remaining <span class="keyword">is</span> <span class="number">0</span>
+      process() if --remaining is 0
   process = -&gt;
-    fs.writeFile <span class="comment">'lib/app.coffee', appContents.join('\n\n'), 'utf8', (err) -&gt;</span>
-      throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
-      exec <span class="comment">'coffee --compile lib/app.coffee', (err, stdout, stderr) -&gt;</span>
-        throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
-        console.<span class="built_in">log</span> stdout + stderr
-        fs.unlink <span class="comment">'lib/app.coffee', (err) -&gt;</span>
-          throw <span class="built_in">err</span> <span class="keyword">if</span> <span class="built_in">err</span>
-          console.<span class="built_in">log</span> <span class="comment">'Done.'</span>
-</code></pre>
-<h3>Minify/Compress Your Files</h3>
-
+    fs.writeFile &#39;lib/app.coffee&#39;, appContents.join(&#39;\n\n&#39;), &#39;utf8&#39;, (err) -&gt;
+      throw err if err
+      exec &#39;coffee --compile lib/app.coffee&#39;, (err, stdout, stderr) -&gt;
+        throw err if err
+        console.log stdout + stderr
+        fs.unlink &#39;lib/app.coffee&#39;, (err) -&gt;
+          throw err if err
+          console.log &#39;Done.&#39;
+</code></pre><h3 id="minify-compress-your-files">Minify/Compress Your Files</h3>
 <p><a href="http://code.google.com/closure/compiler/">Google Closore Compiler</a>로 컴파일 하기</p>
-<pre><code><span class="comment">task</span> <span class="comment">'minify'</span>, <span class="comment">'Minify</span> <span class="comment">the</span> <span class="comment">resulting</span> <span class="comment">application</span> <span class="comment">file</span> <span class="comment">after</span> <span class="comment">build'</span>, <span class="literal">-</span>&gt;
-  <span class="comment">exec</span> <span class="comment">'java</span> <span class="literal">-</span><span class="comment">jar</span> <span class="comment">"/home/stan/public/compiler</span>.<span class="comment">jar"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">js</span> <span class="comment">lib/app</span>.<span class="comment">js</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">js_output_file</span> <span class="comment">lib/app</span>.<span class="comment">production</span>.<span class="comment">js'</span>, <span class="comment">(err</span>, <span class="comment">stdout</span>, <span class="comment">stderr)</span> <span class="literal">-</span>&gt;
-    <span class="comment">throw</span> <span class="comment">err</span> <span class="comment">if</span> <span class="comment">err</span>
-    <span class="comment">console</span>.<span class="comment">log</span> <span class="comment">stdout</span> <span class="literal">+</span> <span class="comment">stderr</span>
-</code></pre>
-<h2>참고</h2>
-
+<pre><code>task &#39;minify&#39;, &#39;Minify the resulting application file after build&#39;, -&gt;
+  exec &#39;java -jar &quot;/home/stan/public/compiler.jar&quot; --js lib/app.js --js_output_file lib/app.production.js&#39;, (err, stdout, stderr) -&gt;
+    throw err if err
+    console.log stdout + stderr
+</code></pre><h2 id="-">참고</h2>
 <ul>
 <li><a href="https://github.com/jashkenas/coffee-script/wiki/%5BHowTo%5D-Compiling-and-Setting-Up-Build-Tools">Compiling and Setting Up Build Tools</a></li>
 </ul>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

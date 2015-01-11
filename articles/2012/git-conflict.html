@@ -1,243 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Git:conflict</title>
-    <meta name="description" content="충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 git add 명령으로 Staging Area에 추가하고 나서 git commit으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다." />
-    <meta name="keywords" content="git" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Git:conflict</title>
+  <meta name="description"
+    content="충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 git add 명령으로 Staging Area에 추가하고 나서 git commit으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다."></meta>
+  <meta name="keywords"
+    content="git"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Git:conflict &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/git-conflict.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jan 01 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/git-conflict.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jan 01</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/git-conflict.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/git-conflict.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/git-conflict.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Git:conflict</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/git-conflict.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/git-conflict.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/git-conflict.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 <code>git add</code> 명령으로 Staging Area에 추가하고 나서 <code>git commit</code>으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다.</p>
 
-<p>Git 명령어를 사용하다 보면 &lsquo;ours&rsquo;, &lsquo;theirs'라는 옵션을 자주 보게 된다. 이 옵션은 충돌을 위해 만들어진 옵션이다. 이 글은 이 옵션에 대해 설명한다.</p>
+    <div class="col-sm-10">
 
-<p><img src="/articles/2012/git-conflict/creation-of-adam.jpg" alt="creation of adam"/></p>
-
+      <div property="sioc:content"><h1 id="git-conflict">Git:conflict</h1>
+<p>충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 <code>git add</code> 명령으로 Staging Area에 추가하고 나서 <code>git commit</code>으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다.</p>
+<p>Git 명령어를 사용하다 보면 ‘ours’, ‘theirs’라는 옵션을 자주 보게 된다. 이 옵션은 충돌을 위해 만들어진 옵션이다. 이 글은 이 옵션에 대해 설명한다.</p>
+<p><img src="/articles/2012/git-conflict/creation-of-adam.jpg" alt="creation of adam"></p>
 <p>새해 복 많이 받으세요!!</p>
-
-<h2>Config</h2>
-
+<h2 id="config">Config</h2>
 <p>기본적으로 <code>git diff</code>와 같은 형식으로 보여주지만 충돌 결과를 보여주는 스타일을 변경할 수 있다:</p>
-<pre><code><span class="variable">$ </span>git config merge.conflictstyle diff3
-</code></pre>
-<h2>Checkout</h2>
-
+<pre><code>$ git config merge.conflictstyle diff3
+</code></pre><h2 id="checkout">Checkout</h2>
 <p>Checkout 명령에 <code>--ours</code>와 <code>--theirs</code> 옵션이 있다. 이 옵션은 충돌 났을 때 사용한다. <code>ours</code> 브랜치에 conflict 파일은 다음과 같다고 하자:</p>
-<pre><code><span class="variable">$ </span>cat conflict
+<pre><code>$ cat conflict
 ours
-</code></pre>
-<p><code>theirs</code> 브랜치의 conflict 파일은 다음과 같다:</p>
-<pre><code><span class="variable">$ </span>cat conflict
+</code></pre><p><code>theirs</code> 브랜치의 conflict 파일은 다음과 같다:</p>
+<pre><code>$ cat conflict
 theirs
-</code></pre>
-<p><code>theirs</code> 브랜치를 <code>ours</code> 브랜치에 Merge하면 충돌 난다:</p>
+</code></pre><p><code>theirs</code> 브랜치를 <code>ours</code> 브랜치에 Merge하면 충돌 난다:</p>
 <pre><code>$ git merge theirs
 Auto-merging conflict
-CONFLICT (content): Merge conflict <span class="keyword">in</span> conflict
-Automatic merge failed; fix conflicts <span class="keyword">and</span> <span class="keyword">then</span> commit <span class="keyword">the</span> <span class="constant">result</span>.
-</code></pre>
-<p>diff 명령으로 어디서 충돌 났는지 확인한다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">diff</span>
-<span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cc</span> <span class="comment">conflict</span>
-<span class="comment">index</span> <span class="comment">1b9074b</span>,<span class="comment">f853c8d</span>.<span class="string">.</span><span class="comment">0000000</span>
-<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">a/conflict</span>
-<span class="literal">+</span><span class="literal">+</span><span class="literal">+</span> <span class="comment">b/conflict</span>
-<span class="comment">@@@</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">1</span> <span class="literal">-</span><span class="comment">1</span>,<span class="comment">1</span> <span class="literal">+</span><span class="comment">1</span>,<span class="comment">5</span> <span class="comment">@@@</span>
-<span class="literal">+</span><span class="literal">+</span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="comment">HEAD</span>
- <span class="literal">+</span><span class="comment">ours</span>
-<span class="literal">+</span><span class="literal">+</span><span class="comment">=======</span>
-<span class="literal">+</span> <span class="comment">theirs</span>
-<span class="literal">+</span><span class="literal">+</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; <span class="comment">theirs</span>
-</code></pre>
-<p>편집기로 conflict 파일을 손으로 수정해도 되지만 그냥 ours에 있는 파일을 사용할 수 있다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ours</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">conflict</span>
-</code></pre>
-<p>theirs의 파일을 선택할 수도 있다:</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">checkout</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">theirs</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">conflict</span>
-</code></pre>
-<p>충돌을 해결했으면 <code>git add</code>로 추가하고 커밋한다.</p>
-
-<h2>Diff</h2>
-
+CONFLICT (content): Merge conflict in conflict
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre><p>diff 명령으로 어디서 충돌 났는지 확인한다:</p>
+<pre><code>$ git diff
+diff --cc conflict
+index 1b9074b,f853c8d..0000000
+--- a/conflict
++++ b/conflict
+@@@ -1,1 -1,1 +1,5 @@@
+++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+ +ours
+++=======
++ theirs
+++&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs
+</code></pre><p>편집기로 conflict 파일을 손으로 수정해도 되지만 그냥 ours에 있는 파일을 사용할 수 있다:</p>
+<pre><code>$ git checkout --ours -- conflict
+</code></pre><p>theirs의 파일을 선택할 수도 있다:</p>
+<pre><code>$ git checkout --theirs -- conflict
+</code></pre><p>충돌을 해결했으면 <code>git add</code>로 추가하고 커밋한다.</p>
+<h2 id="diff">Diff</h2>
 <p><code>git diff</code> 명령에도 <code>--ours</code>, <code>--theirs</code> 옵션이 있다. 이 옵션을 주면 <code>git diff</code> 명령은 다른 색으로 표시해준다. 예를 들어 다음과 같이 실행한다.</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ours</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">color=auto</span>
-</code></pre>
-<p>그러면 ours 브랜치의 내용만 다른 색으로 표시해준다. <code>--theirs</code>도 같은 방법으로 확인할 수 있다.</p>
-
+<pre><code>$ git diff --ours --color=auto
+</code></pre><p>그러면 ours 브랜치의 내용만 다른 색으로 표시해준다. <code>--theirs</code>도 같은 방법으로 확인할 수 있다.</p>
 <p>diff 명령은 <code>--base</code> 옵션이 있어서 이 옵션을 주면 두 브랜치의 base 커밋에 있는 내용도 같이 보여준다:</p>
-<pre><code><span class="comment">#</span> <span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">base</span>
-</code></pre>
-<h2>Merge</h2>
-
+<pre><code># git diff --base
+</code></pre><h2 id="merge">Merge</h2>
 <p>Merge할 때 아예 어느 것을 선택할지 정해줄 수 있다. ours 브랜치의 것을 선택하는 merge를 해보자.</p>
-<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">merge</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">ours</span> <span class="comment">theirs</span>
-<span class="comment">Merge</span> <span class="comment">made</span> <span class="comment">by</span> <span class="comment">ours</span>.
-</code></pre>
-<p>그리고 파일 내용을 보면 ours 브랜치의 파일로 Merge 돼 있다.</p>
-<pre><code><span class="variable">$ </span>cat conflict
+<pre><code>$ git merge -s ours theirs
+Merge made by ours.
+</code></pre><p>그리고 파일 내용을 보면 ours 브랜치의 파일로 Merge 돼 있다.</p>
+<pre><code>$ cat conflict
 ours
-</code></pre>
-<p>theirs를 선택하면 충돌 내지 않고 theirs 브랜치의 파일로 Merge된다.</p>
-
-<h2>Attribute</h2>
-
+</code></pre><p>theirs를 선택하면 충돌 내지 않고 theirs 브랜치의 파일로 Merge된다.</p>
+<h2 id="attribute">Attribute</h2>
 <p>Attribute로 Blob 패턴마다 ours를 사용할지 their를 사용할지 설정할 수 있다.</p>
-
-<p>Git Attribute는 Blob 패턴마다 다른 설정을 하는 것을 말하며 <code>.gitattributes</code> 파일을 만들고 거기에 작성하면 된다. </p>
-
-<p>이 설정은 브랜치의 목적이 환경일 때 유용하다. 예를 들어 prod, test, dev라는 브랜치를 만들어 사용한다고 가정하자. prod는 실제 운영환경을 목적으로 설정돼 있고 test는 CI 등 테스트 자동화를 위해 만들었고, dev는 로컬 개발 환경을 위한 설정을 담고 있다고 하자. 그리고 환경정보는 <code>src/main/resources/env.properties</code>에 기술한다고 가정하자. 실제로 프로젝트를 해본 결과 prod, test, dev 프로파일을 만들고 개발하는 것이 <code>Maven + Spring</code> 환경에서는 꽤 유용했다. 분명히 환경을 위한 브랜치가 필요할 때가 올 것이다. </p>
-
+<p>Git Attribute는 Blob 패턴마다 다른 설정을 하는 것을 말하며 <code>.gitattributes</code> 파일을 만들고 거기에 작성하면 된다.</p>
+<p>이 설정은 브랜치의 목적이 환경일 때 유용하다. 예를 들어 prod, test, dev라는 브랜치를 만들어 사용한다고 가정하자. prod는 실제 운영환경을 목적으로 설정돼 있고 test는 CI 등 테스트 자동화를 위해 만들었고, dev는 로컬 개발 환경을 위한 설정을 담고 있다고 하자. 그리고 환경정보는 <code>src/main/resources/env.properties</code>에 기술한다고 가정하자. 실제로 프로젝트를 해본 결과 prod, test, dev 프로파일을 만들고 개발하는 것이 <code>Maven + Spring</code> 환경에서는 꽤 유용했다. 분명히 환경을 위한 브랜치가 필요할 때가 올 것이다.</p>
 <p><code>.gitattributes</code> 파일을 프로젝트 루트 디렉토리에 다음과 같이 만들고:</p>
-<pre><code>src/main/resoruces/<span class="transposed_variable">env.</span><span class="keyword">properties</span> merge=ours
-</code></pre>
-<p><code>git merge</code> 명령을 실행하면 이 파일은 항상 ours의 파일로 Merge한다. 그래서 환경 설정이 Merge될 걱정 없이 사용할 수 있다.</p>
-
-        </div>
-      </div>
+<pre><code>src/main/resoruces/env.properties merge=ours
+</code></pre><p><code>git merge</code> 명령을 실행하면 이 파일은 항상 ours의 파일로 Merge한다. 그래서 환경 설정이 Merge될 걱정 없이 사용할 수 있다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,221 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - Simplest Spring 3 Application, 초간단 Spring 3 어플</title>
-    <meta name="description" content="Ioc.java" />
-    <meta name="keywords" content="Java,Spring" />
-    <meta name="author" content="Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - Simplest Spring 3 Application, 초간단 Spring 3 어플</title>
+  <meta name="description"
+    content="Ioc.java"></meta>
+  <meta name="keywords"
+    content="Java,Spring"></meta>
+  <meta name="author" content="Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="Simplest Spring 3 Application, 초간단 Spring 3 어플 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2009/1257843480.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2009 Nov 10 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2009/1257843480.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2009 Nov 10</p>
+      <p class="small-font top-line"> - by<br /><a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2009/1257843480.html" data-via="Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1257843480.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2009/1257843480.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">Simplest Spring 3 Application, 초간단 Spring 3 어플</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#spring" class="tag">Spring</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2009/1257843480.html" data-via="lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2009/1257843480.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2009/1257843480.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <h2>Ioc.java</h2>
-<pre><code>import java<span class="variable">.util</span><span class="variable">.Calendar</span>;
-import org<span class="variable">.springframework</span><span class="variable">.beans</span><span class="variable">.factory</span><span class="variable">.BeanFactory</span>;
-import org<span class="variable">.springframework</span><span class="variable">.beans</span><span class="variable">.factory</span><span class="variable">.xml</span><span class="variable">.XmlBeanFactory</span>;
-import org<span class="variable">.springframework</span><span class="variable">.core</span><span class="variable">.io</span><span class="variable">.ClassPathResource</span>;
 
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">Ioc</span> {</span>
+    <div class="col-sm-10">
 
-    <span class="keyword">private</span> Calendar myCalendar;
+      <div property="sioc:content"><h1 id="simplest-spring-3-application-spring-3-">Simplest Spring 3 Application, 초간단 Spring 3 어플</h1>
+<h2 id="ioc-java">Ioc.java</h2>
+<pre><code>import java.util.Calendar;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 
-    <span class="keyword">public</span> <span class="keyword">void</span> setMyCalendar(Calendar cal) {
+public class Ioc {
+
+    private Calendar myCalendar;
+
+    public void setMyCalendar(Calendar cal) {
         myCalendar = cal;
     }
 
     @Override
-    <span class="keyword">public</span> String toString() {
-        <span class="keyword">return</span> <span class="string">"Ioc Class with "</span> + myCalendar;
+    public String toString() {
+        return &quot;Ioc Class with &quot; + myCalendar;
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) {
-        System<span class="variable">.out</span><span class="variable">.println</span>(<span class="string">"Spring Study!"</span>);
-        BeanFactory bf = new XmlBeanFactory(new ClassPathResource(<span class="string">"beans.xml"</span>));
-        System<span class="variable">.out</span><span class="variable">.println</span>(bf<span class="variable">.getBean</span>(<span class="string">"ioc"</span>));
-        System<span class="variable">.out</span><span class="variable">.println</span>(bf<span class="variable">.getBean</span>(<span class="string">"date"</span>));
+    public static void main(String[] args) {
+        System.out.println(&quot;Spring Study!&quot;);
+        BeanFactory bf = new XmlBeanFactory(new ClassPathResource(&quot;beans.xml&quot;));
+        System.out.println(bf.getBean(&quot;ioc&quot;));
+        System.out.println(bf.getBean(&quot;date&quot;));
     }
-} 
-</code></pre>
-<h2>beans.xml</h2>
-<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="tag">&lt;<span class="title">beans</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.springframework.org/schema/beans"</span>
-       <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span>
-       <span class="attribute">xsi:schemaLocation</span>=<span class="value">"
+}
+</code></pre><h2 id="beans-xml">beans.xml</h2>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
                 http://www.springframework.org/schema/beans
-                http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span>
+                http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
 
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"calendar"</span> <span class="attribute">class</span>=<span class="value">"java.util.GregorianCalendar"</span> /&gt;</span>
+    &lt;bean id=&quot;calendar&quot; class=&quot;java.util.GregorianCalendar&quot; /&gt;
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"date"</span> <span class="attribute">class</span>=<span class="value">"java.util.Date"</span> /&gt;</span>
+    &lt;bean id=&quot;date&quot; class=&quot;java.util.Date&quot; /&gt;
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"ioc"</span> <span class="attribute">class</span>=<span class="value">"Ioc"</span>&gt;</span>
+    &lt;bean id=&quot;ioc&quot; class=&quot;Ioc&quot;&gt;
 
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    &lt;/bean&gt;
 
-<span class="tag">&lt;/<span class="title">beans</span>&gt;</span> 
-</code></pre>
-<h2>library files</h2>
-
+&lt;/beans&gt;
+</code></pre><h2 id="library-files">library files</h2>
 <ul>
-<li>  commons-logging.jar</li>
-<li>  org.springframework.beans-3.0.0.RC1.jar</li>
-<li>  org.springframework.core-3.0.0.RC1.jar</li>
+<li>commons-logging.jar</li>
+<li>org.springframework.beans-3.0.0.RC1.jar</li>
+<li>org.springframework.core-3.0.0.RC1.jar</li>
 </ul>
-
-<h2>execution</h2>
-<pre><code>$ javac Ioc.java -cp org.springframework.beans-<span class="number">3.0</span><span class="number">.0</span>.RC1.jar:org.springframework.core-<span class="number">3.0</span><span class="number">.0</span>.RC1.jar
-$ java -cp .:org.springframework.core-<span class="number">3.0</span><span class="number">.0</span>.RC1.jar:org.springframework.beans-<span class="number">3.0</span><span class="number">.0</span>.RC1.jar:commons-logging.jar Ioc
+<h2 id="execution">execution</h2>
+<pre><code>$ javac Ioc.java -cp org.springframework.beans-3.0.0.RC1.jar:org.springframework.core-3.0.0.RC1.jar
+$ java -cp .:org.springframework.core-3.0.0.RC1.jar:org.springframework.beans-3.0.0.RC1.jar:commons-logging.jar Ioc
 Spring Study!
-Nov <span class="number">10</span>, <span class="number">2009</span> <span class="number">5</span>:<span class="number">49</span>:<span class="number">14</span> PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
-INFO: Loading XML bean definitions from <span class="class"><span class="keyword">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">beans</span>.<span class="title">xml</span>]
-<span class="title">Ioc</span> <span class="title">Class</span> <span class="title">with</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">GregorianCalendar</span>[<span class="title">time</span>=1257842954691,<span class="title">areFieldsSet</span>=<span class="title">true</span>,<span class="title">areAllFieldsSet</span>=<span class="title">true</span>,<span class="title">lenient</span>=<span class="title">true</span>,<span class="title">zone</span>=<span class="title">sun</span>.<span class="title">util</span>.<span class="title">calendar</span>.<span class="title">ZoneInfo</span>[<span class="title">id</span>="<span class="title">Asia</span>/<span class="title">Seoul</span>",<span class="title">offset</span>=32400000,<span class="title">dstSavings</span>=0,<span class="title">useDaylight</span>=<span class="title">false</span>,<span class="title">transitions</span>=14,<span class="title">lastRule</span>=<span class="title">null</span>],<span class="title">firstDayOfWeek</span>=1,<span class="title">minimalDaysInFirstWeek</span>=1,<span class="title">ERA</span>=1,<span class="title">YEAR</span>=2009,<span class="title">MONTH</span>=10,<span class="title">WEEK_OF_YEAR</span>=46,<span class="title">WEEK_OF_MONTH</span>=2,<span class="title">DAY_OF_MONTH</span>=10,<span class="title">DAY_OF_YEAR</span>=314,<span class="title">DAY_OF_WEEK</span>=3,<span class="title">DAY_OF_WEEK_IN_MONTH</span>=2,<span class="title">AM_PM</span>=1,<span class="title">HOUR</span>=5,<span class="title">HOUR_OF_DAY</span>=17,<span class="title">MINUTE</span>=49,<span class="title">SECOND</span>=14,<span class="title">MILLISECOND</span>=691,<span class="title">ZONE_OFFSET</span>=32400000,<span class="title">DST_OFFSET</span>=0]
-<span class="title">Tue</span> <span class="title">Nov</span> 10 17:49:14 <span class="title">KST</span> 2009
-</code></pre>
-        </div>
-      </div>
+Nov 10, 2009 5:49:14 PM org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+INFO: Loading XML bean definitions from class path resource [beans.xml]
+Ioc Class with java.util.GregorianCalendar[time=1257842954691,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id=&quot;Asia/Seoul&quot;,offset=32400000,dstSavings=0,useDaylight=false,transitions=14,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2009,MONTH=10,WEEK_OF_YEAR=46,WEEK_OF_MONTH=2,DAY_OF_MONTH=10,DAY_OF_YEAR=314,DAY_OF_WEEK=3,DAY_OF_WEEK_IN_MONTH=2,AM_PM=1,HOUR=5,HOUR_OF_DAY=17,MINUTE=49,SECOND=14,MILLISECOND=691,ZONE_OFFSET=32400000,DST_OFFSET=0]
+Tue Nov 10 17:49:14 KST 2009
+</code></pre></div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

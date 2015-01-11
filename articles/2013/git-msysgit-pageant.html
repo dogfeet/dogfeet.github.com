@@ -1,207 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - git: msysgit + pageant</title>
-    <meta name="description" content="윈도우는 늘 불편하니까 putty를 항상 띄워놓고 서버에서 논다. msysgit을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 pageant와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다." />
-    <meta name="keywords" content="git,msysgit,pageant" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - git: msysgit + pageant</title>
+  <meta name="description"
+    content="윈도우는 늘 불편하니까 putty를 항상 띄워놓고 서버에서 논다. msysgit을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 pageant와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다."></meta>
+  <meta name="keywords"
+    content="git,msysgit,pageant"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="git: msysgit + pageant &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2013/git-msysgit-pageant.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2013 Jul 27 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2013/git-msysgit-pageant.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2013 Jul 27</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">git: msysgit + pageant</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#pageant" class="tag">pageant</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#msysgit" class="tag">msysgit</a> <a href="/site/tagmap.html#pageant" class="tag">pageant</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
 
-<p><img src="/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"/></p>
+    <div class="col-sm-10">
 
-<h2>pageant</h2>
-
-<p><a href="http://msysgit.github.io/">msysgit</a>을 설치할 때 <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">plink</a>를 선택하면 바로 동작한다. plink를 사용해서 뭘하려고 한적이 없어서 모르고 있었다:</p>
-
-<p><img src="/articles/2013/git-msysgit-pageant/msysgit-plink.png" alt="select-plink"/></p>
-
+      <div property="sioc:content"><h1 id="git-msysgit-pageant">git: msysgit + pageant</h1>
+<p>윈도우는 늘 불편하니까 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">putty</a>를 항상 띄워놓고 서버에서 논다. <a href="http://msysgit.github.io/">msysgit</a>을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">pageant</a>와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다.</p>
+<p><img src="/articles/2013/git-msysgit-pageant/msysgit-pageant.png" alt="select-plink"></p>
+<h2 id="pageant">pageant</h2>
+<p><a href="http://msysgit.github.io/">msysgit</a>을 설치할 때 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">plink</a>를 선택하면 바로 동작한다. plink를 사용해서 뭘하려고 한적이 없어서 모르고 있었다:</p>
+<p><img src="/articles/2013/git-msysgit-pageant/msysgit-plink.png" alt="select-plink"></p>
 <p>설치할 때 <a href="http://www.openssh.org/">OpenSSH</a>를 사용하도록 설치했더라도 <code>$GIT_SSH</code> 환경 변수에 plink를 지정해주면 된다:</p>
-<pre><code><span class="keyword">export</span> GIT_SSH=/my/path/plink<span class="variable">.exe</span>
-</code></pre>
-<p>그리고 나서 사용하면 바로 pageant를 사용할 수 있는데, <code>git fetch</code> 명령으로 테스트를 해보면 아직 서버랑 인사 안했다고 다음과 같은 에러를 뱉는다:</p>
+<pre><code>export GIT_SSH=/my/path/plink.exe
+</code></pre><p>그리고 나서 사용하면 바로 pageant를 사용할 수 있는데, <code>git fetch</code> 명령으로 테스트를 해보면 아직 서버랑 인사 안했다고 다음과 같은 에러를 뱉는다:</p>
 <pre><code>$ git fetch
-The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
-have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
-think <span class="keyword">it</span> <span class="keyword">is</span>.
-The server's rsa2 key fingerprint <span class="keyword">is</span>:
-ssh-rsa <span class="number">2048</span> <span class="number">97</span>:<span class="number">8</span>c:<span class="number">1</span>b:f2:<span class="number">6</span>f:<span class="number">14</span>:<span class="number">6</span>b:<span class="number">5</span>c:<span class="number">3</span>b:ec:aa:<span class="number">46</span>:<span class="number">46</span>:<span class="number">74</span>:<span class="number">7</span>c:<span class="number">40</span>
+The server&#39;s host key is not cached in the registry. You
+have no guarantee that the server is the computer you
+think it is.
+The server&#39;s rsa2 key fingerprint is:
+ssh-rsa 2048 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
 Connection abandoned.
-fatal: Could <span class="keyword">not</span> <span class="command">read</span> <span class="keyword">from</span> remote repository.
-</code></pre>
-<p>서버랑 인사를 한번해야 한다:</p>
+fatal: Could not read from remote repository.
+</code></pre><p>서버랑 인사를 한번해야 한다:</p>
 <pre><code>$ plink git@github.com
-The server's host key <span class="keyword">is</span> <span class="keyword">not</span> cached <span class="keyword">in</span> <span class="keyword">the</span> registry. You
-have no guarantee <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> <span class="keyword">the</span> computer you
-think <span class="keyword">it</span> <span class="keyword">is</span>.
-The server's rsa2 key fingerprint <span class="keyword">is</span>:
-ssh-rsa <span class="number">2048</span> <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1</span>b:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48</span>
-If you trust this host, enter <span class="string">"y"</span> <span class="keyword">to</span> add <span class="keyword">the</span> key <span class="keyword">to</span>
-PuTTY's cache <span class="keyword">and</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span>.
-If you want <span class="keyword">to</span> carry <span class="function_start"><span class="keyword">on</span> <span class="title">connecting</span></span> just once, <span class="keyword">without</span>
-adding <span class="keyword">the</span> key <span class="keyword">to</span> <span class="keyword">the</span> cache, enter <span class="string">"n"</span>.
-If you do <span class="keyword">not</span> trust this host, press Return <span class="keyword">to</span> abandon <span class="keyword">the</span>
+The server&#39;s host key is not cached in the registry. You
+have no guarantee that the server is the computer you
+think it is.
+The server&#39;s rsa2 key fingerprint is:
+ssh-rsa 2048 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+If you trust this host, enter &quot;y&quot; to add the key to
+PuTTY&#39;s cache and carry on connecting.
+If you want to carry on connecting just once, without
+adding the key to the cache, enter &quot;n&quot;.
+If you do not trust this host, press Return to abandon the
 connection.
-Store key <span class="keyword">in</span> cache? (y/n) y
-Using username <span class="string">"git"</span>.
-Server refused <span class="keyword">to</span> allocate pty
-Hi pismute! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.
-</code></pre>
-<p>서버가 &lsquo;Hi pismute!'라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
-
+Store key in cache? (y/n) y
+Using username &quot;git&quot;.
+Server refused to allocate pty
+Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre><p>서버가 ‘Hi pismute!’라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
 <p>키를 자동으로 저장하는 방법이 있을 것 같은데 찾지 못했다. <a href="http://rc.quest.com/topics/putty/">Quest의 plink</a>에는 <code>-auto_store_key_in_cache</code> 옵션이 있어서 자동으로 저장해주도록 만들 수 있는데, 이건 왠일인지 msysgit과 연동이 잘 안된다.</p>
-
 <blockquote>
 <p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>
 </blockquote>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

@@ -1,204 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - progit</title>
-    <meta name="description" content="GitHub의 CIO인 schacon이 쓴 progit 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.&ndash;;" />
-    <meta name="keywords" content="git,progit,번역" />
-    <meta name="author" content="Changwoo Park, Sean Lee" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - progit</title>
+  <meta name="description"
+    content="GitHub의 CIO인 schacon이 쓴 progit 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.—;"></meta>
+  <meta name="keywords"
+    content="git,progit,번역"></meta>
+  <meta name="author" content="Changwoo Park, Sean Lee"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="progit &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2012/progit.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2012 Jan 08 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2012/progit.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2012 Jan 08</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a><br /> <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2012/progit.html" data-via="Changwoo Park @Sean Lee"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/progit.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2012/progit.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">progit</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a> <a href="/site/tagmap.html#번역" class="tag">번역</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a>, <a href="http://kr.linkedin.com/in/seanseonghwanlee">Sean Lee</a></span>
- | <a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#progit" class="tag">progit</a> <a href="/site/tagmap.html#번역" class="tag">번역</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2012/progit.html" data-via="pismute @lethee" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/progit.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2012/progit.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>이 쓴 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.&ndash;;</p>
 
-<p><img src="/articles/2011/progit/progit.book-big.jpg" alt="progit"/></p>
+    <div class="col-sm-10">
 
-<h2>progit</h2>
-
+      <div property="sioc:content"><h1 id="progit">progit</h1>
+<p>GitHub의 CIO인 <a href="http://github.com/schacon">schacon</a>이 쓴 <a href="http://progit.org">progit</a> 번역을 완료했습니다. 부지런히 작업해서 12월 19일에 끝냈으면 가카께 헌정하고 졸라 신났을 텐데 게을러서 늦어졌습니다.—;</p>
+<p><img src="/articles/2011/progit/progit.book-big.jpg" alt="progit"></p>
+<h2 id="progit">progit</h2>
 <p>다음 Format의 파일로 배포하고 있고 다운 받아서 읽으실 수 있습니다. <code>2013-12-19</code>에 빌드한 파일입니다:</p>
-
 <ul>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.epub">progit.ko.epub</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.mobi">progit.ko.mobi</a></li>
 <li><a href="http://dogfeet.github.io/progit/progit.ko.pdf">progit.ko.pdf</a></li>
 <li><a href="http://git-scm.com/book/ko">progit.ko.html</a></li>
 </ul>
-
 <p>mobi 파일은 Android Kindle App에서 띄어쓰기가 안되는 문제가 있습니다. <a href="http://calibre-ebook.com/download">Calibre</a>에서 열어보면 잘 되는데 Kindle App에서는 안되네요.</p>
-
 <p><strong>UPDATE:</strong> Kindle Touch에서는 띄어쓰기가 된다고 합니다(ryan003님 제보).</p>
-
-<p><strong>UPDATE:</strong> <a href="https://github.com/dongshin2"><a href="https://twitter.com/dongshin2">@dongshin2</a></a>님이 mobi 파일을 변환해 줘서 이제 Android Kindle App에서도 띄어쓰기가 됩니다.</p>
-
-<p><strong>UPDATE:</strong> <a href="https://twitter.com/mytory">@mytory</a>님이 code의 <a href="http://mytory.net/archives/8707">word-wrap 버전</a>을 배포하고 계십니다.</p>
-
+<p><strong>UPDATE:</strong> <a href="https://github.com/dongshin2">@dongshin2</a>님이 mobi 파일을 변환해 줘서 이제 Android Kindle App에서도 띄어쓰기가 됩니다.</p>
+<p><strong>UPDATE:</strong> @mytory님이 code의 <a href="http://mytory.net/archives/8707">word-wrap 버전</a>을 배포하고 계십니다.</p>
 <p>번역은 <a href="https://github.com/dogfeet/progit">progit 한글 버전 저장소</a>에서 진행하고 있습니다. 오역이나 오탈자는 패치를 보내주시거나 <a href="https://github.com/dogfeet/progit/issues">이슈 트래커</a>에 신고해주세요.</p>
-
-<p>다시 한번 동료의 힘을 몸소 체험한 프로젝트 였습니다. <a href="https://twitter.com/#!/lethee"><a href="https://twitter.com/lethee">@lethee</a></a>와 함께 하지 않고 혼자했다면 결코 완주하지 못했을 겁니다.</p>
-
-<h2>종이책 출간</h2>
-
-<p><img src="http://www.insightbook.co.kr/wp-content/uploads/2013/04/%ED%91%9C%EC%A7%80-235x300.jpg" alt="프로 Git"/></p>
-
-<p><a href="http://www.insightbook.co.kr/">인사이트</a> 출판사의 도움으로 <a href="http://progit.org">progit</a> 한글 번역책을 온라인 및 오프라인 서점에서 구입하실 수 있습니다.<br/>
+<p>다시 한번 동료의 힘을 몸소 체험한 프로젝트 였습니다. <a href="https://twitter.com/#!/lethee">@lethee</a>와 함께 하지 않고 혼자했다면 결코 완주하지 못했을 겁니다.</p>
+<h2 id="-">종이책 출간</h2>
+<p><img src="http://www.insightbook.co.kr/wp-content/uploads/2013/04/표지-235x300.jpg" alt="프로 Git"></p>
+<p><a href="http://www.insightbook.co.kr/">인사이트</a> 출판사의 도움으로 <a href="http://progit.org">progit</a> 한글 번역책을 온라인 및 오프라인 서점에서 구입하실 수 있습니다.
 전문 편집자의 교정을 거친 원고 및 업데이트 된 그림과, SmartHTTP, GitHub에 대한 부록, 간편히 벽에 붙여놓고 사용할 수 있는 CheetSheet 등을 추가하였습니다.</p>
-
-<h2>힘내</h2>
-
+<h2 id="-">힘내</h2>
 <p>구글 번역기는 <code>Git</code>을 <code>힘내</code>라고 번역해 줍니다. 개발자분들 모두 <code>Git</code>으로 힘내시길 바래요.</p>
-
-<p><img src="/articles/2011/progit/git-.png" alt="힘내"/></p>
-
-<h2>링크</h2>
-
+<p><img src="/articles/2011/progit/git-.png" alt="힘내"></p>
+<h2 id="-">링크</h2>
 <ul>
 <li><a href="http://gypark.pe.kr/wiki/Git">Raymundo님의 글</a> - 특히 msysgit에 대한 내용이 일품입니다. msysgit을 사용할 생각이라면, 필독!</li>
 </ul>
-
-        </div>
-      </div>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

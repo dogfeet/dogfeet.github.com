@@ -1,255 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - CoffeeKup &lt;☕/&gt;</title>
-    <meta name="description" content="CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. Docpad는 전부 지원하지만 CoffeeKup을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다." />
-    <meta name="keywords" content="CoffeeKup,CoffeeScript" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - CoffeeKup &lt;☕/&gt;</title>
+  <meta name="description"
+    content="CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. Docpad는 전부 지원하지만 CoffeeKup을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다."></meta>
+  <meta name="keywords"
+    content="CoffeeKup,CoffeeScript"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="CoffeeKup &lt;☕/&gt; &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2011/coffee-kup.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2011 Nov 22 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2011/coffee-kup.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2011 Nov 22</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2011/coffee-kup.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/coffee-kup.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2011/coffee-kup.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">CoffeeKup &lt;☕/&gt;</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#coffeekup" class="tag">CoffeeKup</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#coffeekup" class="tag">CoffeeKup</a> <a href="/site/tagmap.html#coffeescript" class="tag">CoffeeScript</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2011/coffee-kup.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2011/coffee-kup.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2011/coffee-kup.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
 
-<p><img src="/articles/2011/coffeekup.png" alt="CoffeeScript"/></p>
+    <div class="col-sm-10">
 
-<h2>CoffeeKup</h2>
-
+      <div property="sioc:content"><h1 id="coffeekup-lt-gt-">CoffeeKup &lt;☕/&gt;</h1>
+<p>CoffeeKup은 HAML, Jade, Eco와 같은 Template Engine이다. <a href="https://github.com/balupton/docpad">Docpad</a>는 전부 지원하지만 <a href="http://coffeekup.org/">CoffeeKup</a>을 기본 Template 엔진으로 고른 이유는 코드가 가장 예뻐서다.</p>
+<p><img src="/articles/2011/coffeekup.png" alt="CoffeeScript"></p>
+<h2 id="coffeekup">CoffeeKup</h2>
 <p>CoffeeKup을 이해하기 위해서 먼저 준비해야 할 것은 JavaScript와 CoffeeScript이다. CoffeeKup은 CoffeeScript 문법과 거의 똑같다. Jade가 Haml과 유사하게 만들면서 JavaScript가 아닌 것이 돼버렸지만 CoffeeKup은 coffeescript 문법과 정말 똑같다.</p>
-
 <p>먼저 JavaScript 공부하고 JavaScript에 익숙하다면 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>만 읽고 시작해도 된다.</p>
-
 <p>이제 일주일밖에 되지 않았지만 내가 생각하는 장단점은 다음과 같다.</p>
-
 <ul>
 <li>장점: tag library 작성이 쉽다.</li>
 <li>장점: templateData에 함수를 넣을 수 있기 때문에 plugin을 통해서 기능 확장이 쉽다. 물론 templateData이외 context도 필요할 것 같다.</li>
 <li>단점: tag가 hierarchical하지 않은 dom구조를 작성하기 쉽지 않다. 물론 이렇게 작성하면 코드가 지저분해지기 때문에 안하는 것이 좋다.</li>
 </ul>
-
-<h2>Hello World</h2>
-
+<h2 id="hello-world">Hello World</h2>
 <p>우선 다음과 같이 coffeekup을 설치하고:</p>
-<pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:bash</span>
-<span class="variable">$ </span>npm install coffeekup -g
-</code></pre>
-<p>콘솔에 설치하는 것이 귀찮으면 그냥 <a href="http://coffeekup.org/">CoffeeKup</a>에서 실행해보는 것도 좋고 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>을 공부했다면 어렵지 않다.</p>
-
-<h2>함수</h2>
-
+<pre><code>:::bash
+$ npm install coffeekup -g
+</code></pre><p>콘솔에 설치하는 것이 귀찮으면 그냥 <a href="http://coffeekup.org/">CoffeeKup</a>에서 실행해보는 것도 좋고 <a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>을 공부했다면 어렵지 않다.</p>
+<h2 id="-">함수</h2>
 <p>CoffeeKup의 Markup은 단순히 함수를 호출하는 것이기 때문에 정의되지 않은 함수는 호출할 수 없다. 이미 대부분의 html tag는 정의돼 있는 것 같지만 그 외의 것을 사용하는 경우에는 에러가 난다. 예를 들어, 다음과 같이 코드를 만들면 say를 정의하지 않았다고 에러가 난다:</p>
-<pre><code><span class="symbol">:</span><span class="symbol">:</span><span class="symbol">:coffee</span>
-say <span class="string">'Hello World'</span>
-</code></pre>
-<p>say 함수를 만들면 더이상 에러가 나지 않는다:</p>
-<pre><code><span class="keyword">say</span> = (args) -&gt;
-  tag <span class="string">'say'</span>, args
+<pre><code>:::coffee
+say &#39;Hello World&#39;
+</code></pre><p>say 함수를 만들면 더이상 에러가 나지 않는다:</p>
+<pre><code>say = (args) -&gt;
+  tag &#39;say&#39;, args
 
-<span class="keyword">say</span> <span class="string">'Hello World'</span>
-</code></pre>
-<p>여기서 <code>say &#39;Hello World&#39;</code>은 <code>tag &#39;say&#39;, &#39;Hello World&#39;</code>과 같다. tag는 정의되지 않은 xml tag가 필요할 때 사용할 수 있다. 예를 들어, <code>p &#39;Hello World&#39;</code>과 똑같은 표현을 tag로 하면 <code>tag &#39;p&#39;, &#39;Hello World&#39;</code>이다. 함수를 호출하는 것이라는 걸 기억해야 한다.</p>
-
+say &#39;Hello World&#39;
+</code></pre><p>여기서 <code>say &#39;Hello World&#39;</code>은 <code>tag &#39;say&#39;, &#39;Hello World&#39;</code>과 같다. tag는 정의되지 않은 xml tag가 필요할 때 사용할 수 있다. 예를 들어, <code>p &#39;Hello World&#39;</code>과 똑같은 표현을 tag로 하면 <code>tag &#39;p&#39;, &#39;Hello World&#39;</code>이다. 함수를 호출하는 것이라는 걸 기억해야 한다.</p>
 <p>함수라는 것은 배웠고 이제 그럼 인자는 어떻게 매핑되는 거지?라는 것이 궁금하다. 다음 예제를 보자:</p>
-<pre><code><span class="command">say</span> <span class="property">id</span>: '<span class="keyword">first</span>', <span class="type">class</span>: 'example', 'Hello World'
-</code></pre>
-<p>say 함수의 args[0]에는 <code>{id: &#39;first&#39;, class: &#39;example&#39;}</code>라는 객체가 넘어가고 args[1]에는 &lsquo;Hello World'가 넘어간다. 이를 이용해서 자신만의 함수를 작성해 사용할 수 있다.</p>
-
-<h3>Tag body</h3>
-
+<pre><code>say id: &#39;first&#39;, class: &#39;example&#39;, &#39;Hello World&#39;
+</code></pre><p>say 함수의 args[0]에는 <code>{id: &#39;first&#39;, class: &#39;example&#39;}</code>라는 객체가 넘어가고 args[1]에는 ‘Hello World’가 넘어간다. 이를 이용해서 자신만의 함수를 작성해 사용할 수 있다.</p>
+<h3 id="tag-body">Tag body</h3>
 <p>Tag body는 두 가지 방법으로 정의할 수 있다. 먼저 <code>title &#39;Hello World&#39;</code>은 다음과 같이 해석된다:</p>
-<pre><code><span class="tag">&lt;<span class="title">title</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-</code></pre>
-<p>하지만 <code>title -&gt; &#39;Hello World&#39;</code>는 다음과 같이 해석된다:</p>
-<pre><code><span class="tag">&lt;<span class="title">title</span>&gt;</span>
+<pre><code>&lt;title&gt;Hello World&lt;/title&gt;
+</code></pre><p>하지만 <code>title -&gt; &#39;Hello World&#39;</code>는 다음과 같이 해석된다:</p>
+<pre><code>&lt;title&gt;
   Hello World
-<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-</code></pre>
-<p>이 두 가지는 구현이 조금 다르다. 문법에서 보이듯이 전자는 'Hello World'라는 스트링이 인자로 넘어가는 거고 후자는 'Hello World'라는 스트링을 반환하는 함수가 넘어간다. JavaScript로 표현하면 <code>function(){return &#39;Hello World&#39;;}</code>같은 함수가 넘어가는 것이다. CoffeeKup은 다르게 해석해 주기 때문에 필요에 따라 선택해 사용한다.</p>
-
-<h3><code>#id.class</code></h3>
-
+&lt;/title&gt;
+</code></pre><p>이 두 가지는 구현이 조금 다르다. 문법에서 보이듯이 전자는 ‘Hello World’라는 스트링이 인자로 넘어가는 거고 후자는 ‘Hello World’라는 스트링을 반환하는 함수가 넘어간다. JavaScript로 표현하면 <code>function(){return &#39;Hello World&#39;;}</code>같은 함수가 넘어가는 것이다. CoffeeKup은 다르게 해석해 주기 때문에 필요에 따라 선택해 사용한다.</p>
+<h3 id="-id-class-"><code>#id.class</code></h3>
 <p>id와 class를 표현하는 방법은 두가지다 하나는 이미 설명대로 attribute를 기술하는 방법이 있고:</p>
-<pre><code><span class="title">title</span> id:<span class="string"> 'myid'</span>, <span class="class"><span class="keyword">class</span>: 'myclass'
-</code></pre>
-<p>다른 하나는 css selector를 이용한 방법도 있다:</p>
-<pre><code><span class="title">title</span> <span class="string">'#myid.myclass'</span>
-</code></pre>
-<p>단, 이 css selector는 첫 argument로 넘겨야한다. 다른 attribute가 더 있으면 &rsquo;,&lsquo; 뒤에 위의 방법대로 계속 추가할 수 있다:</p>
-<pre><code><span class="title">title</span> <span class="string">'#myid.myclass'</span>, lang: <span class="string">'ko'</span>
-</code></pre>
-<h2>Atom.xml</h2>
-
-<p>html5을 templating 예제는 <a href="http://coffeekup.org/">CoffeeKup</a>페이지에도 나온다 xml 예제를 보자 </p>
-<pre><code>homeUrl=<span class="attribute">'http</span>://dogfeet.github.io'
+<pre><code>title id: &#39;myid&#39;, class: &#39;myclass&#39;
+</code></pre><p>다른 하나는 css selector를 이용한 방법도 있다:</p>
+<pre><code>title &#39;#myid.myclass&#39;
+</code></pre><p>단, 이 css selector는 첫 argument로 넘겨야한다. 다른 attribute가 더 있으면 ‘,’ 뒤에 위의 방법대로 계속 추가할 수 있다:</p>
+<pre><code>title &#39;#myid.myclass&#39;, lang: &#39;ko&#39;
+</code></pre><h2 id="atom-xml">Atom.xml</h2>
+<p>html5을 templating 예제는 <a href="http://coffeekup.org/">CoffeeKup</a>페이지에도 나온다 xml 예제를 보자</p>
+<pre><code>homeUrl=&#39;http://dogfeet.github.io&#39;
 
 anEntry = (document) -&gt;
-  tag <span class="attribute">'entry</span>', -&gt;
-    tag <span class="attribute">'title</span>', document.title
-    tag <span class="attribute">'link</span>', href: <span class="string">"#{homeUrl}#{document.url}"</span>
-    tag <span class="attribute">'updated</span>', document.date.toString()
-    tag <span class="attribute">'id</span>', <span class="string">"#{homeUrl}#{document.url}"</span>
-    tag <span class="attribute">'content</span>', <span class="keyword">type</span>: <span class="attribute">'html</span>', -&gt; document.contentRendered
+  tag &#39;entry&#39;, -&gt;
+    tag &#39;title&#39;, document.title
+    tag &#39;link&#39;, href: &quot;#{homeUrl}#{document.url}&quot;
+    tag &#39;updated&#39;, document.date.toString()
+    tag &#39;id&#39;, &quot;#{homeUrl}#{document.url}&quot;
+    tag &#39;content&#39;, type: &#39;html&#39;, -&gt; document.contentRendered
 
-text '&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;\n'
-tag <span class="attribute">'feed</span>', xmlns: <span class="attribute">'http</span>://www.w3.org/<span class="number">2005</span>/Atom', -&gt;
-  title <span class="attribute">'dogfeet</span>.github.io'
-  tag <span class="attribute">'link</span>', href: <span class="string">"#{homeUrl}/atom.xml"</span>, rel: <span class="attribute">'self</span>'
-  tag <span class="attribute">'link</span>', href: homeUrl
-  tag <span class="attribute">'updated</span>', @site.date.toIsoDateString()
-  tag <span class="attribute">'id</span>', homeUrl
-  tag <span class="attribute">'author</span>', -&gt;
-    tag <span class="attribute">'name</span>', <span class="attribute">'Changwoo</span> Park'
-    tag <span class="attribute">'email</span>', <span class="attribute">'my</span>@email'
+text &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;\n&#39;
+tag &#39;feed&#39;, xmlns: &#39;http://www.w3.org/2005/Atom&#39;, -&gt;
+  title &#39;dogfeet.github.io&#39;
+  tag &#39;link&#39;, href: &quot;#{homeUrl}/atom.xml&quot;, rel: &#39;self&#39;
+  tag &#39;link&#39;, href: homeUrl
+  tag &#39;updated&#39;, @site.date.toIsoDateString()
+  tag &#39;id&#39;, homeUrl
+  tag &#39;author&#39;, -&gt;
+    tag &#39;name&#39;, &#39;Changwoo Park&#39;
+    tag &#39;email&#39;, &#39;my@email&#39;
 
-  <span class="keyword">for</span> document <span class="keyword">in</span> @documents
-    anEntry document <span class="keyword">if</span> <span class="number">0</span> <span class="keyword">is</span> document.url.indexOf '/posts'
-</code></pre>
-<p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>
-
-        </div>
-      </div>
+  for document in @documents
+    anEntry document if 0 is document.url.indexOf &#39;/posts&#39;
+</code></pre><p>이 예제는 docpad에서 사용하기 위해 만든 CoffeeKup이다. Atom tag는 대부분 함수로 만들어지지 않아서 tag로 처리했다. <code>@</code>이 붙은 변수는 Template Data다. 어떤 의미인지 <a href="http://coffeekup.org/">CoffeeKup</a> 페이지의 코드를 살펴보면 쉽게 이해할 수 있다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>

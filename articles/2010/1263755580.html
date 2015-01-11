@@ -1,171 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<!--Meta-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>#dogfeet - eclipse 메모리 설정하기</title>
-    <meta name="description" content="cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다." />
-    <meta name="keywords" content="Java,Eclipse,STS" />
-    <meta name="author" content="Changwoo Park" />
-<!--Icons-->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="alternate" type="application/atom+xml" title="개발새발 &raquo; Feed" href="http://feeds.feedburner.com/github/dogfeet" />
-<!--Shims: IE6-8 support of HTML5 elements-->
-<!--[if lt IE 9]>
-        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!--Styles-->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/highlight/github.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/style.css" media="screen, projection" />
-    <link rel="stylesheet" href="/styles/markdown.css" media="screen, projection" />
-<!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src="/scripts/script.js"></script>
-  </head>
-  <body>
-<!--Topbar-->
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">dogfeet</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <a href="/site/tagmap.html">Tagmap</a>
-              </li>
-              <li>
-                <a href="/site/archive.html">Archive</a>
-              </li>
-              <li>
-                <a href="/site/atelier.html">Atelier</a>
-              </li>
-              <li>
-                <a href="http://feeds.feedburner.com/github/dogfeet">
-                  <img src="http://forum.tattersite.com/ko/style/Textcube/feed-icon.png" />
-                </a>
-              </li>
-            </ul>
-            <form id="search-form" class="pull-right navbar-search" action="http://google.com/search" method="get">
-              <input type="hidden" name="q" value="site:dogfeet.github.io" />
-              <input type="text" name="q" results="0" placeholder="Search" search-query />
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--Markup-->
+<head>
+
+  <meta charset="utf=8"></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+  <title>#dogfeet - eclipse 메모리 설정하기</title>
+  <meta name="description"
+    content="cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다."></meta>
+  <meta name="keywords"
+    content="Java,Eclipse,STS"></meta>
+  <meta name="author" content="Changwoo Park"></meta>
+
+  <link rel="shortcut icon" href="images/favicon.ico"></link>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
+  <link rel="apple-touch-icon" sizes="72x72"
+    href=" ='images/apple-touch-icon-72x72.png"></link>
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="images/apple-touch-icon-114x114.png"></link>
+  <link rel="alternate" type="application/atom+xml"
+    title="eclipse 메모리 설정하기 &raquo; Feed"
+    href="http://feeds.feedburner.com/github/dogfeet"></link>
+
+  <link rel="stylesheet"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+    media="screen, projection"></link>
+  <link rel="stylesheet"
+    href="/styles/style.css" media="screen, projection"></link>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <div>
-        <script src="http://platform.twitter.com/widgets.js"></script>
-<script>
-  //facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">dogfeet</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/site/archive.html">Archive</a></li>
+          <li><a href="/site/tagmap.html">Tagmap</a></li>
+        </ul>
+        <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
+          <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
+          <input class="form-control" type="text" name="q" results="0" placeholder="Search..."></input>
+        </form>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div>
+      <link rel="stylesheet" scoped
+  href="/styles/github.css"
+  media="screen, projection"></link>
+<link rel="stylesheet" scoped
+  href="/styles/markdown.css"
+  media="screen, projection"></link>
 
-//google plusone
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-
-</script>
 <section class="content">
-  <article id="post" class="post undefined" typeof="sioc:post" about="/articles/2010/1263755580.html" lang="ko-kr">
-    <div class="row">
-      <div class="span2 muted modern-font small-font">
-        <span property="dc:created">
-          2010 Jan 17 &raquo;
-        </span>
+  <article id="post" class="row post " typeof="sioc:post" about="articles/2010/1263755580.html" lang="ko-kr">
+    <div class="col-sm-2 small-font">
+      <br /><br />
+      <p property="dc:created">2010 Jan 17</p>
+      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <div id="social-buttons" class="top-line">
+        <ul class="unstyled">
+          <li><a class="twitter-share-button" href="https://twitter.com/share"
+            data-url="http://dogfeet.github.io/articles/2010/1263755580.html" data-via="Changwoo Park"
+            data-count="horizontal" data-lang="en">Tweet</a></li>
+          <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1263755580.html"></div></li>
+          <li><div class="fb-like"
+            data-href="http://dogfeet.github.io/articles/2010/1263755580.html" data-send="false"
+            data-layout="button_count" data-show-faces="false"></div></li>
+        </ul>
       </div>
-      <div class="span10">
-        <h1 property="dcterms:title">eclipse 메모리 설정하기</h1>
-      </div>
+
+      <p class="small-font top-line"><a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#sts" class="tag">STS</a></p>
     </div>
-    <div class="row">
-      <div class="offset2 span10 modern-font small-font muted">
-<span>&nbsp; by <a href="https://twitter.com/pismute/">Changwoo Park</a></span>
- | <a href="/site/tagmap.html#java" class="tag">Java</a> <a href="/site/tagmap.html#eclipse" class="tag">Eclipse</a> <a href="/site/tagmap.html#sts" class="tag">STS</a>      </div>
-    </div>
-    <div class="row">
-      <div class="offset2 span10">
-<br/>        <style rel="stylesheet" media="screen, projection" scoped="scoped">
-          #social-buttons {
-  margin-left: 30px;
-}
-        </style>
-        <div id="social-buttons" class="pull-right">
-          <ul class="unstyled">
-            <li>
-              <a class="twitter-share-button" href="https://twitter.com/share" data-url="http://dogfeet.github.io/articles/2010/1263755580.html" data-via="pismute" data-count="horizontal" data-lang="en">Tweet</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2010/1263755580.html"></div>
-            </li>
-            <li>
-              <div class="fb-like" data-href="http://dogfeet.github.io/articles/2010/1263755580.html" data-send="false" data-layout="button_count" data-show-faces="false"></div>
-            </li>
-          </ul>
-        </div>
-        <div property="sioc:content">
-          <p>cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다.</p>
 
-<p>STS의 경우에는 좀 다르다. 스스로를 &lsquo;성인'으로 착각할 만큼 느리다. 첨부터 느리지만 쓰면 쓸 수록 느려진다. 프로그램을 실행 후 조금 사용하다보면 미치게 하는 속도를 보여준다.</p>
+    <div class="col-sm-10">
 
-<p>소스탭하나 바꾸는데 2~3초의 시간을 기다려야 했는데&ndash;; 이제 1초 이내에 바뀐다. 다음과 같이 변경했다.</p>
-<pre><code><span class="literal">-</span><span class="comment">Xms1024m</span> <span class="literal">-</span><span class="comment">Xmx1024m</span> <span class="literal">-</span><span class="comment">XstartOnFirstThread</span> <span class="literal">-</span><span class="comment">Xverify:none</span>
-<span class="literal">-</span><span class="comment">XX:MaxPermSize=256m</span> <span class="literal">-</span><span class="comment">XX:PermSize=256m</span> <span class="literal">-</span><span class="comment">XX:MaxNewSize=128m</span>
-<span class="literal">-</span><span class="comment">XX:NewSize=128m</span> <span class="literal">-</span><span class="comment">XX:</span>+<span class="comment">UseParallelGC</span>
-</code></pre>
-<p>Mac은 OS Paging을 끌수가 없어서 4G를 장착하고도 꽤 느리다. SO(DLL)을 사용하지 않는 정책때문에 매모리가 많이 필요하며 시간이 지나면 리부팅을 해줘야 한다. 적어도 일주일에 한번이나 해줘야 한다.</p>
-
-<p>찾아보니 코쟁이들도 일주일에 한번이나 리부팅해야 한다며(&ndash;;) 불평을 하는 글들이 좀 있었다. 양덕도 별수 없다.</p>
-
-        </div>
-      </div>
+      <div property="sioc:content"><h1 id="eclipse-">eclipse 메모리 설정하기</h1>
+<p>cocoa 64bit버전이 정식으로 릴리즈돼서 눈에 띄는(약간 아주 약간) 향상이 있었지만 아직 더럽게 느리다. 순수한 eclipse만은 기본설정만으로도 메모장같이 날렵하게 동작하지만 m2maven등 이것 저것 설치하면 조금씩 느려진다. 뭐 이것도 그냥 쓸만한데 말이다.</p>
+<p>STS의 경우에는 좀 다르다. 스스로를 ‘성인’으로 착각할 만큼 느리다. 첨부터 느리지만 쓰면 쓸 수록 느려진다. 프로그램을 실행 후 조금 사용하다보면 미치게 하는 속도를 보여준다.</p>
+<p>소스탭하나 바꾸는데 2~3초의 시간을 기다려야 했는데—; 이제 1초 이내에 바뀐다. 다음과 같이 변경했다.</p>
+<pre><code>-Xms1024m -Xmx1024m -XstartOnFirstThread -Xverify:none
+-XX:MaxPermSize=256m -XX:PermSize=256m -XX:MaxNewSize=128m
+-XX:NewSize=128m -XX:+UseParallelGC
+</code></pre><p>Mac은 OS Paging을 끌수가 없어서 4G를 장착하고도 꽤 느리다. SO(DLL)을 사용하지 않는 정책때문에 매모리가 많이 필요하며 시간이 지나면 리부팅을 해줘야 한다. 적어도 일주일에 한번이나 해줘야 한다.</p>
+<p>찾아보니 코쟁이들도 일주일에 한번이나 리부팅해야 한다며(—;) 불평을 하는 글들이 좀 있었다. 양덕도 별수 없다.</p>
+</div>
     </div>
   </article>
 </section>
 
-      </div>
-      <footer class="footer">
-        <p>Copyright &copy; 2008-2013 Dogfeet from coding to pixels</p>
-      </footer>
-    </div>
-<!--GA-->
-    <script>
-      if( 'http://dogfeet.github.io' === 'http://' + window.location.hostname ) {
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27493298-1']);
-  _gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="https://apis.google.com/js/plusone.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-}
-    </script>
-  </body>
+    </div>
+    <footer class="footer"><p>Copyright &copy; 2008+ Dogfeet from coding to pixels</p></footer>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/scripts/script.js"></script>
+
+  <script>
+    if( 'http://dogfeet.github.io/' === 'http://' + window.location.hostname ) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27493298-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</body>
 </html>
