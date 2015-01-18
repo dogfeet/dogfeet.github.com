@@ -3,12 +3,12 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io//atom.xml" rel="self" />
   <link href="http://dogfeet.github.io/" />
-  <updated>2015-01-12T01:25:26.682Z</updated>
+  <updated>2015-01-18T07:43:29.059Z</updated>
   <id>http://dogfeet.github.io/</id>
     <entry>
     <title><![CDATA[ git: progit 업데이트 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/progit.html" />
-    <updated>2015-01-12T01:25:33.287Z</updated>
+    <updated>2015-01-18T07:43:36.182Z</updated>
     <id>http://dogfeet.github.io/articles/2013/progit.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-progit-">git: progit 업데이트</h1>
@@ -38,7 +38,7 @@
     <entry>
     <title><![CDATA[ grunt-deadlink ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-deadlink.html" />
-    <updated>2015-01-12T01:25:33.288Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-deadlink.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-deadlink">grunt-deadlink</h1>
@@ -83,7 +83,7 @@ grunt.config.init({
     <entry>
     <title><![CDATA[ git: AngularJS Git Commit Message Conventions ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-angularjs-git-commit-message-conventions">git: AngularJS Git Commit Message Conventions</h1>
@@ -314,7 +314,7 @@ scope: {
     <entry>
     <title><![CDATA[ grunt: 수정된 파일만 Lint하기 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-lint-">grunt: 수정된 파일만 Lint하기</h1>
@@ -370,7 +370,7 @@ watch: {
     <entry>
     <title><![CDATA[ grunt: 비동기 타스크 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-async-task.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-">grunt: 비동기 타스크</h1>
@@ -481,7 +481,7 @@ Done, without errors.
     <entry>
     <title><![CDATA[ git: msysgit + pageant ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-msysgit-pageant">git: msysgit + pageant</h1>
@@ -529,7 +529,7 @@ Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide s
     <entry>
     <title><![CDATA[ git: Useful GitHub Patterns ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-useful-github-patterns">git: Useful GitHub Patterns</h1>
@@ -666,7 +666,7 @@ Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide s
     <entry>
     <title><![CDATA[ git: ckw Solarized! ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-ckw-solarized-">git: ckw Solarized!</h1>
@@ -732,7 +732,7 @@ Ckw*color15: #fdf6e3
     <entry>
     <title><![CDATA[ 프로 Git 한글책 출간 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id>
     <content type="html"><![CDATA[
       <h1 id="-git-">프로 Git 한글책 출간</h1>
@@ -750,7 +750,7 @@ Ckw*color15: #fdf6e3
     <entry>
     <title><![CDATA[ git: password caching ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-password-caching.html" />
-    <updated>2015-01-12T01:25:33.289Z</updated>
+    <updated>2015-01-18T07:43:36.183Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-password-caching.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-password-caching">git: password caching</h1>
