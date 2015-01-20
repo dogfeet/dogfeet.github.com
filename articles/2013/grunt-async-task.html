@@ -8,10 +8,11 @@
 
   <title>#dogfeet - grunt: 비동기 타스크</title>
   <meta name="description"
-    content="grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다—;)."></meta>
+    content="grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다--;)."></meta>
   <meta name="keywords"
     content="grunt,async,task"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="grunt: 비동기 타스크 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2013/grunt-async-task.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="grunt-">grunt: 비동기 타스크</h1>
-<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다—;).</p>
+<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다--;).</p>
 <p>이 글은 비동기 타스크를 왜 쓰고 언제 어떻게 써야 하는지 설명한다.</p>
 <p><img src="/articles/2013/grunt-async-task/information-boards.jpg" alt=""></p>
 <h2 id="-">비동기 타스크</h2>
@@ -127,7 +127,7 @@ Running &quot;jshint:tasks&quot; (jshint) task
 </code></pre><p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
 <h2 id="grunt-">grunt 비동기 구현</h2>
 <p>grunt는 내부에 타스크 큐를 가지고 있다. 우리가 타스크를 실행하면 즉시 실행되는 것이 아니라 일단 큐에 등록되고 다음 틱에 실행된다.</p>
-<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 ‘afterseconds’, ‘jshint’ 타스크가 순서대로 등록됐고 ‘afterseconds’는 2초 후에 끝나므로 2초 후에 ‘jshint’가 실행된다.</p>
+<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 &#39;afterseconds&#39;, &#39;jshint&#39; 타스크가 순서대로 등록됐고 &#39;afterseconds&#39;는 2초 후에 끝나므로 2초 후에 &#39;jshint&#39;가 실행된다.</p>
 <p><code>var done = this.async();</code>의 async() 함수를 살펴보자:</p>
 <pre><code>// When called, sets the async flag and returns a function that can
 // be used to continue processing the queue.
@@ -183,7 +183,7 @@ Running &quot;jshint:tasks&quot; (jshint) task
 
 Done, without errors.
 </code></pre><p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
-<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. ‘async()’를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
+<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. &#39;async()&#39;를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
 <h3 id="grunt-">grunt의 한계</h3>
 <p>grunt의 타스크 큐는 차례대로 실행되므로 타스크를 병렬로 실행할 방법은 없다.</p>
 <p>플러그인인 <a href="https://github.com/iammerrick/grunt-parallel">grunt-parallel</a> 타스크를 쓰면 타스크를 병렬로 실행할 수 있다. 이 타스크는 grunt 프로세스를 여러 개 띄워서 병렬로 다른 타스크들을 실행시켜 준다.</p>

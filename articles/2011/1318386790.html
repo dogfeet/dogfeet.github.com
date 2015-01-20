@@ -11,7 +11,8 @@
     content="배포파일을 생성할 때 프로젝트 Git의 Revision정보를 이용하는 Ant 스크립트를 알아본다."></meta>
   <meta name="keywords"
     content="ant,git,revision,os"></meta>
-  <meta name="author" content="Sean Lee"></meta>
+  <meta name="author"
+    content="Sean Lee"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Build distfile using Ant with Git revision &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1318386790.html" lang="ko-kr">
@@ -103,7 +103,7 @@ branchA
 <ul>
 <li>git tag : 현재 설정된 tag의 목록 확인</li>
 <li>git describe : 가장 최근 tag로부터 revision count랑 현재 commit의 앞부분 hash값 확인</li>
-<li>git describe —contains —all HEAD : 현재 작업중인 branch의 이름 확인</li>
+<li>git describe --contains --all HEAD : 현재 작업중인 branch의 이름 확인</li>
 </ul>
 <p>자 이제 이 값들을 이용해서 배포 파일을 만들면 된다.</p>
 <pre><code>....
@@ -149,7 +149,7 @@ branchA
   &lt;/copy&gt;
 &lt;/target&gt;
 ....
-</code></pre><p>위의 스크립트에서 rev 변수의 경우 ‘build-138-geba356c’ 값에서 hash 부분은 잘라내고 ‘build-138’ 값만 이용하도록 Javascript로 수정하였다.</p>
+</code></pre><p>위의 스크립트에서 rev 변수의 경우 &#39;build-138-geba356c&#39; 값에서 hash 부분은 잘라내고 &#39;build-138&#39; 값만 이용하도록 Javascript로 수정하였다.</p>
 <p>condition 스크립트로 os별 현재 mount되어있는 배포 파일 서버의 위치를 지정해주었다.</p>
 <p>마지막으로 배포하는 지점에 위에서 가져온 프로젝트의 revision 정보를 가지고 디렉토리를 만들고 배포파일을 복사하는 작업까지 마치도록 한다.</p>
 </div>

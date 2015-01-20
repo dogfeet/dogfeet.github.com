@@ -11,7 +11,8 @@
     content="이 글은 @agscala의 Learn Meteor Fundamentals and Best Practices를 번역한 것이다. Meteor를 처음 접할 때 좋은 것 같아 번역하였다. Meter 공식 문서는 아직 설명이 부족해 어렵다."></meta>
   <meta name="keywords"
     content="meteor,node,Andrew Scala"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Meteor: Learn Meteor Fundamentals and Best Practices &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/meteor-fundametals-and-best-practices.html" lang="ko-kr">
@@ -101,7 +101,7 @@
 <p>Meteor 프로젝트는 대부분 Javascript 파일로 구성된다. 프로젝트 디렉토리 중 아무 데나 <code>*.js</code> 파일을 두면 Meteor가 자동으로 로드해서 실행한다. Meteor 프로젝트에 있는 모든 Javascript 파일은 서버와 클라이언트에 모두 배포된다(꼭 그런 것은 아니고 제외하는 방법이 있다). 이것은 Meteor의 절대 무공(really cool) 중에 하나다. 우리는 모든 것을 Javascript로 개발하고 코드를 한 번만 시전해도(write) 서버와 클라이언트 양쪽에서 사용할 수 있다.</p>
 <p>또 다른 Meteor만의 독문 무공으로 <code>*.less</code> 파일을 프로젝트 디렉토리 중 어디엔가 두면 Meteor가 자동으로 컴파일하고 클라이언트에 전송해서 페이지에 포함한다.</p>
 <p>그것뿐만 아니라 Meteor 서버 코드와 클라이언트 코드를 구분하는 방법도 제공한다. <code>Meteor.is_server</code>와 <code>Meteor.is_client</code> 플래그로 구분할 수 있다.</p>
-<p>다음은 서버코드와 클라이언트 코드를 구분하는 예제다. 브라우저의 Javascript 콘솔에 “Hi. I’m CLIENT”이라는 로그가 찍히고 Meteor 서버에는 “Hi. I’m SERVER”라고 출력된다.</p>
+<p>다음은 서버코드와 클라이언트 코드를 구분하는 예제다. 브라우저의 Javascript 콘솔에 &quot;Hi. I&#39;m CLIENT&quot;이라는 로그가 찍히고 Meteor 서버에는 &quot;Hi. I&#39;m SERVER&quot;라고 출력된다.</p>
 <pre><code class="lang-javascript">// This function is available on both the client and the server.
 var greet = function(name) {
     console.log(&quot;Hi. I&#39;m &quot; + name);
@@ -119,7 +119,7 @@ if(Meteor.is_client) {
 </code></pre>
 <p>정말 간단하다. 클라이언트와 서버는 코드를 공유하기 쉬워서 재사용성을 극대화할 수 있고 개발 시간이 극적으로 줄어든다.</p>
 <h2 id="project-structure">Project Structure</h2>
-<p>클라이언트와 서버랑 공유하지 않는 코드가 많으면 어떻게 할까. 가문의 독문(private) 알고리즘이 있으면 서버에서만 실행돼야 하고 절대 다른 사람이 보면 안 되니까 클라이언트에 전송되면 안 된다. Meteor는 서버와 클라이언트 코드를 구분하는 “특별” 디렉토리가 두 개 있다. <code>[project_root]/client/</code>와 <code>[project_root]/server/</code>가 그것이다. server 디렉토리에 있는 Javascript는 클라이언트에 전송되지 않고 서버에서만 실행된다. 반대로 client 디렉토리에 있는 코드는 클라이언트에서만 실행된다. <code>Meteor.is_client</code>와 <code>Meteor.is_server</code>를 안 써도 되기 때문에 매우 편리하다. 그냥 코드를 client 디렉토리에 넣으면 클라이언트 코드가 된다.</p>
+<p>클라이언트와 서버랑 공유하지 않는 코드가 많으면 어떻게 할까. 가문의 독문(private) 알고리즘이 있으면 서버에서만 실행돼야 하고 절대 다른 사람이 보면 안 되니까 클라이언트에 전송되면 안 된다. Meteor는 서버와 클라이언트 코드를 구분하는 &quot;특별&quot; 디렉토리가 두 개 있다. <code>[project_root]/client/</code>와 <code>[project_root]/server/</code>가 그것이다. server 디렉토리에 있는 Javascript는 클라이언트에 전송되지 않고 서버에서만 실행된다. 반대로 client 디렉토리에 있는 코드는 클라이언트에서만 실행된다. <code>Meteor.is_client</code>와 <code>Meteor.is_server</code>를 안 써도 되기 때문에 매우 편리하다. 그냥 코드를 client 디렉토리에 넣으면 클라이언트 코드가 된다.</p>
 <p>파일이 어떻게 로드되는지 알려면 다른 것보다 일단 프로젝트 구조를 알아야 한다. 파일이 두 개 있을 때 어떤 파일이 먼저 로드될까? 다음과 같은 순서로 Javascript 파일을 로드한다.</p>
 <ol>
 <li><code>[project_root]/lib</code>의 파일이 먼저 로드된다. 라이브러리는 이 디렉토리에 넣는다.</li>
@@ -136,7 +136,7 @@ if(Meteor.is_client) {
 <li><code>[project_root]/.meteor/</code> - Meteor는 사용하는 모듈이 무었인지 등등의 프로젝트 관리 정보를 여기에 둔다. <strong>개발자가 직접 이 디렉토리를 건드리지 않아도 된다</strong>.</li>
 </ul>
 <h2 id="reactivity">Reactivity</h2>
-<p>Meteor는 데이터가 변경되면 화면에 다시 반영해야 하는 노력을 줄여 준다. “Reactive” 데이터 소스와 컨텍스트를 사용해서 구현한다. Reactive 컨텍스트는 Reactive 데이터 소스를 사용하고 필요하면 다시 실행되는 함수다. 처음에는 이 말을 받아들이는 게 쉽지 않을 것이다. 다음 예제가 명백하게 해줄 것이다.</p>
+<p>Meteor는 데이터가 변경되면 화면에 다시 반영해야 하는 노력을 줄여 준다. &quot;Reactive&quot; 데이터 소스와 컨텍스트를 사용해서 구현한다. Reactive 컨텍스트는 Reactive 데이터 소스를 사용하고 필요하면 다시 실행되는 함수다. 처음에는 이 말을 받아들이는 게 쉽지 않을 것이다. 다음 예제가 명백하게 해줄 것이다.</p>
 <p>다음은 html 페이지, <code>cool_dude</code>라는 이름의 Meteor <a href="http://docs.meteor.com/#templates">템플릿</a>, 클라이언트 Javascript 함수다. 이 Javascript 함수는 템플릿을 렌더링하는 데 필요한 <code>name</code>의 값을 리턴한다.</p>
 <pre><code class="lang-html">&lt;html&gt;
   &lt;head&gt;
@@ -155,7 +155,7 @@ Template.cool_dude.name = function() {
     return &quot;Andrew Scala&quot;;
 };
 </code></pre>
-<p>페이지를 렌더링하면 “Andrew Scala sure is one cool dude!”라고 출력된다. 뭐, 참말이다.</p>
+<p>페이지를 렌더링하면 &quot;Andrew Scala sure is one cool dude!&quot;라고 출력된다. 뭐, 참말이다.</p>
 <p>템플릿은 Reactive 컨텍스트다. 템플릿을 렌더링할 때 Reactive 데이터 소스를 사용하면 그 데이터 소스가 변경될 때 다시 렌더링한다. 클라이언트의 <code>Session</code> 객체는 Reactive 데이터 소스다. 클라이언트 <code>Session</code> 객체는 키-밸류 형태로 클라이언트에 정보를 저장한다. 그리고 페이지가 새로 고쳐지면 날아간다.</p>
 <p>Reactive 데이터 소스를 사용해서 템플릿 컨텍스트를 변경해보자:</p>
 <pre><code class="lang-javascript">// When the app starts,
@@ -171,7 +171,7 @@ Template.cool_dude.name = function() {
 <p>템플릿은 Session에 있는 <code>&quot;username&quot;</code>의 값을 가져다가 템플릿 변수 <code>name</code>에 넣는다. 이제 Reactive 컨텍스트에 Reactive 데이터 소스가 있는 상태가 됐다. Session의 <code>&quot;username&quot;</code> 값이 변하면 템플릿은 새 값을 이용해서 자동으로 다시 렌더링힌다. <code>&quot;username&quot;</code> 값을 바꿔보자:</p>
 <pre><code class="lang-javascript">Session.set(&quot;username&quot;, &quot;Bill Murray&quot;);
 </code></pre>
-<p>이 함수를 호출하자마자(어디서 호출하던 위치는 상관없다) 페이지는 “Bill Murray sure is one cool dude!”로 변경된다. 뭐, 이 말도 참말이다.</p>
+<p>이 함수를 호출하자마자(어디서 호출하던 위치는 상관없다) 페이지는 &quot;Bill Murray sure is one cool dude!&quot;로 변경된다. 뭐, 이 말도 참말이다.</p>
 <p>Reactive 컨텍스트와 데이터 소스가 궁금하면 Meteor의 <a href="http://docs.meteor.com/#reactivity">Reactivity 문서</a>를 봐라.</p>
 <h2 id="publish-subscribe">Publish/Subscribe</h2>
 <p><strong><em>Note:</em></strong> 프로젝트 루트 디렉토리에서 <code>$ meteor remove autopublish</code>를 꼭 실행해야 한다. Meteor는 기본적으로 모든 데이터를 Publish하는데 이 것은 사파의 사술이다(poor practice).</p>
@@ -207,7 +207,7 @@ if(Meteor.is_client) {
 }
 </code></pre>
 <p>이제 클라이언트가 연결하고 메시지를 가져올 때 <code>&quot;cool_people_channel&quot;</code> 채널에 있는 것만 가져온다.</p>
-<p><code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 보는 것으로는 충분하지 않다. 다른 채널의 메시지도 이용할 수 있어야 한다. Meteor의 “Reactivity” 이용하면 Session 값에 따라서 동적으로 Subscibe하도록 만들 수 있다.</p>
+<p><code>&quot;cool_people_channel&quot;</code> 채널에 있는 메시지만 보는 것으로는 충분하지 않다. 다른 채널의 메시지도 이용할 수 있어야 한다. Meteor의 &quot;Reactivity&quot; 이용하면 Session 값에 따라서 동적으로 Subscibe하도록 만들 수 있다.</p>
 <pre><code class="lang-javascript">var Messages = new Meteor.Collection(&quot;messages&quot;);
 
 if(Meteor.is_server) {
@@ -224,7 +224,7 @@ if(Meteor.is_client) {
     });
 }
 </code></pre>
-<p><a href="http://docs.meteor.com/#Meteor_autosubscribe">Meteor.autosubscribe</a>는 Reactive 컨텍스트다. 그래서 그 안에서 사용한 Reactive 데이터 소스가 변경되면 다시 실행된다. <code>&quot;current_channel&quot;</code>라는 Session 변수에 무슨 채널인지 저장하고 있고 그 값이 바뀌면 Subscription은 갱신되고 다른 메시지도 받게 된다. 만약 사용자가 “breakfast talk”라는 채널로 바꾸려면 <code>Session.set(&quot;current_channel&quot;, &quot;breakfast_talk&quot;)</code>라고 실행해주면 된다. 그러면 autosubscribe의 Reactive 컨텍스트 함수가 다시 실행돼서 이제는 “breakfast_talk” 채널의 메시지를 보게 된다.</p>
+<p><a href="http://docs.meteor.com/#Meteor_autosubscribe">Meteor.autosubscribe</a>는 Reactive 컨텍스트다. 그래서 그 안에서 사용한 Reactive 데이터 소스가 변경되면 다시 실행된다. <code>&quot;current_channel&quot;</code>라는 Session 변수에 무슨 채널인지 저장하고 있고 그 값이 바뀌면 Subscription은 갱신되고 다른 메시지도 받게 된다. 만약 사용자가 &quot;breakfast talk&quot;라는 채널로 바꾸려면 <code>Session.set(&quot;current_channel&quot;, &quot;breakfast_talk&quot;)</code>라고 실행해주면 된다. 그러면 autosubscribe의 Reactive 컨텍스트 함수가 다시 실행돼서 이제는 &quot;breakfast_talk&quot; 채널의 메시지를 보게 된다.</p>
 <p>클라이언트에 컬렉션을 전부 Publish해야 할 때도 있을 수도 있는데 정말 그게 필요한지 한 번 더 생각해보길 바란다. 그리고 컬렉션의 도큐먼트를 전부 전송하기보다 특정 필드만 전송하는 게 더 낫다.</p>
 <h2 id="server-methods">Server Methods</h2>
 <p>클라이언트에서는 데이터베이스에 있는 데이터를 읽어오는 것 말고는 아무것도 하지 않는 것이 좋다. 그러면 클라이언트는 정보를 어떻게 저장해야 할지 궁금해진다. Meteor 서버의 <a href="http://docs.meteor.com/#methods_header">Method</a>를 사용해서 이 문제를 해결한다. 데이터를 수정하는 것과 같이 위험한 일은 꼭 Method를 이용한다. 서버에 함수를 정의하고 나서 클라이언트에서 그 함수를 호출해서 리턴 값을 받는다. 이게 핵심 아이디어다. 그러면 클라이언트에서는 그 함수가 어떻게 구현됐는지 알 수 없고 다른 방법으로 데이터를 수정하지도 않는다. 그리고 서버는 잘 동작할 것이다.</p>

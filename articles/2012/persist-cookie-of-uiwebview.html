@@ -11,7 +11,8 @@
     content="애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다."></meta>
   <meta name="keywords"
     content="uiwebview,ios,cookie,쿠키"></meta>
-  <meta name="author" content="Sean Lee"></meta>
+  <meta name="author"
+    content="Sean Lee"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="UIWebView 쿠기 유지하기 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/persist-cookie-of-uiwebview.html" lang="ko-kr">
@@ -89,8 +89,8 @@
       <div property="sioc:content"><h1 id="uiwebview-">UIWebView 쿠기 유지하기</h1>
 <p>애플리케이션에서 UIWebView를 사용할 때 쿠키를 저장하는 방법을 살펴본다. 쿠키를 저장하면 애플리케이션이 종료되더라도 로그인 상태 등을 유지할 수 있다. 서버가 특별히 쿠키의 지속 시간을 지정하지 않은 경우 쿠키는 애플리케이션이 종료되면(백그라운드에 남아있는 것과는 다르다) 쿠키 정보는 사라진다.</p>
 <p>UIWebView can save and restore cookies. Although application has terminated, the cookies and the session can be restored.</p>
-<p>&lt;img src=&quot;http://farm1.staticflickr.com/182/403856634_db35669863.jpg&quot; width=&quot;500&quot; height=&quot;375&quot; alt=&quot;cookies do not always wish to remain stacked.&quot;&gt;
-<em>&lt;a href=&quot;http://www.flickr.com/photos/klara/403856634/&quot; title=&quot;Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.&quot;&gt;cookies do not always wish to remain stacked. by klara&lt;/a&gt;</em></p>
+<p><img src="http://farm1.staticflickr.com/182/403856634_db35669863.jpg" width="500" height="375" alt="cookies do not always wish to remain stacked.">
+<em><a href="http://www.flickr.com/photos/klara/403856634/" title="Flickr에서 Klara Kim님의 cookies do not always wish to remain stacked.">cookies do not always wish to remain stacked. by klara</a></em></p>
 <h2 id="-">애플리케이션 종료시 쿠키 저장</h2>
 <p>우선 애플리케이션이 종료되는 이벤트를 잡아야 한다. 현재 멀티태스킹이 지원되는 SDK를 사용하여 애플리케이션을 만든 경우 Application Delegate의 아래 메소드가 호출된다.</p>
 <pre><code>- (void)applicationDidEnterBackground:(UIApplication *)application

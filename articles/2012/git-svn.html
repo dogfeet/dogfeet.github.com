@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Git: git-svn</title>
   <meta name="description"
-    content="Progit 8장에 설명된 ‘git-svn’에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다."></meta>
+    content="Progit 8장에 설명된 &#39;git-svn&#39;에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다."></meta>
   <meta name="keywords"
     content="git,svn"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: git-svn &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-svn.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="git-git-svn">Git: git-svn</h1>
-<p>Progit 8장에 설명된 ‘git-svn’에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다.</p>
+<p>Progit 8장에 설명된 &#39;git-svn&#39;에서 쓸만한 명령어를 정리했다. svn server + git client 같이 오묘한 조합은 사용하고 싶지 않았는데, 너무 불편해서 못살겠다.</p>
 <p><img src="/articles/2012/git-svn/et.jpg" alt="et"></p>
 <p>GitHub는 <a href="http://hg-git.github.com/">git server + hg client</a>, <a href="https://github.com/blog/966-improved-subversion-client-support">git server + svn client</a> 조합도 만들었는데 쓰는 사람이 있을까?</p>
 <h2 id="-">주요 명령어 정리</h2>
@@ -135,7 +135,7 @@
   remotes/dogfeet    e5334ef Add from dogfeet
   remotes/tags/1.0.0 2ec86a0 tag 1.0.0
   remotes/trunk      92a713a from trunk
-</code></pre><p>master는 remotes/trunk를 트랙킹하고 SVN 브랜치인 ‘dogfeet’과 SVN 태그인 ‘1.0.0’이 Git에서는 모두 브랜치로 만들어진다. 그리고 원래 리모트 트래킹 브랜치는 <code>remotes/origin/master</code> 같은 패턴으로 이름 지어지는데 리모트 없이 <code>remotes/trunk</code> 형식으로 이름 지어진다.</p>
+</code></pre><p>master는 remotes/trunk를 트랙킹하고 SVN 브랜치인 &#39;dogfeet&#39;과 SVN 태그인 &#39;1.0.0&#39;이 Git에서는 모두 브랜치로 만들어진다. 그리고 원래 리모트 트래킹 브랜치는 <code>remotes/origin/master</code> 같은 패턴으로 이름 지어지는데 리모트 없이 <code>remotes/trunk</code> 형식으로 이름 지어진다.</p>
 <p>SVN 히스토리:</p>
 <p><img src="/articles/2012/git-svn/history.png" alt="history.png"></p>
 <p>master 히스토리:</p>

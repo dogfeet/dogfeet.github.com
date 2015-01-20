@@ -8,10 +8,11 @@
 
   <title>#dogfeet - dogfeet-flavored-markdown</title>
   <meta name="description"
-    content="‘dogfeet-flavored-markdown’은 Markdown에서 Twitter처럼 @mention, #hash와 같은 표현을 사용하고 싶어서 ‘github-flavored-markdown’을 수정했다."></meta>
+    content="&#39;dogfeet-flavored-markdown&#39;은 Markdown에서 Twitter처럼 @mention, #hash와 같은 표현을 사용하고 싶어서 &#39;github-flavored-markdown&#39;을 수정했다."></meta>
   <meta name="keywords"
     content="Nodejs,Markdown,Docpad,Github,Dogfeet"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="dogfeet-flavored-markdown &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/dogfeet-flavored-markdown.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="dogfeet-flavored-markdown">dogfeet-flavored-markdown</h1>
-<p>‘dogfeet-flavored-markdown’은 Markdown에서 Twitter처럼 <code>@mention</code>, <code>#hash</code>와 같은 표현을 사용하고 싶어서 ‘github-flavored-markdown’을 수정했다.</p>
+<p>&#39;dogfeet-flavored-markdown&#39;은 Markdown에서 Twitter처럼 <code>@mention</code>, <code>#hash</code>와 같은 표현을 사용하고 싶어서 &#39;github-flavored-markdown&#39;을 수정했다.</p>
 <p>아이디어를 정리하고 자료 조사를 끝낸건 3개월 전인데 게으름이 봄바람을 타고와 늦어 졌다.</p>
 <p><img src="/articles/2012/dogfeet-flavored-markdown/keyboard.png" alt="keyboard"></p>
 <p>이 글을 읽기 전에 <a href="http://github.github.com/github-flavored-markdown/">GitHub의 GitHub-Flavored-Markdown 설명서</a>를 읽어 보는 것이 좋다.</p>
@@ -99,12 +99,12 @@
 * #Num: #1
 * User/#Num: mojombo#1
 * User/Project#Num: mojombo/god#1
-</code></pre><p>하지만 실제로 작동하는 것은 ‘사용자/저장소’ 패턴이 명시된 다음의 두 경우 뿐이다:</p>
+</code></pre><p>하지만 실제로 작동하는 것은 &#39;사용자/저장소&#39; 패턴이 명시된 다음의 두 경우 뿐이다:</p>
 <ul>
 <li>User/Project@SHA: mojombo/god@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
 <li>User/Project#Num: mojombo/god#1</li>
 </ul>
-<p>나머지 패턴도 동작하게 하려면 ‘사용자/저장소’ 정보가 필요하다. github-flavored-markdown의 용법은 다음과 같은데 인자로 ‘사용자/저장소’를 넘겨줄 수 있다:</p>
+<p>나머지 패턴도 동작하게 하려면 &#39;사용자/저장소&#39; 정보가 필요하다. github-flavored-markdown의 용법은 다음과 같은데 인자로 &#39;사용자/저장소&#39;를 넘겨줄 수 있다:</p>
 <pre><code>var ghm = require(&quot;github-flavored-markdown&quot;)
 ghm.parse(&quot;I **love** GHM.\n\n#2&quot;, &quot;isaacs/npm&quot;)
 // returns:
@@ -120,7 +120,7 @@ ghm.parse(&quot;I **love** GHM.\n\n#2&quot;, &quot;isaacs/npm&quot;)
 </ul>
 <p>하지만 custom 하게 수정이 필요하고, 특히 [Docpad][]의 Markdown 을 수정해서 하드코딩하거나 이 정보를 설정할 수 있도록 수정해야 한다.</p>
 <h2 id="dogfeet-flavored-markdown">dogfeet-flavored-markdown</h2>
-<p>dogfeet-flavored-markdown(이하 DFM)은 DFM에서 ‘사용자/저장소’ 정보가 필요한 나머지 패턴은 삭제했다. 그래서 다음과 같은 패턴만 사용할 수 있다:</p>
+<p>dogfeet-flavored-markdown(이하 DFM)은 DFM에서 &#39;사용자/저장소&#39; 정보가 필요한 나머지 패턴은 삭제했다. 그래서 다음과 같은 패턴만 사용할 수 있다:</p>
 <ul>
 <li>User/Project@SHA: mojombo/god@be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
 <li>User/Project#Num: mojombo/god#1</li>

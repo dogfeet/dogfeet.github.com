@@ -11,7 +11,8 @@
     content="branch 정보를 요약해주는 Plugin을 만들었다. 각 브랜치에 마지막 커밋 정보(SHA, 메시지, 시각, 커밋터)를 보여주고 그 브랜치가 기준 브랜치에서 얼마나 멀어졌는지 보여준다."></meta>
   <meta name="keywords"
     content="Git,Todo,Branch"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git:Todo Plugin &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-todo.html" lang="ko-kr">
@@ -96,8 +96,6 @@
 <ul>
 <li><img src="/articles/2012/git-todo/checkouted.png" alt="checkouted">가 표기된 ko 브랜치가 Checkcout한 브랜치다.</li>
 <li><img src="/articles/2012/git-todo/base_branch.png" alt="base_branch">가 표기된 ko 브랜치가 기준 브랜치다. 이 브랜치를 기준으로 다른 브랜치의 <img src="/articles/2012/git-todo/ahead.png" alt="ahead">이나 <img src="/articles/2012/git-todo/behind.png" alt="behind">을 계산한다.</li>
-</ul>
-<ul>
 <li><img src="/articles/2012/git-todo/ahead.png" alt="ahead">가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 없는 커밋이 3개 있다는 것을 의미한다.</li>
 <li><img src="/articles/2012/git-todo/behind.png" alt="behind">가 표기된 private-ko-build-ebook 브랜치는 ko 브랜치에 있는 커밋이 23개 없다는 것을 의미한다.</li>
 </ul>

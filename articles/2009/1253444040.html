@@ -11,7 +11,8 @@
     content="Spring MVC와 iBatis를 이해하기 위해 jPetStore를 분석한다. 그 세번째 시간"></meta>
   <meta name="keywords"
     content="Java,Spring,Jpetstore,Spring MVC"></meta>
-  <meta name="author" content="Sean Lee"></meta>
+  <meta name="author"
+    content="Sean Lee"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Spring MVC and iBatis Example - jPetStore 분석 (3) &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2009/1253444040.html" lang="ko-kr">
@@ -89,7 +89,7 @@
       <div property="sioc:content"><h1 id="spring-mvc-and-ibatis-example-jpetstore-3-">Spring MVC and iBatis Example - jPetStore 분석 (3)</h1>
 <p>Spring MVC와 iBatis를 이해하기 위해 jPetStore를 분석한다. 그 세번째 시간</p>
 <h2 id="database-">database 설정 살펴보기</h2>
-<p>아마도 이전의 분석글에서 실행한 jPetStore에서 대부분의 메뉴가 동작하지 않았을 것이다. 에러 메시지를 살펴보면 ‘Could not open JDBC Connection’이 보인다. 즉 DB설정이 제대로 되지 않았다는 것이다. Database를 설정하기 위해서 web.xml 설정파일부터 다시 살펴본다:</p>
+<p>아마도 이전의 분석글에서 실행한 jPetStore에서 대부분의 메뉴가 동작하지 않았을 것이다. 에러 메시지를 살펴보면 &#39;Could not open JDBC Connection&#39;이 보인다. 즉 DB설정이 제대로 되지 않았다는 것이다. Database를 설정하기 위해서 web.xml 설정파일부터 다시 살펴본다:</p>
 <pre><code>&lt;!--
 - Location of the XML file that defines the root application context.
 - Applied by ContextLoaderServlet.
@@ -104,7 +104,7 @@
 &lt;param-value&gt;/WEB-INF/dataAccessContext-jta.xml  /WEB-INF/applicationContext.xml&lt;/param-value&gt;
 --&gt;
 &lt;/context-param&gt;
-</code></pre><p>대충 훓어보다보며 ‘dataAccessContext’ 이 부분이 보인다. 옳거니 여기구나. ‘context-param’은 일종의 환경변수 등록이다. 즉 다음과 같이 서블릿이 실행되기 전에 변수를 등록해 놓는 것이다.</p>
+</code></pre><p>대충 훓어보다보며 &#39;dataAccessContext&#39; 이 부분이 보인다. 옳거니 여기구나. &#39;context-param&#39;은 일종의 환경변수 등록이다. 즉 다음과 같이 서블릿이 실행되기 전에 변수를 등록해 놓는 것이다.</p>
 <pre><code>contextConfigLocation = /WEB-INF/dataAccessContext-local.xml /WEB-INF/applicationContext.xml
 </code></pre><p><a href="http://static.springsource.org/spring/docs/2.5.x/api/org/springframework/web/context/ContextLoader.html">contextConfigLocation</a>에 지정된 Context파일은 Spring Framework 초기화 작업이 읽고 사용한다. 변수 값으로는 dataAccessContext-local.xml, applicationContext.xml 두 파일의 경로를 설정하였다.</p>
 <ul>
@@ -121,7 +121,7 @@
 <p>주석을 살펴보면 JPetStore에서 Data를 Access하는 Layer에 관한 Context정의라는 것을 알 수 있다. 아래로 내려가다보면 dataSource Bean에 대한 정의가 보인다. 여기에서 실제 Database에 대한 JDBC연결을 정의함을 볼 수 있다. (휴, 겨우 이제 처음에 제시했던 질문으로). JDBC에 대한 연결 파라미터는 ${jdbc.driverClassName}와 같이 설정하고 있는데, 이것의 실제 값은 WEB-INF/jdbc.properties 파일에 정의되어 있고, 다시 이 JDBC 설정파일의 위치는 다음에 살펴볼 applicationContext.xml에 propertyConfigurer Bean에 정의되어 있다.</p>
 <h3 id="applicationcontext-xml">applicationContext.xml</h3>
 <p>주석을 살펴보면 Sample Application의 Business Layer Bean의 정의를 포함하며, 주로 DAO에 접근하기 위한 Bean, (AOP를 통한) Transaction Advice 등을 정의하는 것을 볼 수 있다.</p>
-<p>다시 dataSource Bean으로 돌아와서, dataSource에서 사용하는 값이 정의된 /war/WEB-INF/jdbc.properties 파일을 열어보면 jdbc 연결에 필요한 파라미터들이 정의되어있다. 이 샘플은 기본적으로 HSQLDB를 사용한다. 따라서 HSQLDB의 구동이 필요한데, 이것을 위한 파일들은 /db/hsqldb에 위치한다. 샘플을 돌려보는 운영체제에 따라 server.bat나 server.sh파일을 실행한다. 나의 경우, server.sh파일을 ‘sh server.sh’나 chmod로 권한을 줘서 실행하면 잘 실행이 되지 않았다(실행은 되는데 샘플 데이터 구축이 잘 안됌). ‘cat server.sh’하여 그 내용을 똑같이 따라 입력하였더니 HSQLDB가 실행이 되는 것을 볼 수 있었다. manager.sh(manager.bat)파일은 현재 실행중인 HSQLDB에 접속해서 Query를 실행해 볼 수 있는 간단한 클라이언트다.</p>
+<p>다시 dataSource Bean으로 돌아와서, dataSource에서 사용하는 값이 정의된 /war/WEB-INF/jdbc.properties 파일을 열어보면 jdbc 연결에 필요한 파라미터들이 정의되어있다. 이 샘플은 기본적으로 HSQLDB를 사용한다. 따라서 HSQLDB의 구동이 필요한데, 이것을 위한 파일들은 /db/hsqldb에 위치한다. 샘플을 돌려보는 운영체제에 따라 server.bat나 server.sh파일을 실행한다. 나의 경우, server.sh파일을 &#39;sh server.sh&#39;나 chmod로 권한을 줘서 실행하면 잘 실행이 되지 않았다(실행은 되는데 샘플 데이터 구축이 잘 안됌). &#39;cat server.sh&#39;하여 그 내용을 똑같이 따라 입력하였더니 HSQLDB가 실행이 되는 것을 볼 수 있었다. manager.sh(manager.bat)파일은 현재 실행중인 HSQLDB에 접속해서 Query를 실행해 볼 수 있는 간단한 클라이언트다.</p>
 <pre><code>SeanMacBook:~/Documents/Workspace/spring-framework/spring-framework-2.5.5/samples/jpetstore/db/hsqldb$ java -classpath ../../../../lib/hsqldb/hsqldb.jar org.hsqldb.Server -database jpetstore
 [Server@5d173]: [Thread[main,5,main]]: checkRunning(false) entered
 [Server@5d173]: [Thread[main,5,main]]: checkRunning(false) exited

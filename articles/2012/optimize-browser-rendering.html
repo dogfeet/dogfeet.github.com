@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Optimize browser rendering</title>
   <meta name="description"
-    content="이글은 Google Page Speed에 있는 Optimize browser rendering를 정리한 것이다. 이 글과 이 글에 주렁주렁 달린 글을 모두 독파하면 ‘한 브라우저 렌더링’한다고 말할 수 있을 것 같다."></meta>
+    content="이글은 Google Page Speed에 있는 Optimize browser rendering를 정리한 것이다. 이 글과 이 글에 주렁주렁 달린 글을 모두 독파하면 &#39;한 브라우저 렌더링&#39;한다고 말할 수 있을 것 같다."></meta>
   <meta name="keywords"
     content="CSS,Selector,Performance,Google Page Speed"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Optimize browser rendering &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/optimize-browser-rendering.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="optimize-browser-rendering">Optimize browser rendering</h1>
-<p>이글은 <a href="http://code.google.com/speed/page-speed/">Google Page Speed</a>에 있는 <a href="http://code.google.com/speed/page-speed/docs/rendering.html">Optimize browser rendering</a>를 정리한 것이다. 이 글과 이 글에 주렁주렁 달린 글을 모두 독파하면 ‘한 브라우저 렌더링’한다고 말할 수 있을 것 같다.</p>
+<p>이글은 <a href="http://code.google.com/speed/page-speed/">Google Page Speed</a>에 있는 <a href="http://code.google.com/speed/page-speed/docs/rendering.html">Optimize browser rendering</a>를 정리한 것이다. 이 글과 이 글에 주렁주렁 달린 글을 모두 독파하면 &#39;한 브라우저 렌더링&#39;한다고 말할 수 있을 것 같다.</p>
 <p>브라우저의 특징을 잘 살려서 코딩하면 성능이 빨라진다. 이 글은 다음과 같은 주제에 대해 설명한다:</p>
 <ul>
 <li>효율적인 CSS 셀렉터</li>
@@ -99,7 +99,7 @@
 <p><img src="/articles/2012/optimize-browser-rendering/google-page-speed.png" alt="google-page-speed"></p>
 <h2 id="-css-">효율적인 CSS 셀렉터</h2>
 <p>찾아볼 엘리먼트가 많은 셀렉터만 사용치 않아도 렌더링 성능이 대폭 향상된다.</p>
-<p>브라우저는 HTML을 파싱하는 대로 화면에 표시할 엘리먼트를 모두 생성하면서 내부에 도큐먼트 트리를 만든다. 브라우저의 CSS 엔진은 정해진 규칙에 따라 엘리먼트마다 맞는 스타일이 있는지 찾는다. 그 규칙은 표준 CSS cascade, 상속, 정열 규칙에 따른다. “셀렉터”는 어떤 엘리먼트에 스타일을 적용할지를 나타내는 것인데 CSS 엔진은 제일 오른쪽에 있는 셀렉터부터 찾는다. 가장 오른쪽에 있는 셀렉터를 “Key 셀렉터”라고 부르고 필요한 스타일을 찾거나 못 찾을 때까지 계속 Evaluate한다.</p>
+<p>브라우저는 HTML을 파싱하는 대로 화면에 표시할 엘리먼트를 모두 생성하면서 내부에 도큐먼트 트리를 만든다. 브라우저의 CSS 엔진은 정해진 규칙에 따라 엘리먼트마다 맞는 스타일이 있는지 찾는다. 그 규칙은 표준 CSS cascade, 상속, 정열 규칙에 따른다. &quot;셀렉터&quot;는 어떤 엘리먼트에 스타일을 적용할지를 나타내는 것인데 CSS 엔진은 제일 오른쪽에 있는 셀렉터부터 찾는다. 가장 오른쪽에 있는 셀렉터를 &quot;Key 셀렉터&quot;라고 부르고 필요한 스타일을 찾거나 못 찾을 때까지 계속 Evaluate한다.</p>
 <p>이런 시스템이라서 Rule이 적을수록 성능이 좋다. 그러니까 <a href="http://code.google.com/speed/page-speed/docs/payload.html#RemoveUnusedCSS">사용하지 않는 CSS</a>를 삭제하는 것만으로도 성능이 대폭 향상된다. 일단 안 쓰는 CSS를 모두 삭제하고 나서 엘리먼트나 CSS Rule이 많은 페이지를 최적화한다. CSS Rule을 손보는 것만으로도 성능을 향상시킬 수 있다. Rule을 가능한 정확하게 만들고 불필요한 군더더기를 제거하는 게 최적화의 핵심이다. 그래서 스타일 엔진이 사용하지도 않을 Rule까지도 일일이 검사하지 않게끔 해야 한다.</p>
 <h4 id="descendant-">Descendant 셀렉터</h4>
 <pre><code>ul li a {...}
@@ -177,7 +177,7 @@
 <p>브라우저마다 버퍼링하는 바이트 수와 Charset을 명시하지 않았을 때 사용하는 기본 Encoding이 다르다. 하지만, 일단 버퍼링하면 바로 렌더링한다. 그리고 만약 기본 Encoding과 버퍼링하고 나서 찾아낸 Charset이 서로 다르면 다시 파싱하고 페이지를 다시 그린다.</p>
 <h3 id="-">기억할 것</h3>
 <ul>
-<li>Content Type을 빠트리지 마라. - HTTP 헤더나 HTML meta tag 두 곳에 모두 적어 준다. 브라우저는 Content Type을 “sniff”하는데 알고리즘이 여러 가지 사용된다. 그래서 추가적인 Delay도 생기고 보안에 구멍도 생긴다. ‘text/html’이라고 할지라도 반드시 적어준다.</li>
+<li>Content Type을 빠트리지 마라. - HTTP 헤더나 HTML meta tag 두 곳에 모두 적어 준다. 브라우저는 Content Type을 &quot;sniff&quot;하는데 알고리즘이 여러 가지 사용된다. 그래서 추가적인 Delay도 생기고 보안에 구멍도 생긴다. &#39;text/html&#39;이라고 할지라도 반드시 적어준다.</li>
 <li>제대로 된 Charset을 명시한다.  - HTTP 헤더와 HTML meta tag 두 곳에 모두 명시한다.</li>
 </ul>
 <p>HTTP 헤더에 명시하는 예제:</p>

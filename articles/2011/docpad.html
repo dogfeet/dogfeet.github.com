@@ -11,7 +11,8 @@
     content="Docpad는 CoffeeScript로 작성한 static page engine이다. 이 dogfeet 사이트는 docpad를 사용해 만들었다."></meta>
   <meta name="keywords"
     content="Docpad,Prettify,Markdown,CoffeeKup"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Docpad &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/docpad.html" lang="ko-kr">
@@ -119,11 +119,11 @@
 <pre><code>:::html
 &lt;pre class=&quot;prittyprint&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre><p>이 모습 낮설어 보여도 <a href="http://dev.w3.org/html5/spec-author-view/the-code-element.html">w3c 권장사항</a>이다. html5에서 syntax highlight는 이렇게 해야 한다. 지원하는 언어는 <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">prettify 페이지</a>에서 확인한다.</p>
-<p>‘:::’말고 쉘 스크립트들을 위해서 ‘#!’도 추가했다. <code>#!/usr/bin/env bash</code>을 첫줄로 시작하면 다음과 같이 랜더링한다. 이건 삭제하지 않는다:</p>
+<p>&#39;:::&#39;말고 쉘 스크립트들을 위해서 &#39;#!&#39;도 추가했다. <code>#!/usr/bin/env bash</code>을 첫줄로 시작하면 다음과 같이 랜더링한다. 이건 삭제하지 않는다:</p>
 <pre><code>:::html
 &lt;pre class=&quot;prittyprint&quot;&gt;&lt;code class=&quot;language-bsh&quot;&gt;#!/usr/bin/env bash...&lt;/code&gt;&lt;/pre&gt;
 </code></pre><p><code>#!/bin/bash</code>라고 써도 되고 <code>#!/usr/bin/bash</code>라고 써도 된다.</p>
-<p>그리고 prettify하지 않은 코드를 위해 ‘text’와 ‘plain’도 추가했다. <code>:::text</code>나 <code>:::plain</code>을 첫줄에 넣어주면 다음과 같이 원래대로 렌더링한다.</p>
+<p>그리고 prettify하지 않은 코드를 위해 &#39;text&#39;와 &#39;plain&#39;도 추가했다. <code>:::text</code>나 <code>:::plain</code>을 첫줄에 넣어주면 다음과 같이 원래대로 렌더링한다.</p>
 <pre><code>:::html
 &lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
 </code></pre><h3 id="tool-plugin">Tool Plugin</h3>
@@ -172,7 +172,7 @@ name= &#39;ahmooge&#39;
 ---
 
 blahblah
-</code></pre><p>docpad는 이 문서를 처리해서 <code>{name:&#39;ahmooge&#39;, url:&#39;/authors/ahmooge.html&#39;, content: &#39;blahblah..&#39;, contentRendered: &#39;&lt;span&gt;blahblah&lt;/span&gt;&#39;}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 <code>@authors.data</code> 객체에 담아준다. ‘Kim’라는 document1와 ‘Park’라는 document2가 있으면 <code>@authors.data</code>에는 <code>{&quot;Kim&quot;: document1, &quot;Park&quot;:document2}</code>라는 객체가 들어가게 된다.</p>
+</code></pre><p>docpad는 이 문서를 처리해서 <code>{name:&#39;ahmooge&#39;, url:&#39;/authors/ahmooge.html&#39;, content: &#39;blahblah..&#39;, contentRendered: &#39;&lt;span&gt;blahblah&lt;/span&gt;&#39;}</code>라는 객체로 만든다. 이 객체를 document 객체라고 하자(실제 코드에서도 document다). authors plugin은 <code>/src/documents/authors/</code>안에 잇는 파일을 모아서 template data의 <code>@authors.data</code> 객체에 담아준다. &#39;Kim&#39;라는 document1와 &#39;Park&#39;라는 document2가 있으면 <code>@authors.data</code>에는 <code>{&quot;Kim&quot;: document1, &quot;Park&quot;:document2}</code>라는 객체가 들어가게 된다.</p>
 <p>그럼 CoffeeKup template에서 사용해보자:</p>
 <pre><code> a href: @authors.data[ @document.author ].url
 </code></pre><p>예외처리는 생략함.</p>

@@ -11,7 +11,8 @@
     content="커밋 히스토리는 굉장히 잘 관리해야 한다. 이 글은 merge를 잘해서 히스토리를 잘 관리하는 방법을 설명한다."></meta>
   <meta name="keywords"
     content="Git,Branch,Merge,Rebase"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git:merge &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/git-merge.html" lang="ko-kr">
@@ -95,7 +95,7 @@
 <li>merge, rebase, cherry pick을 이해해야 한다.</li>
 </ul>
 <p><img src="/articles/2011/git-merge/thousand_sunny_ship.jpg" alt="힘내"></p>
-<p>예를 들어 ‘싸우전드 써니’ 호는 밀짚모자 해적단의 안전한 항해를 책임지고 있기 때문에 아주 잘 관리해야 한다.</p>
+<p>예를 들어 &#39;싸우전드 써니&#39; 호는 밀짚모자 해적단의 안전한 항해를 책임지고 있기 때문에 아주 잘 관리해야 한다.</p>
 <p>보통 master, develop, pu(proposed updates), next 등으로 이름 짓는 브랜치가 긴 호흡 브랜치(long-runing branch)이다. 이 브랜치는 굉장히 오랫동안 유지하고 사실 거의 저장소에 내내 존재한다. 필요에 따라 삭제하기도 하지만 바로 다시 만들어야 하기 때문에 항상 필요하다. 각 브랜치는 브랜치 고유의 목적이 있다. 여기서 각 브랜치의 의미를 설명하지는 않는다.</p>
 <p>이 글에서는 긴 호흡 브랜치로 ship 브랜치를 사용한다.</p>
 <h2 id="merge-rebase-cherry-pick">Merge, Rebase, Cherry-pick</h2>
@@ -107,14 +107,14 @@
 <p>merge하기 전에 뭐가 다른지 확인해보는 것이 좋다. feature/sample이라는 토픽 브랜치를 ship 브랜치에 merge하는 경우에 다음과 같이 뭐가 다른지 살펴보자.</p>
 <pre><code>git log ship..feature/sample
 </code></pre><p>이 명령은 ship에는 없고 feature/sample에만 있는 커밋을 모두 보여준다. 그리고 나서 <code>git show</code> 명령으로 해당 커밋에서 도데체 무엇이 변경됐는지 확인할 수 있다.</p>
-<h4 id="-git-merge-no-commit-squash-">‘git merge —no-commit —squash’</h4>
+<h4 id="-git-merge-no-commit-squash-">&#39;git merge --no-commit --squash&#39;</h4>
 <p>이 명령은 토픽 브랜치를 긴 호흡 브랜치에 merge할 때 유용하다.</p>
 <p>예를 들어 토픽 브랜치에서 작업한 것을 긴 호흡 브랜치에 merge할 때는 토픽 브랜치에 있는 커밋을 하나의 의미로 묶어서 merge하는 것이 좋다. 토픽 브랜치는 보통 하나의 이슈를 구현하기 때문에 하나의 의미가 있을 확률이 높다. 보통 개발하다 보면 동료와 의논하거나 백업하는 등 여러 가지 이유로 여러 번 커밋을 하는 경우가 많다. 그대로 긴 호흡 브랜치에 merge하지 말고 의미 단위로 합쳐서 merge한다.</p>
 <p>ship 브랜치 히스토리가 다음과 같다고 하자:</p>
 <pre><code>:::text
 * 23a973a - (ship) Add feature/sample
 * 1934594 - Add ship
-</code></pre><p>이 상태에서 ‘프랑키’는 feature/guns 브랜치를 만들어 대포를 두 번에 나눠서 달았다. 배를 고친 후 feature/guns 브랜치는 다음과 같다:</p>
+</code></pre><p>이 상태에서 &#39;프랑키&#39;는 feature/guns 브랜치를 만들어 대포를 두 번에 나눠서 달았다. 배를 고친 후 feature/guns 브랜치는 다음과 같다:</p>
 <pre><code>:::text
 * f296244 - (feature/guns) Add gun2
 * 084ebfa - Add new A gun
@@ -133,12 +133,12 @@
 * 1934594 - Add ship
 </code></pre><p><code>--no-commit</code> 옵션을 주면 말 그대로 merge한 후 commit하지 않는다. <code>--no--commit</code> 옵션이 없더라도 커밋 여러 개를 합친 것이기(squash) 때문에 merge만하고 자동으로 커밋해주지 않는다. 수동으로 커밋 메시지를 수정하고 커밋한다.</p>
 <h3 id="rebase">Rebase</h3>
-<p>‘프랑키’가 대포를 추가하는 사이에 ‘나미’는 ‘feature/tangerine’ 브랜치를 만들고 귤 나무를 하나 심었다:</p>
+<p>&#39;프랑키&#39;가 대포를 추가하는 사이에 &#39;나미&#39;는 &#39;feature/tangerine&#39; 브랜치를 만들고 귤 나무를 하나 심었다:</p>
 <pre><code>:::text
 * 945381e - (feature/tangerine) Plant new tangerine
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
-</code></pre><p>‘나미’는 자신의 결과물을 push하기 위해서 먼저 pull한다. 그럼 ‘나미’의 ship 브랜치는 다음과 같다:</p>
+</code></pre><p>&#39;나미&#39;는 자신의 결과물을 push하기 위해서 먼저 pull한다. 그럼 ‘나미’의 ship 브랜치는 다음과 같다:</p>
 <pre><code>:::text
 * 99f108e - (ship) Add new guns
 * 23a973a - Add feature/sample
@@ -156,7 +156,7 @@
 |/
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
-</code></pre><p>ship 브랜치에 merge 커밋이 들어갔기 때문에 히스토리가 선형적이지 않다. 곧 사라질 브랜치인 ‘feature/tangerine’ 브랜치의 잔재가 커밋 히스토리에 남는다. 이럴 때는 rebase가 필요하다. 다음과 같이 feature/tangerine 브랜치를 checkout하고 rebase한다:</p>
+</code></pre><p>ship 브랜치에 merge 커밋이 들어갔기 때문에 히스토리가 선형적이지 않다. 곧 사라질 브랜치인 &#39;feature/tangerine&#39; 브랜치의 잔재가 커밋 히스토리에 남는다. 이럴 때는 rebase가 필요하다. 다음과 같이 feature/tangerine 브랜치를 checkout하고 rebase한다:</p>
 <pre><code>$ git checkout feature/tangerine
 $ git rebase ship
 First, rewinding head to replay your work on top of it...
@@ -167,7 +167,7 @@ Applying: Plant new tangerine
 * 99f108e - (ship) Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
-</code></pre><p>feature/tangerine의 히스토리를 잘 보자. feature/tangerine 브랜치에서 추가한 커밋의 SHA 값이 ‘945381e’에서 ‘0c8c128’로 바뀌었다. rebase하면 ship 브랜치가 가리키는 커밋을 base로 해서 해당 커밋 개체를 다시 만든다. 그래서 저장소에 이미 push한 커밋에 대해서 rebase하면 다른 동료가 혼란스러워하고 히스토리를 다시 정리하기 위해 추가작업이 필요해진다</p>
+</code></pre><p>feature/tangerine의 히스토리를 잘 보자. feature/tangerine 브랜치에서 추가한 커밋의 SHA 값이 &#39;945381e&#39;에서 &#39;0c8c128&#39;로 바뀌었다. rebase하면 ship 브랜치가 가리키는 커밋을 base로 해서 해당 커밋 개체를 다시 만든다. 그래서 저장소에 이미 push한 커밋에 대해서 rebase하면 다른 동료가 혼란스러워하고 히스토리를 다시 정리하기 위해 추가작업이 필요해진다</p>
 <p>그리고 나서 ship 브랜치에 feature/tangerine을 merge한다. 이때 feature/tangerine 브랜치는 ship 브랜치를 base로 하기 때문에 Fast-forward된다. merge하면 ship 브랜치의 히스토리는 다음과 같아진다:</p>
 <pre><code>:::text
 * 0c8c128 - (ship, feature/tangerine) Plant new tangerine
@@ -175,7 +175,7 @@ Applying: Plant new tangerine
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
 </code></pre><h3 id="cherry-pick">Cherry-pick</h3>
-<p>‘루피’는 고기와 과일을 가지고 돌아왔다. ‘루피’의 브랜치, feature/food는 다음과 같다:</p>
+<p>&#39;루피&#39;는 고기와 과일을 가지고 돌아왔다. &#39;루피&#39;의 브랜치, feature/food는 다음과 같다:</p>
 <pre><code>:::text
 * df19672 - (feature/food) Add fruits
 * 663ced1 - Add meats
@@ -183,7 +183,7 @@ Applying: Plant new tangerine
 * 99f108e - Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
-</code></pre><p>그런데 배에 이미 과일이 많아서 고기만 배에 넣기로 했다. 두 커밋 ‘df19672’, ‘663ced1’ 중에서 ‘663ced1’ 골라서 merge 시킬 수 있을까? 이럴 때 cherry-pick을 사용한다. cherry-pick은 기여자가 보내온 커밋 중에서 하나만 rebase하는 것이다. 커밋 하나만 rebase하는 것이기 때문에 커밋 개체도 새로 만들어진다.</p>
+</code></pre><p>그런데 배에 이미 과일이 많아서 고기만 배에 넣기로 했다. 두 커밋 &#39;df19672&#39;, &#39;663ced1&#39; 중에서 &#39;663ced1&#39; 골라서 merge 시킬 수 있을까? 이럴 때 cherry-pick을 사용한다. cherry-pick은 기여자가 보내온 커밋 중에서 하나만 rebase하는 것이다. 커밋 하나만 rebase하는 것이기 때문에 커밋 개체도 새로 만들어진다.</p>
 <p>ship 브랜치로 이동해서 <code>git cherry-pick 663ced1</code> 명령을 실행하면 ship 브랜치 히스토리는 다음과 같아진다:</p>
 <pre><code>:::text
 * 271fa93 - (ship, feature/food) Add meats
@@ -195,7 +195,7 @@ Applying: Plant new tangerine
 <p>merge 커밋을 해야 하는 이유는 대개 이슈사항을 커밋 하나로 정리할 수 없기 때문이다. 이슈를 하나로 정리해서 히스토리를 선형적으로 관리하는 것도 좋은 방법이지만 커밋 하나로 정리할 수 없는 이슈를 하나로 정리해 버리면 나중에 추적하기도 관리하기도 어려워진다.</p>
 <h3 id="fast-forward-merge">Fast-forward Merge</h3>
 <p>이슈를(토픽 브랜치를) 하나의 커밋으로 정리할 수 있다면 fast-forward merge가 낫다. 브랜치에 커밋이 하나면 그 커밋 메시지를 적절히 수정해서 merge하고 아니면 하나로 합쳐서 merge한다. 커밋이 하나인 브랜치를 merge할 때 merge 커밋을 히스토리에 남기면 브랜치 이름을 기록해 두는 것 이외에 아무런 이득이 없다.</p>
-<p>fast-forward merge하는 방법을 살펴보자. ‘프랑키’는 feature/fix-ship 브랜치를 만들어 뱃머리와 닻을 수리했다:</p>
+<p>fast-forward merge하는 방법을 살펴보자. &#39;프랑키&#39;는 feature/fix-ship 브랜치를 만들어 뱃머리와 닻을 수리했다:</p>
 <pre><code>* 52f084e - (HEAD, feature/fix-ship) Fix anchor
 * eb1db0d - Fix sunny bow
 * 271fa93 - (ship) Add meats
@@ -210,7 +210,7 @@ Applying: Plant new tangerine
 </code></pre><p>feature/fix-ship 브랜치는 ship 브랜치를 base로 하기 때문에 fast-forward merge될 수 있다. <code>merge-base</code> 명령으로도 확인할 수 있다. 이 명령은 두 브랜치가 공통으로 하는 공통 커밋을 알려준다:</p>
 <pre><code>$ git merge-base ship feature/fix-ship
 271fa933f42c7d6b0fa1e967c7d73801e83936b3
-</code></pre><p>ship은 ‘271fa93’를 가리키고 있고 feature/fix-ship은 그 커밋을 base로 하고 있다.</p>
+</code></pre><p>ship은 &#39;271fa93&#39;를 가리키고 있고 feature/fix-ship은 그 커밋을 base로 하고 있다.</p>
 <p><code>--no-ff</code> 옵션을 사용하지 않고 merge하면 fast-forward merge된다.</p>
 <pre><code>$ git checkout ship
 $ git merge feature/fix-ship
@@ -247,14 +247,14 @@ Merge made by recursive.
 </code></pre><p>어떤 feature를 merge했고 그 feature에 해당하는 커밋이 무엇인지 히스토리에 남는다. 만약 이 merge를 취소하고 싶을 때는 다음과 같이 실행하면 된다.</p>
 <pre><code>$ git reset --hard HEAD~1
 HEAD is now at 271fa93 Add meats
-</code></pre><p>merge 커밋이 있기 때문에 ‘HEAD~1’ 만으로도 feature/fix-ship에 해당하는 커밋이 모두 reset된다:</p>
+</code></pre><p>merge 커밋이 있기 때문에 &#39;HEAD~1&#39; 만으로도 feature/fix-ship에 해당하는 커밋이 모두 reset된다:</p>
 <pre><code>* 271fa93 - (HEAD, ship) Add meats
 * 0c8c128 - Plant new tangerine
 * 99f108e - Add new guns
 * 23a973a - Add feature/sample
 * 1934594 - Add ship
 </code></pre><h2 id="-">결론</h2>
-<p>Vincent Driessen는 <a href="http://dogfeet.github.io/articles/2011/a-successful-git-branching-model.html">A successful Git branching model</a>에서 —no-ff를 기본 옵션으로 해야 한다고 했지만, 꼭 그렇지 않다. 히스토리를 어떻게 관리할지에 따라 선택해야 하고 fast-forward merge해야 하는 경우도 매우 많다.</p>
+<p>Vincent Driessen는 <a href="http://dogfeet.github.io/articles/2011/a-successful-git-branching-model.html">A successful Git branching model</a>에서 --no-ff를 기본 옵션으로 해야 한다고 했지만, 꼭 그렇지 않다. 히스토리를 어떻게 관리할지에 따라 선택해야 하고 fast-forward merge해야 하는 경우도 매우 많다.</p>
 <p>실제로 Driessen이 저 글의 내용을 구현한 <a href="https://github.com/nvie/gitflow">git-flow</a>에서도 feature 브랜치에 commit이 하나만 있으면 develop 브랜치에 fast-forward로 merge한다.</p>
 </div>
     </div>

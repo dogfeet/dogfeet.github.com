@@ -11,7 +11,8 @@
     content="윈도우는 늘 불편하니까 putty를 항상 띄워놓고 서버에서 논다. msysgit을 쓰긴하지만 서버에서 놀기에 로컬에서는 설정 백업할 때나 사용했다. 최근 로컬에서도 git을 사용하는 빈도가 늘면서 매번 인증서 암호를 입력하는게 너무 불편했다. 왠지 pageant와 연동이 잘될 것 같아서 Google님에게 물어보니 바로 나온다."></meta>
   <meta name="keywords"
     content="git,msysgit,pageant"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="git: msysgit + pageant &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2013/git-msysgit-pageant.html" lang="ko-kr">
@@ -120,7 +120,7 @@ Store key in cache? (y/n) y
 Using username &quot;git&quot;.
 Server refused to allocate pty
 Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
-</code></pre><p>서버가 ‘Hi pismute!’라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
+</code></pre><p>서버가 &#39;Hi pismute!&#39;라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
 <p>키를 자동으로 저장하는 방법이 있을 것 같은데 찾지 못했다. <a href="http://rc.quest.com/topics/putty/">Quest의 plink</a>에는 <code>-auto_store_key_in_cache</code> 옵션이 있어서 자동으로 저장해주도록 만들 수 있는데, 이건 왠일인지 msysgit과 연동이 잘 안된다.</p>
 <blockquote>
 <p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>

@@ -11,7 +11,8 @@
     content="얼마 전에 ssh_agent에 관한 글을 썼다. 그 후 나름 만족하고 있었는데, bash_it 플러그인으로 만들어서 편리하다라고 생각하고 있었는데, 약 5~6년간 이렇게 사용해 왔는데, keychain이라는 걸 발견했다."></meta>
   <meta name="keywords"
     content="keychain"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="keychain for ssh login &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1320111077.html" lang="ko-kr">
@@ -89,13 +89,13 @@
       <div property="sioc:content"><h1 id="keychain-for-ssh-login">keychain for ssh login</h1>
 <p>얼마 전에 <a href="/articles/2011/1318481700.html">ssh_agent</a>에 관한 글을 썼다. 그 후 나름 만족하고 있었는데, bash_it 플러그인으로 만들어서 편리하다라고 생각하고 있었는데, 약 5~6년간 이렇게 사용해 왔는데, keychain이라는 걸 발견했다.</p>
 <h2 id="-">설정하기</h2>
-<p>아 이렇게 편리할 수 가…:</p>
+<p>아 이렇게 편리할 수 가...:</p>
 <pre><code>keychain --timeout 360 ~/.ssh/id_rsa
 source ~/.keychain/$(hostname)-sh
 </code></pre><p>.bash_profile에 넣거나 .bash_it/custom/keychain.bash에 넣어준다.</p>
 <p>여기서는 6시간이 지나면 timeout되게 했지만 로그인 할때마다 암호를 입력하게 하고 싶으면:</p>
 <pre><code>keychain --clear ~/.ssh/id_rsa
-</code></pre><p>이렇게 입력한다. 머리가 나쁘면 고생….</p>
+</code></pre><p>이렇게 입력한다. 머리가 나쁘면 고생....</p>
 </div>
     </div>
   </article>

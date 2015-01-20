@@ -11,7 +11,8 @@
     content="이 글은 Klemen Slavič의 Understanding CSS3 2D Transforms를 번역한 글이다. 최근 CSS의 transform으로 DOM 객체를 이동시키는데 좌표이동이 헷갈려 정리하고 지나가려 한다. 2011년 3월의 글이라 현재는 다 구현되었는데 글에서는 구현 중으로 표현할 수도 있으니 혼란스러워하지 말길 바란다."></meta>
   <meta name="keywords"
     content="2d,transform,css,translation"></meta>
-  <meta name="author" content="Yongjae Choi"></meta>
+  <meta name="author"
+    content="Yongjae Choi"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Understanding CSS3 2D Transforms &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/understanding-css3-2d-transforms.html" lang="ko-kr">
@@ -91,7 +91,7 @@
 <p><img src="/articles/2012/css-transform/optimus-prime.jpeg" alt="optimus-prime"></p>
 <h2 id="-transformation-">변환(Transformation)이 뭐냐?</h2>
 <p>수학적으로 엄격하고 광의로의 변환은 한 집합의 요소 X를 다른 집합의 Y로 대응시키는 연산이다. 기하학에서는 한 공간상의 객체들을 다른 기하 공간상에 1:1로 옮기는 수학적 방법이라고 한다.</p>
-<p>더 쉽게 말하자면, 우리가 물건을 하나 집어서 이리저리 변형을 시킬 수 있다는 뜻이다. ‘이리저리 변형’이라는 것은 순서가 있는 변환 연산 리스트이다. 변환 연산의 종류는 이동, 확대, 반사, 회전, 기울임이 있다. 이 정도면 쉽게 설명했다. 오케이?</p>
+<p>더 쉽게 말하자면, 우리가 물건을 하나 집어서 이리저리 변형을 시킬 수 있다는 뜻이다. &#39;이리저리 변형&#39;이라는 것은 순서가 있는 변환 연산 리스트이다. 변환 연산의 종류는 이동, 확대, 반사, 회전, 기울임이 있다. 이 정도면 쉽게 설명했다. 오케이?</p>
 <p>객체를 다루는 영역으로 들어가기 전에 우린 이런 변환들이 정확히 어떻게 동작하는지 알아야 한다. 말했듯이 변환 그룹은 순서 있는 변환 연산의 집합이다. 따라서 변환 연산의 순서에 따라 결과가 달라진다. 변환은 객체의 현재 위치 등 온갖 기하학적 요소를 고려해서 적용되기 때문이다.</p>
 <h3 id="-origin-">변환의 원점(Origin) 이해하기</h3>
 <p>아래의 간단한 예제를 보자. 2x2 크기의 사각형의 중심이 원점(0, 0)에 있다.</p>
@@ -110,7 +110,7 @@
 <p>편의상 모든 윈도우에서 원점은 왼쪽 위에 있고 y축이 아래쪽이다. 그래서 화면의 모든 픽셀은 양의 정수로 표현할 수 있다.</p>
 <h2 id="tilt-">TILT!</h2>
 <p>변환의 수학적인 개념을 숙지한 채로 이것들을 CSS로 어떻게 구현하는지 알아보자.</p>
-<p>시작하기 전에 주의할 것이 있다. 여기서 사용할 CSS의 기능들이 모든 브라우저에서 구현이 안 되어있다. 따라서 표준 CSS 프로퍼티 앞에 벤더에 종속적인 접두어를 표기 할 것이다. ‘흥미로운 것들’ 섹션을 보면 크로스-브라우저 CSS 변환을 위한 중복 표기를 우회하는 방법을 설명해놨다.</p>
+<p>시작하기 전에 주의할 것이 있다. 여기서 사용할 CSS의 기능들이 모든 브라우저에서 구현이 안 되어있다. 따라서 표준 CSS 프로퍼티 앞에 벤더에 종속적인 접두어를 표기 할 것이다. &#39;흥미로운 것들&#39; 섹션을 보면 크로스-브라우저 CSS 변환을 위한 중복 표기를 우회하는 방법을 설명해놨다.</p>
 <h3 id="-transformation-origin-">변환 원점(Transformation origin)</h3>
 <p>변환 원점을 지정하는 건 trasform-origin이라는 CSS 프로퍼티를 이용한다.</p>
 <ol>
@@ -124,11 +124,11 @@
 <h3 id="-transformation-groups-">변환 그룹(Transformation groups)</h3>
 <p>CSS의 transform 프로퍼티에 적용할 변환 연산의 리스트를 순서대로 적어주는 것만으로 변환 그룹을 만들 수 있다.</p>
 <ol>
-<li>-moz-transform: &lt;trans1&gt; &lt;trans2&gt; …;</li>
-<li>-webkit-transform: &lt;trans1&gt; &lt;trans2&gt; …;</li>
-<li>-ms-transform: &lt;trans1&gt; &lt;trans2&gt; …;</li>
-<li>-o-transform: &lt;trans1&gt; &lt;trans2&gt; …;</li>
-<li>transform: &lt;trans1&gt; &lt;trans2&gt; …;</li>
+<li>-moz-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
+<li>-webkit-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
+<li>-ms-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
+<li>-o-transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
+<li>transform: &lt;trans1&gt; &lt;trans2&gt; ...;</li>
 </ol>
 <p>여기서 &lt;trans1&gt;, &lt;trans2&gt;등은 서로 다른 변환 연산들이다. 각 연산은 공백문자로 구분한다.</p>
 <h3 id="-translation-">평행이동(Translation)</h3>
@@ -141,9 +141,8 @@
 <li>transform: translate(tx[, ty]) | translateX(tx) | translateY(ty);</li>
 </ol>
 <p>tx는 가로 방향 오프셋이고 ty는 세로 방향 오프셋이다. 아래는 이미지를 60픽셀 오른쪽, 20픽셀 아래쪽으로 움직이는 예제이다.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl04_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/01.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl04_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/01.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>-moz-transform: translate(60px, 20px);</li>
 <li>-webkit-transform: translate(60px, 20px);</li>
@@ -162,9 +161,8 @@
 </ol>
 <p>스케일링은 인자로 들어온 크기만큼 객체를 확대/축소 시킨다. 각 인자는 단위가 없는 숫자이다. 만약 scale 키워드에 인자 하나만 넘긴다면, 유니폼 스케일로 작동한다. (가로 세로의 비율을 유지하면서 스케일링 된다.) 음수가 인자로 들어오면 각 축에 대칭적으로 스케일링 된다.</p>
 <p>아래에 객체를 오른쪽 위를 기준으로 80% 축소하는 예제를 보자.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl07_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/02.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl07_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/02.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>/<em> 원점을 오른쪽 위로 지정한다. </em>/</li>
 <li>-moz-transform-origin: 100% 0;</li>
@@ -181,9 +179,8 @@
 <li>transform: scale(0.8);</li>
 </ol>
 <p>x축을 기준으로 이미지를 반전시키려면 scaleY에 음수를 넘긴다.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl09_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/03.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl09_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/03.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>/<em> 요소의 중간을 원점으로 잡기(기본값) </em>/</li>
 <li>-moz-transform-origin: 50% 50%;</li>
@@ -209,9 +206,8 @@
 <li>transform: rotate(&lt;angle&gt;);</li>
 </ol>
 <p>&lt;angle&gt;은 객체를 변환 원점을 기준으로 얼마나 회전시킬지를 결정한다. 단위를 적어줘야 한다(deg, rad, grad 중에 하나) 양수는 시계방향 회전을 의미한다. 아래 예제는 객체를 오른쪽 아래 모서리를 기준으로 회전시키는 것이다.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl12_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/04.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl12_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/04.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>/<em> 오른쪽 아래를 원점으로 잡기 </em>/</li>
 <li>-moz-transform-origin: 100% 100%;</li>
@@ -238,9 +234,8 @@
 </ol>
 <p>기울이기는 축의 방향만 바꾸는 거라서 변환 원점과는 관계가 없다. 각도의 단위는 deg, rad, grad 중에 하나를 사용한다. 회전 연산에서 각도가 양수이면 시계 방향으로 회전하지만 여기서는 반대로 동작한다. 그리고 논리적으로 추측해 봤을 때 skewX와 skewY는 각각 x와 y축 자체에 영향을 줄 것으로 생각할 수 있지만 사실 그건 객체가 기울어질 방향을 의미한다.</p>
 <p>예제를 보자</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl15_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/05.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl15_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/05.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>/<em> 원점을 왼쪽 위 모서리로 옮김 </em>/</li>
 <li>-moz-transform-origin: 0 0;</li>
@@ -257,9 +252,8 @@
 <li>transform: skewX(-20deg);</li>
 </ol>
 <p>변환이 어떻게 일어나는지 이 예제로 확실히 알 수 있다. 만약 skewX에 음수의 인자를 넘긴다면 객체는 오른쪽으로 기울진다. 수평 방향 기울이기도 똑같다. 하지만 여기선 양수가 시계방향을 의미한다.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl17_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/06.html&quot; height=&quot;220&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl17_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/06.html" height="220" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>/<em> 원점을 왼쪽 위 모서리로 옮김 </em>/</li>
 <li>-moz-transform-origin: 0 0;</li>
@@ -279,9 +273,8 @@
 <h2 id="-">바이바이 수평, 우린 널 기억할 거야.</h2>
 <p>우리는 각 변환을 마스터했다. 이제는 원하는 효과를 내기 위해서 변환 그룹을 배워보자.</p>
 <p>일반적으로 CSS 변환은 버튼에 마우스를 올리면 비틀고, 확대해서 사용자가 그들을 클릭하도록 하는 데에 사용된다. 이 효과는 회전과 스케일링을 이용하면 간단히 구현할 수 있다. 한번 만들어보자.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl19_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/07.html&quot; onload=&quot;setFrameHeight(this);&quot; height=&quot;100%&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl19_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/07.html" onload="setFrameHeight(this);" height="100%" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>button {</li>
 <li>padding: 1em 2em;</li>
@@ -297,9 +290,8 @@
 </ol>
 <p>묘하게 회전하면서 확대되는 효과를 만들어서 버튼이 사용자에게 튀어 오르는 효과를 만들어 클릭을 유도했다.</p>
 <p>안에 있는 요소의 변환 그룹과 함께 변환할 수도 있다. 아래는 버튼을 다른 요소로 감싸서 버튼과 버튼을 감싼 요소를 서로 다른 방향으로 회전시킨 예제이다.</p>
-<p>&lt;iframe id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl21_iframeinclude&quot; src=&quot;http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/08.html&quot; onload=&quot;setFrameHeight(this);&quot; height=&quot;100%&quot; width=&quot;550&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;&lt;/iframe&gt;
+<iframe id="ctl00_MTContentSelector1_mainContentContainer_ctl21_iframeinclude" src="http://www.microsoft.com/feeds/ScriptJunkie/articlesamples/gg709742/08.html" onload="setFrameHeight(this);" height="100%" width="550" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 
-</p>
 <ol>
 <li>.wrapper {</li>
 <li>margin: 5px;</li>
@@ -336,67 +328,66 @@
 <h2 id="-">그래서 이게 어디서 돌아가는데?</h2>
 <p>옛날에 IE6에서 자기들만의 CSS의 필터를 처리하기 위해 DXtransform을 지원하기는 했지만, 그 당시에는 비슷한 기능이라도 구현한 브라우저는 없었기에 2D 변환은 지금 브라우저에서는 참신한 것이다. 그래도 최근에 브라우저 개발 경쟁에 불이 붙어 모든 주요 브라우저 벤더들이 자사 브라우저들의 최신 릴리즈에 2D 변환기능을 넣어가고 있고 하드웨어 가속을 이용하는 브라우저도 있다.  (역자 주: 2011년 3월 글이다.)</p>
 <p>현재 다음의 브라우저들이 변환을 지원하고 있다.</p>
-<p>&lt;style&gt;
+<p><style>
   .grid td {
     padding: 5px;
     border: solid #333 1px;
   }
-&lt;/style&gt;</p>
-<p>&lt;table class=&quot;grid&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr style=&quot;background-color:black;color:white;&quot;&gt;
-      &lt;th id=&quot;th204812500000&quot;&gt;Browser&lt;/th&gt;
-      &lt;th id=&quot;th204812500001&quot;&gt;Since&lt;/th&gt;
-      &lt;th id=&quot;th204812500002&quot;&gt;Implementing&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500100&quot; rowspan=&quot;2&quot;&gt;Internet Explorer&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500100&quot;&gt;5.5&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500100&quot;&gt;&lt;ul&gt;&lt;li&gt;Via proprietary CSS DirectX filter:&nbsp;&lt;a id=&quot;ctl00_MTContentSelector1_mainContentContainer_ctl24&quot; href=&quot;http://msdn.microsoft.com/en-us/library/ms533014(VS.85,loband).aspx&quot; onclick=&quot;javascript:Track(&#39;ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl24&#39;,this);&quot;&gt;Matrix Filter&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500000 th204812500100 th204812500300 th204812500400 th204812500500 th204812500600 th204812500700&quot;&gt;9.0&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001&quot;&gt;&lt;ul&gt;&lt;li&gt;-ms-transform&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500300&quot;&gt;Firefox (Gecko)&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500300&quot;&gt;3.5 (1.9.1)&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500300&quot;&gt;&lt;ul&gt;&lt;li&gt;-moz-transform&lt;/li&gt;&lt;li&gt;transform (&lt;em&gt;newer versions&lt;/em&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500400&quot;&gt;Opera&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500400&quot;&gt;10.5&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500400&quot;&gt;&lt;ul&gt;&lt;li&gt;-o-transform&lt;/li&gt;&lt;li&gt;transform (&lt;em&gt;newer versions&lt;/em&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500500&quot;&gt;Safari (WebKit)&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500500&quot;&gt;3.1 (525)&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500500&quot;&gt;&lt;ul&gt;&lt;li&gt;-webkit-transform&lt;/li&gt;&lt;li&gt;transform (&lt;em&gt;newer versions&lt;/em&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500600&quot;&gt;Chrome&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500600&quot;&gt;1.0&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500600&quot;&gt;&lt;ul&gt;&lt;li&gt;-webkit-transform (using WebKit engine)&lt;/li&gt;&lt;li&gt;transform (&lt;em&gt;newer versions&lt;/em&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;padding: 5px; border: solid #333 1px;&quot; id=&quot;th204812500700&quot;&gt;iOS&lt;/th&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500001 th204812500700&quot;&gt;all versions&lt;/td&gt;
-      &lt;td style=&quot;padding: 5px; border: solid #333 1px;&quot; headers=&quot;th204812500002 th204812500700&quot;&gt;-webkit-transform (using WebKit engine)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+</style></p>
+<table class="grid">
+  <thead>
+    <tr style="background-color:black;color:white;">
+      <th id="th204812500000">Browser</th>
+      <th id="th204812500001">Since</th>
+      <th id="th204812500002">Implementing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500100" rowspan="2">Internet Explorer</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500100">5.5</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500100"><ul><li>Via proprietary CSS DirectX filter:&nbsp;<a id="ctl00_MTContentSelector1_mainContentContainer_ctl24" href="http://msdn.microsoft.com/en-us/library/ms533014(VS.85,loband).aspx" onclick="javascript:Track('ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl24',this);">Matrix Filter</a></li></ul></td>
+    </tr>
+    <tr>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500000 th204812500100 th204812500300 th204812500400 th204812500500 th204812500600 th204812500700">9.0</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001"><ul><li>-ms-transform</li></ul></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500300">Firefox (Gecko)</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500300">3.5 (1.9.1)</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500300"><ul><li>-moz-transform</li><li>transform (<em>newer versions</em>)</li></ul></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500400">Opera</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500400">10.5</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500400"><ul><li>-o-transform</li><li>transform (<em>newer versions</em>)</li></ul></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500500">Safari (WebKit)</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500500">3.1 (525)</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500500"><ul><li>-webkit-transform</li><li>transform (<em>newer versions</em>)</li></ul></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500600">Chrome</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500600">1.0</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500600"><ul><li>-webkit-transform (using WebKit engine)</li><li>transform (<em>newer versions</em>)</li></ul></td>
+    </tr>
+    <tr>
+      <th style="padding: 5px; border: solid #333 1px;" id="th204812500700">iOS</th>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500001 th204812500700">all versions</td>
+      <td style="padding: 5px; border: solid #333 1px;" headers="th204812500002 th204812500700">-webkit-transform (using WebKit engine)</td>
+    </tr>
+  </tbody>
+</table>
 
 
-</p>
 <h2 id="-">흥미로운 것들</h2>
 <h3 id="-">성능</h3>
 <p>위의 브라우저 지원 목록을 보고 곧바로 자리에 앉아 막 객체들을 변환해서 홈페이지를 이리저리 돌아다니도록 할 수도 있다. 기술적으로 분명 가능하다. 하지만 CSS 변환을 이용한 크로스-브라우저 지원은 비용이 많이 들어가고 성능상의 문제도 있다.</p>
 <p>2D 하드웨어 가속을 지원하지 않는 브라우저는 모든 변환을 CPU로 해결한다. 구린 렌더링 엔진을 가진 브라우저의 예로 Firefox pre-4.0이나 Internet Explorer pre-9 정도가 있다. 가속하든 안 하든 올바르게 변환되지만, IE 같은 경우는 성능이 구리다. 많은 변환 연산을 하는 웹페이지는 성능저하를 일으킬 것이다. IE는 z-index 문제도 일어날 수 있다.</p>
 <h3 id="-">렌더링</h3>
 <p>여러 플랫폼에서 돌아가는 크롬에 관해 주의해야 할 또 다른 점은 회전/기울어진 이미지(다른 DOM 요소는 해당하지 않는다.)의 가장자리가 윈도우즈에서는 안티엘리어싱이 적용되지 않고 톱니 모양으로 자글자글한다는 것이다. 이 문제는 리눅스에서도 보인다. 리눅스에서 모든 회전된 문자열은 안티엘리어싱이 적용되지 않고, 글자들 일부분은 끊어져 깨져 보이는 데다가 대부분의 작은 글자는 변환 연산을 거치면 읽을 수도 없다.</p>
-<h3 id="-">애들…아니 유저를 생각해!</h3>
+<h3 id="-">애들...아니 유저를 생각해!</h3>
 <p>아직도 CSS 변환을 만지작 거리고 있다면(그리고 그래야만 한다면!) 2D CSS 변환을 지원하지 않는 브라우저를 이용하고 있는 사용자들을 위해 <a href="http://modernizr.com/">Modernizr</a>를 이용하면 그런 변환을 대체할 수 있는 표현이나 우아하게 다운그레이드된 화면을 보여줄 수 있다. 만약 그게 필요하다면 브라우저의 지원 여부를 알아내서 순수 CSS로 대체 화면을 만들어내거나 요소를 숨기거나 할 수 있다. 예제로 이 글에 있는 iframe은 대체 할 화면을 보여줄 수 있으며 사용자에게 CSS 변환을 지원하지 않는 버전을 사용하고 있다고 알려준다.</p>
 <p>또, 만약 여러 버전의 CSS 어트리뷰트를 작성하기가 싫다면 <a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a>를 사용해보는 것도 좋다. cssSandpaper는 표준 문법으로 모든 벤더들에서 작동하는 CSS 어트리뷰트를 만들어준다. 그리고 W3C 문법을 DirectX필터로 바꿔서 Explorer5.5에서도 돌아갈 수 있도록 만들어준다.</p>
 <h2 id="-">가랏!</h2>

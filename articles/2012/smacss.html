@@ -8,10 +8,11 @@
 
   <title>#dogfeet - SMACSS: Brief Notes - Part 1</title>
   <meta name="description"
-    content="SMACSS(‘smacks’, 아마도 ‘스맥스’로 읽는다)에는 ‘Jonathan Snook‘의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다."></meta>
+    content="SMACSS(&#39;smacks&#39;, 아마도 &#39;스맥스&#39;로 읽는다)에는 &#39;Jonathan Snook&#39;의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다."></meta>
   <meta name="keywords"
     content="CSS,SMACSS,Jonathan Snook,Review"></meta>
-  <meta name="author" content="Changwoo Park, Sean Lee"></meta>
+  <meta name="author"
+    content="Changwoo Park, Sean Lee"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="SMACSS: Brief Notes - Part 1 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/smacss.html" lang="ko-kr">
@@ -87,8 +87,8 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="smacss-brief-notes-part-1">SMACSS: Brief Notes - Part 1</h1>
-<p><a href="http://smacss.com/">SMACSS</a>(‘smacks’, 아마도 ‘스맥스’로 읽는다)에는 ‘<a href="http://snook.ca/">Jonathan Snook</a>‘의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
-<p><em>Back-End 출신이라 CSS를 사용할 때마다 ‘이 많은 스타일은 어떻게 관리해야 할까?’라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
+<p><a href="http://smacss.com/">SMACSS</a>(&#39;smacks&#39;, 아마도 &#39;스맥스&#39;로 읽는다)에는 &#39;<a href="http://snook.ca/">Jonathan Snook</a>&#39;의 오랜 경험과 통찰이 담겨 있다. SMACSS는 프레임워크라기 보다는 스타일 가이드에 가까워서 만드는 사이트에 따라 그때그때 유연하게 사용할 수 있다.</p>
+<p><em>Back-End 출신이라 CSS를 사용할 때마다 &#39;이 많은 스타일은 어떻게 관리해야 할까?&#39;라는 궁금증을 늘 가지고 있었다. 이 책은 그 궁금증을 해결해 준다.</em></p>
 <p>이 책은 두 번으로 나눠서 정리할 것인데 Part 1은 CSS Rule에 대하여, Part 2는 SMACSS의 나머지 부분을 다룰 예정이다.</p>
 <p><img src="/articles/2012/smacss/smacss.png" alt="SMACSS"></p>
 <h2 id="introduction">Introduction</h2>
@@ -112,9 +112,9 @@
 <li>Module Rule</li>
 <li>State Rule</li>
 </ul>
-<p><a href="http://mondaybynoon.com/20120109/book-review-smacss/">SMACSS Review</a>를 작성한 ‘Jonathan Christopher’는 몇 시간이면 다 읽는다고 했는데 난 며칠 걸렸다. 영어인데다가 분명히 흥미로운 내용인데도 이상하게 읽어도 읽어도 머릿속에 잘 들어오지 않았다.</p>
+<p><a href="http://mondaybynoon.com/20120109/book-review-smacss/">SMACSS Review</a>를 작성한 &#39;Jonathan Christopher&#39;는 몇 시간이면 다 읽는다고 했는데 난 며칠 걸렸다. 영어인데다가 분명히 흥미로운 내용인데도 이상하게 읽어도 읽어도 머릿속에 잘 들어오지 않았다.</p>
 <p>이 책은 CSS를 관리하는 법에 대해서 설명한다. 표현에 대해서 다루는 CSS 책은 무수히 많지만 이런 책은 드물다.</p>
-<p>SMACSS는 유료 컨텐츠도 있지만, 기본적으로 무료다. 만약 ebook 포멧으로 읽거나 숨겨진 컨텐츠를 읽고 싶으면 결제해야 하지만 책의 내용 대부분을 웹에서 무료로 읽을 수 있다. 하지만, 구매하길 바란다. 무료로도 읽을 수 있지만 그만한 가치가 있다. 지금 유료 컨텐츠는 ‘The Icon Module’, ‘Screencast: Applying the Principles’ 둘뿐이지만 저자는 계속 추가한다고 한다.</p>
+<p>SMACSS는 유료 컨텐츠도 있지만, 기본적으로 무료다. 만약 ebook 포멧으로 읽거나 숨겨진 컨텐츠를 읽고 싶으면 결제해야 하지만 책의 내용 대부분을 웹에서 무료로 읽을 수 있다. 하지만, 구매하길 바란다. 무료로도 읽을 수 있지만 그만한 가치가 있다. 지금 유료 컨텐츠는 &#39;The Icon Module&#39;, &#39;Screencast: Applying the Principles&#39; 둘뿐이지만 저자는 계속 추가한다고 한다.</p>
 <p>다음은 공부한 내용을 정리한 것이다. 읽고 해석한 대로 정리한 것이니 원문과 다를 수도 있다.</p>
 <h2 id="four-types-of-css-rules">Four Types of CSS Rules</h2>
 <p>SMACSS는 CSS Rule을 네 가지로 나눈다.</p>
@@ -186,12 +186,12 @@ a:hover { color: #03C; }
 .l-fixed #sidebar {
     width: 200px;
 }
-</code></pre><p>id 셀렉터에는 ‘l’을 붙이지 않고 class 셀렉터에만 ‘l’을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.</p>
+</code></pre><p>id 셀렉터에는 &#39;l&#39;을 붙이지 않고 class 셀렉터에만 &#39;l&#39;을 붙인다. 전체 Layout처럼 큼직큼직한 Layout은 id 셀렉터로 스타일을 만들고 로그인 폼 같이 작은 부분의 스타일은 class 셀렉터로 만든다.</p>
 <p>성능 등을 이유로 class 셀럭터 없이 전부 id 셀렉터로 만들어도 되지만 꼭 그래야 할 이유는 없다. CSS에서는 id 셀렉터와 class 셀렉터 이 둘의 성능은 거의 같다. id 셀렉터가 Javascript에서 빠를지 모르겠지만, CSS는 아니다.</p>
 <p>그리고 Layout Rule만 id 셀렉터를 사용한다. 다른 스타일은 id 셀렉터 사용하지 않는다.</p>
 <p>id 셀렉터에 tag 셀렉터와 함께 사용하지 않는다. 자식이면 child 셀렉터(&gt;)를 꼭 사용한다.</p>
 <h3 id="state">State</h3>
-<p>상태와 관련된 스타일을 말하고 이름을 지을 때 ‘s’를 붙인다. 예를 들면 이런 거다:</p>
+<p>상태와 관련된 스타일을 말하고 이름을 지을 때 &#39;s&#39;를 붙인다. 예를 들면 이런 거다:</p>
 <pre><code>.s-hidden { display: none; }
 </code></pre><p><code>!important</code>를 사용해도 되는 Rule은 State Rule뿐이다. 다른 Rule에는 <code>!important</code>를 사용해서는 절대 안된다. 하지만, State Rule에서도 권장하지 않는다. 되도록 안 쓰는 것이 좋다. 뭥미:) 그냥 사용하지 말자.</p>
 </div>

@@ -11,7 +11,8 @@
     content="이 글은 GitHub의 CIO인 Scott Chacon님의 github-flow를 정리한 글입니다. Chacon님은 [git-flow][]가 정리한 것처럼 github를 개발하는 데 사용하는 flow를 정했습니다."></meta>
   <meta name="keywords"
     content="git,github,scott chacon"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="GitHub Flow &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/github-flow.html" lang="ko-kr">
@@ -107,11 +107,11 @@
 <p>git-flow의 feature 브랜치 쯤 되는 거라고 보면 된다. 위에서 얘기했듯이 브랜치 이름을 잘 짓고 자주 Push한다.</p>
 <p>자주 Push해야 하는 이유는 자신이 무엇을 하고 있는지 동료들과 공유하는 것이고 누군가 <code>git fetch</code>를 실행하면 백업도 된다.</p>
 <h3 id="-pull-request-">언제든지 Pull Request한다.</h3>
-<p>Merge할 때만 하는 것이 아니라 도움이나 피드백이 필요할 때에도 Pull Request를 사용한다. 제목에 ‘도움이 필요해요’, ‘검토 좀 해주세요.’, ‘머지해도 됩니다’라고 구분한다.</p>
+<p>Merge할 때만 하는 것이 아니라 도움이나 피드백이 필요할 때에도 Pull Request를 사용한다. 제목에 &#39;도움이 필요해요&#39;, &#39;검토 좀 해주세요.&#39;, &#39;머지해도 됩니다&#39;라고 구분한다.</p>
 <p><code>@metion</code>으로 쉽게 다른 사람에게 검토를 요청할 수도 있다. 특히 Pull Request는 브랜치를 두고 토론하는 것으로 브랜치 히스토리가 업데이트되면 그 최신정보도 자동으로 포함된다.</p>
 <p>나는 이 글을 읽기 전에 Pull Request로 피드백을 요청한다는 것은 상상도 못했다.</p>
 <h3 id="pull-request-merge-">Pull Request로 리뷰한 후에만 Merge한다.</h3>
-<p>사람들이 ‘좋다’ 등으로 리뷰해주면 그때 가서 Merge한다. 물론 CI도 통과해야 한다. Push하면 자동으로 Pull Request가 닫힌다.</p>
+<p>사람들이 &#39;좋다&#39; 등으로 리뷰해주면 그때 가서 Merge한다. 물론 CI도 통과해야 한다. Push하면 자동으로 Pull Request가 닫힌다.</p>
 <h3 id="-master-merge-deploy-">일단 <code>master</code>에 Merge하면 바로 deploy한다.</h3>
 <p>hubot으로 deploy한다.</p>
 <p>GitHub는 최근 Kenkins + Hubot + Github를 묶은 <a href="https://github.com/blog/1013-janky">Janky</a>를 공개했다.</p>

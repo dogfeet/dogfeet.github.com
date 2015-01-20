@@ -11,7 +11,8 @@
     content="Tracking 브랜치와 Remote Tracking 브랜치는 조금 애매하다. Tracking 브랜치 개념은 잘 이용하지 않기 때문에 돌아서면 잊어버린다. 그래서 정리했다. 구분하고 있지 않아도 Git을 사용하는데 불편할 거라고는 생각하지 않지만, 그래도 궁금하다."></meta>
   <meta name="keywords"
     content="Git,Tracking Branch,Remote Tracking Branch"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: Remote Tracking Branch vs Tracking Branch &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-tracking-vs-remote-tracking.html" lang="ko-kr">
@@ -139,9 +139,9 @@ and have 1 and 1 different commit(s) each, respectively.
 <p>Tracking 브랜치가 아니면 <code>git pull</code>을 할 수 없다. 그러니까 <code>git pull</code>을 하려면 Tracking 브랜치를 Checkout하고 있어야 한다.</p>
 <h4 id="git-push">git push</h4>
 <p><code>git push</code>라고 실행하면 Checkout한 브랜치와 상관없이 Tracking 브랜치를 모두 Push한다. <code>git push origin master</code>는 Tracking 브랜치와 상관없이 master 브랜치를 origin/master로 Push한다.</p>
-<h2 id="-">끝으로…</h2>
+<h2 id="-">끝으로...</h2>
 <p>자동으로 Merge하는 방식은 아름다운 히스토리를 해칠 수 있다. 히스토리는 가능한 평평하게 펴줘야 하고 여러 커밋을 묶어서 관리할 필요가 있을 때만 Merge 커밋을 히스토리에 남기는 것이 좋다.</p>
-<p>물론 <code>git pull</code> 명령도 —rebase, —ff, —no-ff, —ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.</p>
+<p>물론 <code>git pull</code> 명령도 --rebase, --ff, --no-ff, --ff-only와 같은 옵션이 있고 의도대로 Merge하지 못해도 복구할 수 있지만, Fetch하고 확인하고서 Merge하는 것이 아직 마음이 더 편하다.</p>
 <p><code>git pull</code> 명령은 어떨 때 유용한 걸까?</p>
 <p>저장소와 모든 브랜치를 동기화하는 기능이 필요하긴 하다. 복잡하게 Tracking 브랜치에 따른 것이 아니라 걍 이름으로 했으면 좋겠는데..</p>
 </div>

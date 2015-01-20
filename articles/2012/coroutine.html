@@ -11,7 +11,8 @@
     content="이 글은 Wikipedia의 Coroutine을 번역한 것이다."></meta>
   <meta name="keywords"
     content="Coroutine,Wikipedia"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Coroutine &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/coroutine.html" lang="ko-kr">
@@ -91,9 +91,9 @@
 <p><img src="/articles/2012/coroutine/source-code.png" alt="coroutine-python"></p>
 <h2 id="coroutine">Coroutine</h2>
 <p>Coroutine은 컴퓨터 프로그램에서 엔트리 포인트가 여러 개인 Subroutine이다. 그래서 어디서든지 잠시 멈췄다가 다시 이어서 실행할 수 있다. Coroutine은 <a href="http://en.wikipedia.org/wiki/Cooperative_multitasking#Cooperative_multitasking.2Ftime-sharing">cooperative task</a>, <a href="http://en.wikipedia.org/wiki/Iterator">iterator</a>, <a href="http://en.wikipedia.org/wiki/Lazy_evaluation">infinite list</a> and <a href="http://en.wikipedia.org/wiki/Pipeline_(software)">pipe</a> 같은 것을 구현하기에 좋다.</p>
-<p>“Coroutine”이라는 용어는 Melvin Conway가 1963년에 자신의 논문에서 처음 사용했다.</p>
+<p>&quot;Coroutine&quot;이라는 용어는 Melvin Conway가 1963년에 자신의 논문에서 처음 사용했다.</p>
 <h2 id="subroutine-">Subroutine과 비교</h2>
-<p>“Subroutine은 Coroutine 중 한 종류에 불과하다” - Donald Knuth]. Subroutine은 한번 실행하면 다 마칠 때까지 계속 실행되고 한번 호출할 때 한번 리턴한다. Coroutine도 이와 비슷하지만, Yield라는 것으로 빠져나오거나 다른 Coroutine을 호출해서 다시 해당 Coroutine이 하던 일을 이어서 할 수 있다.</p>
+<p>&quot;Subroutine은 Coroutine 중 한 종류에 불과하다&quot; - Donald Knuth]. Subroutine은 한번 실행하면 다 마칠 때까지 계속 실행되고 한번 호출할 때 한번 리턴한다. Coroutine도 이와 비슷하지만, Yield라는 것으로 빠져나오거나 다른 Coroutine을 호출해서 다시 해당 Coroutine이 하던 일을 이어서 할 수 있다.</p>
 <p>그리고 Yield 없이 간단하게 Coroutine을 구현할 수도 있다.</p>
 <p>언어를 개발할 때 Subroutine을 구현하려면 Subroutine을 실행하기 전에 스택을 하나 만들어야 한다. 하지만, Coroutine은 다른 Coroutine을 호출할 수 있어서 Continuation을 가지고 구현하는 것이 제일 좋다. Continuation은 스택이 여러 개 필요하기 때문에 보통 가비지컬렉터가 있는 언어에서 구현한다. 스택을 캐시해두거나 미리 할당하는 방식으로 좀 쉽게 Coroutine을 구현할 수 있다.</p>
 <p>Coroutine이 얼마나 유용한지 보여 줄 수 있는 예제를 하나 보여주겠다. 소비자-생산자 관계인 Coroutine이 두 개 있다고 가정한다. 한쪽은 아이템을 생성해서 큐에 넣고 다른 쪽은 큐에서 아이템을 꺼내서 사용한다. 그리고 한꺼번에 아이템을 추가하거나 삭제해서 성능을 최적화할 수 있다. 이 내용을 코드로 구현하면 다음과 같다:</p>
@@ -115,7 +115,7 @@ coroutine consume
 </code></pre><p>큐가 다 차거나 다 비워지면 yield 명령어로 컨트롤를 다른 Coroutine에 양보한다. 그러면 그 Coroutine이 바로 시작한다.</p>
 <p>이 예제는 멀티 Thread를 설명할 때 사용하는 예제랑 비슷하게 생겼지만, Thread를 두 개 만들지 않는다: 루틴이 돌다가 yield 구문을 만나면 다른 루틴으로 바로 점프한다.</p>
 <h2 id="coroutine-generator">Coroutine과 Generator</h2>
-<p>Generator도 Subroutine보다 넓은(generalisation) 개념이지만 Generator를 처음 볼 땐 Coroutine보다 후져 보인다. Generator는 기본적으로 Iterator 코드를 단순화할 목적으로 사용하기 때문에 Generator의 yield 구문은 다른 Coroutine으로 점프하는 게 아니라 호출한 상위 루틴으로 값을 넘겨준다. 하지만, Generator로 Coroutine을 구현할 수 있다. Generator를 호출하는 상위 루틴을 ‘Dispatcher’로(엄밀히 말하자면 <a href="http://en.wikipedia.org/wiki/Trampoline_(computing)">Trampoline</a>) 구현하면 되는데 한 Generator가 반환한 토큰으로 다른 Generator를 실행한다.</p>
+<p>Generator도 Subroutine보다 넓은(generalisation) 개념이지만 Generator를 처음 볼 땐 Coroutine보다 후져 보인다. Generator는 기본적으로 Iterator 코드를 단순화할 목적으로 사용하기 때문에 Generator의 yield 구문은 다른 Coroutine으로 점프하는 게 아니라 호출한 상위 루틴으로 값을 넘겨준다. 하지만, Generator로 Coroutine을 구현할 수 있다. Generator를 호출하는 상위 루틴을 &#39;Dispatcher&#39;로(엄밀히 말하자면 <a href="http://en.wikipedia.org/wiki/Trampoline_(computing)">Trampoline</a>) 구현하면 되는데 한 Generator가 반환한 토큰으로 다른 Generator를 실행한다.</p>
 <pre><code>var q := new queue
 
 generator produce
@@ -171,13 +171,13 @@ subroutine dispatcher
 <li>Thread를 이용. 무겁디무거운(heavywight) 쓰레드로 Coroutine 라이브러리를 구현할 수도 있다. 성능은 JVM의 Thread 구현체에 따라 다르다.</li>
 </ul>
 <h3 id="c-coroutine">C에서의 Coroutine</h3>
-<p>다양한 시도가 있었는데 구현 정도가 다르다. C에서는 Subroutine과 마크로를 사용해서 Coroutine을 구현한다. 이 방법으로 구현한 것 중에서는 Simon Tatham이 구현한 것이 좋다. Tatham은 주석에서 이 방법의 한계를 잘 설명한다. 이 방법은 아직 논쟁`의 여지가 남아 있지만, 코드를 작성하기도 쉽고, 읽기도 쉽고, 관리하기도 쉽다. Tatham이 말하길 “물론, 이 방법은 책에서 말하는 코딩 규칙에 어긋난다. 하지만, 모든 코딩 규칙은 알고리즘의 명확성을 대가로 문법적 명확성을 얻는 방법들이다. 이 방법을 사용하자고 사장에게 말하면 사장는 분명히 그 직원을 건물 밖으로 드래그해버리라고 경비에게 소리칠 것이다”</p>
-<p>Coroutine을 구현하는 좀 더 믿음직한 방법이 있는데, 대신 이식성이 떨어지고 특정 프로세서에서만 사용할 수 있다. 어셈블리 수준에서 Coroutine 컨텍스트를 저장했다가 다시 복원하는 기능이 있는 프로세서에서만 사용할 수 있다. 표준 C 라이브러리에는 setjmp와 longjmp 함수가 있어서 Coroutine 비슷하게 구현할 수 있다. 그런데 Harbison과 Steele은 “setjmp와 longjmp 함수로 구현하는 것은 매우 어렵다고 알려져 있다. 프로그래머는 setjmp와 longjmp에 대해 어떠한 가정도 하지 말하야 한다”라고 말한다. Harbison과 Steele이 말한 주의 사항과 제약 사항들은 무엇을 의미하는 걸까? setjmp와 longjmp를 사용해서 Coroutine을 구현했다 한들 다른 환경으로 옮기면 작동하지 않는다. 더욱 나쁜 것은 잘못 구현한 것들도 적지 않다. setjmp/longjmp는 실제로 스택 하나로 구현하는 거라서 제대로 된 Coroutine을 구현할 수 없다. 스택이 하나뿐이기 때문에 엉뚱한 Coroutine이 스택에 있는 변수를 수정해 버릴 수 있다.</p>
+<p>다양한 시도가 있었는데 구현 정도가 다르다. C에서는 Subroutine과 마크로를 사용해서 Coroutine을 구현한다. 이 방법으로 구현한 것 중에서는 Simon Tatham이 구현한 것이 좋다. Tatham은 주석에서 이 방법의 한계를 잘 설명한다. 이 방법은 아직 논쟁`의 여지가 남아 있지만, 코드를 작성하기도 쉽고, 읽기도 쉽고, 관리하기도 쉽다. Tatham이 말하길 &quot;물론, 이 방법은 책에서 말하는 코딩 규칙에 어긋난다. 하지만, 모든 코딩 규칙은 알고리즘의 명확성을 대가로 문법적 명확성을 얻는 방법들이다. 이 방법을 사용하자고 사장에게 말하면 사장는 분명히 그 직원을 건물 밖으로 드래그해버리라고 경비에게 소리칠 것이다&quot;</p>
+<p>Coroutine을 구현하는 좀 더 믿음직한 방법이 있는데, 대신 이식성이 떨어지고 특정 프로세서에서만 사용할 수 있다. 어셈블리 수준에서 Coroutine 컨텍스트를 저장했다가 다시 복원하는 기능이 있는 프로세서에서만 사용할 수 있다. 표준 C 라이브러리에는 setjmp와 longjmp 함수가 있어서 Coroutine 비슷하게 구현할 수 있다. 그런데 Harbison과 Steele은 &quot;setjmp와 longjmp 함수로 구현하는 것은 매우 어렵다고 알려져 있다. 프로그래머는 setjmp와 longjmp에 대해 어떠한 가정도 하지 말하야 한다&quot;라고 말한다. Harbison과 Steele이 말한 주의 사항과 제약 사항들은 무엇을 의미하는 걸까? setjmp와 longjmp를 사용해서 Coroutine을 구현했다 한들 다른 환경으로 옮기면 작동하지 않는다. 더욱 나쁜 것은 잘못 구현한 것들도 적지 않다. setjmp/longjmp는 실제로 스택 하나로 구현하는 거라서 제대로 된 Coroutine을 구현할 수 없다. 스택이 하나뿐이기 때문에 엉뚱한 Coroutine이 스택에 있는 변수를 수정해 버릴 수 있다.</p>
 <p>그래서 C에서 스택기반 Coroutine을 구현하려면 스택을 만들고 점프할 수 있는 기능이 필요하다. 세 번째는 특정 머신에서만 동작하는 C로(machine-specific C) 작성하는 방법이다. 이 방법은 Coroutine용 컨텍스트가 지원돼야 한다. POSIX나 <a href="http://ko.wikipedia.org/wiki/%EB%8B%A8%EC%9D%BC_%EC%9C%A0%EB%8B%89%EC%8A%A4_%EA%B7%9C%EA%B2%A9">Single UNIX Specification</a>의 C 라이브러리에는 getcontext, setcontext, makecontext, swapcontext같은 루틴이 있다. setcontext류 함수들은 setjmp/longjmp 함수보다 상당히 강력하다. 하지만, 표준을 준수하는 구현체는 흔치않다. 이 방법의 최대 단점은 Coroutine의 스택 크기가 고정돼 있다는 것이다. 그래서 실행 중에 스택 크기는 커지지 않는다. 그래서 사람들은 스택 오버플로우를 예방하는 차원에서 처음부터 너무 큰 스택을 할당하는 경향이 있다.</p>
 <p>표준 라이브러리의 한계 때문에 사람들은 직접 Coroutine 라이브리를 만들어 사용한다. Russ Cox가 만든 libtask라는 게 있는데 꽤 좋다. Native C 라이브러리에 context 함수가 있으면 그냥 그걸 사용하고 그게 아니면 자체적으로 구현한 ARM, PowerPC, Sparc, x86용 라이브러리를 사용한다. 그 외 살펴볼 만한 라이브러리로 libpcl, coro, lthread, libCoroutine, libconcurrency, libcoro가 있다.</p>
 <h3 id="c-coroutine">C++에서의 Coroutine</h3>
 <ul>
-<li>Boost.Coroutine - Giovanni P. Deretta는 “Google Summer of Code 2006” 프로젝트로 이 라이브러리를 만들었다. 이 포터블한 Coroutine 라이브러리는 boost와 C++ 템플릿을 사용해서 만들었다. Boost.Coroutine은 아직 마무리되지 않았고 boost 공식 라이브러리가 아니므로 문서는 boost 싸이트가 아닌 다른 곳에서 호스팅하고 있다.</li>
+<li>Boost.Coroutine - Giovanni P. Deretta는 &quot;Google Summer of Code 2006&quot; 프로젝트로 이 라이브러리를 만들었다. 이 포터블한 Coroutine 라이브러리는 boost와 C++ 템플릿을 사용해서 만들었다. Boost.Coroutine은 아직 마무리되지 않았고 boost 공식 라이브러리가 아니므로 문서는 boost 싸이트가 아닌 다른 곳에서 호스팅하고 있다.</li>
 <li>Mordor - Mozy는 2010년에 C++ Coroutine 라이브러리를 만들었다. 비동기 I/O를 사용하는 순차(sequential) 프로그래밍 모델처럼 사용할 수 있게 하였다.</li>
 </ul>
 <h3 id="c-coroutine">C#에서의 Coroutine</h3>
@@ -220,7 +220,7 @@ subroutine dispatcher
 </ul>
 <h3 id="assembly-coroutine">assembly에서의 Coroutine</h3>
 <p>(이 부분은 이해할 수 없군요)</p>
-<p>Machine-dependent assembly languages often provide direct methods for coroutine execution. For example, in MACRO-11, the assembly language of the PDP-11 family of minicomputers, the “classic” coroutine switch is effected by the instruction “JSR PC,@(SP)+” (which assembles as octal “004736”) which jumps to the address popped from the stack and pushes the current (i.e that of the next) instruction address onto the stack. On VAXen (in Macro-32) the comparable instruction is “JSB @(SP)+” (which assembles as hex “9E 16” as the assembler shows it (with in effect bytes reversed). Even on a Motorola 6809 there is the instruction “JSR [,S++]”, which assembles as (hex) “AD F1”; note the “++”, as 2 bytes (of address) are popped from the stack. This instruction is much used in the (standard) ‘monitor’ Assist 09.</p>
+<p>Machine-dependent assembly languages often provide direct methods for coroutine execution. For example, in MACRO-11, the assembly language of the PDP-11 family of minicomputers, the “classic” coroutine switch is effected by the instruction &quot;JSR PC,@(SP)+&quot; (which assembles as octal &quot;004736&quot;) which jumps to the address popped from the stack and pushes the current (i.e that of the next) instruction address onto the stack. On VAXen (in Macro-32) the comparable instruction is &quot;JSB @(SP)+&quot; (which assembles as hex &quot;9E 16&quot; as the assembler shows it (with in effect bytes reversed). Even on a Motorola 6809 there is the instruction &quot;JSR [,S++]&quot;, which assembles as (hex) &quot;AD F1&quot;; note the &quot;++&quot;, as 2 bytes (of address) are popped from the stack. This instruction is much used in the (standard) &#39;monitor&#39; Assist 09.</p>
 <p>Simply calling back the routine whose address is on the top of the stack, does not, of course, exhaust the possibilities in assembly language(s)!</p>
 <h2 id="see-also">See also</h2>
 <ul>

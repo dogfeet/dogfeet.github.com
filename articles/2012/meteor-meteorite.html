@@ -6,12 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
-  <title>#dogfeet - Meteor: 스마트 패키지 매니저 “Meteorite”</title>
+  <title>#dogfeet - Meteor: 스마트 패키지 매니저 &quot;Meteorite&quot;</title>
   <meta name="description"
     content="Meteorite로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다."></meta>
   <meta name="keywords"
     content="meteor,meteorite,package"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -20,14 +21,15 @@
   <link rel="apple-touch-icon" sizes="114x114"
     href="images/apple-touch-icon-114x114.png"></link>
   <link rel="alternate" type="application/atom+xml"
-    title="Meteor: 스마트 패키지 매니저 “Meteorite” &raquo; Feed"
+    title="Meteor: 스마트 패키지 매니저 &quot;Meteorite&quot; &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/meteor-meteorite.html" lang="ko-kr">
@@ -86,7 +86,7 @@
 
     <div class="col-sm-10">
 
-      <div property="sioc:content"><h1 id="meteor-meteorite-">Meteor: 스마트 패키지 매니저 “Meteorite”</h1>
+      <div property="sioc:content"><h1 id="meteor-meteorite-">Meteor: 스마트 패키지 매니저 &quot;Meteorite&quot;</h1>
 <p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>로 할 수 있는 일은 두 가지이다. 하나는 스마트 패키지를 관리하는 일이고 하나는 Meteor 앱을 관리하는 일이다. 이 글은 Meteor 앱을 관리하는 방법을 설명한다. 스마트 패키지를 관리하는 일은 다음에 정리하겠다.</p>
 <p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 <a href="http://meteor.com/">Meteor</a> 매니저이자 스마트 패키지 매니저다. meteor 명령을 감싸는 형태로 구현했기 때문에 <a href="https://github.com/oortcloud/meteorite">Meteorite</a>로도 Meteor 앱을 관리할 수 있다. 그리고 meteor 명령은 지원하지 않는 스마트 패키지를 설치/관리할 수도 있다. 게다가 스마트 패키지를 만들고 관리할 수도 있다. <a href="http://rubygems.org/">gem</a>, <a href="http://gembundler.com/">bundler</a>, <a href="https://rvm.io/">rvm</a>을 보고 만들었다고 한다.</p>
 <p><img src="/articles/2012/meteor/meteorite.png" alt="meteorite"></p>
@@ -95,7 +95,7 @@
 <pre><code class="lang-bash">npm install -g meteorite
 </code></pre>
 <h2 id="mrt-">mrt 명령어</h2>
-<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. ‘meteor create myapp’으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:</p>
+<p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>의 명령어는 <code>mrt</code>이다. &#39;meteor create myapp&#39;으로도 스케폴드 앱을 만들 수 있지만 <code>mrt</code> 명령으로도 앱을 만들 수 있다:</p>
 <pre><code class="lang-bash">mrt create myapp
 </code></pre>
 <p><code>meteor</code> 명령으로 생성한 것과 거의 같지만 <code>mrt</code> 명령은 meteor 저장소의 master 브랜치를 기준으로 myapp으로 생성한다. 그리고 스마트 패키지 정보파일인 smart.json 파일에 그 정보를 기록한다:</p>
@@ -188,7 +188,7 @@
 <p><a href="https://github.com/oortcloud/meteorite">Meteorite</a>는 스마트 패키지용 중앙 저장소를 사용하는데 이 저장소가 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>이다.</p>
 <p>다음과 같이 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지는 설치한다:</p>
 <pre><code>mrt add moment --version 1.6.2
-</code></pre><p>‘버전은 생략할 수 있다.’라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.</p>
+</code></pre><p>&#39;버전은 생략할 수 있다.&#39;라고 메뉴얼에서 설명하는데 저 옵션은 제대로 동작하는 것인지 모르겠다. 생략도 가능하다. <code>mrt help add</code> 명령을 실행했을 때 나오는 설명도 없고 아직 먼가 부실하다.</p>
 <p><code>mrt list</code> 명령을 실행하면 현재 사용할 수 있는 패키지를 보여준다. <code>meteor list</code>과 기본적으로 같지만 mrt 명령으로 설치한 스마트 패키지도 보여진다. 아직 설치하지 않은 <a href="https://atmosphere.meteor.com/wtf/package">Atmosphere</a>에 있는 패키지도 조회할 수 있으면 좋을 것 같은데 아직 그런 명령어는 없다. 현재 사용하고 있는 패키지는 smart.json을 봐야한다. <code>mrt list</code> 명령의 결과는 다음과 같다:</p>
 <pre><code>absolute-url      DEPRECATED: Generate absolute URLs pointing to the application
 amplify           Cross browser API for Persistant Storage, PubSub and Request.

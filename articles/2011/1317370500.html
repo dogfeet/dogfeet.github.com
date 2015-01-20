@@ -8,10 +8,11 @@
 
   <title>#dogfeet - JavaScript How Prototypal Inheritance really works</title>
   <meta name="description"
-    content="이글은 Christopher Chedeau님의 ‘JavaScript How Prototypal Inheritance really works‘을 번역한 것이다. 이 글은 JavaScript의 __proto__을 잘 정리설명한다."></meta>
+    content="이글은 Christopher Chedeau님의 &#39;JavaScript How Prototypal Inheritance really works&#39;을 번역한 것이다. 이 글은 JavaScript의 __proto__을 잘 정리설명한다."></meta>
   <meta name="keywords"
     content="Prototypal,inheritance,JavaScript,John Resig"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="JavaScript How Prototypal Inheritance really works &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1317370500.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="javascript-how-prototypal-inheritance-really-works">JavaScript How Prototypal Inheritance really works</h1>
-<p>이글은 Christopher Chedeau님의 ‘<a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html">JavaScript How Prototypal Inheritance really works</a>‘을 번역한 것이다. 이 글은 JavaScript의 <code>__proto__</code>을 잘 정리설명한다.</p>
+<p>이글은 Christopher Chedeau님의 &#39;<a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html">JavaScript How Prototypal Inheritance really works</a>&#39;을 번역한 것이다. 이 글은 JavaScript의 <code>__proto__</code>을 잘 정리설명한다.</p>
 <p>prototypal inheritance에 대한 글은 다양한 방법이 도처에 널려있다. JavaScript는 이미 new를 이용한 prototypal inheritance를 지원하기 때문에 prototypal inheritance를 정확히 이해하기 힘들다. 이 글은 JavaScript의 prototypal inheritance를 명확히 설명하고자 한다.</p>
 <h2 id="prototypal-inheritance-definition">Prototypal Inheritance Definition</h2>
 <p>prototypal inheritance에 대한 글을 읽을 때 다음과 같은 정의를 자주 볼 수 있다:</p>

@@ -11,7 +11,8 @@
     content="JavaScript는 Coroutine을 지원하지 않기 때문에 외부 모듈이 필요하다. 이 글에서는 node-fibers로 node에서 Coroutine을 어떻게 응용해야 할지 알아본다."></meta>
   <meta name="keywords"
     content="nodejs,node-fibers"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="nodejs: node-fibers &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/nodejs-fibers.html" lang="ko-kr">
@@ -116,7 +116,7 @@ console.log(&#39;back in main&#39;);
 <p>1) 멍키 패칭할 <code>xxxSync</code> 메소드가 필요하고
 2) 멍키 패칭을 구현한 모듈도 필요하고
 3) 그러려면 node-fiber가 정식으로 node에 포함되든 JavaScript 표준에 Coroutine이 도입되든 안정성과 지원도 필요하고
-4) 주렁주렁…궁시렁궁시렁…</p>
+4) 주렁주렁...궁시렁궁시렁...</p>
 <p>gevent의 아이디어를 그대로 node에서 사용할 수는 없다.</p>
 <p>멍키 패칭이든 뭐든 기존 API를 Coroutine에서 사용할 수 있도록 해주는 도우미가 필요한데, <a href="https://github.com/laverdet/node-fibers">node-fibers</a>에는 Future라는 게 있다. Future는 Node의 비동기 API를 감싸서(wrap) Cotoutine을 사용할 수 있게 해준다.</p>
 <h3 id="ls-js">ls.js</h3>
@@ -161,7 +161,7 @@ fs.readdir(&#39;.&#39;, function(err, fileNames){
         });
     });
 });
-</code></pre><p>이 예제에서 알 수 있듯이 node에서는 CPS 스타일을 사용하는 게 더 낫다. 언어에서 <a href="/articles/2012/coroutine.html">Coroutine</a>을 정식 지원하는 것도 아니고 API도 준비돼 있지 않다. 환경이 준비됐다고 가정하고 스케쥴링을 목적으로 하는 것이라면 Coroutine이 더 낫다고 볼 수 있지만 적어도 아직은 node에서 CPS가 더 나을지도…</p>
+</code></pre><p>이 예제에서 알 수 있듯이 node에서는 CPS 스타일을 사용하는 게 더 낫다. 언어에서 <a href="/articles/2012/coroutine.html">Coroutine</a>을 정식 지원하는 것도 아니고 API도 준비돼 있지 않다. 환경이 준비됐다고 가정하고 스케쥴링을 목적으로 하는 것이라면 Coroutine이 더 낫다고 볼 수 있지만 적어도 아직은 node에서 CPS가 더 나을지도...</p>
 <p>아무튼 <code>for</code>문을 <code>forEach</code>로 바꿀 수밖에 없다. 예를 들어 다음과 같은 코드는 ii 값이 변하기 때문에 동작하지 않는다:</p>
 <pre><code>    for (var ii = 0; ii &lt; fileNames.length; ++ii) {
         fs.stat( fileName[ii], function(err, stat){

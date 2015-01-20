@@ -11,7 +11,8 @@
     content="Ubuntu 12.04 릴리즈를 기념해서 Ubuntu Desktop 설치 노트를 만들었다. 이번 프로젝트에서는 Linux가 주 플랫폼인데 Linux가 필요해서 Ubuntu Desktop을 설치했다."></meta>
   <meta name="keywords"
     content="ubuntu"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Ubuntu &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/ubuntu-desktop.html" lang="ko-kr">
@@ -94,7 +94,7 @@
 <ul>
 <li>/tmp를 tmpfs로 만들기</li>
 </ul>
-<p>noexec로 하면 <code>/tmp</code>에 압축을 풀고 설치하는 인스톨러들이(특히 오라클 제품들…) 실패한다. 보안을 위해 noexec로 설명하는 글들이 많은데, 서버가 아니니 exec로 하도록 하자.</p>
+<p>noexec로 하면 <code>/tmp</code>에 압축을 풀고 설치하는 인스톨러들이(특히 오라클 제품들...) 실패한다. 보안을 위해 noexec로 설명하는 글들이 많은데, 서버가 아니니 exec로 하도록 하자.</p>
 <pre><code>#/etc/fstab
 tmpfs            /tmp           tmpfs   defaults,exec,nosuid 0       0
 </code></pre><ul>

@@ -11,7 +11,8 @@
     content="이 글은 Getting Started sbt을 번역한 것이다."></meta>
   <meta name="keywords"
     content="sbt"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="sbt: Getting Started Guide: Directory Layout &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/sbt-getting-started-directory-layout.html" lang="ko-kr">
@@ -90,7 +90,7 @@
 <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
 <p><img src="/articles/2012/sbt/sbt.png" alt="sbt"></p>
 <h3 id="base-directory">Base directory</h3>
-<p>sbt에서 “base 디렉토리”는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.</p>
+<p>sbt에서 &quot;base 디렉토리&quot;는 프로젝트가 들어 있는 디렉토리를 말한다. <a href="/articles/2012/sbt-getting-started-hello.html">Hello, World</a> 에서 만든 <code>hello</code> 프로젝트에는 <code>hello/build.sbt</code>와 <code>hello/hw.scala</code> 파일이 있는데 여기서 <code>hello</code> 디렉토리가 base 디렉토리이다.</p>
 <h2 id="source-code">Source code</h2>
 <p>소스는 <code>hello/hw.scala</code>처럼 프로젝트 base 디렉토리에 넣으면 된다. 하지만 보통은 그냥 넣으면 너무 지저분하기 때문에 정리해서 넣는 규칙이 있다.</p>
 <p>sbt는 기본적으로 <a href="http://maven.apache.org/">Maven</a>과 같은 디렉토리 레이아웃을 사용한다(모든 경로는 base 디렉토리를 기준으로 하는 상대 경로다):</p>

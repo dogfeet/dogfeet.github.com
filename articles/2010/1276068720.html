@@ -11,7 +11,8 @@
     content="SSMA(Sql Server Migration Assistant)를 사용해볼 기회가 생겼다. 이글은 SSMA를 8.5일 사용해본 사용기이다."></meta>
   <meta name="keywords"
     content="SSMA,Groovy,gsql,Oracle,SQLServer"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="SSMA를 써보고 나서 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2010/1276068720.html" lang="ko-kr">
@@ -90,15 +90,15 @@
 <p>SSMA(Sql Server Migration Assistant)를 사용해볼 기회가 생겼다. 이글은 SSMA를 8.5일 사용해본 사용기이다.</p>
 <h2 id="ssma">SSMA</h2>
 <p>SSMA는 Sql Server Migration Assistant의 약자로 MS에서 배포한다. 3년전에 <code>Java -&gt; C# Converter</code>(정확한 이름이 생각 안난다.)를 써본 경험으로 분명 MS에서 이런걸 만들어서 배포했을 것이라고 짐작했다.</p>
-<p><code>Java -&gt; C#</code>의 경우 만족할만한 결과였다. 대체로 패턴이 비슷했기 때문에 Generics나 몇가지들만 손으로 수정해 주면 됐었다. 게다가 툴이 자동으로 제공하지 못하는 부분은 ‘나 못하겠다’라고 코멘트를 남겨주기 때문에 신뢰할 수 있었다.</p>
+<p><code>Java -&gt; C#</code>의 경우 만족할만한 결과였다. 대체로 패턴이 비슷했기 때문에 Generics나 몇가지들만 손으로 수정해 주면 됐었다. 게다가 툴이 자동으로 제공하지 못하는 부분은 &#39;나 못하겠다&#39;라고 코멘트를 남겨주기 때문에 신뢰할 수 있었다.</p>
 <p>SSMA를 사용하려면 Sql Server Express Edition으로는 안된다. 그래서 저는 Developer Edition을 사용했다.</p>
-<p>SSMA는 두 가지 프로그램으로 구성된다. 하나는 ‘SSMA 2008 for Oracle’라는 툴이고 다른 하나는 Sql Server의 sysdb영역에 function이나 procedure형태로 설치되는 ‘SSMA 2008 for Oracle Extension Pack’이다.</p>
+<p>SSMA는 두 가지 프로그램으로 구성된다. 하나는 &#39;SSMA 2008 for Oracle&#39;라는 툴이고 다른 하나는 Sql Server의 sysdb영역에 function이나 procedure형태로 설치되는 &#39;SSMA 2008 for Oracle Extension Pack&#39;이다.</p>
 <h2 id="-">결과</h2>
 <p>윈도우를 준비하고(VMware - 물론 윈도만 깔린 깨긋한 버전을 가지고 다님) Sql Server를 설치하기 까지(처음에는 Express Edition을 설치했으나 최종적으로 Developer Edition을 설치함) 이틀이 소요됐다. 역시 안하던 걸하려니 삽질을 하게 된다. Sql Server를 세번이나 설치했다.T_T;;</p>
 <p>(여기까지 2일)</p>
-<p>SSMA를 익히고 DB schema를 옮기는데 하루를 들었다. DB schema는 별로 손댈게 없었다. production 환경에서 ‘SSMA 2008 for Oracle Extension Pack’이 필요하지 않도록 ‘SSMA 2008 for Oracle Extension Pack’에서 제공하는 function를 제거하는 것까지 포함해서 하루였다.</p>
+<p>SSMA를 익히고 DB schema를 옮기는데 하루를 들었다. DB schema는 별로 손댈게 없었다. production 환경에서 &#39;SSMA 2008 for Oracle Extension Pack&#39;이 필요하지 않도록 &#39;SSMA 2008 for Oracle Extension Pack&#39;에서 제공하는 function를 제거하는 것까지 포함해서 하루였다.</p>
 <p>(여기까지 3일)</p>
-<p>데모 데이터를 이전하는데에도 하루가 걸렸다. SSMA에서도 Data Migration을 지원하긴 하지만 Oracle에 ‘Tester 어쩌구’하는 것을 설치해야 하는 듯 싶었다. 그래서 groovy gsql로 간단히 제작하여 이전하였다. 역시 groovy gsql은 강력하다. 약 30개 테이블의 데이터를 이전하는 스크립트를 작성하는데 6시간만에 만들었다. groovy를 자주 사용하면 4시간 정도로 단축할 수도 있을 것 같은데 잘 쓸일이 생기지 않아서 할 때마다 헤메고 있다.</p>
+<p>데모 데이터를 이전하는데에도 하루가 걸렸다. SSMA에서도 Data Migration을 지원하긴 하지만 Oracle에 &#39;Tester 어쩌구&#39;하는 것을 설치해야 하는 듯 싶었다. 그래서 groovy gsql로 간단히 제작하여 이전하였다. 역시 groovy gsql은 강력하다. 약 30개 테이블의 데이터를 이전하는 스크립트를 작성하는데 6시간만에 만들었다. groovy를 자주 사용하면 4시간 정도로 단축할 수도 있을 것 같은데 잘 쓸일이 생기지 않아서 할 때마다 헤메고 있다.</p>
 <p>eclipse groovy plugin의 groovy editor도 많이 좋아졌다. 이제 조금은 쓸만해 졌다. 2년안에 안정적으로 사용할 수 있을 듯 싶다.</p>
 <p>(여기까지 4일)</p>
 <p>그리고 간단한 function을 포팅하는데 반나절 정도 걸렸다.</p>

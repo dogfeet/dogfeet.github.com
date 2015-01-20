@@ -11,7 +11,8 @@
     content="이 글은 git에서 커밋을 가리키는 방법에 대해 정리한 것이다."></meta>
   <meta name="keywords"
     content="git"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git:refs &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/git-refs.html" lang="ko-kr">
@@ -136,11 +136,11 @@ v1.4.2.4
 | * 3b1bfc5 - (issue1) Add issue1
 |/
 * 40b4870 - (master) Initial Commit
-</code></pre><h4 id="-">‘~’</h4>
+</code></pre><h4 id="-">&#39;~&#39;</h4>
 <p>HEAD를 기준으로 이전 커밋을 보려면 <code>HEAD~</code>를 사용한다. 예를 들어 <code>git show HEAD~</code>라고 실행하면 <code>41947a1</code>에 대한 정보를 보여준다.</p>
 <p><code>~1</code>이나 <code>~2</code>처럼 숫자를 명시하여 이전 커밋이나 이전의 이전 커밋을 나타낼 수 있다. 예를 들어 <code>git show HEAD~2</code>는 <code>3b0b17d</code>에 대한 정보를 보여준다. <code>git show HEAD~1</code>은 <code>git show HEAD~</code>의 결과와 똑같다.</p>
 <p>HEAD에만 사용할 수 있는 것이 아니다. git은 기본적으로 SHA값을 인식하는 것이지 Branch 이름이나 HEAD같은 포인터를 다루는 것이 아니다. 이 예제에서 HEAD와 dev가 같은 커밋을 가리키기 때문에 <code>HEAD~</code>와 <code>dev~</code>의 결과는 같고 심지어 <code>4f2b862~</code>의 결과도 같다.</p>
-<h4 id="-">‘^’</h4>
+<h4 id="-">&#39;^&#39;</h4>
 <p>계통을 표시하는 다른 방법으로 <code>^</code>도 있다. 이 것은 <code>~</code>과 다르게 수평적 조상을 표현하는 방법이다. 사실 <code>HEAD~</code>와 <code>HEAD^</code>의 결과는 같다. 수직적 조상을 표현하는 <code>~</code>와 수평적 조상을 표시하는 <code>^</code>는 똑같이 이전 커밋을 나타낸다.</p>
 <p>하지만 <code>HEAD~2</code>과 <code>HEAD^2</code>는 다르다. <code>HEAD~2</code>는 <code>3b0b17d</code>를 나타내지만 <code>HEAD^2</code>는 <code>3a6714f</code>를 가리킨다. <code>^</code>는 이전 커밋이 두 개 이상인 merge 커밋에만 사용하는 것이 좋다.</p>
 <p><code>~</code>과 <code>^</code>을 조합하여 복잡한 표현도 가능하다. 이 예제에서 <code>HEAD~^</code>는 <code>HEAD~2</code>가 가리키는 <code>3b0b17d</code>를 가리킨다. 이와 같은 방법으로 <code>HEAD~2^2</code>는 <code>3b1bfc5</code>를 가리킨다.</p>
@@ -187,7 +187,7 @@ v1.4.2.4
 <p><img src="https://raw.github.com/progit/progit/master/figures/18333fig0601-tn.png" alt="예제"></p>
 <p>progit의 예제</p>
 <h3 id="double-dot">Double Dot</h3>
-<p>‘Double Dot’은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
+<p>&#39;Double Dot&#39;은 브랜치의 히스토리 차이를 비교할 때 사용한다. <code>master..experiment</code>는 master에는 없고 experiment에만 있는 것을 의미한다. 반대로 <code>experiment..master</code>는 experiment에는 없고 master에만 있는 것을 의미한다. 이 것은 주로 merge하기 전에 차이를 확인해볼 때 주로 사용한다:</p>
 <pre><code>$ git log master..experiment
 D
 C

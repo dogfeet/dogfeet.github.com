@@ -11,7 +11,8 @@
     content="이 글은 AngularJS Git Commit Message Conventions를 번역한 글이다. 어쩌다 공개된 것 같기도 해서 문의했는데 흔쾌히 번역을 허락해 줬다. 내가 여태껏 봤었던 커밋 메시지에 대한 글 중에서 가장 구체적이고 실질적일 뿐만 아니라 grunt-conventional-changelog라는 스크립트까지 공개돼 있다."></meta>
   <meta name="keywords"
     content="git,AngularJS,Commit Message,Conventions,grunt-conventional-changelog"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="git: AngularJS Git Commit Message Conventions &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2013/angularjs-git-commit-message-conventions.html" lang="ko-kr">
@@ -162,13 +162,13 @@ docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무�
 </blockquote>
 <h5 id="-subject-"><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
 <ul>
-<li>군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li>군더더기 없이 간략하게 현재형으로 적는다: &#39;changed&#39;나 &#39;changes&#39;가 아니라 &#39;change&#39;로 적는다.</li>
 <li>굳이 첫 문자를 대문자로 적지 않는다.</li>
 <li>문장 끝에 마침표(.)로 끝내지 않는다.</li>
 </ul>
 <h4 id="-">메시지 바디</h4>
 <ul>
-<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: &#39;changed&#39;나 &#39;changes&#39;가 아니라 &#39;change&#39;로 적는다.</li>
 <li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p>
 </li>
 <li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p>
@@ -234,7 +234,7 @@ scope: {
 
 The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
 </code></pre><h5 id="-">이슈 번호 넣기</h5>
-<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 “Closes”로 시작한다:</p>
+<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 &quot;Closes&quot;로 시작한다:</p>
 <pre><code>Closes #234
 </code></pre><p>이슈를 여러 개 넣어도 된다:</p>
 <pre><code>Closes #123, #245, #992
@@ -253,7 +253,7 @@ The removed `inject` wasn&#39;t generaly useful for directives so there should b
 <p><strong> Breaks $browser.onHashChange, which was removed (use onUrlChange instead) </strong></p>
 <hr>
 <p><strong> fix($compile): couple of unit tests for IE9 </strong></p>
-<p>Older IEs serialize html uppercased, but IE9 does not…
+<p>Older IEs serialize html uppercased, but IE9 does not...
 Would be better to expect case insensitive, unfortunately jasmine does
 not allow to user regexps for throw expectations.</p>
 <p><strong> Closes <code>#392</code> </strong>
@@ -307,7 +307,7 @@ scope: {
   // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
   myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
-</code></pre><p>The removed `inject` wasn’t generaly useful for directives so there should be no code using it.</p>
+</code></pre><p>The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.</p>
 </div>
     </div>
   </article>

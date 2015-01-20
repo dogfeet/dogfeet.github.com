@@ -11,7 +11,8 @@
     content="Proxy을 통해 우회하고 싶을 때가 왕왕 있다."></meta>
   <meta name="keywords"
     content="PAC,proxy,auto-config,freegate"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="PAC: proxy auto-config &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/proxy-auto-config.html" lang="ko-kr">
@@ -129,7 +129,7 @@
     return &quot;DIRECT&quot;;
 }
 </code></pre><p>파일 이름은 상관없지만 그래도 PAC파일임을 알 수 있게 my.pac쯤으로 짓는다.</p>
-<p>그리고 Explorer에서 “Internet Options/Connections/LAN settings”에서 my.pac파일을 지정해줄 수 있다:</p>
+<p>그리고 Explorer에서 &quot;Internet Options/Connections/LAN settings&quot;에서 my.pac파일을 지정해줄 수 있다:</p>
 <p><img src="/articles/2012/proxy-auto-config/pac.png" alt="my.pac"></p>
 <h2 id="browser">Browser</h2>
 <p>그러면 이제 저 규칙을 따라 동작한다. 브라우저별로 보면 Explorer/Firefox/Opera는 각각 별도로 설정할 수 있다. 그래서 굳이 PAC를 사용하지 말고 브라우저 별로 다르게 설정해서 필요에 따라 다른 브라우저를 선택해 사용하는 것도 방법이다.</p>
@@ -142,7 +142,7 @@
 <ul>
 <li>SSH tunnel은 SOCKS 프록시다.</li>
 <li>8580은 <a href="http://en.wikipedia.org/wiki/Freegate">freegate</a> 기본 포트다.</li>
-<li>freegate는 중국 여행 필수품; 공익재단이(라고 쓰고 ‘미국이’ 라고 읽는다) 만든다. freegate는 무료 Proxy로 인터넷 통제국을(이라고 쓰고 ‘중국을’ 이라고 읽는다) 무력화할 목적으로 개발되고 있다. 인터넷 통제국으로 인정해주지 않은 나라에서는 사용할 수 없다. 그런데, 한국은 인터넷 통제국임에도 불구하고 freegate를 사용할 수 없다. 한국도 인정해달라!</li>
+<li>freegate는 중국 여행 필수품; 공익재단이(라고 쓰고 &#39;미국이&#39; 라고 읽는다) 만든다. freegate는 무료 Proxy로 인터넷 통제국을(이라고 쓰고 &#39;중국을&#39; 이라고 읽는다) 무력화할 목적으로 개발되고 있다. 인터넷 통제국으로 인정해주지 않은 나라에서는 사용할 수 없다. 그런데, 한국은 인터넷 통제국임에도 불구하고 freegate를 사용할 수 없다. 한국도 인정해달라!</li>
 </ul>
 </div>
     </div>

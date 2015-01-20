@@ -8,10 +8,11 @@
 
   <title>#dogfeet - A successful git branching model</title>
   <meta name="description"
-    content="Vincent Driessen님은 2010년 1월에 A successful Git branching model을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 ‘git-flow‘로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다."></meta>
+    content="Vincent Driessen님은 2010년 1월에 A successful Git branching model을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 &#39;git-flow&#39;로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다."></meta>
   <meta name="keywords"
     content="git,git-flow,Workflow"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="A successful git branching model &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/a-successful-git-branching-model.html" lang="ko-kr">
@@ -87,17 +87,17 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="a-successful-git-branching-model">A successful git branching model</h1>
-<p><em><a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 ‘<a href="https://github.com/nvie/gitflow">git-flow</a>‘로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.</em></p>
+<p><em><a href="https://github.com/nvie">Vincent Driessen</a>님은 2010년 1월에 <a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>을 썼는데 매우 훌륭한 글입니다. Driessen님은 이 글에서 설명한 내용을 &#39;<a href="https://github.com/nvie/gitflow">git-flow</a>&#39;로 구현해 놓았습니다. 번역하도록 허락해주신 Driessen님께 감사드립니다.</em></p>
 <p>내가 지난 일 년간 프로젝트를 할 때 사용한 개발 모델을 소개하고자 한다. 나는 이 모델을 업무에서도 사용했고 개인 프로젝트에서도 사용했다. 결과는 매우 성공적이었다. 진작부터 이 글을 쓰려고 벼르고 있었지만, 시간이 부족해 완성할 수 없었다. 나는 프로젝트를 진행하는 데 필요한 것을 하나하나 설명하기보다 순수하게 branching 전략과 배포 관리에 대해서 설명하고자 한다.</p>
 <p><img src="/articles/2011/a-successful-git-branching-model/git-branching-model.png" alt="Git은 버전 관리용"></p>
 <p>이 그림은 <a href="http://git-scm.com/">Git</a>으로 버전 관리하는 것을 한눈에 보여준다.</p>
 <h3 id="-git-">왜 Git인가?</h3>
-<p>다른 중앙집중식 버전 관리 시스템과 Git을 비교해보고 싶으면 <a href="http://whygitisbetterthanx.com/">웹에서</a> 찾아라. <a href="http://www.looble.com/git-vs-svn-which-is-better/">거기는</a> 지금 <a href="http://git.or.cz/gitwiki/GitSvnComparsion">전쟁</a> 중이다. 나는 개발자이고 다른 것보다 Git을 선호한다. Git은 merging/branching에 대해 신세계를 열어 줬다. 예전에는 CSV/Subversion을 썼었는데 항상 merging/branching이 두려웠고(“주의: merge conficts라는 미친개가 물을 수도 있어요!”) 사실 잘 사용하지 않았다.</p>
+<p>다른 중앙집중식 버전 관리 시스템과 Git을 비교해보고 싶으면 <a href="http://whygitisbetterthanx.com/">웹에서</a> 찾아라. <a href="http://www.looble.com/git-vs-svn-which-is-better/">거기는</a> 지금 <a href="http://git.or.cz/gitwiki/GitSvnComparsion">전쟁</a> 중이다. 나는 개발자이고 다른 것보다 Git을 선호한다. Git은 merging/branching에 대해 신세계를 열어 줬다. 예전에는 CSV/Subversion을 썼었는데 항상 merging/branching이 두려웠고(&quot;주의: merge conficts라는 미친개가 물을 수도 있어요!&quot;) 사실 잘 사용하지 않았다.</p>
 <p>그런데 Git에서는 merging/branching이 매우 간단하다. merging/branching은 매일 한다. CVS/Subversoin <a href="http://svnbook.red-bean.com/">책</a>에서는 merging/branching과 관련된 내용이 마지막 장에 있어서 고급 사용자들이나 읽지만, <a href="http://book.git-scm.com/">Git</a> <a href="http://pragprog.com/book/tsgit/pragmatic-version-control-using-git">책</a>은 <a href="http://progit.org">모두</a> 3장 이전에 다룬다.</p>
 <p>Git에서 merging/branching은 단순하고 자주 쓰기 때문에 더는 쫄지 않아도 된다. 버전 관리도구는 무엇보다 merging/branching이 쉬워야 한다.</p>
 <p>도구에 대한 얘긴 그만 접고 개발 모델에 대한 얘기를 시작하자. 내가 여기서 말하고자 하는 모델은 단순히 소프트웨어 개발 프로세스를 관리하려고 팀원 모두가 따라야 하는 치짐일 뿐이다.</p>
 <h3 id="-">분산이지만 중앙집중식처럼</h3>
-<p>이 브랜치 모델에는 중앙 저장소가 하나 필요하다. 사람들이 중앙에 두고 공유하는, 의미상으로 “진짜” 중앙 저장소 말이다. Git은 DVCS라서 본질적으로 모든 저장소가 같다. 중앙 저장소라고 해서 금칠 돼 있는 것이 아니다. 이 중앙 저장소를 origin으로 추가한다. Git을 사용하는 사람에게는 origin이라는 이름이 매우 친근하다.</p>
+<p>이 브랜치 모델에는 중앙 저장소가 하나 필요하다. 사람들이 중앙에 두고 공유하는, 의미상으로 &quot;진짜&quot; 중앙 저장소 말이다. Git은 DVCS라서 본질적으로 모든 저장소가 같다. 중앙 저장소라고 해서 금칠 돼 있는 것이 아니다. 이 중앙 저장소를 origin으로 추가한다. Git을 사용하는 사람에게는 origin이라는 이름이 매우 친근하다.</p>
 <p><img src="/articles/2011/a-successful-git-branching-model/centr-decentr.png" alt="Decentralized but centralized"></p>
 <p>개발자 모두 origin에 push/pull할 수 있지만, 중앙집중식에서는 모든 개발자가 다른 모듈 팀에서 수정한 것까지도 pull해야 한다. 예를 들어 혼자 하기 어려운 기능은 둘, 셋이서 함께 개발하고 나서 origin에 push해야 한다. 개발 중인 것을 origin에 push하지 않는다. 이 그림에서 Alice와 Bob, Alice와 David, Clair와 David은 각각 팀을 만들었다:</p>
 <p>이것을 Git 언어로 풀어보면 Alice는 자신의 저장소에 Bob의 저장소를 bob이라는 이름으로 추가한다는 것을 말한다. 나머지 팀원과 팀도 모두 똑같이 한다.</p>
@@ -110,7 +110,7 @@
 </ul>
 <p>Git 사용자라면 누구나 익숙한 master 브랜치와 develop 브랜치를 병행으로 유지한다.</p>
 <p>먼저 배포했거나 곧 배포할(production-ready) 코드는 origin/master에 두고 관리한다.</p>
-<p>그리고 다음에 배포할 것을 개발하는 코드는 origin/develop에 두고 관리한다. 혹자는 이 브랜치를 “통합 브랜치(integration branch)”라고 부르기도 하는데, 이 브랜치를 자동으로 매일 빌드하는데 사용한다.</p>
+<p>그리고 다음에 배포할 것을 개발하는 코드는 origin/develop에 두고 관리한다. 혹자는 이 브랜치를 &quot;통합 브랜치(integration branch)&quot;라고 부르기도 하는데, 이 브랜치를 자동으로 매일 빌드하는데 사용한다.</p>
 <p>develop branch의 코드가 안정되고 배포할 준비가 되면 곧 master로 merge하고 배포 버전으로 태그를 단다. 이것을 어떻게 하는지 이 글에서 자세히 설명한다.</p>
 <p>즉, 정의한 대로 master로 merge하는 것은 새 버전을 배포하는 것을 의미한다. 우리는 이것을 매우 엄격하게 지킬 것이다. 그래서 master 브랜치에 커밋될 때마다 Git hook 스크립트로 자동으로 빌드하고 말아서 운영 서버로 배포할 수 있다.</p>
 <h3 id="-">보조 브랜치</h3>
@@ -143,20 +143,20 @@ Updating ea1b82a..05e9557
 $ git branch -d myfeature
 Deleted branch myfeature (was 05e9557).
 $ git push origin develop
-</code></pre><p>‘—no-ff’ 옵션을 주면 항상 merge 커밋을 만들어 merge한다. fast-forward로 merge할 수 있어도 fast-forward하지 않는다. 그러면 feature 브랜치에 추가된 모든 커밋이 merge되고 feature 브랜치에서 merge했다는 기록이 커밋 히스토리에 남는다. 그 둘을 비교해보자:</p>
+</code></pre><p>&#39;--no-ff&#39; 옵션을 주면 항상 merge 커밋을 만들어 merge한다. fast-forward로 merge할 수 있어도 fast-forward하지 않는다. 그러면 feature 브랜치에 추가된 모든 커밋이 merge되고 feature 브랜치에서 merge했다는 기록이 커밋 히스토리에 남는다. 그 둘을 비교해보자:</p>
 <p><img src="/articles/2011/a-successful-git-branching-model/merge-without-ff.png" alt="branches"></p>
-<p>후자처럼 fast-forward merge하면 나중에 커밋 히스토리를 다시 확인할 때 어떤 커밋이 어떤 기능(feature)을 구현한 것인지 확인하기 어렵다. 그래서 히스토리에 있는 커밋 메시지를 하나하나 눈으로 찾아야 한다. 추가한 feature를 되돌려야(revert) 할 때 feature와 관련된 모든 커밋을 되돌려야 하는데 merge 커밋이 없으면 욕이 절로 나올 것이다. —no-ff 옵션을 주고 merge했다면 되돌리기 쉽다.</p>
+<p>후자처럼 fast-forward merge하면 나중에 커밋 히스토리를 다시 확인할 때 어떤 커밋이 어떤 기능(feature)을 구현한 것인지 확인하기 어렵다. 그래서 히스토리에 있는 커밋 메시지를 하나하나 눈으로 찾아야 한다. 추가한 feature를 되돌려야(revert) 할 때 feature와 관련된 모든 커밋을 되돌려야 하는데 merge 커밋이 없으면 욕이 절로 나올 것이다. --no-ff 옵션을 주고 merge했다면 되돌리기 쉽다.</p>
 <p>물론 아무것도 없는 텅 빈 커밋 개체가 하나 추가로 만들어지긴 하지만 이득이 더 많다.</p>
-<p>나는 —no-ff 옵션을 기본 옵션으로 설정하는 방법을 찾지 못했다. 나는 꼭 기본 옵션이 돼야 한다고 생각한다.</p>
+<p>나는 --no-ff 옵션을 기본 옵션으로 설정하는 방법을 찾지 못했다. 나는 꼭 기본 옵션이 돼야 한다고 생각한다.</p>
 <h4 id="release-">release 브랜치</h4>
 <pre><code>갈라져 나온 브랜치: develop
 다시 merge할 브랜치: develop, master
 브랜치 이름 규칙: release-*
 </code></pre><p>release 브랜치는 제품 배포를 준비하는 브랜치이다. 이 브랜치가 화룡이 승천할 수 있도록 점정하는 곳이다. 배포하는 데 필요한 버전 넘버, 빌드 일정 등의 메타데이터를 준비하고 사소한 버그도 잡는다. 이런 일을 release 브랜치에서 함으로써 develop 브랜치는 다음에 배포할 때 추가할 기능에 집중할 수 있다.</p>
 <p>develop 브랜치가 배포할 수 있는 상태에 다다랐을 때 release 브랜치를 만드는 것이 중요하다. 이때, 배포해야 하는 기능이 모두 develop 브랜치에 merge돼 있어야 하고 이번에 배포하지 않을 기능은 release 브랜치를 만들 때까지 기다려야 한다.</p>
-<p>release 브랜치를 만든다는 것은 이제 배포 버전을 부여하겠다는 것을 의미한다. 그때까지 develop 브랜치가 다음 배포가 어떤 모습일지 보여주지만, 아직 깨끗하게 정리된 상태가 아니다. 최종적으로 release 브랜치를 만들어 ‘0.1’, ‘0.3’ 같은 버전 넘버 붙을 때까지는 “진짜” 배포라고 할 수 없다. 그러니까 release 브랜치를 만들기로 하는 것이 버전 넘버를 새로 부여하기로 하는 것을 의미한다. 이것은 규칙이다.</p>
+<p>release 브랜치를 만든다는 것은 이제 배포 버전을 부여하겠다는 것을 의미한다. 그때까지 develop 브랜치가 다음 배포가 어떤 모습일지 보여주지만, 아직 깨끗하게 정리된 상태가 아니다. 최종적으로 release 브랜치를 만들어 &#39;0.1&#39;, &#39;0.3&#39; 같은 버전 넘버 붙을 때까지는 &quot;진짜&quot; 배포라고 할 수 없다. 그러니까 release 브랜치를 만들기로 하는 것이 버전 넘버를 새로 부여하기로 하는 것을 의미한다. 이것은 규칙이다.</p>
 <h5 id="release-">release 브랜치 만들기</h5>
-<p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 ‘1.1.5’이고 새 버전은 ‘1.1.6’이나 ‘2.0’이 아니라 ‘1.2’ 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:</p>
+<p>release 브랜치는 develop 브랜치에서 만든다. 예를 들어 배포할 수 있을 정도로 develop 브랜치가 준비돼 이제 곧 새 버전을 배포할 것이라고 하자. 그리고 현재 배포된 버전이 &#39;1.1.5&#39;이고 새 버전은 &#39;1.1.6&#39;이나 &#39;2.0&#39;이 아니라 &#39;1.2&#39; 버전으로 배포하기로 했다. 그럼 다음과 같은 이름으로 release 브랜치를 만든다:</p>
 <pre><code>$ git checkout -b release-1.2 develop
 Switched to a new branch &quot;release-1.2&quot;
 $ ./bump-version.sh 1.2

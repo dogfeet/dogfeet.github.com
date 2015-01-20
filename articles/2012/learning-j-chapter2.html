@@ -11,7 +11,8 @@
     content="Learning J의 Chapter2 를 번역했다. 이번엔 리스트와 테이블에 관한 내용이다. 굉장히 기초적이고 중요한 내용이다. 특히 배열의 차원(dimension)에 관한 이야기는 나중에 나올 랭크라는 개념을 이해하기 위한 초석이므로 예제들을 잘 봐야 한다. 눈에 보이는 데이터가 같다고 해서 같은 데이터가 아니라는 것도 중요하다. 지금 말하고 있는 게 무슨 말인지 모르겠다면 이번 챕터를 읽도록 하자."></meta>
   <meta name="keywords"
     content="J,jsoftware,language,J언어"></meta>
-  <meta name="author" content="Yongjae Choi"></meta>
+  <meta name="author"
+    content="Yongjae Choi"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="J언어 배우기 - 제 2장: 리스트와 테이블 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/learning-j-chapter2.html" lang="ko-kr">
@@ -90,7 +90,7 @@
 <p><a href="http://www.jsoftware.com/docs/help701/learning/contents.htm">Learning J</a>의 Chapter2 를 번역했다. 이번엔 리스트와 테이블에 관한 내용이다. 굉장히 기초적이고 중요한 내용이다. 특히 배열의 차원(dimension)에 관한 이야기는 나중에 나올 랭크라는 개념을 이해하기 위한 초석이므로 예제들을 잘 봐야 한다. 눈에 보이는 데이터가 같다고 해서 같은 데이터가 아니라는 것도 중요하다. 지금 말하고 있는 게 무슨 말인지 모르겠다면 이번 챕터를 읽도록 하자.</p>
 <p>자 시작하자.</p>
 <p><img src="/articles/2012/learning-j-chapter2/j-code.png" alt="j-code"></p>
-<p>계산(computation)을 하려면 데이터가 필요하다. 지금까지 단일 숫자와 숫자 리스트로 된 데이터만을 다뤘다. 하지만 테이블 같은, 다른 형태를 가진 데이터도 생각해볼 수 있다. 그런 데이터 즉, 리스트나 테이블들을 “배열”(Array)이라고 한다.</p>
+<p>계산(computation)을 하려면 데이터가 필요하다. 지금까지 단일 숫자와 숫자 리스트로 된 데이터만을 다뤘다. 하지만 테이블 같은, 다른 형태를 가진 데이터도 생각해볼 수 있다. 그런 데이터 즉, 리스트나 테이블들을 &quot;배열&quot;(Array)이라고 한다.</p>
 <h2 id="2-1-">2.1 테이블</h2>
 <p>2행 3열 테이블은 <code>$</code>함수로 만든다.</p>
 <pre><code>   table =: 2 3   $   5 6 7  8 9 10
@@ -99,175 +99,165 @@
 8 9 10
 </code></pre><p>위 예제는 <code>x $ y</code>라는 표현식으로 테이블을 만드는 것을 보여준다. x는 테이블의 차원(dimensions)을 결정한다. x는 행의 개수 다음에 열의 개수가 오는 리스트의 형태이다. 테이블은 y의 내용으로 채워진다.
 y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음에는 두 번째 행을 채워나간다. 행이 더 있으면 계속 y의 아이템을 가져와 순서대로 채운다. y는 적어도 하나 이상의 아이템을 가지고 있어야만 한다. 만약 y의 아이템 개수가 테이블을 채우기 부족하다면 y의 처음부터 재사용한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;2 4 $ 5 6 7 8 9&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 2 $ 1&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5 6 7 8&lt;br&gt;
-9 5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 1&lt;br&gt;
-1 1&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>2 4 $ 5 6 7 8 9</tt></td>
+<td><tt>2 2 $ 1</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7 8<br>
+9 5 6 7</tt></td>
+<td><tt>1 1<br>
+1 1</tt></td>
+</tr></tbody></table>
 
-</p>
 <p><code>$</code>함수는 한가지 방식으로만 테이블을 만든다. 더 많은 방식을 보고 싶다면 5장을 참고하시라.</p>
 <p>우리가 배웠던 함수들은 이전에 리스트 데이터에서도 그랬듯이 테이블 데이터에도 정확하게 똑같이 적용된다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;table  &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;10 * table&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;table + table&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5 6&nbsp;&nbsp;7&lt;br&gt;
-8 9 10&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;50 60&nbsp;&nbsp;70&lt;br&gt;
-80 90 100&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;10 12 14&lt;br&gt;
-16 18 20&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>table  </tt></td>
+<td><tt>10 * table</tt></td>
+<td><tt>table + table</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6&nbsp;&nbsp;7<br>
+8 9 10</tt></td>
+<td><tt>50 60&nbsp;&nbsp;70<br>
+80 90 100</tt></td>
+<td><tt>10 12 14<br>
+16 18 20</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>한 인자는 테이블, 또 다른 인자는 리스트인 경우도 가능하다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;table&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 1 * table&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5 6&nbsp;&nbsp;7&lt;br&gt;
-8 9 10&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 0&nbsp;&nbsp;0&lt;br&gt;
-8 9 10&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>table</tt></td>
+<td><tt>0 1 * table</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6&nbsp;&nbsp;7<br>
+8 9 10</tt></td>
+<td><tt>0 0&nbsp;&nbsp;0<br>
+8 9 10</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>바로 위 예제에서, 리스트 <code>0 1</code>의 각 아이템은 자동으로 테이블의 행과 매칭되었다. 0은 첫 번째 행과 1은 두 번째 행과 매칭되었다. 다른 패턴들도 이런 식으로 매칭될 수 있다. 더 보려면 7장을 보면 된다.</p>
 <h2 id="2-2-">2.2 배열</h2>
 <p>테이블은 차원이 2이다. (행과 열) 비슷하게, 리스트는 1차원이라고 말할 수 있다.
-2개 이상의 차원을 가진 테이블 형 데이터 오브젝트도 있다. 그런 의미에서 <code>$</code>함수의 왼쪽 인자는 차원의 개수를 가지는 리스트라고도 말할 수 있다. “배열”이라는 단어는 차원을 가진 데이터 오브젝트를 가리키는 일반적인 말이다. 아래에는 1차원, 2차원, 3차원의 배열에 대한 예제이다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;3 $ 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 3 $ 5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 2 3 $ 5 6 7 8&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 1 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;5 6 7&lt;br&gt;
-5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;5 6 7&lt;br&gt;
-8 5 6&lt;br&gt;
-&lt;br&gt;
-7 8 5&lt;br&gt;
-6 7 8&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+2개 이상의 차원을 가진 테이블 형 데이터 오브젝트도 있다. 그런 의미에서 <code>$</code>함수의 왼쪽 인자는 차원의 개수를 가지는 리스트라고도 말할 수 있다. &quot;배열&quot;이라는 단어는 차원을 가진 데이터 오브젝트를 가리키는 일반적인 말이다. 아래에는 1차원, 2차원, 3차원의 배열에 대한 예제이다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>3 $ 1</tt></td>
+<td><tt>2 3 $ 5 6 7</tt></td>
+<td><tt>2 2 3 $ 5 6 7 8</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 1 1</tt></td>
+<td><tt>5 6 7<br>
+5 6 7</tt></td>
+<td><tt>5 6 7<br>
+8 5 6<br>
+<br>
+7 8 5<br>
+6 7 8</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>위 예제의 3차원 배열은 2면, 2행, 3열로 이루어져 있다. 두 개의 면은 위아래 차례대로 출력되었다.</p>
 <p>모나딕 <code>#</code>함수로 리스트의 길이를 알 수 있는 것을 상기하자.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;# 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# 6 7 8&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt># 6 7</tt></td>
+<td><tt># 6 7 8</tt></td>
+</tr><tr valign="TOP">
+<td><tt>2</tt></td>
+<td><tt>3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>모나딕 <code>$</code>함수로는 인자의 차원 리스트를 알 수 있다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;L =: 5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ L&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;T =: 2 3 $ 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ T&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 1 1&lt;br&gt;
-1 1 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>L =: 5 6 7</tt></td>
+<td><tt>$ L</tt></td>
+<td><tt>T =: 2 3 $ 1</tt></td>
+<td><tt>$ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7</tt></td>
+<td><tt>3</tt></td>
+<td><tt>1 1 1<br>
+1 1 1</tt></td>
+<td><tt>2 3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>그러므로 만약 x가 배열이라면 <code># $ x</code>라는 표현식은 x의 차원 리스트의 길이, 즉 x의 차원 개수를 내뱉는다. 차원의 개수가 1이면 리스트, 2이면 테이블인 식이다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; L &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ L &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; # $ L&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; T &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$T&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# $ T&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 1 1&lt;br&gt;
-1 1 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> L </tt></td>
+<td><tt>$ L </tt></td>
+<td><tt> # $ L</tt></td>
+<td><tt> T </tt></td>
+<td><tt>$T</tt></td>
+<td><tt># $ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5 6 7</tt></td>
+<td><tt>3</tt></td>
+<td><tt>1</tt></td>
+<td><tt>1 1 1<br>
+1 1 1</tt></td>
+<td><tt>2 3</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>만약 x가 단일 숫자라면 <code># $ x</code>는 0이다.</p>
 <pre><code>   # $ 17
 0
-</code></pre><p>테이블은 2차원이고 리스트가 1차원이므로 단일 수는 차원이 없다라고 말할 수 있다. 단일수의 차원 수는 0이기 때문이다.(위 코드의 결과가 그 근거이다) 차원 수가 0인 데이터 오브젝트는 스칼라(scalar)라고 한다. 위에서 “배열”을 어떤 차원을 가지고 있는 데이터 오브젝트로 정의했었다. 그렇다면 스칼라 또한 배열이다. 다만 차원이 0일 뿐이다.</p>
+</code></pre><p>테이블은 2차원이고 리스트가 1차원이므로 단일 수는 차원이 없다라고 말할 수 있다. 단일수의 차원 수는 0이기 때문이다.(위 코드의 결과가 그 근거이다) 차원 수가 0인 데이터 오브젝트는 스칼라(scalar)라고 한다. 위에서 &quot;배열&quot;을 어떤 차원을 가지고 있는 데이터 오브젝트로 정의했었다. 그렇다면 스칼라 또한 배열이다. 다만 차원이 0일 뿐이다.</p>
 <p>우리는 위에서 <code># $ 17</code>이 0임을 확인했다. 여기서 이런 결론을 도출할 수 있을 것이다. 스칼라가 차원을 가지고 있지 않기 때문에, (<code>$ 17</code>의 결과물로써의) 차원 리스트는 길이가 0이거나 비어있는 리스트여야만 한다. 이제 2의 길이를 가진 리스트는 <code>2 $ 99</code> 와 같은 코드를 이용해서 만들어 낼 수 있다. 그리고 길이가 0인 빈 리스트는 <code>0 $ 99</code> 같은 코드로 만들어 낼 수 있겠다. (사실 99대신 아무 숫자나 쓰여도 된다.)</p>
 <p>빈 리스트의 값은 표시되지 않는다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;2 $ 99&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 $ 99&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; $ 17&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;99 99&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;&nbsp;&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;&nbsp;&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>2 $ 99</tt></td>
+<td><tt>0 $ 99</tt></td>
+<td><tt> $ 17</tt></td>
+</tr><tr valign="TOP">
+<td><tt>99 99</tt></td>
+<td><tt>&nbsp;</tt></td>
+<td><tt>&nbsp;</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>스칼라(예를 들면 <code>17</code>)는 길이가 1인 리스트(예를 들면 <code>1 $ 17</code>) 와는 다르다. 또 1행 1열짜리인 테이블(예를 들면 <code>1 1 $ 17</code>)과도 다르다. 스칼라는 차원이 없다. 리스트는 차원이 하나, 테이블은 두 개 이다. 하지만 세 개 모두 화면에는 똑같이 보인다.</p>
 <pre><code>   S =: 17
    L =: 1 $ 17
    T =: 1 1 $ 17
-</code></pre><p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; S &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; L &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; T &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# $ S&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# $ L&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# $ T&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;17&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;17&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;17&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</code></pre><table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> S </tt></td>
+<td><tt> L </tt></td>
+<td><tt> T </tt></td>
+<td><tt># $ S</tt></td>
+<td><tt># $ L</tt></td>
+<td><tt># $ T</tt></td>
+</tr><tr valign="TOP">
+<td><tt>17</tt></td>
+<td><tt>17</tt></td>
+<td><tt>17</tt></td>
+<td><tt>0</tt></td>
+<td><tt>1</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>하나의 열을 가진 테이블도 여전히 2차원 테이블이다. 아래에 3행 1열의 <code>t</code>가 있다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;t =: 3 1 $ 5 6 7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ t&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# $ t&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;5&lt;br&gt;
-6&lt;br&gt;
-7&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>t =: 3 1 $ 5 6 7</tt></td>
+<td><tt>$ t</tt></td>
+<td><tt># $ t</tt></td>
+</tr><tr valign="TOP">
+<td><tt>5<br>
+6<br>
+7</tt></td>
+<td><tt>3 1</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
 
-</p>
 <h2 id="2-3-rank-and-shape-">2.3 용어: 랭크와 모양(Rank and Shape)</h2>
-<p>“차원 수”라고 부르는 속성은 J에서는 짧게 줄여 “랭크(Rank)”라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 “모양(Shape)”이라고 한다.
-수학 용어에서 “벡터(Vector)”와 “매트릭스(Matrix)”는 위에서 말했던 “리스트”와 “테이블”과 관련이 있다. 3차원 이상의 배열(아, 이제는 랭크 3이상의 배열 이라고 하겠다.)은 “리포트(Report)”라고 한다.</p>
+<p>&quot;차원 수&quot;라고 부르는 속성은 J에서는 짧게 줄여 &quot;랭크(Rank)&quot;라고 한다. 그래서 단일 숫자는 랭크-0 배열(rank-0 array)이라고 부르고, 리스트는 랭크-1 배열이라고 한다. 차원 리스트는 &quot;모양(Shape)&quot;이라고 한다.
+수학 용어에서 &quot;벡터(Vector)&quot;와 &quot;매트릭스(Matrix)&quot;는 위에서 말했던 &quot;리스트&quot;와 &quot;테이블&quot;과 관련이 있다. 3차원 이상의 배열(아, 이제는 랭크 3이상의 배열 이라고 하겠다.)은 &quot;리포트(Report)&quot;라고 한다.</p>
 <p>아래 테이블에 배열에 대한 용어와 함수들을 정리해놓았다.</p>
 <pre><code>+--------+--------+-----------+------+
 |        | Example| Shape     | Rank |
@@ -287,7 +277,7 @@ y의 아이템을 순서대로 가져와서 첫 번째 행을 채우고 다음�
 |        |6  7  8 |           |      |
 |        |9 10 11 |           |      |
 +--------+--------+-----------+------+
-</code></pre><p>위 테이블은 사실 J로 짠 프로그램의 출력물이다. 게다가 저건 위에 작은 챕터를 할애해서 말했던 자료구조인 진짜 “테이블”이다. 이 테이블의 모양은 <code>6 4</code>이다. 하지만 이건 숫자로만 이루어진 테이블이 아니라 문자도 있고, 리스트도 담고 있다. 그럼 이제 숫자가 아닌 걸로 이루어진 배열을 살펴보자</p>
+</code></pre><p>위 테이블은 사실 J로 짠 프로그램의 출력물이다. 게다가 저건 위에 작은 챕터를 할애해서 말했던 자료구조인 진짜 &quot;테이블&quot;이다. 이 테이블의 모양은 <code>6 4</code>이다. 하지만 이건 숫자로만 이루어진 테이블이 아니라 문자도 있고, 리스트도 담고 있다. 그럼 이제 숫자가 아닌 걸로 이루어진 배열을 살펴보자</p>
 <h2 id="2-4-">2.4 문자로 이루어진 배열</h2>
 <p>문자는 알파벳, 구두점, 숫자 등을 말한다. 숫자로 배열을 만들었듯이 문자로도 배열을 만들 수 있다. 문자의 리스트를 만들려면 작은따옴표 안에 문자들을 넣으면 된다. 하지만 결과 화면에 출력될 때는 작은따옴표는 보이지 않는다. 예를 들자면 아래와 같다.</p>
 <pre><code>   title =: &#39;My Ten Years in a Quandary&#39;
@@ -297,205 +287,192 @@ My Ten Years in a Quandary
 <pre><code>   &#39;What&#39;&#39;s new?&#39;
 What&#39;s new?
 </code></pre><p>빈 문자열이나 길이가 0인 문자열을 나타내려면 연속된 두 개의 작은 따옴표를 타이핑한다. 이건 화면에 보이지 않는다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; ‘’ &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# ‘’ &lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;&nbsp;&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> &#39;&#39; </tt></td>
+<td><tt># &#39;&#39; </tt></td>
+</tr><tr valign="TOP">
+<td><tt>&nbsp;</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
 
-</p>
 <h2 id="2-5-">2.5 배열에 사용되는 함수</h2>
 <p>이 장에서는 배열을 다루는 몇 가지 유용한 함수들을 알아보도록 한다. J는 매우 다양한 함수들을 가진 언어이다. 한번 살펴보자.</p>
 <h3 id="2-5-1-">2.5.1 합치기</h3>
-<p>내장 함수인 <code>,</code>는 “Append”라고 한다. 이 함수는 여러 개의 요소를 붙여서 리스트를 만든다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;a =: ‘rear’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;b =: ‘ranged’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;a,b&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;rear&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;ranged&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;rearranged&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>내장 함수인 <code>,</code>는 &quot;Append&quot;라고 한다. 이 함수는 여러 개의 요소를 붙여서 리스트를 만든다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>a =: &#39;rear&#39;</tt></td>
+<td><tt>b =: &#39;ranged&#39;</tt></td>
+<td><tt>a,b</tt></td>
+</tr><tr valign="TOP">
+<td><tt>rear</tt></td>
+<td><tt>ranged</tt></td>
+<td><tt>rearranged</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>“Append” 함수는 리스트나 아이템 하나를 합친다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;x =: 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 , x &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;x , 0 &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 , 0&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;x , x &lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3 0&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 0&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>&quot;Append&quot; 함수는 리스트나 아이템 하나를 합친다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x =: 1 2 3</tt></td>
+<td><tt>0 , x </tt></td>
+<td><tt>x , 0 </tt></td>
+<td><tt>0 , 0</tt></td>
+<td><tt>x , x </tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3</tt></td>
+<td><tt>0 1 2 3</tt></td>
+<td><tt>1 2 3 0</tt></td>
+<td><tt>0 0</tt></td>
+<td><tt>1 2 3 1 2 3</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>“Append” 함수는 두 개의 테이블의 양 끝을 합쳐서 더 긴 테이블을 만들 수도 있다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;T1=: 2 3 $ ‘catdog’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;T2=: 2 3 $ ‘ratpig’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;T1,T2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;cat&lt;br&gt;
-dog&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;rat&lt;br&gt;
-pig&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;cat&lt;br&gt;
-dog&lt;br&gt;
-rat&lt;br&gt;
-pig&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>&quot;Append&quot; 함수는 두 개의 테이블의 양 끝을 합쳐서 더 긴 테이블을 만들 수도 있다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1=: 2 3 $ &#39;catdog&#39;</tt></td>
+<td><tt>T2=: 2 3 $ &#39;ratpig&#39;</tt></td>
+<td><tt>T1,T2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>rat<br>
+pig</tt></td>
+<td><tt>cat<br>
+dog<br>
+rat<br>
+pig</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>“Append”에 대한 더 많은 정보를 원하면 5장을 보라.</p>
+<p>&quot;Append&quot;에 대한 더 많은 정보를 원하면 5장을 보라.</p>
 <h3 id="2-5-2-">2.5.2 아이템</h3>
 <p>숫자로 이루어진 리스트의 아이템은 각각이 숫자다. 그리고 테이블의 아이템은 그 테이블의 행이라고 한다. 3차원 배열의 아이템은 그 배열의 평면이다. 일반적으로 말해서 아이템이라 함은 배열의 첫 번째 차원을 따라 늘어서 있는 요소들의 연속이다. 배열은 아이템으로 이루어진 리스트이다.
-<code>#</code>(“Tally”)함수가 리스트의 길이를 반환한다고 했었다. 아래를 보자</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;x&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; # x&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<code>#</code>(&quot;Tally&quot;)함수가 리스트의 길이를 반환한다고 했었다. 아래를 보자</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x</tt></td>
+<td><tt> # x</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3</tt></td>
+<td><tt>3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>일반적으로 <code>#</code>는 배열의 아이템 개수, 즉 첫 번째 차원의 크기를 잰다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;T1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ T1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# T1&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;cat&lt;br&gt;
-dog&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1</tt></td>
+<td><tt>$ T1</tt></td>
+<td><tt># T1</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>2 3</tt></td>
+<td><tt>2</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>확실히 <code># T1</code>은 차원 리스트인 <code>$ T1</code>의 첫 번째 아이템이다. 차원이 없는 스칼라는 단일 아이템으로 취급한다.</p>
 <pre><code>   # 6
 1
-</code></pre><p>밑에 있는 “Append”의 예를 다시 보자.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;T1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;T2&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;T1 , T2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;cat&lt;br&gt;
-dog&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;rat&lt;br&gt;
-pig&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;cat&lt;br&gt;
-dog&lt;br&gt;
-rat&lt;br&gt;
-pig&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</code></pre><p>밑에 있는 &quot;Append&quot;의 예를 다시 보자.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T1</tt></td>
+<td><tt>T2</tt></td>
+<td><tt>T1 , T2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>cat<br>
+dog</tt></td>
+<td><tt>rat<br>
+pig</tt></td>
+<td><tt>cat<br>
+dog<br>
+rat<br>
+pig</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>이제 <code>x , y</code>의 의미를 <code>x</code>의 아이템 다음에 <code>y</code>의 아이템이 오는 리스트라고 일반화시켜 말할 수 있겠다.</p>
-<p>“아이템”을 잘 이용하기 위한 다른 예제로 <code>+/</code> 함수가 있다. <code>+/</code>는 +를 리스트의 아이템 사이사이에 끼워 넣는다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+/ 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 + 2 + 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;6&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;6&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>&quot;아이템&quot;을 잘 이용하기 위한 다른 예제로 <code>+/</code> 함수가 있다. <code>+/</code>는 +를 리스트의 아이템 사이사이에 끼워 넣는다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>+/ 1 2 3</tt></td>
+<td><tt>1 + 2 + 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>6</tt></td>
+<td><tt>6</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>일반적으로는 <code>+/</code>는 <code>+</code>를 배열의 아이템 사이에 끼워 넣는다. (리스트의 아이템 사이가 아니다.) 다음 예제는 아이템이 단일 숫자가 아니라 테이블의 행인 경우이다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;T =: 3 2 $ 1 2 3 4 5 6&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;+/ T&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 + 3 4 + 5 6&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 2&lt;br&gt;
-3 4&lt;br&gt;
-5 6&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;9 12&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;9 12&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>T =: 3 2 $ 1 2 3 4 5 6</tt></td>
+<td><tt>+/ T</tt></td>
+<td><tt>1 2 + 3 4 + 5 6</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2<br>
+3 4<br>
+5 6</tt></td>
+<td><tt>9 12</tt></td>
+<td><tt>9 12</tt></td>
+</tr></tbody></table>
 
-</p>
 <h3 id="2-5-3-">2.5.3 선택하기</h3>
-<p>이제 리스트에서 아이템을 선택하는 방법을 알아보자. 리스트에서 아이템의 위치는 0, 1, 2… 로 숫자를 매긴다. 첫 번째 아이템의 위치는 0이다.(10번째 아이템의 위치는 9이다.) 위치 정보를 가지고 아이템을 선택하기 위해서는 <code>{</code>(“From”) 함수를 사용한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;Y =: ‘abcd’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;3 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;abcd&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;a&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;b&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;d&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>이제 리스트에서 아이템을 선택하는 방법을 알아보자. 리스트에서 아이템의 위치는 0, 1, 2... 로 숫자를 매긴다. 첫 번째 아이템의 위치는 0이다.(10번째 아이템의 위치는 9이다.) 위치 정보를 가지고 아이템을 선택하기 위해서는 <code>{</code>(&quot;From&quot;) 함수를 사용한다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y =: &#39;abcd&#39;</tt></td>
+<td><tt>0 { Y</tt></td>
+<td><tt>1 { Y</tt></td>
+<td><tt>3 { Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abcd</tt></td>
+<td><tt>a</tt></td>
+<td><tt>b</tt></td>
+<td><tt>d</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>위치를 나타내는 숫자는 “인덱스”라고 한다. <code>{</code>함수는 왼쪽 인자에 인덱스로써 단일수나 숫자 리스트를 받는다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; 0 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; 0 1 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; 3 0 1 { Y&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;abcd&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;a&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;ab&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;dab&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>위치를 나타내는 숫자는 &quot;인덱스&quot;라고 한다. <code>{</code>함수는 왼쪽 인자에 인덱스로써 단일수나 숫자 리스트를 받는다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> Y</tt></td>
+<td><tt> 0 { Y</tt></td>
+<td><tt> 0 1 { Y</tt></td>
+<td><tt> 3 0 1 { Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abcd</tt></td>
+<td><tt>a</tt></td>
+<td><tt>ab</tt></td>
+<td><tt>dab</tt></td>
+</tr></tbody></table>
 
-</p>
 <p><code>i.</code> 라는 내장 함수도 있다. 표현식 <code>i. n</code>은 크기가 n인 0부터 순서대로 커지는 양의 정수의 리스트를 생성한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;i. 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;i. 6&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 + i. 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;0 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 1 2 3 4 5&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>i. 4</tt></td>
+<td><tt>i. 6</tt></td>
+<td><tt>1 + i. 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>0 1 2 3</tt></td>
+<td><tt>0 1 2 3 4 5</tt></td>
+<td><tt>1 2 3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>만약 x가 리스트라면 <code>i. # x</code>라는 표현식은 x에서 사용할 수 있는 모든 인덱스의 리스트를 만들어낸다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;x =: ‘park’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# x&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;i. # x&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;park&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>x =: &#39;park&#39;</tt></td>
+<td><tt># x</tt></td>
+<td><tt>i. # x</tt></td>
+</tr><tr valign="TOP">
+<td><tt>park</tt></td>
+<td><tt>4</tt></td>
+<td><tt>0 1 2 3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p><code>i.</code>의 인자로 리스트가 들어오면 배열이 만들어진다.</p>
 <pre><code>   i. 2 3
 0 1 2
 3 4 5
-</code></pre><p><code>i.</code>를 다이아딕으로 사용하면 이때는 <code>i.</code>를 “Index Of”라고 한다. <code>x i. y</code>라는 표현식은 x에 있는 y의 위치를 찾아낸다.</p>
+</code></pre><p><code>i.</code>를 다이아딕으로 사용하면 이때는 <code>i.</code>를 &quot;Index Of&quot;라고 한다. <code>x i. y</code>라는 표현식은 x에 있는 y의 위치를 찾아낸다.</p>
 <pre><code>   &#39;park&#39; i. &#39;k&#39;
 3
 </code></pre><p>찾은 인덱스는 x에서 y가 처음으로 발견된 위치이다.</p>
@@ -506,130 +483,123 @@ pig&lt;/tt&gt;&lt;/td&gt;
 4
 </code></pre><p>인덱싱에 대해 더 많은 것을 알고 싶다면 챕터 6을 보라.</p>
 <h3 id="2-5-4-equality-and-matching-">2.5.4 같음과 매칭(Equality and Matching)</h3>
-<p>두 배열이 같은지 알아봐야 하는 상황이라면 내장 함수인 <code>-:</code>(“Match”)를 사용하면 된다. 이 함수는 두 개의 인자가 같은 모양, 같은 값을 가졌는지 검사한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;X =: ‘abc’&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;X -: X&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;Y =: 1 2 3 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;X -: Y&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;abc&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>두 배열이 같은지 알아봐야 하는 상황이라면 내장 함수인 <code>-:</code>(&quot;Match&quot;)를 사용하면 된다. 이 함수는 두 개의 인자가 같은 모양, 같은 값을 가졌는지 검사한다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>X =: &#39;abc&#39;</tt></td>
+<td><tt>X -: X</tt></td>
+<td><tt>Y =: 1 2 3 4</tt></td>
+<td><tt>X -: Y</tt></td>
+</tr><tr valign="TOP">
+<td><tt>abc</tt></td>
+<td><tt>1</tt></td>
+<td><tt>1 2 3 4</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>인자가 뭐든 간에 함수의 결과 값은 0 아니면 1이다.</p>
 <p>빈 문자 리스트와 빈 숫자 리스트는 같다는 건 알아두어야 한다.</p>
 <pre><code>   &#39;&#39; -: 0 $ 0
 1
 </code></pre><p>이 둘의 모양은 같고 모든 매핑되는 요소의 값들이 같기 때문에 위 식은 참이다. (물론 요소가 없긴 하다.)
-<code>=</code>(“Equal”)라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;Y = Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;Y = 2&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 1 1 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0 1 0 0&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<code>=</code>(&quot;Equal&quot;)라는 함수도 있다. 이 함수는 주어진 두 인자가 같은지를 확인한다. <code>=</code>는 매핑되는 각 요소의 값이 같은지 확인해서 요소와 같은 모양의 불리언 배열을 반환한다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y</tt></td>
+<td><tt>Y = Y</tt></td>
+<td><tt>Y = 2</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3 4</tt></td>
+<td><tt>1 1 1 1</tt></td>
+<td><tt>0 1 0 0</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>결론적으로 <code>=</code>가 가지는 두 인자는 반드시 같은 모양이어야 한다. (아니면 적어도, <code>Y=2</code>의 경우와 같이 호환되는 모양이어야 한다) 그렇지 않으면 에러가 발생한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;Y&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;Y = 1 5 6 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;Y = 1 5 6&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3 4&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 0 0 1&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;error&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>Y</tt></td>
+<td><tt>Y = 1 5 6 4</tt></td>
+<td><tt>Y = 1 5 6</tt></td>
+</tr><tr valign="TOP">
+<td><tt>1 2 3 4</tt></td>
+<td><tt>1 0 0 1</tt></td>
+<td><tt>error</tt></td>
+</tr></tbody></table>
 
-</p>
 <h2 id="2-6-arrays-of-boxes-">2.6 박스의 배열(Arrays of Boxes)</h2>
 <h3 id="2-6-1-">2.6.1 연결하기</h3>
-<p><code>;</code>(“Link”)라는 내장 함수가 있다. 이 함수는 두 인자를 리스트의 형태로 연결한다. 두 인자는 다른 것 이어도 된다. 예를 들어 문자열과 숫자를 연결 할수 있다.</p>
+<p><code>;</code>(&quot;Link&quot;)라는 내장 함수가 있다. 이 함수는 두 인자를 리스트의 형태로 연결한다. 두 인자는 다른 것 이어도 된다. 예를 들어 문자열과 숫자를 연결 할수 있다.</p>
 <pre><code>   A =: &#39;The answer is&#39;  ;  42
    A
 +-------------+--+
 |The answer is|42|
 +-------------+--+
-</code></pre><p>위 에서 A는 길이가 2인 리스트이다. 그리고 이 리스트는 박스의 리스트라고 한다. 첫 번째 박스 안에는 문자열 ‘The answer is’가 들어있고 두 번째 박스에는 숫자 42가 있다. 박스는 화면에 사각형으로 그려지고 안에 그 박스의 값을 담고 있는 형태로 그려진다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; A &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; 0 { A&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+——————-+—+&lt;br&gt;
-|The answer is|42|&lt;br&gt;
-+——————-+—+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;+——————-+&lt;br&gt;
-|The answer is|&lt;br&gt;
-+——————-+&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</code></pre><p>위 에서 A는 길이가 2인 리스트이다. 그리고 이 리스트는 박스의 리스트라고 한다. 첫 번째 박스 안에는 문자열 &#39;The answer is&#39;가 들어있고 두 번째 박스에는 숫자 42가 있다. 박스는 화면에 사각형으로 그려지고 안에 그 박스의 값을 담고 있는 형태로 그려진다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> A </tt></td>
+<td><tt> 0 { A</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-------------+--+<br>
+|The answer is|42|<br>
++-------------+--+</tt></td>
+<td><tt>+-------------+<br>
+|The answer is|<br>
++-------------+</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>박스 하나는 안에 있는 값이 무엇이든 간에 스칼라로 취급한다. 박스는 그 안에 일반적인 배열(예를 들면 숫자로 이루어진 리스트 같은 거)을 넣을 수 있다. 따라서 A는 스칼라의 리스트이다. (A의 아이템들은 각각이 스칼라는 말이다.)</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt; A &lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;$ A&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;s =: 1 { A&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt; # $ s&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+——————-+—+&lt;br&gt;
-|The answer is|42|&lt;br&gt;
-+——————-+—+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;+—+&lt;br&gt;
-|42|&lt;br&gt;
-+—+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;0&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt> A </tt></td>
+<td><tt>$ A</tt></td>
+<td><tt>s =: 1 { A</tt></td>
+<td><tt> # $ s</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-------------+--+<br>
+|The answer is|42|<br>
++-------------+--+</tt></td>
+<td><tt>2</tt></td>
+<td><tt>+--+<br>
+|42|<br>
++--+</tt></td>
+<td><tt>0</tt></td>
+</tr></tbody></table>
 
-</p>
 <p>박스로 이루어진 배열의 주목적은 다른 종류의 값들을 하나의 변수에 집어넣는 것이다. 예를 들어 구입 한 물건의 자세한 사항들(구매 날짜, 가격, 설명)을 담은 변수는 박스의 리스트로 나타낼 수 있다.</p>
 <pre><code>   P =: 18 12 1998  ;  1.99  ;  &#39;baked beans&#39;
    P
 +----------+----+-----------+
 |18 12 1998|1.99|baked beans|
 +----------+----+-----------+
-</code></pre><p>“Link”와 “Append”의 차이점에 주목해야 한다. “Link”가 다른 종류의 값들을 합치는 반면 “Append”가 합치는 값들은 언제나 같은 종류이다. 즉 “Append” 함수에 주어지는 두 인자는 반드시 둘 다 숫자로 이루어진 배열이거나 둘 다 문자로 이루어진 배열이어야 한다. 아니면 둘 다 박스로 이루어진 배열이어야 한다. 그게 아니면 에러가 난다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;‘answer is’; 42&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;‘answer is’ , 42&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+————-+—+&lt;br&gt;
-|answer is|42|&lt;br&gt;
-+————-+—+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;error&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</code></pre><p>&quot;Link&quot;와 &quot;Append&quot;의 차이점에 주목해야 한다. &quot;Link&quot;가 다른 종류의 값들을 합치는 반면 &quot;Append&quot;가 합치는 값들은 언제나 같은 종류이다. 즉 &quot;Append&quot; 함수에 주어지는 두 인자는 반드시 둘 다 숫자로 이루어진 배열이거나 둘 다 문자로 이루어진 배열이어야 한다. 아니면 둘 다 박스로 이루어진 배열이어야 한다. 그게 아니면 에러가 난다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>&#39;answer is&#39;; 42</tt></td>
+<td><tt>&#39;answer is&#39; , 42</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+---------+--+<br>
+|answer is|42|<br>
++---------+--+</tt></td>
+<td><tt>error</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>문자열과 숫자를 연결해야 할 때가 있을 수 있다. 예를 들자면 어떤 결과 값과 그에 대한 설명은 같이 보여줘야 할 때가 있다. 그 때 위에서 봤듯이 문자열과 숫자를 “연결(Link)”할 수 있다. 하지만 더 부드러운 표현은 숫자를 문자열로 바꿔서 두 문자열을 연결하는 방식으로 처리하는 것이다. 그러면 결과물은 박스의 리스트가 아니라 문자열이 된다.</p>
-<p>숫자를 문자열로 바꾸는 것은 내장 함수인 <code>&quot;:</code>(“Format”)을 이용한다. 아래 예제에서 n은 단일 숫자이고 s는 n을 포맷해서 만든 문자열이다. s는 길이가 2이다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;n =: 42&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;s =: “: n&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;# s&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;‘answer is ‘ , s&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;42&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;42&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;2&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;answer is 42&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<p>문자열과 숫자를 연결해야 할 때가 있을 수 있다. 예를 들자면 어떤 결과 값과 그에 대한 설명은 같이 보여줘야 할 때가 있다. 그 때 위에서 봤듯이 문자열과 숫자를 &quot;연결(Link)&quot;할 수 있다. 하지만 더 부드러운 표현은 숫자를 문자열로 바꿔서 두 문자열을 연결하는 방식으로 처리하는 것이다. 그러면 결과물은 박스의 리스트가 아니라 문자열이 된다.</p>
+<p>숫자를 문자열로 바꾸는 것은 내장 함수인 <code>&quot;:</code>(&quot;Format&quot;)을 이용한다. 아래 예제에서 n은 단일 숫자이고 s는 n을 포맷해서 만든 문자열이다. s는 길이가 2이다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>n =: 42</tt></td>
+<td><tt>s =: &quot;: n</tt></td>
+<td><tt># s</tt></td>
+<td><tt>&#39;answer is &#39; , s</tt></td>
+</tr><tr valign="TOP">
+<td><tt>42</tt></td>
+<td><tt>42</tt></td>
+<td><tt>2</tt></td>
+<td><tt>answer is 42</tt></td>
+</tr></tbody></table>
 
-</p>
-<p>“Format”에 대해서 더 알고 싶다면 19장을 보면 된다. 다시 박스로 돌아가도록 하자. 박스는 값이 상자로 둘러싸고 있는 형태이기 때문에, 박스가 화면에 보일 때에는 간단한 표의 형태로 보인다.</p>
+<p>&quot;Format&quot;에 대해서 더 알고 싶다면 19장을 보면 된다. 다시 박스로 돌아가도록 하자. 박스는 값이 상자로 둘러싸고 있는 형태이기 때문에, 박스가 화면에 보일 때에는 간단한 표의 형태로 보인다.</p>
 <pre><code>   p =: 4 1 $ 1 2 3 4
    q =: 4 1 $ 3 0 1 1
 
@@ -643,39 +613,37 @@ pig&lt;/tt&gt;&lt;/td&gt;
 |4  |1  |5    |
 +---+---+-----+
 </code></pre><h3 id="2-6-2-boxing-and-unboxing-">2.6.2 박싱과 언박싱(Boxing and Unboxing)</h3>
-<p><code>&lt;</code>(“Box”)라는 내장 함수가 있다. 이 함수는 인자로 들어온 값을 감싸 하나의 박스를 만든다.</p>
+<p><code>&lt;</code>(&quot;Box&quot;)라는 내장 함수가 있다. 이 함수는 인자로 들어온 값을 감싸 하나의 박스를 만든다.</p>
 <pre><code>   &lt; &#39;baked beans&#39;
 +-----------+
 |baked beans|
 +-----------+
-</code></pre><p>박스는 숫자를 담을 수 있지만, 그 자체로 숫자는 아니다. 박스 안에 있는 값으로 계산 하려면 박스를 열어서 값을 꺼내야 한다. <code>&gt;</code> 함수가 바로 그런 것이다. 이 함수는 “Open”이라고 한다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;b =: &lt; 1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;&gt; b&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+——-+&lt;br&gt;
-|1 2 3|&lt;br&gt;
-+——-+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 2 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</code></pre><p>박스는 숫자를 담을 수 있지만, 그 자체로 숫자는 아니다. 박스 안에 있는 값으로 계산 하려면 박스를 열어서 값을 꺼내야 한다. <code>&gt;</code> 함수가 바로 그런 것이다. 이 함수는 &quot;Open&quot;이라고 한다.</p>
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>b =: &lt; 1 2 3</tt></td>
+<td><tt>&gt; b</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+-----+<br>
+|1 2 3|<br>
++-----+</tt></td>
+<td><tt>1 2 3</tt></td>
+</tr></tbody></table>
 
-</p>
 <p><code>&lt;</code>를 깔때기 모양의 그림으로 생각하면 이해하기가 쉽다. 데이터가 넓은 쪽으로 흘러들어 가서 좁은 쪽으로 박스에 담겨 나온다. 나온 박스는 스칼라, 즉 차원이 없다. <code>&gt;</code>도 비슷하게 생각하면 된다. 박스가 스칼라이기 때문에 <code>,</code>함수로 각 박스를 리스트로 묶을 수 있다. 하지만 <code>;</code>함수를 쓰는 게 좀 더 편하다. 이 함수는 박스에 담아 연결해주는 작업을 한 번에 해준다.</p>
-<p>&lt;table cellpadding=&quot;10&quot; border=&quot;1&quot;&gt;
-&lt;tbody&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;(&lt; 1 1) , (&lt; 2 2) , (&lt; 3 3)&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;1 1 ; 2 2 ; 3 3&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;tr valign=&quot;TOP&quot;&gt;
-&lt;td&gt;&lt;tt&gt;+—-+—-+—-+&lt;br&gt;
-|1 1|2 2|3 3|&lt;br&gt;
-+—-+—-+—-+&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt&gt;+—-+—-+—-+&lt;br&gt;
-|1 1|2 2|3 3|&lt;br&gt;
-+—-+—-+—-+&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+<table cellpadding="10" border="1">
+<tbody><tr valign="TOP">
+<td><tt>(&lt; 1 1) , (&lt; 2 2) , (&lt; 3 3)</tt></td>
+<td><tt>1 1 ; 2 2 ; 3 3</tt></td>
+</tr><tr valign="TOP">
+<td><tt>+---+---+---+<br>
+|1 1|2 2|3 3|<br>
++---+---+---+</tt></td>
+<td><tt>+---+---+---+<br>
+|1 1|2 2|3 3|<br>
++---+---+---+</tt></td>
+</tr></tbody></table>
 
-</p>
 <h2 id="2-7-">2.7 요약</h2>
 <p>결론적으로 J의 모든 데이터 오브젝트는 전부 n 차원 배열(n &gt;= 0)이다. 배열은 숫자로 이루어진 배열일 수도 있고, 문자, 또는 박스로 이루어졌을 수도 있다. (물론 다른 것으로 이루어질 수도 있다.)</p>
 <p>2장을 마친다.</p>

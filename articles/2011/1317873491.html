@@ -8,10 +8,11 @@
 
   <title>#dogfeet - ECMAScript 5 Strict Mode, JSON, and More</title>
   <meta name="description"
-    content="이글은 John Resig의 ‘ECMAScript 5 Strict Mode, JSON, and More‘을 번역한 것이다."></meta>
+    content="이글은 John Resig의 &#39;ECMAScript 5 Strict Mode, JSON, and More&#39;을 번역한 것이다."></meta>
   <meta name="keywords"
     content="JavaScript,JavaScript Standard,ECMAScript,ES5,John Resig"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="ECMAScript 5 Strict Mode, JSON, and More &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1317873491.html" lang="ko-kr">
@@ -87,20 +87,20 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="ecmascript-5-strict-mode-json-and-more">ECMAScript 5 Strict Mode, JSON, and More</h1>
-<p>이글은 John Resig의 ‘<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">ECMAScript 5 Strict Mode, JSON, and More</a>‘을 번역한 것이다.</p>
+<p>이글은 John Resig의 &#39;<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">ECMAScript 5 Strict Mode, JSON, and More</a>&#39;을 번역한 것이다.</p>
 <h2 id="ecmascript-5-strict-mode-json-and-more">ECMAScript 5 Strict Mode, JSON, and More</h2>
 <p>ES5에는 관심을 가져야 하는 기능과 API들이 많다. 그 중에서 Strict Mode와 native JSON 지원을 주목해야 한다.</p>
 <h2 id="strict-mode">Strict Mode</h2>
-<p>Script Mode는 ES5에 새로 추가됐다. ‘Strict Mode’를 켜면 프로그램이나 함수는 <code>Strict Context</code>에서 동작한다. <code>Strict Context</code>에서는 저지를만한 실수를 미연에 방지해주고 좀 더 예외가 던저진다. 즉 사용자에게 좀 더 자세한 정보를 제공해서 사용자는 꼼꼼한 코딩 실무를 익힐 수 있다.</p>
-<p>ES5는 ES3와 호환되지만 ES3의 기능중에서 Deprecated된 것들은 ‘Strict Mode’에서는 사용할 수 없다.</p>
-<p>‘Strict Mode’에서는:</p>
+<p>Script Mode는 ES5에 새로 추가됐다. &#39;Strict Mode&#39;를 켜면 프로그램이나 함수는 <code>Strict Context</code>에서 동작한다. <code>Strict Context</code>에서는 저지를만한 실수를 미연에 방지해주고 좀 더 예외가 던저진다. 즉 사용자에게 좀 더 자세한 정보를 제공해서 사용자는 꼼꼼한 코딩 실무를 익힐 수 있다.</p>
+<p>ES5는 ES3와 호환되지만 ES3의 기능중에서 Deprecated된 것들은 &#39;Strict Mode&#39;에서는 사용할 수 없다.</p>
+<p>&#39;Strict Mode&#39;에서는:</p>
 <ul>
 <li>일반적인 코딩 실수를 발견하면 예외가 발생한다.</li>
 <li>Global 객체에 접근하는 것 같이 덜 안전한 행위에 대해 에러를 던진다.</li>
 <li>불명확하고 미숙했던 기능들은 제거된다.</li>
 </ul>
-<p>‘Strict Mode’에 대한 정보의 대부분은 <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf">ES5 표준</a> <code>#223</code> 페이지에 나와 있다.</p>
-<p>ES5의 ‘Strict Mode’와 Firefox의 ‘Strict Mode’는 다르다. Firefox에서는 about:config 페이지에서 javascript.options.strict 설정으로 ‘Strict Mode’를 끄고 켤수 있다. ES5의 것은 에러를 발생시킬 것 같은 것들을 지적해 주지만 Firefox의 것은 나쁜 습관인 것은 모두 지적 해준다.</p>
+<p>&#39;Strict Mode&#39;에 대한 정보의 대부분은 <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf">ES5 표준</a> <code>#223</code> 페이지에 나와 있다.</p>
+<p>ES5의 &#39;Strict Mode&#39;와 Firefox의 &#39;Strict Mode&#39;는 다르다. Firefox에서는 about:config 페이지에서 javascript.options.strict 설정으로 &#39;Strict Mode&#39;를 끄고 켤수 있다. ES5의 것은 에러를 발생시킬 것 같은 것들을 지적해 주지만 Firefox의 것은 나쁜 습관인 것은 모두 지적 해준다.</p>
 <h3 id="how-do-you-enable-strict-mode-">How do you enable strict mode?</h3>
 <p>전역에 적용하고 싶으면 맨 첫 줄에 다음과 같이 넣으면 된다:</p>
 <pre><code>&quot;use strict&quot;;
@@ -109,9 +109,9 @@
   &quot;use strict&quot;;
   // ... your code ...
 }
-</code></pre><p>Strict Mode를 켜는데 사용한 문법을 자세히 보자. “use strict”는 단순히 스트링일 뿐이고 이를 위해 새로운 문법을 고안하지 않았다. 이 점은 굉징히 훌륭하고 나는 정말 이게 마음에 든다. 예전 브라우저에서 문제가 생길 것을 걱정할 필요없이 ‘Strict Mode’를 마음껏 사용할 수 있다.</p>
-<p>다른 글에서도 누차 강조했었지만 ES5에서 문법 자체는 건드리지 않았다. 전혀 하위 호환성을 걱정할 필요가 없고 ES4를 사용하는 프로그램은 있을 수 없다. 즉, ‘Strict Mode’를 당장 사용하는 것이 좋다.</p>
-<p>함수에만 ‘Strict Mode’를 적용할 수 있기 때문에 다른 코드에 대한 걱정없이 JavaScript 라이브러리에 사용할 수 있다.</p>
+</code></pre><p>Strict Mode를 켜는데 사용한 문법을 자세히 보자. &quot;use strict&quot;는 단순히 스트링일 뿐이고 이를 위해 새로운 문법을 고안하지 않았다. 이 점은 굉징히 훌륭하고 나는 정말 이게 마음에 든다. 예전 브라우저에서 문제가 생길 것을 걱정할 필요없이 &#39;Strict Mode&#39;를 마음껏 사용할 수 있다.</p>
+<p>다른 글에서도 누차 강조했었지만 ES5에서 문법 자체는 건드리지 않았다. 전혀 하위 호환성을 걱정할 필요가 없고 ES4를 사용하는 프로그램은 있을 수 없다. 즉, &#39;Strict Mode&#39;를 당장 사용하는 것이 좋다.</p>
+<p>함수에만 &#39;Strict Mode&#39;를 적용할 수 있기 때문에 다른 코드에 대한 걱정없이 JavaScript 라이브러리에 사용할 수 있다.</p>
 <pre><code>// Non-strict code...
 (function(){
   &quot;use strict&quot;;
@@ -120,8 +120,8 @@
 })();
 
 // Non-strict code...
-</code></pre><p>많은 라이브러리들은 코드 전체를 함수 하나로 감싸는 이 방식으로 구현했기 때문에 ‘Strict Mode’를 쉽게 적용할 수 있다.</p>
-<p>‘Strict Mode’를 켜면 많은 것이 달라진다.</p>
+</code></pre><p>많은 라이브러리들은 코드 전체를 함수 하나로 감싸는 이 방식으로 구현했기 때문에 &#39;Strict Mode&#39;를 쉽게 적용할 수 있다.</p>
+<p>&#39;Strict Mode&#39;를 켜면 많은 것이 달라진다.</p>
 <h3 id="variables-and-properties">Variables and Properties</h3>
 <p><code>foo = &quot;bar&quot;;</code>같은 표현은 불가능해진다. 기존에는 window.foo에 값을 할당하는 표현식이 였지만 이제는 예외가 던져진다. 기존의 표현식은 분명 까다로운 버그를 만들어 낸다.</p>
 <p>다른 글에서 설명한 것처럼 writable 속성이 false인 프로퍼티의 값은 변경 할 수 없고, configurable 속성이 false인 프로퍼티를 삭제할 수 없고, extensible 속성이 false인 객체에 프로퍼티를 추가할 수 없다. 이런 걸 시도하면 에러가 발생한다. 과거에는 그냥 에러없이 조용히 넘어갔지만 이제는 에러가 발생한다.</p>
@@ -138,7 +138,7 @@ function test2(arg) {
 <pre><code>// Error
 { foo: true, foo: false }
 </code></pre><h3 id="eval">eval</h3>
-<p>‘eval’이라는 이름으로 무언가 만들 수 없다:</p>
+<p>&#39;eval&#39;이라는 이름으로 무언가 만들 수 없다:</p>
 <pre><code>// All generate errors...
 obj.eval = ...
 obj.foo = eval;
@@ -168,10 +168,10 @@ print( typeof a ); // undefined
     inner.caller = ...; // Error
   }
 }
-</code></pre><p>마지막으로 그토록 우리를 괴롭혔던 버그가 해결됐다. null이나 undefined가 global 객체 처럼 사용되면 예외가 난다. ‘Strict Mode’에서는 이렇게 사용하지 못한다:</p>
+</code></pre><p>마지막으로 그토록 우리를 괴롭혔던 버그가 해결됐다. null이나 undefined가 global 객체 처럼 사용되면 예외가 난다. &#39;Strict Mode&#39;에서는 이렇게 사용하지 못한다:</p>
 <pre><code>(function(){ ... }).call( null ); // Exception
 </code></pre><h3 id="with-">with(){}</h3>
-<p>‘Strict Mode’에서는 <code>with(){}</code> 구문을 사용할 수 없다. 확실히 오남용되고 있다고 하는데 나는 잘 모르겠다. 근거가 충분하다고 확신할 수 없다.</p>
+<p>&#39;Strict Mode&#39;에서는 <code>with(){}</code> 구문을 사용할 수 없다. 확실히 오남용되고 있다고 하는데 나는 잘 모르겠다. 근거가 충분하다고 확신할 수 없다.</p>
 <p>ES5의 <code>Strict Mode</code>는 많이 다르다. with를 제거하는 것처럼 스타일을 강제하는 것부터 literal 객체의 프로퍼티 조차 재정의할 수 있었던 것 같은 문제까지도 바로 잡았다. 사람들이 어떻게 사용할지 Javascript 개발을 어떻게 바꿔놓을지 살펴보는 것이 매우 재미 있을 것이다.</p>
 <p>jQuery도 ES5의 <code>Strict Mode</code>를 따를 것이다. <code>Strict Mode</code>가 구현되고 충분히 검증되면 <code>Strict Mode</code>에 맞게 jQuery를 수정하는 일이 매우 즐거울 것 같다.</p>
 <h2 id="json">JSON</h2>
@@ -203,7 +203,7 @@ print( obj.last );
 <pre><code>var str = JSON.stringify({ name: &quot;John&quot; });
 // Prints {&quot;name&quot;:&quot;John&quot;}
 print( str );
-</code></pre><h3 id="json-stringify-obj-white-list-">JSON.stringify( obj, [“white”, “list”])</h3>
+</code></pre><h3 id="json-stringify-obj-white-list-">JSON.stringify( obj, [&quot;white&quot;, &quot;list&quot;])</h3>
 <p>바꿀 프로퍼티를 고를 수 있다:</p>
 <pre><code>var list = [&quot;name&quot;];
 var str = JSON.stringify({name: &quot;John&quot;, last: &quot;Resig&quot;}, list);
@@ -227,7 +227,7 @@ print( str );
 //   &quot;name&quot;: &quot;John&quot;
 // }
 print( str );
-</code></pre><h3 id="json-stringify-obj-null-t-">JSON.stringify( obj, null, “\t” )</h3>
+</code></pre><h3 id="json-stringify-obj-null-t-">JSON.stringify( obj, null, &quot;\t&quot; )</h3>
 <p>space 문자 대신 그냥 원하는 스트링을 사용할 수 있다:</p>
 <pre><code>var str = JSON.stringify({ name: &quot;John&quot; }, null, &quot;\t&quot;);
 // Prints:
@@ -241,7 +241,7 @@ Number.prototype.toJSON
 Date.prototype.toJSON
 </code></pre><h2 id="-bind-">.bind()</h2>
 <p>함수의 context를 고정시키는 .bind() 메소드가 드디어 들어 왔다. Prototype 라이브러리의 .bind()와 본질적으로 동일하다.</p>
-<h3 id="function-prototype-bind-thisarg-arg1-arg2-">Function.prototype.bind(thisArg, arg1, arg2…)</h3>
+<h3 id="function-prototype-bind-thisarg-arg1-arg2-">Function.prototype.bind(thisArg, arg1, arg2...)</h3>
 <p>function context를 가리키는 this에 특정 객체를 고정하고 필요한 인자를 채워서 호출하면 된다:</p>
 <pre><code>var obj = {
   method: function(name){

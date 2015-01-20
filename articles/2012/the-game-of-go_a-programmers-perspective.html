@@ -8,10 +8,11 @@
 
   <title>#dogfeet - 프로그래머 관점에서의 바둑</title>
   <meta name="description"
-    content="이 글은 Louis Chatriot이 자신의 블로그에 쓴 The Game of Go: A Programmer’s Perspective를 번역한 것이다."></meta>
+    content="이 글은 Louis Chatriot이 자신의 블로그에 쓴 The Game of Go: A Programmer&#39;s Perspective를 번역한 것이다."></meta>
   <meta name="keywords"
     content="go,바둑,programmer,computing"></meta>
-  <meta name="author" content="Yongjae Choi"></meta>
+  <meta name="author"
+    content="Yongjae Choi"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="프로그래머 관점에서의 바둑 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/the-game-of-go_a-programmers-perspective.html" lang="ko-kr">
@@ -87,9 +87,9 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="-">프로그래머 관점에서의 바둑</h1>
-<p>이 글은 Louis Chatriot이 자신의 블로그에 쓴 <a href="http://needforair.com/blog/2012/04/18/game-of-go/">The Game of Go: A Programmer’s Perspective</a>를 번역한 것이다.</p>
+<p>이 글은 Louis Chatriot이 자신의 블로그에 쓴 <a href="http://needforair.com/blog/2012/04/18/game-of-go/">The Game of Go: A Programmer&#39;s Perspective</a>를 번역한 것이다.</p>
 <p>AI 프로그래머가 바라 봤을 때 바둑은 매우 흥미로운 게임이다. 컴퓨터가 실력 좋은 바둑 기사를 이기는게 매우 어렵고, 많은 연구자가 이 문제에 도전하기 때문이다. 모순적이게도 랜덤하게 돌을 놓는 것이 컴퓨터에겐 더 좋은 전략이다.</p>
-<p>&lt;a href=&quot;http://www.flickr.com/photos/obli/322662164/&quot; title=&quot;COPA EMBAJADOR DE COREA 2006 by oblivionz, on Flickr&quot;&gt;&lt;img src=&quot;http://farm1.staticflickr.com/134/322662164_0260e91add.jpg&quot; width=&quot;250&quot; height=&quot;166&quot; alt=&quot;COPA EMBAJADOR DE COREA 2006&quot;&gt;&lt;/a&gt;
+<p><a href="http://www.flickr.com/photos/obli/322662164/" title="COPA EMBAJADOR DE COREA 2006 by oblivionz, on Flickr"><img src="http://farm1.staticflickr.com/134/322662164_0260e91add.jpg" width="250" height="166" alt="COPA EMBAJADOR DE COREA 2006"></a>
 by <a href="http://www.flickr.com/photos/obli/">oblivionz</a></p>
 <h2 id="-">바둑: 엄청나게 간단한 개요</h2>
 <p>바둑은 아시아에선 대중적인 게임이지만 서양에는 많이 알려지지 않았다. 바둑은 체스와 비슷하게 두 명이서 차례를 바꿔가며 바둑판에 돌을 놓는 전략게임이다. 체스와 바둑이 완전 다른 점은 두 개 정도있다.</p>
@@ -109,8 +109,8 @@ by <a href="http://www.flickr.com/photos/obli/">oblivionz</a></p>
 <p>바둑 알고리즘 연구가 흥미로운 이유가 이런 복잡도가 있기 때문이다. 우리는 몇 년전 스팩타클한 성능 향상을 보인 <a href="http://www.lri.fr/~teytaud/mogo.html">MoGo</a>라는 이름이 프로그램을 보았다. MoGo의 핵심 아이디어는 이렇다.</p>
 <ul>
 <li><strong>랜덤 게임을 이용한 위치 선정</strong> : 역설적이게도 지금까지 알아낸 돌을 놓을 위치를 알아내는 최고의 방법은 현재 상태에서 시작해 각각의 선수가 바둑판에 랜덤으로 돌을 놓는 수많은 경기를 진행해 보는것 이다. 바둑판 위, 한 위치의 점수는 단순히 랜덤 게임들이 이긴 확률이다.</li>
-<li>브랜칭 팩터(각 턴마다 가능한 행동-돌을 놓는 등-의 경우의 수)를 줄이기 위해 <strong>‘<a href="http://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit</a> 알고리즘’를 이용</strong>한다. 목표는 탐색(새로운 행동을 하는 것)과 개척(이미 알고 있는 행동 중에 최적의 하나를 찾아내는 것) 사이에 트레이드 오프를 최적화 하는 것이다. 컴퓨터는 처음에 가능한 모든 행동에 대해 사전 확률 분포를 만든다. 이 분포에 따라 하나를 고르고 그에 상응하는 위치를 기반으로 랜덤 게임을 돌린다. 그리고 결과를 이용해 그 행동에 대한 확률을 업데이트한다. 그리고 업데이트된 분포를 이용해 다음 가능한 수를 선택한다. 그렇게 계속 해나간다.</li>
-<li><strong>작은 전문 지식을 이용</strong> : ‘multi-armed bandit’에서 쓰이는 사전 분포는 적은 노력으로 멍청한 행동을 피하는 용도로 사용한다. 게임을 시작하면 고전적인 시작 위치를 선호한다. 그리고 랜덤 게임을 하는데 사실 이 랜덤 게임은 완전한 랜덤이 아니다. 간단한 패턴에 따라 특정 행동들은 제거하기 때문이다. 그렇게 몇가지를 제거한다 해도 전문 지식은 탐사 알고리즘 부분의 정말 작은 상처 하나에 불과하다.</li>
+<li>브랜칭 팩터(각 턴마다 가능한 행동-돌을 놓는 등-의 경우의 수)를 줄이기 위해 <strong>&#39;<a href="http://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit</a> 알고리즘&#39;를 이용</strong>한다. 목표는 탐색(새로운 행동을 하는 것)과 개척(이미 알고 있는 행동 중에 최적의 하나를 찾아내는 것) 사이에 트레이드 오프를 최적화 하는 것이다. 컴퓨터는 처음에 가능한 모든 행동에 대해 사전 확률 분포를 만든다. 이 분포에 따라 하나를 고르고 그에 상응하는 위치를 기반으로 랜덤 게임을 돌린다. 그리고 결과를 이용해 그 행동에 대한 확률을 업데이트한다. 그리고 업데이트된 분포를 이용해 다음 가능한 수를 선택한다. 그렇게 계속 해나간다.</li>
+<li><strong>작은 전문 지식을 이용</strong> : &#39;multi-armed bandit&#39;에서 쓰이는 사전 분포는 적은 노력으로 멍청한 행동을 피하는 용도로 사용한다. 게임을 시작하면 고전적인 시작 위치를 선호한다. 그리고 랜덤 게임을 하는데 사실 이 랜덤 게임은 완전한 랜덤이 아니다. 간단한 패턴에 따라 특정 행동들은 제거하기 때문이다. 그렇게 몇가지를 제거한다 해도 전문 지식은 탐사 알고리즘 부분의 정말 작은 상처 하나에 불과하다.</li>
 <li><strong>병렬화</strong> : MoGo같은 프로그램은 컴퓨터 클러스터에서 더 나은 성능을 보인다. 랜덤 게임 부분이 여러개의 CPU에서 돌 수 있기 때문이다. <a href="http://en.wikipedia.org/wiki/Amdahl&#39;s_law">성능 향상</a>은 약 8배 정도이다.</li>
 <li><strong>강화된 학습</strong> : MoGo는 게임을 진행하는 동안이나 랜덤 게임을 진행하는 동안 계속 학습한다. 잘못된 결과를 가져오는 행동을 했을때 그 행동에 더 작은 확률을 부여한다.</li>
 </ul>

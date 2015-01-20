@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Partial Application in JavaScript</title>
   <meta name="description"
-    content="이글은 John Resig님의 ‘Partial Application in JavaScript‘를 번역한 것이다. curry 함수를 JavaScript에서 구현하는 방법을 다룬다."></meta>
+    content="이글은 John Resig님의 &#39;Partial Application in JavaScript&#39;를 번역한 것이다. curry 함수를 JavaScript에서 구현하는 방법을 다룬다."></meta>
   <meta name="keywords"
     content="John Resig,curry,partial,JavaScript"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Partial Application in JavaScript &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1317088260.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="partial-application-in-javascript">Partial Application in JavaScript</h1>
-<p>이글은 John Resig님의 ‘<a href="http://ejohn.org/blog/partial-functions-in-javascript/">Partial Application in JavaScript</a>‘를 번역한 것이다. <code>curry</code> 함수를 JavaScript에서 구현하는 방법을 다룬다.</p>
+<p>이글은 John Resig님의 &#39;<a href="http://ejohn.org/blog/partial-functions-in-javascript/">Partial Application in JavaScript</a>&#39;를 번역한 것이다. <code>curry</code> 함수를 JavaScript에서 구현하는 방법을 다룬다.</p>
 <h2 id="partial-application-in-javascript">Partial Application in JavaScript</h2>
 <p>함수를 부분적으로 apply하는 방법은 굉장히 중요하다. 이 기법은 함수가 실행되기 전에 인자들 중에서 몇 개를 미리 결정하는 것을 말하고 사실상 부분적으로 apply하는 함수는 호출 가능한 새 함수를 반환한다. 이 말의 예를 코드로 만들면 다음과 같다:</p>
 <pre><code>String.prototype.csv = String.prototype.split.partial(/,\s*/);

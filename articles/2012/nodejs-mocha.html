@@ -8,10 +8,11 @@
 
   <title>#dogfeet - nodejs: Mocha</title>
   <meta name="description"
-    content="이 글은 ‘Testing with Mocha‘을 다시 쓴 것이다. Alex Young님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다."></meta>
+    content="이 글은 &#39;Testing with Mocha&#39;을 다시 쓴 것이다. Alex Young님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다."></meta>
   <meta name="keywords"
     content="nodejs,BDD,Test,Mocha,Should"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="nodejs: Mocha &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/nodejs-mocha.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="nodejs-mocha">nodejs: Mocha</h1>
-<p>이 글은 ‘<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>‘을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
+<p>이 글은 &#39;<a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>&#39;을 다시 쓴 것이다. <a href="http://alexyoung.org/">Alex Young</a>님이 만든 예제도 내가 쓰기 편하게 좀 고쳤다.</p>
 <p><img src="/articles/2012/nodejs-mocha/mocha-test.png" alt="mocha-test"></p>
 <p><a href="http://dailyjs.com/2011/12/08/mocha/">Testing with Mocha</a>를 읽고 Mocha 메뉴얼을 읽으니 훨씬 눈에 잘 들어온다.</p>
 <h2 id="mocha">Mocha</h2>
@@ -188,7 +188,7 @@ describe(&#39;prime&#39;, function() {
         });
     });
 });
-</code></pre><p>비동기 테스트 예제인 ‘asyncPrime’은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
+</code></pre><p>비동기 테스트 예제인 &#39;asyncPrime&#39;은 done()을 호출해서 테스트가 성공했음을 알린다.</p>
 <h2 id="hooks">hooks</h2>
 <ul>
 <li>before() - describe()를 시작하기 전에 한번</li>
@@ -260,7 +260,7 @@ after
 
 
   ✔ 3 tests complete (25ms)
-</code></pre><p>‘new afterEach’나 ‘new before’ 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
+</code></pre><p>&#39;new afterEach&#39;나 &#39;new before&#39; 부분에서 스택처럼 동작해서 상위 describe()에 정의한 것은 생략될까 싶었는데, 아니었다. 모두 호출된다.</p>
 <p><a href="http://alexyoung.org/">Alex Young</a> 만든 코드는 <a href="https://github.com/alexyoung/async-testing-tutorial">async-testing-tutorial</a>이고 내가 수정한 코드는 <a href="https://github.com/pismute/async-testing-tutorial">async-testing-tutorial-pismute</a>이다.</p>
 <p>TDD 스타일로 테스트를 작성하고 assert방식의 expecting을 선호한다면 <a href="http://alexyoung.org/">Alex Young</a>만든 코드를 보는 것이 낫다.</p>
 </div>

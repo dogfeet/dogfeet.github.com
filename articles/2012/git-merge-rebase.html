@@ -11,7 +11,8 @@
     content="처음에는 Rebase를 왜 해야 하고 언제 어떻게 해야 하는지 좀 헷갈린다. 헷갈리는 이유는 정답이 없고 미묘함이 있어서인데 그래도 대략적인 가이드가 있으면 좋겠다 싶어서 정리해보았다."></meta>
   <meta name="keywords"
     content="Git,Rebase"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: Rebase는 언제 어떻게 해야 할까? &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-merge-rebase.html" lang="ko-kr">
@@ -102,10 +102,10 @@
 <p>Rebase는 히스토리를 단장하는 데 필요하다. 나 혼자 쓰는 저장소에서도 Rebase가 없으면 지저분해서 히스토리를 읽을 수가 없다.</p>
 <p>잘 정리한 히스토리를 엿보고 싶다면 <a href="https://github.com/isaacs/npm/">npm 저장소</a>를 구경해보는 것이 좋다. @izs님은 완전 git타쿠:</p>
 <p><img src="/articles/2012/git-merge-rebase/npm-history.png" alt="npm-history"></p>
-<p>히스토리가 정말 보기 좋다. github의 ‘pull request’도 사용하지 않고 죄다 손으로 Merge하는 것 같다.</p>
+<p>히스토리가 정말 보기 좋다. github의 &#39;pull request&#39;도 사용하지 않고 죄다 손으로 Merge하는 것 같다.</p>
 <h3 id="-vs-merge-">커밋 vs Merge 커밋</h3>
 <p>Merge와 Rebase를 살펴보기 전에 커밋부터 다시 살펴보자.</p>
-<p>커밋은 의미의 단위다. 지금 하는 일을 적당하게 한 조각으로 나눠서 커밋한다. 10줄, 100줄처럼 정량적인 단위가 아니다. 고기를 사듯이 ‘커밋 한 근 주세요.’라고 말할 수 없다. <strong>커밋 하나는 의미 하나다</strong>.</p>
+<p>커밋은 의미의 단위다. 지금 하는 일을 적당하게 한 조각으로 나눠서 커밋한다. 10줄, 100줄처럼 정량적인 단위가 아니다. 고기를 사듯이 &#39;커밋 한 근 주세요.&#39;라고 말할 수 없다. <strong>커밋 하나는 의미 하나다</strong>.</p>
 <p>커밋 하나하나에도 의미가 있지만 어떤 모듈을 개발한다면 여러 개를 하나로 묶어서 처리할 필요도 있다. 그러니까 여러 개의 커밋을 묶음으로 표현할 수 있는 커밋이 필요하다. 그게 Merge 커밋이다. <strong>Merge 커밋은 일종의 커밋 묶음이다</strong></p>
 <p>npm 저장소에 @izs님이 만들어 놓은 Merge 커밋을 보자:</p>
 <p><img src="/articles/2012/git-merge-rebase/npm-gyp-history.png" alt="npm-gyp-history"></p>
@@ -116,7 +116,7 @@
 <p>Merge 커밋을 Reset하면 관련 커밋이 전부 Reset된다:</p>
 <p><img src="/articles/2012/git-merge-rebase/git-reset.png" alt="git-reset"></p>
 <p><code>C3</code>와 <code>C5</code>가 같이 Reset되기 때문에 master 입장에서는 커밋 묶음이 Reset된 것이다.</p>
-<p>npm 저장소에서 master 브랜치가 Merge 커밋인 <code>1ecd0eb</code>를 가리키는 상태에서 ‘HEAD~1’으로 Reset하면 gyp 브랜치가 통째로 Reset된다. 그래서 master는 <code>c4eb2fd</code>를 가리킨다.</p>
+<p>npm 저장소에서 master 브랜치가 Merge 커밋인 <code>1ecd0eb</code>를 가리키는 상태에서 &#39;HEAD~1&#39;으로 Reset하면 gyp 브랜치가 통째로 Reset된다. 그래서 master는 <code>c4eb2fd</code>를 가리킨다.</p>
 <h2 id="merge-vs-rebase">Merge vs Rebase</h2>
 <p>다음과 같은 브랜치를 Merge, Rebase해보고 그 결과를 비교해보자:</p>
 <p><img src="/articles/2012/git-merge-rebase/orig.png" alt="orig"></p>
@@ -135,7 +135,7 @@
 <p><img src="/articles/2012/git-merge-rebase/rebase1-merge.png" alt="rebase1-merge"></p>
 <p><code>git checkout iss2</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>가 아니라 <code>C2&#39;</code>가 된다:</p>
 <p><img src="/articles/2012/git-merge-rebase/rebase2.png" alt="rebase2"></p>
-<p><code>git checkout master</code>과 <code>git merge --no-ff iss2</code>를 차례대로 실행해서 Merge한다. <code>--no-ff</code> 옵션은 강제로 Merge 커밋을 남기려고 주는 것이다. iss2 브랜치는 커밋이 두 개고 이 커밋은 iss2를 처리한 결과이므로 커밋 묶음으로 처리하는 것이 낫다(물론, 내용상 —no-ff 옵션을 주는 게 틀릴 수도 있다.):</p>
+<p><code>git checkout master</code>과 <code>git merge --no-ff iss2</code>를 차례대로 실행해서 Merge한다. <code>--no-ff</code> 옵션은 강제로 Merge 커밋을 남기려고 주는 것이다. iss2 브랜치는 커밋이 두 개고 이 커밋은 iss2를 처리한 결과이므로 커밋 묶음으로 처리하는 것이 낫다(물론, 내용상 --no-ff 옵션을 주는 게 틀릴 수도 있다.):</p>
 <p><img src="/articles/2012/git-merge-rebase/rebase2-merge.png" alt="rebase2-merge"></p>
 <p><code>git checkout iss3</code>과 <code>git rebase master</code>를 차례대로 실행해서 Rebase한다 그러면 Merge Base가 <code>C3</code>에서 <code>C9</code>이 된다:</p>
 <p><img src="/articles/2012/git-merge-rebase/rebase3.png" alt="rebase3"></p>

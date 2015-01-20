@@ -11,7 +11,8 @@
     content="읽고, 또 읽고, 또 읽어도 자꾸 까먹는다. 그래서 이번에는 번역을 해보기로 했다. 이 글은 nodejs의 modules을 번역한 거다."></meta>
   <meta name="keywords"
     content="nodejs,doc,module,uniquenoun"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="nodejs: modules &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/nodejs-modules.html" lang="ko-kr">
@@ -89,16 +89,15 @@
       <div property="sioc:content"><h1 id="nodejs-modules">nodejs: modules</h1>
 <p>읽고, 또 읽고, 또 읽어도 자꾸 까먹는다. 그래서 이번에는 번역을 해보기로 했다. 이 글은 nodejs의 <a href="http://nodejs.org/api/modules.html">modules</a>을 번역한 거다.</p>
 <p><img src="/articles/2012/nodejs-modules/hat-girl.jpg" alt="hat-girl"></p>
-<p>(‘<a href="http://uniquenoun.tumblr.com/post/21839174721">모자라는 아이</a>‘ - Jiye Park, 2012)</p>
+<p>(&#39;<a href="http://uniquenoun.tumblr.com/post/21839174721">모자라는 아이</a>&#39; - Jiye Park, 2012)</p>
 <p>이 글의 원문의 SHA값은 <code>1d5b6f2</code>이다. 나중에 버전이 바뀌었을 때 추적하기 위해 남긴다. 헷갈릴 수도 있으니, 번역하기 시작한 시점의 nodejs 안정 버전은 <code>v0.6.14</code>이다.</p>
 <p>@outsideris 님이 node 번역 프로젝트를 시작하셨습니다. 그래서 그 저장소로 옮겼습니다. 이 글의 최신 버전은 <a href="https://github.com/outsideris/node">그쪽</a>에서 확인하세요.</p>
 <h2 id="modules">Modules</h2>
-<p>&lt;!--
+<!--
     Stability: 5 - Locked
---&gt;
-&lt;!--name=module--&gt;
+-->
+<!--name=module-->
 
-</p>
 <p>매우 간단하게 모듈을 로딩할 수 있다. 노드에서는 파일 하나가 모듈 하나다. 예를 들어 <code>foo.js</code> 파일에서 같은 디렉토리에 있는 <code>circle.js</code>를 로드하는 것을 살펴보자.</p>
 <p><code>foo.js</code>:</p>
 <pre><code>var circle = require(&#39;./circle.js&#39;);
@@ -118,9 +117,8 @@ exports.circumference = function (r) {
 <p>로컬 변수는 모듈 외부에 노출되지 않는다(private). 이 예제에서 <code>PI</code>는 <code>circle.js</code>에서만 사용할 수 있는 private 변수다.</p>
 <p>이 모듈 시스템은 <code>module</code>이라는 모듈에 구현했다.</p>
 <h3 id="cycles">Cycles</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p>두 모듈이 <code>require()</code> 함수로 서로 참조할 때는 한쪽 모듈은 아직 완전히 로딩하지 못한 미완성 모듈을 그냥 반환한다.</p>
 <p>이게 무슨 소리냐 하면:</p>
 <p><code>a.js</code>:</p>
@@ -155,27 +153,24 @@ a done
 in main, a.done=true, b.done=true
 </code></pre><p>그러니까 꼭 모듈을 서로 참조하게 하여야 하면 계획을 잘 짜야 한다.</p>
 <h3 id="core-modules">Core Modules</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p>Node 모듈 중에서는 바이너리로 컴파일해야 하는 모듈이 있다. 코어 모듈은 이 문서 곳곳에서 설명한다.</p>
 <p>코어 모듈은 Node 소스코드의 <code>lib/</code> 폴더에 들어 있다.</p>
 <p>모듈을 require하면 항상 코어 모듈이 먼저 로드된다. 예를 들어, <code>require(&#39;http&#39;)</code>로 로드될 것 같은 파일이 있어도 Node에 들어 있는 HTTP 모듈이 반환된다.</p>
 <h3 id="file-modules">File Modules</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p>입력한 이름으로 파일을 못 찾으면 Node는 그 이름에 <code>.js</code>, <code>.json</code>, <code>.node</code>를 붙이고 해당 파일이 있는지 찾는다.</p>
 <p><code>.js</code> 파일은 JavaScript 텍스트 파일로 Interpret하고 <code>.json</code>은 JSON 텍스트 파일로 Interpret한다. 그리고 <code>.node</code> 파일은 컴파일한 addon 모듈이라서 <code>dlopen</code>으로 로드한다.</p>
 <p>모듈을 절대 경로로 찾을 때는 모듈 이름을 <code>&#39;/&#39;</code>로 시작하면 된다. 예를 들어, <code>require(&#39;home/marco/foo.js&#39;)</code>는 <code>/home/marco/foo.js</code> 파일을 로드한다.</p>
 <p>모듈을 상대 경로로 찾으려면 모듈 이름이 <code>&#39;./&#39;</code>로 시작하면 된다. 즉, <code>foo.js</code>라는 파일에서 <code>require(&#39;./circle&#39;)</code>라고 호출하면 같은 디렉토리에 있는 <code>circle.js</code>를 로드한다.</p>
-<p>‘/‘이나 ‘./‘로 시작하지 않으면 그냥 파일이 아니라 코어 모듈이나 <code>node_modules</code> 폴더에 있는 모듈을 찾는다.</p>
+<p>&#39;/&#39;이나 &#39;./&#39;로 시작하지 않으면 그냥 파일이 아니라 코어 모듈이나 <code>node_modules</code> 폴더에 있는 모듈을 찾는다.</p>
 <p>모듈을 찾지 못하면 <code>require()</code>는 Error를 던진다. 이 에러의 code 프로퍼티의 값은 <code>&#39;MODULE_NOT_FOUND&#39;</code>이다.
 (역주 - 어떻게 확인해봐야 할지 모르겠다. 아무튼, <a href="http://git.io/dmzSGw">참고1</a>, <a href="http://git.io/haOtcQ">참고2</a> )</p>
 <h3 id="loading-from-node_modules-folders">Loading from <code>node_modules</code> Folders</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p><code>require()</code>에 넘어온 모듈 ID가 네이티브 모듈을 가리키는 것도 아니고, 그 모듈 ID가 <code>&#39;/&#39;</code>, <code>&#39;./&#39;</code>, <code>&#39;../&#39;</code>로 시작하지도 않으면 Node는 그 모듈의 상위 디렉토리에서 찾기 시작한다. 상위 디렉토리에 있는 <code>/node_modules</code>에서 해당 모듈을 찾는다.</p>
 <p>만약 못 찾으면 상위상위 디렉토리에서 찾고, 그래도 못 찾으면 상위상위상위 디렉토리에서 찾는다. 루트 디렉토리에 다다를 때까지 계속 찾는다.</p>
 <p>예를 들어, <code>&#39;home/ry/projects/foo.js&#39;</code>라는 파일에서 <code>requre(&#39;bar.js&#39;)</code>라고 호출하면 다음과 같은 순서로 모듈을 찾는다:</p>
@@ -187,9 +182,8 @@ in main, a.done=true, b.done=true
 </ul>
 <p>그래서 해당 프로그램만의 의존성을 독립적으로 관리할 수 있다. 다른 프로그램에 영향을 끼치지 않는다.</p>
 <h3 id="folders-as-modules">Folders as Modules</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p>모듈을 폴더로 관리하면 프로그램과 라이브러리를 묶음으로 관리할 수 있어 편리하다. 마치 한 파일로 된 모듈처럼 취급한다. 모듈이 폴더일 때 <code>require()</code>는 세 가지 방법으로 모듈을 찾는다.</p>
 <p>프로그램 폴더에 <code>package.json</code> 파일을 만들고 main 모듈이 무엇인지 적는다:</p>
 <pre><code>{ &quot;name&quot; : &quot;some-library&quot;,
@@ -202,22 +196,19 @@ in main, a.done=true, b.done=true
 <li><code>./some-library/index.node</code></li>
 </ul>
 <h3 id="caching">Caching</h3>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
-<p>한 번 로드한 모듈은 계속 캐싱한다. 그래서 <code>require(&#39;foo&#39;)</code>을 여러 번 호출해도 계속 같은 객체를 반환한다. 단, `require(‘foo’)가 계속 같은 파일을 로드할 때만 그렇다.</p>
+<p>한 번 로드한 모듈은 계속 캐싱한다. 그래서 <code>require(&#39;foo&#39;)</code>을 여러 번 호출해도 계속 같은 객체를 반환한다. 단, `require(&#39;foo&#39;)가 계속 같은 파일을 로드할 때만 그렇다.</p>
 <p><code>require(&#39;foo&#39;)</code>를 여러 번 호출해도 해당 모듈 코드는 단 한 번만 호출된다. 그리고 아직 미완성인 객체가 반환될 수 있다는 점까지 더하면 특정 모듈이 서로 의존하고 있어도 성공적으로 로드되는 마법이 이루어진다.</p>
 <p>어떤 코드가 꼭 여러 번 호출돼야 하면 함수 자체를 Export하고 그 함수를 여러 번 호출하라.</p>
 <h4 id="module-caching-caveats">Module Caching Caveats</h4>
-<p>&lt;!--type=misc--&gt;
+<!--type=misc-->
 
-</p>
 <p>모듈은 찾은(resolved) 파일 이름을 키로 캐싱한다. <code>node_modules</code> 폴더에서 로딩하는 것이기 때문에 같은 require 코드라도 호출하는 위치에 따라 찾은 파일이 다를 수 있다. 즉, <code>require(&#39;foo&#39;)</code>가 다른 파일을 찾아낸다면 다른 객체를 리턴한다.</p>
 <h3 id="the-module-object">The <code>module</code> Object</h3>
-<p>&lt;!-- type=var --&gt;
-&lt;!-- name=module --&gt;
+<!-- type=var -->
+<!-- name=module -->
 
-</p>
 <ul>
 <li>{Object}</li>
 </ul>
@@ -281,10 +272,9 @@ console.log(x.a);
 <li>{Array}</li>
 </ul>
 <p>모듈이 require한 모듈 객체를 가리킨다.</p>
-<h3 id="all-together-">All Together…</h3>
-<p>&lt;!-- type=misc --&gt;
+<h3 id="all-together-">All Together...</h3>
+<!-- type=misc -->
 
-</p>
 <p><code>require()</code>로 모듈을 찾을 때 정확한 파일 경로가 궁금하면 <code>require.resolve()</code> 함수로 얻어온다.</p>
 <p>require.resolve가 정확히 어떻게 동작하는지 슈도 코드로 살펴보자. 이 슈도 코드는 여태까지 설명한 것을 모두 합쳐 놓은 것이다:</p>
 <pre><code>require(X) from module at path Y
@@ -338,9 +328,8 @@ NODE_MODULES_PATHS(START)
    c. let I = I - 1
 6. return DIRS
 </code></pre><h3 id="loading-from-the-global-folders">Loading from the global folders</h3>
-<p>&lt;!-- type=misc --&gt;
+<!-- type=misc -->
 
-</p>
 <p>Node는 모듈을 못 찾으면 환경변수 <code>NODE_PATH</code>에 등록된 경로에서도 찾는다. 절대경로를 <code>NODE_PATH</code>에 할당하면 되는데 콜론(<code>:</code>)으로 구분해서 절대경로를 여러 개 등록할 수 있다(주의: 윈도우는 세미콜론(<code>;</code>)으로 구분한다).</p>
 <p>그리고 Node는 다른 디렉토리에서도 찾는다:</p>
 <ul>
@@ -351,17 +340,15 @@ NODE_MODULES_PATHS(START)
 <p><code>$HOME</code>은 사용자의 홈 디렉토리이고 <code>$PREFIX</code>는 노드가 설치된 디렉토리를 말한다.</p>
 <p>왜 그런지 말하자면 길다. 무엇보다 <code>node_modules</code> 폴더를 이용해 모듈을 로컬에 설치하는 것이 좋다. 이 방법이 속도도 더 빠르고 더 안전하다.</p>
 <h3 id="accessing-the-main-module">Accessing the main module</h3>
-<p>&lt;!-- type=misc --&gt;
+<!-- type=misc -->
 
-</p>
 <p>node로 어떤 파일을 실행하면 <code>require.main</code>은 그 파일의 <code>module</code> 객체를 가리킨다. 그래서 Node로 파일을 직접 실행한 건지 아닌지 알 수 있다:</p>
 <pre><code>require.main === module
 </code></pre><p><code>foo.js</code>라는 파일에 이런 게 들어 있다고 하자. 이 구문의 결과는 <code>node foo.js</code>로 실행하면 <code>true</code>이고 <code>require(&#39;./foo&#39;)</code>로 실행하면 <code>false</code>가 된다.</p>
 <p><code>module</code>에는 <code>filename</code> 프로퍼티가 있어서(<code>__filename</code>과 같은 값이다) <code>require.main.filename</code>의 값을 확인하면 처음 실행한 파일을 무엇인지 알 수 있다.</p>
 <h3 id="addenda-package-manager-tips">Addenda: Package Manager Tips</h3>
-<p>&lt;!-- type=misc --&gt;
+<!-- type=misc -->
 
-</p>
 <p><code>require()</code> 함수는 웬만한 디렉토리면 어디에서나 사용할 수 있다. <code>dpkg</code>, <code>rpm</code> 같은 패키지 매니저처럼 <code>npm</code>도 네이티브 Node 패키지를 아무런 수정 없이 빌드하게 할 수 있다.</p>
 <p>모듈은 <code>/usr/lib/node/&lt;some-package&gt;/&lt;some-version&gt;</code>에 설치하는 것을 권장한다. 어떤 패키지의 어떤 버전이 설치됐는지 한 눈에 알 수 있어 좋다.</p>
 <p>패키지는 다른 패키지에 의존할 수도 있다. 예를 들어 <code>foo</code> 패키지를 설치하려면 <code>bar</code> 패키지도 설치해야 한다. 그것도 특정 버전의 <code>bar</code> 패키지가 설치돼야 한다. 그리고 <code>bar</code> 패키지도 다른 패키지에 의존할 수 있는데 충돌이 있거나 서로(cycle) 의존할 수도 있다.</p>

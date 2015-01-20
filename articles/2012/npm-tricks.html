@@ -11,7 +11,8 @@
     content="이 글은 Guillermo Rauch의 NPM tricks을 번역한 것이다."></meta>
   <meta name="keywords"
     content="nodejs,npm,Guillermo Rauch"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="nodejs: npm-tricks &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/npm-tricks.html" lang="ko-kr">
@@ -91,7 +91,7 @@
 <p><img src="/articles/2012/npm/npm.png" alt="npm"></p>
 <p>나는 매일매일 NPM을 사용한다. 왠지 사람들이 잘 모를 것 같아서 쓸만한 NPM 팁을 정리했다.</p>
 <h2 id="dev-dependencies">Dev dependencies</h2>
-<p>테스트 프레임워크같이 개발할 때만 필요한 ‘개발용’ 모듈은 <code>devDependencies</code>에 넣는다:</p>
+<p>테스트 프레임워크같이 개발할 때만 필요한 &#39;개발용&#39; 모듈은 <code>devDependencies</code>에 넣는다:</p>
 <pre><code>&quot;devDependencies&quot;: {
     &quot;module&quot;: &quot;0.1.0&quot;
 }

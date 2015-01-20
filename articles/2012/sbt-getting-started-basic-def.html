@@ -11,7 +11,8 @@
     content="이 글은 Getting Started sbt을 번역한 것이다."></meta>
   <meta name="keywords"
     content="sbt"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="sbt: Getting Started Guide: .sbt Build Definition &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/sbt-getting-started-basic-def.html" lang="ko-kr">
@@ -90,7 +90,7 @@
 <p>이 글은 <a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Welcome">Getting Started sbt</a>을 번역한 것이다.</p>
 <p><img src="/articles/2012/sbt/sbt.png" alt="sbt"></p>
 <h2 id="-sbt-build-definition"><code>.sbt</code> Build Definition</h2>
-<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt “원리”와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.</p>
+<p>이 페이지는 sbt 빌드를 정의하는 법을 설명한다. sbt &quot;원리&quot;와 <code>build.sbt</code>의 문법을 설명한다. <a href="/articles/2012/sbt-getting-started-running.html">sbt를 실행하는 방법</a>은 이미 숙지했다고 가정하고 설명한다. 아직 익히지 못했으면 이전 페이지를 읽어라.</p>
 <h3 id="-sbt-vs-scala-definition"><code>.sbt</code> vs. <code>.scala</code> Definition</h3>
 <p>sbt 빌드는 base 디렉토리에 <code>.sbt</code> 파일을 만들고 그 파일에 정의한다. <code>.scala</code> 파일은 base 디렉토리 하위에 <code>project</code> 디렉토리에 만들고 거기에 넣는다.</p>
 <p>두 파일 중 아무거나 하나만 만들어 사용할 수도 있고 함께 혼용해도 된다. 그래도 <code>.sbt</code> 파일로 할 수 없는 일만 <code>.scala</code> 파일로 구현하고 대부분은 <code>.sbt</code> 파일을 사용하는 것이 바람직하다:</p>
@@ -104,7 +104,7 @@
 <p>sbt는 실제로 빌드하기 전에 프로젝트를 검사하고 빌드 스크립트를 처리한다. 그 전처리를 완료하면 immutable 맵이 하나 생성되는데 그 맵에 빌드 정보가 <code>키/밸류</code> 형태로 들어간다.</p>
 <p>예를 들어, 키가 <code>name</code>인 항목의 스트링 밸류는 프로젝트 이름을 의미한다.</p>
 <p><em>우리가 만든 빌드 정의가 바로 sbt 맵으로 만들어지는 것이 아니다.</em></p>
-<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. ‘함수형 프로그래밍’ 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.</p>
+<p>우선 모든 빌드 정의를 <code>Setting[T]</code> 타입의 객체를 담는 리스트로 만든다. <code>Setting[T]</code>의 T는 맵의 밸류 타입을 의미한다. Java에서 <code>Setting&lt;T&gt;</code>이라고 하는 것과 같은 표현이다. <code>Setting</code>에는 맵으로 변환하기 위한 정보가 들어간다. 예를 들어, <code>키/밸류</code> 항목을 새로 만들어야 하는지 기존의 항목의 밸류에 추가하면 되는지의 정보가 담긴다. &#39;함수형 프로그래밍&#39; 정신에 따라서 맵으로 변형 시 기존의 맵을 수정해서 리턴하는 것이 아니라 맵을 새로 만들어 리턴한다.</p>
 <p><code>build.sbt</code> 파일에서 다음과 같이 프로젝트 이름을 정의하면 <code>Setting[String]</code> 인스턴스가 만들어진다:</p>
 <pre><code class="lang-scala">name := &quot;hello&quot;
 </code></pre>
@@ -146,7 +146,7 @@ scalaVersion := &quot;2.9.1&quot;
 <p>Key를 새로 정의하려면 <a href="/articles/2012/sbt-getting-started-scala-build-definition.html">.scala 파일</a>이나 <a href="/articles/2012/sbt-getting-started-using-plugins.html">plugin</a>으로 정의해야 한다.</p>
 <h3 id="other-ways-to-transform-settings">Other ways to transform settings</h3>
 <p><code>:=</code>으로 리플레이스 하는 것이 가장 단순한 변형 방법이지만 다른 방법도 있다. 예를 들어 <code>+=</code>으로도 Setting 밸류를 추가할 수 있다.</p>
-<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 ‘<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>‘에서 자세히 설명한다.</p>
+<p>다른 방법에 대해서 <a href="/articles/2012/sbt-getting-started-scopes.html">scopes</a>과 그 다음으로 이어지는 &#39;<a href="/articles/2012/sbt-getting-started-more-about-settings.html">More About Settings</a>&#39;에서 자세히 설명한다.</p>
 <h3 id="task-keys">Task Keys</h3>
 <p>Key는 세 종류이다:</p>
 <ul>

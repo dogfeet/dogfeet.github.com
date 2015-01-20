@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Git: rerere</title>
   <meta name="description"
-    content="왠지 ‘거꾸로 해도 이효리’가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다."></meta>
+    content="왠지 &#39;거꾸로 해도 이효리&#39;가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다."></meta>
   <meta name="keywords"
     content="git,rerere,Reuse Recored Resolution"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: rerere &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-rerere.html" lang="ko-kr">
@@ -87,10 +87,10 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="git-rerere">Git: rerere</h1>
-<p>왠지 ‘거꾸로 해도 이효리’가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다.</p>
+<p>왠지 &#39;거꾸로 해도 이효리&#39;가 떠오르는 이 이름, 명령어는 외우기는 쉽지만, 용법을 이해하는 데는 공을 좀 들여야 한다.</p>
 <p>어떤 Topic 브랜치는 오랫동안 Merge하지 않고 유지하기도 한다. 이런 Topic 브랜치를 Merge하면 Conflict가 날 확률이 높다. Conflict가 예상되는 브랜치를 Merge할 때 <code>git rerere</code> 명령으로 난관을 극복하는 방법을 알아보자.</p>
 <p><img src="/articles/2012/git-rerere/overcome.jpg" alt="overcome"></p>
-<p>이 글은 <a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat…</a>을 주로 참고 했다. 내용은 거의 같다.</p>
+<p>이 글은 <a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat...</a>을 주로 참고 했다. 내용은 거의 같다.</p>
 <h2 id="rerere-reuse-recorded-resolution-">rerere(Reuse Recorded Resolution)</h2>
 <p><code>rerere</code>는 간단히 말하자면 Conflict를 해결한 Resolution을 저장해두고 같은 Conflict가 나면 저장한 Resolution을 재사용하는 명령이다.</p>
 <p>Conflict가 발생하면 우선 conflict를 해결한 다음에, 다시 Merge하기 전으로 돌아와서 다시 Merge하면 저장된 Resolution이 적용돼서 Conflict 없이 자동으로 Merge된다.</p>
@@ -107,7 +107,7 @@
 
 console.log( &#39;hello world&#39;)
 </code></pre>
-<p>그리고 아래와 같이 프로젝트를 진행한다. master 브랜치의 메시지를 ‘hola world’로 변경하고 i18n-world 브랜치의 메시지는 ‘hello mundo’로 변경한다:</p>
+<p>그리고 아래와 같이 프로젝트를 진행한다. master 브랜치의 메시지를 &#39;hola world&#39;로 변경하고 i18n-world 브랜치의 메시지는 &#39;hello mundo&#39;로 변경한다:</p>
 <p><img src="/articles/2012/git-rerere/rerere1.png" alt="rerere1"></p>
 <p>이 상태에서 Merge를 하면 Conflict가 난다. 이 예제의 Conflict는 너무 간단해서 Recorded Resolution이 필요하지 않지만 <code>rerere</code>를 설명하기에는 더없이 좋은 예다.</p>
 <h3 id="recored-resolution-">Recored Resolution 만들기</h3>
@@ -127,7 +127,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 
 HEAD is now at 7d71bbe... hola world
 </code></pre>
-<p>master 브랜치가 가리키는 <code>7d71bbe</code>를 checkout 했기 때문에 워킹 디렉토리 내용은 master 브랜치와 같다. 단지 ‘detached HEAD’ 상태인 것만 다르다. 그래서 여기서 커밋을 하면 ‘detached HEAD’ 상태로 커밋된다. master 브랜치는 움직이지 않는다.</p>
+<p>master 브랜치가 가리키는 <code>7d71bbe</code>를 checkout 했기 때문에 워킹 디렉토리 내용은 master 브랜치와 같다. 단지 &#39;detached HEAD&#39; 상태인 것만 다르다. 그래서 여기서 커밋을 하면 &#39;detached HEAD&#39; 상태로 커밋된다. master 브랜치는 움직이지 않는다.</p>
 <p>그러면 여기서 Merge한다:</p>
 <pre><code class="lang-sh">% git merge i18n-world
 Auto-merging hello.js
@@ -135,7 +135,7 @@ CONFLICT (content): Merge conflict in hello.js
 Recorded preimage for &#39;hello.js&#39;
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
-<p>보통 Conflict 날 때의 상황과 다르게 “Recorded preimage for ‘hello.js’” 라는 메시지를 추가로 보여준다. <code>rerere</code>를 켰기 때문에 생겼다.</p>
+<p>보통 Conflict 날 때의 상황과 다르게 &quot;Recorded preimage for &#39;hello.js&#39;&quot; 라는 메시지를 추가로 보여준다. <code>rerere</code>를 켰기 때문에 생겼다.</p>
 <p><code>git status</code>는 Conflict가 있다고 아래와 같이 알려준다:</p>
 <pre><code class="lang-sh">% git status
 # Not currently on any branch.
@@ -160,7 +160,7 @@ index 68d2f27,2c3b5e5..0000000
 + console.log( &#39;hello mundo&#39;)
 ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs
 </code></pre>
-<p>이제 ‘hello.js’ 파일을 편집해서 ‘hola mundo’로 Conflict를 해결하고 저장한다. 아직 Resolve를 Mark하지 않은 상태에서 <code>git diff</code>를 실행하면 아래와 같이 나온다:</p>
+<p>이제 &#39;hello.js&#39; 파일을 편집해서 &#39;hola mundo&#39;로 Conflict를 해결하고 저장한다. 아직 Resolve를 Mark하지 않은 상태에서 <code>git diff</code>를 실행하면 아래와 같이 나온다:</p>
 <pre><code class="lang-sh">diff --cc hello.js
 index 68d2f27,2c3b5e5..0000000
 --- a/hello.js
@@ -172,7 +172,7 @@ index 68d2f27,2c3b5e5..0000000
  -console.log( &#39;hello mundo&#39;)
 ++console.log( &#39;hola mundo&#39;)
 </code></pre>
-<p>이 명령은 ‘hola world’가 ‘hello mundo’와 Merge돼서 ‘hola mundo’가 되는 거라고 보여준다. 그런데 웬걸 <code>git add</code> 명령으로 Resolution을 Mark하면 <code>git diff</code> 명령은 더는 이런 메시지를 보여주지 않는다. 대신 <code>git rerere diff</code>를 사용해야 한다:</p>
+<p>이 명령은 &#39;hola world&#39;가 &#39;hello mundo&#39;와 Merge돼서 &#39;hola mundo&#39;가 되는 거라고 보여준다. 그런데 웬걸 <code>git add</code> 명령으로 Resolution을 Mark하면 <code>git diff</code> 명령은 더는 이런 메시지를 보여주지 않는다. 대신 <code>git rerere diff</code>를 사용해야 한다:</p>
 <pre><code class="lang-sh">--- a/hello.js
 +++ b/hello.js
 @@ -1,8 +1,4 @@
@@ -190,7 +190,7 @@ index 68d2f27,2c3b5e5..0000000
 Recorded resolution for &#39;hello.js&#39;.
 [detached HEAD f35bf55] sample resolution
 </code></pre>
-<p>“Recorded resolution for ‘hello.js’”라는 메시지는 Resolution이 저장됐음을 보여주는 것이고 “detached HEAD”는 detached HEAD 상태에서 커밋했기 때문에 보여주는 것이다.</p>
+<p>&quot;Recorded resolution for &#39;hello.js&#39;&quot;라는 메시지는 Resolution이 저장됐음을 보여주는 것이고 &quot;detached HEAD&quot;는 detached HEAD 상태에서 커밋했기 때문에 보여주는 것이다.</p>
 <p>이제 Resolution은 다 만들었다. Conflict를 해결하는 실험을 성공적으로 마친 것이다. 이 실험 결과를 실전에 적용해보자.</p>
 <h2 id="rerere">rerere</h2>
 <p>i18n-world를 master로 Merge하기 전에 i18n-world를 Rebase한다. 먼저 i18n-world를 Checkout한다:</p>
@@ -223,7 +223,7 @@ When you have resolved this problem run &quot;git rebase --continue&quot;.
 If you would prefer to skip this patch, instead run &quot;git rebase --skip&quot;.
 To check out the original branch and stop rebasing run &quot;git rebase --abort&quot;.
 </code></pre>
-<p>“Resolved ‘hello.js’ using previous resolution” 메시지가 추가돼 있다. 편집기로 hello.js를 열어보면 좀 전에 만들었던 Resolution대로 파일이 Resolve됐음을 알 수 있다. <code>git diff</code> 명령으로 차이를 확인할 수 있다:</p>
+<p>&quot;Resolved &#39;hello.js&#39; using previous resolution&quot; 메시지가 추가돼 있다. 편집기로 hello.js를 열어보면 좀 전에 만들었던 Resolution대로 파일이 Resolve됐음을 알 수 있다. <code>git diff</code> 명령으로 차이를 확인할 수 있다:</p>
 <pre><code class="lang-sh">% git diff
 diff --cc hello.js
 index 68d2f27,2c3b5e5..0000000
@@ -242,7 +242,7 @@ index 68d2f27,2c3b5e5..0000000
 # git rebase --continue
 Applying: hello mundo
 </code></pre>
-<p><code>rerere</code>를 이용한 Merge를 마쳤다. ‘detached HEAD’ 상태를 만들어서 Conflict를 해결하는 실험을 하고 Resolution을 만들어 놓는다. 그다음에 다시 Merge를 하면 만들어 놓은 Resolution이 재사용된다. 그래서 명령어 이름이 ‘rerere(REuse REcorded REsolution)’이다.</p>
+<p><code>rerere</code>를 이용한 Merge를 마쳤다. &#39;detached HEAD&#39; 상태를 만들어서 Conflict를 해결하는 실험을 하고 Resolution을 만들어 놓는다. 그다음에 다시 Merge를 하면 만들어 놓은 Resolution이 재사용된다. 그래서 명령어 이름이 &#39;rerere(REuse REcorded REsolution)&#39;이다.</p>
 <h3 id="resolution-">Resolution을 재사용하지 않기</h3>
 <p>Resolution을 Mark하기 전으로 돌아가 보자. <code>git rebase master</code>를 실행하면 자동으로 저장된 Resolution이 적용된다. 그 상태로 돌아가서 <code>git diff</code>를 실행하면 결과는 아래와 같다:</p>
 <pre><code class="lang-sh">% git diff
@@ -298,7 +298,7 @@ Applying: hello mundo
 <h2 id="-">참고</h2>
 <ul>
 <li><a href="http://www.kernel.org/pub/software/scm/git/docs/git-rerere.html">git-rerere</a></li>
-<li><a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat…</a></li>
+<li><a href="http://git-scm.com/2010/03/08/rerere.html">Rerere your boat...</a></li>
 <li><a href="http://gitster.livejournal.com/41795.html">Fun with rerere</a></li>
 </ul>
 </div>

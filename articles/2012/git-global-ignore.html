@@ -11,7 +11,8 @@
     content="GitHub에서 관리하는 .gitignore 패턴 템플릿이 있어 소개한다."></meta>
   <meta name="keywords"
     content="Git,gitignore"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: Global Ignore &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-global-ignore.html" lang="ko-kr">
@@ -100,8 +100,8 @@
 <p><code>core.exlcudesfile</code> 설정은 다음과 같다:</p>
 <pre><code>$ git config --global core.excludesfile ~/.global_ignore
 </code></pre><h2 id="gitignore-">gitignore 프로젝트</h2>
-<p>Github는 친절하게도 ‘언어 및 환경’마다 권장 gitignore 파일 템플릿을 모아 두었다. GitHub의 <a href="https://github.com/github/gitignore">gitignore 저장소</a>에 가서 Clone하고 필요한 템플릿을 사용해보자.</p>
-<p>저장소에는 루트 디렉토리에 있는 것과 <code>Global/</code> 디렉토리에 있는 것으로 나누어져 있는데 Global/ 디렉토리에 있는 것은 ‘OS-specific, editor-specific’인 것이다.</p>
+<p>Github는 친절하게도 &#39;언어 및 환경&#39;마다 권장 gitignore 파일 템플릿을 모아 두었다. GitHub의 <a href="https://github.com/github/gitignore">gitignore 저장소</a>에 가서 Clone하고 필요한 템플릿을 사용해보자.</p>
+<p>저장소에는 루트 디렉토리에 있는 것과 <code>Global/</code> 디렉토리에 있는 것으로 나누어져 있는데 Global/ 디렉토리에 있는 것은 &#39;OS-specific, editor-specific&#39;인 것이다.</p>
 <p>예를 들어 자바라면 다음과 같이 한다:</p>
 <pre><code>$ cat Maven.gitignore &gt;&gt; ~/.global_ignore
 $ cat Java.gitignore &gt;&gt; ~/.global_ignore

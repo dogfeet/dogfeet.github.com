@@ -11,7 +11,8 @@
     content="Using XCode and iPhone SDK 4 beta, iPhone project can be created and compiled successfully."></meta>
   <meta name="keywords"
     content="Cocoa,iPhone,iphone sdk4"></meta>
-  <meta name="author" content="Sean Lee"></meta>
+  <meta name="author"
+    content="Sean Lee"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="iPhone SDK 4, contains project error. &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2010/1271748360.html" lang="ko-kr">
@@ -90,7 +90,7 @@
 <p>Using XCode and iPhone SDK 4 beta, iPhone project can be created and compiled successfully.</p>
 <p>But at the run-time in simulator, application will be crashed.</p>
 <p>with message like this</p>
-<p>Terminating app due to uncaught exception ‘NSUnknownKeyException’, reason: ‘[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key rootViewController.’</p>
+<p>Terminating app due to uncaught exception &#39;NSUnknownKeyException&#39;, reason: &#39;[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key rootViewController.&#39;</p>
 <p>관련링크: <a href="http://www.iphonedevsdk.com/forum/iphone-sdk-development/45348-installed-sdk4-xcode-3-2-having-issues.html">http://www.iphonedevsdk.com/forum/iphone-sdk-development/45348-installed-sdk4-xcode-3-2-having-issues.html</a></p>
 <p>다행히 노트북은 아직 SDK 4로 업데이트 하지 않아서 상관 없다.</p>
 <p>아무래도 SDK 4의 Project Setting이 Wrong해서 Previous Version으로 컴파일 할 때 새로운 Framework의 Library를 참조하나 보다. 아니면 sdk 버전 3으로 세팅해도 버전 4의 셋팅이 남아 있던지.</p>

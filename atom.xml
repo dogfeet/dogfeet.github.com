@@ -3,12 +3,12 @@
   <title><![CDATA[ 개발새발 ]]></title>
   <link href="http://dogfeet.github.io//atom.xml" rel="self" />
   <link href="http://dogfeet.github.io/" />
-  <updated>2015-01-18T07:43:29.059Z</updated>
+  <updated>2015-01-20T03:23:20.871Z</updated>
   <id>http://dogfeet.github.io/</id>
     <entry>
     <title><![CDATA[ git: progit 업데이트 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/progit.html" />
-    <updated>2015-01-18T07:43:36.182Z</updated>
+    <updated>2015-01-20T03:23:26.603Z</updated>
     <id>http://dogfeet.github.io/articles/2013/progit.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-progit-">git: progit 업데이트</h1>
@@ -38,7 +38,7 @@
     <entry>
     <title><![CDATA[ grunt-deadlink ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-deadlink.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-deadlink.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-deadlink">grunt-deadlink</h1>
@@ -58,7 +58,7 @@ grunt.config.init({
 });
 </code></pre><p>이렇게 설정하면 src에서 expressions를 찾아 그 링크가 죽었는지 살았는지 알려준다.</p>
 <ul>
-<li><code>src</code> : glob 패턴으로 파일들을 적으면 된다. 예를 들자면 ‘docs/<em>*/</em>.md’는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
+<li><code>src</code> : glob 패턴으로 파일들을 적으면 된다. 예를 들자면 &#39;docs/<em>*/</em>.md&#39;는 docs 디렉토리 아래의 모든 마크다운 문서들을 나타낸다.</li>
 <li><code>expressions</code> : 자바스크립트의 RegExp 객체들을 적는다. <code>src</code>에서 지정하는 파일들 속에서 <code>expressions</code>로 링크를 찾아낸다. <em>반드시 한 쌍의 괄호로 묶인 sub-string이 필요하다.</em> 이 괄호 안에는 검사하고 싶은 url이 들어간다. 예를 들자면 마크다운은 <code>[&lt;any string&gt;](&lt;url&gt;)</code>과 같은 식으로 링크를 설정하는데, 이를 위해서는 <code>expressions : /\[[^\]]*\]\((http[s]?:\/\/[^\) ]+)/g</code>와 같이 설정해준다. 링크 방식이 여러개라면 배열로 정의해준다. 아무것도 정의해주지 않았다면 마크다운의 링크만 인식한다.</li>
 </ul>
 <p>이 태스크는 일일히 요청을 보내고 받는 일을 하므로 링크가 많을 경우 많은 시간이 걸린다. <em>개발용 grunt 태스크에는 이 태스크를 넣지 않는 것이 좋다.</em></p>
@@ -71,7 +71,7 @@ grunt.config.init({
 <ul>
 <li><del>결과에 파일 이름 넣기 - 지금은 URL만 출력되는데 URL이 들어있는 파일 이름이 들어가야 한다.</del></li>
 <li><del>결과를 파일로 저장하는 옵션 만들기 - dead link가 많을 때 화면에 출력되는게 좀 부담스럽더라.</del></li>
-<li>HEAD메서드로 우선 요청하고 ‘405 Method not allowed’나 ‘501 Method Unimplemented’응답시 GET메서드로 재요청 하기 - 속도나 네트워크에 부하를 덜 주는 방법이다. 근데 어떤 이유에서인지 잘 안된다.</li>
+<li>HEAD메서드로 우선 요청하고 &#39;405 Method not allowed&#39;나 &#39;501 Method Unimplemented&#39;응답시 GET메서드로 재요청 하기 - 속도나 네트워크에 부하를 덜 주는 방법이다. 근데 어떤 이유에서인지 잘 안된다.</li>
 <li>링크 필터링 - expressions에 RegExp뿐만이 아니라 함수를 넣어 링크를 추출하는 과정을 사용자에게 위임하는 기능</li>
 <li>URL 캐싱 - 중복된 URL은 재요청하지 않는다.</li>
 <li>local link test - 로컬 파일로 접근하는 링크들은 아직 고려하지 않았다. 검사하는 파일로부터의 상대경로와 도메인 루트부터의 상대경로 등을 체크해야한다.</li>
@@ -83,7 +83,7 @@ grunt.config.init({
     <entry>
     <title><![CDATA[ git: AngularJS Git Commit Message Conventions ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/angularjs-git-commit-message-conventions.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-angularjs-git-commit-message-conventions">git: AngularJS Git Commit Message Conventions</h1>
@@ -162,13 +162,13 @@ docs, docs-parser, compiler, scenario-runner 등등의 정보가 있으면 무�
 </blockquote>
 <h5 id="-subject-"><code>&lt;subject&gt;</code>에 허용되는 것.</h5>
 <ul>
-<li>군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li>군더더기 없이 간략하게 현재형으로 적는다: &#39;changed&#39;나 &#39;changes&#39;가 아니라 &#39;change&#39;로 적는다.</li>
 <li>굳이 첫 문자를 대문자로 적지 않는다.</li>
 <li>문장 끝에 마침표(.)로 끝내지 않는다.</li>
 </ul>
 <h4 id="-">메시지 바디</h4>
 <ul>
-<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: ‘changed’나 ‘changes’가 아니라 ‘change’로 적는다.</li>
+<li><code>&lt;subject&gt;</code>와 마찬가지로 군더더기 없이 간략하게 현재형으로 적는다: &#39;changed&#39;나 &#39;changes&#39;가 아니라 &#39;change&#39;로 적는다.</li>
 <li><p>기존과 무엇이 달라졌고 왜 수정했는지에 대한 내용이 들어가야 한다.</p>
 </li>
 <li><p><a href="http://365git.tumblr.com/post/3308646748/writing-git-commit-messages">http://365git.tumblr.com/post/3308646748/writing-git-commit-messages</a></p>
@@ -234,7 +234,7 @@ scope: {
 
 The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.
 </code></pre><h5 id="-">이슈 번호 넣기</h5>
-<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 “Closes”로 시작한다:</p>
+<p>이슈 번호는 푸터에 별도 라인으로 넣는다. 이 이슈 라인은 &quot;Closes&quot;로 시작한다:</p>
 <pre><code>Closes #234
 </code></pre><p>이슈를 여러 개 넣어도 된다:</p>
 <pre><code>Closes #123, #245, #992
@@ -253,7 +253,7 @@ The removed `inject` wasn&#39;t generaly useful for directives so there should b
 <p><strong> Breaks $browser.onHashChange, which was removed (use onUrlChange instead) </strong></p>
 <hr>
 <p><strong> fix($compile): couple of unit tests for IE9 </strong></p>
-<p>Older IEs serialize html uppercased, but IE9 does not…
+<p>Older IEs serialize html uppercased, but IE9 does not...
 Would be better to expect case insensitive, unfortunately jasmine does
 not allow to user regexps for throw expectations.</p>
 <p><strong> Closes <code>#392</code> </strong>
@@ -307,14 +307,14 @@ scope: {
   // myEval - usually not useful, but in cases where the expression is assignable, you can use &#39;=&#39;
   myAccessor: &#39;=&#39; // in directive&#39;s template change myAccessor() to myAccessor
 }
-</code></pre><p>The removed `inject` wasn’t generaly useful for directives so there should be no code using it.</p>
+</code></pre><p>The removed `inject` wasn&#39;t generaly useful for directives so there should be no code using it.</p>
 
     ]]></content>
     </entry>
     <entry>
     <title><![CDATA[ grunt: 수정된 파일만 Lint하기 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-do-only-files-changed.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-lint-">grunt: 수정된 파일만 Lint하기</h1>
@@ -337,7 +337,7 @@ watch: {
   }
 }
 ...
-</code></pre><p>‘lib/<em>*/</em>.js’파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
+</code></pre><p>&#39;lib/<em>*/</em>.js&#39;파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
 <p>수정된 파일만 다시 Lint하게 하려면, Watch 이벤트를 직접 핸들링해야 한다. 아래와 같은 코드가 필요하다:</p>
 <pre><code>...
 grunt.event.on(&#39;watch&#39;, function(action, files, target) {
@@ -345,7 +345,7 @@ grunt.event.on(&#39;watch&#39;, function(action, files, target) {
   grunt.config([&#39;jshint&#39;, target], {src: files});
 });
 ..
-</code></pre><p>‘lib/<em>*/</em>.js’ 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
+</code></pre><p>&#39;lib/<em>*/</em>.js&#39; 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
 <p>파일을 정의해주는 부분을 아래와 같이 변경해줘야 한다:</p>
 <pre><code>...
 jshint: {
@@ -370,11 +370,11 @@ watch: {
     <entry>
     <title><![CDATA[ grunt: 비동기 타스크 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/grunt-async-task.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/grunt-async-task.html</id>
     <content type="html"><![CDATA[
       <h1 id="grunt-">grunt: 비동기 타스크</h1>
-<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다—;).</p>
+<p>grunt 문서는 비동기 타스크를 자세히 설명하지 않는다. 그래서 처음에 오해하고 삽질을 약간 할 수도 있다(나는 했다--;).</p>
 <p>이 글은 비동기 타스크를 왜 쓰고 언제 어떻게 써야 하는지 설명한다.</p>
 <p><img src="http:/dogfeet.github.io/articles/2013/grunt-async-task/information-boards.jpg" alt=""></p>
 <h2 id="-">비동기 타스크</h2>
@@ -414,7 +414,7 @@ Running &quot;jshint:tasks&quot; (jshint) task
 </code></pre><p>이처럼 간단하게 비동기 타스크를 만들 수 있다.</p>
 <h2 id="grunt-">grunt 비동기 구현</h2>
 <p>grunt는 내부에 타스크 큐를 가지고 있다. 우리가 타스크를 실행하면 즉시 실행되는 것이 아니라 일단 큐에 등록되고 다음 틱에 실행된다.</p>
-<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 ‘afterseconds’, ‘jshint’ 타스크가 순서대로 등록됐고 ‘afterseconds’는 2초 후에 끝나므로 2초 후에 ‘jshint’가 실행된다.</p>
+<p>그 큐에 등록된 타스크는 차례대로 수행된다. 앞 타스크가 끝나야 다음 타스크가 실행된다. 위 예제에서는 &#39;afterseconds&#39;, &#39;jshint&#39; 타스크가 순서대로 등록됐고 &#39;afterseconds&#39;는 2초 후에 끝나므로 2초 후에 &#39;jshint&#39;가 실행된다.</p>
 <p><code>var done = this.async();</code>의 async() 함수를 살펴보자:</p>
 <pre><code>// When called, sets the async flag and returns a function that can
 // be used to continue processing the queue.
@@ -470,7 +470,7 @@ Running &quot;jshint:tasks&quot; (jshint) task
 
 Done, without errors.
 </code></pre><p>처음 타스크를 구현할 때는 비동기로 IO를 처리하면 타스크를 병렬로 실행할 수 있어서 자동화 시간이 단축될 거라고 생각했다(메뉴얼에서 그다지 자세히 설명하지 않으므로). 그런데 IO가 끝나지도 않았는데 grunt 프로세스가 종료돼 버렸다. 모든 callback이 실행될 때까지 기다려주는 일반적인 node 프로그램과 동작이 달라서 처음에는 조금 헷갈릴 수 있다.</p>
-<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. ‘async()’를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
+<p><code>async()</code>라는 이름과 다르게 grunt의 타스크 큐는 차례대로 실행돼야 한다는 점을 명심해야 한다. &#39;async()&#39;를 사용하는 이유를 간단히 말해보자면 <strong>비동기 코드로 타스크가 차례대로 실행되지 못할 상황에 놓일 때 <code>async()</code> 함수로 타스크가 차례대로 실행되게 만드는 것이다</strong>.</p>
 <h3 id="grunt-">grunt의 한계</h3>
 <p>grunt의 타스크 큐는 차례대로 실행되므로 타스크를 병렬로 실행할 방법은 없다.</p>
 <p>플러그인인 <a href="https://github.com/iammerrick/grunt-parallel">grunt-parallel</a> 타스크를 쓰면 타스크를 병렬로 실행할 수 있다. 이 타스크는 grunt 프로세스를 여러 개 띄워서 병렬로 다른 타스크들을 실행시켜 준다.</p>
@@ -481,7 +481,7 @@ Done, without errors.
     <entry>
     <title><![CDATA[ git: msysgit + pageant ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-pageant.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-msysgit-pageant">git: msysgit + pageant</h1>
@@ -518,7 +518,7 @@ Store key in cache? (y/n) y
 Using username &quot;git&quot;.
 Server refused to allocate pty
 Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
-</code></pre><p>서버가 ‘Hi pismute!’라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
+</code></pre><p>서버가 &#39;Hi pismute!&#39;라고 인사를 한다. 서버의 키는 레지스트리에 저장된다. 이제 실행하면 잘된다.</p>
 <p>키를 자동으로 저장하는 방법이 있을 것 같은데 찾지 못했다. <a href="http://rc.quest.com/topics/putty/">Quest의 plink</a>에는 <code>-auto_store_key_in_cache</code> 옵션이 있어서 자동으로 저장해주도록 만들 수 있는데, 이건 왠일인지 msysgit과 연동이 잘 안된다.</p>
 <blockquote>
 <p>검색하다보니 <a href="https://github.com/cuviper/ssh-pageant">ssh-pageant</a>라는 게 있어서 Cygwin에서는 openSSH 명령어 까지 pageant를 사용하도록 설정할 수 있는 것 같은데 msys 용은 아직 없는 것 같다.</p>
@@ -529,7 +529,7 @@ Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide s
     <entry>
     <title><![CDATA[ git: Useful GitHub Patterns ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-useful-github-pattern.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-useful-github-patterns">git: Useful GitHub Patterns</h1>
@@ -538,7 +538,7 @@ Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide s
 <p><img src="http:/dogfeet.github.io/articles/2013/git-useful-github-pattern/pattern.jpg" alt="너의 패턴은 파악되었다!"></p>
 <h2 id="useful-github-patterns">USEFUL GITHUB PATTERNS</h2>
 <p>내 <a href="http://blog.quickpeople.co.uk/2013/05/17/the-uk-government-pays-me-to-write-open-source-all-day/">직업</a>이나 <a href="http://benilovj.github.io/dbfit/">오픈소스 활동</a>을 하다 보면 git과 GitHub 컨설팅도 하게 된다. 그러면서 git과 GitHub을 일정한 패턴에 따라 사용하는 나를 발견했다.</p>
-<p>(여기부터는, ‘Pull Request’를 PR로 사용한다).</p>
+<p>(여기부터는, &#39;Pull Request&#39;를 PR로 사용한다).</p>
 <h3 id="1-the-peel-off-pr">1. The peel-off PR</h3>
 <p><strong>언제 사용하나?:</strong></p>
 <ul>
@@ -659,14 +659,14 @@ Hi pismute! You&#39;ve successfully authenticated, but GitHub does not provide s
 <li>다음 단계로 뭘 할지 합의가 이루어지면 PR을 닫고 브랜치도 삭제한다.</li>
 <li>다시 브랜치를 만들고 제대로 구현해서 PR을 한다.</li>
 </ul>
-<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 “Pull Request는 대화의 시작점”이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
+<p>나는 PR이 코드를 다 완성하고 나서 하는 것으로 생각했었다. 지금은 &quot;Pull Request는 대화의 시작점&quot;이라는 것을 깊이 공감한다. PR과 관련된 GitHub의 기능은(Inline Comment, Reply, Notification, Diff) 매우 훌륭하다. 코드와 설계에 대해 토론을 많이 하게 해서 개발자가 너무 멀리 가거나 벼랑 끝으로 향하는 일을 미리 방지해준다.</p>
 
     ]]></content>
     </entry>
     <entry>
     <title><![CDATA[ git: ckw Solarized! ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-msysgit-ckw-solarized.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-ckw-solarized-">git: ckw Solarized!</h1>
@@ -732,7 +732,7 @@ Ckw*color15: #fdf6e3
     <entry>
     <title><![CDATA[ 프로 Git 한글책 출간 ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/progit-ko-book-published.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/progit-ko-book-published.html</id>
     <content type="html"><![CDATA[
       <h1 id="-git-">프로 Git 한글책 출간</h1>
@@ -743,14 +743,14 @@ Ckw*color15: #fdf6e3
 <p>종이책으로 출간된 책의 기본 내용은 동일하지만 몇 번의 교정 과정을 더 거쳤고 이미지도 업데이트 되었으며 부록으로 미처 다루지 못한 몇 가지 내용을 더 담아두었습니다.</p>
 <p>주요 오프라인이나 온라인 서점을 통해 구입하실 수 있구요 출간된 것은 4월 중순인데 이렇게 글로 소식을 올리는 것이 늦어졌습니다. ^^</p>
 <h2 id="-">또 다른 번역서, 데브옵스 출간 소식</h2>
-<p>또 하나, ‘프로 Git’에 이어 저희 팀원분이 번역한 <a href="http://www.wikibook.co.kr/wiki/Wiki.jsp?page=DevOps">데브옵스</a>도 5월 말에 출간됩니다. 데브옵스에 대한 다양한 문제 상황과 해결법을 다루고 있어 관심있는 분께는 많은 도움이 되리라 생각합니다. 현재 예약판매 중이며 곧 온라인과 오프라인 서점에서 구입하실 수 있습니다.</p>
+<p>또 하나, &#39;프로 Git&#39;에 이어 저희 팀원분이 번역한 <a href="http://www.wikibook.co.kr/wiki/Wiki.jsp?page=DevOps">데브옵스</a>도 5월 말에 출간됩니다. 데브옵스에 대한 다양한 문제 상황과 해결법을 다루고 있어 관심있는 분께는 많은 도움이 되리라 생각합니다. 현재 예약판매 중이며 곧 온라인과 오프라인 서점에서 구입하실 수 있습니다.</p>
 
     ]]></content>
     </entry>
     <entry>
     <title><![CDATA[ git: password caching ]]></title>
     <link herf="http://dogfeet.github.io/articles/2013/git-password-caching.html" />
-    <updated>2015-01-18T07:43:36.183Z</updated>
+    <updated>2015-01-20T03:23:26.605Z</updated>
     <id>http://dogfeet.github.io/articles/2013/git-password-caching.html</id>
     <content type="html"><![CDATA[
       <h1 id="git-password-caching">git: password caching</h1>
@@ -772,9 +772,9 @@ Ckw*color15: #fdf6e3
 <pre><code>% git config --global credential.helper cache
 </code></pre><p>기본적으로 15분 저장해주는데 다음과 같이 기간을 수정할 수 있다:</p>
 <pre><code>% git config --global credential.helper &#39;cache --timeout=3600&#39;
-</code></pre><p>‘ssh-agent’로 하는 것과 거의 비슷하다.</p>
+</code></pre><p>&#39;ssh-agent&#39;로 하는 것과 거의 비슷하다.</p>
 <h3 id="mac">Mac</h3>
-<p>Mac에서는 ‘osxkeychain credential helper’라는 게 있어서 ssh처럼 keychain을 사용할 수 있다.</p>
+<p>Mac에서는 &#39;osxkeychain credential helper&#39;라는 게 있어서 ssh처럼 keychain을 사용할 수 있다.</p>
 <p>먼저 osxkeychain이 잘 동작하는지 확인하고:</p>
 <pre><code>% git credential-osxkeychain
 Usage: git credential-osxkeychain &lt;get|store|erase&gt;
@@ -785,12 +785,12 @@ git: &#39;credential-osxkeychain&#39; is not a git command. See &#39;git --help&
 % curl -s -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
 % chmod u+x git-credential-osxkeychain
 % sudo mv git-credential-osxkeychain `dirname \`which git\``
-</code></pre><p>‘credential helper’로 osxkeychain을 사용할 것이라고 알린다.:</p>
+</code></pre><p>&#39;credential helper&#39;로 osxkeychain을 사용할 것이라고 알린다.:</p>
 <pre><code>% git config --global credential.helper osxkeychain
-</code></pre><p>이제 ssh를 사용할 때는 ssh 인증서가 사용되고 http(s)를 사용할 때는 ‘osxkeychain credential helper’가 사용된다.</p>
+</code></pre><p>이제 ssh를 사용할 때는 ssh 인증서가 사용되고 http(s)를 사용할 때는 &#39;osxkeychain credential helper&#39;가 사용된다.</p>
 <p>이렇게 설정하면 CLI뿐만 아니라 <a href="http://www.sourcetreeapp.com/">SourceTree</a>같은 GUI에서도 매번 암호를 입력하지 않을 수 있다.</p>
 <h3 id="windows">Windows</h3>
-<p><a href="http://blob.andrewnurse.net/gitcredentialwinstore/git-credential-winstore.exe">git-credential-winstore</a>를 내려받아서 실행경로에 넣고 한번 실행해준다. 그러면 msysgit 에서 잘 사용할 수 있다. ‘GitHub for Windows’에는 이미 포함돼 있어서 별도로 설치할 필요가 없다.</p>
+<p><a href="http://blob.andrewnurse.net/gitcredentialwinstore/git-credential-winstore.exe">git-credential-winstore</a>를 내려받아서 실행경로에 넣고 한번 실행해준다. 그러면 msysgit 에서 잘 사용할 수 있다. &#39;GitHub for Windows&#39;에는 이미 포함돼 있어서 별도로 설치할 필요가 없다.</p>
 <p>Windows XP에서는 SourceTree를 설치할 수 없어서 확인하지 못했다.</p>
 
     ]]></content>

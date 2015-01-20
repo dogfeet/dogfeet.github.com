@@ -11,7 +11,8 @@
     content="충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 git add 명령으로 Staging Area에 추가하고 나서 git commit으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다."></meta>
   <meta name="keywords"
     content="git"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git:conflict &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-conflict.html" lang="ko-kr">
@@ -88,7 +88,7 @@
 
       <div property="sioc:content"><h1 id="git-conflict">Git:conflict</h1>
 <p>충돌을 해결하는 방법은 단순하다. 편집기로 충돌이 일어난 파일을 열어 적절히 편집하고 <code>git add</code> 명령으로 Staging Area에 추가하고 나서 <code>git commit</code>으로 commit하면 끝이다. 하지만, Git으로 좀 더 쉽게 하는 방법을 알아본다.</p>
-<p>Git 명령어를 사용하다 보면 ‘ours’, ‘theirs’라는 옵션을 자주 보게 된다. 이 옵션은 충돌을 위해 만들어진 옵션이다. 이 글은 이 옵션에 대해 설명한다.</p>
+<p>Git 명령어를 사용하다 보면 &#39;ours&#39;, &#39;theirs&#39;라는 옵션을 자주 보게 된다. 이 옵션은 충돌을 위해 만들어진 옵션이다. 이 글은 이 옵션에 대해 설명한다.</p>
 <p><img src="/articles/2012/git-conflict/creation-of-adam.jpg" alt="creation of adam"></p>
 <p>새해 복 많이 받으세요!!</p>
 <h2 id="config">Config</h2>

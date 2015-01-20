@@ -8,10 +8,11 @@
 
   <title>#dogfeet - SMACSS:The Icon Module</title>
   <meta name="description"
-    content="이글은 The Icon Module을 정리한 것이다. SMACSS를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 ‘CSS Sprite’ 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다."></meta>
+    content="이글은 The Icon Module을 정리한 것이다. SMACSS를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 &#39;CSS Sprite&#39; 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다."></meta>
   <meta name="keywords"
     content="CSS,SMACSS,Icon,CSS Sprite"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="SMACSS:The Icon Module &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/smacss-icon-module.html" lang="ko-kr">
@@ -87,11 +87,11 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="smacss-the-icon-module">SMACSS:The Icon Module</h1>
-<p>이글은 <a href="https://smacss.com/book/icon-module">The Icon Module</a>을 정리한 것이다. <a href="https://smacss.com/">SMACSS</a>를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 ‘CSS Sprite’ 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다.</p>
+<p>이글은 <a href="https://smacss.com/book/icon-module">The Icon Module</a>을 정리한 것이다. <a href="https://smacss.com/">SMACSS</a>를 읽고 SMACSS의 철학이 실제로 어떻게 적용되는지 알아보기에 좋다. 이글은 &#39;CSS Sprite&#39; 기법을 사용하는 엉성한 Icon Module을 SMACSS의 방법으로 단단한 Icon Module로 리팩토링하는 것을 보여준다.</p>
 <p><img src="/articles/2012/smacss/smacss.png" alt="smacss"></p>
 <p>이 글은 무료로 공개돼 있지 않다.</p>
 <h2 id="smacss">SMACSS</h2>
-<p><a href="https://smacss.com/">SMACSS</a>는 좋은 책이다. CSS ‘관리’에 초점을 맞추고 이렇게 일목요연하게 정리된 자료는 일찍이 보지 못했다. 이 글을 읽고 도움이 됐다면 <a href="https://smacss.com/">SMACSS</a>를 꼭 사길 바란다. $30 짜리 workshop 계정을 사면 저자인 <a href="http://snook.ca/">Jonathan Snook</a>가 지속적으로 업데이트하는 유로 컨텐츠를 계속 이용할 수 있다.</p>
+<p><a href="https://smacss.com/">SMACSS</a>는 좋은 책이다. CSS &#39;관리&#39;에 초점을 맞추고 이렇게 일목요연하게 정리된 자료는 일찍이 보지 못했다. 이 글을 읽고 도움이 됐다면 <a href="https://smacss.com/">SMACSS</a>를 꼭 사길 바란다. $30 짜리 workshop 계정을 사면 저자인 <a href="http://snook.ca/">Jonathan Snook</a>가 지속적으로 업데이트하는 유로 컨텐츠를 계속 이용할 수 있다.</p>
 <h2 id="the-icon-module">The Icon Module</h2>
 <p>Asset(Image)을 한 파일로 모으면 HTTP 요청 수도 줄고 이미 모든 Asset을 내려받았기 때문에 나중에 필요할 때 바로 사용할 수 있다. 이것을 <code>CSS Sprite</code>라고 부른다.</p>
 <p>다음 그림을 보면 이 말이 무슨 뜻인지 알 수 있다:</p>
@@ -127,7 +127,7 @@
 <pre><code>&lt;li&gt;&lt;i class=&quot;ico ico-16 ico-inbox&quot;&gt;&lt;/i&gt; Inbox&lt;/li&gt;
 </code></pre><p><code>&lt;i&gt;</code> 태그는 간단하고 시맨틱과는 거리가 먼 태그다. Icon은 다른 텍스트를 부연 설명하는 거니까 시멘틱이 없는 태그라고 볼 수 있다. Icon이 혼자 쓰일 때는 꼭 title 속성을 넣어줘서 Screen Reader나 tooltip에서 읽을 수 있도록 해주는 것이 좋다. <code>&lt;i&gt;</code> 태그가 싫다면 <code>&lt;span&gt;</code> 태그가 적당하다.</p>
 <p><code>&lt;i&gt;</code>는 HTML 속 어디에 넣어도 되니까 HTML 구조의 의존성은 사라졌다고 볼 수 있다.</p>
-<p>그리고 “ico ico-16 ico-inbox” 클래스는 각각 역할이 다르다. 게다가 <code>&lt;img&gt;</code> 태그와 잘 섞어 사용할 수 있다.</p>
+<p>그리고 &quot;ico ico-16 ico-inbox&quot; 클래스는 각각 역할이 다르다. 게다가 <code>&lt;img&gt;</code> 태그와 잘 섞어 사용할 수 있다.</p>
 <p>Icon Module CSS:</p>
 <pre><code>.ico {
     display: inline-block;

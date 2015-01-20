@@ -11,7 +11,8 @@
     content="이 글은 Getting Started sbt을 번역한 것이다."></meta>
   <meta name="keywords"
     content="sbt"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="sbt: Getting Started Guide: Setup &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/sbt-getting-started-setup.html" lang="ko-kr">
@@ -134,10 +134,10 @@ emerge sbt-bin
 <p><code>sbt.bat</code> 배치 파일을 만든다:</p>
 <pre><code>set SCRIPT_DIR=%~dp0
 java -Xmx512M -jar &quot;%SCRIPT_DIR%sbt-launch.jar&quot; %*
-</code></pre><p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 ‘sbt’라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.</p>
+</code></pre><p>그리고 그 디렉토리에 [sbt-launch.jar][] 파일을 넣는다. 커맨드 라인에서 &#39;sbt&#39;라고 실행하려면 PATH 환경 변수에 <code>sbt.bat</code>를 등록해준다.</p>
 <h2 id="unix">Unix</h2>
 <p><a href="http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.11.3-2/sbt-launch.jar">sbt-launch.jar</a>를 다운로드해서 <code>~/bin</code> 디렉토리에 넣는다.</p>
-<p>이 jar 파일을 실행하는 스크립트를 ‘sbt’라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:</p>
+<p>이 jar 파일을 실행하는 스크립트를 &#39;sbt&#39;라는 이름으로 만들고 <code>~/bin</code> 디렉토리에 넣는다:</p>
 <pre><code>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar `dirname $0`/sbt-launch.jar &quot;$@&quot;
 </code></pre><p>그리고 스크립트를 실행할 수 있게 만든다:</p>
 <pre><code>$ chmod u+x ~/bin/sbt

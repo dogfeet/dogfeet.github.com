@@ -11,7 +11,8 @@
     content="이 글은 By example: Continuation-passing style in JavaScript를 번역한 것이다. CPS에 대해 열심히 적어놨는데 간단히 말하자면 함수 호출의 끝에 원래의 context로 돌아가지 않고, 새로이 불릴 함수를 caller가 넘겨주는 프로그래밍 스타일을 말한다."></meta>
   <meta name="keywords"
     content="javascript,CPS,programming,continuation"></meta>
-  <meta name="author" content="Yongjae Choi"></meta>
+  <meta name="author"
+    content="Yongjae Choi"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="예제로 설명하는 자바스크립트에서의 Continuation-passing style &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/by-example-continuation-passing-style-in-javascript.html" lang="ko-kr">
@@ -102,11 +102,11 @@
 <li>분산 프로그래밍을 위한 CPS</li>
 <li>CPS를 이용해서 예외처리하는 방법</li>
 <li>미니말 Lisp을 위한 CPS 컨버터</li>
-<li>&lt;strike&gt;Lisp에서 call/cc 구현하는 방법&lt;/strike&gt;&lt;sup&gt;이 섹션은 이해가 모자라 제거했다.&lt;/sup&gt;</li>
+<li><strike>Lisp에서 call/cc 구현하는 방법</strike><sup>이 섹션은 이해가 모자라 제거했다.</sup></li>
 <li>자바스크립트에서 call/cc 구현하는 방법</li>
 </ul>
 <p>시작하자.</p>
-<h2 id="-">‘컨티뉴에이션-패싱 스타일’이 뭐야?</h2>
+<h2 id="-">&#39;컨티뉴에이션-패싱 스타일&#39;이 뭐야?</h2>
 <p>만약 컨티뉴에이션을 지원하는 언어을 사용한다는 것은 프로그래머가 예외와 백트래킹, 스레드, 제네레이터(generator)등의 제어 구조를 추가할 수 있다는 것을 의미한다.</p>
 <p>많은 컨티뉴에이션에 대한 설명은 막연하고 불충분하다. 뭔가 정말 도움이 되는 설명이 필요하다. 이 컨티뉴에이션-패싱 스타일이 바로 그런 것들을 해결해줄 것이다.</p>
 <p>컨티뉴에이션-패싱 스타일은 코드라는 측면에서 컨티뉴에이션과 같다.</p>
@@ -114,7 +114,7 @@
 <pre><code>어떠한 프로시저도 caller에 리턴(return)하지 않는다.
 </code></pre><p>아래 힌트는 CPS로 프로그래밍하는 데 도움이 된다:</p>
 <pre><code>프로시저는 리턴 값으로 호출 가능한 콜백을 받는다.
-</code></pre><p>프로시저가 caller로 “리턴” 해야 할 때, 프로시저는 return 대신 “현재 컨티뉴에이션(current continuation)” 콜백을 호출한다. (이 콜백은 caller가 넘겨줬다.)</p>
+</code></pre><p>프로시저가 caller로 &quot;리턴&quot; 해야 할 때, 프로시저는 return 대신 &quot;현재 컨티뉴에이션(current continuation)&quot; 콜백을 호출한다. (이 콜백은 caller가 넘겨줬다.)</p>
 <p>컨티뉴에이션은 퍼스트-클래스 리턴 포인트(first-class return point)이다.</p>
 <h3 id="-">예제: 항등 함수</h3>
 <p>항등 함수가 하나 있다:</p>
@@ -144,7 +144,7 @@
     else
         fact(n-1,function(t0) { ret(n * t0) }) ;
 }
-</code></pre><p>그리고 이 함수를 실제로 “사용”할 때에는 다음과 같이 콜백을 넘겨준다:</p>
+</code></pre><p>그리고 이 함수를 실제로 &quot;사용&quot;할 때에는 다음과 같이 콜백을 넘겨준다:</p>
 <pre><code>fact (5,function(n) {
     console.log(n); // 콘솔에 120이 출력된다.
 })
@@ -175,10 +175,10 @@ function tail_fact(n,a,ret) {
 <p>Ajax는 자바스크립트의 XMLHttpRequest 객체를 이용해 비동기적으로 서버에서 데이터를 가져오는 웹 프로그래밍 기술이다.</p>
 <p>(데이터가 꼭 XML일 필요는 없다.)</p>
 <p>CPS는 Ajax 프로그래밍을 우아하게 하는 방법을 제공한다.</p>
-<p>XMLHttpRequest를 이용하면 블로킹 프로시저인 ‘fetch(url)’을 작성할 수 있다. 이 프로시저는 url이 가리키는 페이지의 내용을 변수에 담아 문자열로 리턴한다.</p>
+<p>XMLHttpRequest를 이용하면 블로킹 프로시저인 &#39;fetch(url)&#39;을 작성할 수 있다. 이 프로시저는 url이 가리키는 페이지의 내용을 변수에 담아 문자열로 리턴한다.</p>
 <p>이런 방식의 문제는 자바스크립트가 단일 스레드만 지원하는 언어라는 점이다. 자바스크립트가 블럭되면 그동안 브라우저가 멈춰버린다.</p>
 <p>그러면 사용자 경험이 망가진다.</p>
-<p>더 나은 방식은 프로시저를 ‘fetch(url, callback)’ 형식으로 만드는 것이다. 이 프로시저는 블로킹 되지 않기 때문에, 코드 실행이나 브라우저 렌더링을 막지 않는다. 이 프로시저에는 http 요청이 끝나고 호출되야 할 콜백을 넘겨준다.</p>
+<p>더 나은 방식은 프로시저를 &#39;fetch(url, callback)&#39; 형식으로 만드는 것이다. 이 프로시저는 블로킹 되지 않기 때문에, 코드 실행이나 브라우저 렌더링을 막지 않는다. 이 프로시저에는 http 요청이 끝나고 호출되야 할 콜백을 넘겨준다.</p>
 <p>이렇게 코딩하는 과정에서 부분적으로 코딩 스타일이 CPS로 자연스레 변한다.</p>
 <h3 id="fetch-">fetch 구현</h3>
 <p>콜백 유무에 따라 non-blocking 모드나 블러킹 모드를 스위칭하며 동작하는 fetch는 어렵지 않게 구현할 수 있다:</p>
@@ -354,8 +354,8 @@ httpd.listen(8000) ;
 </code></pre><h2 id="cps-">CPS로 예외처리하기</h2>
 <p>프로그램을 CPS로 작성하면, 언어의 표준 예외처리 매커니즘이 쓸모없어진다. 하지만, CPS로 예외처리를 구현하는 것은 어렵지 않다.</p>
 <p>예외처리는 컨티뉴에이션의 특수한 케이스다.</p>
-<p>‘현재 예외적 컨티뉴에이션(current exceptional continuation)’을 ‘현재 컨티뉴에이션(current continuation)’과 함께 던지는 것으로 try/catch 구문을 없앨 수 있다.</p>
-<p>다음 예제는 Exception을 이용해서 팩토리얼 “total” 버전을 정의한다:</p>
+<p>&#39;현재 예외적 컨티뉴에이션(current exceptional continuation)&#39;을 &#39;현재 컨티뉴에이션(current continuation)&#39;과 함께 던지는 것으로 try/catch 구문을 없앨 수 있다.</p>
+<p>다음 예제는 Exception을 이용해서 팩토리얼 &quot;total&quot; 버전을 정의한다:</p>
 <pre><code>function fact (n) {
     if(n &lt; 0)
         throw &quot;n &lt; 0&quot;;
@@ -444,10 +444,10 @@ total_fact(-1,function(res) {
 <ul>
 <li><a href="http://www.amazon.com/gp/product/0596101996?ie=UTF8&amp;tag=ucmbread-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596101996">JavaScript: The Definitive Guide</a>, the best book on JavaScript.</li>
 <li><a href="http://www.amazon.com/gp/product/0596517742?ie=UTF8&amp;tag=ucmbread-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596517742">JavaScript: The Good Parts</a>, the only other good JavaScript book.</li>
-<li>Andrew Appel’s timeless classic <a href="http://www.amazon.com/gp/product/052103311X?ie=UTF8&amp;tag=ucmbread-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=052103311X">Compiling with Continuations</a>.</li>
+<li>Andrew Appel&#39;s timeless classic <a href="http://www.amazon.com/gp/product/052103311X?ie=UTF8&amp;tag=ucmbread-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=052103311X">Compiling with Continuations</a>.</li>
 <li><a href="http://library.readscheme.org/page1.html">The Lambda Papers</a>.</li>
 <li>My post <a href="http://matt.might.net/articles/programming-with-continuations--exceptions-backtracking-search-threads-generators-coroutines/">on programming with continuations by example</a>.</li>
-<li><a href="http://faculty.cs.byu.edu/~jay/home/">Jay McCarthy</a> et al.’s papers on a continuation-based web-server.</li>
+<li><a href="http://faculty.cs.byu.edu/~jay/home/">Jay McCarthy</a> et al.&#39;s papers on a continuation-based web-server.</li>
 </ul>
 </div>
     </div>

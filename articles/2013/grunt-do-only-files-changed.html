@@ -11,7 +11,8 @@
     content="이 글은 예로 Lint를 사용하지만, Watch 이벤트를 다루는 법은 CoffeeScript 스크립트를 컴파일하는 것 때문에 필요했다. Lint는 번개처럼 빠르지만 CoffeeScript 컴파일은 번개같진 않아서 수정한 파일만 다시 컴파일하는 기능이 간절했다."></meta>
   <meta name="keywords"
     content="grunt,node,watch"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="grunt: 수정된 파일만 Lint하기 &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2013/grunt-do-only-files-changed.html" lang="ko-kr">
@@ -106,7 +106,7 @@ watch: {
   }
 }
 ...
-</code></pre><p>‘lib/<em>*/</em>.js’파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
+</code></pre><p>&#39;lib/<em>*/</em>.js&#39;파일이 수정되면 jshint 타스크가 실행된다. 이 때 문제는 수정된 파일만 다시 Lint하는 것이 아니라 모든 파일에 대해 다시 Lint한다.</p>
 <p>수정된 파일만 다시 Lint하게 하려면, Watch 이벤트를 직접 핸들링해야 한다. 아래와 같은 코드가 필요하다:</p>
 <pre><code>...
 grunt.event.on(&#39;watch&#39;, function(action, files, target) {
@@ -114,7 +114,7 @@ grunt.event.on(&#39;watch&#39;, function(action, files, target) {
   grunt.config([&#39;jshint&#39;, target], {src: files});
 });
 ..
-</code></pre><p>‘lib/<em>*/</em>.js’ 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
+</code></pre><p>&#39;lib/<em>*/</em>.js&#39; 파일 중에서 하나라도 수정되면 Watch 이벤트가 발생하고 jshint의 설정을 수정해서 jshint 타스크를 실행시킨다. jshint의 설정을 아예 변경해 버리는 방법으로 원래 jshint의 설정이 사라져 버린다. 여기에서 문제가 생긴다. watch는 jshint를 참조하고 있고 jshint의 설정은 변경됐으므로 마지막에 수정된 파일이 이외의 파일에 대해서는 더 이상 Watch 이벤트가 발생하지 않는다.</p>
 <p>파일을 정의해주는 부분을 아래와 같이 변경해줘야 한다:</p>
 <pre><code>...
 jshint: {

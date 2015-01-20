@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Bash: .profile, .bash_profile, .bashrc</title>
   <meta name="description"
-    content="필요할 때마다 Google님께 물어보는 것이 ‘.profile, .bash_profile, .bashrc’의 차이다. 신기하게도 잘 기억나지 않아서 글로 적어본다."></meta>
+    content="필요할 때마다 Google님께 물어보는 것이 &#39;.profile, .bash_profile, .bashrc&#39;의 차이다. 신기하게도 잘 기억나지 않아서 글로 적어본다."></meta>
   <meta name="keywords"
     content="Bash,.profile,.bash_profile,.bashrc"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Bash: .profile, .bash_profile, .bashrc &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/bash-profile.html" lang="ko-kr">
@@ -87,38 +87,38 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="bash-profile-bash_profile-bashrc">Bash: .profile, .bash_profile, .bashrc</h1>
-<p>필요할 때마다 Google님께 물어보는 것이 ‘.profile, .bash_profile, .bashrc’의 차이다. 신기하게도 잘 기억나지 않아서 글로 적어본다.</p>
+<p>필요할 때마다 Google님께 물어보는 것이 &#39;.profile, .bash_profile, .bashrc&#39;의 차이다. 신기하게도 잘 기억나지 않아서 글로 적어본다.</p>
 <p><img src="/articles/2012/bash-profile/bash-computer.png" alt="bash-computer">
 (from <a href="http://www.gamefudge.com/Bash-the-Computer">bash the computer</a>, 이참에 computer를 한번 bash해보자)</p>
 <h2 id="ubuntu">Ubuntu</h2>
 <p>최근 업무에 X windows가 필요해서 백 년 만에 ubuntu Desktop을 vmware에 설치했는데, 이거 웬걸 쓸만하다. 적어도 Windows보다 편하다. 회사에서 보안프로그램만 지원해주면 업무용으로 그냥 Ubuntu Desktop를 쓰고 싶다.</p>
 <p>이제 돈 받고 팔아도 되겠다. 12.04가 기대된다. 설치도, 내 취향에 맞춘 설정까지 하루밖에 안 걸린다.</p>
 <h2 id="login-shell-vs-non-login-shell">Login Shell vs Non-login Shell</h2>
-<p>먼저 ‘Login Shell’과 ‘Non-login Shell’ 을 구분해야 하는데, 로그인은 계정과 암호를 입력해서 Shell을 실행하는 것이다. ssh로 접속하거나 로컬에서 GUI에서 로그인한다는 의미다.</p>
-<p>‘.profile’, ‘.bash_profile’이 Login할 때 로드되는(source) 파일이다. ‘.profile’은 꼭 bash가 아니더라도 로그인하면 로드되고 ‘.bash_profile’은 꼭 Bash로 Login할 때 로드된다.</p>
-<p>그리고 ‘Non-login Shell’은 로그인 없이 실행하는 Shell을 말한다. ssh로 접속하고 나서 다시 bash를 실행하는 경우나. GUI 세션에서 터미널을 띄우는 것이 이해 해당한다. ‘sudo bash’나 ‘su’ 같은 것도 이에 해당한다.</p>
-<p>‘.bashrc’는 로그인 없이 Bash가 실행될 때 로드된다. ‘sudo bash’나 ‘su’로 root 권한을 얻으려 bash를 실행할 때도 이 파일이 로드된다.</p>
+<p>먼저 &#39;Login Shell&#39;과 &#39;Non-login Shell&#39; 을 구분해야 하는데, 로그인은 계정과 암호를 입력해서 Shell을 실행하는 것이다. ssh로 접속하거나 로컬에서 GUI에서 로그인한다는 의미다.</p>
+<p>&#39;.profile&#39;, &#39;.bash_profile&#39;이 Login할 때 로드되는(source) 파일이다. &#39;.profile&#39;은 꼭 bash가 아니더라도 로그인하면 로드되고 &#39;.bash_profile&#39;은 꼭 Bash로 Login할 때 로드된다.</p>
+<p>그리고 &#39;Non-login Shell&#39;은 로그인 없이 실행하는 Shell을 말한다. ssh로 접속하고 나서 다시 bash를 실행하는 경우나. GUI 세션에서 터미널을 띄우는 것이 이해 해당한다. &#39;sudo bash&#39;나 &#39;su&#39; 같은 것도 이에 해당한다.</p>
+<p>&#39;.bashrc&#39;는 로그인 없이 Bash가 실행될 때 로드된다. &#39;sudo bash&#39;나 &#39;su&#39;로 root 권한을 얻으려 bash를 실행할 때도 이 파일이 로드된다.</p>
 <p>정리:</p>
 <ul>
-<li>‘.profile’ - 로그인할 때 로드된다. PATH처럼 로그인할 때 로드해야 하는데 bash와 상관없는 것들을 여기에 넣는다.</li>
-<li>‘.bash_profile’ - 로그인할 때 로드된다. ‘bash completion’이나 ‘nvm’같이 로그인할 때 로드해야 하는데 Bash와 관련된 것이면 여기에 넣는다.</li>
-<li>‘.bashrc’ - 로그인하지 않고 Bash가 실행될 때마다 로드된다.</li>
+<li>&#39;.profile&#39; - 로그인할 때 로드된다. PATH처럼 로그인할 때 로드해야 하는데 bash와 상관없는 것들을 여기에 넣는다.</li>
+<li>&#39;.bash_profile&#39; - 로그인할 때 로드된다. &#39;bash completion&#39;이나 &#39;nvm&#39;같이 로그인할 때 로드해야 하는데 Bash와 관련된 것이면 여기에 넣는다.</li>
+<li>&#39;.bashrc&#39; - 로그인하지 않고 Bash가 실행될 때마다 로드된다.</li>
 </ul>
 <h2 id="bash-it">bash-it</h2>
-<p>나는 Bash 프레임워크인 <a href="https://github.com/revans/bash-it">bash-it</a>을 사용하는데, 그냥 터미널에서 ssh로 접속하기만 할 때는 ‘.bash_profile’에만 넣어주는 걸로 충분했다. 그런데 Desktop으로 쓸려니 로그인 없이 Bash를 실행할 일이 많아서 ‘.bashrc’에 넣어줘야 했다:</p>
+<p>나는 Bash 프레임워크인 <a href="https://github.com/revans/bash-it">bash-it</a>을 사용하는데, 그냥 터미널에서 ssh로 접속하기만 할 때는 &#39;.bash_profile&#39;에만 넣어주는 걸로 충분했다. 그런데 Desktop으로 쓸려니 로그인 없이 Bash를 실행할 일이 많아서 &#39;.bashrc&#39;에 넣어줘야 했다:</p>
 <pre><code>if [ -f &quot;~/.bash_profile&quot; ]; then
     . ~/.bash_profile
 fi
-</code></pre><p>그런데 ‘sudo bash’를 실행할 때도 bash-it이 로드돼서 root가 아닐 때만 로드되게 했다:</p>
+</code></pre><p>그런데 &#39;sudo bash&#39;를 실행할 때도 bash-it이 로드돼서 root가 아닐 때만 로드되게 했다:</p>
 <pre><code>if [ &quot;$USER&quot; != &quot;root&quot; ] &amp;&amp; [ -f &quot;~/.bash_profile&quot; ]; then
     . ~/.bash_profile
 fi
 </code></pre><p>꼭 터미널을 열고 Bash를 띄울 때만 bash-it을 사용하고 싶은데 GUI 세션에 로그인할 때도 실행되는 느낌이다. 이것도 확인해봐야 하는데,</p>
 <h2 id="mac">Mac</h2>
-<p>사실 Mac에서 한 번도 ‘Login Bash’같은 컨셉에 대해 생각해본 적 없다. 그러니까 Bash를 실행할 때 로그인해 본 적 없다. Mac에 ssh로 접속한 적도 없다. 그러니까 Mac에서는 .bash_profile과 .bashrc를 구분해 사용하려고 생각한 적이 없다.</p>
-<p>그래서 더 헷갈린다. Mac에서는 터미널을 열어도 ‘.bash_profile’이 로드된다. ‘sudo bash’할 때나 그냥 ‘bash’를 실행시켰을 때에는 로드하지 않는 것으로 봐서 여태껏 얘기한 것에서 크게 벗어나는 것 같진 않다. 그냥 조금 다르다.</p>
-<p>이를테면 ‘터미널을 연다는 것은 로그인하면서 Bash를 실행시키는 것’이라고 보면 된다. 터미널을 열 때에도 ‘.bash_profile’이 로드되지만, bash를 그냥 실행시킬 때는 ‘.bash_profile’은 로드하지 않는다.</p>
-<h2 id="-bash_login-bash_logout-bash_complete-">.bash_login, .bash_logout, .bash_complete …</h2>
+<p>사실 Mac에서 한 번도 &#39;Login Bash&#39;같은 컨셉에 대해 생각해본 적 없다. 그러니까 Bash를 실행할 때 로그인해 본 적 없다. Mac에 ssh로 접속한 적도 없다. 그러니까 Mac에서는 .bash_profile과 .bashrc를 구분해 사용하려고 생각한 적이 없다.</p>
+<p>그래서 더 헷갈린다. Mac에서는 터미널을 열어도 &#39;.bash_profile&#39;이 로드된다. &#39;sudo bash&#39;할 때나 그냥 &#39;bash&#39;를 실행시켰을 때에는 로드하지 않는 것으로 봐서 여태껏 얘기한 것에서 크게 벗어나는 것 같진 않다. 그냥 조금 다르다.</p>
+<p>이를테면 &#39;터미널을 연다는 것은 로그인하면서 Bash를 실행시키는 것&#39;이라고 보면 된다. 터미널을 열 때에도 &#39;.bash_profile&#39;이 로드되지만, bash를 그냥 실행시킬 때는 &#39;.bash_profile&#39;은 로드하지 않는다.</p>
+<h2 id="-bash_login-bash_logout-bash_complete-">.bash_login, .bash_logout, .bash_complete ...</h2>
 <p>그 외 파일이 많은데 별로 중요하지도 않고 필요하다고 생각해본 적 없어서 정리하지 않았다.</p>
 </div>
     </div>

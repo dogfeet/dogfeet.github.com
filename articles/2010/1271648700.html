@@ -11,7 +11,8 @@
     content="이글은 Stefan Schmidt가 쓴 Spring Finance를 번역한 것이다."></meta>
   <meta name="keywords"
     content="Java,Spring,Spring Finance,Stefan Schmidt"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Spring finance: Part 1 - Introduction And Architecture &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2010/1271648700.html" lang="ko-kr">
@@ -94,7 +94,7 @@
 <p>샘플 어플리케이션에 대해.</p>
 <h2 id="-">소개</h2>
 <p>Spring Finance는 심슨 가족을 위한 간단한 자금 추적 어플리케이션이다. 아마 심슨 가족은 온갖 재정적인 문제에 시달린다. 심슨 가족은 자주 이웃인 네드 플랜더스나 스프링필드 원자력발전소 사장 번즈씨에게서 돈을 빌린다. 그리고 호머는 돈을 빌리고 갚아야 하는 것을 자주 잊는다. Spring Finance는 이 부분을 도울 것이다.</p>
-<p>Spring Finance의 도메인은 DDD(Domain Driven Design)의 원칙을 따른다. 다음 단락은 Eric Evan의 Domain Driven Degisn, 415페이지에 설명된 ‘the problem domain’에 따르는 비전을 먼저 제시한다.</p>
+<p>Spring Finance의 도메인은 DDD(Domain Driven Design)의 원칙을 따른다. 다음 단락은 Eric Evan의 Domain Driven Degisn, 415페이지에 설명된 &#39;the problem domain&#39;에 따르는 비전을 먼저 제시한다.</p>
 <h2 id="-">도메인 비젼</h2>
 <p>Spring Financ는 3개의 그룹으로 나뉜다. 그 것은 계좌 관리자, 고객, 대중이다. 계좌 관리자는 다른 그룹들 사이의 금융 트랜잭션을 알기에 필요한 모든 프로세스가 도메인 모델에 반영돼야 한다. 모델로는 중개인(stakeholder), 계좌(account), 금융 트랜잭션(financial transaction), 금융 상품(financial product)이 있을 수 있다. 하지만 이 모델은 복합 이자율같은 그렇게 복잡한 개념을 포함하지도 않고 금융의 그 심오한 오의를 모두 설명하지도 못한다. 그래도 다음의 요구사항은 만족해야 한다.</p>
 <h2 id="-">첫 요구사항</h2>

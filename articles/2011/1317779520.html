@@ -8,10 +8,11 @@
 
   <title>#dogfeet - ECMAScript 5 Objects and Properties</title>
   <meta name="description"
-    content="이글은 John Resig님의 ‘ECMAScript 5 Objects and Properties‘을 번역한 것이다."></meta>
+    content="이글은 John Resig님의 &#39;ECMAScript 5 Objects and Properties&#39;을 번역한 것이다."></meta>
   <meta name="keywords"
     content="ECMAScript,ES5,John Resig,JavaScript,JavaScript Standard"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="ECMAScript 5 Objects and Properties &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2011/1317779520.html" lang="ko-kr">
@@ -87,7 +87,7 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="ecmascript-5-objects-and-properties">ECMAScript 5 Objects and Properties</h1>
-<p>이글은 John Resig님의 ‘<a href="http://ejohn.org/blog/ecmascript-5-objects-and-properties/">ECMAScript 5 Objects and Properties</a>‘을 번역한 것이다.</p>
+<p>이글은 John Resig님의 &#39;<a href="http://ejohn.org/blog/ecmascript-5-objects-and-properties/">ECMAScript 5 Objects and Properties</a>&#39;을 번역한 것이다.</p>
 <h2 id="ecmascript-5-objects-and-properties">ECMAScript 5 Objects and Properties</h2>
 <p>EMCAScript 5는 진행중이다(역주, 변역하는 이 시점은 5.1도 발표됨). ECMAScript 4는 안드로메다로 가버렸기 때문에 ECMAScript 3.1이 나왔다. 우리가 사랑해 마지않는 ECMAScript 3을 개선한 EMCAScript3.1은 결국 ECMAScript 5가 됐다.</p>
 <p>새로운 API들이 여러개 추가됐지만 가장 유심히 들여다봐야 하는 것은 Object/Property를 다루는 코드다. 이제 객체를 꼼꼼하게 관리할 수 있는 새로운 길이 열렸다. getter/setter를 정의할 수도 있고 프로퍼티의 enumeration/manipulatation/삭제/추가를 하지 못하도록 막을 수도 있다. 간단히 말해서 다른 도구없이 JavaScript만으로 DOM같은 기존의 JavaScript API를 확장하거나 수정할 수 있게 됐다.</p>
@@ -118,7 +118,7 @@ print( Object.isExtensible( obj ) );
 </code></pre><h2 id="properties-and-descriptors">Properties and Descriptors</h2>
 <p>프로퍼티는 재조명받고 있다. 더이상 객체를 따라다니는 꼬봉같은게 아니다. 프로퍼티가 무엇인지 이해하고 잘 활용하면 정말 강력하지만 조금 복잡하다.</p>
 <p>프로퍼티는 두 가지 관점으로 나눌 수 있다.</p>
-<p>프로퍼티는 실제로 두 가지다 값을 나타내는 “Data” 프로퍼티와 Getter/Setter인 “Accessor” 프로퍼티로 나뉜다. 전자는 Value를 의미하는 것으로 ECMAScript 3부터 우리가 익히 알고 있던 것이고 후자는 Gecko와 WebKit으로 부터 도입된 것들이다.</p>
+<p>프로퍼티는 실제로 두 가지다 값을 나타내는 &quot;Data&quot; 프로퍼티와 Getter/Setter인 &quot;Accessor&quot; 프로퍼티로 나뉜다. 전자는 Value를 의미하는 것으로 ECMAScript 3부터 우리가 익히 알고 있던 것이고 후자는 Gecko와 WebKit으로 부터 도입된 것들이다.</p>
 <ul>
 <li>Value. property의 값이 들어 있다.</li>
 <li>Get. Property에 접근할때 호출되는 함수.</li>

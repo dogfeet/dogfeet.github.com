@@ -8,10 +8,11 @@
 
   <title>#dogfeet - Git: git-ff</title>
   <meta name="description"
-    content="리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? ‘git pull’은 별로 맘에 들지 않는다. 전 쓴 ‘Git: Remote Tracking Branch vs Tracking Branch‘에서도 말했지만, Tracking 브랜치는 불편하다."></meta>
+    content="리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? &#39;git pull&#39;은 별로 맘에 들지 않는다. 전 쓴 &#39;Git: Remote Tracking Branch vs Tracking Branch&#39;에서도 말했지만, Tracking 브랜치는 불편하다."></meta>
   <meta name="keywords"
     content="git,git-tles"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Git: git-ff &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2012/git-ff.html" lang="ko-kr">
@@ -87,14 +87,14 @@
     <div class="col-sm-10">
 
       <div property="sioc:content"><h1 id="git-git-ff">Git: git-ff</h1>
-<p>리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? ‘git pull’은 별로 맘에 들지 않는다. 전 쓴 ‘<a href="http://dogfeet.github.io/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>‘에서도 말했지만, Tracking 브랜치는 불편하다.</p>
-<p>그래서 ‘git pull’ 대신 사용할 수 있는 ‘<a href="https://github.com/dogfeet/git-tles/blob/master/git-ff">git ff</a>‘를 만들었다.</p>
+<p>리모트 저장소와 내 저장소를 자주 동기화하고 싶은데 좋은 방법이 없을까? &#39;git pull&#39;은 별로 맘에 들지 않는다. 전 쓴 &#39;<a href="http://dogfeet.github.io/articles/2012/git-tracking-vs-remote-tracking.html">Git: Remote Tracking Branch vs Tracking Branch</a>&#39;에서도 말했지만, Tracking 브랜치는 불편하다.</p>
+<p>그래서 &#39;git pull&#39; 대신 사용할 수 있는 &#39;<a href="https://github.com/dogfeet/git-tles/blob/master/git-ff">git ff</a>&#39;를 만들었다.</p>
 <p><img src="/articles/2011/git.png" alt="git-ff-result"></p>
 <h2 id="git-ff-">git-ff 특징</h2>
 <h3 id="dirty-">Dirty 체크</h3>
 <p>Working Directory의 상태가 Dirty가 아닐 때만 동작한다.</p>
-<h3 id="-git-fetch-prune-">‘git fetch —prune’</h3>
-<p>Fetch시 —prune 옵션을 주기 때문에 리모트에서 삭제된 브랜치가 있으면 로컬의 Remote Tracking Branch도 삭제한다.</p>
+<h3 id="-git-fetch-prune-">&#39;git fetch --prune&#39;</h3>
+<p>Fetch시 --prune 옵션을 주기 때문에 리모트에서 삭제된 브랜치가 있으면 로컬의 Remote Tracking Branch도 삭제한다.</p>
 <h3 id="-">이름으로 매칭하기.</h3>
 <p>원격 브랜치와 로컬 브랜치를 시스템이 연결해주는 것이 Tracking 브랜치인 건데, 이게 유용한 때도 있겠다. 아직은 모르겠지만….</p>
 <p>그냥 이름으로 하는 게 알아보기도 쉽고 기억하기도 쉽다. 그래서 <code>origin/master</code>에 대응되는 로컬 브랜치는 <code>master</code>라고 간주한다.</p>
@@ -105,9 +105,9 @@
 <p>이 기능도 넣고서 1달 정도 사용해봤는데, 큰 문제는 없었지만 영 찜찜해서 빼버렸다.</p>
 <p>이 기능을 넣으려면 마음의 두려움부터 극복해야겠다.</p>
 <h2 id="git-ff-">git-ff 사용법</h2>
-<p>‘git ff’라고 실행하면 origin에서 Fetch한다:</p>
+<p>&#39;git ff&#39;라고 실행하면 origin에서 Fetch한다:</p>
 <pre><code>git ff [remote]
-</code></pre><p>하지만, origin이 아니라 다른 저장소로도 작업해야 할 때도 왕왕 있다. 특히 origin이 메인 저장소가 아닐 때가 그렇다. ‘git ff managers’라고 실행하면 managers 저장소에서 Fetch한다.</p>
+</code></pre><p>하지만, origin이 아니라 다른 저장소로도 작업해야 할 때도 왕왕 있다. 특히 origin이 메인 저장소가 아닐 때가 그렇다. &#39;git ff managers&#39;라고 실행하면 managers 저장소에서 Fetch한다.</p>
 <p>실행결과는 다음과 같다:</p>
 <p><img src="/articles/2012/git-ff/git-ff-result.png" alt="git-ff-result"></p>
 <p>Fast-Forward Merge도 하지만 해당 저장소랑 Delta가 얼마나 되는지 한눈에 알 수 있다.</p>

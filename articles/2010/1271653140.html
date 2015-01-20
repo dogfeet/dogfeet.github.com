@@ -11,7 +11,8 @@
     content="이글은 Stefan Schmidt의 Spring Finance를 번역한 것이다."></meta>
   <meta name="keywords"
     content="Java,Spring,Spring Finance,Stefan Schmidt"></meta>
-  <meta name="author" content="Changwoo Park"></meta>
+  <meta name="author"
+    content="Changwoo Park"></meta>
 
   <link rel="shortcut icon" href="images/favicon.ico"></link>
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png"></link>
@@ -23,11 +24,12 @@
     title="Spring Finance: Part 2 - Spring @MVC and Spring 3.0 REST integration &raquo; Feed"
     href="http://feeds.feedburner.com/github/dogfeet"></link>
 
-  <link rel="stylesheet"
-    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
-    media="screen, projection"></link>
-  <link rel="stylesheet"
-    href="/styles/style.css" media="screen, projection"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/pygment-github.css"></link>
+  <link rel="stylesheet" media="screen, projection"
+    href="/styles/style.css"></link>
 
 </head>
 <body>
@@ -56,12 +58,10 @@
   </nav>
   <div class="container">
     <div>
-      <link rel="stylesheet" scoped
-  href="/styles/github.css"
-  media="screen, projection"></link>
-<link rel="stylesheet" scoped
-  href="/styles/markdown.css"
-  media="screen, projection"></link>
+      <link rel="stylesheet" media="screen, projection"
+  href="/styles/github.css"></link>
+<link rel="stylesheet" media="screen, projection"
+  href="/styles/markdown.css"></link>
 
 <section class="content">
   <article id="post" class="row post " typeof="sioc:post" about="/articles/2010/1271653140.html" lang="ko-kr">
@@ -123,10 +123,10 @@ public class PersonController {
 
 &lt;/context:include-filter&gt;
 &lt;/context:component-scan&gt;
-</code></pre><p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 ‘/FinanceManager/person/‘와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 ‘<a href="http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>‘란 글을 참고하라.</p>
+</code></pre><p><code>@Controller</code> 어노테이션 이외에도 <code>@RequestMapping</code> 어노테이션으로 URI-클래스 매핑을 정의했다. 이 어노테이션은 컨트롤러를 &#39;/FinanceManager/person/&#39;와 그 하위 URI에 매핑시킨다. 만약 Spring <code>@MVC</code>가 생소하다면 Jurergen Hoeller의 블로그에서 &#39;<a href="http://stsmedia.net/spring-finance-part-2-spring-mvc-spring-30-rest-integration/">Annotated Web MVC Controllers in Spring 2.5</a>&#39;란 글을 참고하라.</p>
 <p><code>@Autowired</code> 어노테이션으로 PersionService를 주입하면 show() 메소드를 살펴볼 준비가 된 것이다. 이 메소드는 REST 스타일로 특정 사람의 상세정보를 얻어 오는데 사용된다.</p>
 <h2 id="spring-3-0-rest">Spring 3.0 REST</h2>
-<p><code>@RequestMapping</code> 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 <code>@RequestMapping</code>을 show() 메소드에 정의했다. ‘/FinanceManager/person/1’에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.</p>
+<p><code>@RequestMapping</code> 어노테이션으로 URI-메소드 매핑도 할 수 있다. 게다가, RequestMethod로 HTTP 요청 메소드를 명시한 <code>@RequestMapping</code>을 show() 메소드에 정의했다. &#39;/FinanceManager/person/1&#39;에 대한 GET 요청은 id가 1인 사람의 상세정보를 반환할 것이다. Spring Dispatcher 서블릿은 GET, HEAD, POST, PUT, DELETE 메소드를 지원한다.</p>
 <p>Spring 3.0은 <code>@PathVariable</code> 어노세이션을 도입했다. 그래서 요청 URI에 공급된 값을 얻기가(binding) 매우 쉬워졌습니다. <code>@PathVariable</code>은 Spring 3.0 REST의 핵심이다. 위 코드에서 path variable은 {id}를 가르킨다. <code>@PathVariable(&quot;id&quot;) Long id</code>만으로도 자동으로 Long 객체로 매핑된다. 이 것은 Spring의 기본 프로퍼티 에티터 덕이다.</p>
 <p>남은 것은 personService.find(id)로 질의하는 것과 ModelMap 객체로 결과를 넘기는 것이다. 여기서 본대로 show() 메소드는 스트링만을 반환한다. 이 스트링은 결과가 보여질 view의 위치를 나타내다. InternalResourceViewResolver는 “person/show”를 “/WEB-INF/jsp/person/show.jsp”로 매핑시켜 준다:</p>
 <pre><code>&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; p:prefix=&quot;/WEB-INF/jsp/&quot; p:suffix=&quot;.jsp&quot;&gt;
@@ -135,7 +135,7 @@ public class PersonController {
 <pre><code>&lt;form:form action=&quot;/FinanceManager/person/${person.id}&quot; method=&quot;PUT&quot; modelattribute=&quot;person&quot;&gt;
 [...]
 &lt;/form:form&gt;
-</code></pre><p>HTTP 메소드가 ‘method=”PUT”‘으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):</p>
+</code></pre><p>HTTP 메소드가 &#39;method=&quot;PUT&quot;&#39;으로 정의된 것을 주목해야 한다. 이 것은 웹 브라우저가 직접적으로 지원하는 것이 아니라서 web.xml에 리스너를 하나 추가로 등록해야 한다(대부분의 웹 브라우저는 GET과 POST만을 지원한다):</p>
 <pre><code>&lt;filter&gt;
     &lt;filter-name&gt;httpMethodFilter&lt;/filter-name&gt;
     &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;
@@ -153,52 +153,51 @@ GET    | READ
 PUT    | UPDATE
 DELETE | DELETE
 </code></pre><p>MVC 컨트롤러는 표준 CRUD 이외에도 create.jsp, update.jsp의 폼을 위한 폼 백킹 오브젝트(form backing object)를 지원해야 한다. 다음은 PersonController에 REST 매핑을 적용한 표이다:</p>
-<p>&lt;table&gt;&lt;tbody&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Resource&lt;/th&gt;
-    &lt;th&gt;GET&lt;/th&gt;
-    &lt;th&gt;PUT&lt;/th&gt;
-    &lt;th&gt;POST&lt;/th&gt;
-    &lt;th&gt;DELETE&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Collection URI such as <a href="http://domain.com/financemanager/person/">http://domain.com/financemanager/person/</a>&lt;/td&gt;
-    &lt;td&gt;사람들의 목록, 예를 들어 시스템에 등록된 모든 사람을 나열한다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;Id를 자동으로 생성하여 사람을 생성한다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Member URI such as <a href="http://domain.com/financemanager/person/5">http://domain.com/financemanager/person/5</a>&lt;/td&gt;
-    &lt;td&gt;id가 5인 사람의 상세정보를 가져온다.&lt;/td&gt;
-    &lt;td&gt;id가 5인 사람을 갱신한다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;id가 5인 사람을 삭제한다.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Member URI such as <a href="http://domain.com/financemanager/person/form">http://domain.com/financemanager/person/form</a>&lt;/td&gt;
-    &lt;td&gt;생성(Create) 폼 - 초기화 된 사람을 반환한다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Member URI such as <a href="http://domain.com/financemanager/person/5/form">http://domain.com/financemanager/person/5/form</a>&lt;/td&gt;
-    &lt;td&gt;갱신(Update) 폼 - 폼 바인딩으로 미리 데이터가 채워진 사람을 반환한다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-    &lt;td&gt;사용되지 않는다.&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
+<table><tbody>
+  <tr>
+    <th>Resource</th>
+    <th>GET</th>
+    <th>PUT</th>
+    <th>POST</th>
+    <th>DELETE</th>
+  </tr>
+  <tr>
+    <td>Collection URI such as <a href="http://domain.com/financemanager/person/">http://domain.com/financemanager/person/</a></td>
+    <td>사람들의 목록, 예를 들어 시스템에 등록된 모든 사람을 나열한다.</td>
+    <td>사용되지 않는다.</td>
+    <td>Id를 자동으로 생성하여 사람을 생성한다.</td>
+    <td>사용되지 않는다.</td>
+  </tr>
+  <tr>
+    <td>Member URI such as <a href="http://domain.com/financemanager/person/5">http://domain.com/financemanager/person/5</a></td>
+    <td>id가 5인 사람의 상세정보를 가져온다.</td>
+    <td>id가 5인 사람을 갱신한다.</td>
+    <td>사용되지 않는다.</td>
+    <td>id가 5인 사람을 삭제한다.</td>
+  </tr>
+  <tr>
+    <td>Member URI such as <a href="http://domain.com/financemanager/person/form">http://domain.com/financemanager/person/form</a></td>
+    <td>생성(Create) 폼 - 초기화 된 사람을 반환한다.</td>
+    <td>사용되지 않는다.</td>
+    <td>사용되지 않는다.</td>
+    <td>사용되지 않는다.</td>
+  </tr>
+  <tr>
+    <td>Member URI such as <a href="http://domain.com/financemanager/person/5/form">http://domain.com/financemanager/person/5/form</a></td>
+    <td>갱신(Update) 폼 - 폼 바인딩으로 미리 데이터가 채워진 사람을 반환한다.</td>
+    <td>사용되지 않는다.</td>
+    <td>사용되지 않는다.</td>
+    <td>사용되지 않는다.</td>
+  </tr>
+</tbody></table>
 
-</p>
 <p>이 테이블은 Spring Finance Manager에서 사용하는 REST 매핑의 개요이다. 여러분이 보신데로 첫 두 줄은 자원을 관리하는 것이고 나머지 두 줄은 Spring MVC를 사용할 때 필요한 폼 매핑을 추가한 것이다. create.jsp와 update.jsp가 별로 다르지 않다면 하나로 합치는 것도 가능하다. 하지만 생성 폼의 REST 매핑은 HTTP POST 메시지를 보내고 업데이트 폼은 HTTP PUT 메시지를 보낸다. 그리므로, 두 폼을 합칠려면 JSP 페이지와 콘트롤러에 좀 더 다듬어야(hacking) 한다.</p>
 <h2 id="-">결론과 부가 정보</h2>
 <p>이 글에서는 Spring <code>@MVC</code> 어노테이션 스타일과 Spring <code>@MVC</code>의 REST 기능을 이용해서 Spring MVC 프레임워크를 사용해봤다. 나는 XML, ATOM, RSS, JSON같은 문서들이 생성되게 해주는 content negotiation은 설명하지 않았다. 하지만 Spring Finance Manager에 걸맞는 유즈 케이스를 제안해 주시는 분이 있으면 나는 기쁘게 이 시리즈의 한 파트로 추가시킬 것이다.</p>
 <p>나는 여러분이 내 동료 Arjen Poutsma, Alef Arendsen의 글도 참고하길 바란다.</p>
 <ul>
 <li><a href="http://blog.springsource.com/2009/03/08/rest-in-spring-3-mvc/">REST in Spring 3</a> - <code>@MVC</code>: Arjen이 Spring 3.0 REST 지원의 주요 기능을 소개한다.</li>
-<li><a href="http://blog.springsource.com/2009/03/16/adding-an-atom-view-to-an-application-using-springs-rest-support/">Adding an Atom view to an application using Spring’s REST support</a> - Alef는 Spring 3.0 REST content negotiation을 사용하여 ATOM 피드를 생성하는 방법을 설명한다.</li>
+<li><a href="http://blog.springsource.com/2009/03/16/adding-an-atom-view-to-an-application-using-springs-rest-support/">Adding an Atom view to an application using Spring&#39;s REST support</a> - Alef는 Spring 3.0 REST content negotiation을 사용하여 ATOM 피드를 생성하는 방법을 설명한다.</li>
 </ul>
 <p>또, Spring 3.0 M3 문서부터는 이 기능을 설명한다.</p>
 <p>이 시리즈의 다음 파트로 나는 Spring Finance Manager의 내부 구현에 대해 설명할 계획이다. 특히 도메인 모델에 대한 주요 아이디어들을 정리할 계획이다. 이 것은 DDD와 관련이 있다. 게다가 JPA API, Hibernate, HSQL DB를 샘플 어플리케이션에 통합하는 것을 다룰 것이다.</p>
