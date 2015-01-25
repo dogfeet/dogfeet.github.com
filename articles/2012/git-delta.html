@@ -8,7 +8,7 @@
 
   <title>#dogfeet - Git: 델타와 스냅샷</title>
   <meta name="description"
-    content="우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다."></meta>
+  content="우리가 커밋을 하면 그 시점의 스냅샷을 저장하는 것이고 두 시점의 스냅샷을 비교하면 델타를 얻을 수 있다. VCS는 스냅샷이나 델타를 저장하고 누가, 언제, 왜 저장했는지 등을 추적하고 관리하는 시스템이다. 실제로 저장할 때도 스냅샷을 저장하는 시스템도 있고(SVN, git) 델타를 저장하는 시스템도 있다(git, hg). 이 글은 델타 관점으로 git을 설명하고자 작성했다. 특정 시점을 의미하는 델타와 스냅샷을 두고 git이 어떻게 저장하는지 살펴보고, 델타를 구해서 적용하는 것으로 Merge/Rebase 명령어를 설명해보고자 한다."></meta>
   <meta name="keywords"
     content="git,delta,diff,patch"></meta>
   <meta name="author"
@@ -47,7 +47,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="/site/archive.html">Archive</a></li>
-          <li><a href="/site/tagmap.html">Tagmap</a></li>
+          <li><a href="/site/keyword-map.html">Keyword Map</a></li>
         </ul>
         <form id="search-form" class="navbar-form navbar-right" action="http://google.com/search" method="get">
           <input type="hidden" name="q" value="site:dogfeet.github.io"></input>
@@ -68,11 +68,11 @@
     <div class="col-sm-2 small-font">
       <br /><br />
       <p property="dc:created">2012 Aug 25</p>
-      <p class="small-font top-line"> - by<br /><a href="https://twitter.com/pismute/">Changwoo Park</a></p>
+      <p class="small-font top-line"> - by<br /><a href="https://pismute.github.io">Changwoo Park</a></p>
       <div id="social-buttons" class="top-line">
         <ul class="unstyled">
           <li><a class="twitter-share-button" href="https://twitter.com/share"
-            data-url="http://dogfeet.github.io/articles/2012/git-delta.html" data-via="Changwoo Park"
+            data-url="http://dogfeet.github.io/articles/2012/git-delta.html" data-via="pismute"
             data-count="horizontal" data-lang="en">Tweet</a></li>
           <li><div class="g-plusone" data-size="medium" data-href="http://dogfeet.github.io/articles/2012/git-delta.html"></div></li>
           <li><div class="fb-like"
@@ -81,7 +81,7 @@
         </ul>
       </div>
 
-      <p class="small-font top-line"><a href="/site/tagmap.html#git" class="tag">git</a> <a href="/site/tagmap.html#delta" class="tag">delta</a> <a href="/site/tagmap.html#diff" class="tag">diff</a> <a href="/site/tagmap.html#patch" class="tag">patch</a></p>
+      <p class="small-font top-line"><a href="/site/keyword-map.html#git" class="keyword">git</a> <a href="/site/keyword-map.html#delta" class="keyword">delta</a> <a href="/site/keyword-map.html#diff" class="keyword">diff</a> <a href="/site/keyword-map.html#patch" class="keyword">patch</a></p>
     </div>
 
     <div class="col-sm-10">

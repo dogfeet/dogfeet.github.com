@@ -36,7 +36,7 @@ section.content { padding-top: 50px; }
     font-size: 0.85em;
 }
 
-section.content .tag {
+section.content .keyword {
     padding: 3px 1px;
     color: #D14;
     background-color: #F7F7F9;
